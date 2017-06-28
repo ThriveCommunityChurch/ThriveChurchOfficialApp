@@ -12,7 +12,7 @@
 *.jpeg
 *.tiff
 *.bmp
-*/contents.json
+*Contents.json
 
 ## Build generated
 build/
