@@ -6,6 +6,13 @@
 *.DS_Store
 *._DS_Store
 
+#Graphics
+*.png
+*.jpg
+*.jpeg
+*.tiff
+*.bmp
+
 ## Build generated
 build/
 DerivedData/
