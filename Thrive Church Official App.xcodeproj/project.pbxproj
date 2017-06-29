@@ -1,0 +1,1050 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4103C4C01D340F0D000E885F /* WhyWeGiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103C4BF1D340F0D000E885F /* WhyWeGiveViewController.swift */; };
+		4103C4C21D342081000E885F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103C4C11D342081000E885F /* EventsFeedViewController.swift */; };
+		411290031D12CE5A00F89CE8 /* ImNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411290021D12CE5A00F89CE8 /* ImNewViewController.swift */; };
+		41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41341BF71D08716B0070AEF5 /* Social.framework */; };
+		413C25FF1CFE1BCE00D8AE26 /* giveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413C25FE1CFE1BCE00D8AE26 /* giveViewController.swift */; };
+		413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */; };
+		4147FB7C1D0F60BB0016480A /* ContactButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147FB7B1D0F60BB0016480A /* ContactButtonViewController.swift */; };
+		415C984B1D187FED00AC844B /* PrayerRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415C984A1D187FED00AC844B /* PrayerRequestsViewController.swift */; };
+		41625C691D02189400193974 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41625C681D02189400193974 /* WebsiteViewController.swift */; };
+		4169C5441D1B2A3B00A153D1 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4169C5431D1B2A3B00A153D1 /* DirectionsViewController.swift */; };
+		4177FE7B1D197F8600A1FFC6 /* ServeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177FE7A1D197F8600A1FFC6 /* ServeViewController.swift */; };
+		41AC2E2B1D072753004D4672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41AC2E2A1D072753004D4672 /* Main.storyboard */; settings = {ASSET_TAGS = (twitter, ); }; };
+		41C008831D1DECB400307015 /* SmallGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C008821D1DECB400307015 /* SmallGroupViewController.swift */; };
+		41D3C8881D1C7DC600EA88E1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3C8871D1C7DC600EA88E1 /* AboutViewController.swift */; };
+		41D76AC31D071A4B009B0804 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D76AC21D071A4B009B0804 /* StringUtils.swift */; };
+		41D8D9DC1D2D5E5C0097567F /* MeetTheTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8D9DB1D2D5E5C0097567F /* MeetTheTeamViewController.swift */; };
+		41D8D9E01D2D80CB0097567F /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8D9DF1D2D80CB0097567F /* dismissKeyboard.swift */; };
+		41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF7F01CF21719006C366E /* AppDelegate.swift */; };
+		41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */; };
+		41FCF8211CF22456006C366E /* SermonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8201CF22456006C366E /* SermonsViewController.swift */; };
+		41FF24A71D171EC30048E6AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
+		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
+		DC42A1CF1D24110F00B50ED2 /* MailChimpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC42A1CE1D24110F00B50ED2 /* MailChimpViewController.swift */; };
+		DC52AF181D36852C0061CB10 /* EspanolAboutThriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC52AF171D36852C0061CB10 /* EspanolAboutThriveViewController.swift */; };
+		DC53853F1D4E81A5003B2D95 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53853E1D4E81A5003B2D95 /* DetailViewController.swift */; };
+		DC5385411D4E81CE003B2D95 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5385401D4E81CE003B2D95 /* MasterViewController.swift */; };
+		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
+		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
+		DCF3BA321D348FB3001D943F /* EspanolSermonNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF3BA311D348FB3001D943F /* EspanolSermonNotesViewController.swift */; };
+		EA305E291E5B617600D2201F /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA305E281E5B617600D2201F /* SocialViewController.swift */; };
+		EAA42F591EA04A840072B77D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA42F581EA04A840072B77D /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		41FCF8041CF21719006C366E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41FCF7E51CF21719006C366E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41FCF7EC1CF21719006C366E;
+			remoteInfo = "Thrive Community Church";
+		};
+		41FCF80F1CF21719006C366E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41FCF7E51CF21719006C366E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41FCF7EC1CF21719006C366E;
+			remoteInfo = "Thrive Community Church";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA37C1481D85B71C00D450EF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA37C15F1D85E13100D450EF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4103C4BF1D340F0D000E885F /* WhyWeGiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhyWeGiveViewController.swift; sourceTree = "<group>"; };
+		4103C4C11D342081000E885F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
+		411290021D12CE5A00F89CE8 /* ImNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImNewViewController.swift; sourceTree = "<group>"; };
+		41341BF71D08716B0070AEF5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		413C25FE1CFE1BCE00D8AE26 /* giveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = giveViewController.swift; sourceTree = "<group>"; };
+		413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4147FB7B1D0F60BB0016480A /* ContactButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactButtonViewController.swift; sourceTree = "<group>"; };
+		415C984A1D187FED00AC844B /* PrayerRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerRequestsViewController.swift; sourceTree = "<group>"; };
+		41625C681D02189400193974 /* WebsiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
+		4169C5431D1B2A3B00A153D1 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
+		4177FE7A1D197F8600A1FFC6 /* ServeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServeViewController.swift; sourceTree = "<group>"; };
+		41AC2E2A1D072753004D4672 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		41C008821D1DECB400307015 /* SmallGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallGroupViewController.swift; sourceTree = "<group>"; };
+		41D3C8871D1C7DC600EA88E1 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		41D76AC21D071A4B009B0804 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		41D8D9DB1D2D5E5C0097567F /* MeetTheTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetTheTeamViewController.swift; sourceTree = "<group>"; };
+		41D8D9DF1D2D80CB0097567F /* dismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
+		41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thrive Church Official App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FCF7F01CF21719006C366E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		41FCF7FE1CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Church Official App.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrive_Community_ChurchTests.swift; sourceTree = "<group>"; };
+		41FCF8091CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41FCF80E1CF21719006C366E /* Thrive Church Official App.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Church Official App.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrive_Community_ChurchUITests.swift; sourceTree = "<group>"; };
+		41FCF8141CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41FCF8201CF22456006C366E /* SermonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SermonsViewController.swift; sourceTree = "<group>"; };
+		41FF24A51D171EC30048E6AF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		41FF24A61D171EC30048E6AF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		DC42A1CE1D24110F00B50ED2 /* MailChimpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailChimpViewController.swift; sourceTree = "<group>"; };
+		DC52AF171D36852C0061CB10 /* EspanolAboutThriveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EspanolAboutThriveViewController.swift; sourceTree = "<group>"; };
+		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
+		DC53853E1D4E81A5003B2D95 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "Thrive Community Church/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DC5385401D4E81CE003B2D95 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = "Thrive Community Church/MasterViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC948D921EEB3F7E00FF1329 /* FGCUContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUContactViewController.swift; sourceTree = "<group>"; };
+		DC948D931EEB3F7E00FF1329 /* FGCUEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUEventsViewController.swift; sourceTree = "<group>"; };
+		DC948D941EEB3F7E00FF1329 /* FGCUNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUNotificationsViewController.swift; sourceTree = "<group>"; };
+		DC948D951EEB3F7E00FF1329 /* FGCUSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUSiteViewController.swift; sourceTree = "<group>"; };
+		DC948D961EEB3F7E00FF1329 /* FGCUSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUSocialViewController.swift; sourceTree = "<group>"; };
+		DC948D971EEB3F7E00FF1329 /* ThriveFGCUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThriveFGCUViewController.swift; sourceTree = "<group>"; };
+		DC948D991EEB3FAE00FF1329 /* Read1JohnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read1JohnViewController.swift; sourceTree = "<group>"; };
+		DC948D9A1EEB3FAE00FF1329 /* Read2ChroniclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2ChroniclesViewController.swift; sourceTree = "<group>"; };
+		DC948D9B1EEB3FAE00FF1329 /* Read2CorinthiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2CorinthiansViewController.swift; sourceTree = "<group>"; };
+		DC948D9C1EEB3FAE00FF1329 /* Read2JohnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2JohnViewController.swift; sourceTree = "<group>"; };
+		DC948D9D1EEB3FAE00FF1329 /* Read2KingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2KingsViewController.swift; sourceTree = "<group>"; };
+		DC948D9E1EEB3FAE00FF1329 /* Read2PeterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2PeterViewController.swift; sourceTree = "<group>"; };
+		DC948D9F1EEB3FAE00FF1329 /* Read2SamuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2SamuelViewController.swift; sourceTree = "<group>"; };
+		DC948DA01EEB3FAE00FF1329 /* Read2ThessaloniansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2ThessaloniansViewController.swift; sourceTree = "<group>"; };
+		DC948DA11EEB3FAE00FF1329 /* Read2TimothyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2TimothyViewController.swift; sourceTree = "<group>"; };
+		DC948DA21EEB3FAE00FF1329 /* Read3JohnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read3JohnViewController.swift; sourceTree = "<group>"; };
+		DC948DA31EEB3FAE00FF1329 /* ReadActsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadActsViewController.swift; sourceTree = "<group>"; };
+		DC948DA41EEB3FAE00FF1329 /* ReadAmosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAmosViewController.swift; sourceTree = "<group>"; };
+		DC948DA51EEB3FAE00FF1329 /* ReadChroniclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChroniclesViewController.swift; sourceTree = "<group>"; };
+		DC948DA61EEB3FAE00FF1329 /* ReadColossiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadColossiansViewController.swift; sourceTree = "<group>"; };
+		DC948DA71EEB3FAE00FF1329 /* ReadCorinthiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCorinthiansViewController.swift; sourceTree = "<group>"; };
+		DC948DA81EEB3FAE00FF1329 /* ReadDanielViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDanielViewController.swift; sourceTree = "<group>"; };
+		DC948DA91EEB3FAE00FF1329 /* ReadDeutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDeutViewController.swift; sourceTree = "<group>"; };
+		DC948DAA1EEB3FAE00FF1329 /* ReadEcclesiatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadEcclesiatesViewController.swift; sourceTree = "<group>"; };
+		DC948DAB1EEB3FAE00FF1329 /* ReadEphesiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadEphesiansViewController.swift; sourceTree = "<group>"; };
+		DC948DAC1EEB3FAE00FF1329 /* ReadEstherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadEstherViewController.swift; sourceTree = "<group>"; };
+		DC948DAD1EEB3FAE00FF1329 /* ReadExodusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadExodusViewController.swift; sourceTree = "<group>"; };
+		DC948DAE1EEB3FAE00FF1329 /* ReadEzekielViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadEzekielViewController.swift; sourceTree = "<group>"; };
+		DC948DAF1EEB3FAE00FF1329 /* ReadEzraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadEzraViewController.swift; sourceTree = "<group>"; };
+		DC948DB01EEB3FAE00FF1329 /* ReadGalatiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadGalatiansViewController.swift; sourceTree = "<group>"; };
+		DC948DB11EEB3FAE00FF1329 /* ReadGenesisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadGenesisViewController.swift; sourceTree = "<group>"; };
+		DC948DB21EEB3FAF00FF1329 /* ReadHabakkukViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHabakkukViewController.swift; sourceTree = "<group>"; };
+		DC948DB31EEB3FAF00FF1329 /* ReadHaggaiVewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHaggaiVewController.swift; sourceTree = "<group>"; };
+		DC948DB41EEB3FAF00FF1329 /* ReadHebrewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHebrewsViewController.swift; sourceTree = "<group>"; };
+		DC948DB51EEB3FAF00FF1329 /* ReadHoseaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHoseaViewController.swift; sourceTree = "<group>"; };
+		DC948DB61EEB3FAF00FF1329 /* ReadIsaiahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadIsaiahViewController.swift; sourceTree = "<group>"; };
+		DC948DB71EEB3FAF00FF1329 /* ReadJamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJamesViewController.swift; sourceTree = "<group>"; };
+		DC948DB81EEB3FAF00FF1329 /* ReadJeremiahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJeremiahViewController.swift; sourceTree = "<group>"; };
+		DC948DB91EEB3FAF00FF1329 /* ReadJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJobViewController.swift; sourceTree = "<group>"; };
+		DC948DBA1EEB3FAF00FF1329 /* ReadJoelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJoelViewController.swift; sourceTree = "<group>"; };
+		DC948DBB1EEB3FAF00FF1329 /* ReadJohnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJohnViewController.swift; sourceTree = "<group>"; };
+		DC948DBC1EEB3FAF00FF1329 /* ReadJonahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJonahViewController.swift; sourceTree = "<group>"; };
+		DC948DBD1EEB3FAF00FF1329 /* ReadJoshuaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJoshuaViewController.swift; sourceTree = "<group>"; };
+		DC948DBE1EEB3FAF00FF1329 /* ReadJudeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJudeViewController.swift; sourceTree = "<group>"; };
+		DC948DBF1EEB3FAF00FF1329 /* ReadJudgesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJudgesViewController.swift; sourceTree = "<group>"; };
+		DC948DC01EEB3FAF00FF1329 /* ReadKingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadKingsViewController.swift; sourceTree = "<group>"; };
+		DC948DC11EEB3FAF00FF1329 /* ReadLamentationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLamentationsViewController.swift; sourceTree = "<group>"; };
+		DC948DC21EEB3FAF00FF1329 /* ReadLeviticusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLeviticusViewController.swift; sourceTree = "<group>"; };
+		DC948DC31EEB3FAF00FF1329 /* ReadLukeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLukeViewController.swift; sourceTree = "<group>"; };
+		DC948DC41EEB3FAF00FF1329 /* ReadMalachiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMalachiViewController.swift; sourceTree = "<group>"; };
+		DC948DC51EEB3FAF00FF1329 /* ReadMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMarkViewController.swift; sourceTree = "<group>"; };
+		DC948DC61EEB3FAF00FF1329 /* ReadMatthewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMatthewViewController.swift; sourceTree = "<group>"; };
+		DC948DC71EEB3FAF00FF1329 /* ReadMicahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMicahViewController.swift; sourceTree = "<group>"; };
+		DC948DC81EEB3FAF00FF1329 /* ReadNahumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNahumViewController.swift; sourceTree = "<group>"; };
+		DC948DC91EEB3FAF00FF1329 /* ReadNehemiahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNehemiahViewController.swift; sourceTree = "<group>"; };
+		DC948DCA1EEB3FAF00FF1329 /* ReadNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbersViewController.swift; sourceTree = "<group>"; };
+		DC948DCB1EEB3FAF00FF1329 /* ReadObediahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadObediahViewController.swift; sourceTree = "<group>"; };
+		DC948DCC1EEB3FAF00FF1329 /* ReadPeterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPeterViewController.swift; sourceTree = "<group>"; };
+		DC948DCD1EEB3FAF00FF1329 /* ReadPhilemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPhilemonViewController.swift; sourceTree = "<group>"; };
+		DC948DCE1EEB3FAF00FF1329 /* ReadPhilippiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPhilippiansViewController.swift; sourceTree = "<group>"; };
+		DC948DCF1EEB3FAF00FF1329 /* ReadProverbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProverbsViewController.swift; sourceTree = "<group>"; };
+		DC948DD01EEB3FAF00FF1329 /* ReadPsamlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPsamlsViewController.swift; sourceTree = "<group>"; };
+		DC948DD11EEB3FAF00FF1329 /* ReadRevelationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRevelationViewController.swift; sourceTree = "<group>"; };
+		DC948DD21EEB3FAF00FF1329 /* ReadRomansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRomansViewController.swift; sourceTree = "<group>"; };
+		DC948DD31EEB3FAF00FF1329 /* ReadRuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRuthViewController.swift; sourceTree = "<group>"; };
+		DC948DD41EEB3FAF00FF1329 /* ReadSamuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSamuelViewController.swift; sourceTree = "<group>"; };
+		DC948DD51EEB3FAF00FF1329 /* ReadSolomanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSolomanViewController.swift; sourceTree = "<group>"; };
+		DC948DD61EEB3FAF00FF1329 /* ReadThessaloniansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadThessaloniansViewController.swift; sourceTree = "<group>"; };
+		DC948DD71EEB3FAF00FF1329 /* ReadTimothyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTimothyViewController.swift; sourceTree = "<group>"; };
+		DC948DD81EEB3FAF00FF1329 /* ReadTitusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTitusViewController.swift; sourceTree = "<group>"; };
+		DC948DD91EEB3FAF00FF1329 /* ReadZechariahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadZechariahViewController.swift; sourceTree = "<group>"; };
+		DC948DDA1EEB3FAF00FF1329 /* ReadZepheniahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadZepheniahViewController.swift; sourceTree = "<group>"; };
+		DCF3BA311D348FB3001D943F /* EspanolSermonNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EspanolSermonNotesViewController.swift; sourceTree = "<group>"; };
+		EA305E281E5B617600D2201F /* SocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
+		EAA42F581EA04A840072B77D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41FCF7EA1CF21719006C366E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41FF24A71D171EC30048E6AF /* AudioToolbox.framework in Frameworks */,
+				41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */,
+				41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */,
+				413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FCF8001CF21719006C366E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FCF80B1CF21719006C366E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41FCF7E41CF21719006C366E = {
+			isa = PBXGroup;
+			children = (
+				DC7652711EEB5395007C0998 /* Assets.xcassets */,
+				41FF24A51D171EC30048E6AF /* AudioToolbox.framework */,
+				41FF24A61D171EC30048E6AF /* CoreAudio.framework */,
+				41341BF71D08716B0070AEF5 /* Social.framework */,
+				413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */,
+				41FCF7EF1CF21719006C366E /* Thrive Community Church */,
+				41FCF8061CF21719006C366E /* Thrive Community ChurchTests */,
+				41FCF8111CF21719006C366E /* Thrive Community ChurchUITests */,
+				41FCF7EE1CF21719006C366E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		41FCF7EE1CF21719006C366E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */,
+				41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */,
+				41FCF80E1CF21719006C366E /* Thrive Church Official App.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41FCF7EF1CF21719006C366E /* Thrive Community Church */ = {
+			isa = PBXGroup;
+			children = (
+				DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */,
+				41FCF7F01CF21719006C366E /* AppDelegate.swift */,
+				DCBB42491F04731F00E8C8A4 /* Extensions */,
+				DCBB42441F04714000E8C8A4 /* Main View Controllers */,
+				DCBB424A1F04734D00E8C8A4 /* Storyboards */,
+				41FCF7FE1CF21719006C366E /* Info.plist */,
+				EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */,
+			);
+			path = "Thrive Community Church";
+			sourceTree = "<group>";
+		};
+		41FCF8061CF21719006C366E /* Thrive Community ChurchTests */ = {
+			isa = PBXGroup;
+			children = (
+				41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */,
+				41FCF8091CF21719006C366E /* Info.plist */,
+			);
+			path = "Thrive Community ChurchTests";
+			sourceTree = "<group>";
+		};
+		41FCF8111CF21719006C366E /* Thrive Community ChurchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */,
+				41FCF8141CF21719006C366E /* Info.plist */,
+			);
+			path = "Thrive Community ChurchUITests";
+			sourceTree = "<group>";
+		};
+		DC948D911EEB3F7E00FF1329 /* FGCU */ = {
+			isa = PBXGroup;
+			children = (
+				DC948D921EEB3F7E00FF1329 /* FGCUContactViewController.swift */,
+				DC948D931EEB3F7E00FF1329 /* FGCUEventsViewController.swift */,
+				DC948D941EEB3F7E00FF1329 /* FGCUNotificationsViewController.swift */,
+				DC948D951EEB3F7E00FF1329 /* FGCUSiteViewController.swift */,
+				DC948D961EEB3F7E00FF1329 /* FGCUSocialViewController.swift */,
+				DC948D971EEB3F7E00FF1329 /* ThriveFGCUViewController.swift */,
+			);
+			path = FGCU;
+			sourceTree = "<group>";
+		};
+		DC948D981EEB3FAE00FF1329 /* Bible */ = {
+			isa = PBXGroup;
+			children = (
+				DC948D991EEB3FAE00FF1329 /* Read1JohnViewController.swift */,
+				DC948D9A1EEB3FAE00FF1329 /* Read2ChroniclesViewController.swift */,
+				DC948D9B1EEB3FAE00FF1329 /* Read2CorinthiansViewController.swift */,
+				DC948D9C1EEB3FAE00FF1329 /* Read2JohnViewController.swift */,
+				DC948D9D1EEB3FAE00FF1329 /* Read2KingsViewController.swift */,
+				DC948D9E1EEB3FAE00FF1329 /* Read2PeterViewController.swift */,
+				DC948D9F1EEB3FAE00FF1329 /* Read2SamuelViewController.swift */,
+				DC948DA01EEB3FAE00FF1329 /* Read2ThessaloniansViewController.swift */,
+				DC948DA11EEB3FAE00FF1329 /* Read2TimothyViewController.swift */,
+				DC948DA21EEB3FAE00FF1329 /* Read3JohnViewController.swift */,
+				DC948DA31EEB3FAE00FF1329 /* ReadActsViewController.swift */,
+				DC948DA41EEB3FAE00FF1329 /* ReadAmosViewController.swift */,
+				DC948DA51EEB3FAE00FF1329 /* ReadChroniclesViewController.swift */,
+				DC948DA61EEB3FAE00FF1329 /* ReadColossiansViewController.swift */,
+				DC948DA71EEB3FAE00FF1329 /* ReadCorinthiansViewController.swift */,
+				DC948DA81EEB3FAE00FF1329 /* ReadDanielViewController.swift */,
+				DC948DA91EEB3FAE00FF1329 /* ReadDeutViewController.swift */,
+				DC948DAA1EEB3FAE00FF1329 /* ReadEcclesiatesViewController.swift */,
+				DC948DAB1EEB3FAE00FF1329 /* ReadEphesiansViewController.swift */,
+				DC948DAC1EEB3FAE00FF1329 /* ReadEstherViewController.swift */,
+				DC948DAD1EEB3FAE00FF1329 /* ReadExodusViewController.swift */,
+				DC948DAE1EEB3FAE00FF1329 /* ReadEzekielViewController.swift */,
+				DC948DAF1EEB3FAE00FF1329 /* ReadEzraViewController.swift */,
+				DC948DB01EEB3FAE00FF1329 /* ReadGalatiansViewController.swift */,
+				DC948DB11EEB3FAE00FF1329 /* ReadGenesisViewController.swift */,
+				DC948DB21EEB3FAF00FF1329 /* ReadHabakkukViewController.swift */,
+				DC948DB31EEB3FAF00FF1329 /* ReadHaggaiVewController.swift */,
+				DC948DB41EEB3FAF00FF1329 /* ReadHebrewsViewController.swift */,
+				DC948DB51EEB3FAF00FF1329 /* ReadHoseaViewController.swift */,
+				DC948DB61EEB3FAF00FF1329 /* ReadIsaiahViewController.swift */,
+				DC948DB71EEB3FAF00FF1329 /* ReadJamesViewController.swift */,
+				DC948DB81EEB3FAF00FF1329 /* ReadJeremiahViewController.swift */,
+				DC948DB91EEB3FAF00FF1329 /* ReadJobViewController.swift */,
+				DC948DBA1EEB3FAF00FF1329 /* ReadJoelViewController.swift */,
+				DC948DBB1EEB3FAF00FF1329 /* ReadJohnViewController.swift */,
+				DC948DBC1EEB3FAF00FF1329 /* ReadJonahViewController.swift */,
+				DC948DBD1EEB3FAF00FF1329 /* ReadJoshuaViewController.swift */,
+				DC948DBE1EEB3FAF00FF1329 /* ReadJudeViewController.swift */,
+				DC948DBF1EEB3FAF00FF1329 /* ReadJudgesViewController.swift */,
+				DC948DC01EEB3FAF00FF1329 /* ReadKingsViewController.swift */,
+				DC948DC11EEB3FAF00FF1329 /* ReadLamentationsViewController.swift */,
+				DC948DC21EEB3FAF00FF1329 /* ReadLeviticusViewController.swift */,
+				DC948DC31EEB3FAF00FF1329 /* ReadLukeViewController.swift */,
+				DC948DC41EEB3FAF00FF1329 /* ReadMalachiViewController.swift */,
+				DC948DC51EEB3FAF00FF1329 /* ReadMarkViewController.swift */,
+				DC948DC61EEB3FAF00FF1329 /* ReadMatthewViewController.swift */,
+				DC948DC71EEB3FAF00FF1329 /* ReadMicahViewController.swift */,
+				DC948DC81EEB3FAF00FF1329 /* ReadNahumViewController.swift */,
+				DC948DC91EEB3FAF00FF1329 /* ReadNehemiahViewController.swift */,
+				DC948DCA1EEB3FAF00FF1329 /* ReadNumbersViewController.swift */,
+				DC948DCB1EEB3FAF00FF1329 /* ReadObediahViewController.swift */,
+				DC948DCC1EEB3FAF00FF1329 /* ReadPeterViewController.swift */,
+				DC948DCD1EEB3FAF00FF1329 /* ReadPhilemonViewController.swift */,
+				DC948DCE1EEB3FAF00FF1329 /* ReadPhilippiansViewController.swift */,
+				DC948DCF1EEB3FAF00FF1329 /* ReadProverbsViewController.swift */,
+				DC948DD01EEB3FAF00FF1329 /* ReadPsamlsViewController.swift */,
+				DC948DD11EEB3FAF00FF1329 /* ReadRevelationViewController.swift */,
+				DC948DD21EEB3FAF00FF1329 /* ReadRomansViewController.swift */,
+				DC948DD31EEB3FAF00FF1329 /* ReadRuthViewController.swift */,
+				DC948DD41EEB3FAF00FF1329 /* ReadSamuelViewController.swift */,
+				DC948DD51EEB3FAF00FF1329 /* ReadSolomanViewController.swift */,
+				DC948DD61EEB3FAF00FF1329 /* ReadThessaloniansViewController.swift */,
+				DC948DD71EEB3FAF00FF1329 /* ReadTimothyViewController.swift */,
+				DC948DD81EEB3FAF00FF1329 /* ReadTitusViewController.swift */,
+				DC948DD91EEB3FAF00FF1329 /* ReadZechariahViewController.swift */,
+				DC948DDA1EEB3FAF00FF1329 /* ReadZepheniahViewController.swift */,
+			);
+			path = Bible;
+			sourceTree = "<group>";
+		};
+		DCBB42441F04714000E8C8A4 /* Main View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCBB42481F04723500E8C8A4 /* Listen */,
+				DCBB42471F04722B00E8C8A4 /* Notes */,
+				DC948D981EEB3FAE00FF1329 /* Bible */,
+				DCBB42451F0471B100E8C8A4 /* Connect */,
+				DCBB42461F04720C00E8C8A4 /* More */,
+			);
+			name = "Main View Controllers";
+			sourceTree = "<group>";
+		};
+		DCBB42451F0471B100E8C8A4 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				4147FB7B1D0F60BB0016480A /* ContactButtonViewController.swift */,
+				415C984A1D187FED00AC844B /* PrayerRequestsViewController.swift */,
+				4177FE7A1D197F8600A1FFC6 /* ServeViewController.swift */,
+				4103C4C11D342081000E885F /* EventsFeedViewController.swift */,
+				DC948D911EEB3F7E00FF1329 /* FGCU */,
+				41C008821D1DECB400307015 /* SmallGroupViewController.swift */,
+				DC42A1CE1D24110F00B50ED2 /* MailChimpViewController.swift */,
+				4169C5431D1B2A3B00A153D1 /* DirectionsViewController.swift */,
+			);
+			name = Connect;
+			sourceTree = "<group>";
+		};
+		DCBB42461F04720C00E8C8A4 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				411290021D12CE5A00F89CE8 /* ImNewViewController.swift */,
+				413C25FE1CFE1BCE00D8AE26 /* giveViewController.swift */,
+				EA305E281E5B617600D2201F /* SocialViewController.swift */,
+				41625C681D02189400193974 /* WebsiteViewController.swift */,
+				DCF3BA311D348FB3001D943F /* EspanolSermonNotesViewController.swift */,
+				DC52AF171D36852C0061CB10 /* EspanolAboutThriveViewController.swift */,
+				41D8D9DB1D2D5E5C0097567F /* MeetTheTeamViewController.swift */,
+				4103C4BF1D340F0D000E885F /* WhyWeGiveViewController.swift */,
+				41D3C8871D1C7DC600EA88E1 /* AboutViewController.swift */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		DCBB42471F04722B00E8C8A4 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				DC53853E1D4E81A5003B2D95 /* DetailViewController.swift */,
+				DC5385401D4E81CE003B2D95 /* MasterViewController.swift */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
+		DCBB42481F04723500E8C8A4 /* Listen */ = {
+			isa = PBXGroup;
+			children = (
+				41FCF8201CF22456006C366E /* SermonsViewController.swift */,
+			);
+			name = Listen;
+			sourceTree = "<group>";
+		};
+		DCBB42491F04731F00E8C8A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41D76AC21D071A4B009B0804 /* StringUtils.swift */,
+				41D8D9DF1D2D80CB0097567F /* dismissKeyboard.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		DCBB424A1F04734D00E8C8A4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				41AC2E2A1D072753004D4672 /* Main.storyboard */,
+				EAA42F581EA04A840072B77D /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41FCF7EC1CF21719006C366E /* Thrive Church Official App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41FCF8171CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official App" */;
+			buildPhases = (
+				DC974C8A3BE4A129CEEF0528 /* [CP] Check Pods Manifest.lock */,
+				41FCF7E91CF21719006C366E /* Sources */,
+				41FCF7EA1CF21719006C366E /* Frameworks */,
+				41FCF7EB1CF21719006C366E /* Resources */,
+				0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */,
+				6370471B860F8AE82459F5A8 /* [CP] Copy Pods Resources */,
+				EA971F011D63B301007C3A2B /* ShellScript */,
+				EA37C1481D85B71C00D450EF /* Embed Frameworks */,
+				EA37C15F1D85E13100D450EF /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Thrive Church Official App";
+			productName = "Thrive Community Church";
+			productReference = 41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		41FCF8021CF21719006C366E /* Thrive Church Official AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41FCF81A1CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official AppTests" */;
+			buildPhases = (
+				E2DF469C0714D8BDB99EEE23 /* [CP] Check Pods Manifest.lock */,
+				41FCF7FF1CF21719006C366E /* Sources */,
+				41FCF8001CF21719006C366E /* Frameworks */,
+				41FCF8011CF21719006C366E /* Resources */,
+				2A6DE99B5A6C7142F5554D1D /* [CP] Embed Pods Frameworks */,
+				F6D4A5453B750A5043F5334F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41FCF8051CF21719006C366E /* PBXTargetDependency */,
+			);
+			name = "Thrive Church Official AppTests";
+			productName = "Thrive Community ChurchTests";
+			productReference = 41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		41FCF80D1CF21719006C366E /* Thrive Church Official AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41FCF81D1CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official AppUITests" */;
+			buildPhases = (
+				BE6096902B326C6C7BB6C340 /* [CP] Check Pods Manifest.lock */,
+				41FCF80A1CF21719006C366E /* Sources */,
+				41FCF80B1CF21719006C366E /* Frameworks */,
+				41FCF80C1CF21719006C366E /* Resources */,
+				8485215296E6A21859233C4A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41FCF8101CF21719006C366E /* PBXTargetDependency */,
+			);
+			name = "Thrive Church Official AppUITests";
+			productName = "Thrive Community ChurchUITests";
+			productReference = 41FCF80E1CF21719006C366E /* Thrive Church Official App.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		41FCF7E51CF21719006C366E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				KnownAssetTags = (
+					twitter,
+				);
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Thrive Community Church";
+				TargetAttributes = {
+					41FCF7EC1CF21719006C366E = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 87ME42WJYA;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					41FCF8021CF21719006C366E = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0900;
+						TestTargetID = 41FCF7EC1CF21719006C366E;
+					};
+					41FCF80D1CF21719006C366E = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0900;
+						TestTargetID = 41FCF7EC1CF21719006C366E;
+					};
+				};
+			};
+			buildConfigurationList = 41FCF7E81CF21719006C366E /* Build configuration list for PBXProject "Thrive Church Official App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 41FCF7E41CF21719006C366E;
+			productRefGroup = 41FCF7EE1CF21719006C366E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41FCF7EC1CF21719006C366E /* Thrive Church Official App */,
+				41FCF8021CF21719006C366E /* Thrive Church Official AppTests */,
+				41FCF80D1CF21719006C366E /* Thrive Church Official AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41FCF7EB1CF21719006C366E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41AC2E2B1D072753004D4672 /* Main.storyboard in Resources */,
+				DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */,
+				EAA42F591EA04A840072B77D /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FCF8011CF21719006C366E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FCF80C1CF21719006C366E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+			showEnvVarsInLog = 0;
+		};
+		2A6DE99B5A6C7142F5554D1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6370471B860F8AE82459F5A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+			showEnvVarsInLog = 0;
+		};
+		8485215296E6A21859233C4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppUITests/Pods-Thrive Church Official AppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE6096902B326C6C7BB6C340 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DC974C8A3BE4A129CEEF0528 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+			showEnvVarsInLog = 0;
+		};
+		E2DF469C0714D8BDB99EEE23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EA971F011D63B301007C3A2B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		F6D4A5453B750A5043F5334F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41FCF7E91CF21719006C366E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				415C984B1D187FED00AC844B /* PrayerRequestsViewController.swift in Sources */,
+				413C25FF1CFE1BCE00D8AE26 /* giveViewController.swift in Sources */,
+				41FCF8211CF22456006C366E /* SermonsViewController.swift in Sources */,
+				41D8D9E01D2D80CB0097567F /* dismissKeyboard.swift in Sources */,
+				DC42A1CF1D24110F00B50ED2 /* MailChimpViewController.swift in Sources */,
+				41D8D9DC1D2D5E5C0097567F /* MeetTheTeamViewController.swift in Sources */,
+				4103C4C01D340F0D000E885F /* WhyWeGiveViewController.swift in Sources */,
+				41625C691D02189400193974 /* WebsiteViewController.swift in Sources */,
+				DCF3BA321D348FB3001D943F /* EspanolSermonNotesViewController.swift in Sources */,
+				41D3C8881D1C7DC600EA88E1 /* AboutViewController.swift in Sources */,
+				4177FE7B1D197F8600A1FFC6 /* ServeViewController.swift in Sources */,
+				41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */,
+				41C008831D1DECB400307015 /* SmallGroupViewController.swift in Sources */,
+				DC53853F1D4E81A5003B2D95 /* DetailViewController.swift in Sources */,
+				411290031D12CE5A00F89CE8 /* ImNewViewController.swift in Sources */,
+				DC52AF181D36852C0061CB10 /* EspanolAboutThriveViewController.swift in Sources */,
+				EA305E291E5B617600D2201F /* SocialViewController.swift in Sources */,
+				4147FB7C1D0F60BB0016480A /* ContactButtonViewController.swift in Sources */,
+				DC5385411D4E81CE003B2D95 /* MasterViewController.swift in Sources */,
+				4169C5441D1B2A3B00A153D1 /* DirectionsViewController.swift in Sources */,
+				4103C4C21D342081000E885F /* EventsFeedViewController.swift in Sources */,
+				41D76AC31D071A4B009B0804 /* StringUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FCF7FF1CF21719006C366E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FCF80A1CF21719006C366E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41FCF8051CF21719006C366E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41FCF7EC1CF21719006C366E /* Thrive Church Official App */;
+			targetProxy = 41FCF8041CF21719006C366E /* PBXContainerItemProxy */;
+		};
+		41FCF8101CF21719006C366E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41FCF7EC1CF21719006C366E /* Thrive Church Official App */;
+			targetProxy = 41FCF80F1CF21719006C366E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		41FCF8151CF21719006C366E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		41FCF8161CF21719006C366E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		41FCF8181CF21719006C366E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 87ME42WJYA;
+				INFOPLIST_FILE = "Thrive Community Church/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
+				PRODUCT_NAME = "Thrive Church Official App";
+				PROVISIONING_PROFILE = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		41FCF8191CF21719006C366E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 87ME42WJYA;
+				INFOPLIST_FILE = "Thrive Community Church/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
+				PRODUCT_NAME = "Thrive Church Official App";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		41FCF81B1CF21719006C366E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Thrive Community ChurchTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchTests";
+				PRODUCT_NAME = "Thrive Church Official App";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thrive Church Official App.app/Thrive Church Official App";
+			};
+			name = Debug;
+		};
+		41FCF81C1CF21719006C366E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Thrive Community ChurchTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchTests";
+				PRODUCT_NAME = "Thrive Church Official App";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thrive Church Official App.app/Thrive Church Official App";
+			};
+			name = Release;
+		};
+		41FCF81E1CF21719006C366E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Thrive Community ChurchUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchUITests";
+				PRODUCT_NAME = "Thrive Church Official App";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = "Thrive Community Church";
+			};
+			name = Debug;
+		};
+		41FCF81F1CF21719006C366E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Thrive Community ChurchUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchUITests";
+				PRODUCT_NAME = "Thrive Church Official App";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = "Thrive Community Church";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41FCF7E81CF21719006C366E /* Build configuration list for PBXProject "Thrive Church Official App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41FCF8151CF21719006C366E /* Debug */,
+				41FCF8161CF21719006C366E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41FCF8171CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41FCF8181CF21719006C366E /* Debug */,
+				41FCF8191CF21719006C366E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41FCF81A1CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41FCF81B1CF21719006C366E /* Debug */,
+				41FCF81C1CF21719006C366E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41FCF81D1CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41FCF81E1CF21719006C366E /* Debug */,
+				41FCF81F1CF21719006C366E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 41FCF7E51CF21719006C366E /* Project object */;
+}
