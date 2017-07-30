@@ -1646,7 +1646,7 @@
         <!--Genesis-->
         <scene sceneID="G0m-0a-HiT">
             <objects>
-                <viewController title="Genesis" id="Nd3-uy-Ufq" customClass="ReadGenesisViewController" sceneMemberID="viewController">
+                <viewController title="Genesis" id="Nd3-uy-Ufq" customClass="ReadGenesisViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NTG-Ka-gCS"/>
                         <viewControllerLayoutGuide type="bottom" id="xhq-p6-Nw9"/>
@@ -8017,74 +8017,74 @@
         <image name="notes" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yZn-zD-0Hl"/>
-        <segue reference="4mJ-rJ-QcU"/>
         <segue reference="DJE-eQ-FMo"/>
         <segue reference="b9C-Bk-Dkb"/>
+        <segue reference="4mJ-rJ-QcU"/>
+        <segue reference="Ewo-QE-6ZL"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="Ecq-Ry-abC"/>
+        <segue reference="4Qz-iA-tDx"/>
+        <segue reference="w1i-k2-7EM"/>
+        <segue reference="XOk-Xg-Amf"/>
         <segue reference="PPS-eZ-zBm"/>
-        <segue reference="UKa-Kk-7a0"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="V9H-vb-Yyh"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="yZn-zD-0Hl"/>
         <segue reference="Q46-eW-Mj7"/>
-        <segue reference="78D-gh-8fo"/>
-        <segue reference="CEh-5j-w7l"/>
-        <segue reference="c3J-wa-dfa"/>
-        <segue reference="L4z-xU-3sB"/>
-        <segue reference="20Y-hQ-Ox1"/>
-        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="7mg-R3-8Ut"/>
+        <segue reference="M0U-iL-e6P"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="B4v-82-Wkl"/>
         <segue reference="rSr-sW-9Td"/>
+        <segue reference="sKp-Ck-4z1"/>
+        <segue reference="k2E-cA-rQY"/>
+        <segue reference="20Y-hQ-Ox1"/>
+        <segue reference="L4z-xU-3sB"/>
+        <segue reference="oGb-ge-dnu"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="78D-gh-8fo"/>
+        <segue reference="kYN-zl-ptM"/>
+        <segue reference="9Dj-Fs-NlX"/>
+        <segue reference="ThB-mB-6d1"/>
+        <segue reference="J3b-pc-LZY"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="KnF-1g-Rzs"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="vVd-mt-2Wp"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="SNc-Ed-LeG"/>
+        <segue reference="rQc-Pc-Ewv"/>
         <segue reference="ABU-Oe-eCP"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="Pge-db-qdQ"/>
         <segue reference="TeF-od-02s"/>
         <segue reference="3TX-q6-TkQ"/>
-        <segue reference="ThB-mB-6d1"/>
-        <segue reference="SNc-Ed-LeG"/>
-        <segue reference="kYN-zl-ptM"/>
-        <segue reference="Keh-9j-qh2"/>
-        <segue reference="EIM-W8-u3h"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="7mg-R3-8Ut"/>
-        <segue reference="B4v-82-Wkl"/>
-        <segue reference="w1i-k2-7EM"/>
-        <segue reference="Ecq-Ry-abC"/>
-        <segue reference="Pge-db-qdQ"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="2oW-hC-Sws"/>
-        <segue reference="usn-tW-YAM"/>
-        <segue reference="J3b-pc-LZY"/>
-        <segue reference="ov9-La-OXs"/>
-        <segue reference="sKp-Ck-4z1"/>
-        <segue reference="Gq7-Kl-69M"/>
-        <segue reference="1tk-43-psK"/>
-        <segue reference="0ql-fo-hGf"/>
-        <segue reference="nDt-Mc-UJJ"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="V9H-vb-Yyh"/>
         <segue reference="FIr-zP-Fgi"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="4I3-xf-XmF"/>
-        <segue reference="4Qz-iA-tDx"/>
-        <segue reference="oGb-ge-dnu"/>
-        <segue reference="90Q-0M-ga8"/>
-        <segue reference="1ue-Lc-JZr"/>
-        <segue reference="KWM-si-IpF"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="NOg-d5-8um"/>
-        <segue reference="XOk-Xg-Amf"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="Ay0-cc-dTg"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="9Dj-Fs-NlX"/>
         <segue reference="Ojm-T8-o7F"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="90Q-0M-ga8"/>
+        <segue reference="HcU-1W-NjC"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="Keh-9j-qh2"/>
         <segue reference="XBi-Vj-E6c"/>
-        <segue reference="71h-vK-pKg"/>
-        <segue reference="KnF-1g-Rzs"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="Y7Y-1Z-cSG"/>
-        <segue reference="Ewo-QE-6ZL"/>
-        <segue reference="rQc-Pc-Ewv"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="k2E-cA-rQY"/>
-        <segue reference="Inz-5g-5ol"/>
+        <segue reference="NOg-d5-8um"/>
+        <segue reference="nDt-Mc-UJJ"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="ov9-La-OXs"/>
+        <segue reference="xfQ-9F-hZ9"/>
     </inferredMetricsTieBreakers>
 </document>
