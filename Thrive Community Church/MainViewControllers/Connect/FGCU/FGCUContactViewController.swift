@@ -69,7 +69,7 @@ class FGCUContactViewController: UIViewController,  MFMailComposeViewControllerD
             print("Sent")
             
         case MFMailComposeResult.failed.rawValue:
-            print("Error: \(error?.localizedDescription)")
+            print("Error: \(String(describing: error?.localizedDescription))")
             
         default:
             

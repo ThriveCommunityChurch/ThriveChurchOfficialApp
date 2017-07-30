@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -321,7 +322,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Nd3-uy-Ufq" kind="show" id="goy-27-5BH"/>
+                                            <segue destination="Nd3-uy-Ufq" kind="show" id="1ue-Lc-JZr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Exodus" textLabel="MoL-GL-vk3" style="IBUITableViewCellStyleDefault" id="LJS-ni-jS7" userLabel="Exodus">
@@ -1645,7 +1646,7 @@
         <!--Genesis-->
         <scene sceneID="G0m-0a-HiT">
             <objects>
-                <viewController title="Genesis" id="Nd3-uy-Ufq" customClass="ReadGenesisViewController" sceneMemberID="viewController">
+                <viewController title="Genesis" id="Nd3-uy-Ufq" customClass="ReadGenesisViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NTG-Ka-gCS"/>
                         <viewControllerLayoutGuide type="bottom" id="xhq-p6-Nw9"/>
@@ -2393,11 +2394,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPB-wQ-rdw">
-                                <rect key="frame" x="0.0" y="15" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="-5" width="375" height="623"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qE5-RN-uvh">
-                                <rect key="frame" x="169" y="298" width="37" height="37"/>
+                                <rect key="frame" x="169" y="288" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -5707,7 +5708,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8h-Xj-j1j">
-                                <rect key="frame" x="0.0" y="20" width="375" height="685"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxO-fK-9nc">
                                         <rect key="frame" x="-1" y="348" width="376" height="45"/>
@@ -5954,7 +5955,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfL-ae-7YT">
-                                <rect key="frame" x="0.0" y="20" width="375" height="695"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="695"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blC-tG-01C">
                                         <rect key="frame" x="0.0" y="36" width="375" height="47"/>
@@ -8016,74 +8017,74 @@
         <image name="notes" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3J-wa-dfa"/>
-        <segue reference="b9C-Bk-Dkb"/>
         <segue reference="DJE-eQ-FMo"/>
+        <segue reference="b9C-Bk-Dkb"/>
         <segue reference="4mJ-rJ-QcU"/>
-        <segue reference="Ojm-T8-o7F"/>
-        <segue reference="NOg-d5-8um"/>
-        <segue reference="Keh-9j-qh2"/>
-        <segue reference="V9H-vb-Yyh"/>
-        <segue reference="ABU-Oe-eCP"/>
+        <segue reference="Ewo-QE-6ZL"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="Ecq-Ry-abC"/>
         <segue reference="4Qz-iA-tDx"/>
+        <segue reference="w1i-k2-7EM"/>
+        <segue reference="XOk-Xg-Amf"/>
+        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="V9H-vb-Yyh"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="yZn-zD-0Hl"/>
+        <segue reference="Q46-eW-Mj7"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="7mg-R3-8Ut"/>
+        <segue reference="M0U-iL-e6P"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="B4v-82-Wkl"/>
         <segue reference="rSr-sW-9Td"/>
         <segue reference="sKp-Ck-4z1"/>
-        <segue reference="rQc-Pc-Ewv"/>
-        <segue reference="nDt-Mc-UJJ"/>
-        <segue reference="goy-27-5BH"/>
-        <segue reference="Q46-eW-Mj7"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="PPS-eZ-zBm"/>
-        <segue reference="oGb-ge-dnu"/>
-        <segue reference="0ql-fo-hGf"/>
-        <segue reference="XOk-Xg-Amf"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="L4z-xU-3sB"/>
-        <segue reference="XBi-Vj-E6c"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="usn-tW-YAM"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="FIr-zP-Fgi"/>
-        <segue reference="Ewo-QE-6ZL"/>
         <segue reference="k2E-cA-rQY"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="B4v-82-Wkl"/>
-        <segue reference="J3b-pc-LZY"/>
-        <segue reference="Pge-db-qdQ"/>
-        <segue reference="EIM-W8-u3h"/>
-        <segue reference="Ay0-cc-dTg"/>
-        <segue reference="CEh-5j-w7l"/>
-        <segue reference="Gq7-Kl-69M"/>
-        <segue reference="UKa-Kk-7a0"/>
-        <segue reference="KnF-1g-Rzs"/>
-        <segue reference="7mg-R3-8Ut"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="W1j-Pk-OC9"/>
-        <segue reference="yZn-zD-0Hl"/>
-        <segue reference="KWM-si-IpF"/>
-        <segue reference="ov9-La-OXs"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="4I3-xf-XmF"/>
-        <segue reference="78D-gh-8fo"/>
         <segue reference="20Y-hQ-Ox1"/>
-        <segue reference="2oW-hC-Sws"/>
-        <segue reference="1tk-43-psK"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="TeF-od-02s"/>
-        <segue reference="90Q-0M-ga8"/>
-        <segue reference="ThB-mB-6d1"/>
-        <segue reference="mNL-Xu-Oap"/>
-        <segue reference="Ecq-Ry-abC"/>
-        <segue reference="9Dj-Fs-NlX"/>
-        <segue reference="SNc-Ed-LeG"/>
-        <segue reference="w1i-k2-7EM"/>
-        <segue reference="Inz-5g-5ol"/>
-        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="L4z-xU-3sB"/>
+        <segue reference="oGb-ge-dnu"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="78D-gh-8fo"/>
         <segue reference="kYN-zl-ptM"/>
-        <segue reference="71h-vK-pKg"/>
+        <segue reference="9Dj-Fs-NlX"/>
+        <segue reference="ThB-mB-6d1"/>
+        <segue reference="J3b-pc-LZY"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="KnF-1g-Rzs"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="vVd-mt-2Wp"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="SNc-Ed-LeG"/>
+        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="ABU-Oe-eCP"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="Pge-db-qdQ"/>
+        <segue reference="TeF-od-02s"/>
         <segue reference="3TX-q6-TkQ"/>
+        <segue reference="FIr-zP-Fgi"/>
+        <segue reference="Ojm-T8-o7F"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="90Q-0M-ga8"/>
+        <segue reference="HcU-1W-NjC"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="Keh-9j-qh2"/>
+        <segue reference="XBi-Vj-E6c"/>
+        <segue reference="NOg-d5-8um"/>
+        <segue reference="nDt-Mc-UJJ"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="ov9-La-OXs"/>
+        <segue reference="xfQ-9F-hZ9"/>
     </inferredMetricsTieBreakers>
 </document>
