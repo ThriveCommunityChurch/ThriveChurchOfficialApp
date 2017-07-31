@@ -292,6 +292,24 @@
             </objects>
             <point key="canvasLocation" x="2784.8000000000002" y="1645.7271364317842"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="z2M-ph-19o">
+            <objects>
+                <viewController id="oXk-3P-i5a" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RFg-VY-gbw"/>
+                        <viewControllerLayoutGuide type="bottom" id="G9n-6m-rlK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="DuC-7z-uJJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6V-7R-Dtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2194" y="-5635"/>
+        </scene>
         <!--Bible-->
         <scene sceneID="adv-DT-Izm">
             <objects>
@@ -6489,6 +6507,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LwJ-xm-eKX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -6497,7 +6520,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGy-GA-c84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="2011"/>
+            <point key="canvasLocation" x="822" y="2017"/>
         </scene>
         <!--Connect Table View Controller-->
         <scene sceneID="W5o-8Q-jLk">
@@ -6897,6 +6920,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qej-C5-FsW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -6905,7 +6933,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bjw-qv-iVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="-203"/>
+            <point key="canvasLocation" x="822" y="-205"/>
         </scene>
         <!--Find Your Book-->
         <scene sceneID="mBk-GZ-9MT">
@@ -6981,6 +7009,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dgp-G8-cbh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -7859,6 +7892,11 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hNv-t8-EXo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="wsC-ZQ-a3g" kind="relationship" relationship="rootViewController" id="GJC-bH-el9"/>
@@ -7934,7 +7972,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oF7-Wr-fz5" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="-1538"/>
+            <point key="canvasLocation" x="822" y="-1524"/>
         </scene>
         <!--Master-->
         <scene sceneID="jQ4-aP-wdl">
@@ -7988,6 +8026,11 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="j7f-s0-3Mn">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="M2B-Gu-18A" kind="relationship" relationship="rootViewController" id="qUv-Il-lZB"/>
@@ -8017,74 +8060,74 @@
         <image name="notes" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DJE-eQ-FMo"/>
-        <segue reference="b9C-Bk-Dkb"/>
-        <segue reference="4mJ-rJ-QcU"/>
-        <segue reference="Ewo-QE-6ZL"/>
-        <segue reference="Inz-5g-5ol"/>
-        <segue reference="Ecq-Ry-abC"/>
-        <segue reference="4Qz-iA-tDx"/>
-        <segue reference="w1i-k2-7EM"/>
-        <segue reference="XOk-Xg-Amf"/>
-        <segue reference="PPS-eZ-zBm"/>
-        <segue reference="V9H-vb-Yyh"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="EIM-W8-u3h"/>
-        <segue reference="71h-vK-pKg"/>
-        <segue reference="Gq7-Kl-69M"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="yZn-zD-0Hl"/>
-        <segue reference="Q46-eW-Mj7"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="UKa-Kk-7a0"/>
         <segue reference="7mg-R3-8Ut"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="Y7Y-1Z-cSG"/>
-        <segue reference="0ql-fo-hGf"/>
-        <segue reference="2oW-hC-Sws"/>
-        <segue reference="B4v-82-Wkl"/>
-        <segue reference="rSr-sW-9Td"/>
-        <segue reference="sKp-Ck-4z1"/>
-        <segue reference="k2E-cA-rQY"/>
-        <segue reference="20Y-hQ-Ox1"/>
-        <segue reference="L4z-xU-3sB"/>
-        <segue reference="oGb-ge-dnu"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="W1j-Pk-OC9"/>
-        <segue reference="78D-gh-8fo"/>
-        <segue reference="kYN-zl-ptM"/>
-        <segue reference="9Dj-Fs-NlX"/>
-        <segue reference="ThB-mB-6d1"/>
-        <segue reference="J3b-pc-LZY"/>
-        <segue reference="mNL-Xu-Oap"/>
-        <segue reference="KWM-si-IpF"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="KnF-1g-Rzs"/>
-        <segue reference="Ay0-cc-dTg"/>
-        <segue reference="1tk-43-psK"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="SNc-Ed-LeG"/>
-        <segue reference="rQc-Pc-Ewv"/>
-        <segue reference="ABU-Oe-eCP"/>
-        <segue reference="4I3-xf-XmF"/>
-        <segue reference="Pge-db-qdQ"/>
-        <segue reference="TeF-od-02s"/>
-        <segue reference="3TX-q6-TkQ"/>
-        <segue reference="FIr-zP-Fgi"/>
-        <segue reference="Ojm-T8-o7F"/>
-        <segue reference="c3J-wa-dfa"/>
-        <segue reference="90Q-0M-ga8"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="usn-tW-YAM"/>
-        <segue reference="Keh-9j-qh2"/>
-        <segue reference="XBi-Vj-E6c"/>
-        <segue reference="NOg-d5-8um"/>
-        <segue reference="nDt-Mc-UJJ"/>
-        <segue reference="CEh-5j-w7l"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="ov9-La-OXs"/>
+        <segue reference="4mJ-rJ-QcU"/>
+        <segue reference="gda-lz-nY0"/>
+        <segue reference="b9C-Bk-Dkb"/>
         <segue reference="xfQ-9F-hZ9"/>
+        <segue reference="HcU-1W-NjC"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="w1i-k2-7EM"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="ThB-mB-6d1"/>
+        <segue reference="20Y-hQ-Ox1"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="Pge-db-qdQ"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="NOg-d5-8um"/>
+        <segue reference="oGb-ge-dnu"/>
+        <segue reference="FIr-zP-Fgi"/>
+        <segue reference="ov9-La-OXs"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="nDt-Mc-UJJ"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="Ecq-Ry-abC"/>
+        <segue reference="KnF-1g-Rzs"/>
+        <segue reference="78D-gh-8fo"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="L4z-xU-3sB"/>
+        <segue reference="90Q-0M-ga8"/>
+        <segue reference="M0U-iL-e6P"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="Q46-eW-Mj7"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="Keh-9j-qh2"/>
+        <segue reference="sKp-Ck-4z1"/>
+        <segue reference="9Dj-Fs-NlX"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="rSr-sW-9Td"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="4Qz-iA-tDx"/>
+        <segue reference="XBi-Vj-E6c"/>
+        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="V9H-vb-Yyh"/>
+        <segue reference="XOk-Xg-Amf"/>
+        <segue reference="kYN-zl-ptM"/>
+        <segue reference="B4v-82-Wkl"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="Ojm-T8-o7F"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="TeF-od-02s"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="3TX-q6-TkQ"/>
+        <segue reference="SNc-Ed-LeG"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="yZn-zD-0Hl"/>
+        <segue reference="vVd-mt-2Wp"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="Ewo-QE-6ZL"/>
+        <segue reference="k2E-cA-rQY"/>
+        <segue reference="ABU-Oe-eCP"/>
+        <segue reference="J3b-pc-LZY"/>
     </inferredMetricsTieBreakers>
 </document>

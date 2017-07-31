@@ -34,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
             // report for an error
             print("Catches any errors with the AVPlayer")
         }
-        
-        // Sets nav bar color to a 'black' globally - looks more grey but oh well
-        UINavigationBar.appearance().backgroundColor = UIColor.black
-
         return true
     }
 
