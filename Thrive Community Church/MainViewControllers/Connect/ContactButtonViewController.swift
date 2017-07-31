@@ -12,6 +12,9 @@ import MessageUI
 
 class ContactButtonViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
+    
+    //TODO: Change to a overlay on the parent view controller - not it's own VC
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

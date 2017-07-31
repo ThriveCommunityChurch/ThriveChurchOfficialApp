@@ -6461,7 +6461,7 @@
         <!--Prayer Request-->
         <scene sceneID="UVZ-tM-P72">
             <objects>
-                <viewController title="Prayer Request" id="EA3-Ut-w7a" customClass="PrayerRequestsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Prayer Request" extendedLayoutIncludesOpaqueBars="YES" id="EA3-Ut-w7a" customClass="PrayerRequestsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B7W-eH-M04"/>
                         <viewControllerLayoutGuide type="bottom" id="j0S-cD-uiQ"/>
@@ -6472,12 +6472,12 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osm-Aa-eMh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-dk-AvO">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <constraints>
@@ -7966,7 +7966,7 @@
         <!--Notes-->
         <scene sceneID="Ph0-KC-omP">
             <objects>
-                <splitViewController id="oB2-hf-By9" sceneMemberID="viewController">
+                <splitViewController extendedLayoutIncludesOpaqueBars="YES" id="oB2-hf-By9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notes" image="notes" id="Zev-VO-e6b"/>
                     <toolbarItems/>
                     <connections>
@@ -8030,6 +8030,7 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="j7f-s0-3Mn">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
@@ -8088,7 +8089,7 @@
         <image name="notes" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gda-lz-nY0"/>
+        <segue reference="DJE-eQ-FMo"/>
         <segue reference="4mJ-rJ-QcU"/>
         <segue reference="NhA-nh-mzn"/>
         <segue reference="xfQ-9F-hZ9"/>
