@@ -61,7 +61,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.20000000000000001" green="0.72941176470000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -83,6 +82,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="tgj-Yl-brb" kind="show" id="hbI-ZR-BfI"/>
                                         </connections>
@@ -236,7 +236,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-fU-340">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem width="5" style="plain" systemItem="fixedSpace" id="OE7-DV-hGx"/>
+                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="OE7-DV-hGx"/>
                                     <barButtonItem image="Back Button" id="tnT-tb-5Rk">
                                         <connections>
                                             <action selector="goBack" destination="5Fc-Jz-bvZ" id="mWH-wZ-yye"/>
@@ -254,12 +254,15 @@
                                             <action selector="reload" destination="5Fc-Jz-bvZ" id="sVD-By-eBi"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="TQi-rY-Izv"/>
                                     <barButtonItem systemItem="stop" id="Z4A-Yu-iRm">
                                         <connections>
                                             <action selector="stopLoading" destination="5Fc-Jz-bvZ" id="ap4-7e-zsp"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="sGT-R3-pJA"/>
                                 </items>
+                                <color key="tintColor" red="0.52091652154922485" green="0.57278048992156982" blue="0.22736778855323792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Jz-bvZ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>
@@ -4953,18 +4956,18 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-Qk-F1X">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="-173" width="375" height="727"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lna-l9-BaA">
-                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
+                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
                                     <barButtonItem image="Back Button" id="SUL-WR-NqF">
                                         <connections>
                                             <action selector="goBack" destination="UuV-Qk-F1X" id="Blo-Ub-rve"/>
@@ -4987,28 +4990,31 @@
                                             <action selector="stopLoading" destination="UuV-Qk-F1X" id="tfM-Qw-SAo"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="26" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
+                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
                                 </items>
+                                <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                             <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-hG-3UM">
-                                <rect key="frame" x="169" y="300.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="241" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="8JC-hG-3UM" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-42" id="B5K-uh-UyO"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="lna-l9-BaA" secondAttribute="bottom" id="EpV-Am-Aof"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="bottom" secondItem="lna-l9-BaA" secondAttribute="top" id="GAn-ru-Ch2"/>
+                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="bottom" secondItem="lna-l9-BaA" secondAttribute="top" constant="44" id="GAn-ru-Ch2"/>
                             <constraint firstItem="UuV-Qk-F1X" firstAttribute="leading" secondItem="lna-l9-BaA" secondAttribute="leading" id="Hht-hd-v2h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lna-l9-BaA" secondAttribute="trailing" constant="-16" id="OFt-OY-Dv7"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="centerY" secondItem="8JC-hG-3UM" secondAttribute="centerY" id="S5O-2B-EO8"/>
+                            <constraint firstItem="8JC-hG-3UM" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Uza-pG-EZV"/>
                             <constraint firstItem="lna-l9-BaA" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="Xps-8x-udk"/>
                             <constraint firstItem="8JC-hG-3UM" firstAttribute="centerX" secondItem="lna-l9-BaA" secondAttribute="centerX" id="cJQ-qu-wPm"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="mV6-74-iTI"/>
+                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-173" id="mV6-74-iTI"/>
                             <constraint firstItem="UuV-Qk-F1X" firstAttribute="trailing" secondItem="lna-l9-BaA" secondAttribute="trailing" id="nMx-ll-tdj"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Listen" id="Dd5-UO-oyU"/>
                     <connections>
                         <outlet property="loading" destination="8JC-hG-3UM" id="XSu-sm-dST"/>
@@ -5017,7 +5023,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1870" y="-2449"/>
+            <point key="canvasLocation" x="1869.5999999999999" y="-2449.0254872563719"/>
         </scene>
         <!--Give-->
         <scene sceneID="3sF-nk-uj5">
@@ -5056,13 +5062,13 @@
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4g-7k-0Ie">
                                                 <rect key="frame" x="0.0" y="285" width="375" height="45"/>
-                                                <color key="backgroundColor" red="0.99988555909999999" green="0.99998205900000003" blue="0.99983930590000003" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.59551857779999995" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="BtZ-65-Akl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 <state key="normal" title="Make a Donation">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="donation:" destination="T4u-pS-bZ6" eventType="touchUpInside" id="qYr-Yd-ifc"/>
@@ -5349,13 +5355,13 @@
                                             </textView>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sa-5i-l9f">
                                                 <rect key="frame" x="-2" y="327" width="376" height="45"/>
-                                                <color key="backgroundColor" red="0.99988555908203125" green="0.99998205900192261" blue="0.99983930587768555" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.59551857775590555" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="Z9H-07-zpb"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 <state key="normal" title="wyatt@thrive-fl.org">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="contactingAdmin:" destination="W15-a1-g4j" eventType="touchUpInside" id="kJf-uI-b3h"/>
@@ -5730,13 +5736,13 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxO-fK-9nc">
                                         <rect key="frame" x="-1" y="348" width="376" height="45"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.59551857779999995" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="MJp-tH-3CW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                         <state key="normal" title="Send us an Email">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="emailUs:" destination="7Dh-ap-Tg5" eventType="touchUpInside" id="d0V-Wu-im9"/>
@@ -5744,13 +5750,13 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMM-iV-8zd">
                                         <rect key="frame" x="0.0" y="300" width="375" height="45"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.59551857779999995" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="XT8-cP-ppH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                         <state key="normal" title="Give us a Call">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="openPhoneToCall:" destination="7Dh-ap-Tg5" eventType="touchUpInside" id="yuc-Md-iPF"/>
@@ -5758,14 +5764,14 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="244" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fx4-dF-GWQ">
                                         <rect key="frame" x="-1" y="204" width="376" height="45"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.59551857779999995" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="EA6-ia-kDP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                         <state key="normal" title="Email the Pastor">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="emailPastor:" destination="7Dh-ap-Tg5" eventType="touchUpInside" id="arV-5c-py8"/>
@@ -5790,13 +5796,13 @@
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KD-tc-2Ka">
                                         <rect key="frame" x="-1" y="252" width="376" height="45"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.59551857779999995" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="rkJ-zt-8a2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                         <state key="normal" title="Prayer Request">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="EA3-Ut-w7a" kind="show" id="Fzh-gU-bFL"/>
@@ -6754,7 +6760,7 @@
                                     <outlet property="delegate" destination="Qmu-AV-2tE" id="I8C-69-f7Z"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-ID-UGU">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-ID-UGU">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <items>
                                     <barButtonItem image="Location" style="plain" id="ya0-Ek-LFk">
@@ -6771,9 +6777,7 @@
                                                 <constraint firstAttribute="width" constant="170" id="TZL-el-Plj"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                            <state key="normal" title="Show Traffic">
-                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
+                                            <state key="normal" title="Show Traffic"/>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="TZL-el-Plj"/>
@@ -6794,7 +6798,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                             <state key="normal" title="Find Route">
-                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -6807,6 +6811,7 @@
                                         </button>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
