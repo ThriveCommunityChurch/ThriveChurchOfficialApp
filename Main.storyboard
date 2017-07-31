@@ -25,11 +25,13 @@
         <scene sceneID="D5A-Dp-5xF">
             <objects>
                 <tabBarController title="Footer Menu" id="M7a-g9-DxG" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5l1-cY-IX6">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="5l1-cY-IX6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.20000000000000001" green="0.72941176470000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +42,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="yn7-T9-xjl"/>
+                        <segue destination="MAK-d1-uzJ" kind="relationship" relationship="viewControllers" id="yn7-T9-xjl"/>
                         <segue destination="oB2-hf-By9" kind="relationship" relationship="viewControllers" id="0kd-6U-t1l"/>
                         <segue destination="iXX-XS-Kv6" kind="relationship" relationship="viewControllers" id="mxq-ds-MuQ"/>
                         <segue destination="SAu-aY-X8C" kind="relationship" relationship="viewControllers" id="47z-zR-HaH"/>
@@ -56,7 +58,7 @@
             <objects>
                 <tableViewController id="LgA-TP-0OG" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="jJa-dc-V9v">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -228,7 +230,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XY7-pT-MVA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rEN-Zg-HxL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-fU-340">
@@ -315,7 +317,7 @@
             <objects>
                 <tableViewController title="Bible" id="tiH-iZ-KiY" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="45" sectionHeaderHeight="18" sectionFooterHeight="18" id="FVO-1l-55E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -571,7 +573,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Chronicles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sne-3n-PKB">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1670,7 +1672,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xhq-p6-Nw9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g3n-Gx-gq2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQo-Lz-EeF">
@@ -1711,7 +1713,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lyH-rU-SV0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LBa-Gg-Nvs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kN1-6G-fO2">
@@ -1752,7 +1754,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6jW-D4-i0v"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PdX-hX-Hhy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4N-LN-JXC">
@@ -1793,7 +1795,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8Sf-Bw-j9C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eEl-Dj-6iB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oe1-pc-Rhx">
@@ -1834,7 +1836,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nZe-2G-eCk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7Sz-WW-Faj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vw7-Ue-2lu">
@@ -1864,7 +1866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Poa-1r-hqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4956" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="5295.1999999999998" y="-2856.521739130435"/>
         </scene>
         <!--Titus-->
         <scene sceneID="ZyJ-9J-FtU">
@@ -1875,7 +1877,7 @@
                         <viewControllerLayoutGuide type="bottom" id="u2X-qX-Hag"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Bg-di-xaj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksD-q3-g0X">
@@ -1905,7 +1907,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjs-W5-emp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4956" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="5295.1999999999998" y="-2211.5442278860573"/>
         </scene>
         <!--Philemon-->
         <scene sceneID="Naz-FR-MxW">
@@ -1916,7 +1918,7 @@
                         <viewControllerLayoutGuide type="bottom" id="V2V-MU-K5J"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3wX-3W-j09">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYp-oR-6O8">
@@ -1946,7 +1948,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANK-Rv-v6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5567.1999999999998" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="5906.3999999999996" y="-2211.5442278860573"/>
         </scene>
         <!--Jaremiah-->
         <scene sceneID="luq-Yb-WpU">
@@ -1957,7 +1959,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KSh-Wz-3cz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wPH-ST-MII">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8am-N1-Ogj">
@@ -1998,7 +2000,7 @@
                         <viewControllerLayoutGuide type="bottom" id="D9B-R0-FFD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aoL-K1-I8U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDg-b1-56J">
@@ -2039,7 +2041,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dtc-Xi-wMg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I7R-LG-W36">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-QJ-pXE">
@@ -2080,7 +2082,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fZz-7K-abV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IEp-fd-zvW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgg-XU-QSV">
@@ -2110,7 +2112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPo-ef-a2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6180" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="6519.1999999999998" y="-2856.521739130435"/>
         </scene>
         <!--Hebrews-->
         <scene sceneID="kf3-Fv-xOh">
@@ -2121,7 +2123,7 @@
                         <viewControllerLayoutGuide type="bottom" id="clP-22-fsi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fpb-mc-m6u">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qab-Hf-mjL">
@@ -2151,7 +2153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfa-xh-Pio" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6180" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="6519.1999999999998" y="-2211.5442278860573"/>
         </scene>
         <!--Haggai-->
         <scene sceneID="oJV-dw-NKe">
@@ -2162,7 +2164,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RrH-nF-1xW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7Ck-cT-Y80">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7Q-9M-Kqe">
@@ -2203,7 +2205,7 @@
                         <viewControllerLayoutGuide type="bottom" id="l31-ve-6ua"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="osS-vI-kkf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9S-ic-5kk">
@@ -2244,7 +2246,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qbR-y4-hrj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WRi-oh-Sx8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWr-iW-u2b">
@@ -2274,7 +2276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYF-f1-dm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6792.8000000000002" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="7132" y="-2856.521739130435"/>
         </scene>
         <!--James-->
         <scene sceneID="VKE-wU-6g9">
@@ -2285,7 +2287,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jSa-B0-96L"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sJE-6b-xIi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yd-SE-GiK">
@@ -2315,7 +2317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zyf-gI-0zS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6792.8000000000002" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="7132" y="-2211.5442278860573"/>
         </scene>
         <!--1 Peter-->
         <scene sceneID="pPM-iu-2GH">
@@ -2326,7 +2328,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0eZ-UP-GVZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bDJ-43-Ynf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDh-Vq-Yln">
@@ -2356,7 +2358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljd-Qc-J97" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7404" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="7743.1999999999998" y="-2211.5442278860573"/>
         </scene>
         <!--2 Peter-->
         <scene sceneID="k1w-tb-Tfb">
@@ -2367,7 +2369,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rTb-58-cPu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ztw-6b-7Zf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIw-PX-Lax">
@@ -2397,7 +2399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfQ-r5-qTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8012" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="8351.2000000000007" y="-2211.5442278860573"/>
         </scene>
         <!--1 John-->
         <scene sceneID="xuI-l7-FpT">
@@ -2408,7 +2410,7 @@
                         <viewControllerLayoutGuide type="bottom" id="E7L-Qg-vgW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="u9T-Lc-HCq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPB-wQ-rdw">
@@ -2438,7 +2440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64q-yX-35L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8623.2000000000007" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="8962.3999999999996" y="-2211.5442278860573"/>
         </scene>
         <!--2 John-->
         <scene sceneID="fSS-ZG-xd4">
@@ -2449,7 +2451,7 @@
                         <viewControllerLayoutGuide type="bottom" id="D64-zk-ezE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="luZ-Ct-V4j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtD-lV-6Kc">
@@ -2479,7 +2481,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8y-Nc-NLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9232.7999999999993" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="9572" y="-2211.5442278860573"/>
         </scene>
         <!--3 John-->
         <scene sceneID="Ter-1Q-O9j">
@@ -2490,7 +2492,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bmy-zS-jtO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KNe-BC-hRU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWX-Vu-vPW">
@@ -2520,7 +2522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2T-wh-MfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9844" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="10183.200000000001" y="-2211.5442278860573"/>
         </scene>
         <!--Ephesians-->
         <scene sceneID="5Lg-uh-PRU">
@@ -2531,7 +2533,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iLz-NM-j1e"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tln-r2-oPQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLa-Z4-bFX">
@@ -2561,7 +2563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lky-0o-ac9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7404" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="7743.1999999999998" y="-2856.521739130435"/>
         </scene>
         <!--Philippians-->
         <scene sceneID="agl-mK-tb9">
@@ -2572,7 +2574,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Fxc-tV-FZK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ley-Yk-4xz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbF-Ly-aQG">
@@ -2601,7 +2603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbW-2N-C8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8012" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="8351.2000000000007" y="-2856.521739130435"/>
         </scene>
         <!--Malachi-->
         <scene sceneID="4Vv-K4-Hlc">
@@ -2612,7 +2614,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2q8-h4-Aa9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZrS-A2-bsW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZH-1D-Dp7">
@@ -2653,7 +2655,7 @@
                         <viewControllerLayoutGuide type="bottom" id="O3z-AY-aiA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qMd-XF-xXZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAq-or-xMm">
@@ -2683,7 +2685,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPj-UM-1as" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5567.1999999999998" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="5906.3999999999996" y="-2856.521739130435"/>
         </scene>
         <!--Lamentations-->
         <scene sceneID="Ko6-j9-Ocv">
@@ -2694,7 +2696,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4bb-cS-Nkq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ckX-V9-rvM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgG-65-tqf">
@@ -2735,7 +2737,7 @@
                         <viewControllerLayoutGuide type="bottom" id="y1s-Cp-sVV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mWb-hQ-Ufh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QO-H4-wJk">
@@ -2776,7 +2778,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4CM-nZ-4wg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YmP-Lh-iyS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgC-E2-oHK">
@@ -2817,7 +2819,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uT5-zd-CsG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XFc-k2-fgn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6z-nf-YZ4">
@@ -2858,7 +2860,7 @@
                         <viewControllerLayoutGuide type="bottom" id="IMs-HY-KnV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fxf-08-Zj9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVy-kn-fKN">
@@ -2899,7 +2901,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nkt-lw-gKg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hF5-T9-Lr4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xae-N6-Zdq">
@@ -2940,7 +2942,7 @@
                         <viewControllerLayoutGuide type="bottom" id="et1-4e-Xx7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kGd-TQ-TXe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU2-ub-Fzb">
@@ -2970,7 +2972,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fJ-ad-UWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8623.2000000000007" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="8962.3999999999996" y="-2856.521739130435"/>
         </scene>
         <!--Mark-->
         <scene sceneID="LrT-q6-G2w">
@@ -2981,7 +2983,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hAk-V9-Nj9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1ML-8V-K06">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="But-gv-X7U">
@@ -3022,7 +3024,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iyj-j2-FnR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="98D-O6-tc0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTc-fa-r2b">
@@ -3063,7 +3065,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Ro6-AC-H9R"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sEs-cR-5b6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQT-P6-eY9">
@@ -3104,7 +3106,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aj4-BE-gaa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CAj-TV-R6e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdd-iV-pIo">
@@ -3145,7 +3147,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6jr-dH-lUB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0xh-fc-LDt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhL-li-hoa">
@@ -3185,7 +3187,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AN4-E1-2Wp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kU1-Uh-j9f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0N0-rc-uBl">
@@ -3226,7 +3228,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2aD-jJ-flW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Oly-9o-2zf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aA-f0-2hJ">
@@ -3256,7 +3258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2i-Qc-wPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9232.7999999999993" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="9572" y="-2856.521739130435"/>
         </scene>
         <!--2 Thessalonians-->
         <scene sceneID="l4P-nH-Gvu">
@@ -3267,7 +3269,7 @@
                         <viewControllerLayoutGuide type="bottom" id="MNh-wV-Sta"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MVk-pl-IsT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8V-Mt-UVa">
@@ -3297,7 +3299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOc-vt-sJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9844" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="10183.200000000001" y="-2856.521739130435"/>
         </scene>
         <!--1 Timothy-->
         <scene sceneID="h5G-Cj-87b">
@@ -3308,7 +3310,7 @@
                         <viewControllerLayoutGuide type="bottom" id="yKw-Bw-THF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="neb-Js-jSy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dey-K5-Jcf">
@@ -3338,7 +3340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NF4-yZ-yOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10453.6" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="10792.799999999999" y="-2856.521739130435"/>
         </scene>
         <!--Jude-->
         <scene sceneID="gjb-9W-Ikg">
@@ -3349,7 +3351,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jhq-oQ-iD6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ve0-UP-cua">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcJ-IF-bO4">
@@ -3379,7 +3381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoz-6L-Wxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10453.6" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="10792.799999999999" y="-2211.5442278860573"/>
         </scene>
         <!--Revelation-->
         <scene sceneID="X31-lH-S8h">
@@ -3390,7 +3392,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PSS-Ew-LKz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DFv-s8-A7I">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1jA-fZ-JWS">
@@ -3420,7 +3422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcL-Ff-gQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11064.799999999999" y="-2211.5442278860573"/>
+            <point key="canvasLocation" x="11404" y="-2211.5442278860573"/>
         </scene>
         <!--Acts-->
         <scene sceneID="q12-yU-RW6">
@@ -3431,7 +3433,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TNd-7N-0rR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DYY-ZJ-ryL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esC-94-Unr">
@@ -3472,7 +3474,7 @@
                         <viewControllerLayoutGuide type="bottom" id="y3w-yA-rqd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lmb-le-3au">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLb-nd-iEY">
@@ -3502,14 +3504,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClN-Tm-16m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11064.799999999999" y="-2856.521739130435"/>
+            <point key="canvasLocation" x="11404" y="-2856.521739130435"/>
         </scene>
         <!--Alphabetical-->
         <scene sceneID="a1k-DL-7gX">
             <objects>
                 <tableViewController title="Alphabetical" id="qpO-3m-Hcu" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" id="KFd-qz-nF6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -3763,7 +3765,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Peter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rmr-yE-oiW">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4945,24 +4947,24 @@
         <!--Home / Listen-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Home/ Listen Scene" id="8rJ-Kc-sve" userLabel="Home / Listen" customClass="SermonsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Listen" id="8rJ-Kc-sve" userLabel="Home / Listen" customClass="SermonsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-Qk-F1X">
-                                <rect key="frame" x="0.0" y="20" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lna-l9-BaA">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
+                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
                                     <barButtonItem image="Back Button" id="SUL-WR-NqF">
                                         <connections>
                                             <action selector="goBack" destination="UuV-Qk-F1X" id="Blo-Ub-rve"/>
@@ -4985,10 +4987,11 @@
                                             <action selector="stopLoading" destination="UuV-Qk-F1X" id="tfM-Qw-SAo"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="26" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
                                 </items>
                             </toolbar>
                             <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-hG-3UM">
-                                <rect key="frame" x="169" y="278.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="300.5" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -5006,10 +5009,7 @@
                             <constraint firstItem="UuV-Qk-F1X" firstAttribute="trailing" secondItem="lna-l9-BaA" secondAttribute="trailing" id="nMx-ll-tdj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Listen" image="Listen" id="TTV-mP-nqb"/>
-                    <navigationItem key="navigationItem" id="Dd5-UO-oyU"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Listen" id="Dd5-UO-oyU"/>
                     <connections>
                         <outlet property="loading" destination="8JC-hG-3UM" id="XSu-sm-dST"/>
                         <outlet property="sermonView" destination="UuV-Qk-F1X" id="lNX-hy-UxW"/>
@@ -5017,7 +5017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821.60000000000002" y="-2448.1259370314842"/>
+            <point key="canvasLocation" x="1870" y="-2449"/>
         </scene>
         <!--Give-->
         <scene sceneID="3sF-nk-uj5">
@@ -5028,7 +5028,7 @@
                         <viewControllerLayoutGuide type="bottom" id="crJ-Xb-a8S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sXi-Ey-Dze">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-pz-BWk">
@@ -5116,7 +5116,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cj5-ib-I6r"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="31w-O5-b7l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz7-de-46M">
@@ -5232,7 +5232,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Nzw-TI-LTV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cwM-JJ-eYz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQ0-iG-JkJ">
@@ -5422,7 +5422,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RNI-81-rgl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kJ1-sO-qHJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdF-GA-vsI">
@@ -5459,7 +5459,7 @@
             <objects>
                 <tableViewController title="Español" id="c3Q-0g-pdd" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XRO-aq-9st">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -5527,15 +5527,15 @@
                         <viewControllerLayoutGuide type="bottom" id="lcf-EX-6kS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="59J-yi-JdP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cco-DP-Fvu">
-                                <rect key="frame" x="0.0" y="1" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ugu-GO-5YJ">
-                                <rect key="frame" x="169" y="291" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -5568,7 +5568,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fBa-6D-tmF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qDr-CQ-h8X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLt-IS-hqh">
@@ -5608,7 +5608,7 @@
                         <viewControllerLayoutGuide type="bottom" id="io7-0K-dCW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eiN-qq-x5C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rG-h5-wop">
@@ -5649,7 +5649,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GW2-PX-RXl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mYo-Fa-Ekl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucj-qV-Us7">
@@ -5722,7 +5722,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aON-ad-oom"/>
                     </layoutGuides>
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" id="asJ-on-szd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8h-Xj-j1j">
@@ -5851,7 +5851,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SSh-LJ-cMb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HTv-9h-wbJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-CX-dQa">
@@ -5897,7 +5897,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lpC-zH-Adc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="10H-Gp-IRU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvV-hq-XaY">
@@ -6154,7 +6154,7 @@
                         <viewControllerLayoutGuide type="bottom" id="VpD-y0-Mnd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9nR-lz-717">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loz-Bd-Qq0">
@@ -6195,7 +6195,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aQo-XV-Hdt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d5r-Py-xKY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGU-ia-4RS">
@@ -6236,7 +6236,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UxY-JQ-EEM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HW0-Nm-JnO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xq8-xA-gia">
@@ -6277,7 +6277,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TWO-0N-HFK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XWG-vP-fur">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5M-t4-OB6">
@@ -6359,7 +6359,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bti-RN-qut"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MSz-IU-Nnh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jc-7G-wZd">
@@ -6466,15 +6466,15 @@
                         <viewControllerLayoutGuide type="bottom" id="j0S-cD-uiQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uMV-sU-ubS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osm-Aa-eMh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-dk-AvO">
-                                <rect key="frame" x="169" y="290.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -6507,6 +6507,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LwJ-xm-eKX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
@@ -6527,7 +6528,7 @@
             <objects>
                 <tableViewController title="Connect Table View Controller" id="U0L-1O-6bA" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hdq-Na-Yfo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -6744,7 +6745,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TCl-iA-txb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pJG-Rp-shi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-dK-IqS">
@@ -6837,7 +6838,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fYU-Ja-HB1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lRd-Rs-86R">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afd-Ur-IrZ">
@@ -6879,7 +6880,7 @@
                         <viewControllerLayoutGuide type="bottom" id="B57-yf-G9T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XAR-IZ-3dL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZ4-o5-qkK">
@@ -6920,6 +6921,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qej-C5-FsW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
@@ -6940,7 +6942,7 @@
             <objects>
                 <tableViewController title="Find Your Book" id="9nE-pj-iyo" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="cZE-NF-2iz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -7009,6 +7011,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dgp-G8-cbh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
@@ -7033,7 +7036,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4NJ-nU-vFU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dVw-HG-Bj6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpq-hX-328">
@@ -7041,7 +7044,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9Kp-mf-TH8">
-                                <rect key="frame" x="169" y="290.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -7074,7 +7077,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5KF-PJ-eO7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MQo-dr-oie">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpq-fe-Uoz">
@@ -7115,7 +7118,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HoQ-7n-FCh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IMM-oB-2hM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSi-U8-LdK">
@@ -7156,7 +7159,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9Su-gA-xjJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eWK-fP-XDa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byi-4T-irK">
@@ -7197,7 +7200,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gBY-3x-aRv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hUk-AD-512">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-Aj-7Po">
@@ -7238,7 +7241,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iz7-Kb-kVF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bJe-Oz-tA2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVi-Gu-CEz">
@@ -7279,7 +7282,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4dr-0v-RCt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FKU-r9-n6D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-ZA-XlN">
@@ -7320,7 +7323,7 @@
                         <viewControllerLayoutGuide type="bottom" id="e7t-cM-Ble"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NDO-u8-uPv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Hs-pO-kT5">
@@ -7361,7 +7364,7 @@
                         <viewControllerLayoutGuide type="bottom" id="yqT-J9-ifL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nhx-O3-qW8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnj-B6-dRH">
@@ -7402,7 +7405,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mlv-xd-085"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fl4-85-8QS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKF-jS-RXS">
@@ -7443,7 +7446,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xdx-wz-jit"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="F7y-NW-BbR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYh-2G-hdj">
@@ -7484,7 +7487,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Wzi-3g-WUp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ukU-uD-QK3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9K-6v-Doa">
@@ -7525,7 +7528,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9pM-XQ-jBh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JiS-SV-Wdk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECA-x9-qc5">
@@ -7566,7 +7569,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Zra-us-qW4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vnu-5p-XeT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-YI-1vd">
@@ -7574,7 +7577,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0Eg-eH-7Xb">
-                                <rect key="frame" x="169" y="290.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -7607,7 +7610,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aAu-w8-fdZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="M5N-pW-Njm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dly-33-rPM">
@@ -7648,7 +7651,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8ll-sb-SWH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="U0L-sv-jQN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-Eq-4le">
@@ -7689,7 +7692,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8SE-FI-gSh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zaQ-Ih-Qfn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-zb-DzL">
@@ -7730,7 +7733,7 @@
                         <viewControllerLayoutGuide type="bottom" id="odA-c1-WBf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kba-Vq-QsH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3YA-ik-nvV">
@@ -7771,7 +7774,7 @@
                         <viewControllerLayoutGuide type="bottom" id="EM2-1H-dkf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W2u-rr-JRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFA-U2-rP4">
@@ -7812,7 +7815,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pWC-xS-SVV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iIa-mC-6a7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-Gt-dzG">
@@ -7853,7 +7856,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oip-AA-REl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ylR-Py-Sfo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTh-ly-ktd">
@@ -7892,6 +7895,7 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hNv-t8-EXo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
@@ -7915,17 +7919,17 @@
                         <viewControllerLayoutGuide type="bottom" id="0sp-Lt-Gm8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TY0-x7-SNN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fgc-hV-EBm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="422"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If it is your first Note, be sure to tap &quot;&lt; Notes&quot; before typing your note to ensure that it saves properly." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8t-2O-9Xw">
-                                <rect key="frame" x="16" y="465" width="343" height="74"/>
+                                <rect key="frame" x="16" y="514" width="343" height="74"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -7979,7 +7983,7 @@
             <objects>
                 <tableViewController title="Master" extendedLayoutIncludesOpaqueBars="YES" clearsSelectionOnViewWillAppear="NO" id="wsC-ZQ-a3g" customClass="MasterViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BPZ-PG-itH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -8040,6 +8044,30 @@
             </objects>
             <point key="canvasLocation" x="1870" y="-1019"/>
         </scene>
+        <!--Listen-->
+        <scene sceneID="oXA-YS-cNS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MAK-d1-uzJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Listen" image="Listen" id="TTV-mP-nqb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l95-EH-GUa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="4SU-px-U0e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qob-5N-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820.79999999999995" y="-2448.5757121439283"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Back Button" width="12" height="22"/>
@@ -8061,73 +8089,73 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7mg-R3-8Ut"/>
+        <segue reference="DJE-eQ-FMo"/>
         <segue reference="4mJ-rJ-QcU"/>
-        <segue reference="gda-lz-nY0"/>
-        <segue reference="b9C-Bk-Dkb"/>
+        <segue reference="NhA-nh-mzn"/>
         <segue reference="xfQ-9F-hZ9"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="mNL-Xu-Oap"/>
-        <segue reference="w1i-k2-7EM"/>
-        <segue reference="CEh-5j-w7l"/>
+        <segue reference="J3b-pc-LZY"/>
+        <segue reference="Q46-eW-Mj7"/>
+        <segue reference="Pge-db-qdQ"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="M0U-iL-e6P"/>
         <segue reference="ThB-mB-6d1"/>
         <segue reference="20Y-hQ-Ox1"/>
-        <segue reference="c3J-wa-dfa"/>
-        <segue reference="Pge-db-qdQ"/>
-        <segue reference="W1j-Pk-OC9"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="NOg-d5-8um"/>
-        <segue reference="oGb-ge-dnu"/>
-        <segue reference="FIr-zP-Fgi"/>
-        <segue reference="ov9-La-OXs"/>
-        <segue reference="4I3-xf-XmF"/>
-        <segue reference="2oW-hC-Sws"/>
-        <segue reference="nDt-Mc-UJJ"/>
-        <segue reference="0ql-fo-hGf"/>
-        <segue reference="Ecq-Ry-abC"/>
-        <segue reference="KnF-1g-Rzs"/>
-        <segue reference="78D-gh-8fo"/>
-        <segue reference="KWM-si-IpF"/>
-        <segue reference="L4z-xU-3sB"/>
-        <segue reference="90Q-0M-ga8"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="Q46-eW-Mj7"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="rQc-Pc-Ewv"/>
-        <segue reference="Keh-9j-qh2"/>
-        <segue reference="sKp-Ck-4z1"/>
-        <segue reference="9Dj-Fs-NlX"/>
-        <segue reference="Ay0-cc-dTg"/>
-        <segue reference="rSr-sW-9Td"/>
-        <segue reference="EIM-W8-u3h"/>
-        <segue reference="UKa-Kk-7a0"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="4Qz-iA-tDx"/>
         <segue reference="XBi-Vj-E6c"/>
-        <segue reference="Gq7-Kl-69M"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="V9H-vb-Yyh"/>
-        <segue reference="XOk-Xg-Amf"/>
-        <segue reference="kYN-zl-ptM"/>
-        <segue reference="B4v-82-Wkl"/>
-        <segue reference="1tk-43-psK"/>
-        <segue reference="Ojm-T8-o7F"/>
-        <segue reference="71h-vK-pKg"/>
-        <segue reference="Inz-5g-5ol"/>
-        <segue reference="TeF-od-02s"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="3TX-q6-TkQ"/>
-        <segue reference="SNc-Ed-LeG"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="HcU-1W-NjC"/>
         <segue reference="yZn-zD-0Hl"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="usn-tW-YAM"/>
-        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="78D-gh-8fo"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="NOg-d5-8um"/>
         <segue reference="Ewo-QE-6ZL"/>
+        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="vVd-mt-2Wp"/>
+        <segue reference="L4z-xU-3sB"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="KnF-1g-Rzs"/>
+        <segue reference="rSr-sW-9Td"/>
+        <segue reference="sKp-Ck-4z1"/>
+        <segue reference="TeF-od-02s"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="V9H-vb-Yyh"/>
+        <segue reference="B4v-82-Wkl"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="4Qz-iA-tDx"/>
+        <segue reference="9Dj-Fs-NlX"/>
+        <segue reference="FIr-zP-Fgi"/>
+        <segue reference="nDt-Mc-UJJ"/>
         <segue reference="k2E-cA-rQY"/>
         <segue reference="ABU-Oe-eCP"/>
-        <segue reference="J3b-pc-LZY"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="Ojm-T8-o7F"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="XOk-Xg-Amf"/>
+        <segue reference="90Q-0M-ga8"/>
+        <segue reference="Ecq-Ry-abC"/>
+        <segue reference="3TX-q6-TkQ"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="Keh-9j-qh2"/>
+        <segue reference="ov9-La-OXs"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="w1i-k2-7EM"/>
+        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="SNc-Ed-LeG"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="kYN-zl-ptM"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="oGb-ge-dnu"/>
     </inferredMetricsTieBreakers>
 </document>
