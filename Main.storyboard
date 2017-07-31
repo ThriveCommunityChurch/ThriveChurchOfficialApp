@@ -24,7 +24,7 @@
         <!--Footer Menu-->
         <scene sceneID="D5A-Dp-5xF">
             <objects>
-                <tabBarController title="Footer Menu" id="M7a-g9-DxG" sceneMemberID="viewController">
+                <tabBarController title="Footer Menu" extendedLayoutIncludesOpaqueBars="YES" id="M7a-g9-DxG" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -233,6 +233,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Jz-bvZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-fU-340">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <items>
@@ -264,10 +268,6 @@
                                 </items>
                                 <color key="tintColor" red="0.52091652154922485" green="0.57278048992156982" blue="0.22736778855323792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Jz-bvZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-3H-5Mu">
                                 <rect key="frame" x="169" y="300.5" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -277,8 +277,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5Fc-Jz-bvZ" secondAttribute="trailing" id="6kf-Ca-Hwi"/>
-                            <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="centerY" secondItem="Zh1-3H-5Mu" secondAttribute="centerY" id="HBa-ZC-5wG"/>
-                            <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="bottom" secondItem="7VO-fU-340" secondAttribute="top" id="NOu-vX-pTQ"/>
+                            <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="centerY" secondItem="Zh1-3H-5Mu" secondAttribute="centerY" constant="22" id="HBa-ZC-5wG"/>
+                            <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="bottom" secondItem="7VO-fU-340" secondAttribute="top" constant="44" id="NOu-vX-pTQ"/>
                             <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="trailing" secondItem="7VO-fU-340" secondAttribute="trailing" id="SE2-1q-qCP"/>
                             <constraint firstItem="Zh1-3H-5Mu" firstAttribute="centerX" secondItem="7VO-fU-340" secondAttribute="centerX" id="XCb-ON-Wcj"/>
                             <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="leading" secondItem="7VO-fU-340" secondAttribute="leading" id="ZvP-7G-Boh"/>
@@ -4950,24 +4950,29 @@
         <!--Home / Listen-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Listen" id="8rJ-Kc-sve" userLabel="Home / Listen" customClass="SermonsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Listen" extendedLayoutIncludesOpaqueBars="YES" id="8rJ-Kc-sve" userLabel="Home / Listen" customClass="SermonsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-Qk-F1X">
-                                <rect key="frame" x="0.0" y="-173" width="375" height="727"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-hG-3UM">
+                                <rect key="frame" x="169" y="273" width="37" height="37"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lna-l9-BaA">
-                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
+                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
                                     <barButtonItem image="Back Button" id="SUL-WR-NqF">
                                         <connections>
                                             <action selector="goBack" destination="UuV-Qk-F1X" id="Blo-Ub-rve"/>
@@ -4985,20 +4990,16 @@
                                             <action selector="reload" destination="UuV-Qk-F1X" id="cdu-Ld-J9A"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="1" style="plain" systemItem="fixedSpace" id="kbh-wP-EkD"/>
                                     <barButtonItem systemItem="stop" id="c9x-Mk-tiR">
                                         <connections>
                                             <action selector="stopLoading" destination="UuV-Qk-F1X" id="tfM-Qw-SAo"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
+                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
                                 </items>
                                 <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-hG-3UM">
-                                <rect key="frame" x="169" y="241" width="37" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -5010,11 +5011,10 @@
                             <constraint firstItem="8JC-hG-3UM" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Uza-pG-EZV"/>
                             <constraint firstItem="lna-l9-BaA" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="Xps-8x-udk"/>
                             <constraint firstItem="8JC-hG-3UM" firstAttribute="centerX" secondItem="lna-l9-BaA" secondAttribute="centerX" id="cJQ-qu-wPm"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-173" id="mV6-74-iTI"/>
+                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-64" id="mV6-74-iTI"/>
                             <constraint firstItem="UuV-Qk-F1X" firstAttribute="trailing" secondItem="lna-l9-BaA" secondAttribute="trailing" id="nMx-ll-tdj"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Listen" id="Dd5-UO-oyU"/>
                     <connections>
                         <outlet property="loading" destination="8JC-hG-3UM" id="XSu-sm-dST"/>
@@ -5028,7 +5028,7 @@
         <!--Give-->
         <scene sceneID="3sF-nk-uj5">
             <objects>
-                <viewController title="Give" id="T4u-pS-bZ6" customClass="giveViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Give" extendedLayoutIncludesOpaqueBars="YES" id="T4u-pS-bZ6" customClass="giveViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="znE-22-9rg"/>
                         <viewControllerLayoutGuide type="bottom" id="crJ-Xb-a8S"/>
@@ -5241,8 +5241,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQ0-iG-JkJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQ0-iG-JkJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eet-Y0-2fF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -5259,24 +5259,20 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textView>
-                                            <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2017 Thrive Community Church. All Rights Reserved. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
+                                            <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2017 Thrive Community Church. All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
                                                 <rect key="frame" x="98" y="506" width="180" height="46"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="54J-i7-hyQ"/>
-                                                    <constraint firstAttribute="height" constant="46" id="dKQ-dg-ZRF"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textView>
                                             <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Made By" translatesAutoresizingMaskIntoConstraints="NO" id="vJy-6V-wtY">
-                                                <rect key="frame" x="106" y="484" width="163" height="26"/>
+                                                <rect key="frame" x="105.5" y="479" width="163" height="26"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="26" id="VWv-ml-4i6"/>
-                                                    <constraint firstAttribute="width" constant="163" id="lo5-9I-oFD"/>
+                                                    <constraint firstAttribute="height" constant="26" id="P2q-QR-UNc"/>
+                                                    <constraint firstAttribute="width" constant="163" id="eJu-pv-9ol"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Times:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6k-V1-4uN">
@@ -5341,14 +5337,14 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Every Sunday Morning at 10AM" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-Hg-4rw">
-                                                <rect key="frame" x="67" y="233" width="240" height="33"/>
+                                            <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Every Sunday Morning at 9 &amp; 11" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-Hg-4rw">
+                                                <rect key="frame" x="0.0" y="233" width="374" height="40"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="33" id="aTs-0M-hgO"/>
-                                                    <constraint firstAttribute="width" constant="240" id="nad-NJ-m07"/>
+                                                    <constraint firstAttribute="height" constant="40" id="aTs-0M-hgO"/>
+                                                    <constraint firstAttribute="width" constant="374" id="nad-NJ-m07"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5372,23 +5368,22 @@
                                         <constraints>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="rVw-BB-BQF" secondAttribute="centerX" id="4GO-vM-fCH"/>
                                             <constraint firstItem="6sa-5i-l9f" firstAttribute="centerX" secondItem="wDP-0n-EnV" secondAttribute="centerX" id="7eQ-Yw-ODT"/>
+                                            <constraint firstItem="vJy-6V-wtY" firstAttribute="centerX" secondItem="7UE-Hg-4rw" secondAttribute="centerX" id="EdX-sm-Qjp"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="chb-qd-qJ5" secondAttribute="centerX" id="Em6-KE-swf"/>
                                             <constraint firstItem="6sa-5i-l9f" firstAttribute="leading" secondItem="Eet-Y0-2fF" secondAttribute="leading" constant="-2" id="INf-bf-y7v"/>
+                                            <constraint firstAttribute="bottom" secondItem="vJy-6V-wtY" secondAttribute="bottom" constant="98" id="LVq-DZ-Bk7"/>
                                             <constraint firstItem="chb-qd-qJ5" firstAttribute="top" secondItem="Vni-30-fSH" secondAttribute="bottom" constant="8" symbolic="YES" id="Ulz-me-2hW"/>
-                                            <constraint firstItem="vJy-6V-wtY" firstAttribute="centerX" secondItem="Enr-Jp-ZRk" secondAttribute="centerX" id="VBO-JY-6gc"/>
-                                            <constraint firstItem="wDP-0n-EnV" firstAttribute="top" secondItem="7UE-Hg-4rw" secondAttribute="bottom" constant="32" id="W49-PA-TKC"/>
+                                            <constraint firstItem="wDP-0n-EnV" firstAttribute="top" secondItem="7UE-Hg-4rw" secondAttribute="bottom" constant="25" id="W49-PA-TKC"/>
+                                            <constraint firstItem="Enr-Jp-ZRk" firstAttribute="centerX" secondItem="vJy-6V-wtY" secondAttribute="centerX" id="XjF-kf-8hI"/>
                                             <constraint firstItem="7UE-Hg-4rw" firstAttribute="top" secondItem="E6k-V1-4uN" secondAttribute="bottom" constant="8" symbolic="YES" id="a2c-ye-qW0"/>
-                                            <constraint firstAttribute="bottom" secondItem="Enr-Jp-ZRk" secondAttribute="bottom" constant="51" id="aWf-4X-mXP"/>
                                             <constraint firstItem="rVw-BB-BQF" firstAttribute="top" secondItem="n1g-uJ-aJD" secondAttribute="bottom" constant="8" symbolic="YES" id="asL-es-5bT"/>
                                             <constraint firstItem="E6k-V1-4uN" firstAttribute="top" secondItem="chb-qd-qJ5" secondAttribute="bottom" constant="14" id="b5l-fU-sKg"/>
+                                            <constraint firstItem="Enr-Jp-ZRk" firstAttribute="top" secondItem="vJy-6V-wtY" secondAttribute="bottom" constant="1" id="bMC-4g-Twu"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="E6k-V1-4uN" secondAttribute="centerX" id="cPt-FQ-8Kg"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="Vni-30-fSH" secondAttribute="centerX" id="d6c-ho-cQY"/>
                                             <constraint firstAttribute="height" constant="603" id="gdy-35-Xhb"/>
-                                            <constraint firstAttribute="bottom" secondItem="vJy-6V-wtY" secondAttribute="bottom" constant="93" id="jXA-FZ-19h"/>
                                             <constraint firstItem="chb-qd-qJ5" firstAttribute="top" secondItem="Eet-Y0-2fF" secondAttribute="top" constant="142" id="l42-g6-UWQ"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="Eet-Y0-2fF" secondAttribute="centerX" constant="-0.5" id="l54-BT-hOg"/>
-                                            <constraint firstAttribute="bottom" secondItem="Enr-Jp-ZRk" secondAttribute="bottom" constant="51" id="m7T-te-6Xm"/>
-                                            <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="Enr-Jp-ZRk" secondAttribute="centerX" constant="-1" id="oTx-OK-iRy"/>
                                             <constraint firstItem="6sa-5i-l9f" firstAttribute="top" secondItem="wDP-0n-EnV" secondAttribute="bottom" constant="8" symbolic="YES" id="rNU-3P-317"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="7UE-Hg-4rw" secondAttribute="centerX" id="wnc-8h-9O0"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="top" secondItem="Eet-Y0-2fF" secondAttribute="top" constant="52" id="xL3-t4-hmQ"/>
@@ -5422,7 +5417,7 @@
         <!--Meet the Team-->
         <scene sceneID="wlE-ia-v19">
             <objects>
-                <viewController title="Meet the Team" id="Vuu-Yw-ykr" customClass="MeetTheTeamViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Meet the Team" extendedLayoutIncludesOpaqueBars="YES" id="Vuu-Yw-ykr" customClass="MeetTheTeamViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3mf-wd-ADL"/>
                         <viewControllerLayoutGuide type="bottom" id="RNI-81-rgl"/>
@@ -5608,7 +5603,7 @@
         <!--Why Give-->
         <scene sceneID="Nac-GI-O3D">
             <objects>
-                <viewController title="Why Give" id="WN5-pO-wOc" customClass="WhyWeGiveViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Why Give" extendedLayoutIncludesOpaqueBars="YES" id="WN5-pO-wOc" customClass="WhyWeGiveViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4sN-Aa-Psd"/>
                         <viewControllerLayoutGuide type="bottom" id="io7-0K-dCW"/>
@@ -5618,21 +5613,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rG-h5-wop">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-bp-K1C">
-                                <rect key="frame" x="169" y="291" width="37" height="37"/>
+                                <rect key="frame" x="169" y="290.5" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kcp-bp-K1C" firstAttribute="centerY" secondItem="5rG-h5-wop" secondAttribute="centerY" id="9xM-iP-wb8"/>
+                            <constraint firstItem="kcp-bp-K1C" firstAttribute="centerY" secondItem="5rG-h5-wop" secondAttribute="centerY" constant="-24.5" id="9xM-iP-wb8"/>
                             <constraint firstItem="5rG-h5-wop" firstAttribute="top" secondItem="eiN-qq-x5C" secondAttribute="top" id="MFl-j0-cj4"/>
                             <constraint firstAttribute="trailing" secondItem="5rG-h5-wop" secondAttribute="trailing" id="aVc-Et-NTD"/>
-                            <constraint firstItem="5rG-h5-wop" firstAttribute="bottom" secondItem="io7-0K-dCW" secondAttribute="top" id="d09-XD-cbN"/>
+                            <constraint firstItem="5rG-h5-wop" firstAttribute="bottom" secondItem="io7-0K-dCW" secondAttribute="top" constant="49" id="d09-XD-cbN"/>
                             <constraint firstItem="5rG-h5-wop" firstAttribute="leading" secondItem="eiN-qq-x5C" secondAttribute="leading" id="vLD-OO-b73"/>
                             <constraint firstItem="kcp-bp-K1C" firstAttribute="centerX" secondItem="5rG-h5-wop" secondAttribute="centerX" id="x6j-hD-aNB"/>
                         </constraints>
@@ -5658,6 +5653,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-gL-VuT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="546"/>
+                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucj-qV-Us7">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <items>
@@ -5685,11 +5684,8 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-gL-VuT">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
-                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LIr-Y8-Tcx">
                                 <rect key="frame" x="169" y="300.5" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5700,8 +5696,8 @@
                             <constraint firstItem="TZK-gL-VuT" firstAttribute="trailing" secondItem="ucj-qV-Us7" secondAttribute="trailing" id="7vj-kS-C1n"/>
                             <constraint firstItem="TZK-gL-VuT" firstAttribute="top" secondItem="vNq-lc-Eyq" secondAttribute="bottom" id="Eoo-wK-66p"/>
                             <constraint firstAttribute="trailing" secondItem="TZK-gL-VuT" secondAttribute="trailing" id="PZI-x7-kGM"/>
-                            <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerY" secondItem="TZK-gL-VuT" secondAttribute="centerY" id="U9u-7B-e0l"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="top" secondItem="TZK-gL-VuT" secondAttribute="bottom" id="a2r-B8-1eD"/>
+                            <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerY" secondItem="TZK-gL-VuT" secondAttribute="centerY" constant="-18" id="U9u-7B-e0l"/>
+                            <constraint firstItem="ucj-qV-Us7" firstAttribute="top" secondItem="TZK-gL-VuT" secondAttribute="bottom" constant="-36" id="a2r-B8-1eD"/>
                             <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerX" secondItem="ucj-qV-Us7" secondAttribute="centerX" id="aVi-Q4-znK"/>
                             <constraint firstItem="TZK-gL-VuT" firstAttribute="leading" secondItem="ucj-qV-Us7" secondAttribute="leading" id="cgv-U5-3sN"/>
                             <constraint firstItem="ucj-qV-Us7" firstAttribute="bottom" secondItem="GW2-PX-RXl" secondAttribute="top" id="xin-c4-Xr6"/>
@@ -5709,7 +5705,6 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loading" destination="LIr-Y8-Tcx" id="FYs-FQ-aky"/>
                         <outlet property="websiteView" destination="TZK-gL-VuT" id="tgB-Kf-RcQ"/>
@@ -5717,7 +5712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffB-PE-rAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784.5" y="3220.5"/>
+            <point key="canvasLocation" x="2783.1999999999998" y="3219.9400299850076"/>
         </scene>
         <!--Contact-->
         <scene sceneID="lHo-gl-Qo1">
@@ -6755,7 +6750,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-dK-IqS">
-                                <rect key="frame" x="0.0" y="64" width="375" height="509"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
                                     <outlet property="delegate" destination="Qmu-AV-2tE" id="I8C-69-f7Z"/>
                                 </connections>
@@ -6816,11 +6811,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="v8M-dK-IqS" firstAttribute="bottom" secondItem="TCl-iA-txb" secondAttribute="top" constant="-45" id="9zV-r8-BB4"/>
+                            <constraint firstItem="v8M-dK-IqS" firstAttribute="bottom" secondItem="TCl-iA-txb" secondAttribute="top" id="9zV-r8-BB4"/>
                             <constraint firstAttribute="trailing" secondItem="v8M-dK-IqS" secondAttribute="trailing" id="AfY-Cm-NFz"/>
                             <constraint firstItem="v8M-dK-IqS" firstAttribute="top" secondItem="Jaa-fC-cqG" secondAttribute="bottom" id="PLR-Ih-sR6"/>
                             <constraint firstItem="g0d-ID-UGU" firstAttribute="trailing" secondItem="v8M-dK-IqS" secondAttribute="trailing" id="amX-WY-cJk"/>
-                            <constraint firstItem="g0d-ID-UGU" firstAttribute="top" secondItem="v8M-dK-IqS" secondAttribute="bottom" constant="1" id="cfP-8Z-jdp"/>
+                            <constraint firstItem="g0d-ID-UGU" firstAttribute="top" secondItem="v8M-dK-IqS" secondAttribute="bottom" constant="-44" id="cfP-8Z-jdp"/>
                             <constraint firstItem="g0d-ID-UGU" firstAttribute="leading" secondItem="v8M-dK-IqS" secondAttribute="leading" id="euY-1d-8TY"/>
                             <constraint firstItem="v8M-dK-IqS" firstAttribute="leading" secondItem="pJG-Rp-shi" secondAttribute="leading" id="mPA-fa-Kxg"/>
                         </constraints>
@@ -8093,74 +8088,74 @@
         <image name="notes" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7mg-R3-8Ut"/>
-        <segue reference="DJE-eQ-FMo"/>
+        <segue reference="gda-lz-nY0"/>
         <segue reference="4mJ-rJ-QcU"/>
         <segue reference="NhA-nh-mzn"/>
         <segue reference="xfQ-9F-hZ9"/>
-        <segue reference="J3b-pc-LZY"/>
-        <segue reference="Q46-eW-Mj7"/>
-        <segue reference="Pge-db-qdQ"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="ThB-mB-6d1"/>
-        <segue reference="20Y-hQ-Ox1"/>
         <segue reference="XBi-Vj-E6c"/>
-        <segue reference="2oW-hC-Sws"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="yZn-zD-0Hl"/>
-        <segue reference="78D-gh-8fo"/>
-        <segue reference="EIM-W8-u3h"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="mNL-Xu-Oap"/>
-        <segue reference="NOg-d5-8um"/>
         <segue reference="Ewo-QE-6ZL"/>
-        <segue reference="rQc-Pc-Ewv"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="L4z-xU-3sB"/>
-        <segue reference="usn-tW-YAM"/>
+        <segue reference="9Dj-Fs-NlX"/>
         <segue reference="KnF-1g-Rzs"/>
+        <segue reference="Pge-db-qdQ"/>
+        <segue reference="nDt-Mc-UJJ"/>
+        <segue reference="7mg-R3-8Ut"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="V9H-vb-Yyh"/>
+        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="w1i-k2-7EM"/>
+        <segue reference="kYN-zl-ptM"/>
+        <segue reference="ABU-Oe-eCP"/>
+        <segue reference="20Y-hQ-Ox1"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="HcU-1W-NjC"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="vVd-mt-2Wp"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="XOk-Xg-Amf"/>
+        <segue reference="M0U-iL-e6P"/>
+        <segue reference="J3b-pc-LZY"/>
+        <segue reference="NOg-d5-8um"/>
+        <segue reference="k2E-cA-rQY"/>
+        <segue reference="Ojm-T8-o7F"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="Q46-eW-Mj7"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="Gq7-Kl-69M"/>
         <segue reference="rSr-sW-9Td"/>
         <segue reference="sKp-Ck-4z1"/>
-        <segue reference="TeF-od-02s"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="V9H-vb-Yyh"/>
-        <segue reference="B4v-82-Wkl"/>
-        <segue reference="Ay0-cc-dTg"/>
-        <segue reference="CEh-5j-w7l"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="4Qz-iA-tDx"/>
-        <segue reference="9Dj-Fs-NlX"/>
-        <segue reference="FIr-zP-Fgi"/>
-        <segue reference="nDt-Mc-UJJ"/>
-        <segue reference="k2E-cA-rQY"/>
-        <segue reference="ABU-Oe-eCP"/>
-        <segue reference="Inz-5g-5ol"/>
-        <segue reference="Ojm-T8-o7F"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="XOk-Xg-Amf"/>
-        <segue reference="90Q-0M-ga8"/>
-        <segue reference="Ecq-Ry-abC"/>
-        <segue reference="3TX-q6-TkQ"/>
-        <segue reference="71h-vK-pKg"/>
-        <segue reference="W1j-Pk-OC9"/>
-        <segue reference="Keh-9j-qh2"/>
         <segue reference="ov9-La-OXs"/>
-        <segue reference="Y7Y-1Z-cSG"/>
-        <segue reference="PPS-eZ-zBm"/>
-        <segue reference="1tk-43-psK"/>
-        <segue reference="w1i-k2-7EM"/>
-        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="4Qz-iA-tDx"/>
         <segue reference="SNc-Ed-LeG"/>
-        <segue reference="c3J-wa-dfa"/>
-        <segue reference="KWM-si-IpF"/>
-        <segue reference="kYN-zl-ptM"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="4I3-xf-XmF"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="0ql-fo-hGf"/>
-        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="yZn-zD-0Hl"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="78D-gh-8fo"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="FIr-zP-Fgi"/>
+        <segue reference="3TX-q6-TkQ"/>
+        <segue reference="Ecq-Ry-abC"/>
+        <segue reference="TeF-od-02s"/>
+        <segue reference="B4v-82-Wkl"/>
         <segue reference="oGb-ge-dnu"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="Keh-9j-qh2"/>
+        <segue reference="ThB-mB-6d1"/>
+        <segue reference="L4z-xU-3sB"/>
+        <segue reference="90Q-0M-ga8"/>
     </inferredMetricsTieBreakers>
 </document>
