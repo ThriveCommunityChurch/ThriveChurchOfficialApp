@@ -3788,7 +3788,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Samuel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sbf-cz-Uft">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3808,7 +3808,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Thessalonians" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q2l-zd-f1I">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3828,7 +3828,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Timothy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jsj-96-4Qb">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8093,71 +8093,71 @@
         <segue reference="SUb-qu-H97"/>
         <segue reference="DJE-eQ-FMo"/>
         <segue reference="NhA-nh-mzn"/>
-        <segue reference="egG-ne-epq"/>
-        <segue reference="ckA-PJ-MJI"/>
-        <segue reference="501-uN-P9i"/>
-        <segue reference="7W0-Yu-l0r"/>
-        <segue reference="82l-82-AUC"/>
-        <segue reference="Svh-hN-QHM"/>
-        <segue reference="hSE-Ju-Aaq"/>
-        <segue reference="nsi-0u-nMC"/>
-        <segue reference="9ir-lf-JtJ"/>
-        <segue reference="Iam-MM-Zaz"/>
-        <segue reference="xfQ-9F-hZ9"/>
-        <segue reference="jDw-rU-GdR"/>
-        <segue reference="PcO-Jf-La0"/>
-        <segue reference="JFR-Uu-t9X"/>
-        <segue reference="6dA-8G-fKr"/>
-        <segue reference="GFk-0k-srC"/>
-        <segue reference="5kj-et-vr7"/>
-        <segue reference="19x-lF-DvD"/>
-        <segue reference="scE-Qo-LG6"/>
-        <segue reference="gJo-mm-gtN"/>
-        <segue reference="5VO-BT-Ghw"/>
-        <segue reference="uma-ep-DBL"/>
-        <segue reference="bL3-sl-56f"/>
-        <segue reference="F23-bz-St9"/>
-        <segue reference="WWZ-25-bJ3"/>
-        <segue reference="U1h-I5-qpY"/>
-        <segue reference="9dp-Bw-9B7"/>
-        <segue reference="N8E-uR-gw2"/>
-        <segue reference="zBR-Sw-dTI"/>
-        <segue reference="pYF-dE-Fin"/>
-        <segue reference="7LD-mX-rnx"/>
-        <segue reference="3k4-Va-5tV"/>
-        <segue reference="SDp-eP-o64"/>
-        <segue reference="J1N-ze-ISs"/>
-        <segue reference="cxj-5g-sY7"/>
-        <segue reference="lPw-IP-vmR"/>
-        <segue reference="Ldw-eN-Mcz"/>
-        <segue reference="Uqy-6Y-jQS"/>
-        <segue reference="Aic-io-KxG"/>
-        <segue reference="Cxn-Qc-TuH"/>
-        <segue reference="sa9-Fm-3O2"/>
-        <segue reference="xQI-kU-CWH"/>
-        <segue reference="bwN-Pc-77i"/>
-        <segue reference="fyV-zO-xaL"/>
-        <segue reference="7i3-GB-U04"/>
-        <segue reference="EVN-cB-ujO"/>
-        <segue reference="ysS-dV-cd0"/>
-        <segue reference="YeO-9n-BC6"/>
-        <segue reference="VOA-mc-RhK"/>
-        <segue reference="xl8-WT-qQG"/>
-        <segue reference="jwE-t2-tz8"/>
-        <segue reference="fiQ-wS-Ws1"/>
-        <segue reference="q5J-1i-nvc"/>
-        <segue reference="Ge2-5C-Seh"/>
-        <segue reference="T3I-pd-V7Y"/>
-        <segue reference="9fW-op-lbz"/>
-        <segue reference="NPM-uD-eCe"/>
-        <segue reference="Bwx-0M-gTW"/>
-        <segue reference="u5e-ch-0V7"/>
-        <segue reference="FZy-vG-2xR"/>
-        <segue reference="CWL-7z-c8V"/>
-        <segue reference="XSa-x6-zms"/>
-        <segue reference="YxG-EI-Snl"/>
-        <segue reference="afV-3J-wiJ"/>
-        <segue reference="GUy-CC-Oj0"/>
-        <segue reference="7Ey-rd-ZKK"/>
+        <segue reference="XBi-Vj-E6c"/>
+        <segue reference="Ewo-QE-6ZL"/>
+        <segue reference="9Dj-Fs-NlX"/>
+        <segue reference="KnF-1g-Rzs"/>
+        <segue reference="Pge-db-qdQ"/>
+        <segue reference="nDt-Mc-UJJ"/>
+        <segue reference="7mg-R3-8Ut"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="V9H-vb-Yyh"/>
+        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="w1i-k2-7EM"/>
+        <segue reference="kYN-zl-ptM"/>
+        <segue reference="ABU-Oe-eCP"/>
+        <segue reference="20Y-hQ-Ox1"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="HcU-1W-NjC"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="UKa-Kk-7a0"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="vVd-mt-2Wp"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="XOk-Xg-Amf"/>
+        <segue reference="M0U-iL-e6P"/>
+        <segue reference="J3b-pc-LZY"/>
+        <segue reference="1ue-Lc-JZr"/>
+        <segue reference="NOg-d5-8um"/>
+        <segue reference="k2E-cA-rQY"/>
+        <segue reference="Ojm-T8-o7F"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="Q46-eW-Mj7"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="rSr-sW-9Td"/>
+        <segue reference="sKp-Ck-4z1"/>
+        <segue reference="ov9-La-OXs"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="4Qz-iA-tDx"/>
+        <segue reference="SNc-Ed-LeG"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="yZn-zD-0Hl"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="78D-gh-8fo"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="FIr-zP-Fgi"/>
+        <segue reference="3TX-q6-TkQ"/>
+        <segue reference="Ecq-Ry-abC"/>
+        <segue reference="TeF-od-02s"/>
+        <segue reference="B4v-82-Wkl"/>
+        <segue reference="oGb-ge-dnu"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="Keh-9j-qh2"/>
+        <segue reference="ThB-mB-6d1"/>
+        <segue reference="L4z-xU-3sB"/>
+        <segue reference="90Q-0M-ga8"/>
     </inferredMetricsTieBreakers>
 </document>
