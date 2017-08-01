@@ -5126,7 +5126,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz7-de-46M">
-                                <rect key="frame" x="0.0" y="160" width="376" height="45"/>
+                                <rect key="frame" x="-1" y="160" width="376" height="45"/>
                                 <color key="backgroundColor" red="0.99988555909999999" green="0.99998205900000003" blue="0.99983930590000003" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <state key="normal" title="Facebook">
@@ -5137,14 +5137,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FB" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-TC-RfK">
-                                <rect key="frame" x="59" y="165" width="35" height="35"/>
+                                <rect key="frame" x="60" y="165" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="i5A-XJ-Epf"/>
-                                    <constraint firstAttribute="height" constant="35" id="xgT-kg-zxs"/>
+                                    <constraint firstAttribute="height" constant="35" id="1zc-D6-18J"/>
+                                    <constraint firstAttribute="width" constant="35" id="gfb-og-lVG"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4W-A3-Y5W">
-                                <rect key="frame" x="0.0" y="207" width="376" height="45"/>
+                                <rect key="frame" x="1" y="207" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.99988555909999999" green="0.99998205900000003" blue="0.99983930590000003" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <state key="normal" title="Instagram">
@@ -5154,14 +5154,8 @@
                                     <action selector="openingInstagram:" destination="Wo4-nB-BqB" eventType="touchUpInside" id="M1p-qe-3WI"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IG" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-rw-Xpt">
-                                <rect key="frame" x="59" y="212" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="9ec-Zj-Gjv"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CnP-cY-mGq">
-                                <rect key="frame" x="0.0" y="254" width="376" height="45"/>
+                                <rect key="frame" x="0.0" y="254" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.99988555909999999" green="0.99998205900000003" blue="0.99983930590000003" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <state key="normal" title="Twitter">
@@ -5174,12 +5168,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TW" translatesAutoresizingMaskIntoConstraints="NO" id="grH-Ww-ejI">
                                 <rect key="frame" x="60" y="259" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="2NT-km-rsc"/>
-                                    <constraint firstAttribute="height" constant="35" id="8cU-Ho-GK4"/>
+                                    <constraint firstAttribute="width" constant="35" id="LZR-FA-1BH"/>
+                                    <constraint firstAttribute="height" constant="35" id="fAu-8Z-ngM"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvJ-7h-JaK">
-                                <rect key="frame" x="0.0" y="301" width="376" height="45"/>
+                                <rect key="frame" x="0.0" y="301" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.99988555909999999" green="0.99998205900000003" blue="0.99983930590000003" alpha="0.39924568970000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                 <state key="normal" title="Website">
@@ -5191,37 +5185,48 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThriveLogo" translatesAutoresizingMaskIntoConstraints="NO" id="p8T-gw-hcH">
                                 <rect key="frame" x="60" y="306" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ZJo-WW-H4n"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IG" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-rw-Xpt">
+                                <rect key="frame" x="60" y="212" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ivA-GY-dBn"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.70588235290000001" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="PVn-TC-RfK" firstAttribute="leading" secondItem="31w-O5-b7l" secondAttribute="leadingMargin" constant="43" id="1pK-gG-y2B"/>
-                            <constraint firstItem="Bz7-de-46M" firstAttribute="top" secondItem="VzD-sk-WAS" secondAttribute="bottom" constant="96" id="2ev-cX-xxh"/>
-                            <constraint firstItem="Bz7-de-46M" firstAttribute="trailing" secondItem="v4W-A3-Y5W" secondAttribute="trailing" id="3RZ-H2-gnt"/>
-                            <constraint firstItem="Bz7-de-46M" firstAttribute="centerY" secondItem="PVn-TC-RfK" secondAttribute="centerY" id="3v6-yP-yZj"/>
-                            <constraint firstItem="CnP-cY-mGq" firstAttribute="trailing" secondItem="rvJ-7h-JaK" secondAttribute="trailing" id="4bH-fP-zkz"/>
-                            <constraint firstItem="grH-Ww-ejI" firstAttribute="trailing" secondItem="p8T-gw-hcH" secondAttribute="trailing" id="7nL-Fj-aAs"/>
-                            <constraint firstItem="rvJ-7h-JaK" firstAttribute="top" secondItem="CnP-cY-mGq" secondAttribute="bottom" constant="2" id="Gfr-TM-9SG"/>
-                            <constraint firstItem="p8T-gw-hcH" firstAttribute="top" secondItem="CnP-cY-mGq" secondAttribute="bottom" constant="7" id="Ij7-BO-lgA"/>
-                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="top" secondItem="Bz7-de-46M" secondAttribute="bottom" constant="2" id="M1v-NQ-Yoy"/>
-                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="top" secondItem="PVn-TC-RfK" secondAttribute="bottom" constant="7" id="Oc4-ep-Lti"/>
-                            <constraint firstItem="Bz7-de-46M" firstAttribute="leading" secondItem="31w-O5-b7l" secondAttribute="leading" id="TuG-mE-8m6"/>
-                            <constraint firstItem="cj5-ib-I6r" firstAttribute="top" secondItem="rvJ-7h-JaK" secondAttribute="bottom" constant="272" id="Uiw-eq-f2O"/>
-                            <constraint firstItem="Bz7-de-46M" firstAttribute="leading" secondItem="v4W-A3-Y5W" secondAttribute="leading" id="Vql-BY-8lF"/>
-                            <constraint firstItem="CnP-cY-mGq" firstAttribute="centerY" secondItem="grH-Ww-ejI" secondAttribute="centerY" id="WGa-ac-9JO"/>
-                            <constraint firstItem="Bz7-de-46M" firstAttribute="centerX" secondItem="31w-O5-b7l" secondAttribute="centerX" id="WNA-db-qR2"/>
-                            <constraint firstItem="grH-Ww-ejI" firstAttribute="top" secondItem="v4W-A3-Y5W" secondAttribute="bottom" constant="7" id="Yfw-DG-sAM"/>
-                            <constraint firstItem="CnP-cY-mGq" firstAttribute="leading" secondItem="rvJ-7h-JaK" secondAttribute="leading" id="Zut-0C-he0"/>
-                            <constraint firstItem="grH-Ww-ejI" firstAttribute="leading" secondItem="p8T-gw-hcH" secondAttribute="leading" id="b6L-5f-HNN"/>
-                            <constraint firstItem="PVn-TC-RfK" firstAttribute="leading" secondItem="ZZN-rw-Xpt" secondAttribute="leading" id="id6-8M-FeD"/>
-                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="centerY" secondItem="ZZN-rw-Xpt" secondAttribute="centerY" id="mEe-DR-sqF"/>
-                            <constraint firstItem="CnP-cY-mGq" firstAttribute="top" secondItem="v4W-A3-Y5W" secondAttribute="bottom" constant="2" id="naf-Bg-5GE"/>
-                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="leading" secondItem="CnP-cY-mGq" secondAttribute="leading" id="oQM-jp-vTB"/>
-                            <constraint firstItem="rvJ-7h-JaK" firstAttribute="centerY" secondItem="p8T-gw-hcH" secondAttribute="centerY" id="p0k-Hd-Pff"/>
-                            <constraint firstItem="grH-Ww-ejI" firstAttribute="leading" secondItem="31w-O5-b7l" secondAttribute="leadingMargin" constant="44" id="p9Z-rl-8Rc"/>
-                            <constraint firstItem="PVn-TC-RfK" firstAttribute="trailing" secondItem="ZZN-rw-Xpt" secondAttribute="trailing" id="thf-Dd-voL"/>
-                            <constraint firstItem="ZZN-rw-Xpt" firstAttribute="top" secondItem="Bz7-de-46M" secondAttribute="bottom" constant="7" id="wpM-Qj-pqf"/>
-                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="trailing" secondItem="CnP-cY-mGq" secondAttribute="trailing" id="xa2-79-jz5"/>
+                            <constraint firstItem="grH-Ww-ejI" firstAttribute="top" secondItem="v4W-A3-Y5W" secondAttribute="bottom" constant="7" id="0Gh-oZ-Cbg"/>
+                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="top" secondItem="PVn-TC-RfK" secondAttribute="bottom" constant="7" id="0Y2-OJ-8pW"/>
+                            <constraint firstItem="rvJ-7h-JaK" firstAttribute="centerY" secondItem="p8T-gw-hcH" secondAttribute="centerY" id="1bp-pG-HQ5"/>
+                            <constraint firstItem="Bz7-de-46M" firstAttribute="centerX" secondItem="31w-O5-b7l" secondAttribute="centerX" id="3OA-Px-KZv"/>
+                            <constraint firstItem="CnP-cY-mGq" firstAttribute="leading" secondItem="rvJ-7h-JaK" secondAttribute="leading" id="71j-tf-HVU"/>
+                            <constraint firstItem="grH-Ww-ejI" firstAttribute="trailing" secondItem="p8T-gw-hcH" secondAttribute="trailing" id="D5O-xh-oOw"/>
+                            <constraint firstItem="PVn-TC-RfK" firstAttribute="leading" secondItem="31w-O5-b7l" secondAttribute="leadingMargin" constant="44" id="IXC-A4-Yox"/>
+                            <constraint firstItem="Bz7-de-46M" firstAttribute="top" secondItem="VzD-sk-WAS" secondAttribute="bottom" constant="96" id="L2J-jv-JTo"/>
+                            <constraint firstItem="grH-Ww-ejI" firstAttribute="leading" secondItem="31w-O5-b7l" secondAttribute="leadingMargin" constant="44" id="LXb-H4-Wjh"/>
+                            <constraint firstItem="CnP-cY-mGq" firstAttribute="trailing" secondItem="rvJ-7h-JaK" secondAttribute="trailing" id="MBK-oy-QTV"/>
+                            <constraint firstItem="PVn-TC-RfK" firstAttribute="leading" secondItem="ZZN-rw-Xpt" secondAttribute="leading" id="NI0-un-g0h"/>
+                            <constraint firstItem="rvJ-7h-JaK" firstAttribute="top" secondItem="CnP-cY-mGq" secondAttribute="bottom" constant="2" id="Ors-iF-jxE"/>
+                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="centerY" secondItem="ZZN-rw-Xpt" secondAttribute="centerY" id="OzP-Td-EUO"/>
+                            <constraint firstItem="rvJ-7h-JaK" firstAttribute="top" secondItem="CnP-cY-mGq" secondAttribute="bottom" constant="2" id="P51-Dm-rK6"/>
+                            <constraint firstItem="Bz7-de-46M" firstAttribute="trailing" secondItem="v4W-A3-Y5W" secondAttribute="trailing" id="Sat-Mh-cLm"/>
+                            <constraint firstItem="Bz7-de-46M" firstAttribute="centerY" secondItem="PVn-TC-RfK" secondAttribute="centerY" id="W0t-oR-76l"/>
+                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="trailing" secondItem="CnP-cY-mGq" secondAttribute="trailing" constant="1" id="XxF-eN-erm"/>
+                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="leading" secondItem="CnP-cY-mGq" secondAttribute="leading" constant="1" id="bAZ-ip-KjE"/>
+                            <constraint firstItem="Bz7-de-46M" firstAttribute="leading" secondItem="31w-O5-b7l" secondAttribute="leading" constant="-1" id="bK8-TR-Z4j"/>
+                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="top" secondItem="Bz7-de-46M" secondAttribute="bottom" constant="2" id="bOV-Va-L0i"/>
+                            <constraint firstItem="grH-Ww-ejI" firstAttribute="leading" secondItem="p8T-gw-hcH" secondAttribute="leading" id="esU-Tg-FM2"/>
+                            <constraint firstItem="p8T-gw-hcH" firstAttribute="top" secondItem="CnP-cY-mGq" secondAttribute="bottom" constant="7" id="fWz-Us-9bS"/>
+                            <constraint firstItem="CnP-cY-mGq" firstAttribute="centerY" secondItem="grH-Ww-ejI" secondAttribute="centerY" id="g6h-Zw-s62"/>
+                            <constraint firstItem="CnP-cY-mGq" firstAttribute="top" secondItem="v4W-A3-Y5W" secondAttribute="bottom" constant="2" id="gt4-6B-rS1"/>
+                            <constraint firstItem="CnP-cY-mGq" firstAttribute="top" secondItem="v4W-A3-Y5W" secondAttribute="bottom" constant="2" id="hE7-PP-o6J"/>
+                            <constraint firstItem="v4W-A3-Y5W" firstAttribute="top" secondItem="Bz7-de-46M" secondAttribute="bottom" constant="2" id="mLU-bm-LRx"/>
+                            <constraint firstItem="PVn-TC-RfK" firstAttribute="trailing" secondItem="ZZN-rw-Xpt" secondAttribute="trailing" id="slH-Pe-4fL"/>
+                            <constraint firstItem="Bz7-de-46M" firstAttribute="leading" secondItem="v4W-A3-Y5W" secondAttribute="leading" constant="-2" id="vkd-sA-UkP"/>
+                            <constraint firstItem="ZZN-rw-Xpt" firstAttribute="top" secondItem="Bz7-de-46M" secondAttribute="bottom" constant="7" id="vqy-bO-wBu"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -8090,74 +8095,74 @@
         <image name="notes" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SUb-qu-H97"/>
         <segue reference="DJE-eQ-FMo"/>
-        <segue reference="NhA-nh-mzn"/>
-        <segue reference="XBi-Vj-E6c"/>
-        <segue reference="Ewo-QE-6ZL"/>
-        <segue reference="9Dj-Fs-NlX"/>
-        <segue reference="KnF-1g-Rzs"/>
-        <segue reference="Pge-db-qdQ"/>
-        <segue reference="nDt-Mc-UJJ"/>
-        <segue reference="7mg-R3-8Ut"/>
-        <segue reference="KWM-si-IpF"/>
-        <segue reference="Y7Y-1Z-cSG"/>
-        <segue reference="mNL-Xu-Oap"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="c3J-wa-dfa"/>
+        <segue reference="3TX-q6-TkQ"/>
         <segue reference="V9H-vb-Yyh"/>
-        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="B4v-82-Wkl"/>
         <segue reference="w1i-k2-7EM"/>
-        <segue reference="kYN-zl-ptM"/>
-        <segue reference="ABU-Oe-eCP"/>
-        <segue reference="20Y-hQ-Ox1"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="2oW-hC-Sws"/>
-        <segue reference="PPS-eZ-zBm"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="UKa-Kk-7a0"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="4I3-xf-XmF"/>
-        <segue reference="1tk-43-psK"/>
-        <segue reference="71h-vK-pKg"/>
+        <segue reference="Ewo-QE-6ZL"/>
         <segue reference="XOk-Xg-Amf"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="J3b-pc-LZY"/>
-        <segue reference="1ue-Lc-JZr"/>
         <segue reference="NOg-d5-8um"/>
+        <segue reference="Y7Y-1Z-cSG"/>
+        <segue reference="vVd-mt-2Wp"/>
         <segue reference="k2E-cA-rQY"/>
-        <segue reference="Ojm-T8-o7F"/>
-        <segue reference="CEh-5j-w7l"/>
-        <segue reference="Q46-eW-Mj7"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="yZn-zD-0Hl"/>
+        <segue reference="78D-gh-8fo"/>
+        <segue reference="PPS-eZ-zBm"/>
+        <segue reference="usn-tW-YAM"/>
+        <segue reference="rjw-vc-2Is"/>
+        <segue reference="lgQ-ID-a4i"/>
+        <segue reference="ThB-mB-6d1"/>
+        <segue reference="Ecq-Ry-abC"/>
+        <segue reference="90Q-0M-ga8"/>
+        <segue reference="4Qz-iA-tDx"/>
+        <segue reference="XBi-Vj-E6c"/>
+        <segue reference="1ue-Lc-JZr"/>
+        <segue reference="Inz-5g-5ol"/>
+        <segue reference="ov9-La-OXs"/>
         <segue reference="rSr-sW-9Td"/>
         <segue reference="sKp-Ck-4z1"/>
-        <segue reference="ov9-La-OXs"/>
-        <segue reference="Inz-5g-5ol"/>
-        <segue reference="4Qz-iA-tDx"/>
-        <segue reference="SNc-Ed-LeG"/>
-        <segue reference="usn-tW-YAM"/>
-        <segue reference="yZn-zD-0Hl"/>
-        <segue reference="Ay0-cc-dTg"/>
-        <segue reference="78D-gh-8fo"/>
-        <segue reference="EIM-W8-u3h"/>
-        <segue reference="FIr-zP-Fgi"/>
-        <segue reference="3TX-q6-TkQ"/>
-        <segue reference="Ecq-Ry-abC"/>
-        <segue reference="TeF-od-02s"/>
-        <segue reference="B4v-82-Wkl"/>
-        <segue reference="oGb-ge-dnu"/>
-        <segue reference="W1j-Pk-OC9"/>
-        <segue reference="0ql-fo-hGf"/>
         <segue reference="Keh-9j-qh2"/>
-        <segue reference="ThB-mB-6d1"/>
+        <segue reference="mNL-Xu-Oap"/>
+        <segue reference="KWM-si-IpF"/>
+        <segue reference="Cm2-1F-bGC"/>
+        <segue reference="kYN-zl-ptM"/>
+        <segue reference="CEh-5j-w7l"/>
+        <segue reference="FIr-zP-Fgi"/>
+        <segue reference="2oW-hC-Sws"/>
+        <segue reference="ABU-Oe-eCP"/>
+        <segue reference="J3b-pc-LZY"/>
+        <segue reference="vNS-2M-kjd"/>
+        <segue reference="4I3-xf-XmF"/>
+        <segue reference="UKa-Kk-7a0"/>
         <segue reference="L4z-xU-3sB"/>
-        <segue reference="90Q-0M-ga8"/>
+        <segue reference="0ql-fo-hGf"/>
+        <segue reference="71h-vK-pKg"/>
+        <segue reference="SNc-Ed-LeG"/>
+        <segue reference="Q46-eW-Mj7"/>
+        <segue reference="W1j-Pk-OC9"/>
+        <segue reference="7mg-R3-8Ut"/>
+        <segue reference="1tk-43-psK"/>
+        <segue reference="Ojm-T8-o7F"/>
+        <segue reference="bD8-wv-wDN"/>
+        <segue reference="TeF-od-02s"/>
+        <segue reference="M0U-iL-e6P"/>
+        <segue reference="9Dj-Fs-NlX"/>
+        <segue reference="EIM-W8-u3h"/>
+        <segue reference="nDt-Mc-UJJ"/>
+        <segue reference="HcU-1W-NjC"/>
+        <segue reference="Pge-db-qdQ"/>
+        <segue reference="Ay0-cc-dTg"/>
+        <segue reference="rQc-Pc-Ewv"/>
+        <segue reference="oGb-ge-dnu"/>
+        <segue reference="20Y-hQ-Ox1"/>
+        <segue reference="Gq7-Kl-69M"/>
+        <segue reference="bRu-RG-phX"/>
+        <segue reference="KnF-1g-Rzs"/>
+        <segue reference="c3J-wa-dfa"/>
+        <segue reference="KvO-rS-yTu"/>
+        <segue reference="EGZ-TO-VDk"/>
+        <segue reference="SUb-qu-H97"/>
+        <segue reference="NhA-nh-mzn"/>
     </inferredMetricsTieBreakers>
 </document>
