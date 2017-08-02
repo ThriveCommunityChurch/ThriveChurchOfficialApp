@@ -18,7 +18,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         loadViews()
     }
     
@@ -38,7 +37,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
     //TODO: May need to be altered to compile with Swift 4 @objc changes
     @objc func tappedOutside(tapGestureRecognizer: UITapGestureRecognizer){
         dismiss(animated: true, completion: nil)
-        // Your action
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,6 +83,7 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         dismiss(animated: true, completion: nil)
     }
     
+    //Handling email request
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult,
                                error: Error?) {
@@ -103,10 +102,9 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             print("Error: \(String(describing: error?.localizedDescription))")
             
         default:
-            
             break
         }
-        
-        self.dismiss(animated: true, completion: nil)
+        // Will NOT dismiss on iOS 11
+        dismiss(animated: true, completion: nil)
     }
 }
