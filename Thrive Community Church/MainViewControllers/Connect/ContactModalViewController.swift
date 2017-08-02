@@ -13,14 +13,32 @@ import MessageUI
 class ContactModalViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var popUpView: UIView!
+    @IBOutlet var mainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        loadViews()
+    }
+    
+    func loadViews() {
         //Making it look nice
         popUpView.layer.cornerRadius = 10
         popUpView.layer.masksToBounds = true
         
+        //if the user taps outside the popUpView it will still dismiss the view
+        let tapGestureRecognizer = UITapGestureRecognizer(
+                      target: self,
+                      action: #selector(tappedOutside(tapGestureRecognizer:)))
+        mainView.isUserInteractionEnabled = true
+        mainView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    //TODO: May need to be altered to compile with Swift 4 @objc changes
+    @objc func tappedOutside(tapGestureRecognizer: UITapGestureRecognizer){
+        dismiss(animated: true, completion: nil)
+        // Your action
     }
     
     override func didReceiveMemoryWarning() {
