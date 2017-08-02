@@ -1,30 +1,46 @@
 //
-//  ContactButtonViewController.swift
-//  Thrive Community Church
+//  ContactModalViewController.swift
+//  Thrive Church Official App
 //
-//  Created by Wyatt Baggett on 6/13/16.
-//  Copyright © 2016 Thrive Community Church. All rights reserved.
+//  Created by Wyatt Baggett on 8/1/17.
+//  Copyright © 2017 Thrive Community Church. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import MessageUI
 
-class ContactButtonViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ContactModalViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
-    
-    //TODO: Change to a overlay on the parent view controller - not it's own VC
+    @IBOutlet weak var popUpView: UIView!
+    @IBOutlet var mainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+        loadViews()
+    }
+    
+    func loadViews() {
+        //Making it look nice
+        popUpView.layer.cornerRadius = 10
+        popUpView.layer.masksToBounds = true
+        
+        //if the user taps outside the popUpView it will still dismiss the view
+        let tapGestureRecognizer = UITapGestureRecognizer(
+                      target: self,
+                      action: #selector(tappedOutside(tapGestureRecognizer:)))
+        mainView.isUserInteractionEnabled = true
+        mainView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    //TODO: May need to be altered to compile with Swift 4 @objc changes
+    @objc func tappedOutside(tapGestureRecognizer: UITapGestureRecognizer){
+        dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
     }
     
     @IBAction func emailUs(_ sender: AnyObject) {
@@ -63,9 +79,14 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
         
     }
     
+    @IBAction func closeView(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //Handling email request
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult,
-                                                   error: Error?) {
+                               error: Error?) {
         
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
@@ -81,10 +102,9 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
             print("Error: \(String(describing: error?.localizedDescription))")
             
         default:
-            
             break
         }
-        
-        self.dismiss(animated: true, completion: nil)
+        // Will NOT dismiss on iOS 11
+        dismiss(animated: true, completion: nil)
     }
 }

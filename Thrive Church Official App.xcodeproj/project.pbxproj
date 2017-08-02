@@ -15,6 +15,7 @@
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
+		DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */; };
 		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
 		DCE362C21F05610500725F11 /* Read1JohnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F91F0494FF002784E7 /* Read1JohnViewController.swift */; };
@@ -262,6 +263,7 @@
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -458,6 +460,7 @@
 		DC01B83B1F0494FF002784E7 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
+				DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */,
 				DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */,
 				DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */,
 				DC01B83E1F0494FF002784E7 /* EventsFeedViewController.swift */,
@@ -862,6 +865,7 @@
 				DCE362EA1F05610600725F11 /* ReadLamentationsViewController.swift in Sources */,
 				DCE362EB1F05610600725F11 /* ReadLeviticusViewController.swift in Sources */,
 				DCE362EC1F05610600725F11 /* ReadLukeViewController.swift in Sources */,
+				DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */,
 				DCE362ED1F05610600725F11 /* ReadMalachiViewController.swift in Sources */,
 				DCE362EE1F05610600725F11 /* ReadMarkViewController.swift in Sources */,
 				DCE362EF1F05610600725F11 /* ReadMatthewViewController.swift in Sources */,
