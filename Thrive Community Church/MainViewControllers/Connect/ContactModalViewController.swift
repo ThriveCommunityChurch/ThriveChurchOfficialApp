@@ -21,6 +21,7 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         loadViews()
     }
     
+    // breaks constraints on load for 3.5" screen - make checks?
     func loadViews() {
         //Making it look nice
         popUpView.layer.cornerRadius = 10
@@ -104,7 +105,8 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         default:
             break
         }
-        // Will NOT dismiss on iOS 11
+        // Will NOT dismiss on iOS 11 - may be possible that it cannot dismiss properly
+        // since it is a modal popover?
         dismiss(animated: true, completion: nil)
     }
 }
