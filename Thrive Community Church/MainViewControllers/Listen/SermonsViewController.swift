@@ -17,7 +17,7 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         func shouldAutorotate() -> Bool {
             if (UIDevice.current.orientation == UIDeviceOrientation.portrait ||
                 UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown ||
