@@ -1,5 +1,7 @@
 # Thrive Church Official App
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/93736df555dd47b5b6cbf4a6fa544949)](https://www.codacy.com/app/wyattbaggett/ThriveChurchOfficialApp?utm_source=github.com&utm_medium=referral&utm_content=ThriveCommunityChurch/ThriveChurchOfficialApp&utm_campaign=badger)
+
 This application was creted by Thrive Community Church in Estero, FL for iPhone.
 
 ## Download Instructions
