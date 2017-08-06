@@ -66,7 +66,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             composeVC.setToRecipients(["john@thrive-fl.org"])
             present(composeVC, animated: true, completion: nil)
             self.present(composeVC, animated: true, completion: nil)
-            
         }
     }
     
@@ -77,7 +76,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             UIApplication.shared.openURL(url)
             print("Calling")
         }
-        
     }
     
     @IBAction func closeView(_ sender: AnyObject) {
@@ -105,8 +103,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         default:
             break
         }
-        // Will NOT dismiss on iOS 11 - may be possible that it cannot dismiss properly
-        // since it is a modal popover?
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
