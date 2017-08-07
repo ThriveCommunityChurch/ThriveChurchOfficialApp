@@ -5554,21 +5554,28 @@
         <!--Settings-->
         <scene sceneID="mMk-vu-Mv7">
             <objects>
-                <viewController title="Settings" extendedLayoutIncludesOpaqueBars="YES" id="qjH-xO-GX6" sceneMemberID="viewController">
+                <viewController title="Settings" extendedLayoutIncludesOpaqueBars="YES" id="qjH-xO-GX6" customClass="SettingsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jFx-ov-eMc"/>
                         <viewControllerLayoutGuide type="bottom" id="AV3-1Q-HS4"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="Mdp-8f-GWU">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" id="Mdp-8f-GWU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Kq-py-IIC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="-44" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgc-yR-bFq">
                                         <rect key="frame" x="0.0" y="55" width="375" height="50"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAF-fv-QKu">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="limitCellular:" destination="qjH-xO-GX6" eventType="touchUpInside" id="mvV-r6-ley"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limit Cellular Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWD-Ek-x4I">
                                                 <rect key="frame" x="66" y="0.0" width="309" height="50"/>
                                                 <constraints>
@@ -5578,22 +5585,22 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-Xi-gRb">
-                                                <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cellular" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-Xi-gRb">
+                                                <rect key="frame" x="8" y="3" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="Z6X-jq-LBe"/>
+                                                    <constraint firstAttribute="width" constant="45" id="Z6X-jq-LBe"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="NOb-Xi-gRb" firstAttribute="bottom" secondItem="vWD-Ek-x4I" secondAttribute="bottom" id="Lmh-4r-zN2"/>
+                                            <constraint firstItem="NOb-Xi-gRb" firstAttribute="bottom" secondItem="vWD-Ek-x4I" secondAttribute="bottom" constant="-2" id="Lmh-4r-zN2"/>
                                             <constraint firstAttribute="trailing" secondItem="vWD-Ek-x4I" secondAttribute="trailing" id="S6V-zH-ljp"/>
-                                            <constraint firstItem="NOb-Xi-gRb" firstAttribute="top" secondItem="Xgc-yR-bFq" secondAttribute="top" id="fED-Ic-6bb"/>
+                                            <constraint firstItem="NOb-Xi-gRb" firstAttribute="top" secondItem="Xgc-yR-bFq" secondAttribute="top" constant="3" id="fED-Ic-6bb"/>
                                             <constraint firstItem="NOb-Xi-gRb" firstAttribute="leading" secondItem="Xgc-yR-bFq" secondAttribute="leadingMargin" id="g4q-TT-NcZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="NOb-Xi-gRb" secondAttribute="bottom" id="mDv-Pf-EQc"/>
-                                            <constraint firstItem="vWD-Ek-x4I" firstAttribute="leading" secondItem="NOb-Xi-gRb" secondAttribute="trailing" constant="8" symbolic="YES" id="nLe-S8-OkL"/>
-                                            <constraint firstItem="NOb-Xi-gRb" firstAttribute="top" secondItem="vWD-Ek-x4I" secondAttribute="top" id="sHM-Tk-VBy"/>
+                                            <constraint firstAttribute="bottom" secondItem="NOb-Xi-gRb" secondAttribute="bottom" constant="2" id="mDv-Pf-EQc"/>
+                                            <constraint firstItem="vWD-Ek-x4I" firstAttribute="leading" secondItem="NOb-Xi-gRb" secondAttribute="trailing" constant="13" id="nLe-S8-OkL"/>
+                                            <constraint firstItem="NOb-Xi-gRb" firstAttribute="top" secondItem="vWD-Ek-x4I" secondAttribute="top" constant="3" id="sHM-Tk-VBy"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHr-kq-33Z">
@@ -5612,21 +5619,21 @@
                                                 <rect key="frame" x="318" y="10" width="51" height="31"/>
                                             </switch>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SEj-Ge-ndU">
-                                                <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="8" y="3" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="gbY-zB-z7M"/>
+                                                    <constraint firstAttribute="width" constant="45" id="gbY-zB-z7M"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="SEj-Ge-ndU" firstAttribute="top" secondItem="FHr-kq-33Z" secondAttribute="top" id="2Gk-jf-RlL"/>
-                                            <constraint firstAttribute="bottom" secondItem="SEj-Ge-ndU" secondAttribute="bottom" id="3yS-A0-nzb"/>
-                                            <constraint firstItem="SEj-Ge-ndU" firstAttribute="top" secondItem="MRn-Nv-JUr" secondAttribute="top" id="J4y-4f-QMJ"/>
+                                            <constraint firstItem="SEj-Ge-ndU" firstAttribute="top" secondItem="FHr-kq-33Z" secondAttribute="top" constant="3" id="2Gk-jf-RlL"/>
+                                            <constraint firstAttribute="bottom" secondItem="SEj-Ge-ndU" secondAttribute="bottom" constant="2" id="3yS-A0-nzb"/>
+                                            <constraint firstItem="SEj-Ge-ndU" firstAttribute="top" secondItem="MRn-Nv-JUr" secondAttribute="top" constant="3" id="J4y-4f-QMJ"/>
                                             <constraint firstAttribute="trailing" secondItem="MRn-Nv-JUr" secondAttribute="trailing" id="PaS-o8-WZM"/>
                                             <constraint firstItem="tVD-lI-ejn" firstAttribute="trailing" secondItem="FHr-kq-33Z" secondAttribute="trailingMargin" id="dkb-HJ-eoB"/>
-                                            <constraint firstItem="MRn-Nv-JUr" firstAttribute="leading" secondItem="SEj-Ge-ndU" secondAttribute="trailing" constant="8" symbolic="YES" id="pAc-Ga-jfL"/>
-                                            <constraint firstItem="SEj-Ge-ndU" firstAttribute="bottom" secondItem="MRn-Nv-JUr" secondAttribute="bottom" id="swb-bb-IpV"/>
+                                            <constraint firstItem="MRn-Nv-JUr" firstAttribute="leading" secondItem="SEj-Ge-ndU" secondAttribute="trailing" constant="13" id="pAc-Ga-jfL"/>
+                                            <constraint firstItem="SEj-Ge-ndU" firstAttribute="bottom" secondItem="MRn-Nv-JUr" secondAttribute="bottom" constant="-2" id="swb-bb-IpV"/>
                                             <constraint firstItem="MRn-Nv-JUr" firstAttribute="centerY" secondItem="tVD-lI-ejn" secondAttribute="centerY" id="vJA-up-ssv"/>
                                             <constraint firstItem="SEj-Ge-ndU" firstAttribute="leading" secondItem="FHr-kq-33Z" secondAttribute="leadingMargin" id="xmM-7p-iEw"/>
                                         </constraints>
@@ -5646,10 +5653,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AV3-1Q-HS4" firstAttribute="top" secondItem="4Kq-py-IIC" secondAttribute="bottom" constant="-49" id="Qro-e1-z5g"/>
+                            <constraint firstItem="AV3-1Q-HS4" firstAttribute="top" secondItem="4Kq-py-IIC" secondAttribute="bottom" constant="-5" id="Qro-e1-z5g"/>
                             <constraint firstItem="4Kq-py-IIC" firstAttribute="centerX" secondItem="Mdp-8f-GWU" secondAttribute="centerX" id="UlG-D3-JXe"/>
                             <constraint firstAttribute="trailing" secondItem="4Kq-py-IIC" secondAttribute="trailing" id="cm9-h4-avD"/>
-                            <constraint firstItem="4Kq-py-IIC" firstAttribute="top" secondItem="Mdp-8f-GWU" secondAttribute="topMargin" id="iqn-dt-PKW"/>
+                            <constraint firstItem="4Kq-py-IIC" firstAttribute="top" secondItem="Mdp-8f-GWU" secondAttribute="topMargin" constant="-44" id="iqn-dt-PKW"/>
                             <constraint firstItem="4Kq-py-IIC" firstAttribute="leading" secondItem="Mdp-8f-GWU" secondAttribute="leading" id="jwJ-Zm-sst"/>
                         </constraints>
                     </scrollView>
@@ -8364,6 +8371,7 @@
     <resources>
         <image name="Back Button" width="12" height="22"/>
         <image name="Bible" width="30" height="22"/>
+        <image name="Cellular" width="21" height="50"/>
         <image name="Close_Green" width="45" height="45"/>
         <image name="Connect" width="30" height="18"/>
         <image name="ConnectW" width="1920" height="1080"/>
