@@ -13,6 +13,7 @@
 		41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */; };
 		41FF24A71D171EC30048E6AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
+		DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2667DE1F37FBA20020424C /* SettingsViewController.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
 		DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */; };
@@ -261,6 +262,7 @@
 		DC01B8551F0494FF002784E7 /* WhyWeGiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyWeGiveViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 				DC01B8531F0494FF002784E7 /* SocialViewController.swift */,
 				DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */,
 				DC01B8551F0494FF002784E7 /* WhyWeGiveViewController.swift */,
+				DC2667DE1F37FBA20020424C /* SettingsViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DCE363061F05610600725F11 /* EventsFeedViewController.swift in Sources */,
 				DCE363071F05610600725F11 /* FGCUContactViewController.swift in Sources */,
+				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DCE363081F05610600725F11 /* FGCUEventsViewController.swift in Sources */,
 				DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */,
 				DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */,
