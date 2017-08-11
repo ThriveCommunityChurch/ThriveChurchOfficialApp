@@ -107,7 +107,6 @@
 		DCE363171F05610600725F11 /* MeetTheTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */; };
 		DCE363181F05610600725F11 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8531F0494FF002784E7 /* SocialViewController.swift */; };
 		DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */; };
-		DCE3631A1F05610600725F11 /* WhyWeGiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8551F0494FF002784E7 /* WhyWeGiveViewController.swift */; };
 		DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8571F0494FF002784E7 /* DetailViewController.swift */; };
 		DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8581F0494FF002784E7 /* MasterViewController.swift */; };
 		DCE3631D1F05610600725F11 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F51F0494EE002784E7 /* dismissKeyboard.swift */; };
@@ -259,7 +258,6 @@
 		DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetTheTeamViewController.swift; sourceTree = "<group>"; };
 		DC01B8531F0494FF002784E7 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 		DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
-		DC01B8551F0494FF002784E7 /* WhyWeGiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyWeGiveViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -507,7 +505,6 @@
 				DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */,
 				DC01B8531F0494FF002784E7 /* SocialViewController.swift */,
 				DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */,
-				DC01B8551F0494FF002784E7 /* WhyWeGiveViewController.swift */,
 				DC2667DE1F37FBA20020424C /* SettingsViewController.swift */,
 			);
 			path = More;
@@ -915,7 +912,6 @@
 				DCE363171F05610600725F11 /* MeetTheTeamViewController.swift in Sources */,
 				DCE363181F05610600725F11 /* SocialViewController.swift in Sources */,
 				DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */,
-				DCE3631A1F05610600725F11 /* WhyWeGiveViewController.swift in Sources */,
 				DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */,
 				DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */,
 				DCE3631D1F05610600725F11 /* dismissKeyboard.swift in Sources */,

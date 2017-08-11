@@ -6,25 +6,18 @@
 //  Copyright © 2016 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import MessageUI
 
 class ContactButtonViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
-    
-    //TODO: Change to a overlay on the parent view controller - not it's own VC
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     
     @IBAction func emailUs(_ sender: AnyObject) {
@@ -35,8 +28,6 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["info@thrive-fl.org"])
             present(composeVC, animated: true, completion: nil)
-            self.present(composeVC, animated: true, completion: nil)
-            
         }
     }
     
@@ -48,8 +39,6 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["john@thrive-fl.org"])
             present(composeVC, animated: true, completion: nil)
-            self.present(composeVC, animated: true, completion: nil)
-            
         }
     }
     
@@ -60,7 +49,6 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
             UIApplication.shared.openURL(url)
             print("Calling")
         }
-        
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController,
