@@ -15,7 +15,6 @@ class DetailViewController: UIViewController {
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
-            
             saveAndUpdate()
             self.configureView()
         }
@@ -42,9 +41,6 @@ class DetailViewController: UIViewController {
         let textToShare = detailDescriptionLabel.text!
         
         let objectsToShare = [textToShare]
-        // Share causes app crash in iOS 10 Here is the line below to fix that
-        // Converting type AttributedString? to expected type AnyObject
-        
         let activityVC = UIActivityViewController(activityItems: objectsToShare , applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
@@ -55,6 +51,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+/*      TODO: Call Parent View controller in orv=der to load the view and also get
+        the new Notes Loaded. Once they have loaded, segue back to this view.
+*/
         detailViewController = self
         detailViewController?.becomeFirstResponder()
         saveAndUpdate()
@@ -88,6 +87,8 @@ class DetailViewController: UIViewController {
 
 class ActivityForNotesViewController: UIActivityViewController {
     
+    //Remove actions that we do not want the user to be able to share via
+    // these are intentionally marked because the media is Text
     internal func _shouldExcludeActivityType(_ activity: UIActivity) -> Bool {
         let activityTypesToExclude = [
             "com.apple.reminders.RemindersEditorExtension",
@@ -95,6 +96,8 @@ class ActivityForNotesViewController: UIActivityViewController {
             UIActivityType.print,
             UIActivityType.assignToContact,
             UIActivityType.postToWeibo,
+            UIActivityType.postToFlickr,
+            UIActivityType.postToVimeo,
             "com.google.Drive.ShareExtension",
             "com.apple.mobileslideshow.StreamShareService"
         ] as [Any]

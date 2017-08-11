@@ -14,35 +14,24 @@
 import Foundation
 import UIKit
 
-class giveViewController: UIViewController, UIWebViewDelegate{
+class giveViewController: UIViewController, UIWebViewDelegate {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
     }
     
-//    private func loadGiveView() {
-//        let url = NSURL(string: "https://goo.gl/bSrZ9K")
-//        let request = NSURLRequest(URL: url!)
-//        
-//    }
-    
-    //THIS Function should open the application in safari for a user to make a
-    // donation thereby voiding the Apple Review error... Hopefully
-    
+    // open the application in safari
     @IBAction func donation(_ sender: AnyObject) {
         
         let url = URL(string: "https://goo.gl/bSrZ9K")
         
-        if UIApplication.shared.canOpenURL(url!){
+        if UIApplication.shared.canOpenURL(url!) {
             
             UIApplication.shared.openURL(url!)
         }
-        else{
+        else {
             UIApplication.shared.openURL(url!)
-
         }
     }
     
@@ -50,4 +39,5 @@ class giveViewController: UIViewController, UIWebViewDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 }

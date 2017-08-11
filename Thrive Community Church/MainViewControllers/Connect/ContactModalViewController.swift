@@ -21,6 +21,7 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         loadViews()
     }
     
+    // breaks constraints on load for 3.5" screen - make checks?
     func loadViews() {
         //Making it look nice
         popUpView.layer.cornerRadius = 10
@@ -65,7 +66,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             composeVC.setToRecipients(["john@thrive-fl.org"])
             present(composeVC, animated: true, completion: nil)
             self.present(composeVC, animated: true, completion: nil)
-            
         }
     }
     
@@ -76,7 +76,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             UIApplication.shared.openURL(url)
             print("Calling")
         }
-        
     }
     
     @IBAction func closeView(_ sender: AnyObject) {
@@ -104,7 +103,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         default:
             break
         }
-        // Will NOT dismiss on iOS 11
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
