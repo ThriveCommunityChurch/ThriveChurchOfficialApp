@@ -6,7 +6,6 @@
 //  Copyright © 2017 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import MessageUI
 
@@ -21,7 +20,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         loadViews()
     }
     
-    // breaks constraints on load for 3.5" screen - make checks?
     func loadViews() {
         //Making it look nice
         popUpView.layer.cornerRadius = 10
@@ -52,8 +50,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["info@thrive-fl.org"])
             present(composeVC, animated: true, completion: nil)
-            self.present(composeVC, animated: true, completion: nil)
-            
         }
     }
     
@@ -65,7 +61,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["john@thrive-fl.org"])
             present(composeVC, animated: true, completion: nil)
-            self.present(composeVC, animated: true, completion: nil)
         }
     }
     
@@ -103,6 +98,6 @@ class ContactModalViewController: UIViewController, MFMailComposeViewControllerD
         default:
             break
         }
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
