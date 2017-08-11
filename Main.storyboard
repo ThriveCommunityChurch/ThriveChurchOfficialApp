@@ -175,28 +175,8 @@
                                             <segue destination="Vuu-Yw-ykr" kind="show" id="iZb-DF-TnW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Why Give" textLabel="LaD-fr-cdm" rowHeight="60" style="IBUITableViewCellStyleDefault" id="aS7-sR-10I">
-                                        <rect key="frame" x="0.0" y="300" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aS7-sR-10I" id="Aea-d3-Lve">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Why Give" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LaD-fr-cdm">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="WN5-pO-wOc" kind="show" id="NK5-Fb-6nP"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Settings" textLabel="shf-2n-2rs" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Ov8-T2-wGl">
-                                        <rect key="frame" x="0.0" y="360" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ov8-T2-wGl" id="mmK-2r-73A">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
@@ -216,7 +196,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="About" textLabel="dEY-IM-Vf1" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Rhk-j1-Ld8">
-                                        <rect key="frame" x="0.0" y="420" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="360" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rhk-j1-Ld8" id="Y37-js-NUg">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
@@ -5769,47 +5749,6 @@
             </objects>
             <point key="canvasLocation" x="5040.8000000000002" y="3220.8395802098953"/>
         </scene>
-        <!--Why Give-->
-        <scene sceneID="Nac-GI-O3D">
-            <objects>
-                <viewController title="Why Give" extendedLayoutIncludesOpaqueBars="YES" id="WN5-pO-wOc" customClass="WhyWeGiveViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4sN-Aa-Psd"/>
-                        <viewControllerLayoutGuide type="bottom" id="io7-0K-dCW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eiN-qq-x5C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rG-h5-wop">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-bp-K1C">
-                                <rect key="frame" x="169" y="290.5" width="37" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="kcp-bp-K1C" firstAttribute="centerY" secondItem="5rG-h5-wop" secondAttribute="centerY" constant="-24.5" id="9xM-iP-wb8"/>
-                            <constraint firstItem="5rG-h5-wop" firstAttribute="top" secondItem="eiN-qq-x5C" secondAttribute="top" id="MFl-j0-cj4"/>
-                            <constraint firstAttribute="trailing" secondItem="5rG-h5-wop" secondAttribute="trailing" id="aVc-Et-NTD"/>
-                            <constraint firstItem="5rG-h5-wop" firstAttribute="bottom" secondItem="io7-0K-dCW" secondAttribute="top" constant="49" id="d09-XD-cbN"/>
-                            <constraint firstItem="5rG-h5-wop" firstAttribute="leading" secondItem="eiN-qq-x5C" secondAttribute="leading" id="vLD-OO-b73"/>
-                            <constraint firstItem="kcp-bp-K1C" firstAttribute="centerX" secondItem="5rG-h5-wop" secondAttribute="centerX" id="x6j-hD-aNB"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="loading" destination="kcp-bp-K1C" id="TOc-jK-WBi"/>
-                        <outlet property="whyGiveView" destination="5rG-h5-wop" id="7hy-nr-uzf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xGH-Vc-7Nd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4236" y="1645.7271364317842"/>
-        </scene>
         <!--thrive-fl.org-->
         <scene sceneID="8Uq-LM-IRV">
             <objects>
@@ -8415,7 +8354,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7mg-R3-8Ut"/>
-        <segue reference="NhA-nh-mzn"/>
+        <segue reference="b9C-Bk-Dkb"/>
         <segue reference="DJE-eQ-FMo"/>
         <segue reference="Y7Y-1Z-cSG"/>
         <segue reference="B4v-82-Wkl"/>
