@@ -19,6 +19,7 @@
         <array key="Avenir.ttc">
             <string>Avenir-Black</string>
             <string>Avenir-Heavy</string>
+            <string>Avenir-Medium</string>
         </array>
         <array key="AvenirNext.ttc">
             <string>AvenirNext-Medium</string>
@@ -5121,13 +5122,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Facebook">
-                                    <color key="titleColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openingFacebook:" destination="Wo4-nB-BqB" eventType="touchUpInside" id="AAj-G5-K9Z"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FB" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-TC-RfK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-TC-RfK">
                                 <rect key="frame" x="60" y="165" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1zc-D6-18J"/>
@@ -5139,7 +5140,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Instagram">
-                                    <color key="titleColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openingInstagram:" destination="Wo4-nB-BqB" eventType="touchUpInside" id="M1p-qe-3WI"/>
@@ -5150,13 +5151,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Twitter">
-                                    <color key="titleColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openingTwitter:" destination="Wo4-nB-BqB" eventType="touchUpInside" id="mff-6S-hkG"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TW" translatesAutoresizingMaskIntoConstraints="NO" id="grH-Ww-ejI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="grH-Ww-ejI">
                                 <rect key="frame" x="60" y="259" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="LZR-FA-1BH"/>
@@ -5168,7 +5169,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Website">
-                                    <color key="titleColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="swf-kB-MYe" kind="show" id="NhA-nh-mzn"/>
@@ -5180,7 +5181,7 @@
                                     <constraint firstAttribute="height" constant="35" id="ZJo-WW-H4n"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IG" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-rw-Xpt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-rw-Xpt">
                                 <rect key="frame" x="60" y="212" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ivA-GY-dBn"/>
@@ -6256,7 +6257,7 @@
                                                     <color key="titleColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="DxJ-tw-i7J" kind="show" id="TxI-Ld-zG7"/>
+                                                    <segue destination="DxJ-tw-i7J" kind="presentation" id="1VG-PJ-pvM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYA-Za-brx">
@@ -6512,7 +6513,7 @@
         <!--Contact-->
         <scene sceneID="o9Y-AM-Hhk">
             <objects>
-                <viewController title="Contact" id="DxJ-tw-i7J" customClass="FGCUContactViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Contact" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="DxJ-tw-i7J" customClass="FGCUContactViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uJU-2K-QaG"/>
                         <viewControllerLayoutGuide type="bottom" id="TWO-0N-HFK"/>
@@ -6521,69 +6522,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5M-t4-OB6">
-                                <rect key="frame" x="0.0" y="198" width="375" height="47"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-Gy-uvj">
+                                <rect key="frame" x="48" y="170" width="275" height="210"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5M-t4-OB6">
+                                        <rect key="frame" x="0.0" y="116" width="275" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="sbD-qA-swc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Call Us">
+                                            <color key="titleColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openPhoneToCall:" destination="DxJ-tw-i7J" eventType="touchUpInside" id="lHM-Fl-yOv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8C7-Fo-sZN">
+                                        <rect key="frame" x="0.0" y="74" width="275" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="f4L-ag-NLf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Email Us">
+                                            <color key="titleColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailUs:" destination="DxJ-tw-i7J" eventType="touchUpInside" id="1xb-YB-Eho"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IT-Z6-DO5">
+                                        <rect key="frame" x="0.0" y="157" width="275" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qjM-sj-Wkr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Text Us">
+                                            <color key="titleColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openMessageToText:" destination="DxJ-tw-i7J" eventType="touchUpInside" id="EuV-Pa-LmM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like to contact us?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKc-xl-3sZ">
+                                        <rect key="frame" x="5" y="26" width="265" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="LY0-w3-tuB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09C-Hz-Kjn">
+                                        <rect key="frame" x="251" y="-6" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="1hQ-k3-osm"/>
+                                            <constraint firstAttribute="width" constant="30" id="Unc-Pg-Dbv"/>
+                                        </constraints>
+                                        <state key="normal" image="Close_Green"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="22j-a4-5RJ"/>
+                                    <constraint firstItem="09C-Hz-Kjn" firstAttribute="top" secondItem="gFc-Gy-uvj" secondAttribute="top" constant="-6" id="FRl-b6-aLF"/>
+                                    <constraint firstItem="8C7-Fo-sZN" firstAttribute="trailing" secondItem="z5M-t4-OB6" secondAttribute="trailing" id="TdJ-iB-yT6"/>
+                                    <constraint firstItem="09C-Hz-Kjn" firstAttribute="trailing" secondItem="8C7-Fo-sZN" secondAttribute="trailing" constant="6" id="dUZ-fi-bhS"/>
+                                    <constraint firstItem="z5M-t4-OB6" firstAttribute="leading" secondItem="3IT-Z6-DO5" secondAttribute="leading" id="jJs-d9-fxd"/>
+                                    <constraint firstItem="z5M-t4-OB6" firstAttribute="top" secondItem="8C7-Fo-sZN" secondAttribute="bottom" constant="2" id="jgd-dY-Q48"/>
+                                    <constraint firstItem="HKc-xl-3sZ" firstAttribute="centerX" secondItem="gFc-Gy-uvj" secondAttribute="centerX" id="l2s-dd-x7L"/>
+                                    <constraint firstItem="8C7-Fo-sZN" firstAttribute="leading" secondItem="gFc-Gy-uvj" secondAttribute="leading" id="ms9-8e-8bb"/>
+                                    <constraint firstItem="3IT-Z6-DO5" firstAttribute="top" secondItem="z5M-t4-OB6" secondAttribute="bottom" constant="1" id="nqr-Xz-uWy"/>
+                                    <constraint firstItem="HKc-xl-3sZ" firstAttribute="top" secondItem="gFc-Gy-uvj" secondAttribute="top" constant="26" id="owq-Eq-zqU"/>
+                                    <constraint firstItem="8C7-Fo-sZN" firstAttribute="centerX" secondItem="HKc-xl-3sZ" secondAttribute="centerX" id="qBj-bh-XVd"/>
+                                    <constraint firstItem="3IT-Z6-DO5" firstAttribute="bottom" secondItem="gFc-Gy-uvj" secondAttribute="bottomMargin" constant="-5" id="tSB-2K-xXW"/>
+                                    <constraint firstItem="8C7-Fo-sZN" firstAttribute="leading" secondItem="z5M-t4-OB6" secondAttribute="leading" id="wHs-6H-jjP"/>
+                                    <constraint firstItem="z5M-t4-OB6" firstAttribute="trailing" secondItem="3IT-Z6-DO5" secondAttribute="trailing" id="zcU-hd-bQW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
-                                <state key="normal" title="Call Us">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="openPhoneToCall:" destination="DxJ-tw-i7J" eventType="touchUpInside" id="lHM-Fl-yOv"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like to contact us?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKc-xl-3sZ">
-                                <rect key="frame" x="37" y="161" width="302" height="21"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8C7-Fo-sZN">
-                                <rect key="frame" x="0.0" y="246" width="375" height="47"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="aPf-a1-kZk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
-                                <state key="normal" title="Email Us">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="emailUs:" destination="DxJ-tw-i7J" eventType="touchUpInside" id="1xb-YB-Eho"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IT-Z6-DO5">
-                                <rect key="frame" x="0.0" y="294" width="375" height="47"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="OdU-Jg-S1W"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
-                                <state key="normal" title="Text Us">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="openMessageToText:" destination="DxJ-tw-i7J" eventType="touchUpInside" id="EuV-Pa-LmM"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.1647058824" green="0.70588235290000001" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.298828125" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8C7-Fo-sZN" firstAttribute="top" secondItem="z5M-t4-OB6" secondAttribute="bottom" constant="1" id="00b-Gu-VWp"/>
-                            <constraint firstItem="z5M-t4-OB6" firstAttribute="centerX" secondItem="HKc-xl-3sZ" secondAttribute="centerX" id="1QD-ac-ygT"/>
-                            <constraint firstItem="HKc-xl-3sZ" firstAttribute="top" secondItem="uJU-2K-QaG" secondAttribute="bottom" constant="97" id="4xo-TY-Fgi"/>
-                            <constraint firstAttribute="trailing" secondItem="z5M-t4-OB6" secondAttribute="trailing" id="6XC-N1-NSV"/>
-                            <constraint firstItem="z5M-t4-OB6" firstAttribute="trailing" secondItem="8C7-Fo-sZN" secondAttribute="trailing" id="QaJ-vm-L7a"/>
-                            <constraint firstItem="8C7-Fo-sZN" firstAttribute="trailing" secondItem="3IT-Z6-DO5" secondAttribute="trailing" id="Xq4-Df-QJb"/>
-                            <constraint firstItem="3IT-Z6-DO5" firstAttribute="top" secondItem="8C7-Fo-sZN" secondAttribute="bottom" constant="1" id="aNL-hn-olR"/>
-                            <constraint firstItem="z5M-t4-OB6" firstAttribute="leading" secondItem="XWG-vP-fur" secondAttribute="leading" id="bAS-jy-mCo"/>
-                            <constraint firstItem="z5M-t4-OB6" firstAttribute="leading" secondItem="8C7-Fo-sZN" secondAttribute="leading" id="bV5-nd-hzb"/>
-                            <constraint firstItem="z5M-t4-OB6" firstAttribute="top" secondItem="HKc-xl-3sZ" secondAttribute="bottom" constant="16" id="l4W-os-OOa"/>
-                            <constraint firstItem="8C7-Fo-sZN" firstAttribute="leading" secondItem="3IT-Z6-DO5" secondAttribute="leading" id="oEe-O0-oud"/>
-                            <constraint firstItem="TWO-0N-HFK" firstAttribute="top" secondItem="3IT-Z6-DO5" secondAttribute="bottom" constant="277" id="ywm-oS-ch7"/>
+                            <constraint firstItem="TWO-0N-HFK" firstAttribute="top" secondItem="gFc-Gy-uvj" secondAttribute="bottom" constant="287" id="GfN-7i-XWF"/>
+                            <constraint firstItem="gFc-Gy-uvj" firstAttribute="top" secondItem="uJU-2K-QaG" secondAttribute="bottom" constant="150" id="Hcd-Fh-ond"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gFc-Gy-uvj" secondAttribute="trailing" constant="36" id="RS5-cM-Iqq"/>
+                            <constraint firstItem="gFc-Gy-uvj" firstAttribute="leading" secondItem="XWG-vP-fur" secondAttribute="leadingMargin" constant="32" id="cTA-42-htZ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -8348,7 +8373,6 @@
         <image name="Listen" width="30" height="23"/>
         <image name="Made By" width="833" height="132"/>
         <image name="More" width="27" height="7"/>
-        <image name="TW" width="29" height="29"/>
         <image name="ThriveLogo" width="29" height="28"/>
         <image name="notes" width="25" height="25"/>
     </resources>
