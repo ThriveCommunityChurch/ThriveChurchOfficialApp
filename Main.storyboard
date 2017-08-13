@@ -5345,7 +5345,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNa-dX-Y5F">
                                                 <rect key="frame" x="-2" y="483" width="377" height="90"/>
                                                 <subviews>
-                                                    <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2017 Thrive Community Church.                                            All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
+                                                    <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2017 Thrive Community Church.                                                                     All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
                                                         <rect key="frame" x="0.0" y="42" width="377" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -6528,8 +6528,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-I2-47R">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfb-sH-m4X">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="678"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfb-sH-m4X">
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="742"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24a-aD-zkD">
                                                 <rect key="frame" x="0.0" y="96" width="375" height="280"/>
@@ -6615,12 +6615,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="nfb-sH-m4X" secondAttribute="bottom" constant="-11" id="EAU-13-dCr"/>
+                                    <constraint firstAttribute="bottom" secondItem="nfb-sH-m4X" secondAttribute="bottom" constant="-75" id="EAU-13-dCr"/>
                                     <constraint firstItem="nfb-sH-m4X" firstAttribute="centerX" secondItem="cd4-I2-47R" secondAttribute="centerX" id="GQa-vV-p37"/>
                                     <constraint firstAttribute="trailing" secondItem="nfb-sH-m4X" secondAttribute="trailing" id="bQJ-eW-BPG"/>
                                     <constraint firstItem="nfb-sH-m4X" firstAttribute="top" secondItem="cd4-I2-47R" secondAttribute="top" id="cC2-aa-WxW"/>
                                     <constraint firstItem="nfb-sH-m4X" firstAttribute="leading" secondItem="cd4-I2-47R" secondAttribute="leading" id="fJy-ju-E0X"/>
-                                    <constraint firstItem="nfb-sH-m4X" firstAttribute="centerY" secondItem="cd4-I2-47R" secondAttribute="centerY" constant="5.5" id="rVP-Y3-6T5"/>
+                                    <constraint firstItem="nfb-sH-m4X" firstAttribute="centerY" secondItem="cd4-I2-47R" secondAttribute="centerY" constant="37.5" id="rVP-Y3-6T5"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -6635,7 +6635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Is9-jU-eC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6905" y="598"/>
+            <point key="canvasLocation" x="6904.8000000000002" y="597.75112443778119"/>
         </scene>
         <!--Social-->
         <scene sceneID="Plc-WA-j8t">
