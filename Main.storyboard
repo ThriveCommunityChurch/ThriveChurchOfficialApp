@@ -5046,7 +5046,7 @@
                                                     <constraint firstAttribute="width" constant="375" id="zdM-MI-3ve"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4g-7k-0Ie">
@@ -5544,10 +5544,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXK-VM-bFQ">
-                                        <rect key="frame" x="0.0" y="-64" width="375" height="723"/>
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="696"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjZ-cE-zja">
-                                                <rect key="frame" x="0.0" y="98" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="83" width="375" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="fbe-LW-wcU"/>
                                                 </constraints>
@@ -5556,7 +5556,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3d-nh-b0n">
-                                                <rect key="frame" x="0.0" y="141" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="126" width="375" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6H-qd-qB8">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -5593,7 +5593,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiD-Lc-06v">
-                                                <rect key="frame" x="0.0" y="191" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="176" width="375" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fg-3Y-NXQ">
                                                         <rect key="frame" x="66" y="0.0" width="309" height="50"/>
@@ -5635,7 +5635,7 @@
                                             <constraint firstItem="X3d-nh-b0n" firstAttribute="top" secondItem="bjZ-cE-zja" secondAttribute="bottom" constant="8" symbolic="YES" id="96V-yX-Vsc"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="trailing" secondItem="X3d-nh-b0n" secondAttribute="trailing" id="KeG-NK-D9B"/>
                                             <constraint firstItem="BiD-Lc-06v" firstAttribute="top" secondItem="X3d-nh-b0n" secondAttribute="bottom" id="Lus-tP-Fwm"/>
-                                            <constraint firstItem="bjZ-cE-zja" firstAttribute="top" secondItem="hXK-VM-bFQ" secondAttribute="top" constant="98" id="Uu7-J2-OBa"/>
+                                            <constraint firstItem="bjZ-cE-zja" firstAttribute="top" secondItem="hXK-VM-bFQ" secondAttribute="top" constant="83" id="Uu7-J2-OBa"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="leading" secondItem="hXK-VM-bFQ" secondAttribute="leading" id="Zab-na-RCA"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="leading" secondItem="X3d-nh-b0n" secondAttribute="leading" id="ba3-GX-HGD"/>
                                             <constraint firstItem="BiD-Lc-06v" firstAttribute="trailing" secondItem="X3d-nh-b0n" secondAttribute="trailing" id="vOW-1S-xZc"/>
@@ -5644,12 +5644,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hXK-VM-bFQ" firstAttribute="centerY" secondItem="MdM-B9-U0f" secondAttribute="centerY" constant="28" id="ICZ-Qy-65W"/>
+                                    <constraint firstItem="hXK-VM-bFQ" firstAttribute="centerY" secondItem="MdM-B9-U0f" secondAttribute="centerY" constant="14.5" id="ICZ-Qy-65W"/>
                                     <constraint firstItem="hXK-VM-bFQ" firstAttribute="centerX" secondItem="MdM-B9-U0f" secondAttribute="centerX" id="Mz4-qL-tEw"/>
                                     <constraint firstAttribute="trailing" secondItem="hXK-VM-bFQ" secondAttribute="trailing" id="QDl-ub-JEa"/>
                                     <constraint firstItem="hXK-VM-bFQ" firstAttribute="top" secondItem="MdM-B9-U0f" secondAttribute="top" id="SOe-Ec-umh"/>
                                     <constraint firstItem="hXK-VM-bFQ" firstAttribute="leading" secondItem="MdM-B9-U0f" secondAttribute="leading" id="XeB-el-a8v"/>
-                                    <constraint firstAttribute="bottom" secondItem="hXK-VM-bFQ" secondAttribute="bottom" constant="-56" id="yUx-AY-ZfS"/>
+                                    <constraint firstAttribute="bottom" secondItem="hXK-VM-bFQ" secondAttribute="bottom" constant="-29" id="yUx-AY-ZfS"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
