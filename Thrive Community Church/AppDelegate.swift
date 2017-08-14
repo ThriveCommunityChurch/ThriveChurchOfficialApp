@@ -83,14 +83,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         print("Will terminate")
     }
     
+    // Use this method to perhaps advance the recording with a FF button?
     override func remoteControlReceived(with event: UIEvent?) {
         
-        let rc = event!.subtype
-        let rc1 = event!.type
+        let rc = event!.subtype // = 2
+        let rc1 = event!.type   // 101 is Pause... 100 is Play
         print("does this work? \(rc.rawValue)")
         print("does this work? \(rc1.rawValue)")
-
-        // 101 is Pause... 100 is Play
     }
     
 //*****************************************PushNotifications***********************************************************
