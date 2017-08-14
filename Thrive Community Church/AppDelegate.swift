@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         
         // Override point for customization after application launch.
         print("Application is Active")
-    
-        
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)

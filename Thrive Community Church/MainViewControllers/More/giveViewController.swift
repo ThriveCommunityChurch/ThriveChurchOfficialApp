@@ -18,7 +18,6 @@ class giveViewController: UIViewController, UIWebViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     // open the application in safari
@@ -27,7 +26,6 @@ class giveViewController: UIViewController, UIWebViewDelegate {
         let url = URL(string: "https://goo.gl/bSrZ9K")
         
         if UIApplication.shared.canOpenURL(url!) {
-            
             UIApplication.shared.openURL(url!)
         }
         else {
