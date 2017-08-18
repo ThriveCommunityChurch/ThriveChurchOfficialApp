@@ -12,10 +12,7 @@ import CoreLocation
 
 class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-//    @IBOutlet var zoomIn: UIButton!
-//    @IBOutlet var zoomOut: UIButton!
     @IBOutlet weak var directionsMapView: MKMapView!
-    
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     
@@ -35,7 +32,7 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
         
         let thriveLocation = CLLocationCoordinate2DMake(26.448174, -81.816173)
         
-        // Droping Pin
+        // Dropping Pin
         let dropPin = MKPointAnnotation()
         dropPin.coordinate = thriveLocation
         dropPin.title = "Thrive Community Church"
@@ -64,43 +61,11 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
     }
 
 //BUTTONS-----------------------------------------------------------------------
- 
-/*  --------------Segmented control for Map Type -------------------------------
-     @IBAction func segmentControlChanged(sender: AnyObject) {
-        
-        switch sender.selectedSegmentIndex {
-        case 1:
-            directionsMapView.mapType = MKMapType.SatelliteFlyover
-            cameraSetup()
-            print("Loaded Sateillite")
-            break
-            
-        case 2:
-            directionsMapView.mapType = MKMapType.HybridFlyover
-            cameraSetup()
-            print("Loaded Hybrid")
-            break
-            
-        default:
-            directionsMapView.mapType = MKMapType.Standard
-            cameraSetup()
-            print("Loaded the Maps")
-            break
-        }
-    }
- */
-    
     @IBAction func showTraffic(_ sender: AnyObject) {
         
-        if #available(iOS 9.0, *) {
-            directionsMapView.showsTraffic = !directionsMapView.showsTraffic
-        } else {
-            // Fallback on earlier versions
-            
-            print("Cannot use Traffic - user does not have iOS 9... Prepare to" +
-            "open in Apple Maps")
-        }
+        directionsMapView.showsTraffic = !directionsMapView.showsTraffic
         
+        // Will always return true because deployment target is > 9.0
         if #available(iOS 9.0, *) {
             if directionsMapView.showsTraffic == true {
                 sender.setTitle("Hide Traffic", for: UIControlState())
@@ -111,7 +76,8 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
         } else {
             // Open in Apple Maps anyways
             
-            let url = URL(string: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
+            let url = URL(string: "http://maps.apple.com/?daddr=" +
+                "Thrive+Community+Church&dirflg=d")
             
             if UIApplication.shared.canOpenURL(url!){
                 UIApplication.shared.openURL(url!)
@@ -122,21 +88,12 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
         }
     }
     
-/*  COMPASS FEATURE IF WANTED --------------------------------------------------
-    @IBAction func showCompass(sender: AnyObject) {
-        
-        directionsMapView.showsCompass = !directionsMapView.showsCompass
-        
-        if directionsMapView.showsCompass == true {
-            sender.setTitle("Hide Compass", forState: UIControlState.Normal)
-        }
-        else {
-            sender.setTitle("Show Compass", forState: UIControlState.Normal)
-        }
-    }
-    
-*/
-    @IBAction func getLocation(_ sender: AnyObject){
+    /*
+     Segue to users location - no matter where they are in the world
+     It might also beuseful if it would show users location and the Church in the same
+     view
+     */
+    @IBAction func getLocation(_ sender: AnyObject) {
         
         directionsMapView.showsUserLocation = !directionsMapView.showsUserLocation
         
@@ -152,10 +109,10 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
     }
     
 // Opens in APPLE MAPS
-    
     @IBAction func findRoute(_ sender: AnyObject) {
         
-        let url = URL(string: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
+        let url = URL(string: "http://maps.apple.com/?daddr=" +
+            "Thrive+Community+Church&dirflg=d")
         
             if UIApplication.shared.canOpenURL(url!){
                      UIApplication.shared.openURL(url!)
@@ -164,22 +121,6 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
             UIApplication.shared.openURL(url!)
         }
     }
-    
-    //declairing variable for zoom - if Wanted----------------------------------
-    //var zoom = 0
-    
-//    @IBAction func zoomIn(sender: AnyObject) {
-//        // Zooms the view in slightly
-//        directionsMapView.camera.altitude = directionsMapView.camera.altitude - 1000
-//        print("Zoomed In")
-//    }
-//    
-//    @IBAction func zoomOut(sender: AnyObject) {
-//        // Zooms the view out slightly
-//        directionsMapView.camera.altitude = directionsMapView.camera.altitude + 1000
-//        print("Zoomed Out")
-//    }
-    
 //BUTTONS ----------------------------------------------------------------------
 
 }

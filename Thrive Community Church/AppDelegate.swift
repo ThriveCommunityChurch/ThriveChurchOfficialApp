@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         
         // Override point for customization after application launch.
         print("Application is Active")
-    
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -34,10 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
             // report for an error
             print("Catches any errors with the AVPlayer")
         }
-        
-        // Sets nav bar color to a 'black' globally - looks more grey but oh well
-        UINavigationBar.appearance().backgroundColor = UIColor.black
-
         return true
     }
 
@@ -68,22 +63,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("application Did Enter Background")
-        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         print("application Will Enter Foreground")
-        
-        
-        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         print("application Did Become Active")
-        
     }
     
 
@@ -93,15 +83,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         print("Will terminate")
     }
     
+    // Use this method to perhaps advance the recording with a FF button?
     override func remoteControlReceived(with event: UIEvent?) {
         
-        let rc = event!.subtype
-        let rc1 = event!.type
+        let rc = event!.subtype // = 2
+        let rc1 = event!.type   // 101 is Pause... 100 is Play
         print("does this work? \(rc.rawValue)")
         print("does this work? \(rc1.rawValue)")
-
-        // 101 is Pause... 100 is Play
-        
     }
     
 //*****************************************PushNotifications***********************************************************

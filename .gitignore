@@ -6,6 +6,9 @@
 *.DS_Store
 *._DS_Store
 
+# 3rd Party APIs that might contain sensitive API keys or product codes
+**/APIs/
+
 #Graphics
 *.png
 *.jpg
