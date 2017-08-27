@@ -24,11 +24,15 @@ class DetailViewController: UIViewController {
         detailViewController?.becomeFirstResponder()
         
         // called when adding / editing an item to the TableViewController in MasterVew
-        // Called at application init for notes tab? -- more testing is required
+        // Called at application init for notes tab - YES
+        
+        // INIT NOTE #5 - No
         saveAndUpdate()
         self.configureView()
         
         // segue
+        //INIT NOTE #8 - I assume that this is where the code stops.
+        // Since no other funcs are called after config
     }
     
     var detailItem: AnyObject? {
@@ -44,11 +48,11 @@ class DetailViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         saveAndUpdate()
-        
+        //INIT NOTE #6 - No
         if objects.count == 0 {
             return
         }
-        // done
+        
         if let label = self.detailDescriptionLabel {
             label.text = objects[currentIndex]
             
@@ -56,6 +60,8 @@ class DetailViewController: UIViewController {
                 label.text = ""
             }
         }
+        // INIT NOTE #7 - After returning from our inital note we end here, on the
+        // "Add Note" screen once again
     }
     
     @IBAction func share(_ sender: AnyObject) {
@@ -79,9 +85,18 @@ class DetailViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        /*
+         BINGO! - this is called when there is no note in the TableView
+         this is also not called at any time before the user hits back after typing
+         their first message
+         
+         Look here to make changes? -- more testing might be neeeded before we can
+         make that assertion
+        */
         if objects.count == 0 {
             return
         }
+        // INIT NOTE #1 - Still nothing happening
         
         //updates the text for the preview of the note on the Table View
         objects[currentIndex] = detailDescriptionLabel.text
