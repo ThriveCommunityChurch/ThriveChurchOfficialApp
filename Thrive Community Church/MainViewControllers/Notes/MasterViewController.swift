@@ -18,21 +18,12 @@ let BLANK_NOTE:String = "New Note"
 
 class MasterViewController: UITableViewController {
     
-/*
-     There is an issue in the class where when the user hits the notes button,
-     the view loads the notes page - "DetailView" and if the user hits back then
-     the note is automatically deleted.
-     
-     Adding save() calls will not fix this. Perhaps calling a method in some other
-     way or program it by hand is more beneficial.
-     
-*/    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         masterView = self
-        
+        // Called when the user Taps "Notes" icon -- buttons are all added before the segue
         load()
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
@@ -61,7 +52,7 @@ class MasterViewController: UITableViewController {
         //segue to the table view has been made
         //interactrion is possible now with the UITableView interface
         
-        
+        // INIT NOTE #4 - Still nothing happening on the Screen --- Showing TableView
         super.viewDidAppear(animated)
     }
     
@@ -74,6 +65,7 @@ class MasterViewController: UITableViewController {
         save()
         
         //adding new
+        // INIT NOTE #2 - Nada
         if objects.count == 0 || objects[0] != BLANK_NOTE {
             
             objects.insert(BLANK_NOTE, at: 0)
@@ -93,6 +85,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             
+            //INIT NOTE #3 - Nothing Still --- may happen after this tho
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 
                 let object = objects[(indexPath as NSIndexPath).row]
