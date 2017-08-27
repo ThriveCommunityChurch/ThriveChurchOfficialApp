@@ -7,19 +7,40 @@
 //
 
 import UIKit
+//import CoreData -- in case we need it
 
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailDescriptionLabel: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        /*      TODO: Call Parent View controller in order to load the view and also get
+         the new Notes Loaded. Once they have loaded, segue back to this view.
+         */
+        
+        detailViewController = self
+        detailViewController?.becomeFirstResponder()
+        
+        // called when adding / editing an item to the TableViewController in MasterVew
+        // Called at application init for notes tab? -- more testing is required
+        saveAndUpdate()
+        self.configureView()
+        
+        // segue
+    }
     
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
             saveAndUpdate()
             self.configureView()
+            
         }
     }
     
+    // runs even before the segue happens
     func configureView() {
         // Update the user interface for the detail item.
         saveAndUpdate()
@@ -27,7 +48,7 @@ class DetailViewController: UIViewController {
         if objects.count == 0 {
             return
         }
-        
+        // done
         if let label = self.detailDescriptionLabel {
             label.text = objects[currentIndex]
             
@@ -41,23 +62,12 @@ class DetailViewController: UIViewController {
         let textToShare = detailDescriptionLabel.text!
         
         let objectsToShare = [textToShare]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare , applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems:
+                                            objectsToShare ,
+                                            applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
         self.present(activityVC, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-/*      TODO: Call Parent View controller in orv=der to load the view and also get
-        the new Notes Loaded. Once they have loaded, segue back to this view.
-*/
-        detailViewController = self
-        detailViewController?.becomeFirstResponder()
-        saveAndUpdate()
-        self.configureView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,6 +75,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // called when hitting back on the editing screen -- after segue back to Table View
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -72,13 +83,16 @@ class DetailViewController: UIViewController {
             return
         }
         
+        //updates the text for the preview of the note on the Table View
         objects[currentIndex] = detailDescriptionLabel.text
         if detailDescriptionLabel.text == "" {
             objects[currentIndex] = BLANK_NOTE
         }
         saveAndUpdate()
+        // Called wheb the view is returning from the editing view
     }
     
+    // permiate changes to the master view
     func saveAndUpdate() {
         masterView?.save()
         masterView?.tableView.reloadData()
