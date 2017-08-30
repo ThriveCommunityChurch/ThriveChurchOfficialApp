@@ -8,6 +8,7 @@
 
 # 3rd Party APIs that might contain sensitive API keys or product codes
 **/APIs/
+GoogleService-Info.plist
 
 #Graphics
 *.png
