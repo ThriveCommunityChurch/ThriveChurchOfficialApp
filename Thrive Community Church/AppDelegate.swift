@@ -22,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
         
+        let title = "Debug" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as! NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+            ])
+        
         // Override point for customization after application launch.
         print("Application is Active")
         
