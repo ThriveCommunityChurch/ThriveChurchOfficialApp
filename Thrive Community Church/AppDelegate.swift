@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import CoreVideo
 import MediaPlayer
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
         
         // Override point for customization after application launch.
         print("Application is Active")
