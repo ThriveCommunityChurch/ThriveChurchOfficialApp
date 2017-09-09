@@ -54,7 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             print("Setting the player to play no matter what")
             
-            //UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+            // Uncommenting this didn't help allow for the Notifications to come through
+            // it must be something to do with the Certificates
+            UIApplication.shared.beginReceivingRemoteControlEvents()
             //print("Enabling Remote Control Events")
         }
         catch {
