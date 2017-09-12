@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         FirebaseApp.configure()
         
         // Registering notifications
-        
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -48,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         let token = Messaging.messaging().fcmToken
         print("FCM token: \(token ?? "")")
         
-        // End notifications
+        // End registration
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -131,31 +130,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
     func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
         print(remoteMessage.appData)
     }
-    
-//    func registerForPushNotifications(application: UIApplication) {
-//
-//    }
-//
-//    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-//        if notificationSettings.types != .none {
-//            application.registerForRemoteNotifications()
-//        }
-//
-//    }
-//
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        print("Device Token: ", (deviceToken))
-//        print("Device Token Might also be: \(deviceToken)")
-//
-//    }
-//
-//    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-//        print("Failed to register with error: ", error)
-//    }
-//
-//    private func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-//        print(userInfo)
-//    }
     
 //*********************************************************************************************************************
     
