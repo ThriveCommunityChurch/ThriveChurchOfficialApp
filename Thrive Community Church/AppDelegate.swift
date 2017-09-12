@@ -10,23 +10,52 @@ import UIKit
 import AVFoundation
 import CoreVideo
 import MediaPlayer
+import Firebase
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UNUserNotificationCenterDelegate  {
 
     var window: UIWindow?
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
         // Override point for customization after application launch.
         print("Application is Active")
+        
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        
+        // Registering notifications
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+
+        let token = Messaging.messaging().fcmToken
+        print("FCM token: \(token ?? "")")
+        
+        // End registration
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             print("Setting the player to play no matter what")
             
-            //UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+            // Uncommenting this didn't help allow for the Notifications to come through
+            // it must be something to do with the Certificates
+            UIApplication.shared.beginReceivingRemoteControlEvents()
             //print("Enabling Remote Control Events")
         }
         catch {
@@ -94,32 +123,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
     
 //*****************************************PushNotifications***********************************************************
     
-//    func registerForPushNotifications(application: UIApplication) {
-//        
-//
-//        
-//    }
-//    
-//    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-//        if notificationSettings.types != .none {
-//            application.registerForRemoteNotifications()
-//        }
-//        
-//    }
-//    
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        print("Device Token: ", (deviceToken))
-//        print("Device Token Might also be: \(deviceToken)")
-//        
-//    }
-//    
-//    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-//        print("Failed to register with error: ", error)
-//    }
-//    
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-//        print(userInfo)
-//    }
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+    }
+    
+    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
     
 //*********************************************************************************************************************
     
