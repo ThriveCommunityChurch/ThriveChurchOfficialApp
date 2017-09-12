@@ -47,6 +47,12 @@ Thank you to everyone who uses this application, we made it for you - to help ma
 
 
 ## Version History
+### 1.5.1 - TBD
+- Fixed the text area on the Notes tab
+- Fixed Translucent Navigation Bars
+- Support Token IDs when emailing support
+- Push Notifications
+
 ### 1.5  —  August 27, 2017
 - Major UI Overhaul
 - Improvements to the User Experience
