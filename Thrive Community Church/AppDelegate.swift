@@ -18,11 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         print("Application is Active")
-        
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
@@ -31,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
-
+            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
@@ -41,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-
+        
         application.registerForRemoteNotifications()
 
         let token = Messaging.messaging().fcmToken
@@ -101,14 +99,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
         print("application Did Become Active")
     }
     
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground
-        
         print("Will terminate")
     }
     
@@ -128,8 +124,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
     }
     
     func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-        print(remoteMessage.appData)
+        print("The message is: \(remoteMessage.appData)")
+        
     }
+    
+//    private func application(application: UIApplication, didReceiveRemoteNotification
+//        userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler:
+//                                                (UIBackgroundFetchResult) -> Void) {
+//        // Let FCM know about the message for analytics etc.
+//        Messaging.messaging().appDidReceiveMessage(userInfo)
+//        // handle your message
+//    }
     
 //*********************************************************************************************************************
     
