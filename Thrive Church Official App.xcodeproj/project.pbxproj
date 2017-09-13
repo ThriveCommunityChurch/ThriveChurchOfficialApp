@@ -15,10 +15,12 @@
 		41FF24A71D171EC30048E6AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
-		DC176D521F565DCA00CA7716 /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
-		DC176D531F565DCB00CA7716 /* Pods_Thrive_Church_Official_App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DC1C4DA61F566086006F285B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2667DE1F37FBA20020424C /* SettingsViewController.swift */; };
+		DC3835241F68D82700F05E8B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3835231F68D82600F05E8B /* NotificationCenter.framework */; };
+		DC3835251F68D8C800F05E8B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */; };
+		DC3835261F68D8C800F05E8B /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3835291F68D8C800F05E8B /* nanopb.framework */; };
+		DC3835271F68D8C800F05E8B /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC38352A1F68D8C800F05E8B /* Protobuf.framework */; };
+		DC38352B1F68D8E300F05E8B /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
 		DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */; };
@@ -136,13 +138,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EA37C1481D85B71C00D450EF /* Embed Frameworks */ = {
+		DC693B621F68A3DC00DE8E54 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DC176D531F565DCB00CA7716 /* Pods_Thrive_Church_Official_App.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,8 +277,14 @@
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DC3835231F68D82600F05E8B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3835291F68D8C800F05E8B /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC38352A1F68D8C800F05E8B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DC6582FB1F68A1FC00C1B90A /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC6582FD1F68A27800C1B90A /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -289,11 +296,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC38352B1F68D8E300F05E8B /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
+				DC3835251F68D8C800F05E8B /* GoogleToolboxForMac.framework in Frameworks */,
+				DC3835261F68D8C800F05E8B /* nanopb.framework in Frameworks */,
+				DC3835271F68D8C800F05E8B /* Protobuf.framework in Frameworks */,
+				DC3835241F68D82700F05E8B /* NotificationCenter.framework in Frameworks */,
 				41FF24A71D171EC30048E6AF /* AudioToolbox.framework in Frameworks */,
 				41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */,
+				DC693B601F68A3DC00DE8E54 /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
 				41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */,
 				413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */,
-				DC176D521F565DCA00CA7716 /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +405,10 @@
 		C7C0921F61B47B791415949E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */,
+				DC3835291F68D8C800F05E8B /* nanopb.framework */,
+				DC38352A1F68D8C800F05E8B /* Protobuf.framework */,
+				DC3835231F68D82600F05E8B /* NotificationCenter.framework */,
 				72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */,
 				4A83C4A0DC8A0489DE7DA4CD /* Pods_Thrive_Church_Official_AppTests.framework */,
 				7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */,
@@ -578,8 +594,8 @@
 				0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */,
 				6370471B860F8AE82459F5A8 /* [CP] Copy Pods Resources */,
 				EA971F011D63B301007C3A2B /* ShellScript */,
-				EA37C1481D85B71C00D450EF /* Embed Frameworks */,
 				EA37C15F1D85E13100D450EF /* Embed App Extensions */,
+				DC693B621F68A3DC00DE8E54 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -705,7 +721,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1C4DA61F566086006F285B /* GoogleService-Info.plist in Resources */,
 				DCE362C01F0560E400725F11 /* Main.storyboard in Resources */,
 				DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */,
 				DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */,

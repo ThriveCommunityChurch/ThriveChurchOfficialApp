@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,9 +65,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="jJa-dc-V9v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.20000000000000001" green="0.72941176470000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="z4c-vu-an5">
@@ -83,12 +81,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="tgj-Yl-brb" kind="show" id="hbI-ZR-BfI"/>
@@ -105,12 +101,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="T4u-pS-bZ6" kind="show" id="eLx-CD-IHE"/>
                                         </connections>
@@ -126,12 +120,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Wo4-nB-BqB" kind="show" id="15q-8a-5XB"/>
                                         </connections>
@@ -147,12 +139,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="c3Q-0g-pdd" kind="show" id="xwv-oY-nJx"/>
                                         </connections>
@@ -168,12 +158,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Vuu-Yw-ykr" kind="show" id="iZb-DF-TnW"/>
                                         </connections>
@@ -189,12 +177,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="qjH-xO-GX6" kind="show" id="FaW-Va-dY1"/>
                                         </connections>
@@ -210,12 +196,10 @@
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="W15-a1-g4j" kind="show" id="4mJ-rJ-QcU"/>
                                         </connections>
@@ -4994,7 +4978,7 @@
                                     <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
                                 </items>
                                 <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5274,7 +5258,7 @@
                                                 <color key="textColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: 1.6 BETA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1g-uJ-aJD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: 1.5.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1g-uJ-aJD" userLabel="App Version: 1.5">
                                                 <rect key="frame" x="-1" y="42" width="375" height="19"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -7286,7 +7270,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Traditional List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gms-l5-1Bh">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -7306,7 +7290,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Alphabetical List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Iwl-13-pZ7">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -8414,27 +8398,27 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DJE-eQ-FMo"/>
-        <segue reference="L4z-xU-3sB"/>
-        <segue reference="Y7Y-1Z-cSG"/>
-        <segue reference="c3J-wa-dfa"/>
-        <segue reference="ThB-mB-6d1"/>
-        <segue reference="3TX-q6-TkQ"/>
-        <segue reference="vNS-2M-kjd"/>
-        <segue reference="0ql-fo-hGf"/>
-        <segue reference="k2E-cA-rQY"/>
-        <segue reference="XOk-Xg-Amf"/>
-        <segue reference="9Dj-Fs-NlX"/>
-        <segue reference="ABU-Oe-eCP"/>
-        <segue reference="rQc-Pc-Ewv"/>
-        <segue reference="NOg-d5-8um"/>
-        <segue reference="rSr-sW-9Td"/>
-        <segue reference="Ewo-QE-6ZL"/>
-        <segue reference="ov9-La-OXs"/>
-        <segue reference="sKp-Ck-4z1"/>
-        <segue reference="Gq7-Kl-69M"/>
-        <segue reference="TeF-od-02s"/>
-        <segue reference="bD8-wv-wDN"/>
-        <segue reference="KWM-si-IpF"/>
+        <segue reference="cxj-5g-sY7"/>
+        <segue reference="jDw-rU-GdR"/>
+        <segue reference="6dA-8G-fKr"/>
+        <segue reference="u5e-ch-0V7"/>
+        <segue reference="5VO-BT-Ghw"/>
+        <segue reference="uma-ep-DBL"/>
+        <segue reference="7Ey-rd-ZKK"/>
+        <segue reference="Aic-io-KxG"/>
+        <segue reference="Iam-MM-Zaz"/>
+        <segue reference="7W0-Yu-l0r"/>
+        <segue reference="F23-bz-St9"/>
+        <segue reference="3k4-Va-5tV"/>
+        <segue reference="Uqy-6Y-jQS"/>
+        <segue reference="JFR-Uu-t9X"/>
+        <segue reference="YxG-EI-Snl"/>
+        <segue reference="zBR-Sw-dTI"/>
+        <segue reference="501-uN-P9i"/>
+        <segue reference="Bwx-0M-gTW"/>
+        <segue reference="nsi-0u-nMC"/>
+        <segue reference="YeO-9n-BC6"/>
+        <segue reference="fyV-zO-xaL"/>
         <segue reference="pnX-ve-i4j"/>
         <segue reference="4mJ-rJ-QcU"/>
         <segue reference="w1i-k2-7EM"/>
@@ -8456,31 +8440,31 @@
         <segue reference="7mg-R3-8Ut"/>
         <segue reference="Inz-5g-5ol"/>
         <segue reference="XBi-Vj-E6c"/>
-        <segue reference="lgQ-ID-a4i"/>
-        <segue reference="M0U-iL-e6P"/>
-        <segue reference="Keh-9j-qh2"/>
-        <segue reference="vVd-mt-2Wp"/>
-        <segue reference="bRu-RG-phX"/>
-        <segue reference="UKa-Kk-7a0"/>
-        <segue reference="Cm2-1F-bGC"/>
-        <segue reference="HcU-1W-NjC"/>
-        <segue reference="yZn-zD-0Hl"/>
-        <segue reference="78D-gh-8fo"/>
-        <segue reference="PPS-eZ-zBm"/>
-        <segue reference="EGZ-TO-VDk"/>
-        <segue reference="Ojm-T8-o7F"/>
-        <segue reference="oGb-ge-dnu"/>
-        <segue reference="usn-tW-YAM"/>
-        <segue reference="V9H-vb-Yyh"/>
-        <segue reference="SNc-Ed-LeG"/>
-        <segue reference="Q46-eW-Mj7"/>
-        <segue reference="W1j-Pk-OC9"/>
-        <segue reference="rjw-vc-2Is"/>
-        <segue reference="kYN-zl-ptM"/>
-        <segue reference="CEh-5j-w7l"/>
-        <segue reference="KvO-rS-yTu"/>
-        <segue reference="20Y-hQ-Ox1"/>
-        <segue reference="4Qz-iA-tDx"/>
-        <segue reference="1ue-Lc-JZr"/>
+        <segue reference="lPw-IP-vmR"/>
+        <segue reference="Ge2-5C-Seh"/>
+        <segue reference="gJo-mm-gtN"/>
+        <segue reference="7i3-GB-U04"/>
+        <segue reference="fiQ-wS-Ws1"/>
+        <segue reference="xQI-kU-CWH"/>
+        <segue reference="9fW-op-lbz"/>
+        <segue reference="Ldw-eN-Mcz"/>
+        <segue reference="9ir-lf-JtJ"/>
+        <segue reference="GFk-0k-srC"/>
+        <segue reference="U1h-I5-qpY"/>
+        <segue reference="CWL-7z-c8V"/>
+        <segue reference="7LD-mX-rnx"/>
+        <segue reference="pYF-dE-Fin"/>
+        <segue reference="afV-3J-wiJ"/>
+        <segue reference="T3I-pd-V7Y"/>
+        <segue reference="bL3-sl-56f"/>
+        <segue reference="Cxn-Qc-TuH"/>
+        <segue reference="scE-Qo-LG6"/>
+        <segue reference="ckA-PJ-MJI"/>
+        <segue reference="sa9-Fm-3O2"/>
+        <segue reference="19x-lF-DvD"/>
+        <segue reference="WWZ-25-bJ3"/>
+        <segue reference="hSE-Ju-Aaq"/>
+        <segue reference="NPM-uD-eCe"/>
+        <segue reference="xfQ-9F-hZ9"/>
     </inferredMetricsTieBreakers>
 </document>
