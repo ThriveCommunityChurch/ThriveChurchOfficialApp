@@ -30,7 +30,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["wyatt@thrive-fl.org"])
-            composeVC.setMessageBody("Enter your message to the Developer here:", isHTML: true)
             composeVC.setSubject("Thrive iOS - ID: \(uuid)")
             present(composeVC, animated: true, completion: nil)
             self.present(composeVC, animated: true, completion: nil)
