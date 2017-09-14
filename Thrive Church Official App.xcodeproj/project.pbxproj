@@ -20,8 +20,8 @@
 		DC38352B1F68D8E300F05E8B /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
+		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */; };
-		DCCC09711F68DF0F003395C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
 		DCE362C21F05610500725F11 /* Read1JohnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F91F0494FF002784E7 /* Read1JohnViewController.swift */; };
@@ -283,9 +283,8 @@
 		DC38352A1F68D8C800F05E8B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DC6582FB1F68A1FC00C1B90A /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC6582FD1F68A27800C1B90A /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
@@ -300,7 +299,6 @@
 				DC3835241F68D82700F05E8B /* NotificationCenter.framework in Frameworks */,
 				41FF24A71D171EC30048E6AF /* AudioToolbox.framework in Frameworks */,
 				41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */,
-				DC693B601F68A3DC00DE8E54 /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
 				41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */,
 				413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */,
 			);
@@ -403,6 +401,7 @@
 		C7C0921F61B47B791415949E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCA554461F6AD47B00E00006 /* Protobuf.framework */,
 				DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */,
 				DC3835291F68D8C800F05E8B /* nanopb.framework */,
 				DC38352A1F68D8C800F05E8B /* Protobuf.framework */,
@@ -728,6 +727,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */,
 				DCE362C01F0560E400725F11 /* Main.storyboard in Resources */,
 				DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */,
 				DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */,
