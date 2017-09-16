@@ -22,13 +22,15 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    // might add device logs via XGCLogger also in ~1.7
     @IBAction func contactingAdmin(_ sender: AnyObject) {
         if MFMailComposeViewController.canSendMail() {
-    
+            let uuid = String(UUID().uuidString.characters.suffix(8))
             let composeVC = MFMailComposeViewController()
+            
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["wyatt@thrive-fl.org"])
-            composeVC.setMessageBody("Enter your message to the Developer here:", isHTML: true)
+            composeVC.setSubject("Thrive iOS - ID: \(uuid)")
             present(composeVC, animated: true, completion: nil)
             self.present(composeVC, animated: true, completion: nil)
         }

@@ -38,14 +38,12 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 //        let systemVersion = UIDevice.current.systemVersion
         
         if MFMailComposeViewController.canSendMail() {
+            let uuid = String(UUID().uuidString.characters.suffix(4))
             
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
             composeVC.setToRecipients(["wyatt@thrive-fl.org"])
-            composeVC.setSubject("App Feedback")
-            composeVC.setMessageBody("(Replace this text with your message) What can we do to make this app better? We'd love to hear from you!",
-                isHTML: true)
-            //composeVC.set
+            composeVC.setSubject("App Feedback - ID: \(uuid)")
             
             present(composeVC, animated: true, completion: nil)
             self.present(composeVC, animated: true, completion: nil)
@@ -71,7 +69,6 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
             print("Error: \(String(describing: error?.localizedDescription))")
             
         default:
-            
             break
         }
         

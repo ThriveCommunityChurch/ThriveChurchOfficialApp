@@ -1,0 +1,6 @@
+framework module Pods_Thrive_Church_Official_AppTests {
+  umbrella header "Pods-Thrive Church Official AppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

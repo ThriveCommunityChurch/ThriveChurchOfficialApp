@@ -7,23 +7,48 @@
 //
 
 import UIKit
+//import CoreData -- in case we need it
 
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailDescriptionLabel: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        /*      TODO: Call Parent View controller in order to load the view and also get
+         the new Notes Loaded. Once they have loaded, segue back to this view.
+         */
+        
+        detailViewController = self
+        detailViewController?.becomeFirstResponder()
+        
+        // called when adding / editing an item to the TableViewController in MasterVew
+        // Called at application init for notes tab - YES
+        
+        // INIT NOTE #5 - No
+        saveAndUpdate()
+        self.configureView()
+        
+        // segue
+        //INIT NOTE #8 - I assume that this is where the code stops.
+        // Since no other funcs are called after config
+    }
     
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
             saveAndUpdate()
             self.configureView()
+            
         }
     }
     
+    // runs even before the segue happens
     func configureView() {
         // Update the user interface for the detail item.
         saveAndUpdate()
-        
+        //INIT NOTE #6 - No
         if objects.count == 0 {
             return
         }
@@ -35,29 +60,20 @@ class DetailViewController: UIViewController {
                 label.text = ""
             }
         }
+        // INIT NOTE #7 - After returning from our inital note we end here, on the
+        // "Add Note" screen once again
     }
     
     @IBAction func share(_ sender: AnyObject) {
         let textToShare = detailDescriptionLabel.text!
         
         let objectsToShare = [textToShare]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare , applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems:
+                                            objectsToShare ,
+                                            applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
         self.present(activityVC, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-/*      TODO: Call Parent View controller in orv=der to load the view and also get
-        the new Notes Loaded. Once they have loaded, segue back to this view.
-*/
-        detailViewController = self
-        detailViewController?.becomeFirstResponder()
-        saveAndUpdate()
-        self.configureView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,20 +81,33 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // called when hitting back on the editing screen -- after segue back to Table View
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        /*
+         BINGO! - this is called when there is no note in the TableView
+         this is also not called at any time before the user hits back after typing
+         their first message
+         
+         Look here to make changes? -- more testing might be neeeded before we can
+         make that assertion
+        */
         if objects.count == 0 {
             return
         }
+        // INIT NOTE #1 - Still nothing happening
         
+        //updates the text for the preview of the note on the Table View
         objects[currentIndex] = detailDescriptionLabel.text
         if detailDescriptionLabel.text == "" {
             objects[currentIndex] = BLANK_NOTE
         }
         saveAndUpdate()
+        // Called wheb the view is returning from the editing view
     }
     
+    // permiate changes to the master view
     func saveAndUpdate() {
         masterView?.save()
         masterView?.tableView.reloadData()
