@@ -13,14 +13,6 @@ Copyright 2017 Google
 
 Copyright 2017 Google
 
-## FirebaseCrash
-
-Copyright 2017 Google
-
-## FirebaseDynamicLinks
-
-Copyright 2017 Google
-
 ## FirebaseInstanceID
 
 Copyright 2017 Google
