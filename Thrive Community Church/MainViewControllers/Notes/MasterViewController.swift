@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController {
         
         masterView = self
         // Called when the user Taps "Notes" icon -- buttons are all added before the segue
-        load()
+        load() // CRASH on iPhone X?
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
