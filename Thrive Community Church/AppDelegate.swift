@@ -14,7 +14,7 @@ import Firebase
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UNUserNotificationCenterDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UNUserNotificationCenterDelegate, MessagingDelegate  {
 
     var window: UIWindow?
     
@@ -29,18 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
-
+            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
+            
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            // For iOS 10 data message (sent via FCM)
+            Messaging.messaging().delegate = self
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-
+        
         application.registerForRemoteNotifications()
+        
 
         let token = Messaging.messaging().fcmToken
         print("FCM token: \(token ?? "")")
@@ -117,24 +123,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         print("does this work? \(rc1.rawValue)")
     }
     
-//*****************************************PushNotifications***********************************************************
-    
+    // FCM Token was updated - Firebase
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
     }
-
-//    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-//        print(remoteMessage.appData)
-//    }
     
-    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-        print("The message is: \(remoteMessage.appData)")
+    // Provide APNSToken
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+//*****************************************Recieve Notifications*******************************************************
+    
+    // Receive displayed notifications for iOS 10 devices.
+    @available(iOS 10, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo as! [String: Any]
+        
+        // Print message ID.
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        
+        // Print full message.
+        print("%@", userInfo)
+        
+        completionHandler([.alert, .badge, .sound])
         
     }
     
-//    private func application(application: UIApplication, didReceiveRemoteNotification
-//        userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler:
-//                                                (UIBackgroundFetchResult) -> Void) {
+    // Receive data message on iOS 10 devices.
+    func application(received remoteMessage: MessagingRemoteMessage) {
+        print("%@", remoteMessage.appData)
+    }
+    
+//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 //        // Let FCM know about the message for analytics etc.
 //        Messaging.messaging().appDidReceiveMessage(userInfo)
 //        // handle your message
