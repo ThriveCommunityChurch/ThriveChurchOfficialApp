@@ -2,6 +2,9 @@
 
 This application was creted by Thrive Community Church in Estero, FL for iPhone.
 
+### Current Coverage
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/93736df555dd47b5b6cbf4a6fa544949)](https://www.codacy.com/app/wyattbaggett/ThriveChurchOfficialApp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ThriveCommunityChurch/ThriveChurchOfficialApp&amp;utm_campaign=Badge_Grade)
+
 ## Download Instructions
 Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official-app/id1138008288?mt=8)
 **OR** search for *Thrive Church Official App* in the [*Apple iTunes*](https://www.apple.com/itunes/) Store.
@@ -39,11 +42,12 @@ For a full listing of features visit our [Website](http://thrive-fl.org).
 ## Support & Bug Reports
 Please visit http://thrive-fl.org/app-support/ to submit a Support Ticket OR you can post it as an issue to this repository.
 
-### Current Coverage
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/93736df555dd47b5b6cbf4a6fa544949)](https://www.codacy.com/app/wyattbaggett/ThriveChurchOfficialApp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ThriveCommunityChurch/ThriveChurchOfficialApp&amp;utm_campaign=Badge_Grade)
 
 ### Acknowledgements
 Thank you to everyone who uses this application, we made it for you - to help make taking notes and hearing the gospel message that much easier for you. Made with ❤
+
+## Contributing
+Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
 
 
 ## Version History
