@@ -34,22 +34,19 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-//SETTING UP MAP VIEW ----------------------------------------------------------
+    // initial viewDidLoad settings
     private func cameraSetup() {
-        //initial viewDidLoad settings
         directionsMapView.camera.altitude = 9000
         directionsMapView.camera.pitch = 0
         directionsMapView.camera.heading = 0
     }
     
     private func regionSetup() {
-        
         let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(26.448174, -81.816173), MKCoordinateSpanMake(0.05, 0.07))
         
         directionsMapView.setRegion(region, animated: true)
     }
 
-//BUTTONS-----------------------------------------------------------------------
     @IBAction func showTraffic(_ sender: AnyObject) {
         
         directionsMapView.showsTraffic = !directionsMapView.showsTraffic
@@ -64,7 +61,6 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
             }
         } else {
             // Open in Apple Maps anyways
-            
             let url = URL(string: "http://maps.apple.com/?daddr=" +
                 "Thrive+Community+Church&dirflg=d")
             
@@ -77,19 +73,16 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-// Opens in APPLE MAPS
+    // Opens in APPLE MAPS
     @IBAction func findRoute(_ sender: AnyObject) {
-        
         let url = URL(string: "http://maps.apple.com/?daddr=" +
             "Thrive+Community+Church&dirflg=d")
         
-            if UIApplication.shared.canOpenURL(url!){
-                     UIApplication.shared.openURL(url!)
+        if UIApplication.shared.canOpenURL(url!) {
+             UIApplication.shared.openURL(url!)
         }
-        else{
+        else {
             UIApplication.shared.openURL(url!)
         }
     }
-//BUTTONS ----------------------------------------------------------------------
-
 }
