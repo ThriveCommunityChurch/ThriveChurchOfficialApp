@@ -8,32 +8,21 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
-class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class DirectionsViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var directionsMapView: MKMapView!
-    let locationManager = CLLocationManager()
-    let geoCoder = CLGeocoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         directionsMapView.delegate = self
-        
-        // Locating User in the world to referance directions
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.directionsMapView.delegate = self
-        
         cameraSetup()
         regionSetup()
         
-        let thriveLocation = CLLocationCoordinate2DMake(26.448174, -81.816173)
-        
         // Dropping Pin
         let dropPin = MKPointAnnotation()
+        let thriveLocation = CLLocationCoordinate2DMake(26.448174, -81.816173)
         dropPin.coordinate = thriveLocation
         dropPin.title = "Thrive Community Church"
         dropPin.subtitle = "20041 S. Tamiami Trail #1, Estero, FL, 33928"
@@ -85,26 +74,6 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationM
             else{
                 UIApplication.shared.openURL(url!)
             }
-        }
-    }
-    
-    /*
-     Segue to users location - no matter where they are in the world
-     It might also beuseful if it would show users location and the Church in the same
-     view
-     */
-    @IBAction func getLocation(_ sender: AnyObject) {
-        
-        directionsMapView.showsUserLocation = !directionsMapView.showsUserLocation
-        
-        if directionsMapView.showsUserLocation == true {
-            directionsMapView.showsUserLocation = true
-            directionsMapView.camera.altitude = 60000
-            print("Displaying Location")
-        }
-        else {
-            directionsMapView.showsUserLocation = false
-            print("NOT Displaying Location")
         }
     }
     

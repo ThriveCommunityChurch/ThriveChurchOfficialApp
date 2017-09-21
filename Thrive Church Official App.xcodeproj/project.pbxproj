@@ -23,7 +23,6 @@
 		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */; };
 		DCCC096F1F68DEC5003395C0 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */; };
-		DCCC09711F68DF0F003395C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DCCC09721F68DF5D003395C0 /* Pods_Thrive_Church_Official_App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
@@ -278,8 +277,6 @@
 		DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		DC1E3EFB1F6AC94E00656C4B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		DC1E3EFD1F6AC94E00656C4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DC3835231F68D82600F05E8B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,7 +353,6 @@
 				41FCF7EF1CF21719006C366E /* Thrive Community Church */,
 				41FCF8061CF21719006C366E /* Thrive Community ChurchTests */,
 				41FCF8111CF21719006C366E /* Thrive Community ChurchUITests */,
-				DC1E3EFA1F6AC94E00656C4B /* Firebase-Messenger */,
 				41FCF7EE1CF21719006C366E /* Products */,
 				2BCCCAB7592EFC8351ADA4D8 /* Pods */,
 				C7C0921F61B47B791415949E /* Frameworks */,
@@ -582,15 +578,6 @@
 				DC01B8581F0494FF002784E7 /* MasterViewController.swift */,
 			);
 			path = Notes;
-			sourceTree = "<group>";
-		};
-		DC1E3EFA1F6AC94E00656C4B /* Firebase-Messenger */ = {
-			isa = PBXGroup;
-			children = (
-				DC1E3EFB1F6AC94E00656C4B /* NotificationService.swift */,
-				DC1E3EFD1F6AC94E00656C4B /* Info.plist */,
-			);
-			path = "Firebase-Messenger";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
