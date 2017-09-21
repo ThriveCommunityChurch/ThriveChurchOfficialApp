@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 
 class ContactModalViewController: UIViewController, MFMailComposeViewControllerDelegate {
+    // Unused at this point
     
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet var mainView: UIView!
