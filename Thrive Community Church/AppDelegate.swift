@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         
         // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
+        if let messageID = userInfo[/*gcmMessageIDKey*/] {
             print("Message ID: \(messageID)")
         }
         
