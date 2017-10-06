@@ -153,9 +153,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         
         // Print message ID.
-        if let messageID = userInfo[/*gcmMessageIDKey*/] {
-            print("Message ID: \(messageID)")
-        }
+        // GCM Message key must be imported from Firebase
+//        if let messageID = userInfo[/*gcmMessageIDKey*/] {
+//            print("Message ID: \(messageID)")
+//        }
         
         // Print full message.
         print(userInfo)
