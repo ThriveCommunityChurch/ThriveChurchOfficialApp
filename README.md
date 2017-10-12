@@ -48,6 +48,7 @@ Thank you to everyone who uses this application, we made it for you - to help ma
 
 ## Contributing
 Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
+**New Issues** - Please view our [ISSUE_TEMPLATE.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/ISSUE_TEMPLATE.md)
 
 
 ## Version History
