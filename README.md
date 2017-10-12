@@ -47,12 +47,12 @@ Please visit http://thrive-fl.org/app-support/ to submit a Support Ticket OR you
 Thank you to everyone who uses this application, we made it for you - to help make taking notes and hearing the gospel message that much easier for you. Made with ❤
 
 ## Contributing
-Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
-**New Issues** - Please view our [ISSUE_TEMPLATE.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/ISSUE_TEMPLATE.md)
+Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.                                                                                                     
+**New Issues** - Please view our [ISSUE_TEMPLATE.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/ISSUE_TEMPLATE.md) for easy issue submissions.
 
 
 ## Version History
-### 1.5.1 - Sept 15, 2017
+### 1.5.1 — Sept 15, 2017
 - Fixed the text area on the Notes tab
 - Fixed Translucent Navigation Bars
 - Support Token IDs when emailing support
