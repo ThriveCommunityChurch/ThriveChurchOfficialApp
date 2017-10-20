@@ -134,9 +134,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         print("Message Recieved")
     }
     
-//    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-//        print(remoteMessage.appData)
-//    }
+    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
     
 //*********************************************************************************************************************
     
