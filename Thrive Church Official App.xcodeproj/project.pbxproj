@@ -663,7 +663,7 @@
 				TargetAttributes = {
 					41FCF7EC1CF21719006C366E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = YHYRKB62QF;
+						DevelopmentTeam = 87ME42WJYA;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1143,7 +1143,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YHYRKB62QF;
+				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1166,7 +1166,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YHYRKB62QF;
+				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
