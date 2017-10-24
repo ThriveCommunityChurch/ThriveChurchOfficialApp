@@ -18,21 +18,10 @@ class SettingsViewController: UIViewController, UNUserNotificationCenterDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNotifView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func configureNotifView() {
-        notificationDescription.text = "Notifications Enabled"
-        notifImageView.image = #imageLiteral(resourceName: "notifications_EN")
-    }
-    
-    func disableNotifView() {
-        notificationDescription.text = "Notifications Disabled"
-        notifImageView.image = #imageLiteral(resourceName: "notifications_DIS")
     }
     
     @IBAction func limitCellular(_ sender: Any) {
@@ -52,34 +41,6 @@ class SettingsViewController: UIViewController, UNUserNotificationCenterDelegate
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func toggleNotifs(_ sender: Any) {
-        
-        if (notifSwitch.isOn) {
-            // Registering
-            if #available(iOS 10.0, *) {
-                // For iOS 10 display notification (sent via APNS)
-                UNUserNotificationCenter.current().delegate = self
-                
-                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                UNUserNotificationCenter.current().requestAuthorization(
-                    options: authOptions,
-                    completionHandler: {_, _ in })
-            } else {
-                let settings: UIUserNotificationSettings =
-                    UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-                UIApplication.shared.registerUserNotificationSettings(settings)
-            }
-            
-            UIApplication.shared.registerForRemoteNotifications()
-            // Takes a second so notify the user at the end
-            configureNotifView()
-        }
-        // else by itself caused issues
-        else if (!notifSwitch.isOn) {
-            disableNotifView()
-            UIApplication.shared.unregisterForRemoteNotifications()
-        }
-    }
     
     func goToSettings () {
         

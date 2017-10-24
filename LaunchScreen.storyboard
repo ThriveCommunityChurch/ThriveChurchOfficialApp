@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="175" id="S6T-7S-gdx"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="© 2018 Thrive Community Church                                    All Rights Reserved" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-eS-c1p">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="© 2018 Thrive Community Church                                                          All Rights Reserved" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-eS-c1p">
                                 <rect key="frame" x="0.0" y="600" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gMM-vl-Qei"/>
