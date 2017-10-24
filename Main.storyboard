@@ -5584,62 +5584,15 @@
                                                     <constraint firstItem="5q5-J6-yCk" firstAttribute="top" secondItem="FTI-oa-8lj" secondAttribute="top" constant="5" id="qH3-Vt-Ljj"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiD-Lc-06v">
-                                                <rect key="frame" x="0.0" y="177" width="375" height="50"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fg-3Y-NXQ">
-                                                        <rect key="frame" x="65" y="0.0" width="310" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="C0p-ba-99V"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dXa-VY-PK4">
-                                                        <rect key="frame" x="12" y="8" width="33" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="33" id="GoC-9s-ZyP"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXf-YG-3aH">
-                                                        <rect key="frame" x="318" y="9" width="51" height="31"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="31" id="DLk-Iz-dex"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <action selector="toggleNotifs:" destination="qjH-xO-GX6" eventType="valueChanged" id="xBf-Ga-Qrg"/>
-                                                        </connections>
-                                                    </switch>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="dXa-VY-PK4" firstAttribute="top" secondItem="BiD-Lc-06v" secondAttribute="top" constant="8" id="F85-kv-IDS"/>
-                                                    <constraint firstItem="dXa-VY-PK4" firstAttribute="leading" secondItem="BiD-Lc-06v" secondAttribute="leading" constant="12" id="HEo-qV-t9t"/>
-                                                    <constraint firstItem="AXf-YG-3aH" firstAttribute="top" secondItem="BiD-Lc-06v" secondAttribute="top" constant="9" id="Jz9-Lq-ZqZ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="AXf-YG-3aH" secondAttribute="bottom" constant="10" id="LL1-WM-bvR"/>
-                                                    <constraint firstItem="2Fg-3Y-NXQ" firstAttribute="leading" secondItem="dXa-VY-PK4" secondAttribute="trailing" constant="20" id="N4M-Gp-GZs"/>
-                                                    <constraint firstAttribute="bottom" secondItem="2Fg-3Y-NXQ" secondAttribute="bottom" id="StX-KQ-ykQ"/>
-                                                    <constraint firstItem="dXa-VY-PK4" firstAttribute="leading" secondItem="BiD-Lc-06v" secondAttribute="leading" constant="12" id="XjY-cm-afx"/>
-                                                    <constraint firstAttribute="trailing" secondItem="AXf-YG-3aH" secondAttribute="trailing" constant="8" id="b6t-0F-W9p"/>
-                                                    <constraint firstAttribute="bottom" secondItem="dXa-VY-PK4" secondAttribute="bottom" constant="9" id="hfO-ov-2pm"/>
-                                                    <constraint firstItem="AXf-YG-3aH" firstAttribute="trailing" secondItem="BiD-Lc-06v" secondAttribute="trailingMargin" id="pim-d7-m1L"/>
-                                                    <constraint firstItem="2Fg-3Y-NXQ" firstAttribute="top" secondItem="BiD-Lc-06v" secondAttribute="top" id="qOP-Ja-ma9"/>
-                                                    <constraint firstAttribute="trailing" secondItem="2Fg-3Y-NXQ" secondAttribute="trailing" id="yVy-Tj-Qaz"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="bjZ-cE-zja" secondAttribute="trailing" id="4YM-Ib-Urc"/>
-                                            <constraint firstItem="BiD-Lc-06v" firstAttribute="leading" secondItem="X3d-nh-b0n" secondAttribute="leading" id="72u-qY-pbk"/>
                                             <constraint firstItem="X3d-nh-b0n" firstAttribute="top" secondItem="bjZ-cE-zja" secondAttribute="bottom" constant="18" id="96V-yX-Vsc"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="trailing" secondItem="X3d-nh-b0n" secondAttribute="trailing" id="KeG-NK-D9B"/>
-                                            <constraint firstItem="BiD-Lc-06v" firstAttribute="top" secondItem="X3d-nh-b0n" secondAttribute="bottom" constant="1" id="Lus-tP-Fwm"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="top" secondItem="hXK-VM-bFQ" secondAttribute="top" constant="73" id="Uu7-J2-OBa"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="leading" secondItem="hXK-VM-bFQ" secondAttribute="leading" id="Zab-na-RCA"/>
                                             <constraint firstItem="bjZ-cE-zja" firstAttribute="leading" secondItem="X3d-nh-b0n" secondAttribute="leading" id="ba3-GX-HGD"/>
-                                            <constraint firstItem="BiD-Lc-06v" firstAttribute="trailing" secondItem="X3d-nh-b0n" secondAttribute="trailing" id="vOW-1S-xZc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -5662,11 +5615,6 @@
                             <constraint firstAttribute="bottom" secondItem="MdM-B9-U0f" secondAttribute="bottom" id="sgu-nb-PKB"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="notifImageView" destination="dXa-VY-PK4" id="dUj-lF-LiK"/>
-                        <outlet property="notifSwitch" destination="AXf-YG-3aH" id="iNt-v5-Gas"/>
-                        <outlet property="notificationDescription" destination="2Fg-3Y-NXQ" id="k4v-Fr-haf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsm-bf-UfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
