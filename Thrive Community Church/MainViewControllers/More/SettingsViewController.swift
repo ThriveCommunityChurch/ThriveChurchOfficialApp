@@ -7,13 +7,8 @@
 //
 
 import UIKit
-import UserNotifications
 
-class SettingsViewController: UIViewController, UNUserNotificationCenterDelegate {
-    
-    @IBOutlet weak var notificationDescription: UILabel!
-    @IBOutlet weak var notifImageView: UIImageView!
-    @IBOutlet weak var notifSwitch: UISwitch!
+class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
