@@ -5258,7 +5258,7 @@
                                                 <color key="textColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: 1.5.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1g-uJ-aJD" userLabel="App Version: 1.5">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1g-uJ-aJD" userLabel="App Version: 1.5">
                                                 <rect key="frame" x="-1" y="42" width="375" height="19"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -5307,7 +5307,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Every Sunday Morning at 9 &amp; 11" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-Hg-4rw">
+                                            <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Every Sunday Morning at 10 AM" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-Hg-4rw">
                                                 <rect key="frame" x="-1" y="233" width="374" height="40"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -5410,6 +5410,9 @@
                             <constraint firstItem="oQ0-iG-JkJ" firstAttribute="bottom" secondItem="Nzw-TI-LTV" secondAttribute="top" constant="49" id="juo-uW-NhG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="appVersion" destination="n1g-uJ-aJD" id="X9Y-J8-HLq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abv-fL-aJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5550,8 +5553,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3d-nh-b0n">
                                                 <rect key="frame" x="0.0" y="126" width="375" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limit Cellular Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTI-oa-8lj">
-                                                        <rect key="frame" x="65" y="0.0" width="310" height="50"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limit Cellular Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTI-oa-8lj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="bc5-8G-KkR"/>
                                                         </constraints>
@@ -5576,7 +5579,7 @@
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="5q5-J6-yCk" firstAttribute="top" secondItem="X3d-nh-b0n" secondAttribute="top" constant="5" id="CY2-aA-ppm"/>
-                                                    <constraint firstItem="FTI-oa-8lj" firstAttribute="leading" secondItem="5q5-J6-yCk" secondAttribute="trailing" constant="17" id="KbY-hk-Wkl"/>
+                                                    <constraint firstItem="FTI-oa-8lj" firstAttribute="leading" secondItem="5q5-J6-yCk" secondAttribute="trailing" constant="-48" id="KbY-hk-Wkl"/>
                                                     <constraint firstItem="5q5-J6-yCk" firstAttribute="leading" secondItem="X3d-nh-b0n" secondAttribute="leadingMargin" id="SnY-JX-Z1t"/>
                                                     <constraint firstAttribute="bottom" secondItem="5q5-J6-yCk" secondAttribute="bottom" constant="5" id="Wgc-uA-rjj"/>
                                                     <constraint firstItem="5q5-J6-yCk" firstAttribute="bottom" secondItem="FTI-oa-8lj" secondAttribute="bottom" constant="-5" id="fdR-pU-cnJ"/>
