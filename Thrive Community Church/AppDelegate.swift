@@ -156,13 +156,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 //        print("Title:\(title) + body:\(body)")
 //        self.showLocalAlert(title: title, message: body, buttonTitle: "Dismiss", window: self.window!)
 //    }
-//    
+//
 //    @available(iOS 10.0, *)
 //    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) {
 //        // If you set a member variable in didReceiveRemoteNotification, you will know if this is from closed or background
 //        print("Handle push from background or closed\(response.notification.request.content.userInfo)")
 //    }
-//    
+//
 //    // Show local notif if the application is in the Foreground
 //    func showLocalAlert(title: String, message: String, buttonTitle: String, window: UIWindow) {
 //        print("Foreground?")
