@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController {
         
         masterView = self
         // Called when the user Taps "Notes" icon -- buttons are all added before the segue
-        load() // CRASH on iPhone X?
+        load()
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
@@ -36,19 +36,26 @@ class MasterViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
-        save()
-        
         // MARK: Back Button
         // Gets called when the user is returning from writing a note
+        
+        if objects.count == 0 {
+            insertNewObject(self)
+        }
+        
+        save()
+        /*
+         Adding insert new object here in this method is not working - creates an inifinte loop
+         of creating a new table item - but keeps copying the text from other notes to the new one
+         
+        */
         super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if objects.count == 0 {
-            insertNewObject(self)
-        }
-        save()
+        // Use something like this to check if there are
+         print("Notes - will appear (Master)")
         //segue to the table view has been made
         //interactrion is possible now with the UITableView interface
         
@@ -61,6 +68,7 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Adds new object & changes name of the string of Master following the segue back
     @objc func insertNewObject(_ sender: AnyObject) {
         save()
         
@@ -85,7 +93,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             
-            //INIT NOTE #3 - Nothing Still --- may happen after this tho
+            //INIT NOTE #3 - Nothing Still --- may happen after this though
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 
                 let object = objects[(indexPath as NSIndexPath).row]
@@ -136,7 +144,7 @@ class MasterViewController: UITableViewController {
         }
         else if editingStyle == .insert {
             // Create a new instance of the appropriate class,
-            //insert it into the array, and add a new row to the table view.
+            // insert it into the array, and add a new row to the table view.
         }
     }
     

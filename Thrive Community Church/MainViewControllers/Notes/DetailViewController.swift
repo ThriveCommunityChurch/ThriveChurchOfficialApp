@@ -127,6 +127,7 @@ class ActivityForNotesViewController: UIActivityViewController {
             UIActivityType.postToWeibo,
             UIActivityType.postToFlickr,
             UIActivityType.postToVimeo,
+            UIActivityType.postToTencentWeibo,
             "com.google.Drive.ShareExtension",
             "com.apple.mobileslideshow.StreamShareService"
         ] as [Any]
