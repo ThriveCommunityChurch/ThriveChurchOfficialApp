@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,45 +15,44 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="tCH-Cb-Cud"/>
+                        <viewControllerLayoutGuide type="bottom" id="oLt-Ce-rmU"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="xTm-bL-bIm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LauchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="MMT-4E-S0J">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LauchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-At-Wrm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThriveCirclesWhite" translatesAutoresizingMaskIntoConstraints="NO" id="DMS-Yv-w3G">
-                                <rect key="frame" x="100" y="110" width="175" height="175"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThriveCirclesWhite" translatesAutoresizingMaskIntoConstraints="NO" id="5iv-WB-rYh">
+                                <rect key="frame" x="82" y="124" width="210" height="210"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="S6T-7S-gdx"/>
+                                    <constraint firstAttribute="height" constant="210" id="LiS-Eg-2lv"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="© 2018 Thrive Community Church                                                          All Rights Reserved" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-eS-c1p">
-                                <rect key="frame" x="0.0" y="600" width="375" height="50"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="© 2018 Thrive Community Church                                                          All Rights Reserved" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="35s-QM-jPx">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="gMM-vl-Qei"/>
+                                    <constraint firstAttribute="height" constant="50" id="xyo-0I-vq9"/>
                                 </constraints>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.298828125" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.37392715669014087" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MMT-4E-S0J" firstAttribute="centerX" secondItem="DMS-Yv-w3G" secondAttribute="centerX" id="AEY-0m-2PG"/>
-                            <constraint firstItem="MVD-eS-c1p" firstAttribute="trailing" secondItem="MMT-4E-S0J" secondAttribute="trailing" id="BIg-IH-PoZ"/>
-                            <constraint firstItem="MVD-eS-c1p" firstAttribute="leading" secondItem="MMT-4E-S0J" secondAttribute="leading" id="FRq-ox-otT"/>
-                            <constraint firstItem="DMS-Yv-w3G" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="90" id="JIm-GO-riK"/>
-                            <constraint firstItem="DMS-Yv-w3G" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="N0N-cN-LrM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DMS-Yv-w3G" secondAttribute="trailing" constant="84" id="N0a-jT-XGu"/>
-                            <constraint firstItem="DMS-Yv-w3G" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="84" id="Qot-Ec-rZD"/>
-                            <constraint firstItem="MMT-4E-S0J" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Riu-NA-3p8"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="MVD-eS-c1p" secondAttribute="bottom" constant="17" id="XoY-FH-Xra"/>
-                            <constraint firstItem="MMT-4E-S0J" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="nj7-Ff-fFv"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="DMS-Yv-w3G" secondAttribute="bottom" constant="382" id="vYg-bt-GWB"/>
-                            <constraint firstItem="MMT-4E-S0J" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="vjD-C8-kXx"/>
+                            <constraint firstItem="35s-QM-jPx" firstAttribute="leading" secondItem="mK0-At-Wrm" secondAttribute="leading" id="0xN-aI-gSF"/>
+                            <constraint firstItem="5iv-WB-rYh" firstAttribute="centerX" secondItem="35s-QM-jPx" secondAttribute="centerX" id="E3S-Rg-PyM"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="mK0-At-Wrm" secondAttribute="bottom" constant="-43" id="GTk-NB-xfV"/>
+                            <constraint firstItem="oLt-Ce-rmU" firstAttribute="top" secondItem="35s-QM-jPx" secondAttribute="bottom" id="Jci-Xc-qiu"/>
+                            <constraint firstItem="mK0-At-Wrm" firstAttribute="leading" secondItem="xTm-bL-bIm" secondAttribute="leading" id="Lej-fb-afl"/>
+                            <constraint firstItem="35s-QM-jPx" firstAttribute="trailing" secondItem="mK0-At-Wrm" secondAttribute="trailing" id="c8Z-le-zkJ"/>
+                            <constraint firstItem="mK0-At-Wrm" firstAttribute="top" secondItem="xTm-bL-bIm" secondAttribute="top" id="dPZ-vi-bl1"/>
+                            <constraint firstItem="5iv-WB-rYh" firstAttribute="top" secondItem="tCH-Cb-Cud" secondAttribute="bottom" constant="104" id="gMY-z1-Zgv"/>
+                            <constraint firstAttribute="trailing" secondItem="mK0-At-Wrm" secondAttribute="trailing" id="q12-ec-NkS"/>
+                            <constraint firstItem="5iv-WB-rYh" firstAttribute="leading" secondItem="xTm-bL-bIm" secondAttribute="leadingMargin" constant="66" id="x82-62-Kwr"/>
                         </constraints>
                     </view>
                 </viewController>
