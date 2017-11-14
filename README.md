@@ -54,6 +54,7 @@ Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurch
 ### 1.6  —  TBD
 - UI Improvements
 - Supports iPhone X
+- Stability Improvements
 
 ### 1.5  —  August 27, 2017
 - Major UI Overhaul
