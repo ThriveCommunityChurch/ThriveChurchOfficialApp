@@ -55,6 +55,8 @@ Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurch
 - UI Improvements
 - Supports iPhone X
 - Stability Improvements
+- Fixed a bug where the first note made following installation was not saved properly
+- Fixed application crash for some devices running iOS 9
 
 ### 1.5  —  August 27, 2017
 - Major UI Overhaul
