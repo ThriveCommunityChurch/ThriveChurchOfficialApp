@@ -31,7 +31,6 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 For a full listing of features visit our [Website](http://thrive-fl.org).
 
 ## Authors
-
 [**Wyatt Baggett**](https://github.com/ksigWyatt) - *Lead Designer and Developer* 
 
 ### Testing Team
@@ -48,7 +47,6 @@ Thank you to everyone who uses this application, we made it for you - to help ma
 
 ## Contributing
 Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
-
 
 ## Version History
 ### 1.6  —  TBD
