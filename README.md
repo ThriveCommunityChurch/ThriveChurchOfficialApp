@@ -56,7 +56,7 @@ Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurch
 - Fixed a bug where the first note made following installation was not saved properly
 - Fixed application crash for some devices running on iOS 9
 
-### 1.5.1 - Sept 15, 2017
+### 1.5.1 — Sept 15, 2017
 - Fixed the text area on the Notes tab
 - Fixed Translucent Navigation Bars
 - Support Token IDs when emailing support
