@@ -49,7 +49,7 @@ Thank you to everyone who uses this application, we made it for you - to help ma
 Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
 
 ## Version History
-### 1.6  —  November 18, 2017
+### 1.6  —  Nov 18, 2017
 - UI Improvements
 - Supports iPhone X
 - Stability Improvements
@@ -61,7 +61,7 @@ Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurch
 - Fixed Translucent Navigation Bars
 - Support Token IDs when emailing support
 
-### 1.5  —  August 27, 2017
+### 1.5  —  Aug 27, 2017
 - Major UI Overhaul
 - Improvements to the User Experience
 - iOS 11 Support
