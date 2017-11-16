@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +35,7 @@ class SettingsViewController: UIViewController {
                                     handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
     
     func goToSettings () {
         

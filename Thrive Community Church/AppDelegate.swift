@@ -18,14 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+        launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         print("Application is Active")
         
-        // Use Firebase library to configure APIs
-        FirebaseApp.configure()
-        
-        // Registering notifications
+//        // Registering notifications
 //        if #available(iOS 10.0, *) {
 //            // For iOS 10 display notification (sent via APNS)
 //            UNUserNotificationCenter.current().delegate = self
@@ -34,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 //            UNUserNotificationCenter.current().requestAuthorization(
 //                options: authOptions,
 //                completionHandler: {_, _ in })
+//
+//            // For iOS 10 data message (sent via FCM)
+//            //FIRMessaging.messaging().remoteMessageDelegate = self
+//
 //        } else {
 //            let settings: UIUserNotificationSettings =
 //                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -44,17 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 //
 //        let token = Messaging.messaging().fcmToken
 //        print("FCM token: \(token ?? "")")
-        
-        // End registration
+//
+//        //End registration
+//        // Use Firebase library to configure APIs
+//        FirebaseApp.configure()
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             print("Setting the player to play no matter what")
             
-            // Uncommenting this didn't help allow for the Notifications to come through
-            // it must be something to do with the Certificates
             UIApplication.shared.beginReceivingRemoteControlEvents()
-            //print("Enabling Remote Control Events")
+            print("Enabling Remote Control Events")
         }
         catch {
             // report for an error
@@ -117,29 +119,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         print("does this work? \(rc1.rawValue)")
     }
     
-//*****************************************PushNotifications***********************************************************
-    
-//    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-//        print("Firebase registration token: \(fcmToken)")
-//    }
-//
-//    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-//        print(remoteMessage.appData)
-//    }
-    
-    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-        print("The message is: \(remoteMessage.appData)")
-        
+    // FCM Token was updated - Firebase
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
     }
     
-//    private func application(application: UIApplication, didReceiveRemoteNotification
-//        userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler:
-//                                                (UIBackgroundFetchResult) -> Void) {
-//        // Let FCM know about the message for analytics etc.
-//        Messaging.messaging().appDidReceiveMessage(userInfo)
-//        // handle your message
+    // Provide APNSToken
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        var token = ""
+        for i in 0..<deviceToken.count {
+            token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
+        }
+        print("Registration succeeded! Token: ", token)
+    }
+    
+    // Failed Notifs registration
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Registration failed!")
+    }
+    
+//*****************************************Recieve Notifications***********************
+    
+//    // Firebase notification received
+//    @available(iOS 10.0, *)
+//    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification,
+//                withCompletionHandler completionHandler: @escaping (_ options: UNNotificationPresentationOptions) -> Void) {
+//
+//        // Handle push while app is in the foreground
+//        print("Handle push from foreground\(notification.request.content.userInfo)")
+//
+//        let dict = notification.request.content.userInfo["aps"] as! NSDictionary
+//        let d : [String : Any] = dict["alert"] as! [String : Any]
+//        let body : String = d["body"] as! String
+//        let title : String = d["title"] as! String
+//        print("Title:\(title) + body:\(body)")
+//        self.showLocalAlert(title: title, message: body, buttonTitle: "Dismiss", window: self.window!)
+//    }
+//
+//    @available(iOS 10.0, *)
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) {
+//        // If you set a member variable in didReceiveRemoteNotification, you will know if this is from closed or background
+//        print("Handle push from background or closed\(response.notification.request.content.userInfo)")
+//    }
+//
+//    // Show local notif if the application is in the Foreground
+//    func showLocalAlert(title: String, message: String, buttonTitle: String, window: UIWindow) {
+//        print("Foreground?")
+//        let alert = UIAlertController(title: title,
+//                                      message: message,
+//                                      preferredStyle: UIAlertControllerStyle.alert)
+//        alert.addAction(UIAlertAction(title: buttonTitle,
+//                                      style: UIAlertActionStyle.default,
+//                                      handler: nil))
+//        window.rootViewController?.present(alert, animated: true,
+//                                      completion: nil)
 //    }
     
-//*********************************************************************************************************************
+//*************************************************************************************
     
 }

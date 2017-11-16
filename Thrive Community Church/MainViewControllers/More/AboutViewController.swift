@@ -11,10 +11,12 @@ import MessageUI
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var appVersion: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        appVersion.text = "App Version: " + version()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,5 +61,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        //let build = dictionary["CFBundleVersion"] as! String
+        return "\(version)"
     }
 }
