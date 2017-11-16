@@ -46,7 +46,7 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
         
         let tel = 2396873430 as UInt32
         if let url = URL(string: "tel://\(tel)"){
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             print("Calling")
         }
     }
