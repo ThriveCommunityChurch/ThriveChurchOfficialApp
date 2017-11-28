@@ -112,6 +112,12 @@ class DetailViewController: UIViewController {
         masterView?.save()
         masterView?.tableView.reloadData()
     }
+    
+    // Upload note to Firebase
+    @IBAction func uploadToCloud(_ sender: Any) {
+        print("saving")
+        
+    }
 }
 
 class ActivityForNotesViewController: UIActivityViewController {
