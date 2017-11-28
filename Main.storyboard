@@ -8219,7 +8219,11 @@
                                     <action selector="share:" destination="M2B-Gu-18A" id="X7f-ng-0on"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Save" id="r4F-ik-4Hr"/>
+                            <barButtonItem image="UploadToCloud" id="r4F-ik-4Hr">
+                                <connections>
+                                    <action selector="uploadToCloud:" destination="M2B-Gu-18A" id="sLM-FU-ygh"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -8254,34 +8258,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Quk-Mk-tMU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="5" reuseIdentifier="Cell" id="Quk-Mk-tMU">
                                 <rect key="frame" x="0.0" y="22" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Quk-Mk-tMU" id="4QW-9T-jfz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC6-0w-MG3">
-                                            <rect key="frame" x="16" y="0.0" width="310" height="50"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC6-0w-MG3">
+                                            <rect key="frame" x="8" y="0.0" width="360" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cyc-yX-9hd">
-                                            <rect key="frame" x="322" y="-1" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="CJ3-9O-BQA"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="top" secondItem="4QW-9T-jfz" secondAttribute="top" id="0oa-LN-B72"/>
-                                        <constraint firstItem="Cyc-yX-9hd" firstAttribute="centerY" secondItem="4QW-9T-jfz" secondAttribute="centerY" id="RJP-lD-Kk9"/>
-                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="leading" secondItem="4QW-9T-jfz" secondAttribute="leadingMargin" id="fb5-qA-Lod"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Cyc-yX-9hd" secondAttribute="trailing" constant="-13" id="jUN-LV-A5q"/>
-                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="centerY" secondItem="4QW-9T-jfz" secondAttribute="centerY" id="jwZ-nn-XgT"/>
-                                        <constraint firstItem="Cyc-yX-9hd" firstAttribute="top" secondItem="4QW-9T-jfz" secondAttribute="topMargin" constant="-12" id="nOA-zS-FJ9"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="cC6-0w-MG3" secondAttribute="trailing" constant="33" id="tpI-DD-kNa"/>
+                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="centerY" secondItem="4QW-9T-jfz" secondAttribute="centerY" id="Dkg-yP-3VQ"/>
+                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="centerX" secondItem="4QW-9T-jfz" secondAttribute="centerX" id="Mdj-LL-n6H"/>
+                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="top" secondItem="4QW-9T-jfz" secondAttribute="top" id="bUb-8x-H1j"/>
+                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="leading" secondItem="4QW-9T-jfz" secondAttribute="leadingMargin" constant="-8" id="vGP-1U-Leo"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -8359,6 +8355,7 @@
         <image name="Made By" width="833" height="132"/>
         <image name="More" width="27" height="7"/>
         <image name="ThriveLogo" width="29" height="28"/>
+        <image name="UploadToCloud" width="25" height="23"/>
         <image name="facebook_white" width="30" height="30"/>
         <image name="instagram_white" width="30" height="30"/>
         <image name="notes" width="25" height="25"/>
