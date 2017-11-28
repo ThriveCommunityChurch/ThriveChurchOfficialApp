@@ -8266,7 +8266,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC6-0w-MG3">
-                                            <rect key="frame" x="8" y="0.0" width="360" height="50"/>
+                                            <rect key="frame" x="8" y="0.0" width="367" height="50"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                             <nil key="textColor"/>
@@ -8275,7 +8275,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="cC6-0w-MG3" firstAttribute="centerY" secondItem="4QW-9T-jfz" secondAttribute="centerY" id="Dkg-yP-3VQ"/>
-                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="centerX" secondItem="4QW-9T-jfz" secondAttribute="centerX" id="Mdj-LL-n6H"/>
+                                        <constraint firstItem="cC6-0w-MG3" firstAttribute="centerX" secondItem="4QW-9T-jfz" secondAttribute="centerX" constant="4" id="Mdj-LL-n6H"/>
                                         <constraint firstItem="cC6-0w-MG3" firstAttribute="top" secondItem="4QW-9T-jfz" secondAttribute="top" id="bUb-8x-H1j"/>
                                         <constraint firstItem="cC6-0w-MG3" firstAttribute="leading" secondItem="4QW-9T-jfz" secondAttribute="leadingMargin" constant="-8" id="vGP-1U-Leo"/>
                                     </constraints>
