@@ -11,7 +11,6 @@ import AVFoundation
 import CoreVideo
 import MediaPlayer
 import Firebase
-import FirebaseDatabase
 import UserNotifications
 
 @UIApplicationMain
@@ -24,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         // Override point for customization after application launch.
         print("Application is Active")
         
-//        // Registering notifications
-        // For iOS 10 display notification (sent via APNS)
+        // Notifications
         UNUserNotificationCenter.current().delegate = self
 
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -35,16 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
         application.registerForRemoteNotifications()
 
-        let token = Messaging.messaging().fcmToken
-//
-//        //End registration
-//        // Use Firebase library to configure APIs
+        // Use Firebase library to configure APIs
         FirebaseApp.configure()
-        
-        var ref: DatabaseReference!
-        
-        ref = Database.database().reference()
-        print("Ref = \(ref)")
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
