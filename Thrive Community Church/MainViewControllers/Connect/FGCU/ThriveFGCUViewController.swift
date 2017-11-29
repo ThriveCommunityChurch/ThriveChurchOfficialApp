@@ -25,10 +25,10 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
         let url = URL(string: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
         
         if UIApplication.shared.canOpenURL(url!){
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
         else{
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
     }
     

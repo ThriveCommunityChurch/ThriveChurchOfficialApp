@@ -157,13 +157,11 @@ class MasterViewController: UITableViewController {
             return
         }
         save()
-        
     }
     
     override func tableView(_ tableView: UITableView,
                                 didEndEditingRowAt indexPath: IndexPath?) {
         save()
-        
     }
     
     func save() {
