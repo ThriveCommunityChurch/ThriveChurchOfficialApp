@@ -120,48 +120,7 @@ class DetailViewController: UIViewController {
     @IBAction func uploadToCloud(_ sender: Any) {
         
         if(notLoggedIn == true) {
-            let alert = UIAlertController(title: "Please Login",
-                                          message: "Enter a username and Password",
-                                          preferredStyle: .alert)
-            
-            // Add the text fields
-            alert.addTextField { (username: UITextField) in
-                username.keyboardAppearance = .dark
-                username.keyboardType = .default
-                username.autocorrectionType = .default
-                username.placeholder = "Username"
-            }
-            alert.addTextField{(password: UITextField) in
-                password.keyboardAppearance = .dark
-                password.keyboardType = .default
-                password.placeholder = "Password"
-                password.isSecureTextEntry = true
-            }
-            
-            // submit button
-            let loginAction = UIAlertAction(title: "Submit",
-                                            style: .default,
-                                            handler: { (action) -> Void in
-                                                
-                // Get entered text
-                let usernameTxt = alert.textFields![0]
-                let passwordTxt = alert.textFields![1]
-                
-                // send this to the DB
-                self.ref = Database.database().reference()
-                self.ref.child("users").setValue(["username": usernameTxt])
-                self.ref.child("users").setValue(["password": passwordTxt])
-                                                
-                print("USERNAME: \(usernameTxt.text!)\nPASSWORD: \(passwordTxt.text!)")
-                self.notLoggedIn = false
-            })
-            
-            let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-            
-            // Add buttons & present
-            alert.addAction(loginAction)
-            alert.addAction(cancel)
-            present(alert, animated: true, completion: nil)
+            registerForFirebase()
         }
         else{
             
