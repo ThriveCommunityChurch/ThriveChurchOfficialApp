@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class DetailViewController: UIViewController {
     
+    // detailDescView = Note area
     @IBOutlet weak var detailDescriptionLabel: UITextView!
     var notLoggedIn = true
     var ref: DatabaseReference!
@@ -43,7 +44,6 @@ class DetailViewController: UIViewController {
             // Update the view.
             saveAndUpdate()
             self.configureView()
-            
         }
     }
     
@@ -117,16 +117,16 @@ class DetailViewController: UIViewController {
     }
     
     // Upload note to Firebase
+    // TODO: I'll need to make sure that part of the note here isn't deleted
     @IBAction func uploadToCloud(_ sender: Any) {
-        
-        if(notLoggedIn == true) {
-            registerForFirebase()
-        }
-        else{
+        // Update the label before storing the value -- otherwise there will be a ton of
+        // notes with "New Note" in the DB
+        objects[currentIndex] = detailDescriptionLabel.text
+        let labelText = objects[currentIndex]
             
-        }
+        uploadToFirebase(label: labelText)
         
-        
+        saveAndUpdate()
     }
 }
 
