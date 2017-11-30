@@ -19,7 +19,8 @@ extension DetailViewController {
             let key = self.ref.childByAutoId().key
                                             
             let note = ["id":key,
-                        "note": detailDescriptionLabel.text!
+                        "note": detailDescriptionLabel.text!,
+                        "takenBy": UUID().uuidString
             ]
         
             //adding the note inside the generated key
