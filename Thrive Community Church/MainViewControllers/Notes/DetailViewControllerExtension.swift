@@ -12,53 +12,17 @@ import Firebase
 extension DetailViewController {
     
     // Might change this to be something using Auth instead - but in the meantime this works
-    func registerForFirebase() {
-        let alert = UIAlertController(title: "Please Login",
-                                      message: "Enter a username and Password",
-                                      preferredStyle: .alert)
-        
-        // Add the text fields
-        alert.addTextField { (username: UITextField) in
-            username.keyboardAppearance = .dark
-            username.keyboardType = .default
-            username.autocorrectionType = .default
-            username.placeholder = "Username"
-        }
-        alert.addTextField{(password: UITextField) in
-            password.keyboardAppearance = .dark
-            password.keyboardType = .default
-            password.placeholder = "Password"
-            password.isSecureTextEntry = true
-        }
-        
-        // submit button
-        let loginAction = UIAlertAction(title: "Submit",
-                                        style: .default,
-                                        handler: { (action) -> Void in
-                                            
-            // Get entered text
-            let usernameTxt = alert.textFields![0]
-            let passwordTxt = alert.textFields![1]
+    func uploadToFirebase(label: String) {
             
             // send this to the DB
-            self.ref = Database.database().reference().child("users")
+            self.ref = Database.database().reference().child("notes")
             let key = self.ref.childByAutoId().key
                                             
-            let user = ["id":key,
-                        "username": usernameTxt.text!,
-                        "password": passwordTxt.text!
+            let note = ["id":key,
+                        "label": label,
+                        "note": detailDescriptionLabel.text!
             ]
             //adding the artist inside the generated unique key
-            self.ref.child(key).setValue(user)
-            
-            self.notLoggedIn = false
-        })
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        // Add buttons & present
-        alert.addAction(loginAction)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
+            self.ref.child(key).setValue(note)
     }
 }
