@@ -134,10 +134,12 @@ class MasterViewController: UITableViewController {
         return true
     }
     
+    // TODO: Find where the deletion is made
     override func tableView(_ tableView: UITableView, commit
                                         editingStyle: UITableViewCellEditingStyle,
                                         forRowAt indexPath: IndexPath) {
         
+        // Possibly here is where the deletion is made - kinda obvious
         if editingStyle == .delete {
             objects.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .fade)
