@@ -117,18 +117,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func uploadToCloud(_ sender: Any) {
-        // Update the label before storing the value -- otherwise there will be a ton of
-        // notes with "New Note" in the DB
-        
-        objects[currentIndex] = detailDescriptionLabel.text
-        /* On second thouht It might have to be clipped down to 42 plus an elipses
-            That might be on purpose though because the label text is that way specifically
-            because it all doesn't fit on the one line of the tableViewCell
-        */
-        
-        let labelText = objects[currentIndex]
-            
-        uploadToFirebase(label: labelText)
+        uploadToFirebase()
         saveAndUpdate()
     }
 }
