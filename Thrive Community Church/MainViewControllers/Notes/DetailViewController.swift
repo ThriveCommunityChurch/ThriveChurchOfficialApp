@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     var notLoggedIn = true
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle! = nil // I think that's right?
+    let currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class DetailViewController: UIViewController {
             if auth.currentUser != nil {
                 // User is signed in.
             } else {
-                // No user is signed in.
+                // Or login -- if their email is not on file
                 self.createAccount()
             }
         }

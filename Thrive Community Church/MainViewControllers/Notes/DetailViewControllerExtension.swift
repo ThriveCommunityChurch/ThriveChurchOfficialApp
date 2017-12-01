@@ -20,15 +20,21 @@ extension DetailViewController {
                                             
             let note = ["id":key,
                         "note": detailDescriptionLabel.text!,
-                        "takenBy": UUID().uuidString
+                        "takenBy": currentUser?.uid
             ]
         
             //adding the note inside the generated key
             self.ref.child(key).setValue(note)
     }
     
+    func loginToAccount() {
+//        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+//            // ...
+//        }
+    }
+    
     func createAccount() {
-        let alert = UIAlertController(title: "Create an account",
+        let alert = UIAlertController(title: "Please Login",
                                       message: "Your notes will be saved after you login.",
                                       preferredStyle: .alert)
         
@@ -53,7 +59,6 @@ extension DetailViewController {
             let passwordTxt = alert.textFields![1]
             
             self.register(email: emailTxt.text!, password: passwordTxt.text!)
-            print("USERNAME: \(emailTxt.text!)\nPASSWORD: \(passwordTxt.text!)")
         })
         
         // Cancel button
@@ -68,11 +73,10 @@ extension DetailViewController {
         if email == "" {
             let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
             
-//            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-//                self.createAccount()
-//            })
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                self.createAccount()
+            })
             
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             
             present(alertController, animated: true, completion: nil)
@@ -87,7 +91,9 @@ extension DetailViewController {
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
+                        self.createAccount()
+                    })
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
