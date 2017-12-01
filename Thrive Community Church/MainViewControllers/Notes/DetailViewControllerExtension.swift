@@ -101,6 +101,7 @@ extension DetailViewController {
             }
         }
     }
+    
 }
 
 class ActivityForNotesViewController: UIActivityViewController {
