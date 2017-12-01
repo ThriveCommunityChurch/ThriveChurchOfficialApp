@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UITextView!
     var notLoggedIn = true
     var ref: DatabaseReference!
+    var handle: AuthStateDidChangeListenerHandle! = nil // I think that's right?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,22 @@ class DetailViewController: UIViewController {
         // segue
         //INIT NOTE #8 - I assume that this is where the code stops.
         // Since no other funcs are called after config
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Listen for Auth State changes
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print(user?.displayName)
+            
+            if auth.currentUser != nil {
+                // User is signed in.
+            } else {
+                // No user is signed in.
+                self.createAccount()
+            }
+        }
     }
     
     var detailItem: AnyObject? {
@@ -87,6 +104,9 @@ class DetailViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        // End listener for Auth
+        Auth.auth().removeStateDidChangeListener(handle!)
+        
         /*
          BINGO! - this is called when there is no note in the TableView
          this is also not called at any time before the user hits back after typing
@@ -118,37 +138,5 @@ class DetailViewController: UIViewController {
     @IBAction func uploadToCloud(_ sender: Any) {
         uploadToFirebase()
         saveAndUpdate()
-    }
-}
-
-class ActivityForNotesViewController: UIActivityViewController {
-    
-    //Remove actions that we do not want the user to be able to share via
-    // these are intentionally marked because the media is Text
-    internal func _shouldExcludeActivityType(_ activity: UIActivity) -> Bool {
-        let activityTypesToExclude = [
-            "com.apple.reminders.RemindersEditorExtension",
-            UIActivityType.openInIBooks,
-            UIActivityType.print,
-            UIActivityType.assignToContact,
-            UIActivityType.postToWeibo,
-            UIActivityType.postToFlickr,
-            UIActivityType.postToVimeo,
-            UIActivityType.postToTencentWeibo,
-            "com.google.Drive.ShareExtension",
-            "com.apple.mobileslideshow.StreamShareService"
-        ] as [Any]
-        
-        if let actType = activity.activityType {
-            if activityTypesToExclude.contains(where: { (Any) -> Bool in
-                return true
-            }) {
-                return true
-            }
-            else if super.excludedActivityTypes != nil {
-                return super.excludedActivityTypes!.contains(actType)
-            }
-        }
-        return false
     }
 }
