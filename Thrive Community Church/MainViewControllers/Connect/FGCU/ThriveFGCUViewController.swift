@@ -38,7 +38,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 //        let systemVersion = UIDevice.current.systemVersion
         
         if MFMailComposeViewController.canSendMail() {
-            let uuid = String(UUID().uuidString.characters.suffix(4))
+            let uuid = String(UUID().uuidString.suffix(4))
             
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
