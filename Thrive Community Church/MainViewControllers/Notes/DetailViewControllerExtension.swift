@@ -32,7 +32,6 @@ extension DetailViewController {
                                       message: "Your notes will be saved after you login.",
                                       preferredStyle: .alert)
         
-        // Add 1 textField (for username)
         alert.addTextField { (emailField: UITextField) in
             emailField.keyboardAppearance = .dark
             emailField.keyboardType = .default
