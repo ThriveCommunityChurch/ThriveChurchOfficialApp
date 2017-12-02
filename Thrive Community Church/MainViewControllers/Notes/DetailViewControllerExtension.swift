@@ -14,20 +14,46 @@ extension DetailViewController {
     // Might change this to be something using Auth instead - but in the meantime this works
     func uploadToFirebase() {
             
-            // send this to the DB
-            self.ref = Database.database().reference().child("notes")
-            let key = self.ref.childByAutoId().key
+        // send this to the DB
+        self.ref = Database.database().reference().child("notes")
+        let key = self.ref.childByAutoId().key
+    
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+    
+        // THis isn't working as you'd expect becasue the key is changed each time the user hits the button
+//        self.ref.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//            // '(hasChild:) Must be a non-empty string and not contain '.' '#' '$' '[' or ']''
+//            if snapshot.hasChild("note"){
+//                print("Note Exists!")
+//                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//            }
+//            else {
+//                print("Uploaded to FB DB")
+//                let note = ["id":key,
+//                            "note": self.detailDescriptionLabel.text!,
+//                            "takenBy": uid
+//                ]
+//
+//                //adding the note inside the generated key
+//                self.ref.child(key).setValue(note)
+//                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//            }
+//        })
         
-            let user = Auth.auth().currentUser
-            let uid = user?.uid
-                                            
-            let note = ["id":key,
-                        "note": detailDescriptionLabel.text!,
-                        "takenBy": uid
-            ]
+        // Lets get this logic down before we start uploading a ton of random notes for no reason
+        self.ref.child("id").child("note").observe(.value, with: { (snapshot) in
+            if(snapshot.exists()) {
+                print("Note is present")
+            }
+            else {
+                print("No note is present")
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
-            //adding the note inside the generated key
-            self.ref.child(key).setValue(note)
     }
     
     func loginToAccount() {

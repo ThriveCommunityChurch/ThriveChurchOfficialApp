@@ -11,11 +11,13 @@ import Firebase
 
 class DetailViewController: UIViewController {
     
+    
     // detailDescView = Note area
     @IBOutlet weak var detailDescriptionLabel: UITextView!
     var notLoggedIn = true
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle! = nil // I think that's right?
+    @IBOutlet weak var uploadButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
