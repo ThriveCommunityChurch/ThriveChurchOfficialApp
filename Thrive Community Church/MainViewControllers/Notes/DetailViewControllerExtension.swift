@@ -17,10 +17,13 @@ extension DetailViewController {
             // send this to the DB
             self.ref = Database.database().reference().child("notes")
             let key = self.ref.childByAutoId().key
+        
+            let user = Auth.auth().currentUser
+            let uid = user?.uid
                                             
             let note = ["id":key,
                         "note": detailDescriptionLabel.text!,
-                        "takenBy": currentUser?.uid
+                        "takenBy": uid
             ]
         
             //adding the note inside the generated key
