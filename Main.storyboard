@@ -8101,6 +8101,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="fgc-hV-EBm" id="gYR-66-TDT"/>
+                        <outlet property="uploadButton" destination="r4F-ik-4Hr" id="AGL-88-gR6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoR-nq-MLa" sceneMemberID="firstResponder"/>
