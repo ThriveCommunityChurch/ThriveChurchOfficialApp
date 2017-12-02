@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     var notLoggedIn = true
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle! = nil // I think that's right?
-    let currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +44,8 @@ class DetailViewController: UIViewController {
         
         // Listen for Auth State changes
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print(user?.displayName)
             
-            if auth.currentUser != nil {
+            if Auth.auth().currentUser != nil {
                 // User is signed in.
             } else {
                 // Or login -- if their email is not on file

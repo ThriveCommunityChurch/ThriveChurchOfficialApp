@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
         application.registerForRemoteNotifications()
 
-        // Use Firebase library to configure APIs
+        // Use Firebase
         FirebaseApp.configure()
         
         do {
