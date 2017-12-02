@@ -26,10 +26,10 @@ class giveViewController: UIViewController, UIWebViewDelegate {
         let url = URL(string: "https://goo.gl/bSrZ9K")
         
         if UIApplication.shared.canOpenURL(url!) {
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
         else {
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
     }
     
