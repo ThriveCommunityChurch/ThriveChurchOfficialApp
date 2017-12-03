@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EventsFeedViewController: UIViewController, UIWebViewDelegate{
+class EventsFeedViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet var eventsView: UIWebView!

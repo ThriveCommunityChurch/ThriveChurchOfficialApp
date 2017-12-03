@@ -22,7 +22,7 @@ class MeetTheTeamViewController: UIViewController, UIWebViewDelegate {
         loadTeamView()
     }
     
-    private func loadTeamView(){
+    private func loadTeamView() {
         let url = URL(string: "http://thrive-fl.org/team")
         let request = URLRequest(url: url!)
         
@@ -34,12 +34,12 @@ class MeetTheTeamViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func webViewDidStartLoad(_ teamView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
          loading.startAnimating()
         print("Loading....")
     }
     
-    func webViewDidFinishLoad(_ teamView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
