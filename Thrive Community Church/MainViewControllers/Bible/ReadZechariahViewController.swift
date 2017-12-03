@@ -20,7 +20,7 @@ class ReadZechariahViewController: UIViewController, UIWebViewDelegate {
         loadZecView()
     }
     
-    private func loadZecView(){
+    private func loadZecView() {
         let url = URL(string: "https://www.bible.com/bible/59/zec.1")
         let request = URLRequest(url: url!)
         
@@ -31,14 +31,15 @@ class ReadZechariahViewController: UIViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func webViewDidStartLoad(_ Webview: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
         print("Loading....")
         
     }
     
-    func webViewDidFinishLoad(_ Webview: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
+    
 }

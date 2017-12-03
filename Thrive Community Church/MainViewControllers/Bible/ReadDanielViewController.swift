@@ -20,7 +20,7 @@ class ReadDanielViewController: UIViewController, UIWebViewDelegate {
         loadDanielView()
     }
     
-    private func loadDanielView(){
+    private func loadDanielView() {
         let url = URL(string: "https://www.bible.com/bible/59/dan.1")
         let request = URLRequest(url: url!)
         
@@ -31,14 +31,15 @@ class ReadDanielViewController: UIViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func webViewDidStartLoad(_ Webview: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
         print("Loading....")
         
     }
     
-    func webViewDidFinishLoad(_ Webview: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
+    
 }
