@@ -140,4 +140,5 @@ class DetailViewController: UIViewController {
         uploadToFirebase()
         saveAndUpdate()
     }
+    
 }
