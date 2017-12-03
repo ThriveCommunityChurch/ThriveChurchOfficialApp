@@ -20,7 +20,7 @@ class ReadMalachiViewController: UIViewController, UIWebViewDelegate {
         loadMalachiView()
     }
     
-    private func loadMalachiView(){
+    private func loadMalachiView() {
         let url = URL(string: "https://www.bible.com/bible/59/mal.1")
         let request = URLRequest(url: url!)
         
@@ -31,14 +31,15 @@ class ReadMalachiViewController: UIViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func webViewDidStartLoad(_ Webview: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
         print("Loading....")
         
     }
     
-    func webViewDidFinishLoad(_ Webview: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
+    
 }
