@@ -17,29 +17,14 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        func shouldAutorotate() -> Bool {
-            if (UIDevice.current.orientation == UIDeviceOrientation.portrait ||
-                UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown ||
-                UIDevice.current.orientation == UIDeviceOrientation.unknown) {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        
-        func supportedInterfaceOrientations() -> Int {
-            return Int(UIInterfaceOrientationMask.portrait.rawValue) | Int(UIInterfaceOrientationMask.portraitUpsideDown.rawValue)
-        }
-        
+                        
         // Do any additional setup after loading the view, typically from a nib.
         sermonView.delegate = self
         loadSermonView()
     
     }
     
-    private func loadSermonView(){
+    private func loadSermonView() {
         let url = URL(string: "http://thrive-fl.org/teaching-series")
         let request = URLRequest(url: url!)
         
@@ -51,23 +36,15 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-        
-//    override func remoteControlReceivedWithEvent(event: UIEvent?) {
-//        let rc = event!.subtype
-//        print("does this work? \(rc.rawValue)")
-//        // 101 is Pause... 100 is Play
-//        //takePicture()
-//    }
     
-    func webViewDidStartLoad(_ sermonView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
        loading.startAnimating()
         print("Loading....")
     }
     
-    func webViewDidFinishLoad(_ sermonView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
-    
     
 }
