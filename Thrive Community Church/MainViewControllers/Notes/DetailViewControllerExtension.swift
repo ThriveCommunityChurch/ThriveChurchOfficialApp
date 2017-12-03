@@ -23,34 +23,53 @@ extension DetailViewController {
         //let uid = user?.uid
 
         // detect if there is a note of the same text in the DB alerady
-        self.ref.observe(.value, with: { snapshot in
-            if !snapshot.exists() { return }
-            
-            // all notes
-            for _ in snapshot.children {
-                //let key = snap.key
-                self.savedNote = snapshot.childSnapshot(forPath: "\(key)/note").value as? String ?? "New Note"
-            }
-            if self.savedNote == self.detailDescriptionLabel.text ?? "New Note" {
-                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
-                return
-            }
-            else {
-                print("Uploading to FB DB")
-                //                let note = ["id":key,
-                //                            "note": self.detailDescriptionLabel.text!,
-                //                            "takenBy": uid
-                //                ]
-                //
-                //                //adding the note inside the generated key
-                //                self.ref.child(key).setValue(note)
-                //                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
-                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
-            }
-        })  { (error) in
-                print(error.localizedDescription)
+        var noteExists = checkIfNoteExistsInDB()
+        if noteExists == true{
+            // nothing - it exists already
+        }
+        else {
+            print("Uploading to FB DB")
+            //                let note = ["id":key,
+            //                            "note": self.detailDescriptionLabel.text!,
+            //                            "takenBy": uid
+            //                ]
+            //
+            //                //adding the note inside the generated key
+            //                self.ref.child(key).setValue(note)
+            //                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+            self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
         }
     }
+    
+    // Fix this to return bool so we can check and assign this in the middle of the viewDidLoad
+//    func checkIfNoteExistsInDB() -> Bool {
+//        var test = false
+//        let key = self.ref.childByAutoId().key
+//
+//        //let user = Auth.auth().currentUser
+//        //let uid = user?.uid
+//
+//        // detect if there is a note of the same text in the DB alerady
+//        self.ref.observe(.value, with: { snapshot in
+//
+//            // all notes
+//            for _ in snapshot.children {
+//                //let key = snap.key
+//                self.savedNote = snapshot.childSnapshot(forPath: "\(key)/note").value as? String ?? "New Note"
+//            }
+//            if self.savedNote == self.detailDescriptionLabel.text ?? "New Note" {
+//                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//                test = 1
+//                return test
+//            }
+//            else {
+//                return test
+//            }
+//        }) { (error) in
+//            print(error.localizedDescription)
+//            return test
+//        }
+//    }
     
     // MARK: Account Services
     // if user exists
@@ -63,6 +82,7 @@ extension DetailViewController {
             emailField.keyboardAppearance = .dark
             emailField.keyboardType = .default
             emailField.autocorrectionType = .default
+            emailField.returnKeyType = .next
             emailField.placeholder = "123@example.com"
         }
         
@@ -70,6 +90,7 @@ extension DetailViewController {
             passwordField.keyboardAppearance = .dark
             passwordField.keyboardType = .default
             passwordField.autocorrectionType = .default
+            passwordField.returnKeyType = .done
             passwordField.isSecureTextEntry = true
         }
         
@@ -84,7 +105,37 @@ extension DetailViewController {
         })
         
         // Cancel button
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel",
+                                   style: .destructive, handler: { (action) -> Void in
+                                    
+            let alert = UIAlertController(title: "Are you Sure?",
+                                          message: "If you tap Yes you won't be prompted anymore to create an account",
+                                          preferredStyle: .alert)
+            
+            // Submit
+            let submitAction = UIAlertAction(title: "Yes",
+                 style: .destructive, handler: { (action) -> Void in
+                    // Get TextFields text
+                    let emailTxt = alert.textFields![0]
+                    let passwordTxt = alert.textFields![1]
+                    
+                    // Turn off notifications by registering the user with a fake account
+                    // hacky but That's the only thing I could think of to fix the issue of alerts popping all the time
+                    let emailID = String(UUID().uuidString.suffix(4))
+                    Auth.auth().signIn(withEmail: "\(emailID)@thrive-fl.org", password: "123456") { (user, error) in
+                        print("Logged into fake account")
+                    }
+            })
+            
+            // No button
+            let cancel = UIAlertAction(title: "No", style: .default, handler: nil)
+            
+            alert.addAction(submitAction)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+            
+        
+        })
         
         alert.addAction(submitAction)
         alert.addAction(cancel)
@@ -101,6 +152,7 @@ extension DetailViewController {
             emailField.keyboardAppearance = .dark
             emailField.keyboardType = .default
             emailField.autocorrectionType = .default
+            emailField.returnKeyType = .next
             emailField.placeholder = "123@example.com"
         }
         
@@ -108,6 +160,7 @@ extension DetailViewController {
             passwordField.keyboardAppearance = .dark
             passwordField.keyboardType = .default
             passwordField.autocorrectionType = .default
+            passwordField.returnKeyType = .done
             passwordField.isSecureTextEntry = true
         }
         
@@ -137,7 +190,7 @@ extension DetailViewController {
             
             let defaultAction = UIAlertAction(title: "OK",
                                               style: .default, handler: { (action) -> Void in
-                self.createAccount()
+                self.loginToAccount()
             })
             
             alertController.addAction(defaultAction)
