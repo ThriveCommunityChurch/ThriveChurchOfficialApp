@@ -24,3 +24,8 @@ _This makes code easier to read_
   1. CocoaPods  -  `sudo gem install cocoapods`
   
   2. Firebase Analytics - Follow the instructions on the [Firebase Site](https://firebase.google.com/docs/analytics/ios/start?gclid=CjwKCAjwo4jOBRBmEiwABWNaMTt6pAYCDfnQB2NZR2BaF8e3nqVV4ZOjarKqcyfcyzbzHC31GTS_QBoCUcEQAvD_BwE)
+  
+    - 'Firebase/Core'
+    - 'Firebase/Messaging'
+    - 'Firebase/Database'
+    - 'Firebase/Auth'
