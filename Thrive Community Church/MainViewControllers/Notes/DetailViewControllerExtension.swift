@@ -44,7 +44,7 @@ extension DetailViewController {
         
         // Lets get this logic down before we start uploading a ton of random notes for no reason
         self.ref.child("id").child("note").observe(.value, with: { (snapshot) in
-            if(snapshot.exists()) {
+            if snapshot.exists() {
                 print("Note is present")
             }
             else {
