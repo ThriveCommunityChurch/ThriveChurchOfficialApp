@@ -32,13 +32,14 @@ class EspanolAboutThriveViewController: UIViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func webViewDidStartLoad(_ spanishAboutView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
         print("Loading....")
     }
     
-    func webViewDidFinishLoad(_ spanishAboutView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
+    
 }

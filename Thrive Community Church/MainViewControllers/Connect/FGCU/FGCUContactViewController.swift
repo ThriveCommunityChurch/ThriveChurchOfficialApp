@@ -54,32 +54,6 @@ class FGCUContactViewController: UIViewController,  MFMailComposeViewControllerD
         }
     }
     
-    func mailComposeController(_ controller: MFMailComposeViewController,
-                               didFinishWith result: MFMailComposeResult,
-                               error: Error?) {
-        
-        switch result.rawValue {
-        case MFMailComposeResult.cancelled.rawValue:
-            print("Cancelled")
-            
-        case MFMailComposeResult.saved.rawValue:
-            print("Saved")
-            
-        case MFMailComposeResult.sent.rawValue:
-            print("Sent")
-            
-        case MFMailComposeResult.failed.rawValue:
-            print("Error: \(String(describing: error?.localizedDescription))")
-            
-        default:
-            
-            break
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
             
