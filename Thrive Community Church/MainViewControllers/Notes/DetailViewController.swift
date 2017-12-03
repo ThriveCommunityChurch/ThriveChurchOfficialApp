@@ -50,10 +50,10 @@ class DetailViewController: UIViewController {
             if Auth.auth().currentUser != nil {
                 // User is signed in.
             } else {
-                // Register but login -- if their email is not on file
-                
+                // Login OR Register -- only if their email is not on file
+                self.loginToAccount()
             }
-            self.loginToAccount()
+            
             
 //            Auth.auth().currentUser?.sendEmailVerification { (error) in
 //                // ...
