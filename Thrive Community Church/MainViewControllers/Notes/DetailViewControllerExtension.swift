@@ -14,6 +14,7 @@ extension DetailViewController {
     // MARK: Saving Note
     // Might change this to be something using Auth instead - but in the meantime this works
     func uploadToFirebase() {
+        print("Uploading to Firebase")
             
         // send this to the DB
         self.ref = Database.database().reference().child("notes")
@@ -23,28 +24,31 @@ extension DetailViewController {
         //let uid = user?.uid
 
         // detect if there is a note of the same text in the DB alerady
-        var noteExists = checkIfNoteExistsInDB()
-        if noteExists == true{
-            // nothing - it exists already
-        }
-        else {
-            print("Uploading to FB DB")
-            //                let note = ["id":key,
-            //                            "note": self.detailDescriptionLabel.text!,
-            //                            "takenBy": uid
-            //                ]
-            //
-            //                //adding the note inside the generated key
-            //                self.ref.child(key).setValue(note)
-            //                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
-            self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
-        }
+        
+//        checkIfNoteExistsInDB(Note: self.detailDescriptionLabel.text!) { (result) in
+//
+//            if result {
+//                // nothing - it exists already
+//                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//            }
+//            else {
+//                print("Uploading to FB DB")
+//                //                let note = ["id":key,
+//                //                            "note": self.detailDescriptionLabel.text!,
+//                //                            "takenBy": uid
+//                //                ]
+//                //
+//                //                //adding the note inside the generated key
+//                //                self.ref.child(key).setValue(note)
+//                //                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//            }
+//        }
     }
     
     // Fix this to return bool so we can check and assign this in the middle of the viewDidLoad
-//    func checkIfNoteExistsInDB() -> Bool {
-//        var test = false
-//        let key = self.ref.childByAutoId().key
+    // NIL WHILE UNWRAPPING VALUE
+//    func checkIfNoteExistsInDB(Note: String, finishedClosured:@escaping ((Bool)->Void))  {
 //
 //        //let user = Auth.auth().currentUser
 //        //let uid = user?.uid
@@ -54,26 +58,30 @@ extension DetailViewController {
 //
 //            // all notes
 //            for _ in snapshot.children {
-//                //let key = snap.key
-//                self.savedNote = snapshot.childSnapshot(forPath: "\(key)/note").value as? String ?? "New Note"
+//                let key = snapshot.key
+//                guard let savedNote = snapshot.childSnapshot(forPath: "\(key)/note").value
+//                    else {
+//                        self.savedNote = "New Note"
+//                        return
+//                }
 //            }
 //            if self.savedNote == self.detailDescriptionLabel.text ?? "New Note" {
 //                self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
-//                test = 1
-//                return test
+//                finishedClosured(true)
 //            }
 //            else {
-//                return test
+//                finishedClosured(false)
 //            }
 //        }) { (error) in
 //            print(error.localizedDescription)
-//            return test
+//            finishedClosured(false)
 //        }
 //    }
     
     // MARK: Account Services
     // if user exists
     func loginToAccount() {
+        print("Logging In")
         let alert = UIAlertController(title: "Please Login",
                                       message: "Your notes will be saved after you login.",
                                       preferredStyle: .alert)
@@ -115,9 +123,6 @@ extension DetailViewController {
             // Submit
             let submitAction = UIAlertAction(title: "Yes",
                  style: .destructive, handler: { (action) -> Void in
-                    // Get TextFields text
-                    let emailTxt = alert.textFields![0]
-                    let passwordTxt = alert.textFields![1]
                     
                     // Turn off notifications by registering the user with a fake account
                     // hacky but That's the only thing I could think of to fix the issue of alerts popping all the time
@@ -144,6 +149,7 @@ extension DetailViewController {
     
     // if user does not exist
     func createAccount() {
+        print("Creating Account")
         let alert = UIAlertController(title: "Create An Account",
                                       message: "Your notes will be saved after you create your account. Please ensure that the email is valid as password resets will be sent to this address.",
                                       preferredStyle: .alert)
@@ -183,6 +189,7 @@ extension DetailViewController {
     }
     
     func login(email: String, password: String) {
+        print("Attepting to login")
         if email == "" {
             let alertController = UIAlertController(title: "Error",
                                                     message: "Please do not leave the email field blank",
@@ -238,6 +245,7 @@ extension DetailViewController {
     // Mark: Register w/ Account Info
     // Called at app startup
     func register(email: String, password: String) {
+        print("Attepting to register")
         if email == "" {
             let alertController = UIAlertController(title: "Error",
                                                   message: "Please enter your email and password",
@@ -277,7 +285,7 @@ extension DetailViewController {
 
 class ActivityForNotesViewController: UIActivityViewController {
     
-    //Remove actions that we do not want the user to be able to share via
+    // Remove actions that we do not want the user to be able to share via
     // these are intentionally marked because the media is Text
     internal func _shouldExcludeActivityType(_ activity: UIActivity) -> Bool {
         let activityTypesToExclude = [

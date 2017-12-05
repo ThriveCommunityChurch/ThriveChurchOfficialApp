@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UITextView!
     var notLoggedIn = true
     var ref: DatabaseReference!
-    var handle: AuthStateDidChangeListenerHandle! = nil // I think that's right?
+    var handle: AuthStateDidChangeListenerHandle! = nil
     @IBOutlet weak var uploadButton: UIBarButtonItem!
     var savedNote: String = ""
     
@@ -54,9 +54,15 @@ class DetailViewController: UIViewController {
                 self.loginToAccount()
             }
             
-            
-//            Auth.auth().currentUser?.sendEmailVerification { (error) in
-//                // ...
+//            self.checkIfNoteExistsInDB(Note: self.detailDescriptionLabel.text!) { (result) in
+//
+//                if result {
+//                    // nothing - it exists already
+//                    self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//                }
+//                else {
+//                    print("Not in DB - Doing nothing on screen load")
+//                }
 //            }
         }
     }
