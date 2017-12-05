@@ -49,8 +49,10 @@ class DetailViewController: UIViewController {
             
             if Auth.auth().currentUser != nil {
                 // User is signed in.
+                print("User is logged in")
             } else {
                 // Login OR Register -- only if their email is not on file
+                print("Not Logged in")
                 self.loginToAccount()
             }
             

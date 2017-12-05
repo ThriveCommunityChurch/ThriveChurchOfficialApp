@@ -217,9 +217,9 @@ extension DetailViewController {
                         print("Account exists - Logging you in")
                         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                             
+                            // TODO: Not fully logged in -- fix that
                             if error == nil {
                                 print("You have successfully signed in")
-                                
                             }
                             else {
                                 let alertController = UIAlertController(title: "Error",
