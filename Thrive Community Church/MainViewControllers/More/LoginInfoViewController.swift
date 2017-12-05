@@ -35,6 +35,40 @@ class LoginInfoViewContriller: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func signOut(_ sender: Any) {
+        print("Signing out")
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                try! Auth.auth().signOut()
+                self.emailLabel.text = "123@example.com"
+                print("Signed Out")
+            }
+            else {
+                let alertController = UIAlertController(title: "Error!",
+                                                       message: "You are not logged in",
+                                                       preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // End listener for Auth
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
+    // Use this as an OOP function for checking the User's email / presenting the
+    // Alert if a user isn't signed in
+    func checkUserEmail() {
+        
+    }
+    
     @IBAction func resetPW(_ sender: Any) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
@@ -52,7 +86,7 @@ class LoginInfoViewContriller: UIViewController {
                     }
                     else {
                         print("Sending Email")
-                        Auth.auth().currentUser?.sendEmailVerification { (error) in
+                        Auth.auth().sendPasswordReset(withEmail: email!) { (error) in
                             print("Email Sent")
                         }
                     }
