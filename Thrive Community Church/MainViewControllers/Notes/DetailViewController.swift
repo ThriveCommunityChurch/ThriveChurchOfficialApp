@@ -11,13 +11,13 @@ import Firebase
 
 class DetailViewController: UIViewController {
     
-    
     // detailDescView = Note area
     @IBOutlet weak var detailDescriptionLabel: UITextView!
     var notLoggedIn = true
     var ref: DatabaseReference!
-    var handle: AuthStateDidChangeListenerHandle! = nil // I think that's right?
+    var handle: AuthStateDidChangeListenerHandle! = nil
     @IBOutlet weak var uploadButton: UIBarButtonItem!
+    var savedNote: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +49,23 @@ class DetailViewController: UIViewController {
             
             if Auth.auth().currentUser != nil {
                 // User is signed in.
+                print("User is logged in")
             } else {
-                // Or login -- if their email is not on file
-                self.createAccount()
+                // Login OR Register -- only if their email is not on file
+                print("Not Logged in")
+                self.loginToAccount()
             }
+            
+//            self.checkIfNoteExistsInDB(Note: self.detailDescriptionLabel.text!) { (result) in
+//
+//                if result {
+//                    // nothing - it exists already
+//                    self.uploadButton.image = #imageLiteral(resourceName: "UploadedToCloud")
+//                }
+//                else {
+//                    print("Not in DB - Doing nothing on screen load")
+//                }
+//            }
         }
     }
     

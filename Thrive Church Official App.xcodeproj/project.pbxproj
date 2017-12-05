@@ -118,6 +118,7 @@
 		DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8581F0494FF002784E7 /* MasterViewController.swift */; };
 		DCE3631D1F05610600725F11 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F51F0494EE002784E7 /* dismissKeyboard.swift */; };
 		DCE3631E1F05610600725F11 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F61F0494EE002784E7 /* StringUtils.swift */; };
+		DCFE475F1FD64F3F006DF9E4 /* LoginInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFE475E1FD64F3F006DF9E4 /* LoginInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +281,7 @@
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DCFE475E1FD64F3F006DF9E4 /* LoginInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoViewController.swift; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -559,6 +561,7 @@
 				DC01B8531F0494FF002784E7 /* SocialViewController.swift */,
 				DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */,
 				DC2667DE1F37FBA20020424C /* SettingsViewController.swift */,
+				DCFE475E1FD64F3F006DF9E4 /* LoginInfoViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				DCE362EF1F05610600725F11 /* ReadMatthewViewController.swift in Sources */,
 				DCE362F01F05610600725F11 /* ReadMicahViewController.swift in Sources */,
 				DCE362F11F05610600725F11 /* ReadNahumViewController.swift in Sources */,
+				DCFE475F1FD64F3F006DF9E4 /* LoginInfoViewController.swift in Sources */,
 				DCE362F21F05610600725F11 /* ReadNehemiahViewController.swift in Sources */,
 				DCE362F31F05610600725F11 /* ReadNumbersViewController.swift in Sources */,
 				DCE362F41F05610600725F11 /* ReadObediahViewController.swift in Sources */,
