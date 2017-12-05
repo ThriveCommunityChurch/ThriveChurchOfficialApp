@@ -69,13 +69,15 @@ class LoginInfoViewContriller: UIViewController {
         
     }
     
+    // TODO: Add Email update button
+    
     @IBAction func resetPW(_ sender: Any) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
             if Auth.auth().currentUser != nil {
                 let email = Auth.auth().currentUser?.email
                 let alertController = UIAlertController(title: "Are you sure?",
-                                                        message: "Please check your email after confirming.",
+                                                        message: "Please check your email after confirming. \n\(email!)",
                                                         preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "Yes",
