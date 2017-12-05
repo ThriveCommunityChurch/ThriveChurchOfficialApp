@@ -5733,7 +5733,7 @@
                                         <rect key="frame" x="0.0" y="448" width="375" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="jiH-l1-KTW"/>
+                                            <constraint firstAttribute="height" constant="45" id="Deq-YU-1h7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Reset Password">
@@ -5743,19 +5743,35 @@
                                             <action selector="resetPW:" destination="j2A-y1-d6w" eventType="touchUpInside" id="aeX-Up-oD9"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOu-rg-rZU">
+                                        <rect key="frame" x="0.0" y="494" width="375" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="M3Y-UY-1Xe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Sign Out">
+                                            <color key="titleColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signOut:" destination="j2A-y1-d6w" eventType="touchUpInside" id="72I-3W-e9k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="trailing" secondItem="uag-ky-sca" secondAttribute="trailing" id="0jf-82-hKC"/>
                                     <constraint firstAttribute="trailing" secondItem="Ylw-iI-uBB" secondAttribute="trailing" id="3HT-pI-pP3"/>
                                     <constraint firstItem="uag-ky-sca" firstAttribute="top" secondItem="Ylw-iI-uBB" secondAttribute="bottom" constant="8" id="3rD-af-vvm"/>
+                                    <constraint firstItem="KOu-rg-rZU" firstAttribute="top" secondItem="Luh-yu-H0Q" secondAttribute="bottom" constant="1" id="5ja-4p-aS3"/>
+                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="leading" secondItem="uag-ky-sca" secondAttribute="leading" id="7SN-RD-h1E"/>
                                     <constraint firstItem="Ylw-iI-uBB" firstAttribute="leading" secondItem="8el-JF-yzf" secondAttribute="leading" id="7qI-0N-zJf"/>
-                                    <constraint firstAttribute="bottom" secondItem="Luh-yu-H0Q" secondAttribute="bottom" constant="174" id="BRv-x1-GQu"/>
-                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="leading" secondItem="uag-ky-sca" secondAttribute="leading" id="Cet-eb-7MP"/>
                                     <constraint firstItem="Ylw-iI-uBB" firstAttribute="top" secondItem="8el-JF-yzf" secondAttribute="top" constant="42" id="Fyo-ns-ulf"/>
-                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="trailing" secondItem="uag-ky-sca" secondAttribute="trailing" id="JCB-7N-N9q"/>
+                                    <constraint firstAttribute="bottom" secondItem="KOu-rg-rZU" secondAttribute="bottom" constant="128" id="IPM-2O-7wW"/>
                                     <constraint firstItem="Ylw-iI-uBB" firstAttribute="trailing" secondItem="uag-ky-sca" secondAttribute="trailing" id="aCy-eH-ht2"/>
+                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="leading" secondItem="KOu-rg-rZU" secondAttribute="leading" id="aaT-eU-fZ5"/>
                                     <constraint firstItem="Ylw-iI-uBB" firstAttribute="leading" secondItem="uag-ky-sca" secondAttribute="leading" id="dPg-bS-gcB"/>
-                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="top" secondItem="uag-ky-sca" secondAttribute="bottom" constant="313" id="olP-OY-2pb"/>
+                                    <constraint firstItem="Luh-yu-H0Q" firstAttribute="trailing" secondItem="KOu-rg-rZU" secondAttribute="trailing" id="zcy-rs-G85"/>
                                 </constraints>
                             </view>
                         </subviews>
