@@ -50,10 +50,6 @@ Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurch
 
 ## Version History
 ### 1.7  —  TBD
-- You can now save your notes to the Cloud! If you have to remove the app from your device, your notes will still be safely stored for later
-- Login to save your notes simply by using your email address
-- If you forget your password you'll be able to reset it easily
-- Bug Fixes
 
 ### 1.6  —  Nov 18, 2017
 - UI Improvements
