@@ -27,5 +27,3 @@ _This makes code easier to read_
   
     - 'Firebase/Core'
     - 'Firebase/Messaging'
-    - 'Firebase/Database'
-    - 'Firebase/Auth'

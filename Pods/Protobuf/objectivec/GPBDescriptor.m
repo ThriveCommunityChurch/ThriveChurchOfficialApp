@@ -1027,6 +1027,10 @@ uint32_t GPBFieldAlternateTag(GPBFieldDescriptor *self) {
   return GPBExtensionIsRepeated(description_);
 }
 
+- (BOOL)isMap {
+  return (description_->options & GPBFieldMapKeyMask) != 0;
+}
+
 - (BOOL)isPackable {
   return GPBExtensionIsPacked(description_);
 }

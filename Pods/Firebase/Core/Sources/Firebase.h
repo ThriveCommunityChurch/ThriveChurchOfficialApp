@@ -25,10 +25,6 @@
     #import <FirebaseDynamicLinks/FirebaseDynamicLinks.h>
   #endif
 
-  #if __has_include(<FirebaseFirestore/FirebaseFirestore.h>)
-    #import <FirebaseFirestore/FirebaseFirestore.h>
-  #endif
-
   #if __has_include(<FirebaseInstanceID/FirebaseInstanceID.h>)
     #import <FirebaseInstanceID/FirebaseInstanceID.h>
   #endif
