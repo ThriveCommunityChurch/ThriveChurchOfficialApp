@@ -176,5 +176,4 @@ class MasterViewController: UITableViewController {
             objects = loadedData
         }
     }
-    
 }
