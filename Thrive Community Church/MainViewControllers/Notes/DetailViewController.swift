@@ -5,9 +5,7 @@
 //  Created by Wyatt Baggett on 8/1/16.
 //  Copyright © 2016 Wyatt Baggett. All rights reserved.
 //
-
 import UIKit
-//import CoreData -- in case we need it
 
 class DetailViewController: UIViewController {
     
@@ -144,4 +142,5 @@ class ActivityForNotesViewController: UIActivityViewController {
         }
         return false
     }
+    
 }
