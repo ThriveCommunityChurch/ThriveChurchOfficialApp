@@ -11,7 +11,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var detailDescriptionLabel: UITextView!
+    @IBOutlet weak var detailDescriptionLabel: UITextView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func share(_ sender: AnyObject) {
-        let textToShare = detailDescriptionLabel.text!
+		let textToShare = detailDescriptionLabel?.text!
         
         let objectsToShare = [textToShare]
         let activityVC = UIActivityViewController(activityItems:
@@ -99,10 +99,14 @@ class DetailViewController: UIViewController {
         // INIT NOTE #1 - Still nothing happening
         
         //updates the text for the preview of the note on the Table View
-        objects[currentIndex] = detailDescriptionLabel.text
-        if detailDescriptionLabel.text == "" {
-            objects[currentIndex] = BLANK_NOTE
-        }
+		if let indexText = detailDescriptionLabel?.text {
+			objects[currentIndex] = indexText
+			
+			if detailDescriptionLabel?.text == "" {
+				objects[currentIndex] = BLANK_NOTE
+			}
+		}
+		
         saveAndUpdate()
         // Called wheb the view is returning from the editing view
     }
