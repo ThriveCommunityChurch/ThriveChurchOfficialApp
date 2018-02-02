@@ -69,4 +69,5 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //let build = dictionary["CFBundleVersion"] as! String
         return "\(version)"
     }
+    
 }
