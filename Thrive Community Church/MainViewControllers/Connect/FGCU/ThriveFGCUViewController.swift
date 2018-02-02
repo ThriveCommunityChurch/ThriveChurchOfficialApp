@@ -33,6 +33,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
     }
     
     @IBAction func feedback(_ sender: AnyObject) {
+		// use a library for this
 //        let modelInfo = UIDevice.current.model
 //        let systeminfo = UIDevice.current.systemName
 //        let systemVersion = UIDevice.current.systemVersion
@@ -49,7 +50,20 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
             self.present(composeVC, animated: true, completion: nil)
         }
     }
-    
+	
+	@IBAction func contactingThriveFGCU(_ sender: Any) {
+		
+		if MFMailComposeViewController.canSendMail() {
+			
+			let composeVC = MFMailComposeViewController()
+			composeVC.mailComposeDelegate = self
+			composeVC.setToRecipients(["info@thrive-fl.org"])
+			present(composeVC, animated: true, completion: nil)
+			self.present(composeVC, animated: true, completion: nil)
+			
+		}
+	}
+	
     //Standard Mail compose controller code
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult,
