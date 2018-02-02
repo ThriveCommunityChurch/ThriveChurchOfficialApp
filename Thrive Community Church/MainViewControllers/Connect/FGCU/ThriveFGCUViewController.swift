@@ -58,6 +58,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 			let composeVC = MFMailComposeViewController()
 			composeVC.mailComposeDelegate = self
 			composeVC.setToRecipients(["info@thrive-fl.org"])
+			composeVC.setSubject("Thrive FGCU")
 			present(composeVC, animated: true, completion: nil)
 			self.present(composeVC, animated: true, completion: nil)
 			

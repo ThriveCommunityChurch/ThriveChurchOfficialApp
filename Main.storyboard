@@ -6080,6 +6080,9 @@
                                                 <state key="normal" title="Contact">
                                                     <color key="titleColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="contactingThriveFGCU:" destination="jWL-f6-I2t" eventType="touchUpInside" id="suC-VA-Qg1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYA-Za-brx">
                                                 <rect key="frame" x="0.0" y="180" width="375" height="47"/>
