@@ -65,17 +65,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         // "Add Note" screen once again
     }
 	
-	func textViewDidBeginEditing(_ textView: UITextView) {
-		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
-			
-			let cursorPosition = detailDescriptionLabel?.offset(from: (detailDescriptionLabel?.beginningOfDocument)!, to: selectedRange.start)
-			
-			let length = (cursorPosition ?? 0) - 1
-			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0, length: length))
-		
-		}
-	}
-	
+	// TODO: Fix this fully -- there's really only a hacky solution
 	func textViewDidChangeSelection(_ textView: UITextView) {
 		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
 			
