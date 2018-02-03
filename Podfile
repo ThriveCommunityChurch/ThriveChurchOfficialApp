@@ -7,7 +7,7 @@ target 'Thrive Church Official App' do
 
   # Pods for Thrive Church Official App
   pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
+  #pod 'Firebase/Messaging'
 
   target 'Thrive Church Official AppTests' do
     inherit! :search_paths
