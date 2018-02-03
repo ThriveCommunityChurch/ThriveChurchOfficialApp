@@ -7,9 +7,9 @@
 //
 
 import UIKit
-//import CoreData -- in case we need it
+import Foundation
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var detailDescriptionLabel: UITextView?
     
@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
          */
         
         detailViewController = self
+		detailDescriptionLabel?.delegate = self
         detailViewController?.becomeFirstResponder()
         
         // called when adding / editing an item to the TableViewController in MasterVew
@@ -63,13 +64,34 @@ class DetailViewController: UIViewController {
         // INIT NOTE #7 - After returning from our inital note we end here, on the
         // "Add Note" screen once again
     }
-    
+	
+	func textViewDidBeginEditing(_ textView: UITextView) {
+		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
+			
+			let cursorPosition = detailDescriptionLabel?.offset(from: (detailDescriptionLabel?.beginningOfDocument)!, to: selectedRange.start)
+			
+			let length = (cursorPosition ?? 0) - 1
+			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0, length: length))
+		
+		}
+	}
+	
+	func textViewDidChangeSelection(_ textView: UITextView) {
+		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
+			
+			let cursorPosition = detailDescriptionLabel?.offset(from: (detailDescriptionLabel?.beginningOfDocument)!, to: selectedRange.start)
+			
+			let length = (cursorPosition ?? 0) - 1
+			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0, length: length))
+			}
+	}
+	
     @IBAction func share(_ sender: AnyObject) {
 		let textToShare = detailDescriptionLabel?.text!
         
         let objectsToShare = [textToShare]
         let activityVC = UIActivityViewController(activityItems:
-                                            objectsToShare ,
+                                            objectsToShare,
                                             applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
@@ -80,6 +102,7 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
     
     // called when hitting back on the editing screen -- after segue back to Table View
     override func viewDidDisappear(_ animated: Bool) {
