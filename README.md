@@ -48,7 +48,7 @@ Thank you to everyone who uses this application, we made it for you - to help ma
 Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
 
 ## Version History
-### 1.6.1  —  TBD 
+### 1.6.1  —  Feb 7, 2018 
 - Fixed an issue where the notes page would crash if there were no notes currently saved
 - Fixed an issue where the cursor would completely dissapear when taking a long note
 - Updated Contact information for Thrive FGCU
