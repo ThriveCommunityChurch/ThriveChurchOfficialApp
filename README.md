@@ -12,10 +12,9 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 
 ## System Requirements
 
-* iPhone running iOS 9.0 or Later
-* iPhone 4S or newer
+* iPhone running iOS 10.0 or Later
+* iPhone 5S or newer
 * Valid iTunes Account
-
 
 ## Features
 
@@ -49,6 +48,11 @@ Thank you to everyone who uses this application, we made it for you - to help ma
 Read our [CONTRIBUTING.md](https://github.com/ThriveCommunityChurch/ThriveChurchOfficialApp/blob/master/CONTRIBUTING.md) for more information.
 
 ## Version History
+### 1.6.1  —  Feb 7, 2018 
+- Fixed an issue where the notes page would crash if there were no notes currently saved
+- Fixed an issue where the cursor would completely dissapear when taking a long note
+- Updated Contact information for Thrive FGCU
+
 ### 1.6  —  Nov 18, 2017
 - UI Improvements
 - Supports iPhone X

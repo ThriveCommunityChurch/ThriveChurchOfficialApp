@@ -25,20 +25,21 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
         let url = URL(string: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
         
         if UIApplication.shared.canOpenURL(url!){
-            UIApplication.shared.openURL(url!)
+			UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
         else{
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
     }
     
     @IBAction func feedback(_ sender: AnyObject) {
+		// use a library for this
 //        let modelInfo = UIDevice.current.model
 //        let systeminfo = UIDevice.current.systemName
 //        let systemVersion = UIDevice.current.systemVersion
         
         if MFMailComposeViewController.canSendMail() {
-            let uuid = String(UUID().uuidString.characters.suffix(4))
+            let uuid = UUID().uuidString.suffix(4)
             
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
@@ -49,7 +50,21 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
             self.present(composeVC, animated: true, completion: nil)
         }
     }
-    
+	
+	@IBAction func contactingThriveFGCU(_ sender: Any) {
+		
+		if MFMailComposeViewController.canSendMail() {
+			
+			let composeVC = MFMailComposeViewController()
+			composeVC.mailComposeDelegate = self
+			composeVC.setToRecipients(["info@thrive-fl.org"])
+			composeVC.setSubject("Thrive FGCU")
+			present(composeVC, animated: true, completion: nil)
+			self.present(composeVC, animated: true, completion: nil)
+			
+		}
+	}
+	
     //Standard Mail compose controller code
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult,

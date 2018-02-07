@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EventsFeedViewController: UIViewController, UIWebViewDelegate{
+class EventsFeedViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet var eventsView: UIWebView!
@@ -34,14 +34,15 @@ class EventsFeedViewController: UIViewController, UIWebViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func webViewDidStartLoad(_ eventsView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
         print("Loading....")
         
     }
     
-    func webViewDidFinishLoad(_ eventsView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
         print("Stopped Loading!")
     }
+    
 }
