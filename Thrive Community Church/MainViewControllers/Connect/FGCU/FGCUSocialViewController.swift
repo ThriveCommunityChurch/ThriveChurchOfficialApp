@@ -26,10 +26,10 @@ class FGCUSocialViewController: UIViewController {
         
         if UIApplication.shared.canOpenURL(fbURLID){
             //checks to see if FB is installed
-            UIApplication.shared.openURL(fbURLID)
+			UIApplication.shared.open(fbURL, options: [:], completionHandler: nil)
         }
         else{
-           UIApplication.shared.openURL(fbURL)
+           UIApplication.shared.open(fbURL, options: [:], completionHandler: nil)
        }
     }
     
@@ -40,11 +40,11 @@ class FGCUSocialViewController: UIViewController {
         let instagramUrl = URL(string: instagramHooks)
         
         if UIApplication.shared.canOpenURL(instagramUrl!) {
-            UIApplication.shared.openURL(instagramUrl!)
+            UIApplication.shared.open(instagramUrl!, options: [:], completionHandler: nil)
             print("opened in app")
         }
         else{
-            UIApplication.shared.openURL(instaURL)
+            UIApplication.shared.open(instaURL, options: [:], completionHandler: nil)
         }
     }
 }

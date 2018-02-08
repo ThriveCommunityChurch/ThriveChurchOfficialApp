@@ -27,7 +27,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // might add device logs via XGCLogger also in ~1.7
     @IBAction func contactingAdmin(_ sender: AnyObject) {
         if MFMailComposeViewController.canSendMail() {
-            let uuid = String(UUID().uuidString.characters.suffix(8))
+            let uuid = UUID().uuidString.suffix(8)
             let composeVC = MFMailComposeViewController()
             
             composeVC.mailComposeDelegate = self
