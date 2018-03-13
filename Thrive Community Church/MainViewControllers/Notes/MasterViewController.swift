@@ -8,13 +8,12 @@
 
 import UIKit
 
-var objects:[String] = [String]()
-var currentIndex:Int = 0
-var masterView:MasterViewController?
-var detailViewController:DetailViewController?
-
-let kNotes:String = "notes"
-let BLANK_NOTE:String = "New Note"
+var objects: [String] = [String]()
+var currentIndex: Int = 0
+var masterView: MasterViewController?
+var detailViewController: DetailViewController?
+let notesKey: String = "notes"
+let newNote: String = "New Note"
 
 class MasterViewController: UITableViewController {
     
@@ -53,13 +52,6 @@ class MasterViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        // Use something like this to check if there are
-         print("Notes - will appear (Master)")
-        //segue to the table view has been made
-        //interactrion is possible now with the UITableView interface
-        
-        // INIT NOTE #4 - Still nothing happening on the Screen --- Showing TableView
         super.viewDidAppear(animated)
     }
     
@@ -71,12 +63,10 @@ class MasterViewController: UITableViewController {
     // Adds new object & changes name of the string of Master following the segue back
     @objc func insertNewObject(_ sender: AnyObject) {
         save()
-        
-        //adding new
-        // INIT NOTE #2 - Nada
-        if objects.count == 0 || objects[0] != BLANK_NOTE {
+		
+        if objects.count == 0 || objects[0] != newNote {
             
-            objects.insert(BLANK_NOTE, at: 0)
+            objects.insert(newNote, at: 0)
             let indexPath = IndexPath(row: 0, section: 0)
             self.tableView.insertRows(at: [indexPath], with: .automatic)
             
@@ -124,6 +114,7 @@ class MasterViewController: UITableViewController {
                                              for: indexPath)
         
         let object = objects[(indexPath as NSIndexPath).row]
+		cell.textLabel?.font = UIFont(name: "AvenirNext-Medium", size: 15)
         cell.textLabel!.text = object
         return cell
     }
@@ -167,12 +158,12 @@ class MasterViewController: UITableViewController {
     }
     
     func save() {
-        UserDefaults.standard.set(objects, forKey: kNotes)
+        UserDefaults.standard.set(objects, forKey: notesKey)
         UserDefaults.standard.synchronize()
     }
     
     func load() {
-        if let loadedData = UserDefaults.standard.array(forKey: kNotes) as? [String] {
+        if let loadedData = UserDefaults.standard.array(forKey: notesKey) as? [String] {
             objects = loadedData
         }
     }

@@ -23,20 +23,61 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // might add device logs via XGCLogger also in ~1.7
+	
     @IBAction func contactingAdmin(_ sender: AnyObject) {
-        if MFMailComposeViewController.canSendMail() {
-            let uuid = UUID().uuidString.suffix(8)
-            let composeVC = MFMailComposeViewController()
-            
-            composeVC.mailComposeDelegate = self
-            composeVC.setToRecipients(["wyatt@thrive-fl.org"])
-            composeVC.setSubject("Thrive iOS - ID: \(uuid)")
-            present(composeVC, animated: true, completion: nil)
-            self.present(composeVC, animated: true, completion: nil)
-        }
+		writeTextFile()
     }
+	
+	func writeTextFile() {
+		
+		// vars to add to the file
+		let buildNum = build()
+		let uuid = UUID().uuidString.suffix(8)
+		let date = getDate()
+		
+		// Save data to file
+		let fileName = "\(uuid.suffix(3))_info.log"
+		let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
+														  in: .userDomainMask,
+														  appropriateFor: nil,
+														  create: true)
+		
+		let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+		
+		let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
+			"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+			"\n\nDevice Information" +
+			"\nDevice:  \(UIDevice.current.modelName)" +
+			"\nCurrent Time: \(date)" +
+			"\niOS: \(UIDevice.current.systemVersion)" +
+			"\n\nApplication Information" +
+			"\nVersion: \(version())" +
+			"\nBuild #: \(buildNum)" +
+			"\nFeedback ID: \(uuid)"
+		
+		do {
+			// Write to the file
+			try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+		} catch let error as NSError {
+			print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
+		}
+		
+		if MFMailComposeViewController.canSendMail() {
+			let composeVC = MFMailComposeViewController()
+			
+			composeVC.mailComposeDelegate = self
+			composeVC.setToRecipients(["wyatt@thrive-fl.org"])
+			composeVC.setSubject("Thrive iOS - ID: \(uuid)")
+			
+			if let fileData = NSData(contentsOfFile: fileURL.path) {
+				composeVC.addAttachmentData(fileData as Data,
+											mimeType: "text/txt",
+											fileName: "\(uuid.suffix(3))_info.log")
+			}
+
+			self.present(composeVC, animated: true, completion: nil)
+		}
+	}
     
     //Standard Mail compose controller code
     func mailComposeController(_ controller: MFMailComposeViewController,
@@ -62,12 +103,26 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.dismiss(animated: true, completion: nil)
     }
+	
+	func getDate() -> String {
+		
+		let stringFromDate = Date().iso8601    // "2017-03-22T13:22:13.933Z"
+		if let dateFromString = stringFromDate.dateFromISO8601 {
+			return dateFromString.iso8601      // "2017-03-22T13:22:13.933Z"
+		}
+		return stringFromDate
+	}
     
     func version() -> String {
         let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
-        //let build = dictionary["CFBundleVersion"] as! String
+        let version = dictionary["CFBundleShortVersionString"] as? String ?? ""
         return "\(version)"
     }
+	
+	func build() -> String {
+		let dictionary = Bundle.main.infoDictionary!
+		let build = dictionary["CFBundleVersion"] as? String ?? ""
+		return "\(build)"
+	}
     
 }
