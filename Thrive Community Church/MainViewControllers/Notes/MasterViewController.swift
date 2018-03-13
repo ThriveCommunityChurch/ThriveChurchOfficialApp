@@ -124,6 +124,7 @@ class MasterViewController: UITableViewController {
                                              for: indexPath)
         
         let object = objects[(indexPath as NSIndexPath).row]
+		cell.textLabel?.font = UIFont(name: "AvenirNext-Medium", size: 15)
         cell.textLabel!.text = object
         return cell
     }
