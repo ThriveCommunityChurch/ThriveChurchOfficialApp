@@ -37,12 +37,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 		
 		// Save data to file
 		let fileName = "\(uuid.suffix(3))_info.log"
-		let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory,
+		let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
 														  in: .userDomainMask,
 														  appropriateFor: nil,
 														  create: true)
 		
-		let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+		let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
 		
 		let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
 			"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
@@ -115,13 +115,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     func version() -> String {
         let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
+        let version = dictionary["CFBundleShortVersionString"] as? String ?? ""
         return "\(version)"
     }
 	
 	func build() -> String {
 		let dictionary = Bundle.main.infoDictionary!
-		let build = dictionary["CFBundleVersion"] as! String
+		let build = dictionary["CFBundleVersion"] as? String ?? ""
 		return "\(build)"
 	}
     
