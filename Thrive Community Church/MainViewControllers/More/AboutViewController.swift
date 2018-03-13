@@ -36,7 +36,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 		let date = getDate()
 		
 		// Save data to file
-		let fileName = "\(uuid.suffix(3))_info.log"
+		let fileName = "\(uuid.suffix(3)).log"
 		let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
 														  in: .userDomainMask,
 														  appropriateFor: nil,
@@ -72,7 +72,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 			if let fileData = NSData(contentsOfFile: fileURL.path) {
 				composeVC.addAttachmentData(fileData as Data,
 											mimeType: "text/txt",
-											fileName: "\(uuid.suffix(3))_info.log")
+											fileName: "\(uuid.suffix(3)).log")
 			}
 
 			self.present(composeVC, animated: true, completion: nil)
