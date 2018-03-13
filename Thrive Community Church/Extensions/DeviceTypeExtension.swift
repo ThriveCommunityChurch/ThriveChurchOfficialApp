@@ -22,9 +22,6 @@ public extension UIDevice {
 		switch identifier {
 		case "iPod5,1":                                 return "iPod Touch 5"
 		case "iPod7,1":                                 return "iPod Touch 6"
-		case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
-		case "iPhone4,1":                               return "iPhone 4s"
-		case "iPhone5,1", "iPhone5,2":                  return "iPhone 5"
 		case "iPhone5,3", "iPhone5,4":                  return "iPhone 5c"
 		case "iPhone6,1", "iPhone6,2":                  return "iPhone 5s"
 		case "iPhone7,2":                               return "iPhone 6"
@@ -51,9 +48,6 @@ public extension UIDevice {
 		case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
 		case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
 		case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
-		case "AppleTV5,3":                              return "Apple TV"
-		case "AppleTV6,2":                              return "Apple TV 4K"
-		case "AudioAccessory1,1":                       return "HomePod"
 		case "i386", "x86_64":                          return "Simulator"
 		default:                                        return identifier
 		}

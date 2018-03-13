@@ -32,8 +32,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 		
 		// vars to add to the file
 		let buildNum = build()
-		let nowTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate())
 		let uuid = UUID().uuidString.suffix(8)
+		let date = getDate()
 		
 		// Save data to file
 		let fileName = "\(uuid.suffix(3))_info.log"
@@ -43,15 +43,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 														  create: true)
 		
 		let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
-		print("FilePath: \(fileURL.path)")
 		
-		let writeString = "Please do not modify the contents of this file." +
-						"\n©2018. Thrive Community Church. All information collected is used solely for " +
-						"\n\nApp Version: \(version())" +
-						"\nDevice: \(UIDevice.current.modelName)" +
-						"\niOS:\(UIDevice.current.systemVersion)" +
-						"\nBuild #: \(buildNum)" +
-						"\nCurrent Time: \(nowTimeStamp)"
+		let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
+			"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+			"\n\nDevice Information" +
+			"\nDevice:  \(UIDevice.current.modelName)" +
+			"\nCurrent Time: \(date)" +
+			"\niOS: \(UIDevice.current.systemVersion)" +
+			"\n\nApplication Information" +
+			"\nVersion: \(version())" +
+			"\nBuild #: \(buildNum)" +
+			"\nFeedback ID: \(uuid)"
+		
 		do {
 			// Write to the file
 			try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
@@ -60,7 +63,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 		}
 		
 		if MFMailComposeViewController.canSendMail() {
-			let uuid = UUID().uuidString.suffix(8)
 			let composeVC = MFMailComposeViewController()
 			
 			composeVC.mailComposeDelegate = self
@@ -101,6 +103,15 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.dismiss(animated: true, completion: nil)
     }
+	
+	func getDate() -> String {
+		
+		let stringFromDate = Date().iso8601    // "2017-03-22T13:22:13.933Z"
+		if let dateFromString = stringFromDate.dateFromISO8601 {
+			return dateFromString.iso8601      // "2017-03-22T13:22:13.933Z"
+		}
+		return stringFromDate
+	}
     
     func version() -> String {
         let dictionary = Bundle.main.infoDictionary!

@@ -8,15 +8,25 @@
 
 import UIKit
 
-extension UIViewController {
-	
-	func getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate) -> String {
-		let objDateformat: DateFormatter = DateFormatter()
-		objDateformat.dateFormat = "yyyy-MM-dd"
-		let strTime: String = objDateformat.string(from: dateToConvert as Date)
-		let objUTCDate: NSDate = objDateformat.date(from: strTime)! as NSDate
-		let milliseconds: Int64 = Int64(objUTCDate.timeIntervalSince1970)
-		let strTimeStamp: String = "\(milliseconds)"
-		return strTimeStamp
+extension Formatter {
+	static let iso8601: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.calendar = Calendar(identifier: .iso8601)
+		formatter.locale = Locale(identifier: "en_US_POSIX")
+		formatter.timeZone = TimeZone(secondsFromGMT: -18000)
+		formatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss.SSSXXXXX"
+		return formatter
+	}()
+}
+extension Date {
+	var iso8601: String {
+		return Formatter.iso8601.string(from: self)
 	}
 }
+
+extension String {
+	var dateFromISO8601: Date? {
+		return Formatter.iso8601.date(from: self)
+	}
+}
+
