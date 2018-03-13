@@ -17,6 +17,8 @@
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
 		DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2667DE1F37FBA20020424C /* SettingsViewController.swift */; };
 		DC3835241F68D82700F05E8B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3835231F68D82600F05E8B /* NotificationCenter.framework */; };
+		DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */; };
+		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
 		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
@@ -270,6 +272,8 @@
 		DC38352A1F68D8C800F05E8B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeExtension.swift; sourceTree = "<group>"; };
+		DC64031E205783DE00176BFB /* TimestampExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampExtension.swift; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +419,8 @@
 			children = (
 				DC01B7F51F0494EE002784E7 /* dismissKeyboard.swift */,
 				DC01B7F61F0494EE002784E7 /* StringUtils.swift */,
+				DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */,
+				DC64031E205783DE00176BFB /* TimestampExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -928,6 +934,7 @@
 				DCE362DB1F05610600725F11 /* ReadHabakkukViewController.swift in Sources */,
 				DCE362DC1F05610600725F11 /* ReadHaggaiVewController.swift in Sources */,
 				DCE362DD1F05610600725F11 /* ReadHebrewsViewController.swift in Sources */,
+				DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */,
 				DCE362DE1F05610600725F11 /* ReadHoseaViewController.swift in Sources */,
 				DCE362DF1F05610600725F11 /* ReadIsaiahViewController.swift in Sources */,
 				DCE362E01F05610600725F11 /* ReadJamesViewController.swift in Sources */,
@@ -967,6 +974,7 @@
 				DCE363011F05610600725F11 /* ReadTitusViewController.swift in Sources */,
 				DCE363021F05610600725F11 /* ReadZechariahViewController.swift in Sources */,
 				DCE363031F05610600725F11 /* ReadZepheniahViewController.swift in Sources */,
+				DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */,
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DCE363061F05610600725F11 /* EventsFeedViewController.swift in Sources */,
