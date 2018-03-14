@@ -1,5 +1,6 @@
 ### 1.6.2  —  TBD
 - Improved the experience for reporting issues via email feedback
+- Notes with the text "New Note" at the beginning will now not be overwritten 
 - Misc bug fixes
 
 ### 1.6.1  —  Feb 7, 2018 
