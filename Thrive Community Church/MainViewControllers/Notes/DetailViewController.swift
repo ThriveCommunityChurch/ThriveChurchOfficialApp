@@ -16,30 +16,19 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-			TODO: Call Parent View controller in order to load the view and also get
-         	the new Notes Loaded. Once they have loaded, segue back to this view.
-		*/
-        
         detailViewController = self
 		detailDescriptionLabel?.delegate = self
         detailViewController?.becomeFirstResponder()
         
-        // called when adding / editing an item to the TableViewController in MasterVew
-        // Called at application init for notes tab - YES
-        
         saveAndUpdate()
+		// it is important that this be in here a second time -- notes have issues otherwise
         self.configureView()
-        
-        // segue
     }
     
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
             saveAndUpdate()
-            self.configureView()
-            
         }
     }
     
@@ -68,8 +57,9 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 			let cursorPosition = detailDescriptionLabel?.offset(from: (detailDescriptionLabel?.beginningOfDocument)!, to: selectedRange.start)
 			
 			let length = (cursorPosition ?? 0) - 1
-			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0, length: length))
-			}
+			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0,
+																 length: length))
+		}
 	}
 	
     @IBAction func share(_ sender: AnyObject) {
@@ -107,14 +97,13 @@ class DetailViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        //updates the text for the preview of the note on the Table View
+        // updates the text for the preview of the note on the Table View
 		if let indexText = detailDescriptionLabel?.text {
 			objects[currentIndex] = indexText
 			
 			if detailDescriptionLabel?.text == "" {
 				objects[currentIndex] = newNote
 			}
-			
 		}
 		
         saveAndUpdate()
