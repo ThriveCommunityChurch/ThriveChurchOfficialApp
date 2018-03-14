@@ -98,8 +98,6 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 			detailDescriptionLabel?.text = "New Note "
 		}
 	}
-	
-	
     
     // called when hitting back on the editing screen -- after segue back to Table View
     override func viewDidDisappear(_ animated: Bool) {

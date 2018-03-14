@@ -16,6 +16,9 @@ let notesKey: String = "notes"
 let newNote: String = "New Note"
 
 class MasterViewController: UITableViewController {
+	
+	
+	// TODO: Issue #71
     
     override func viewDidLoad() {
         super.viewDidLoad()
