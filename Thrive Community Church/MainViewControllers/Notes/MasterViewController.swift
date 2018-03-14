@@ -35,7 +35,6 @@ class MasterViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
-        // MARK: Back Button
         // Gets called when the user is returning from writing a note
         
         if objects.count == 0 {
@@ -46,7 +45,6 @@ class MasterViewController: UITableViewController {
         /*
          Adding insert new object here in this method is not working - creates an inifinte loop
          of creating a new table item - but keeps copying the text from other notes to the new one
-         
         */
         super.viewWillAppear(animated)
     }
@@ -62,7 +60,6 @@ class MasterViewController: UITableViewController {
     
     // Adds new object & changes name of the string of Master following the segue back
     @objc func insertNewObject(_ sender: AnyObject) {
-        save()
 		
         if objects.count == 0 || objects[0] != newNote {
             
@@ -72,7 +69,7 @@ class MasterViewController: UITableViewController {
             
             save()
         }
-        save()
+		save()
         
         currentIndex = 0
         self.performSegue(withIdentifier: "showDetail", sender: self)
@@ -82,8 +79,7 @@ class MasterViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            
-            //INIT NOTE #3 - Nothing Still --- may happen after this though
+			
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 
                 let object = objects[(indexPath as NSIndexPath).row]

@@ -89,6 +89,17 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		// if the user types what we check for in order to inspect if the note is new
+		// then add a space so it looks the same but isn't
+		if detailDescriptionLabel?.text == "New Note" || detailDescriptionLabel?.text == "New Note " {
+			detailDescriptionLabel?.text = "New Note "
+		}
+	}
+	
+	
     
     // called when hitting back on the editing screen -- after segue back to Table View
     override func viewDidDisappear(_ animated: Bool) {
@@ -105,6 +116,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 			if detailDescriptionLabel?.text == "" {
 				objects[currentIndex] = newNote
 			}
+			
 		}
 		
         saveAndUpdate()
