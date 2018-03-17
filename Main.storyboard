@@ -5231,7 +5231,7 @@
                                         <rect key="frame" x="0.0" y="-63" width="375" height="667"/>
                                         <subviews>
                                             <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="20041 S Tamiami Trail #1                                                           Estero, FL 33928" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="chb-qd-qJ5">
-                                                <rect key="frame" x="-1" y="142" width="373" height="56"/>
+                                                <rect key="frame" x="0.0" y="142" width="373" height="56"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -5244,7 +5244,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worship Times" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6k-V1-4uN">
-                                                <rect key="frame" x="-1" y="206" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="206" width="375" height="19"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -5257,7 +5257,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1g-uJ-aJD" userLabel="App Version: 1.5">
-                                                <rect key="frame" x="-1" y="42" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="42" width="375" height="19"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -5270,7 +5270,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact the Development Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDP-0n-EnV">
-                                                <rect key="frame" x="0.0" y="298" width="375" height="21"/>
+                                                <rect key="frame" x="1" y="298" width="375" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="J2L-6h-Lga"/>
                                                     <constraint firstAttribute="width" constant="375" id="re0-wc-s7W"/>
@@ -5280,7 +5280,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vni-30-fSH">
-                                                <rect key="frame" x="-1" y="115" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="115" width="375" height="19"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -5293,20 +5293,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOSs Supported: 10 &amp; 11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVw-BB-BQF">
-                                                <rect key="frame" x="15" y="69" width="341" height="23"/>
+                                                <rect key="frame" x="0.0" y="69" width="375" height="23"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="cRS-Qn-mGw"/>
-                                                    <constraint firstAttribute="width" constant="341" id="oiy-oA-ke2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Every Sunday Morning at 10 AM" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-Hg-4rw">
-                                                <rect key="frame" x="-1" y="233" width="374" height="40"/>
+                                                <rect key="frame" x="0.0" y="233" width="374" height="40"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -5319,10 +5318,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textView>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sa-5i-l9f">
-                                                <rect key="frame" x="-2" y="327" width="376" height="45"/>
+                                                <rect key="frame" x="-1" y="327" width="376" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="Z9H-07-zpb"/>
+                                                    <constraint firstAttribute="height" constant="45" id="041-8E-AEd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <state key="normal" title="wyatt@thrive-fl.org">
@@ -5333,58 +5332,77 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNa-dX-Y5F">
-                                                <rect key="frame" x="-2" y="483" width="377" height="90"/>
+                                                <rect key="frame" x="-1" y="473" width="377" height="100"/>
                                                 <subviews>
                                                     <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2018 Thrive Community Church.                                                                     All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
-                                                        <rect key="frame" x="0.0" y="42" width="377" height="48"/>
+                                                        <rect key="frame" x="0.0" y="50" width="377" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textView>
                                                     <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Made By" translatesAutoresizingMaskIntoConstraints="NO" id="vJy-6V-wtY">
-                                                        <rect key="frame" x="107" y="8" width="163" height="26"/>
+                                                        <rect key="frame" x="101" y="8" width="175" height="27"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                         </accessibility>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="163" id="Kwe-Ho-GY4"/>
-                                                            <constraint firstAttribute="height" constant="26" id="qrw-Qf-pa2"/>
+                                                            <constraint firstAttribute="width" constant="175" id="Kwe-Ho-GY4"/>
+                                                            <constraint firstAttribute="height" constant="27" id="qrw-Qf-pa2"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="0.79736712598425197" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="Enr-Jp-ZRk" secondAttribute="bottom" id="1Pc-rT-cwf"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Enr-Jp-ZRk" secondAttribute="trailing" id="4h1-Uq-bTf"/>
-                                                    <constraint firstItem="Enr-Jp-ZRk" firstAttribute="top" secondItem="vJy-6V-wtY" secondAttribute="bottom" constant="8" symbolic="YES" id="4hI-w2-XzG"/>
+                                                    <constraint firstItem="Enr-Jp-ZRk" firstAttribute="top" secondItem="vJy-6V-wtY" secondAttribute="bottom" constant="15" id="4hI-w2-XzG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Enr-Jp-ZRk" secondAttribute="trailing" id="GTz-Mu-5B2"/>
                                                     <constraint firstItem="vJy-6V-wtY" firstAttribute="centerX" secondItem="Enr-Jp-ZRk" secondAttribute="centerX" id="HUp-V6-aLO"/>
-                                                    <constraint firstItem="vJy-6V-wtY" firstAttribute="top" secondItem="FNa-dX-Y5F" secondAttribute="topMargin" id="Y5s-yO-PZa"/>
-                                                    <constraint firstItem="Enr-Jp-ZRk" firstAttribute="leading" secondItem="FNa-dX-Y5F" secondAttribute="leading" id="wEB-p6-9F4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Enr-Jp-ZRk" secondAttribute="bottom" id="m3j-PT-IUK"/>
+                                                    <constraint firstItem="vJy-6V-wtY" firstAttribute="top" secondItem="FNa-dX-Y5F" secondAttribute="topMargin" id="z8O-km-A3R"/>
+                                                    <constraint firstItem="Enr-Jp-ZRk" firstAttribute="leading" secondItem="FNa-dX-Y5F" secondAttribute="leading" id="zQS-CW-hqg"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0h-V7-Sqt">
+                                                <rect key="frame" x="0.0" y="430" width="376" height="35"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="z3Y-Fm-LES"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                                <state key="normal" title="Privacy Policy">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="contactingAdmin:" destination="W15-a1-g4j" eventType="touchUpInside" id="w7I-dJ-Mep"/>
+                                                    <action selector="privacyPolicy:" destination="W15-a1-g4j" eventType="touchUpInside" id="bg1-0k-UxL"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="FNa-dX-Y5F" secondAttribute="bottom" constant="94" id="14O-37-ah0"/>
-                                            <constraint firstItem="FNa-dX-Y5F" firstAttribute="leading" secondItem="6sa-5i-l9f" secondAttribute="leading" id="2Cr-FL-FLG"/>
-                                            <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="rVw-BB-BQF" secondAttribute="centerX" constant="1" id="4GO-vM-fCH"/>
-                                            <constraint firstItem="6sa-5i-l9f" firstAttribute="centerX" secondItem="wDP-0n-EnV" secondAttribute="centerX" constant="-1.5" id="7eQ-Yw-ODT"/>
+                                            <constraint firstItem="FNa-dX-Y5F" firstAttribute="trailing" secondItem="wDP-0n-EnV" secondAttribute="trailing" id="1pS-lV-gKw"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="chb-qd-qJ5" secondAttribute="centerX" constant="1" id="Em6-KE-swf"/>
-                                            <constraint firstItem="FNa-dX-Y5F" firstAttribute="top" secondItem="Eet-Y0-2fF" secondAttribute="top" constant="483" id="FgF-sZ-2Ld"/>
-                                            <constraint firstItem="FNa-dX-Y5F" firstAttribute="centerX" secondItem="6sa-5i-l9f" secondAttribute="centerX" id="L3H-GM-Mx0"/>
-                                            <constraint firstItem="FNa-dX-Y5F" firstAttribute="leading" secondItem="Eet-Y0-2fF" secondAttribute="leading" constant="-2" id="Ldf-iE-tyI"/>
+                                            <constraint firstAttribute="bottom" secondItem="FNa-dX-Y5F" secondAttribute="bottom" constant="94" id="GKP-iH-DDR"/>
+                                            <constraint firstItem="b0h-V7-Sqt" firstAttribute="top" secondItem="6sa-5i-l9f" secondAttribute="bottom" constant="58" id="Htx-lu-VY0"/>
+                                            <constraint firstItem="6sa-5i-l9f" firstAttribute="top" secondItem="wDP-0n-EnV" secondAttribute="bottom" constant="8" symbolic="YES" id="KaB-jc-g6l"/>
                                             <constraint firstItem="Vni-30-fSH" firstAttribute="top" secondItem="rVw-BB-BQF" secondAttribute="bottom" constant="23" id="MlQ-43-zOK"/>
                                             <constraint firstAttribute="height" constant="667" id="PgA-kW-TGU"/>
                                             <constraint firstItem="chb-qd-qJ5" firstAttribute="top" secondItem="Vni-30-fSH" secondAttribute="bottom" constant="8" symbolic="YES" id="Ulz-me-2hW"/>
                                             <constraint firstItem="wDP-0n-EnV" firstAttribute="top" secondItem="7UE-Hg-4rw" secondAttribute="bottom" constant="25" id="W49-PA-TKC"/>
+                                            <constraint firstItem="6sa-5i-l9f" firstAttribute="trailing" secondItem="E6k-V1-4uN" secondAttribute="trailing" id="XBk-mK-l1r"/>
+                                            <constraint firstAttribute="trailing" secondItem="rVw-BB-BQF" secondAttribute="trailing" id="Xot-HI-ysg"/>
                                             <constraint firstItem="7UE-Hg-4rw" firstAttribute="top" secondItem="E6k-V1-4uN" secondAttribute="bottom" constant="8" symbolic="YES" id="a2c-ye-qW0"/>
                                             <constraint firstItem="rVw-BB-BQF" firstAttribute="top" secondItem="n1g-uJ-aJD" secondAttribute="bottom" constant="8" symbolic="YES" id="asL-es-5bT"/>
                                             <constraint firstItem="E6k-V1-4uN" firstAttribute="top" secondItem="chb-qd-qJ5" secondAttribute="bottom" constant="8" id="b5l-fU-sKg"/>
+                                            <constraint firstItem="6sa-5i-l9f" firstAttribute="leading" secondItem="FNa-dX-Y5F" secondAttribute="leading" id="bIM-9t-yQw"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="E6k-V1-4uN" secondAttribute="centerX" id="cPt-FQ-8Kg"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="Vni-30-fSH" secondAttribute="centerX" id="d6c-ho-cQY"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="top" secondItem="Eet-Y0-2fF" secondAttribute="top" constant="42" id="gI3-bV-1GT"/>
-                                            <constraint firstAttribute="trailing" secondItem="FNa-dX-Y5F" secondAttribute="trailing" id="got-6E-IlL"/>
-                                            <constraint firstItem="6sa-5i-l9f" firstAttribute="top" secondItem="wDP-0n-EnV" secondAttribute="bottom" constant="8" symbolic="YES" id="rNU-3P-317"/>
+                                            <constraint firstItem="6sa-5i-l9f" firstAttribute="centerX" secondItem="7UE-Hg-4rw" secondAttribute="centerX" id="lY4-rA-DPb"/>
+                                            <constraint firstItem="rVw-BB-BQF" firstAttribute="leading" secondItem="Eet-Y0-2fF" secondAttribute="leading" id="mDo-sU-sz0"/>
+                                            <constraint firstItem="Vni-30-fSH" firstAttribute="centerX" secondItem="Eet-Y0-2fF" secondAttribute="centerX" id="mgu-JN-p1j"/>
+                                            <constraint firstItem="b0h-V7-Sqt" firstAttribute="leading" secondItem="wDP-0n-EnV" secondAttribute="leading" constant="-1" id="qq6-pT-cAr"/>
+                                            <constraint firstItem="b0h-V7-Sqt" firstAttribute="centerX" secondItem="wDP-0n-EnV" secondAttribute="centerX" id="r4B-9N-3UE"/>
+                                            <constraint firstItem="FNa-dX-Y5F" firstAttribute="top" secondItem="b0h-V7-Sqt" secondAttribute="bottom" constant="8" symbolic="YES" id="sGg-mz-H7u"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="7UE-Hg-4rw" secondAttribute="centerX" constant="1" id="wnc-8h-9O0"/>
                                             <constraint firstItem="n1g-uJ-aJD" firstAttribute="centerX" secondItem="wDP-0n-EnV" secondAttribute="centerX" constant="-0.5" id="yZ4-mE-sP0"/>
                                         </constraints>

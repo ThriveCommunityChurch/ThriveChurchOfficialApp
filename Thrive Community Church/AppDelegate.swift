@@ -12,7 +12,7 @@ import CoreVideo
 import MediaPlayer
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 
     var window: UIWindow?
     

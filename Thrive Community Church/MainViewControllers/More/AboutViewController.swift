@@ -78,6 +78,20 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 			self.present(composeVC, animated: true, completion: nil)
 		}
 	}
+	
+	@IBAction func privacyPolicy(_ sender: Any) {
+		
+		let site = "http://thrive-fl.org/privacy#mobile"
+		let url = URL(string: site)!
+		if UIApplication.shared.canOpenURL(url) {
+			
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+		else {
+			print("Cannot Perform selected action")
+		}
+	}
+	
     
     //Standard Mail compose controller code
     func mailComposeController(_ controller: MFMailComposeViewController,
