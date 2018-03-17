@@ -15,7 +15,6 @@
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
 		DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2667DE1F37FBA20020424C /* SettingsViewController.swift */; };
-		DC3835241F68D82700F05E8B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3835231F68D82600F05E8B /* NotificationCenter.framework */; };
 		DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */; };
 		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
@@ -282,7 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCDFCE5C1FA00C700011AEC3 /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
-				DC3835241F68D82700F05E8B /* NotificationCenter.framework in Frameworks */,
 				41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */,
 				41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */,
 				413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */,
