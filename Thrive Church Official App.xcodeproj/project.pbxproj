@@ -106,8 +106,6 @@
 		DCE363101F05610600725F11 /* SmallGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */; };
 		DCE363111F05610600725F11 /* SermonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84B1F0494FF002784E7 /* SermonsViewController.swift */; };
 		DCE363121F05610600725F11 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84D1F0494FF002784E7 /* AboutViewController.swift */; };
-		DCE363131F05610600725F11 /* EspanolAboutThriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84E1F0494FF002784E7 /* EspanolAboutThriveViewController.swift */; };
-		DCE363141F05610600725F11 /* EspanolSermonNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84F1F0494FF002784E7 /* EspanolSermonNotesViewController.swift */; };
 		DCE363151F05610600725F11 /* giveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8501F0494FF002784E7 /* giveViewController.swift */; };
 		DCE363161F05610600725F11 /* ImNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8511F0494FF002784E7 /* ImNewViewController.swift */; };
 		DCE363171F05610600725F11 /* MeetTheTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */; };
@@ -255,8 +253,6 @@
 		DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallGroupViewController.swift; sourceTree = "<group>"; };
 		DC01B84B1F0494FF002784E7 /* SermonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonsViewController.swift; sourceTree = "<group>"; };
 		DC01B84D1F0494FF002784E7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		DC01B84E1F0494FF002784E7 /* EspanolAboutThriveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EspanolAboutThriveViewController.swift; sourceTree = "<group>"; };
-		DC01B84F1F0494FF002784E7 /* EspanolSermonNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EspanolSermonNotesViewController.swift; sourceTree = "<group>"; };
 		DC01B8501F0494FF002784E7 /* giveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = giveViewController.swift; sourceTree = "<group>"; };
 		DC01B8511F0494FF002784E7 /* ImNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImNewViewController.swift; sourceTree = "<group>"; };
 		DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetTheTeamViewController.swift; sourceTree = "<group>"; };
@@ -548,8 +544,6 @@
 			isa = PBXGroup;
 			children = (
 				DC01B84D1F0494FF002784E7 /* AboutViewController.swift */,
-				DC01B84E1F0494FF002784E7 /* EspanolAboutThriveViewController.swift */,
-				DC01B84F1F0494FF002784E7 /* EspanolSermonNotesViewController.swift */,
 				DC01B8501F0494FF002784E7 /* giveViewController.swift */,
 				DC01B8511F0494FF002784E7 /* ImNewViewController.swift */,
 				DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */,
@@ -988,8 +982,6 @@
 				DCE363101F05610600725F11 /* SmallGroupViewController.swift in Sources */,
 				DCE363111F05610600725F11 /* SermonsViewController.swift in Sources */,
 				DCE363121F05610600725F11 /* AboutViewController.swift in Sources */,
-				DCE363131F05610600725F11 /* EspanolAboutThriveViewController.swift in Sources */,
-				DCE363141F05610600725F11 /* EspanolSermonNotesViewController.swift in Sources */,
 				DCE363151F05610600725F11 /* giveViewController.swift in Sources */,
 				DCE363161F05610600725F11 /* ImNewViewController.swift in Sources */,
 				DCE363171F05610600725F11 /* MeetTheTeamViewController.swift in Sources */,

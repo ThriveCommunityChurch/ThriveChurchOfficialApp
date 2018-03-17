@@ -126,27 +126,8 @@
                                             <segue destination="Wo4-nB-BqB" kind="show" id="15q-8a-5XB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="About" textLabel="UVZ-oF-JjB" rowHeight="60" style="IBUITableViewCellStyleDefault" id="CfI-OZ-L2m" userLabel="thrive en español">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CfI-OZ-L2m" id="lC0-GO-mIT">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Thrive en Español" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UVZ-oF-JjB">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="c3Q-0g-pdd" kind="show" id="xwv-oY-nJx"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Meet the Team" textLabel="gen-Tt-74B" rowHeight="60" style="IBUITableViewCellStyleDefault" id="YMs-KU-MIL">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YMs-KU-MIL" id="5YK-6g-KOq">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
@@ -165,7 +146,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Settings" textLabel="shf-2n-2rs" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Ov8-T2-wGl">
-                                        <rect key="frame" x="0.0" y="300" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="240" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ov8-T2-wGl" id="mmK-2r-73A">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
@@ -184,7 +165,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="About" textLabel="dEY-IM-Vf1" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Rhk-j1-Ld8">
-                                        <rect key="frame" x="0.0" y="360" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rhk-j1-Ld8" id="Y37-js-NUg">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
@@ -5475,70 +5456,6 @@
             </objects>
             <point key="canvasLocation" x="3520.8000000000002" y="2429.2353823088456"/>
         </scene>
-        <!--Español-->
-        <scene sceneID="vsR-kg-vLz">
-            <objects>
-                <tableViewController title="Español" id="c3Q-0g-pdd" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XRO-aq-9st">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <sections>
-                            <tableViewSection id="XKQ-rl-Qzk">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="D9M-s4-LoF" rowHeight="60" style="IBUITableViewCellStyleDefault" id="fdn-Xc-obi">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fdn-Xc-obi" id="H8t-iY-OKd">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Notas del sermón " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D9M-s4-LoF">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="367-KE-7jV" kind="show" id="XdN-1h-MN0"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="kRT-cf-uFC" rowHeight="60" style="IBUITableViewCellStyleDefault" id="qMF-bl-n5z">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qMF-bl-n5z" id="h7X-Wy-gxo">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Acerca de Thrive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kRT-cf-uFC">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="59.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="4nc-x8-FpY" kind="show" id="oAj-ob-0AQ"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="c3Q-0g-pdd" id="fKd-5W-Pdf"/>
-                            <outlet property="delegate" destination="c3Q-0g-pdd" id="4n2-BH-Ly1"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k07-Q8-pKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4237" y="2430"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="mMk-vu-Mv7">
             <objects>
@@ -5638,87 +5555,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsm-bf-UfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5040.8000000000002" y="2428.3358320839584"/>
-        </scene>
-        <!--Notas del sermón-->
-        <scene sceneID="Jxe-Ja-AFU">
-            <objects>
-                <viewController title="Notas del sermón" extendedLayoutIncludesOpaqueBars="YES" id="367-KE-7jV" customClass="EspanolSermonNotesViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DUk-3f-9hD"/>
-                        <viewControllerLayoutGuide type="bottom" id="lcf-EX-6kS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="59J-yi-JdP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cco-DP-Fvu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ugu-GO-5YJ">
-                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="ugu-GO-5YJ" firstAttribute="centerX" secondItem="59J-yi-JdP" secondAttribute="centerX" id="IwZ-PV-peh"/>
-                            <constraint firstItem="Cco-DP-Fvu" firstAttribute="leading" secondItem="59J-yi-JdP" secondAttribute="leading" id="So6-3o-m7Y"/>
-                            <constraint firstItem="ugu-GO-5YJ" firstAttribute="centerY" secondItem="59J-yi-JdP" secondAttribute="centerY" constant="0.5" id="ZSc-uv-CiE"/>
-                            <constraint firstItem="ugu-GO-5YJ" firstAttribute="centerX" secondItem="Cco-DP-Fvu" secondAttribute="centerX" id="cnA-KT-Hwd"/>
-                            <constraint firstItem="Cco-DP-Fvu" firstAttribute="bottom" secondItem="lcf-EX-6kS" secondAttribute="top" constant="49" id="sGh-HO-WuA"/>
-                            <constraint firstItem="ugu-GO-5YJ" firstAttribute="centerY" secondItem="Cco-DP-Fvu" secondAttribute="centerY" constant="0.5" id="wVa-4w-NES"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="loading" destination="ugu-GO-5YJ" id="QIS-G8-jXT"/>
-                        <outlet property="spanishView" destination="Cco-DP-Fvu" id="KTV-sg-HMi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6iu-IH-9Em" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4429.6000000000004" y="3220.8395802098953"/>
-        </scene>
-        <!--Acerca de Thrive-->
-        <scene sceneID="zoC-RI-qhE">
-            <objects>
-                <viewController title="Acerca de Thrive" extendedLayoutIncludesOpaqueBars="YES" id="4nc-x8-FpY" customClass="EspanolAboutThriveViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XgC-6h-CRH"/>
-                        <viewControllerLayoutGuide type="bottom" id="fBa-6D-tmF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qDr-CQ-h8X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLt-IS-hqh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XhW-uK-4jM">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="XhW-uK-4jM" firstAttribute="centerX" secondItem="fLt-IS-hqh" secondAttribute="centerX" id="18E-Iu-zy2"/>
-                            <constraint firstAttribute="trailing" secondItem="fLt-IS-hqh" secondAttribute="trailing" id="BFC-tr-fgs"/>
-                            <constraint firstItem="fLt-IS-hqh" firstAttribute="top" secondItem="qDr-CQ-h8X" secondAttribute="top" id="DLP-O5-5hz"/>
-                            <constraint firstItem="fLt-IS-hqh" firstAttribute="leading" secondItem="qDr-CQ-h8X" secondAttribute="leading" id="j5V-2E-ms8"/>
-                            <constraint firstItem="fLt-IS-hqh" firstAttribute="bottom" secondItem="fBa-6D-tmF" secondAttribute="top" constant="49" id="nuv-1Q-ybI"/>
-                            <constraint firstItem="XhW-uK-4jM" firstAttribute="centerY" secondItem="fLt-IS-hqh" secondAttribute="centerY" id="sMP-Nb-nOL"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="loading" destination="XhW-uK-4jM" id="Qdf-RL-hZ1"/>
-                        <outlet property="spanishAboutView" destination="fLt-IS-hqh" id="vWc-WB-iEU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e0Y-iu-YDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5040.8000000000002" y="3220.8395802098953"/>
         </scene>
         <!--thrive-fl.org-->
         <scene sceneID="8Uq-LM-IRV">
@@ -8140,7 +7976,7 @@
         <segue reference="YeO-9n-BC6"/>
         <segue reference="fyV-zO-xaL"/>
         <segue reference="pnX-ve-i4j"/>
-        <segue reference="O9A-hG-jAT"/>
+        <segue reference="4mJ-rJ-QcU"/>
         <segue reference="egG-ne-epq"/>
         <segue reference="9dp-Bw-9B7"/>
         <segue reference="Svh-hN-QHM"/>
