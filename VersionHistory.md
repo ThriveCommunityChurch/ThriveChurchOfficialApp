@@ -1,6 +1,7 @@
 ### 1.6.2  —  TBD
 - Improved the experience for reporting issues via email feedback
-- Notes with the text "New Note" at the beginning will now not be overwritten
+- Notes with specific text will now not be overwritten
+- Fixed an issue where some screens didn't appear properly on smaller devices
 - Notes Page Optimizations
 - Misc bug fixes
 
