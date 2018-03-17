@@ -18,7 +18,7 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 
 * Listen to sermons on the go
 * Read the entire Bible
-* 
+* Supporting iPhone X
 * Stay connected to Thrive FGCU
 * Donate to our ministry and setup automatic payments
 * Take notes during the sermon then share them with your friends or save them for later
