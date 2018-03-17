@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 import CoreVideo
 import MediaPlayer
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate  {
