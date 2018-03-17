@@ -8,7 +8,6 @@ This application was created by Thrive Community Church in Estero, FL for iPhone
 Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official-app/id1138008288?mt=8)
 **OR** search for *Thrive Church Official App* in the [*Apple iTunes*](https://www.apple.com/itunes/) Store.
  
-
 ## System Requirements
 
 * iPhone running iOS 10.0 or Later
@@ -19,6 +18,7 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 
 * Listen to sermons on the go
 * Read the entire Bible
+* 
 * Stay connected to Thrive FGCU
 * Donate to our ministry and setup automatic payments
 * Take notes during the sermon then share them with your friends or save them for later
@@ -34,11 +34,11 @@ For a full listing of features visit our [Website](http://thrive-fl.org).
 ### Testing Team
 
 * **Debora Lobaina** - QA / Testing
-* **Phil Klopke** -Testing
+* **Phil Klopke** - Testing
+* **[Joel Butcher](https://github.com/joelbutcher)** - QA
 
 ## Support & Bug Reports
 Please visit http://thrive-fl.org/app-support/ to submit a Support Ticket OR you can post it as an issue to this repository.
-
 
 ### Acknowledgements
 Thank you to everyone who uses this application, we made it for you - to help make taking notes and hearing the gospel message that much easier for you. Made with ❤
