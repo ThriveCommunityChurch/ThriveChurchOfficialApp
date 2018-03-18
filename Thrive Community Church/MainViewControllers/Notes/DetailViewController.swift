@@ -16,32 +16,19 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*      TODO: Call Parent View controller in order to load the view and also get
-         the new Notes Loaded. Once they have loaded, segue back to this view.
-         */
-        
         detailViewController = self
 		detailDescriptionLabel?.delegate = self
         detailViewController?.becomeFirstResponder()
         
-        // called when adding / editing an item to the TableViewController in MasterVew
-        // Called at application init for notes tab - YES
-        
-        // INIT NOTE #5 - No
         saveAndUpdate()
+		// it is important that this be in here a second time -- notes have issues otherwise
         self.configureView()
-        
-        // segue
-        //INIT NOTE #8 - I assume that this is where the code stops.
-        // Since no other funcs are called after config
     }
     
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
             saveAndUpdate()
-            self.configureView()
-            
         }
     }
     
@@ -49,7 +36,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     func configureView() {
         // Update the user interface for the detail item.
         saveAndUpdate()
-        //INIT NOTE #6 - No
+		
         if objects.count == 0 {
             return
         }
@@ -57,12 +44,10 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         if let label = self.detailDescriptionLabel {
             label.text = objects[currentIndex]
             
-            if label.text == BLANK_NOTE {
+            if label.text == newNote {
                 label.text = ""
             }
         }
-        // INIT NOTE #7 - After returning from our inital note we end here, on the
-        // "Add Note" screen once again
     }
 	
 	// TODO: Fix this fully -- there's really only a hacky solution
@@ -72,8 +57,9 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 			let cursorPosition = detailDescriptionLabel?.offset(from: (detailDescriptionLabel?.beginningOfDocument)!, to: selectedRange.start)
 			
 			let length = (cursorPosition ?? 0) - 1
-			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0, length: length))
-			}
+			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0,
+																 length: length))
+		}
 	}
 	
     @IBAction func share(_ sender: AnyObject) {
@@ -93,35 +79,34 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		// if the user types what we check for in order to inspect if the note is new
+		// then add a space so it looks the same but isn't
+		if detailDescriptionLabel?.text == "New Note" || detailDescriptionLabel?.text == "New Note " {
+			detailDescriptionLabel?.text = "New Note "
+		}
+	}
     
     // called when hitting back on the editing screen -- after segue back to Table View
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        /*
-         BINGO! - this is called when there is no note in the TableView
-         this is also not called at any time before the user hits back after typing
-         their first message
-         
-         Look here to make changes? -- more testing might be neeeded before we can
-         make that assertion
-        */
+		
         if objects.count == 0 {
             return
         }
-        // INIT NOTE #1 - Still nothing happening
         
-        //updates the text for the preview of the note on the Table View
+        // updates the text for the preview of the note on the Table View
 		if let indexText = detailDescriptionLabel?.text {
 			objects[currentIndex] = indexText
 			
 			if detailDescriptionLabel?.text == "" {
-				objects[currentIndex] = BLANK_NOTE
+				objects[currentIndex] = newNote
 			}
 		}
 		
         saveAndUpdate()
-        // Called wheb the view is returning from the editing view
     }
     
     // permiate changes to the master view
@@ -133,7 +118,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 
 class ActivityForNotesViewController: UIActivityViewController {
     
-    //Remove actions that we do not want the user to be able to share via
+    // Remove actions that we do not want the user to be able to share via
     // these are intentionally marked because the media is Text
     internal func _shouldExcludeActivityType(_ activity: UIActivity) -> Bool {
         let activityTypesToExclude = [
