@@ -1,4 +1,4 @@
-### 1.6.2  —  TBD
+### 1.6.2  —  Mar 18, 2018
 - Improved the experience for reporting issues via email feedback
 - Notes with specific text will now not be overwritten
 - Fixed an issue where some screens didn't appear properly on smaller devices
