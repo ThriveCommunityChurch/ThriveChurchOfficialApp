@@ -26,12 +26,12 @@ class SettingsViewController: UIViewController {
                   " application. Doing this is only reccomended when connected to a WiFi network.",
                   preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Continue",
-                  style: UIAlertActionStyle.default,
+                  style: UIAlertActionStyle.destructive,
                   handler: { action in
                         self.goToSettings()
         }))
         alert.addAction(UIAlertAction(title: "Cancel",
-                                    style: UIAlertActionStyle.destructive,
+                                    style: UIAlertActionStyle.cancel,
                                     handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
