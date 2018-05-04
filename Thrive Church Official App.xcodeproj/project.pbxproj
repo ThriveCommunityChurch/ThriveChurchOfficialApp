@@ -571,7 +571,6 @@
 				41FCF7EA1CF21719006C366E /* Frameworks */,
 				41FCF7EB1CF21719006C366E /* Resources */,
 				0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */,
-				6370471B860F8AE82459F5A8 /* [CP] Copy Pods Resources */,
 				EA971F011D63B301007C3A2B /* ShellScript */,
 				EA37C15F1D85E13100D450EF /* Embed App Extensions */,
 			);
@@ -592,8 +591,6 @@
 				41FCF7FF1CF21719006C366E /* Sources */,
 				41FCF8001CF21719006C366E /* Frameworks */,
 				41FCF8011CF21719006C366E /* Resources */,
-				2A6DE99B5A6C7142F5554D1D /* [CP] Embed Pods Frameworks */,
-				F6D4A5453B750A5043F5334F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -613,8 +610,6 @@
 				41FCF80A1CF21719006C366E /* Sources */,
 				41FCF80B1CF21719006C366E /* Frameworks */,
 				41FCF80C1CF21719006C366E /* Resources */,
-				8485215296E6A21859233C4A /* [CP] Copy Pods Resources */,
-				858E143DE412B309E28D000F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -731,78 +726,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2A6DE99B5A6C7142F5554D1D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6370471B860F8AE82459F5A8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8485215296E6A21859233C4A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppUITests/Pods-Thrive Church Official AppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		858E143DE412B309E28D000F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppUITests/Pods-Thrive Church Official AppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE6096902B326C6C7BB6C340 /* [CP] Check Pods Manifest.lock */ = {
@@ -871,21 +804,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "";
-		};
-		F6D4A5453B750A5043F5334F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
