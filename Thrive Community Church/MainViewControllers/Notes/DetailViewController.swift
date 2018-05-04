@@ -114,6 +114,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         masterView?.save()
         masterView?.tableView.reloadData()
     }
+	
 }
 
 class ActivityForNotesViewController: UIActivityViewController {
