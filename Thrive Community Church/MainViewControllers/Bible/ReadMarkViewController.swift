@@ -18,6 +18,7 @@ class ReadMarkViewController: UIViewController, UIWebViewDelegate {
         
         markView.delegate = self
         loadMarkView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadMarkView() {
@@ -33,13 +34,13 @@ class ReadMarkViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

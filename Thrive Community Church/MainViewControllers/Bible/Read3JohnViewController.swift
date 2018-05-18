@@ -18,6 +18,7 @@ class Read3JohnViewController: UIViewController, UIWebViewDelegate {
         
         johnView.delegate = self
         loadJohnView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadJohnView() {
@@ -33,13 +34,13 @@ class Read3JohnViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

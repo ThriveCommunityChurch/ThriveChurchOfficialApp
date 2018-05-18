@@ -18,6 +18,7 @@ class ReadPeterViewController: UIViewController, UIWebViewDelegate {
         
         peterView.delegate = self
         loadPeterView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadPeterView() {
@@ -33,13 +34,13 @@ class ReadPeterViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

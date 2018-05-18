@@ -22,7 +22,6 @@ class MasterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         masterView = self
         // Called when the user Taps "Notes" icon -- buttons are all added before the segue

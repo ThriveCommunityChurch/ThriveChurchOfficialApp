@@ -111,8 +111,8 @@
 		DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */; };
 		DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8571F0494FF002784E7 /* DetailViewController.swift */; };
 		DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8581F0494FF002784E7 /* MasterViewController.swift */; };
-		DCE3631D1F05610600725F11 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F51F0494EE002784E7 /* dismissKeyboard.swift */; };
 		DCE3631E1F05610600725F11 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B7F61F0494EE002784E7 /* StringUtils.swift */; };
+		DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,7 +169,6 @@
 		AFC35240AEAFA3ADBFDE705E /* Pods-Thrive Church Official App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thrive Church Official App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App.debug.xcconfig"; sourceTree = "<group>"; };
 		DC01B7F01F04921B002784E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DC01B7F51F0494EE002784E7 /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
 		DC01B7F61F0494EE002784E7 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		DC01B7F91F0494FF002784E7 /* Read1JohnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read1JohnViewController.swift; sourceTree = "<group>"; };
 		DC01B7FA1F0494FF002784E7 /* Read2ChroniclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Read2ChroniclesViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +271,7 @@
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -407,10 +407,10 @@
 		DC01B7F41F0494EE002784E7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DC01B7F51F0494EE002784E7 /* dismissKeyboard.swift */,
 				DC01B7F61F0494EE002784E7 /* StringUtils.swift */,
 				DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */,
 				DC64031E205783DE00176BFB /* TimestampExtension.swift */,
+				DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -825,6 +825,7 @@
 				DCE362CC1F05610500725F11 /* ReadActsViewController.swift in Sources */,
 				DCE362CD1F05610500725F11 /* ReadAmosViewController.swift in Sources */,
 				DCE362CE1F05610500725F11 /* ReadChroniclesViewController.swift in Sources */,
+				DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */,
 				DCE362CF1F05610500725F11 /* ReadColossiansViewController.swift in Sources */,
 				DCE362D01F05610500725F11 /* ReadCorinthiansViewController.swift in Sources */,
 				DCE362D11F05610500725F11 /* ReadDanielViewController.swift in Sources */,
@@ -903,7 +904,6 @@
 				DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */,
 				DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */,
 				DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */,
-				DCE3631D1F05610600725F11 /* dismissKeyboard.swift in Sources */,
 				DCE3631E1F05610600725F11 /* StringUtils.swift in Sources */,
 				41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */,
 			);

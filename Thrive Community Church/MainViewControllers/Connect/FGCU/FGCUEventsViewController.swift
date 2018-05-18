@@ -20,6 +20,7 @@ class FGCUEventsViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         FGCUEventsWebView.delegate = self
         loadFGCUEventsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadFGCUEventsView() {
@@ -36,12 +37,12 @@ class FGCUEventsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

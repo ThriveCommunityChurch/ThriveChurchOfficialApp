@@ -18,6 +18,7 @@ class ReadHabakkukViewController: UIViewController, UIWebViewDelegate {
         
         habView.delegate = self
         loadHabView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadHabView() {
@@ -33,13 +34,13 @@ class ReadHabakkukViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

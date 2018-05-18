@@ -18,6 +18,7 @@ class ReadNumbersViewController: UIViewController, UIWebViewDelegate {
         
         numbersView.delegate = self
         loadNumbersView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadNumbersView() {
@@ -33,13 +34,13 @@ class ReadNumbersViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

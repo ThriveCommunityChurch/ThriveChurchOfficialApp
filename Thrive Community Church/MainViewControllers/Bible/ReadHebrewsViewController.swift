@@ -18,6 +18,7 @@ class ReadHebrewsViewController: UIViewController, UIWebViewDelegate {
         
         hebrewsView.delegate = self
         loadHebrewsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadHebrewsView() {
@@ -33,13 +34,13 @@ class ReadHebrewsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

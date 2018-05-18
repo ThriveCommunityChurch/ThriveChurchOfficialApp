@@ -16,10 +16,10 @@ class EventsFeedViewController: UIViewController, UIWebViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         eventsView.delegate = self
         loadEventsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadEventsView() {
@@ -36,13 +36,13 @@ class EventsFeedViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

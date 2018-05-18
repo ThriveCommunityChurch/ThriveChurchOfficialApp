@@ -18,6 +18,7 @@ class ReadPhilippiansViewController: UIViewController, UIWebViewDelegate {
         
         phpView.delegate = self
         loadPhpView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadPhpView() {
@@ -33,13 +34,13 @@ class ReadPhilippiansViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

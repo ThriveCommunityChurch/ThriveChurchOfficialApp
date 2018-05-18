@@ -20,6 +20,7 @@ class FGCUNotificationsViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         loadFGCUNotifWebView.delegate = self
         loadFGCUNotifView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadFGCUNotifView() {
@@ -36,12 +37,12 @@ class FGCUNotificationsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

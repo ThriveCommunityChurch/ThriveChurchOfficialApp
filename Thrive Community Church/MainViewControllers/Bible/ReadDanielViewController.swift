@@ -18,6 +18,7 @@ class ReadDanielViewController: UIViewController, UIWebViewDelegate {
         
         danielView.delegate = self
         loadDanielView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadDanielView() {
@@ -33,13 +34,13 @@ class ReadDanielViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

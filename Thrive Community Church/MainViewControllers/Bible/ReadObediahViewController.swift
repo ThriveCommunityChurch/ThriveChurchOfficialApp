@@ -18,6 +18,7 @@ class ReadObediahViewController: UIViewController, UIWebViewDelegate {
         
         obadiahView.delegate = self
         loadObediahView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadObediahView() {
@@ -33,13 +34,13 @@ class ReadObediahViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

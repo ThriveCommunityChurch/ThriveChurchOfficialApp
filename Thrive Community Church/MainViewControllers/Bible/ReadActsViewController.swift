@@ -18,6 +18,7 @@ class ReadActsViewController: UIViewController, UIWebViewDelegate {
         
         actsView.delegate = self
         loadActsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadActsView() {
@@ -33,13 +34,13 @@ class ReadActsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

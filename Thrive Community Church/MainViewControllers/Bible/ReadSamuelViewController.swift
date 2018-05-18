@@ -18,6 +18,7 @@ class ReadSamuelViewController: UIViewController, UIWebViewDelegate {
         
         samuelView.delegate = self
         loadSamuelView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadSamuelView() {
@@ -33,13 +34,13 @@ class ReadSamuelViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

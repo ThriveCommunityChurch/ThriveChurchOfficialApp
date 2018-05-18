@@ -18,6 +18,7 @@ class ReadHoseaViewController: UIViewController, UIWebViewDelegate {
         
         hoseaView.delegate = self
         loadHoseaView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadHoseaView() {
@@ -33,13 +34,13 @@ class ReadHoseaViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

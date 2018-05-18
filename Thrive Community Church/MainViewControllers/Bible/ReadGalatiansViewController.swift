@@ -18,6 +18,7 @@ class ReadGalatiansViewController: UIViewController, UIWebViewDelegate {
         
         galView.delegate = self
         loadGalView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadGalView() {
@@ -33,13 +34,13 @@ class ReadGalatiansViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

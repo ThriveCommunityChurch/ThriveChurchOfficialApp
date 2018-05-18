@@ -18,6 +18,7 @@ class ReadExodusViewController: UIViewController, UIWebViewDelegate {
         
         exodusView.delegate = self
         loadExodusView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadExodusView() {
@@ -33,13 +34,13 @@ class ReadExodusViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

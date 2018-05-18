@@ -17,9 +17,9 @@ class MeetTheTeamViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
         teamView.delegate = self
         loadTeamView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadTeamView() {
@@ -36,12 +36,12 @@ class MeetTheTeamViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
          loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

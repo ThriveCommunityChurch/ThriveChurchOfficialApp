@@ -18,6 +18,7 @@ class ReadRevelationViewController: UIViewController, UIWebViewDelegate {
         
         revView.delegate = self
         loadRevView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadRevView() {
@@ -33,13 +34,13 @@ class ReadRevelationViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

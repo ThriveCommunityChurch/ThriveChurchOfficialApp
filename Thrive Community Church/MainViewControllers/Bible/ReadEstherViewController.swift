@@ -18,6 +18,7 @@ class ReadEstherViewController: UIViewController, UIWebViewDelegate {
         
         estherView.delegate = self
         loadEstherView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadEstherView() {
@@ -33,13 +34,13 @@ class ReadEstherViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

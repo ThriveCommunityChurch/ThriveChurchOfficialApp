@@ -18,6 +18,7 @@ class ReadPsamlsViewController: UIViewController, UIWebViewDelegate {
         
         psalmView.delegate = self
         loadPsalmView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadPsalmView() {
@@ -33,13 +34,13 @@ class ReadPsamlsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

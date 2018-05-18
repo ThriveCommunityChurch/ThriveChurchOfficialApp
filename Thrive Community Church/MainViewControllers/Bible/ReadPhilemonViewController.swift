@@ -18,6 +18,7 @@ class ReadPhilemonViewController: UIViewController, UIWebViewDelegate {
         
         philView.delegate = self
         loadPhilView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadPhilView() {
@@ -33,13 +34,13 @@ class ReadPhilemonViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

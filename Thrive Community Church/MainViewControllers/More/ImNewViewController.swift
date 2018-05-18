@@ -21,6 +21,7 @@ class ImNewViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         ImNew.delegate = self
         loadImNewView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadImNewView() {
@@ -37,13 +38,13 @@ class ImNewViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
     loading.startAnimating()
-    print("Loading....")
+    
     
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

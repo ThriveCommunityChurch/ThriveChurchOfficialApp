@@ -18,6 +18,7 @@ class Read2KingsViewController: UIViewController, UIWebViewDelegate {
         
         kingsView.delegate = self
         loadKingsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadKingsView() {
@@ -33,13 +34,13 @@ class Read2KingsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

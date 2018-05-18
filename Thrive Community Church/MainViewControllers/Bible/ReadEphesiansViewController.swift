@@ -18,6 +18,7 @@ class ReadEphesiansViewController: UIViewController, UIWebViewDelegate {
         
         ephView.delegate = self
         loadEphView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadEphView() {
@@ -33,13 +34,13 @@ class ReadEphesiansViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

@@ -18,6 +18,7 @@ class Read2CorinthiansViewController: UIViewController, UIWebViewDelegate {
         
         corView.delegate = self
         loadCorinthiansView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadCorinthiansView() {
@@ -33,13 +34,13 @@ class Read2CorinthiansViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

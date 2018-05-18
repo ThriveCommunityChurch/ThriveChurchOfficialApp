@@ -18,9 +18,9 @@ class FGCUSiteViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        // Do any additional setup after loading the view, typically from a nib.
         FGCUWebView.delegate = self
         loadFGCUView()
+        self.setLoadingSpinner(spinner: loading)
     }
 
     private func loadFGCUView() {
@@ -37,12 +37,12 @@ class FGCUSiteViewController: UIViewController, UIWebViewDelegate {
 
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
 
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

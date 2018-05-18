@@ -18,6 +18,7 @@ class Read2TimothyViewController: UIViewController, UIWebViewDelegate {
         
         timView.delegate = self
         loadTimView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadTimView() {
@@ -33,13 +34,13 @@ class Read2TimothyViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

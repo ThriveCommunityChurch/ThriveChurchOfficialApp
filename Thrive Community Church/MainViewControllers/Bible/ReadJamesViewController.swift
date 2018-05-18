@@ -18,6 +18,7 @@ class ReadJamesViewController: UIViewController, UIWebViewDelegate {
         
         jamesView.delegate = self
         loadJamesView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadJamesView() {
@@ -33,13 +34,13 @@ class ReadJamesViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

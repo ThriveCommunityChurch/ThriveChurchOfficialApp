@@ -16,9 +16,10 @@ class WebsiteViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         websiteView.delegate = self
         loadWebsiteView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func  loadWebsiteView() {
@@ -35,13 +36,13 @@ class WebsiteViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

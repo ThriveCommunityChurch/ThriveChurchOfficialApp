@@ -20,6 +20,7 @@ class MailChimpViewCoontroller: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view.
         Webview.delegate = self
         loadMCView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadMCView() {
@@ -36,12 +37,12 @@ class MailChimpViewCoontroller: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

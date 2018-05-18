@@ -18,6 +18,7 @@ class ReadIsaiahViewController: UIViewController, UIWebViewDelegate {
         
         isaiahView.delegate = self
         loadIsaiahView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadIsaiahView() {
@@ -33,13 +34,13 @@ class ReadIsaiahViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }
