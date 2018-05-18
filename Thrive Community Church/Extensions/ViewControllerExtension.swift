@@ -17,4 +17,15 @@ extension UIViewController {
 										  alpha: 0.75)
 		spinner.color = .white
 	}
+	
+	func displayAlertForAction() {
+		let alert = UIAlertController(title: "Error",
+									  message: "Unable to perform selected action",
+									  preferredStyle: .alert)
+		
+		let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		
+		alert.addAction(okAction)
+		present(alert, animated: true, completion: nil)
+	}
 }

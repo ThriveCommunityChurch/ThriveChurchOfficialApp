@@ -77,14 +77,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 			self.present(composeVC, animated: true, completion: nil)
 		}
 		else {
-			let alert = UIAlertController(title: "Error",
-										  message: "Unable to perform selected action",
-										  preferredStyle: .alert)
-			
-			let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-			
-			alert.addAction(okAction)
-			self.present(alert, animated: true, completion: nil)
+			self.displayAlertForAction()
 		}
 	}
 	

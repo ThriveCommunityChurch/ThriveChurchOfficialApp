@@ -33,7 +33,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
     }
     
     @IBAction func feedback(_ sender: AnyObject) {
-		// use a library for this
+		// TODO: use a library for this
 //        let modelInfo = UIDevice.current.model
 //        let systeminfo = UIDevice.current.systemName
 //        let systemVersion = UIDevice.current.systemVersion
@@ -63,14 +63,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 			self.present(composeVC, animated: true, completion: nil)
 		}
 		else {
-			let alert = UIAlertController(title: "Error",
-										  message: "Unable to perform selected action",
-										  preferredStyle: .alert)
-			
-			let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-			
-			alert.addAction(okAction)
-			self.present(alert, animated: true, completion: nil)
+			self.displayAlertForAction()
 		}
 	}
 	
