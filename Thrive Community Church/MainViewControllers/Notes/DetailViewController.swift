@@ -54,7 +54,9 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	func textViewDidChangeSelection(_ textView: UITextView) {
 		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
 			
-			let cursorPosition = detailDescriptionLabel?.offset(from: (detailDescriptionLabel?.beginningOfDocument)!, to: selectedRange.start)
+			let cursorPosition = detailDescriptionLabel?.offset(from:
+								(detailDescriptionLabel?.beginningOfDocument)!,
+																to: selectedRange.start)
 			
 			let length = (cursorPosition ?? 0) - 1
 			detailDescriptionLabel?.scrollRangeToVisible(NSRange(location: cursorPosition ?? 0,
@@ -66,9 +68,8 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 		let textToShare = detailDescriptionLabel?.text!
         
         let objectsToShare = [textToShare]
-        let activityVC = UIActivityViewController(activityItems:
-                                            objectsToShare,
-                                            applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: objectsToShare,
+												  applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
         self.present(activityVC, animated: true, completion: nil)
