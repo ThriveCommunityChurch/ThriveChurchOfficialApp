@@ -18,6 +18,7 @@ class ReadMatthewViewController: UIViewController, UIWebViewDelegate {
         
         matthewView.delegate = self
         loadMatthewView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadMatthewView() {
@@ -33,13 +34,13 @@ class ReadMatthewViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

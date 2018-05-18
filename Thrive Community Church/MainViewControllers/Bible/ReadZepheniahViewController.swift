@@ -18,6 +18,7 @@ class ReadZepheniahViewController: UIViewController, UIWebViewDelegate {
         
         zepheniahView.delegate = self
         loadZepheniahView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadZepheniahView() {
@@ -33,13 +34,13 @@ class ReadZepheniahViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

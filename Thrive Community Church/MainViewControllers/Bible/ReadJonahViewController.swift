@@ -18,6 +18,7 @@ class ReadJonahViewController: UIViewController, UIWebViewDelegate {
         
         jonahView.delegate = self
         loadJonahView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadJonahView() {
@@ -33,13 +34,13 @@ class ReadJonahViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

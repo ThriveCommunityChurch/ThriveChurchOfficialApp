@@ -17,9 +17,9 @@ class ServeViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
         serveWebView.delegate = self
         loadServeView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadServeView() {
@@ -36,12 +36,12 @@ class ServeViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

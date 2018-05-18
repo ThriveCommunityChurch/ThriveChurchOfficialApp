@@ -18,6 +18,7 @@ class ReadLamentationsViewController: UIViewController, UIWebViewDelegate {
         
         lamentationsView.delegate = self
         loadLamentationsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadLamentationsView() {
@@ -33,13 +34,13 @@ class ReadLamentationsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

@@ -18,6 +18,7 @@ class ReadGenesisViewController: UIViewController, UIWebViewDelegate {
         
         genesisView.delegate = self
         loadGenesisView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadGenesisView() {
@@ -33,13 +34,13 @@ class ReadGenesisViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

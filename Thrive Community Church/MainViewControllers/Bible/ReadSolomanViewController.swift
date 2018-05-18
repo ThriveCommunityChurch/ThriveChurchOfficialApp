@@ -18,6 +18,7 @@ class ReadSolomanViewController: UIViewController, UIWebViewDelegate {
         
         solomanView.delegate = self
         loadSolomanView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadSolomanView() {
@@ -33,13 +34,13 @@ class ReadSolomanViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

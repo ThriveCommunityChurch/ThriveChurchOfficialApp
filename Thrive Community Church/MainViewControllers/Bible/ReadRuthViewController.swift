@@ -18,6 +18,7 @@ class ReadRuthViewController: UIViewController, UIWebViewDelegate {
         
         ruthView.delegate = self
         loadJudgesView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadJudgesView() {
@@ -33,13 +34,13 @@ class ReadRuthViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

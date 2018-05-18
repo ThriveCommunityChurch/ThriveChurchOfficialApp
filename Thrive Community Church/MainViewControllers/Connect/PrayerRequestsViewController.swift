@@ -17,10 +17,9 @@ class PrayerRequestsViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
         prayerRequestsView.delegate = self
         loadPrayerRequestView()
-        
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadPrayerRequestView() {
@@ -38,12 +37,12 @@ class PrayerRequestsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

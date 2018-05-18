@@ -18,6 +18,7 @@ class ReadJoshuaViewController: UIViewController, UIWebViewDelegate {
         
         joshuaView.delegate = self
         loadJoshuaView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadJoshuaView() {
@@ -33,13 +34,13 @@ class ReadJoshuaViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

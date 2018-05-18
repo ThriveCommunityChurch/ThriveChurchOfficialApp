@@ -18,6 +18,7 @@ class ReadAmosViewController: UIViewController, UIWebViewDelegate {
         
         amosView.delegate = self
         loadAmosView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadAmosView() {
@@ -33,13 +34,11 @@ class ReadAmosViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

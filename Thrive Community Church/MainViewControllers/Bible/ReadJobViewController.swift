@@ -18,6 +18,7 @@ class ReadJobViewController: UIViewController, UIWebViewDelegate {
         
         jobView.delegate = self
         loadJobView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadJobView() {
@@ -33,13 +34,13 @@ class ReadJobViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

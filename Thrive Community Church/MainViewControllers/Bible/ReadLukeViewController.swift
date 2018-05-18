@@ -18,6 +18,7 @@ class ReadLukeViewController: UIViewController, UIWebViewDelegate {
         
         lukeView.delegate = self
         loadLukeView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadLukeView() {
@@ -33,13 +34,13 @@ class ReadLukeViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

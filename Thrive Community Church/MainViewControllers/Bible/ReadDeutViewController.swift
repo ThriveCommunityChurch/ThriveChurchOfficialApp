@@ -18,6 +18,7 @@ class ReadDeutViewController: UIViewController, UIWebViewDelegate {
         
         deutView.delegate = self
         loadDeutView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadDeutView() {
@@ -33,13 +34,13 @@ class ReadDeutViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

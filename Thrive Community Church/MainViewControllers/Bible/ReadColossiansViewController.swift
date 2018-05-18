@@ -18,6 +18,7 @@ class ReadColossiansViewController: UIViewController, UIWebViewDelegate {
         
         colView.delegate = self
         loadColView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadColView() {
@@ -32,14 +33,11 @@ class ReadColossiansViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-        loading.startAnimating()
-        print("Loading....")
-        
+        loading.startAnimating()  
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
     }
     
 }

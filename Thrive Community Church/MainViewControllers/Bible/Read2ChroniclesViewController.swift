@@ -18,6 +18,7 @@ class Read2ChroniclesViewController: UIViewController, UIWebViewDelegate {
         
         chroniclesView.delegate = self
         loadchroniclesView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadchroniclesView() {
@@ -33,13 +34,13 @@ class Read2ChroniclesViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

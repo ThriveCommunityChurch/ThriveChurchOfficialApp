@@ -18,6 +18,7 @@ class ReadNehemiahViewController: UIViewController, UIWebViewDelegate {
         
         nehemiahiew.delegate = self
         loadNehemiahView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadNehemiahView() {
@@ -33,13 +34,13 @@ class ReadNehemiahViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

@@ -18,6 +18,7 @@ class ReadRomansViewController: UIViewController, UIWebViewDelegate {
         
         romansView.delegate = self
         loadRomansView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadRomansView() {
@@ -33,13 +34,13 @@ class ReadRomansViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

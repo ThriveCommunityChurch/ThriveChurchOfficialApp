@@ -18,6 +18,7 @@ class ReadEzekielViewController: UIViewController, UIWebViewDelegate {
         
         ezekielView.delegate = self
         loadEzekielView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadEzekielView() {
@@ -33,13 +34,13 @@ class ReadEzekielViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

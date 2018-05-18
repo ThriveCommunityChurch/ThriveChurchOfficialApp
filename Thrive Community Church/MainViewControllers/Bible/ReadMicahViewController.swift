@@ -18,6 +18,7 @@ class ReadMicahViewController: UIViewController, UIWebViewDelegate {
         
         micahView.delegate = self
         loadMicahView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadMicahView() {
@@ -33,13 +34,13 @@ class ReadMicahViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

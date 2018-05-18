@@ -18,6 +18,7 @@ class Read2ThessaloniansViewController: UIViewController, UIWebViewDelegate {
         
         thView.delegate = self
         loadThView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadThView() {
@@ -33,13 +34,13 @@ class Read2ThessaloniansViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

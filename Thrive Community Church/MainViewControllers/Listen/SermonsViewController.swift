@@ -21,7 +21,7 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
         // Do any additional setup after loading the view, typically from a nib.
         sermonView.delegate = self
         loadSermonView()
-    
+    	self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadSermonView() {
@@ -29,7 +29,6 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
         let request = URLRequest(url: url!)
         
         sermonView.loadRequest(request)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,12 +38,10 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
     
     func webViewDidStartLoad(_ webView: UIWebView) {
        loading.startAnimating()
-        print("Loading....")
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
     }
-    
+	
 }

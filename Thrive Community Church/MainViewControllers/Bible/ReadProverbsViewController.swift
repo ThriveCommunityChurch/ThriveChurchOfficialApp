@@ -18,6 +18,7 @@ class ReadProverbsViewController: UIViewController, UIWebViewDelegate {
         
         proverbsView.delegate = self
         loadProverbsView()
+        self.setLoadingSpinner(spinner: loading)
     }
     
     private func loadProverbsView() {
@@ -33,13 +34,13 @@ class ReadProverbsViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }
