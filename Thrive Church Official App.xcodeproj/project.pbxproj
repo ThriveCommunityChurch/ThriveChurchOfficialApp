@@ -257,6 +257,7 @@
 		DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		DC05C39B20AE722100241DE3 /* Pods_Thrive_Church_Official_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Thrive_Church_Official_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DC3835231F68D82600F05E8B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +384,7 @@
 		C7C0921F61B47B791415949E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC05C39B20AE722100241DE3 /* Pods_Thrive_Church_Official_App.framework */,
 				DCA554461F6AD47B00E00006 /* Protobuf.framework */,
 				DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */,
 				DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */,
@@ -610,6 +612,7 @@
 				41FCF80A1CF21719006C366E /* Sources */,
 				41FCF80B1CF21719006C366E /* Frameworks */,
 				41FCF80C1CF21719006C366E /* Resources */,
+				3652D333CBC668C125C08727 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -631,7 +634,7 @@
 					twitter,
 				);
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Thrive Community Church";
 				TargetAttributes = {
 					41FCF7EC1CF21719006C366E = {
@@ -659,11 +662,13 @@
 					};
 					41FCF8021CF21719006C366E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 87ME42WJYA;
 						LastSwiftMigration = 0900;
 						TestTargetID = 41FCF7EC1CF21719006C366E;
 					};
 					41FCF80D1CF21719006C366E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 87ME42WJYA;
 						LastSwiftMigration = 0900;
 						TestTargetID = 41FCF7EC1CF21719006C366E;
 					};
@@ -736,6 +741,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3652D333CBC668C125C08727 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppUITests/Pods-Thrive Church Official AppUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppUITests/Pods-Thrive Church Official AppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE6096902B326C6C7BB6C340 /* [CP] Check Pods Manifest.lock */ = {
@@ -954,12 +979,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1010,12 +1037,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1094,7 +1123,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC65D2616E3DDC1C6E1EF387 /* Pods-Thrive Church Official AppTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchTests";
@@ -1109,7 +1138,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 768FC5C5EEAA1D1B388D8D19 /* Pods-Thrive Church Official AppTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchTests";
@@ -1125,13 +1154,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4714A7A16BA99F85B961AA2C /* Pods-Thrive Church Official AppUITests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchUITests";
 				PRODUCT_NAME = "Thrive Church Official App";
+				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = "Thrive Community Church";
+				TEST_TARGET_NAME = "Thrive Church Official App";
 			};
 			name = Debug;
 		};
@@ -1139,14 +1170,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 69ABBACFA710DB195E637DB9 /* Pods-Thrive Church Official AppUITests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchUITests";
 				PRODUCT_NAME = "Thrive Church Official App";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = "Thrive Community Church";
+				TEST_TARGET_NAME = "Thrive Church Official App";
 			};
 			name = Release;
 		};
