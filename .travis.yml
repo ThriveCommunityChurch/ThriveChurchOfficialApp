@@ -3,8 +3,8 @@ os: osx
 sudo: enabled
 osx_image: xcode9.3
 
-xcode_project: */\"Thrive Church Official App.xcodeproj" # path to your xcodeproj folder
-xcode_scheme: */\Thrive Community ChurchTests
+xcode_project: /\"Thrive Church Official App.xcodeproj" # path to your xcodeproj folder
+xcode_scheme: /\Thrive Community ChurchTests
 
 notifications:
   email: false
