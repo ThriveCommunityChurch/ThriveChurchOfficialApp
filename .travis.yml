@@ -1,0 +1,12 @@
+language: swift
+os: osx
+sudo: enabled
+
+before_install:
+  - sudo gem install cocoapods
+
+install:
+  - pod install
+
+script: 
+# - xcodebuild test -project Thrive-Church-Official-App.xcworkspace -scheme ThriveChurchOfficialApp -destination 'platform=Simulator,name=iPhone,OS=11.0'
