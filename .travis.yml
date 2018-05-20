@@ -2,6 +2,9 @@ language: swift
 os: osx
 sudo: enabled
 
+notifications:
+  email: false
+
 before_install:
   - sudo gem install cocoapods
 
