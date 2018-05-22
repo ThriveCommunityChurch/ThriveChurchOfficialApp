@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 var objects: [String] = [String]()
 var currentIndex: Int = 0
@@ -19,6 +20,9 @@ class MasterViewController: UITableViewController {
 	
 	
 	// TODO: Issue #71
+	
+	// TODO: Clean these classes up a bunch
+	// theres a log going on here and it's hard to follow
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,33 +55,11 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // Adds new object & changes name of the string of Master following the segue back
-    @objc func insertNewObject(_ sender: AnyObject) {
-		
-        if objects.count == 0 || objects[0] != newNote {
-            
-            objects.insert(newNote, at: 0)
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
-            
-            save()
-        }
-		save()
-        
-        currentIndex = 0
-        self.performSegue(withIdentifier: "showDetail", sender: self)
-    }
-    
-    // MARK: - Segues
+    // MARK: Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
@@ -95,7 +77,7 @@ class MasterViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table View
+    // MARK: Table View Logic
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -152,8 +134,26 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                                 didEndEditingRowAt indexPath: IndexPath?) {
         save()
-        
     }
+	
+	// MARK: Other Functions
+	
+	// Adds new object & changes name of the string of Master following the segue back
+	@objc func insertNewObject(_ sender: AnyObject) {
+		
+		if objects.count == 0 || objects[0] != newNote {
+			
+			objects.insert(newNote, at: 0)
+			let indexPath = IndexPath(row: 0, section: 0)
+			self.tableView.insertRows(at: [indexPath], with: .automatic)
+			
+			save()
+		}
+		save()
+		
+		currentIndex = 0
+		self.performSegue(withIdentifier: "showDetail", sender: self)
+	}
     
     func save() {
         UserDefaults.standard.set(objects, forKey: notesKey)

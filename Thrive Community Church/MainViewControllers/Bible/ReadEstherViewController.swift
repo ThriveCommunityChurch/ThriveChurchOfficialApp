@@ -17,24 +17,12 @@ class ReadEstherViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         estherView.delegate = self
-        loadEstherView()
+        estherView.loadWebPage(url: "https://www.bible.com/bible/59/est.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadEstherView() {
-        let url = URL(string: "https://www.bible.com/bible/59/est.1")
-        let request = URLRequest(url: url!)
-        
-        estherView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

@@ -17,22 +17,14 @@ class FGCUNotificationsViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
         loadFGCUNotifWebView.delegate = self
-        loadFGCUNotifView()
+		loadFGCUNotifWebView.loadWebPage(url: "https://goo.gl/forms/mWauaAZjYahokv3a2")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadFGCUNotifView() {
-        let url = URL(string: "https://goo.gl/forms/mWauaAZjYahokv3a2")
-        let request = URLRequest(url: url!)
-        
-        loadFGCUNotifWebView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+	
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

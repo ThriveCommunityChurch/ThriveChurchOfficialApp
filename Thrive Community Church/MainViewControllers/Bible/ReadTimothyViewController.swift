@@ -17,25 +17,13 @@ class ReadTimothyViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         timView.delegate = self
-        loadTimView()
+        timView.loadWebPage(url: "https://www.bible.com/bible/59/1ti.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadTimView() {
-        let url = URL(string: "https://www.bible.com/bible/59/1ti.1")
-        let request = URLRequest(url: url!)
-        
-        timView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {

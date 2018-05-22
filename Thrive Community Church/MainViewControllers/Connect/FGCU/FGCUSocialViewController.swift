@@ -6,7 +6,6 @@
 //  Copyright © 2016 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class FGCUSocialViewController: UIViewController {
@@ -20,30 +19,27 @@ class FGCUSocialViewController: UIViewController {
     }
     
     @IBAction func facebookButton(_ sender: AnyObject) {
+		
+		guard let fbURLID = URL(string: "fb://profile/587219548105074") else { return }
+		guard let fbURL = URL(string: "https://www.facebook.com/thriveFGCU/") else { return }
         
-        let fbURLID: URL = URL(string: "fb://profile/587219548105074")!
-        let fbURL: URL = URL(string: "https://www.facebook.com/thriveFGCU/")!
-        
-        if UIApplication.shared.canOpenURL(fbURLID){
-            //checks to see if FB is installed
+        if UIApplication.shared.canOpenURL(fbURLID) {
 			UIApplication.shared.open(fbURL, options: [:], completionHandler: nil)
         }
-        else{
+        else {
            UIApplication.shared.open(fbURL, options: [:], completionHandler: nil)
        }
     }
     
     @IBAction func instagramButton(_ sender: AnyObject) {
+		
+		guard let instagramLink = URL(string: "instagram://user?username=thrivefgcu") else { return }
+		guard let instaURL = URL(string: "https://www.instagram.com/thrivefgcu/") else { return }
         
-        let instagramHooks = "instagram://user?username=thrivefgcu"
-        let instaURL = URL(string: "https://www.instagram.com/thrivefgcu/")!
-        let instagramUrl = URL(string: instagramHooks)
-        
-        if UIApplication.shared.canOpenURL(instagramUrl!) {
-            UIApplication.shared.open(instagramUrl!, options: [:], completionHandler: nil)
-            print("opened in app")
+        if UIApplication.shared.canOpenURL(instagramLink) {
+            UIApplication.shared.open(instagramLink, options: [:], completionHandler: nil)
         }
-        else{
+        else {
             UIApplication.shared.open(instaURL, options: [:], completionHandler: nil)
         }
     }

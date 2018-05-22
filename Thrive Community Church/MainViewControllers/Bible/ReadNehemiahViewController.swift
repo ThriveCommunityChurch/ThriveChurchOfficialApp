@@ -17,25 +17,13 @@ class ReadNehemiahViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         nehemiahiew.delegate = self
-        loadNehemiahView()
+        nehemiahiew.loadWebPage(url: "https://www.bible.com/bible/59/neh.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadNehemiahView() {
-        let url = URL(string: "https://www.bible.com/bible/59/neh.1")
-        let request = URLRequest(url: url!)
-        
-        nehemiahiew.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {

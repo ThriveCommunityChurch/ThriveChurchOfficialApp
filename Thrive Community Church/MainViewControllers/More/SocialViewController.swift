@@ -22,13 +22,13 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    let twitterID: URL = URL(string: "twitter:///user?screen_name=Thrive_FL")!
+    let twitterID: String = "twitter:///user?screen_name=Thrive_FL"
     @IBAction func openingTwitter(_ sender: AnyObject) {
-        print("\nOpening in Twitter")
+		
+		guard let profileLink = URL(string: twitterID) else { return }
         
-        if UIApplication.shared.canOpenURL(twitterID) {
-            //checks to see if Twitter is installed
-			UIApplication.shared.open(twitterID, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(profileLink) {
+			UIApplication.shared.open(profileLink, options: [:], completionHandler: nil)
         }
         else {
             let message = "You need to download the Twitter app first"
@@ -54,13 +54,13 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
         }
     }
     
-    let fbURLID: URL = URL(string: "fb://profile/157139164480128")!
+	let fbURLID: String = "fb://profile/157139164480128"
     @IBAction func openingFacebook(_ sender: AnyObject) {
-        print("\nOpening in Facebook")
-        
-        if UIApplication.shared.canOpenURL(fbURLID) {
-            //checks to see if FB is installed
-            UIApplication.shared.open(fbURLID, options: [:], completionHandler: nil)
+
+		guard let profileLink = URL(string: fbURLID) else { return }
+		
+        if UIApplication.shared.canOpenURL(profileLink) {
+            UIApplication.shared.open(profileLink, options: [:], completionHandler: nil)
         }
         else {
             let message = "You need to download the Facebook app first"
@@ -88,11 +88,11 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
     
     let instagramHooks = "instagram://user?username=thrive_fl"
     @IBAction func openingInstagram(_ sender: AnyObject) {
-        print("\nOpening in Insta")
-        
-        let instagramUrl = URL(string: instagramHooks)
-        if UIApplication.shared.canOpenURL(instagramUrl!) {
-            UIApplication.shared.open(instagramUrl!, options: [:], completionHandler: nil)
+		
+		guard let instagramUrl = URL(string: instagramHooks) else { return }
+		
+        if UIApplication.shared.canOpenURL(instagramUrl) {
+            UIApplication.shared.open(instagramUrl, options: [:], completionHandler: nil)
         }
         else {
             let message = "You need to download the Instagram app first"
@@ -107,13 +107,12 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
                                       handler: { (action) -> Void in
                 
                 if let link = URL(string: "itms-apps://itunes.apple.com/app/id389801252"),
-                    UIApplication.shared.canOpenURL(link){
+                    UIApplication.shared.canOpenURL(link) {
                     UIApplication.shared.open(link, options: [:], completionHandler: nil)
                 }
             })
             alert.addAction(cancelButton)
             alert.addAction(downloadInstagram)
-            
             
             present(alert, animated: true, completion: nil)
         }

@@ -17,25 +17,13 @@ class ReadRomansViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         romansView.delegate = self
-        loadRomansView()
+        romansView.loadWebPage(url: "https://www.bible.com/bible/59/rom.1")
         self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadRomansView() {
-        let url = URL(string: "https://www.bible.com/bible/59/rom.1")
-        let request = URLRequest(url: url!)
-        
-        romansView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+	
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {

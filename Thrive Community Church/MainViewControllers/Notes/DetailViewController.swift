@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 class DetailViewController: UIViewController, UITextViewDelegate {
     
@@ -27,7 +26,6 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     
     var detailItem: AnyObject? {
         didSet {
-            // Update the view.
             saveAndUpdate()
         }
     }
@@ -52,10 +50,12 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	
 	// TODO: Fix this fully -- there's really only a hacky solution
 	func textViewDidChangeSelection(_ textView: UITextView) {
+		
 		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
 			
+			guard let startPos = detailDescriptionLabel?.beginningOfDocument else { return }
 			let cursorPosition = detailDescriptionLabel?.offset(from:
-								(detailDescriptionLabel?.beginningOfDocument)!,
+																startPos,
 																to: selectedRange.start)
 			
 			let length = (cursorPosition ?? 0) - 1
@@ -65,32 +65,31 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	}
 	
     @IBAction func share(_ sender: AnyObject) {
-		let textToShare = detailDescriptionLabel?.text!
-        
-        let objectsToShare = [textToShare]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare,
+		
+		guard let textToShare = detailDescriptionLabel?.text else { return }
+		
+		let objectsToShare = [textToShare]
+		let activityVC = UIActivityViewController(activityItems: objectsToShare,
 												  applicationActivities: nil)
-        
-        activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
-        self.present(activityVC, animated: true, completion: nil)
+		
+		
+		activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
+		self.present(activityVC, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		// if the user types what we check for in order to inspect if the note is new
-		// then add a space so it looks the same but isn't
+		// Issue #70
 		if detailDescriptionLabel?.text == "New Note" || detailDescriptionLabel?.text == "New Note " {
 			detailDescriptionLabel?.text = "New Note "
 		}
 	}
-    
-    // called when hitting back on the editing screen -- after segue back to Table View
+	
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 		
@@ -120,8 +119,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 
 class ActivityForNotesViewController: UIActivityViewController {
     
-    // Remove actions that we do not want the user to be able to share via
-    // these are intentionally marked because the media is Text
+    // Remove non-text actions
     internal func _shouldExcludeActivityType(_ activity: UIActivity) -> Bool {
         let activityTypesToExclude = [
             "com.apple.reminders.RemindersEditorExtension",

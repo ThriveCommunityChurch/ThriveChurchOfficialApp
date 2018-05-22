@@ -17,24 +17,12 @@ class ReadJobViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         jobView.delegate = self
-        loadJobView()
+        jobView.loadWebPage(url: "https://www.bible.com/bible/59/job.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadJobView() {
-        let url = URL(string: "https://www.bible.com/bible/59/job.1")
-        let request = URLRequest(url: url!)
-        
-        jobView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     
