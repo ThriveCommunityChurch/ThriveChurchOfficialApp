@@ -20,15 +20,10 @@ class Read2PeterViewController: UIViewController, UIWebViewDelegate {
         peterView.loadWebPage(url: "https://www.bible.com/bible/59/2pe.1")
         self.setLoadingSpinner(spinner: loading)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {

@@ -20,14 +20,9 @@ class Read2CorinthiansViewController: UIViewController, UIWebViewDelegate {
         corView.loadWebPage(url: "https://www.bible.com/bible/59/2co.1")
         self.setLoadingSpinner(spinner: loading)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

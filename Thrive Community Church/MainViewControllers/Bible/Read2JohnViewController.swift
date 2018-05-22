@@ -21,14 +21,9 @@ class Read2JohnViewController: UIViewController, UIWebViewDelegate {
         self.setLoadingSpinner(spinner: loading)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {

@@ -17,19 +17,8 @@ class ReadChroniclesViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         chroniclesView.delegate = self
-        loadchroniclesView()
+        chroniclesView.loadWebPage(url: "https://www.bible.com/bible/59/1ch.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadchroniclesView() {
-        let url = URL(string: "https://www.bible.com/bible/59/1ch.1")
-        let request = URLRequest(url: url!)
-        
-        chroniclesView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

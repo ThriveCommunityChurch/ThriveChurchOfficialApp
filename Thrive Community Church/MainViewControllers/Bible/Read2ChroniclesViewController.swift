@@ -21,13 +21,8 @@ class Read2ChroniclesViewController: UIViewController, UIWebViewDelegate {
         self.setLoadingSpinner(spinner: loading)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

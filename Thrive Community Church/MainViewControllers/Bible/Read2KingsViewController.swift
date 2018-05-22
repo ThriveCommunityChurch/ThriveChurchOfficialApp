@@ -20,11 +20,7 @@ class Read2KingsViewController: UIViewController, UIWebViewDelegate {
         kingsView.loadWebPage(url: "https://www.bible.com/bible/59/2ki.1")
         self.setLoadingSpinner(spinner: loading)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
         

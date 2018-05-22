@@ -17,25 +17,13 @@ class ReadTitusViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         titusView.delegate = self
-        loadTitusView()
+        titusView.loadWebPage(url: "https://www.bible.com/bible/59/tit.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadTitusView() {
-        let url = URL(string: "https://www.bible.com/bible/59/tit.1")
-        let request = URLRequest(url: url!)
-        
-        titusView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
