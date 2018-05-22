@@ -16,23 +16,15 @@ class FGCUEventsViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
+		
         FGCUEventsWebView.delegate = self
-        loadFGCUEventsView()
+        FGCUEventsWebView.loadWebPage(url: "http://thrive-fl.org/events/category/college-ministry/")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadFGCUEventsView() {
-        let url = URL(string: "http://thrive-fl.org/events/category/college-ministry/")
-        let request = URLRequest(url: url!)
-        
-        FGCUEventsWebView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

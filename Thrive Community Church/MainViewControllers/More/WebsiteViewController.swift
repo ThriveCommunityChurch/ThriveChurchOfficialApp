@@ -18,25 +18,16 @@ class WebsiteViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         websiteView.delegate = self
-        loadWebsiteView()
+        websiteView.loadWebPage(url: "http://thrive-fl.org")
         self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func  loadWebsiteView() {
-        let url = URL(string: "http://thrive-fl.org")
-        let request = URLRequest(url: url!)
-        
-        websiteView.loadRequest(request)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

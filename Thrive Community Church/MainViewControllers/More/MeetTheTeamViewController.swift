@@ -18,20 +18,13 @@ class MeetTheTeamViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         teamView.delegate = self
-        loadTeamView()
+        teamView.loadWebPage(url: "http://thrive-fl.org/team")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadTeamView() {
-        let url = URL(string: "http://thrive-fl.org/team")
-        let request = URLRequest(url: url!)
-        
-        teamView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

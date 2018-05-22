@@ -29,4 +29,27 @@ extension UIViewController {
 		present(alert, animated: true, completion: nil)
 	}
 	
+	/// Still opens the url
+	func openUrlAnyways(link: String) {
+		guard let url = URL(string: link) else { return }
+		
+		if UIApplication.shared.canOpenURL(url) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+		else {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+	}
+	
+	func openUrlWithError(link: String) {
+		guard let url = URL(string: link) else { return }
+		
+		if UIApplication.shared.canOpenURL(url) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+		else {
+			self.displayAlertForAction()
+		}
+	}
+	
 }

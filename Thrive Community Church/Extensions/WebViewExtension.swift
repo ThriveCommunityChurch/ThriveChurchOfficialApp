@@ -14,7 +14,7 @@ extension UIWebView: UIWebViewDelegate {
 		
 		guard let site = URL(string: url) else { return }
 		let request = URLRequest(url: site)
-		
 		self.loadRequest(request)
 	}
+	
 }

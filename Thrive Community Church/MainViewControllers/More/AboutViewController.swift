@@ -83,15 +83,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 	
 	@IBAction func privacyPolicy(_ sender: Any) {
 		
-		let site = "http://thrive-fl.org/privacy#mobile"
-		let url = URL(string: site)!
-		if UIApplication.shared.canOpenURL(url) {
-			
-			UIApplication.shared.open(url, options: [:], completionHandler: nil)
-		}
-		else {
-			print("Cannot Perform selected action")
-		}
+		self.openUrlWithError(link: "http://thrive-fl.org/privacy#mobile")
 	}
 	
     
