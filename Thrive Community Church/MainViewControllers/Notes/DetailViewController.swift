@@ -50,10 +50,12 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	
 	// TODO: Fix this fully -- there's really only a hacky solution
 	func textViewDidChangeSelection(_ textView: UITextView) {
+		
 		if let selectedRange = detailDescriptionLabel?.selectedTextRange {
 			
+			guard let startPos = detailDescriptionLabel?.beginningOfDocument else { return }
 			let cursorPosition = detailDescriptionLabel?.offset(from:
-								(detailDescriptionLabel?.beginningOfDocument)!,
+																startPos,
 																to: selectedRange.start)
 			
 			let length = (cursorPosition ?? 0) - 1
@@ -63,19 +65,20 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	}
 	
     @IBAction func share(_ sender: AnyObject) {
-		let textToShare = detailDescriptionLabel?.text!
-        
+		
+		guard let textToShare = detailDescriptionLabel?.text else { return }
+		
 		let objectsToShare = [textToShare]
 		let activityVC = UIActivityViewController(activityItems: objectsToShare,
 												  applicationActivities: nil)
-        
-        activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
-        self.present(activityVC, animated: true, completion: nil)
+		
+		
+		activityVC.popoverPresentationController?.sourceView = (sender) as? UIView
+		self.present(activityVC, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
