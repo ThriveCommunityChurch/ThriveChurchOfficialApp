@@ -15,6 +15,7 @@
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
 		DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2667DE1F37FBA20020424C /* SettingsViewController.swift */; };
+		DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45330020B468A90021C796 /* WebViewExtension.swift */; };
 		DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */; };
 		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
@@ -262,6 +263,7 @@
 		DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3835291F68D8C800F05E8B /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC38352A1F68D8C800F05E8B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC45330020B468A90021C796 /* WebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewExtension.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeExtension.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */,
 				DC64031E205783DE00176BFB /* TimestampExtension.swift */,
 				DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */,
+				DC45330020B468A90021C796 /* WebViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DCE363061F05610600725F11 /* EventsFeedViewController.swift in Sources */,
+				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DCE363081F05610600725F11 /* FGCUEventsViewController.swift in Sources */,
 				DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */,
