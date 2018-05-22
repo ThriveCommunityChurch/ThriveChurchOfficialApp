@@ -17,15 +17,8 @@ class Read2CorinthiansViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         corView.delegate = self
-        loadCorinthiansView()
+        corView.loadWebPage(url: "https://www.bible.com/bible/59/2co.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadCorinthiansView() {
-        let url = URL(string: "https://www.bible.com/bible/59/2co.1")
-        let request = URLRequest(url: url!)
-        
-        corView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
