@@ -84,4 +84,5 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
         
         self.dismiss(animated: true, completion: nil)
     }
+	
 }

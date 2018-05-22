@@ -21,6 +21,7 @@ class WebsiteViewController: UIViewController, UIWebViewDelegate {
         websiteView.loadWebPage(url: "http://thrive-fl.org")
         self.setLoadingSpinner(spinner: loading)
     }
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 		
