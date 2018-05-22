@@ -1,6 +1,8 @@
 ### 1.6.3  —  TBD
-- Fixed an issue where emails weren't able to be sent
-- Bug fixes & Improvements
+- Fixed an issue where emails could not be sent from certain devices
+- Improved User Experience across multiple screens
+- Improved Stability
+- Misc bug fixes
 
 ### 1.6.2  —  Mar 18, 2018
 - Improved the experience for reporting issues via email feedback

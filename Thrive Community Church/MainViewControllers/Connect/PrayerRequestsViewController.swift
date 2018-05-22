@@ -18,21 +18,13 @@ class PrayerRequestsViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         prayerRequestsView.delegate = self
-        loadPrayerRequestView()
+        prayerRequestsView.loadWebPage(url: "http://thrive-fl.org/prayer-requests")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadPrayerRequestView() {
-        let url = URL(string: "http://thrive-fl.org/prayer-requests")
-        let request = URLRequest(url: url!)
-        
-        prayerRequestsView.loadRequest(request)
-
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

@@ -17,24 +17,12 @@ class ReadHaggaiVewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         haggaiView.delegate = self
-        loadHaggaiView()
+        haggaiView.loadWebPage(url: "https://www.bible.com/bible/59/hag.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadHaggaiView() {
-        let url = URL(string: "https://www.bible.com/bible/59/hag.1")
-        let request = URLRequest(url: url!)
-        
-        haggaiView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

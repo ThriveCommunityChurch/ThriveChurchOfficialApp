@@ -18,20 +18,13 @@ class ServeViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         serveWebView.delegate = self
-        loadServeView()
+        serveWebView.loadWebPage(url: "http://thrive-fl.org/get-involved/")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadServeView() {
-        let url = URL(string: "http://thrive-fl.org/get-involved/")
-        let request = URLRequest(url: url!)
-        
-        serveWebView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

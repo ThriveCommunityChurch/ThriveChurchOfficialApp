@@ -22,14 +22,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
     
     @IBAction func openDirections(_ sender: AnyObject) {
         
-        let url = URL(string: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
-        
-        if UIApplication.shared.canOpenURL(url!){
-			UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        }
-        else{
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        }
+        self.openUrlAnyways(link: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
     }
     
     @IBAction func feedback(_ sender: AnyObject) {

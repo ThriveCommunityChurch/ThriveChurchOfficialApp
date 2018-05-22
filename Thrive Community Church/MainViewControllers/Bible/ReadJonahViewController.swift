@@ -17,24 +17,12 @@ class ReadJonahViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         jonahView.delegate = self
-        loadJonahView()
+        jonahView.loadWebPage(url: "https://www.bible.com/bible/59/jon.1")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadJonahView() {
-        let url = URL(string: "https://www.bible.com/bible/59/jon.1")
-        let request = URLRequest(url: url!)
-        
-        jonahView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

@@ -17,24 +17,11 @@ class ReadJoelViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         joelView.delegate = self
-        loadJoelView()
+        joelView.loadWebPage(url: "https://www.bible.com/bible/59/jol.1")
         self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadJoelView() {
-        let url = URL(string: "https://www.bible.com/bible/59/jol.1")
-        let request = URLRequest(url: url!)
-        
-        joelView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     

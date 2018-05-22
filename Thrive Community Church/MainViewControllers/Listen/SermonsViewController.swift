@@ -20,15 +20,8 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
                         
         // Do any additional setup after loading the view, typically from a nib.
         sermonView.delegate = self
-        loadSermonView()
+        sermonView.loadWebPage(url: "http://thrive-fl.org/teaching-series")
     	self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadSermonView() {
-        let url = URL(string: "http://thrive-fl.org/teaching-series")
-        let request = URLRequest(url: url!)
-        
-        sermonView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {

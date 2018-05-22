@@ -18,25 +18,17 @@ class EventsFeedViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         eventsView.delegate = self
-        loadEventsView()
+        eventsView.loadWebPage(url: "http://thrive-fl.org/events/list/")
         self.setLoadingSpinner(spinner: loading)
-    }
-    
-    private func loadEventsView() {
-        let url = URL(string: "http://thrive-fl.org/events/list/")
-        let request = URLRequest(url: url!)
-        
-        eventsView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        
         
     }
     
