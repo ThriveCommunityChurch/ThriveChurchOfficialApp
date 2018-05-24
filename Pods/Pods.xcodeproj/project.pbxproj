@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		043478A0FCB0E6C044E9328C4BE06BB0 /* Pods-Thrive Church Official AppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EACB89A0551ED4EAE51A84282D4297B /* Pods-Thrive Church Official AppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05B1F02560378D28FEBD4E8F6D293216 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		0F4D20293ED26D41E9732FC0546A68D3 /* Pods-Thrive Church Official AppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EACB89A0551ED4EAE51A84282D4297B /* Pods-Thrive Church Official AppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		231860EAB4C894D0A0DFE89E56D2DDFB /* Pods-Thrive Church Official App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2A35FF658E44CC1105FD19735242E1 /* Pods-Thrive Church Official App-dummy.m */; };
 		29FEADDF2086FDEA7D5BA87DD23B08C6 /* pb_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E3E28FC93E46C4778C303626C7CA9AB /* pb_decode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		392F2CF142BAA751AC1BB61D8B757D98 /* pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 76AFAA5C3128F2005ADECFD36E2085DC /* pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,8 +19,8 @@
 		54A4E6DCC60213FD22BC3C041E595273 /* Pods-Thrive Church Official AppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27412D9D3E8AFFCCC33BC3E3DD0F212D /* Pods-Thrive Church Official AppUITests-dummy.m */; };
 		54F580BF4588159D6A61F21D15591805 /* pb_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = AA70056BAD8EA3D683367B686F1E6B09 /* pb_decode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc"; }; };
 		55D8D5D912CFD2F3584E4553C2EAD734 /* pb_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = AF577CB3FB3CA827E64E6F3625F4804A /* pb_encode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc"; }; };
+		6F2A3E78192E1C0E048795B4F3E9C61C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		806BAA4E00218D70995697C4400BE7A0 /* pb_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 841E491E4F984559D8FACA8D9B180DBA /* pb_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		80F26F7A4B4DFA3F6ABC7355C2A35872 /* Pods-Thrive Church Official AppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C1800030148529D9CDFABDF70FED0 /* Pods-Thrive Church Official AppTests-dummy.m */; };
 		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A047F1F47D6662F5F2E7EFE3DBF0FB5 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93D51748565CFEB9490FBA7DA993C5C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		A7D1999FD7E360D39FABE98560D546D2 /* Pods-Thrive Church Official AppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2E3702F136AB31D2328E5C6556FCD5C /* Pods-Thrive Church Official AppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,21 +28,21 @@
 		D62C22ACFD9EA20AE2BA5271946DE2C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = EA772F7A06348F33C61B7286F52EEF50 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E181395E73163EB702FCE9A21403D67B /* pb_encode.h in Headers */ = {isa = PBXBuildFile; fileRef = DD9E8F12766FD7202402AD690FB605B6 /* pb_encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F43FBC84CFCF9A03B312E81AF2186BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		EFE9A5D3FC3F2710E467F30F80F1ECB6 /* Pods-Thrive Church Official AppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C1800030148529D9CDFABDF70FED0 /* Pods-Thrive Church Official AppTests-dummy.m */; };
 		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = F6156B8D6D3DD90AEE4394E6A26A89FE /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F9D92BA503505CB48EF4ECF0DDF57686 /* nanopb-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AFA66AD4C1DBB0F44FB454512572CDAF /* nanopb-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB0BD6266234413A4C2FE4CBA9D9AF4 /* GoogleToolboxForMac-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3CB6164C1672B1B7D987404DA1DF4E8E /* PBXContainerItemProxy */ = {
+		2BEE954C841A1896A3FFA66BC69E148D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 86932D487469CDB7A8CEA6D7429CD739;
-			remoteInfo = "Pods-Thrive Church Official App";
+			remoteGlobalIDString = E4DD95323C54A78F879DAB0F1508B8E7;
+			remoteInfo = nanopb;
 		};
-		44B5F35F51F10963B416C657D74DDDA3 /* PBXContainerItemProxy */ = {
+		3CB6164C1672B1B7D987404DA1DF4E8E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -56,7 +56,21 @@
 			remoteGlobalIDString = E4DD95323C54A78F879DAB0F1508B8E7;
 			remoteInfo = nanopb;
 		};
+		909988A508668B5AEDA5B3CB96B4839C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86932D487469CDB7A8CEA6D7429CD739;
+			remoteInfo = "Pods-Thrive Church Official App";
+		};
 		9369C78778076F9F9BAE33AE5E221615 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00103D6C821BE85971C563025527BA5D;
+			remoteInfo = GoogleToolboxForMac;
+		};
+		D993E428BAAA762DD833D6F00135F3F2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -148,6 +162,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		133E28C44CD98DDB96F4449DDB30F606 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F2A3E78192E1C0E048795B4F3E9C61C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		971041836592E28ADEEDA495A96A62A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,14 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D62C22ACFD9EA20AE2BA5271946DE2C1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4C79EB46D94515CA53A2D5F930EF6E4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F43FBC84CFCF9A03B312E81AF2186BF7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,11 +494,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FA762185DBB4FEF3557A08A06D7E955 /* Headers */ = {
+		99A1568862AA76BF43CF0C4A4DFCA61A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				043478A0FCB0E6C044E9328C4BE06BB0 /* Pods-Thrive Church Official AppTests-umbrella.h in Headers */,
+				0F4D20293ED26D41E9732FC0546A68D3 /* Pods-Thrive Church Official AppTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,24 +548,6 @@
 			productReference = 2A1B65B465400639F41440D9F3D5D39D /* GoogleToolboxForMac.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		282B62661D9A7148508DD292A4B7BDBF /* Pods-Thrive Church Official AppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C292F677996FD4CE7247C48F7EED43A1 /* Build configuration list for PBXNativeTarget "Pods-Thrive Church Official AppTests" */;
-			buildPhases = (
-				E5029D86DA3FF989A4C2FF173F258486 /* Sources */,
-				F4C79EB46D94515CA53A2D5F930EF6E4 /* Frameworks */,
-				9FA762185DBB4FEF3557A08A06D7E955 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0E4D0522AC6834FD2C674A1D79755A69 /* PBXTargetDependency */,
-			);
-			name = "Pods-Thrive Church Official AppTests";
-			productName = "Pods-Thrive Church Official AppTests";
-			productReference = 3C9109BF8D306892CD458AC35AB1D564 /* Pods_Thrive_Church_Official_AppTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		86932D487469CDB7A8CEA6D7429CD739 /* Pods-Thrive Church Official App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFFD599EC91962829A24E7804116576C /* Build configuration list for PBXNativeTarget "Pods-Thrive Church Official App" */;
@@ -569,6 +565,26 @@
 			name = "Pods-Thrive Church Official App";
 			productName = "Pods-Thrive Church Official App";
 			productReference = 33AAE1F2B61D14A35894C8DEC021E8AD /* Pods_Thrive_Church_Official_App.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		88AAA7AC3281142BAB29B4C24E925129 /* Pods-Thrive Church Official AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ECD1414BA3F953126BEDDE925717DC4 /* Build configuration list for PBXNativeTarget "Pods-Thrive Church Official AppTests" */;
+			buildPhases = (
+				4346465FB0933769C7A5429350F0A20F /* Sources */,
+				133E28C44CD98DDB96F4449DDB30F606 /* Frameworks */,
+				99A1568862AA76BF43CF0C4A4DFCA61A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83C53CC68999D57321A8428E939086C1 /* PBXTargetDependency */,
+				635CA7EA4C92303EA4EC5EC7893A7DF4 /* PBXTargetDependency */,
+				18FA989542761761780AB1C62C8F25E9 /* PBXTargetDependency */,
+			);
+			name = "Pods-Thrive Church Official AppTests";
+			productName = "Pods-Thrive Church Official AppTests";
+			productReference = 3C9109BF8D306892CD458AC35AB1D564 /* Pods_Thrive_Church_Official_AppTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BB958D33B9821667370F59B177A78832 /* Pods-Thrive Church Official AppUITests */ = {
@@ -632,7 +648,7 @@
 				00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */,
 				E4DD95323C54A78F879DAB0F1508B8E7 /* nanopb */,
 				86932D487469CDB7A8CEA6D7429CD739 /* Pods-Thrive Church Official App */,
-				282B62661D9A7148508DD292A4B7BDBF /* Pods-Thrive Church Official AppTests */,
+				88AAA7AC3281142BAB29B4C24E925129 /* Pods-Thrive Church Official AppTests */,
 				BB958D33B9821667370F59B177A78832 /* Pods-Thrive Church Official AppUITests */,
 			);
 		};
@@ -647,6 +663,14 @@
 				3A50F5C8ECED9627F2EBD97F61BD376D /* pb_common.c in Sources */,
 				54F580BF4588159D6A61F21D15591805 /* pb_decode.c in Sources */,
 				55D8D5D912CFD2F3584E4553C2EAD734 /* pb_encode.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4346465FB0933769C7A5429350F0A20F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFE9A5D3FC3F2710E467F30F80F1ECB6 /* Pods-Thrive Church Official AppTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,14 +691,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E5029D86DA3FF989A4C2FF173F258486 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				80F26F7A4B4DFA3F6ABC7355C2A35872 /* Pods-Thrive Church Official AppTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FAAD21CA5557C4B40F40B68719CED05B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -686,11 +702,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E4D0522AC6834FD2C674A1D79755A69 /* PBXTargetDependency */ = {
+		18FA989542761761780AB1C62C8F25E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-Thrive Church Official App";
-			target = 86932D487469CDB7A8CEA6D7429CD739 /* Pods-Thrive Church Official App */;
-			targetProxy = 44B5F35F51F10963B416C657D74DDDA3 /* PBXContainerItemProxy */;
+			name = nanopb;
+			target = E4DD95323C54A78F879DAB0F1508B8E7 /* nanopb */;
+			targetProxy = 2BEE954C841A1896A3FFA66BC69E148D /* PBXContainerItemProxy */;
 		};
 		3A564776AC7F1CDECF4171227387EC62 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -703,6 +719,18 @@
 			name = "Pods-Thrive Church Official App";
 			target = 86932D487469CDB7A8CEA6D7429CD739 /* Pods-Thrive Church Official App */;
 			targetProxy = 3CB6164C1672B1B7D987404DA1DF4E8E /* PBXContainerItemProxy */;
+		};
+		635CA7EA4C92303EA4EC5EC7893A7DF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Thrive Church Official App";
+			target = 86932D487469CDB7A8CEA6D7429CD739 /* Pods-Thrive Church Official App */;
+			targetProxy = 909988A508668B5AEDA5B3CB96B4839C /* PBXContainerItemProxy */;
+		};
+		83C53CC68999D57321A8428E939086C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleToolboxForMac;
+			target = 00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */;
+			targetProxy = D993E428BAAA762DD833D6F00135F3F2 /* PBXContainerItemProxy */;
 		};
 		DA716F530F5D28930ED89ED79E46537D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -785,6 +813,40 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		22F744542F9BD934E2451261C4E65755 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 492B6316AEFB579B3230166AC7E01FE7 /* Pods-Thrive Church Official AppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Thrive Church Official AppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1011,41 +1073,7 @@
 			};
 			name = Release;
 		};
-		7A48D9D9DEA207EEF1F3B32F80B99F6E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 492B6316AEFB579B3230166AC7E01FE7 /* Pods-Thrive Church Official AppTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Thrive Church Official AppTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		937C86452980773541EB1D6591B66FCD /* Release */ = {
+		5BBD2628F5191674EF5F6C23C035C10E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA937A875C9F6019328CB2B9540A8EAC /* Pods-Thrive Church Official AppTests.release.xcconfig */;
 			buildSettings = {
@@ -1191,20 +1219,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5ECD1414BA3F953126BEDDE925717DC4 /* Build configuration list for PBXNativeTarget "Pods-Thrive Church Official AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22F744542F9BD934E2451261C4E65755 /* Debug */,
+				5BBD2628F5191674EF5F6C23C035C10E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AE53134BA008920D8684CE64C0649A1F /* Build configuration list for PBXNativeTarget "Pods-Thrive Church Official AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AC5C5829DFF81794B8FB2D9606B68013 /* Debug */,
 				066E16D7828CD3BE6BA99EED246BDCD5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C292F677996FD4CE7247C48F7EED43A1 /* Build configuration list for PBXNativeTarget "Pods-Thrive Church Official AppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7A48D9D9DEA207EEF1F3B32F80B99F6E /* Debug */,
-				937C86452980773541EB1D6591B66FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

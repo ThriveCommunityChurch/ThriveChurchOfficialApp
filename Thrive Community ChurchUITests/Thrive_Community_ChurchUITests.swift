@@ -7,13 +7,20 @@
 //
 
 import XCTest
+import UIKit
+
+@testable import Thrive_Church_Official_App
+
+
+var listenVC: SermonsViewController!
 
 class Thrive_Community_ChurchUITests: XCTestCase {
-        
+	
     override func setUp() {
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
+		listenVC = SermonsViewController()
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -28,9 +35,29 @@ class Thrive_Community_ChurchUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+	func testTableViewText() {
+		
+		let app = XCUIApplication()
+		app.tabBars.buttons["Notes"].tap()
+		app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
+		app.navigationBars["Add Note"].buttons["Notes"].tap()
+		
+//		assert(<#T##condition: Bool##Bool#>)
+	}
+	
+	func testWebViews() {
+		
+		let webView: UIWebView = UIWebView()
+		webView.loadWebPage(url: "http://thrive-fl.org/teaching-series")
+		let html = webView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
+		
+		let webView2: UIWebView = UIWebView()
+		listenVC.sermonView = webView2
+		listenVC.sermonView.loadWebPage(url: "http://thrive-fl.org/teaching-series")
+		let loadedPageHtml = listenVC.sermonView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
+		
+		assert(html == loadedPageHtml)
+		
+	}
     
 }

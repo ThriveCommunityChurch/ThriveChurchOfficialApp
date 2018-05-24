@@ -113,6 +113,7 @@
 		DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8571F0494FF002784E7 /* DetailViewController.swift */; };
 		DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8581F0494FF002784E7 /* MasterViewController.swift */; };
 		DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */; };
+		E4C517D2FC3AB4C293D6F0FD /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32FA8C20B64DE5002CCBD0 /* Pods_Thrive_Church_Official_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,10 +152,10 @@
 		413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thrive Church Official App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF7F01CF21719006C366E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Church Official App.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FCF8031CF21719006C366E /* Thrive Community ChurchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Community ChurchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrive_Community_ChurchTests.swift; sourceTree = "<group>"; };
 		41FCF8091CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41FCF80E1CF21719006C366E /* Thrive Church Official App.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Church Official App.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FCF80E1CF21719006C366E /* Thrive Community ChurchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Community ChurchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrive_Community_ChurchUITests.swift; sourceTree = "<group>"; };
 		41FCF8141CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41FF24A51D171EC30048E6AF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -258,6 +259,9 @@
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DC05C39B20AE722100241DE3 /* Pods_Thrive_Church_Official_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Thrive_Church_Official_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DC32FA8820B64BCE002CCBD0 /* Pods_Thrive_Church_Official_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Thrive_Church_Official_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC32FA8A20B64DD8002CCBD0 /* Pods_Thrive_Church_Official_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Thrive_Church_Official_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC32FA8C20B64DE5002CCBD0 /* Pods_Thrive_Church_Official_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Thrive_Church_Official_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3835231F68D82600F05E8B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3835291F68D8C800F05E8B /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +289,7 @@
 				41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */,
 				41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */,
 				413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */,
+				E4C517D2FC3AB4C293D6F0FD /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +349,8 @@
 			isa = PBXGroup;
 			children = (
 				41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */,
-				41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */,
-				41FCF80E1CF21719006C366E /* Thrive Church Official App.xctest */,
+				41FCF8031CF21719006C366E /* Thrive Community ChurchTests.xctest */,
+				41FCF80E1CF21719006C366E /* Thrive Community ChurchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,6 +389,9 @@
 		C7C0921F61B47B791415949E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC32FA8C20B64DE5002CCBD0 /* Pods_Thrive_Church_Official_App.framework */,
+				DC32FA8A20B64DD8002CCBD0 /* Pods_Thrive_Church_Official_App.framework */,
+				DC32FA8820B64BCE002CCBD0 /* Pods_Thrive_Church_Official_App.framework */,
 				DC05C39B20AE722100241DE3 /* Pods_Thrive_Church_Official_App.framework */,
 				DCA554461F6AD47B00E00006 /* Protobuf.framework */,
 				DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */,
@@ -593,6 +601,7 @@
 				41FCF7FF1CF21719006C366E /* Sources */,
 				41FCF8001CF21719006C366E /* Frameworks */,
 				41FCF8011CF21719006C366E /* Resources */,
+				0297DEED03602076E644D47D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -601,7 +610,7 @@
 			);
 			name = "Thrive Church Official AppTests";
 			productName = "Thrive Community ChurchTests";
-			productReference = 41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */;
+			productReference = 41FCF8031CF21719006C366E /* Thrive Community ChurchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		41FCF80D1CF21719006C366E /* Thrive Church Official AppUITests */ = {
@@ -621,7 +630,7 @@
 			);
 			name = "Thrive Church Official AppUITests";
 			productName = "Thrive Community ChurchUITests";
-			productReference = 41FCF80E1CF21719006C366E /* Thrive Church Official App.xctest */;
+			productReference = 41FCF80E1CF21719006C366E /* Thrive Community ChurchUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -741,6 +750,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0297DEED03602076E644D47D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thrive Church Official AppTests/Pods-Thrive Church Official AppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3652D333CBC668C125C08727 /* [CP] Embed Pods Frameworks */ = {
@@ -1123,11 +1152,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC65D2616E3DDC1C6E1EF387 /* Pods-Thrive Church Official AppTests.debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchTests";
-				PRODUCT_NAME = "Thrive Church Official App";
+				PRODUCT_NAME = "Thrive Community ChurchTests";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thrive Church Official App.app/Thrive Church Official App";
@@ -1138,11 +1169,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 768FC5C5EEAA1D1B388D8D19 /* Pods-Thrive Church Official AppTests.release.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchTests";
-				PRODUCT_NAME = "Thrive Church Official App";
+				PRODUCT_NAME = "Thrive Community ChurchTests";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -1157,8 +1190,9 @@
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchUITests";
-				PRODUCT_NAME = "Thrive Church Official App";
+				PRODUCT_NAME = "Thrive Community ChurchUITests";
 				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -1173,8 +1207,9 @@
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "Thrive Community ChurchUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fld.Thrive-Community-ChurchUITests";
-				PRODUCT_NAME = "Thrive Church Official App";
+				PRODUCT_NAME = "Thrive Community ChurchUITests";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

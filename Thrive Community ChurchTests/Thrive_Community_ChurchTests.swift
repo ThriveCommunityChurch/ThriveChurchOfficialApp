@@ -7,30 +7,41 @@
 //
 
 import XCTest
-@testable import Thrive_Community_Church
+import UIKit
+
+@testable import Thrive_Church_Official_App
+
+var masterView: MasterViewController!
+var detailView: DetailViewController!
+var listenVC: SermonsViewController!
 
 class ThriveChurchOfficialAppTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+		
+		masterView = MasterViewController()
+		detailView = DetailViewController()
+		listenVC = SermonsViewController()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+		
+		masterView = nil
+		detailView = nil
+		listenVC = nil
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+	
+	/// Assuming that some text was entered, save the note
+    func testNoteCreated() {
+
+		masterView.insertNewObject(self)
+
+		
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-            
-        }
-    }
+	
+	
 }
