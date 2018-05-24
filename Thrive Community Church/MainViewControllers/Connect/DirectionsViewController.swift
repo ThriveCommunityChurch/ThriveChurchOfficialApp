@@ -59,7 +59,6 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
 		else {
 			sender.setTitle("Show Traffic", for: UIControlState())
 		}
-		
     }
     
     // Opens in Apple Maps
@@ -68,4 +67,5 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
 		self.openUrlAnyways(link: "http://maps.apple.com/?daddr=" +
 			"Thrive+Community+Church&dirflg=d")
     }
+	
 }
