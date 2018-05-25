@@ -17,29 +17,18 @@ class ReadMarkViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         markView.delegate = self
-        loadMarkView()
+        markView.loadWebPage(url: "https://www.bible.com/bible/59/mrk.1")
+        self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadMarkView() {
-        let url = URL(string: "https://www.bible.com/bible/59/mrk.1")
-        let request = URLRequest(url: url!)
-        
-        markView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+	
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

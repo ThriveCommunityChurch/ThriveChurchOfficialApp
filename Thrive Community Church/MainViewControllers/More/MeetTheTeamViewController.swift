@@ -17,31 +17,24 @@ class MeetTheTeamViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
         teamView.delegate = self
-        loadTeamView()
-    }
-    
-    private func loadTeamView() {
-        let url = URL(string: "http://thrive-fl.org/team")
-        let request = URLRequest(url: url!)
-        
-        teamView.loadRequest(request)
+        teamView.loadWebPage(url: "http://thrive-fl.org/team")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
          loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

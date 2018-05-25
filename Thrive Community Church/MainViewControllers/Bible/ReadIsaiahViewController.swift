@@ -17,29 +17,18 @@ class ReadIsaiahViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         isaiahView.delegate = self
-        loadIsaiahView()
-    }
-    
-    private func loadIsaiahView() {
-        let url = URL(string: "https://www.bible.com/bible/59/isa.1")
-        let request = URLRequest(url: url!)
-        
-        isaiahView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        isaiahView.loadWebPage(url: "https://www.bible.com/bible/59/isa.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

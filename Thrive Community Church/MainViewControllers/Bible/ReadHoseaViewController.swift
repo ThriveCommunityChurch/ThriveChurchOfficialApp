@@ -17,29 +17,18 @@ class ReadHoseaViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         hoseaView.delegate = self
-        loadHoseaView()
-    }
-    
-    private func loadHoseaView() {
-        let url = URL(string: "https://www.bible.com/bible/59/hos.1")
-        let request = URLRequest(url: url!)
-        
-        hoseaView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        hoseaView.loadWebPage(url: "https://www.bible.com/bible/59/hos.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

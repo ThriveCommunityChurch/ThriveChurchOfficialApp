@@ -20,7 +20,7 @@ class giveViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
     }
     
-    // open the application in safari
+    // opens the application in safari
     @IBAction func donation(_ sender: AnyObject) {
         
         let url = URL(string: "https://goo.gl/bSrZ9K")
@@ -35,7 +35,7 @@ class giveViewController: UIViewController, UIWebViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
 }

@@ -17,29 +17,18 @@ class ReadKingsViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         kingsView.delegate = self
-        loadKingsView()
-    }
-    
-    private func loadKingsView() {
-        let url = URL(string: "https://www.bible.com/bible/59/1ki.1")
-        let request = URLRequest(url: url!)
-        
-        kingsView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        kingsView.loadWebPage(url: "https://www.bible.com/bible/59/1ki.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

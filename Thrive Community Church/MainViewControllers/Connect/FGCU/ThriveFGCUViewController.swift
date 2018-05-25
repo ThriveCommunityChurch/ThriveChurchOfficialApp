@@ -22,18 +22,11 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
     
     @IBAction func openDirections(_ sender: AnyObject) {
         
-        let url = URL(string: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
-        
-        if UIApplication.shared.canOpenURL(url!){
-			UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        }
-        else{
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        }
+        self.openUrlAnyways(link: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
     }
     
     @IBAction func feedback(_ sender: AnyObject) {
-		// use a library for this
+		// TODO: use a library for this
 //        let modelInfo = UIDevice.current.model
 //        let systeminfo = UIDevice.current.systemName
 //        let systemVersion = UIDevice.current.systemVersion
@@ -61,7 +54,9 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 			composeVC.setSubject("Thrive FGCU")
 			present(composeVC, animated: true, completion: nil)
 			self.present(composeVC, animated: true, completion: nil)
-			
+		}
+		else {
+			self.displayAlertForAction()
 		}
 	}
 	
@@ -89,4 +84,5 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
         
         self.dismiss(animated: true, completion: nil)
     }
+	
 }

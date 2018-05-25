@@ -17,31 +17,24 @@ class MailChimpViewCoontroller: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         Webview.delegate = self
-        loadMCView()
-    }
-    
-    private func loadMCView() {
-        let url = URL(string: "http://thrive-fl.org/mailing-list/")
-        let request = URLRequest(url: url!)
-        
-        Webview.loadRequest(request)
+        Webview.loadWebPage(url: "http://thrive-fl.org/mailing-list/")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

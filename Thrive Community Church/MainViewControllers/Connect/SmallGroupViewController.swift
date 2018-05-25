@@ -16,33 +16,25 @@ class SmallGroupViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
+		
         smallGroup.delegate = self
-        loadSmallGroupView()
-    }
-    
-    private func loadSmallGroupView() {
-        let url = URL(string: "http://thrive-fl.org/join-small-group")
-        let request = URLRequest(url: url!)
-        
-        smallGroup.loadRequest(request)
+        smallGroup.loadWebPage(url: "http://thrive-fl.org/join-small-group")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

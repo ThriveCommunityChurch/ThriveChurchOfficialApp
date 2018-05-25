@@ -17,29 +17,18 @@ class ReadLamentationsViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         lamentationsView.delegate = self
-        loadLamentationsView()
-    }
-    
-    private func loadLamentationsView() {
-        let url = URL(string: "https://www.bible.com/bible/59/lam.1")
-        let request = URLRequest(url: url!)
-        
-        lamentationsView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        lamentationsView.loadWebPage(url: "https://www.bible.com/bible/59/lam.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

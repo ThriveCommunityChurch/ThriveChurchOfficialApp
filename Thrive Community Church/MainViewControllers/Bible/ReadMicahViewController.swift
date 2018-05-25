@@ -17,29 +17,18 @@ class ReadMicahViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         micahView.delegate = self
-        loadMicahView()
-    }
-    
-    private func loadMicahView() {
-        let url = URL(string: "https://www.bible.com/bible/59/mic.1")
-        let request = URLRequest(url: url!)
-        
-        micahView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        micahView.loadWebPage(url: "https://www.bible.com/bible/59/mic.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

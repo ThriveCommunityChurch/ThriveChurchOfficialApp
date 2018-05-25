@@ -17,33 +17,24 @@ class PrayerRequestsViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
         prayerRequestsView.delegate = self
-        loadPrayerRequestView()
-        
-    }
-    
-    private func loadPrayerRequestView() {
-        let url = URL(string: "http://thrive-fl.org/prayer-requests")
-        let request = URLRequest(url: url!)
-        
-        prayerRequestsView.loadRequest(request)
-
+        prayerRequestsView.loadWebPage(url: "http://thrive-fl.org/prayer-requests")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

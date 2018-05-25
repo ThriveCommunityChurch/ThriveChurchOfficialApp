@@ -17,29 +17,18 @@ class ReadDeutViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         deutView.delegate = self
-        loadDeutView()
+        deutView.loadWebPage(url: "https://www.bible.com/bible/116/deu.1")
+        self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadDeutView() {
-        let url = URL(string: "https://www.bible.com/bible/116/deu.1")
-        let request = URLRequest(url: url!)
-        
-        deutView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

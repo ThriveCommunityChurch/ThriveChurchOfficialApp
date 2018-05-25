@@ -16,32 +16,25 @@ class WebsiteViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        websiteView.delegate = self
-        loadWebsiteView()
-    }
-    
-    private func  loadWebsiteView() {
-        let url = URL(string: "http://thrive-fl.org")
-        let request = URLRequest(url: url!)
         
-        websiteView.loadRequest(request)
+        websiteView.delegate = self
+        websiteView.loadWebPage(url: "http://thrive-fl.org")
+        self.setLoadingSpinner(spinner: loading)
     }
-    
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

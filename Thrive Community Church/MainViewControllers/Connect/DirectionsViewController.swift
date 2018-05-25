@@ -25,64 +25,47 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
         let thriveLocation = CLLocationCoordinate2DMake(26.448174, -81.816173)
         dropPin.coordinate = thriveLocation
         dropPin.title = "Thrive Community Church"
-        dropPin.subtitle = "20041 S. Tamiami Trail #1, Estero, FL, 33928"
+        dropPin.subtitle = "20041 S Tamiami Trl #1\nEstero, FL 33928"
         directionsMapView.addAnnotation(dropPin)
+		directionsMapView.selectedAnnotations = [dropPin]
+		directionsMapView.showsScale = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // initial viewDidLoad settings
     private func cameraSetup() {
-        directionsMapView.camera.altitude = 9000
+        directionsMapView.camera.altitude = 11000
         directionsMapView.camera.pitch = 0
         directionsMapView.camera.heading = 0
     }
     
     private func regionSetup() {
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(26.448174, -81.816173), MKCoordinateSpanMake(0.05, 0.07))
+        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(26.448174, -81.816173),
+											MKCoordinateSpanMake(0.05, 0.07))
         
         directionsMapView.setRegion(region, animated: true)
     }
 
     @IBAction func showTraffic(_ sender: AnyObject) {
-        
+		
         directionsMapView.showsTraffic = !directionsMapView.showsTraffic
-        
-        // Will always return true because deployment target is > 9.0
-        if #available(iOS 9.0, *) {
-            if directionsMapView.showsTraffic == true {
-                sender.setTitle("Hide Traffic", for: UIControlState())
-            }
-            else {
-                sender.setTitle("Show Traffic", for: UIControlState())
-            }
-        } else {
-            // Open in Apple Maps anyways
-            let url = URL(string: "http://maps.apple.com/?daddr=" +
-                "Thrive+Community+Church&dirflg=d")
-            
-            if UIApplication.shared.canOpenURL(url!){
-                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-            }
-            else{
-                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-            }
-        }
+		
+		if directionsMapView.showsTraffic == true {
+			sender.setTitle("Hide Traffic", for: UIControlState())
+		}
+		else {
+			sender.setTitle("Show Traffic", for: UIControlState())
+		}
     }
     
-    // Opens in APPLE MAPS
+    // Opens in Apple Maps
     @IBAction func findRoute(_ sender: AnyObject) {
-        let url = URL(string: "http://maps.apple.com/?daddr=" +
-            "Thrive+Community+Church&dirflg=d")
-        
-        if UIApplication.shared.canOpenURL(url!) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        }
-        else {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        }
+		
+		self.openUrlAnyways(link: "http://maps.apple.com/?daddr=" +
+			"Thrive+Community+Church&dirflg=d")
     }
+	
 }

@@ -17,29 +17,18 @@ class ReadJoshuaViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         joshuaView.delegate = self
-        loadJoshuaView()
+        joshuaView.loadWebPage(url: "https://www.bible.com/bible/59/jos.1")
+        self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadJoshuaView() {
-        let url = URL(string: "https://www.bible.com/bible/59/jos.1")
-        let request = URLRequest(url: url!)
-        
-        joshuaView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

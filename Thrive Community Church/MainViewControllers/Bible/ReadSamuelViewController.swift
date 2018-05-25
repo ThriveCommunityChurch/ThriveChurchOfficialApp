@@ -17,29 +17,18 @@ class ReadSamuelViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         samuelView.delegate = self
-        loadSamuelView()
+        samuelView.loadWebPage(url: "https://www.bible.com/bible/59/1sa.1")
+        self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadSamuelView() {
-        let url = URL(string: "https://www.bible.com/bible/59/1sa.1")
-        let request = URLRequest(url: url!)
-        
-        samuelView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+	
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

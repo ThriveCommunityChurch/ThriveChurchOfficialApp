@@ -17,29 +17,18 @@ class ReadGenesisViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         genesisView.delegate = self
-        loadGenesisView()
+        genesisView.loadWebPage(url: "https://www.bible.com/bible/59/gen.1")
+        self.setLoadingSpinner(spinner: loading)
     }
-    
-    private func loadGenesisView() {
-        let url = URL(string: "https://www.bible.com/bible/59/gen.1")
-        let request = URLRequest(url: url!)
-        
-        genesisView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

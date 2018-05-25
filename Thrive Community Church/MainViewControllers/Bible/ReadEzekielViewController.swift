@@ -17,29 +17,18 @@ class ReadEzekielViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         ezekielView.delegate = self
-        loadEzekielView()
-    }
-    
-    private func loadEzekielView() {
-        let url = URL(string: "https://www.bible.com/bible/59/ezk.1")
-        let request = URLRequest(url: url!)
-        
-        ezekielView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        ezekielView.loadWebPage(url: "https://www.bible.com/bible/59/ezk.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }

@@ -17,29 +17,18 @@ class ReadObediahViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         obadiahView.delegate = self
-        loadObediahView()
-    }
-    
-    private func loadObediahView() {
-        let url = URL(string: "https://www.bible.com/bible/59/oba.1")
-        let request = URLRequest(url: url!)
-        
-        obadiahView.loadRequest(request)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        obadiahView.loadWebPage(url: "https://www.bible.com/bible/59/oba.1")
+        self.setLoadingSpinner(spinner: loading)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loading.startAnimating()
-        print("Loading....")
-        
+		
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loading.stopAnimating()
-        print("Stopped Loading!")
+        
     }
     
 }
