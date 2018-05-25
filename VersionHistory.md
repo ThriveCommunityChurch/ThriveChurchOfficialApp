@@ -1,4 +1,4 @@
-### 1.6.3  —  TBD
+### 1.6.3  —  May 25, 2018
 - Fixed an issue where emails could not be sent from certain devices
 - Improved User Experience across multiple screens
 - Improved Stability
