@@ -36,12 +36,15 @@ class ThriveChurchOfficialAppTests: XCTestCase {
     }
 	
 	/// Assuming that some text was entered, save the note
-    func testNoteCreated() {
-
-		masterView.insertNewObject(self)
-
-		
-    }
+//    func testNoteCreated() {
+//
+//		let obj: [String] = [String]()
+//		
+//		masterView.insertNewObject(self)
+//		let cell = masterView.tableView(masterView.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+//		
+//		assert(something)
+//    }
 	
 	
 }

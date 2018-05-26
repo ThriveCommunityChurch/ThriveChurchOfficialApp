@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 var objects: [String] = [String]()
 var currentIndex: Int = 0
@@ -152,7 +151,7 @@ class MasterViewController: UITableViewController {
 		save()
 		
 		currentIndex = 0
-		self.performSegue(withIdentifier: "showDetail", sender: self)
+		//self.performSegue(withIdentifier: "showDetail", sender: self)
 	}
     
     func save() {
