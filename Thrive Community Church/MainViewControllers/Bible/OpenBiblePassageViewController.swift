@@ -8,7 +8,8 @@
 
 import UIKit
 
-class OpenBiblePassageViewController: UIViewController {
+// loads webpage for any URL
+class OpenBiblePassageViewController: UIViewController, UIWebViewDelegate {
 	
 	let webView: UIWebView = UIWebView()
 	let spinner: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -18,9 +19,9 @@ class OpenBiblePassageViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
 		spinner.translatesAutoresizingMaskIntoConstraints = false
 		webView.translatesAutoresizingMaskIntoConstraints = false
+		webView.delegate = self
 		
 		setupViews()
 	}
@@ -31,6 +32,7 @@ class OpenBiblePassageViewController: UIViewController {
 	
 	func setupViews() {
 		
+		view.backgroundColor = .black
 		view.addSubview(webView)
 		self.setLoadingSpinner(spinner: spinner)
 		view.addSubview(spinner)
@@ -57,15 +59,18 @@ class OpenBiblePassageViewController: UIViewController {
 		NSLayoutConstraint.activate([
 			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-			spinner.heightAnchor.constraint(equalToConstant: 40),
-			spinner.widthAnchor.constraint(equalToConstant: 40)
+			spinner.heightAnchor.constraint(equalToConstant: 37),
+			spinner.widthAnchor.constraint(equalToConstant: 37)
 		])
 		
-		if link != "" {
-			webView.loadWebPage(url: link)
-		}
-		else {
-			print("An error ocurred loading this webpage")
-		}
+		webView.loadWebPage(url: link)
+	}
+	
+	func webViewDidStartLoad(_ webView: UIWebView) {
+		self.spinner.startAnimating()
+	}
+	
+	func webViewDidFinishLoad(_ webView: UIWebView) {
+		self.spinner.stopAnimating()
 	}
 }
