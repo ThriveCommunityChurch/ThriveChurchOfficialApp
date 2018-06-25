@@ -54,6 +54,7 @@ class TraditionalSortBibleTableViewController: UITableViewController {
 		
 		if linkToVisit != "" {
 			openVCAtSpecificURL(link: "https://www.bible.com/bible/59/\(linkToVisit).1")
+			//Life.Church appends .esv to the end of the query string automatically
 		}
 		else {
 			print("DEBUG: An error ocurred while trying to load the page. The link was empty.")
