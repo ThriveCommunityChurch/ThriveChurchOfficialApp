@@ -1,6 +1,7 @@
 ### 1.7  —  TBD
 - Reduced overhead when accessing Bible passages
 - Improved performance on Bible tab
+- iOS 12 Support
 - WIP
 
 ### 1.6.3  —  May 25, 2018
