@@ -29,39 +29,6 @@
 		DCDFCE5C1FA00C700011AEC3 /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
 		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
-		DCE362E31F05610600725F11 /* ReadJoelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B81A1F0494FF002784E7 /* ReadJoelViewController.swift */; };
-		DCE362E41F05610600725F11 /* ReadJohnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B81B1F0494FF002784E7 /* ReadJohnViewController.swift */; };
-		DCE362E51F05610600725F11 /* ReadJonahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B81C1F0494FF002784E7 /* ReadJonahViewController.swift */; };
-		DCE362E61F05610600725F11 /* ReadJoshuaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B81D1F0494FF002784E7 /* ReadJoshuaViewController.swift */; };
-		DCE362E71F05610600725F11 /* ReadJudeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B81E1F0494FF002784E7 /* ReadJudeViewController.swift */; };
-		DCE362E81F05610600725F11 /* ReadJudgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B81F1F0494FF002784E7 /* ReadJudgesViewController.swift */; };
-		DCE362E91F05610600725F11 /* ReadKingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8201F0494FF002784E7 /* ReadKingsViewController.swift */; };
-		DCE362EA1F05610600725F11 /* ReadLamentationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8211F0494FF002784E7 /* ReadLamentationsViewController.swift */; };
-		DCE362EB1F05610600725F11 /* ReadLeviticusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8221F0494FF002784E7 /* ReadLeviticusViewController.swift */; };
-		DCE362EC1F05610600725F11 /* ReadLukeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8231F0494FF002784E7 /* ReadLukeViewController.swift */; };
-		DCE362ED1F05610600725F11 /* ReadMalachiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8241F0494FF002784E7 /* ReadMalachiViewController.swift */; };
-		DCE362EE1F05610600725F11 /* ReadMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8251F0494FF002784E7 /* ReadMarkViewController.swift */; };
-		DCE362EF1F05610600725F11 /* ReadMatthewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8261F0494FF002784E7 /* ReadMatthewViewController.swift */; };
-		DCE362F01F05610600725F11 /* ReadMicahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8271F0494FF002784E7 /* ReadMicahViewController.swift */; };
-		DCE362F11F05610600725F11 /* ReadNahumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8281F0494FF002784E7 /* ReadNahumViewController.swift */; };
-		DCE362F21F05610600725F11 /* ReadNehemiahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8291F0494FF002784E7 /* ReadNehemiahViewController.swift */; };
-		DCE362F31F05610600725F11 /* ReadNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B82A1F0494FF002784E7 /* ReadNumbersViewController.swift */; };
-		DCE362F41F05610600725F11 /* ReadObediahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B82B1F0494FF002784E7 /* ReadObediahViewController.swift */; };
-		DCE362F51F05610600725F11 /* ReadPeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B82C1F0494FF002784E7 /* ReadPeterViewController.swift */; };
-		DCE362F61F05610600725F11 /* ReadPhilemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B82D1F0494FF002784E7 /* ReadPhilemonViewController.swift */; };
-		DCE362F71F05610600725F11 /* ReadPhilippiansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B82E1F0494FF002784E7 /* ReadPhilippiansViewController.swift */; };
-		DCE362F81F05610600725F11 /* ReadProverbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B82F1F0494FF002784E7 /* ReadProverbsViewController.swift */; };
-		DCE362F91F05610600725F11 /* ReadPsamlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8301F0494FF002784E7 /* ReadPsamlsViewController.swift */; };
-		DCE362FA1F05610600725F11 /* ReadRevelationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8311F0494FF002784E7 /* ReadRevelationViewController.swift */; };
-		DCE362FB1F05610600725F11 /* ReadRomansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8321F0494FF002784E7 /* ReadRomansViewController.swift */; };
-		DCE362FC1F05610600725F11 /* ReadRuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8331F0494FF002784E7 /* ReadRuthViewController.swift */; };
-		DCE362FD1F05610600725F11 /* ReadSamuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8341F0494FF002784E7 /* ReadSamuelViewController.swift */; };
-		DCE362FE1F05610600725F11 /* ReadSolomanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8351F0494FF002784E7 /* ReadSolomanViewController.swift */; };
-		DCE362FF1F05610600725F11 /* ReadThessaloniansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8361F0494FF002784E7 /* ReadThessaloniansViewController.swift */; };
-		DCE363001F05610600725F11 /* ReadTimothyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8371F0494FF002784E7 /* ReadTimothyViewController.swift */; };
-		DCE363011F05610600725F11 /* ReadTitusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8381F0494FF002784E7 /* ReadTitusViewController.swift */; };
-		DCE363021F05610600725F11 /* ReadZechariahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8391F0494FF002784E7 /* ReadZechariahViewController.swift */; };
-		DCE363031F05610600725F11 /* ReadZepheniahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83A1F0494FF002784E7 /* ReadZepheniahViewController.swift */; };
 		DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */; };
 		DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */; };
 		DCE363061F05610600725F11 /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83E1F0494FF002784E7 /* EventsFeedViewController.swift */; };
@@ -140,39 +107,6 @@
 		AFC35240AEAFA3ADBFDE705E /* Pods-Thrive Church Official App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thrive Church Official App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App.debug.xcconfig"; sourceTree = "<group>"; };
 		DC01B7F01F04921B002784E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DC01B81A1F0494FF002784E7 /* ReadJoelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJoelViewController.swift; sourceTree = "<group>"; };
-		DC01B81B1F0494FF002784E7 /* ReadJohnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJohnViewController.swift; sourceTree = "<group>"; };
-		DC01B81C1F0494FF002784E7 /* ReadJonahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJonahViewController.swift; sourceTree = "<group>"; };
-		DC01B81D1F0494FF002784E7 /* ReadJoshuaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJoshuaViewController.swift; sourceTree = "<group>"; };
-		DC01B81E1F0494FF002784E7 /* ReadJudeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJudeViewController.swift; sourceTree = "<group>"; };
-		DC01B81F1F0494FF002784E7 /* ReadJudgesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJudgesViewController.swift; sourceTree = "<group>"; };
-		DC01B8201F0494FF002784E7 /* ReadKingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadKingsViewController.swift; sourceTree = "<group>"; };
-		DC01B8211F0494FF002784E7 /* ReadLamentationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLamentationsViewController.swift; sourceTree = "<group>"; };
-		DC01B8221F0494FF002784E7 /* ReadLeviticusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLeviticusViewController.swift; sourceTree = "<group>"; };
-		DC01B8231F0494FF002784E7 /* ReadLukeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLukeViewController.swift; sourceTree = "<group>"; };
-		DC01B8241F0494FF002784E7 /* ReadMalachiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMalachiViewController.swift; sourceTree = "<group>"; };
-		DC01B8251F0494FF002784E7 /* ReadMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMarkViewController.swift; sourceTree = "<group>"; };
-		DC01B8261F0494FF002784E7 /* ReadMatthewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMatthewViewController.swift; sourceTree = "<group>"; };
-		DC01B8271F0494FF002784E7 /* ReadMicahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMicahViewController.swift; sourceTree = "<group>"; };
-		DC01B8281F0494FF002784E7 /* ReadNahumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNahumViewController.swift; sourceTree = "<group>"; };
-		DC01B8291F0494FF002784E7 /* ReadNehemiahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNehemiahViewController.swift; sourceTree = "<group>"; };
-		DC01B82A1F0494FF002784E7 /* ReadNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbersViewController.swift; sourceTree = "<group>"; };
-		DC01B82B1F0494FF002784E7 /* ReadObediahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadObediahViewController.swift; sourceTree = "<group>"; };
-		DC01B82C1F0494FF002784E7 /* ReadPeterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPeterViewController.swift; sourceTree = "<group>"; };
-		DC01B82D1F0494FF002784E7 /* ReadPhilemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPhilemonViewController.swift; sourceTree = "<group>"; };
-		DC01B82E1F0494FF002784E7 /* ReadPhilippiansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPhilippiansViewController.swift; sourceTree = "<group>"; };
-		DC01B82F1F0494FF002784E7 /* ReadProverbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProverbsViewController.swift; sourceTree = "<group>"; };
-		DC01B8301F0494FF002784E7 /* ReadPsamlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPsamlsViewController.swift; sourceTree = "<group>"; };
-		DC01B8311F0494FF002784E7 /* ReadRevelationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRevelationViewController.swift; sourceTree = "<group>"; };
-		DC01B8321F0494FF002784E7 /* ReadRomansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRomansViewController.swift; sourceTree = "<group>"; };
-		DC01B8331F0494FF002784E7 /* ReadRuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRuthViewController.swift; sourceTree = "<group>"; };
-		DC01B8341F0494FF002784E7 /* ReadSamuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSamuelViewController.swift; sourceTree = "<group>"; };
-		DC01B8351F0494FF002784E7 /* ReadSolomanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSolomanViewController.swift; sourceTree = "<group>"; };
-		DC01B8361F0494FF002784E7 /* ReadThessaloniansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadThessaloniansViewController.swift; sourceTree = "<group>"; };
-		DC01B8371F0494FF002784E7 /* ReadTimothyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTimothyViewController.swift; sourceTree = "<group>"; };
-		DC01B8381F0494FF002784E7 /* ReadTitusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTitusViewController.swift; sourceTree = "<group>"; };
-		DC01B8391F0494FF002784E7 /* ReadZechariahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadZechariahViewController.swift; sourceTree = "<group>"; };
-		DC01B83A1F0494FF002784E7 /* ReadZepheniahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadZepheniahViewController.swift; sourceTree = "<group>"; };
 		DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactButtonViewController.swift; sourceTree = "<group>"; };
 		DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		DC01B83E1F0494FF002784E7 /* EventsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
@@ -373,39 +307,6 @@
 		DC01B7F81F0494FF002784E7 /* Bible */ = {
 			isa = PBXGroup;
 			children = (
-				DC01B81A1F0494FF002784E7 /* ReadJoelViewController.swift */,
-				DC01B81B1F0494FF002784E7 /* ReadJohnViewController.swift */,
-				DC01B81C1F0494FF002784E7 /* ReadJonahViewController.swift */,
-				DC01B81D1F0494FF002784E7 /* ReadJoshuaViewController.swift */,
-				DC01B81E1F0494FF002784E7 /* ReadJudeViewController.swift */,
-				DC01B81F1F0494FF002784E7 /* ReadJudgesViewController.swift */,
-				DC01B8201F0494FF002784E7 /* ReadKingsViewController.swift */,
-				DC01B8211F0494FF002784E7 /* ReadLamentationsViewController.swift */,
-				DC01B8221F0494FF002784E7 /* ReadLeviticusViewController.swift */,
-				DC01B8231F0494FF002784E7 /* ReadLukeViewController.swift */,
-				DC01B8241F0494FF002784E7 /* ReadMalachiViewController.swift */,
-				DC01B8251F0494FF002784E7 /* ReadMarkViewController.swift */,
-				DC01B8261F0494FF002784E7 /* ReadMatthewViewController.swift */,
-				DC01B8271F0494FF002784E7 /* ReadMicahViewController.swift */,
-				DC01B8281F0494FF002784E7 /* ReadNahumViewController.swift */,
-				DC01B8291F0494FF002784E7 /* ReadNehemiahViewController.swift */,
-				DC01B82A1F0494FF002784E7 /* ReadNumbersViewController.swift */,
-				DC01B82B1F0494FF002784E7 /* ReadObediahViewController.swift */,
-				DC01B82C1F0494FF002784E7 /* ReadPeterViewController.swift */,
-				DC01B82D1F0494FF002784E7 /* ReadPhilemonViewController.swift */,
-				DC01B82E1F0494FF002784E7 /* ReadPhilippiansViewController.swift */,
-				DC01B82F1F0494FF002784E7 /* ReadProverbsViewController.swift */,
-				DC01B8301F0494FF002784E7 /* ReadPsamlsViewController.swift */,
-				DC01B8311F0494FF002784E7 /* ReadRevelationViewController.swift */,
-				DC01B8321F0494FF002784E7 /* ReadRomansViewController.swift */,
-				DC01B8331F0494FF002784E7 /* ReadRuthViewController.swift */,
-				DC01B8341F0494FF002784E7 /* ReadSamuelViewController.swift */,
-				DC01B8351F0494FF002784E7 /* ReadSolomanViewController.swift */,
-				DC01B8361F0494FF002784E7 /* ReadThessaloniansViewController.swift */,
-				DC01B8371F0494FF002784E7 /* ReadTimothyViewController.swift */,
-				DC01B8381F0494FF002784E7 /* ReadTitusViewController.swift */,
-				DC01B8391F0494FF002784E7 /* ReadZechariahViewController.swift */,
-				DC01B83A1F0494FF002784E7 /* ReadZepheniahViewController.swift */,
 				DC2D8F8120DC60CE00C9C938 /* OpenBiblePassageViewController.swift */,
 				DC2D8F8320DC64D000C9C938 /* BiblePassage.swift */,
 				DC2D8F8920DC6E1700C9C938 /* TraditionalSortBibleTableViewController.swift */,
@@ -729,41 +630,8 @@
 				DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */,
 				DC2D8F8220DC60CE00C9C938 /* OpenBiblePassageViewController.swift in Sources */,
 				DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */,
-				DCE362E31F05610600725F11 /* ReadJoelViewController.swift in Sources */,
-				DCE362E41F05610600725F11 /* ReadJohnViewController.swift in Sources */,
-				DCE362E51F05610600725F11 /* ReadJonahViewController.swift in Sources */,
-				DCE362E61F05610600725F11 /* ReadJoshuaViewController.swift in Sources */,
-				DCE362E71F05610600725F11 /* ReadJudeViewController.swift in Sources */,
-				DCE362E81F05610600725F11 /* ReadJudgesViewController.swift in Sources */,
-				DCE362E91F05610600725F11 /* ReadKingsViewController.swift in Sources */,
-				DCE362EA1F05610600725F11 /* ReadLamentationsViewController.swift in Sources */,
-				DCE362EB1F05610600725F11 /* ReadLeviticusViewController.swift in Sources */,
-				DCE362EC1F05610600725F11 /* ReadLukeViewController.swift in Sources */,
 				DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */,
 				DC2D8F8420DC64D000C9C938 /* BiblePassage.swift in Sources */,
-				DCE362ED1F05610600725F11 /* ReadMalachiViewController.swift in Sources */,
-				DCE362EE1F05610600725F11 /* ReadMarkViewController.swift in Sources */,
-				DCE362EF1F05610600725F11 /* ReadMatthewViewController.swift in Sources */,
-				DCE362F01F05610600725F11 /* ReadMicahViewController.swift in Sources */,
-				DCE362F11F05610600725F11 /* ReadNahumViewController.swift in Sources */,
-				DCE362F21F05610600725F11 /* ReadNehemiahViewController.swift in Sources */,
-				DCE362F31F05610600725F11 /* ReadNumbersViewController.swift in Sources */,
-				DCE362F41F05610600725F11 /* ReadObediahViewController.swift in Sources */,
-				DCE362F51F05610600725F11 /* ReadPeterViewController.swift in Sources */,
-				DCE362F61F05610600725F11 /* ReadPhilemonViewController.swift in Sources */,
-				DCE362F71F05610600725F11 /* ReadPhilippiansViewController.swift in Sources */,
-				DCE362F81F05610600725F11 /* ReadProverbsViewController.swift in Sources */,
-				DCE362F91F05610600725F11 /* ReadPsamlsViewController.swift in Sources */,
-				DCE362FA1F05610600725F11 /* ReadRevelationViewController.swift in Sources */,
-				DCE362FB1F05610600725F11 /* ReadRomansViewController.swift in Sources */,
-				DCE362FC1F05610600725F11 /* ReadRuthViewController.swift in Sources */,
-				DCE362FD1F05610600725F11 /* ReadSamuelViewController.swift in Sources */,
-				DCE362FE1F05610600725F11 /* ReadSolomanViewController.swift in Sources */,
-				DCE362FF1F05610600725F11 /* ReadThessaloniansViewController.swift in Sources */,
-				DCE363001F05610600725F11 /* ReadTimothyViewController.swift in Sources */,
-				DCE363011F05610600725F11 /* ReadTitusViewController.swift in Sources */,
-				DCE363021F05610600725F11 /* ReadZechariahViewController.swift in Sources */,
-				DCE363031F05610600725F11 /* ReadZepheniahViewController.swift in Sources */,
 				DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */,
 				DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */,
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
