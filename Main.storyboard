@@ -263,11 +263,10 @@
         <scene sceneID="adv-DT-Izm">
             <objects>
                 <tableViewController title="Bible" extendedLayoutIncludesOpaqueBars="YES" id="tiH-iZ-KiY" customClass="TraditionalSortBibleTableViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" id="FVO-1l-55E">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" id="FVO-1l-55E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="OKJ-1v-pOr">
@@ -492,7 +491,7 @@
                                         <rect key="frame" x="0.0" y="635" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kAS-gO-j0G" id="zkr-1f-gH6">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Chronicles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sne-3n-PKB">
@@ -1477,23 +1476,23 @@
         <!--Alphabetical-->
         <scene sceneID="a1k-DL-7gX">
             <objects>
-                <tableViewController title="Alphabetical" extendedLayoutIncludesOpaqueBars="YES" id="qpO-3m-Hcu" sceneMemberID="viewController">
+                <tableViewController title="Alphabetical" extendedLayoutIncludesOpaqueBars="YES" id="qpO-3m-Hcu" customClass="AlphabeticalSortBibleTableViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" id="KFd-qz-nF6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="#" id="7aQ-RQ-DtH" userLabel="#">
+                            <tableViewSection id="7aQ-RQ-DtH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="1 Chronicles" textLabel="1KF-D2-682" style="IBUITableViewCellStyleDefault" id="1cG-JM-lXI" userLabel="1 Chronicles">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1cG-JM-lXI" id="iq9-ol-U97">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Chronicles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1KF-D2-682">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1501,16 +1500,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="Bag-YV-WTH" style="IBUITableViewCellStyleDefault" id="M6F-HS-AIi" userLabel="1 Corinthians">
-                                        <rect key="frame" x="0.0" y="73" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="45" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M6F-HS-AIi" id="cAW-pf-rvO">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Corinthians" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bag-YV-WTH">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1518,16 +1518,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="BTk-EA-pZ8" style="IBUITableViewCellStyleDefault" id="EiA-Mj-WDO" userLabel="1 John">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="90" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EiA-Mj-WDO" id="56g-td-w3J">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BTk-EA-pZ8">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1535,16 +1536,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="1 Kings" textLabel="ecm-r5-hcO" style="IBUITableViewCellStyleDefault" id="wzp-cb-AAQ" userLabel="1 Kings">
-                                        <rect key="frame" x="0.0" y="163" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="135" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzp-cb-AAQ" id="Y02-Ed-OWz">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Kings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ecm-r5-hcO">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1552,16 +1554,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="JmP-Ry-Y8N" style="IBUITableViewCellStyleDefault" id="U1X-WT-973" userLabel="1 Peter">
-                                        <rect key="frame" x="0.0" y="208" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="180" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U1X-WT-973" id="GOK-I3-lSM">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Peter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JmP-Ry-Y8N">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1569,16 +1572,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="1 Samuel" textLabel="3bb-vo-1Yz" style="IBUITableViewCellStyleDefault" id="p4R-t1-w8W" userLabel="1 Samuel">
-                                        <rect key="frame" x="0.0" y="253" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="225" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p4R-t1-w8W" id="tiZ-eO-clw">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Samuel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3bb-vo-1Yz">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1586,16 +1590,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="ipe-vp-Kl2" style="IBUITableViewCellStyleDefault" id="1sj-tR-iyM" userLabel="1 Thessalonians">
-                                        <rect key="frame" x="0.0" y="298" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="270" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1sj-tR-iyM" id="OKe-h4-0jS">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Thessalonians" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ipe-vp-Kl2">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1603,16 +1608,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="BWc-4s-n7n" style="IBUITableViewCellStyleDefault" id="qQX-iS-Xa3" userLabel="1 Timothy">
-                                        <rect key="frame" x="0.0" y="343" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="315" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qQX-iS-Xa3" id="LU1-2Q-Jws">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 Timothy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BWc-4s-n7n">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1620,16 +1626,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="2 Chronicles" textLabel="cH0-00-Xqu" style="IBUITableViewCellStyleDefault" id="hnF-gK-dZY" userLabel="2 Chronicles">
-                                        <rect key="frame" x="0.0" y="388" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="360" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hnF-gK-dZY" id="4m6-qv-GlP">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Chronicles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cH0-00-Xqu">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1637,16 +1644,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="Zzc-Fg-h59" style="IBUITableViewCellStyleDefault" id="5fV-Q5-ypl" userLabel="2 Corinthians">
-                                        <rect key="frame" x="0.0" y="433" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="405" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5fV-Q5-ypl" id="ZoB-yi-SdE">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Corinthians" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zzc-Fg-h59">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1654,16 +1662,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="ikm-IK-T6B" style="IBUITableViewCellStyleDefault" id="c1i-jT-9Rf" userLabel="2 John">
-                                        <rect key="frame" x="0.0" y="478" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="450" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c1i-jT-9Rf" id="M9i-b0-soF">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ikm-IK-T6B">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1671,16 +1680,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="2 Kings" textLabel="FPl-Be-qVm" style="IBUITableViewCellStyleDefault" id="AN9-yO-hQi" userLabel="2 Kings">
-                                        <rect key="frame" x="0.0" y="523" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="495" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AN9-yO-hQi" id="iVJ-uC-tgp">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Kings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FPl-Be-qVm">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1688,16 +1698,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="rmr-yE-oiW" style="IBUITableViewCellStyleDefault" id="GZh-E5-FlH" userLabel="2 Peter">
-                                        <rect key="frame" x="0.0" y="568" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="540" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GZh-E5-FlH" id="uvF-t5-z0V">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Peter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rmr-yE-oiW">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1705,12 +1716,13 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="2 Samuel" textLabel="Sbf-cz-Uft" style="IBUITableViewCellStyleDefault" id="pbi-LR-F74" userLabel="2 Samuel">
-                                        <rect key="frame" x="0.0" y="613" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="585" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbi-LR-F74" id="nna-EK-Kd5">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 Samuel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sbf-cz-Uft">
@@ -1722,9 +1734,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="q2l-zd-f1I" style="IBUITableViewCellStyleDefault" id="Fkx-Vt-8As" userLabel="2 Thessalonians">
-                                        <rect key="frame" x="0.0" y="658" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="630" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fkx-Vt-8As" id="3QF-ft-VcC">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1739,9 +1752,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="jsj-96-4Qb" style="IBUITableViewCellStyleDefault" id="tgl-rk-hn7" userLabel="2 Timothy">
-                                        <rect key="frame" x="0.0" y="703" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="675" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tgl-rk-hn7" id="szY-Nm-iWZ">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1756,9 +1770,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="br1-0m-fqD" style="IBUITableViewCellStyleDefault" id="VVk-Bb-olv" userLabel="3 John">
-                                        <rect key="frame" x="0.0" y="748" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="720" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVk-Bb-olv" id="stg-74-fdu">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1773,13 +1788,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="A" id="xX5-3v-Jzv" userLabel="A">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="9Z9-sQ-DCH" style="IBUITableViewCellStyleDefault" id="s5M-co-QHE" userLabel="Acts">
-                                        <rect key="frame" x="0.0" y="821" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="765" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s5M-co-QHE" id="KOB-bi-rPB">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1794,9 +1806,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Amos" textLabel="Zzc-Ww-D8Z" style="IBUITableViewCellStyleDefault" id="Mws-QE-KD0" userLabel="Amos">
-                                        <rect key="frame" x="0.0" y="866" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="810" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mws-QE-KD0" id="9Ul-oQ-Vyy">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1811,16 +1824,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="B" id="ikL-ye-50I">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="C" id="EfS-Rp-tCF">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="vs7-bZ-2tR" style="IBUITableViewCellStyleDefault" id="oS7-mU-xKZ" userLabel="Colossians">
-                                        <rect key="frame" x="0.0" y="967" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="855" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oS7-mU-xKZ" id="G8a-dI-0If">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1835,13 +1842,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="D" id="8dc-nn-ogW">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Daniel" textLabel="dtW-M1-l5w" style="IBUITableViewCellStyleDefault" id="G3d-Cs-G8f" userLabel="Daniel">
-                                        <rect key="frame" x="0.0" y="1040" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="900" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3d-Cs-G8f" id="nbk-KT-dia">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1856,9 +1860,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Deuteronomy" textLabel="vK5-xO-0vO" style="IBUITableViewCellStyleDefault" id="fIB-Ce-j1v" userLabel="Deuteronomy">
-                                        <rect key="frame" x="0.0" y="1085" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="945" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fIB-Ce-j1v" id="xDB-Qn-4Wh">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1873,13 +1878,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="E" id="HbC-hH-tFv">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Ecclesiastes" textLabel="1sz-7T-7SA" style="IBUITableViewCellStyleDefault" id="lz0-6C-mZL" userLabel="Ecclesiastes">
-                                        <rect key="frame" x="0.0" y="1158" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="990" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lz0-6C-mZL" id="m8g-lJ-MiG">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1894,9 +1896,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="s03-HR-KtI" style="IBUITableViewCellStyleDefault" id="9gH-gD-n3c" userLabel="Ephesians">
-                                        <rect key="frame" x="0.0" y="1203" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1035" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gH-gD-n3c" id="g6e-y8-9xO">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1911,9 +1914,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Esther" textLabel="ur2-Wg-aVZ" style="IBUITableViewCellStyleDefault" id="TdL-A4-uzu" userLabel="Esther">
-                                        <rect key="frame" x="0.0" y="1248" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1080" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TdL-A4-uzu" id="bm5-jW-QKD">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1928,9 +1932,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Exodus" textLabel="Wo7-WT-E0g" style="IBUITableViewCellStyleDefault" id="pg2-pp-G4V" userLabel="Exodus">
-                                        <rect key="frame" x="0.0" y="1293" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1125" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pg2-pp-G4V" id="mBa-7j-713">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1945,9 +1950,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Ezekiel" textLabel="c9c-IS-rQb" style="IBUITableViewCellStyleDefault" id="EqH-Ls-1Ax" userLabel="Ezekiel">
-                                        <rect key="frame" x="0.0" y="1338" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1170" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EqH-Ls-1Ax" id="D28-9t-bqU">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1962,9 +1968,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Ezra" textLabel="Qcn-73-itI" style="IBUITableViewCellStyleDefault" id="nV8-ay-n97" userLabel="Ezra">
-                                        <rect key="frame" x="0.0" y="1383" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1215" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nV8-ay-n97" id="PNU-5s-uCs">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -1979,16 +1986,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="F" id="Gb5-81-e48">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="G" id="pIn-aH-LYJ">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="sFl-ls-Vcy" style="IBUITableViewCellStyleDefault" id="Vxa-ms-f4Q" userLabel="Galatians">
-                                        <rect key="frame" x="0.0" y="1484" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1260" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vxa-ms-f4Q" id="kkw-Tr-Mwu">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2003,9 +2004,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="ckG-CH-V3U" style="IBUITableViewCellStyleDefault" id="3T9-gR-sbv">
-                                        <rect key="frame" x="0.0" y="1529" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1305" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3T9-gR-sbv" id="FDu-Ic-VAm">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2020,13 +2022,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="H" id="IcV-07-tGK">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="gw8-jJ-j9z" style="IBUITableViewCellStyleDefault" id="C90-Wx-AnL" userLabel="Habakkuk">
-                                        <rect key="frame" x="0.0" y="1602" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1350" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C90-Wx-AnL" id="cbd-BX-fK9">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2041,9 +2040,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="PnJ-ik-Ydi" style="IBUITableViewCellStyleDefault" id="LIB-jI-B21" userLabel="Haggai">
-                                        <rect key="frame" x="0.0" y="1647" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1395" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LIB-jI-B21" id="KZE-pX-5AP">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2058,9 +2058,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="qLr-vJ-tGw" style="IBUITableViewCellStyleDefault" id="RUd-hd-Zin" userLabel="Hebrews">
-                                        <rect key="frame" x="0.0" y="1692" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1440" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RUd-hd-Zin" id="8HS-7n-oAX">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2075,9 +2076,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="Qw0-EE-uGx" style="IBUITableViewCellStyleDefault" id="JPw-Fq-UGn" userLabel="Hosea">
-                                        <rect key="frame" x="0.0" y="1737" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1485" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JPw-Fq-UGn" id="AMg-VD-Ng7">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2092,13 +2094,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="I" id="3ag-Ai-gp9">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Isaiah" textLabel="ON9-LE-OW7" style="IBUITableViewCellStyleDefault" id="jr7-Sr-YqJ" userLabel="Isaiah">
-                                        <rect key="frame" x="0.0" y="1810" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1530" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jr7-Sr-YqJ" id="uiu-y6-cmW">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2113,13 +2112,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="J" id="kvd-uz-uc6">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="James" textLabel="5o9-FA-uzO" style="IBUITableViewCellStyleDefault" id="8d1-Pw-EPO" userLabel="James">
-                                        <rect key="frame" x="0.0" y="1883" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1575" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8d1-Pw-EPO" id="9c2-zI-3LU">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2134,9 +2130,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Jeremiah" textLabel="DbH-WG-kws" style="IBUITableViewCellStyleDefault" id="lAF-tc-Wxy" userLabel="Jeremiah">
-                                        <rect key="frame" x="0.0" y="1928" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1620" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAF-tc-Wxy" id="rSw-Lq-Ytd">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2151,9 +2148,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Job" textLabel="ldd-TT-cEK" style="IBUITableViewCellStyleDefault" id="7hf-kP-Oce" userLabel="Job">
-                                        <rect key="frame" x="0.0" y="1973" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1665" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7hf-kP-Oce" id="Z4M-Ma-E35">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2168,9 +2166,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Joel" textLabel="YPx-Xh-4ub" style="IBUITableViewCellStyleDefault" id="JXF-nn-fwu" userLabel="Joel">
-                                        <rect key="frame" x="0.0" y="2018" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1710" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JXF-nn-fwu" id="sdv-N1-jWz">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2185,9 +2184,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="JMZ-G5-id6" style="IBUITableViewCellStyleDefault" id="n9l-xd-fY4" userLabel="John">
-                                        <rect key="frame" x="0.0" y="2063" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1755" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n9l-xd-fY4" id="eSR-Dv-ibr">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2202,9 +2202,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="gpP-1g-fa5" style="IBUITableViewCellStyleDefault" id="B2C-NK-KWV" userLabel="Jonah">
-                                        <rect key="frame" x="0.0" y="2108" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1800" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B2C-NK-KWV" id="sFp-En-KMV">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2219,9 +2220,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Joshua" textLabel="IiK-9j-Fs0" style="IBUITableViewCellStyleDefault" id="gAl-2N-QPQ" userLabel="Joshua">
-                                        <rect key="frame" x="0.0" y="2153" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1845" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gAl-2N-QPQ" id="aML-dF-jZC">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2236,9 +2238,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="zsU-om-f1m" style="IBUITableViewCellStyleDefault" id="nWT-bG-71u" userLabel="Jude">
-                                        <rect key="frame" x="0.0" y="2198" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1890" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nWT-bG-71u" id="RCs-h1-4eU">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2253,9 +2256,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Judges" textLabel="ERE-a7-NmK" style="IBUITableViewCellStyleDefault" id="nty-fi-6pq" userLabel="Judges">
-                                        <rect key="frame" x="0.0" y="2243" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1935" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nty-fi-6pq" id="gEe-lk-Xti">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2270,16 +2274,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="K" id="MEN-9J-UVQ">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="L" id="cPk-Su-7dm">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lamentations" textLabel="T4l-dq-TrS" style="IBUITableViewCellStyleDefault" id="7h2-Q3-Q1n" userLabel="Lamentations">
-                                        <rect key="frame" x="0.0" y="2344" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="1980" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7h2-Q3-Q1n" id="vGf-1z-biB">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2294,9 +2292,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Leviticus" textLabel="d8U-76-HSF" style="IBUITableViewCellStyleDefault" id="Jze-2u-776" userLabel="Leviticus">
-                                        <rect key="frame" x="0.0" y="2389" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2025" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jze-2u-776" id="lFX-XG-Tpo">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2311,9 +2310,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="YXa-jA-lof" style="IBUITableViewCellStyleDefault" id="4Uy-t1-NlA" userLabel="Luke">
-                                        <rect key="frame" x="0.0" y="2434" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2070" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Uy-t1-NlA" id="cPF-4s-JIz">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2328,13 +2328,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="M" id="iic-1E-cYz">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="CH3-rK-tMa" style="IBUITableViewCellStyleDefault" id="Vmh-el-exm" userLabel="Malachi">
-                                        <rect key="frame" x="0.0" y="2507" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2115" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vmh-el-exm" id="8pZ-NA-z1H">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2349,9 +2346,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="o7D-6t-Xly" style="IBUITableViewCellStyleDefault" id="348-0B-fkm" userLabel="Mark">
-                                        <rect key="frame" x="0.0" y="2552" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2160" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="348-0B-fkm" id="GMh-7f-9FI">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2366,9 +2364,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="Wgm-mQ-k3Z" style="IBUITableViewCellStyleDefault" id="Wtb-Rz-BBd" userLabel="Matthew">
-                                        <rect key="frame" x="0.0" y="2597" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2205" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wtb-Rz-BBd" id="4pS-Fw-sWZ">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2383,9 +2382,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="WJN-b9-Bjt" style="IBUITableViewCellStyleDefault" id="QSL-aW-b0l" userLabel="Micah">
-                                        <rect key="frame" x="0.0" y="2642" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2250" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QSL-aW-b0l" id="FWF-Gn-aAe">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2400,13 +2400,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="N" id="Yw1-Ao-aND">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="HAA-b7-Hd1" style="IBUITableViewCellStyleDefault" id="V5Q-ys-NIh" userLabel="Nahum">
-                                        <rect key="frame" x="0.0" y="2715" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2295" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V5Q-ys-NIh" id="9cg-Tm-o1H">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2421,9 +2418,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Nehemiah" textLabel="fxR-Gd-X4u" style="IBUITableViewCellStyleDefault" id="w2H-UX-zR7" userLabel="Nehemiah">
-                                        <rect key="frame" x="0.0" y="2760" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2340" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w2H-UX-zR7" id="0U0-PF-d7e">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2438,9 +2436,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Numbers" textLabel="U5m-3M-zpp" style="IBUITableViewCellStyleDefault" id="vDh-RP-Eyv" userLabel="Numbers">
-                                        <rect key="frame" x="0.0" y="2805" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2385" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDh-RP-Eyv" id="rf9-Qa-k5F">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2455,13 +2454,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="O" id="6en-xa-GMz">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="Or9-AT-5dQ" style="IBUITableViewCellStyleDefault" id="x3D-Kv-wvX" userLabel="Obadiah">
-                                        <rect key="frame" x="0.0" y="2878" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2430" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x3D-Kv-wvX" id="juf-lT-g8i">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2476,13 +2472,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="P" id="opM-GV-nky">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="MLT-Lc-3Ih" style="IBUITableViewCellStyleDefault" id="gZC-lc-87u" userLabel="Philemon">
-                                        <rect key="frame" x="0.0" y="2951" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2475" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gZC-lc-87u" id="5or-Zw-sda">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2497,9 +2490,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="bj4-ha-CFU" style="IBUITableViewCellStyleDefault" id="ylN-3E-8I0" userLabel="Philippians">
-                                        <rect key="frame" x="0.0" y="2996" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2520" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ylN-3E-8I0" id="xga-dw-6rh">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2514,9 +2508,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Proverbs" textLabel="MGM-yK-QXH" style="IBUITableViewCellStyleDefault" id="eg7-O3-LhL" userLabel="Proverbs">
-                                        <rect key="frame" x="0.0" y="3041" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2565" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eg7-O3-LhL" id="Vp3-iy-uaP">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2531,9 +2526,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Psalms" textLabel="JCb-jV-CRH" style="IBUITableViewCellStyleDefault" id="8ep-Ej-dTs" userLabel="Psalms">
-                                        <rect key="frame" x="0.0" y="3086" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2610" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ep-Ej-dTs" id="mJn-FP-wIx">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2548,16 +2544,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Q" id="pua-hF-wfR">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="R" id="rai-xq-KT4">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="KDI-3R-Rev" style="IBUITableViewCellStyleDefault" id="xjt-uo-bw3" userLabel="Revelation">
-                                        <rect key="frame" x="0.0" y="3187" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2655" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xjt-uo-bw3" id="b7b-Cq-8wQ">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2572,9 +2562,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="qkk-zc-Aag" style="IBUITableViewCellStyleDefault" id="0BE-fs-lIy" userLabel="Romans">
-                                        <rect key="frame" x="0.0" y="3232" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2700" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0BE-fs-lIy" id="iui-Pd-wR6">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2589,9 +2580,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Ruth" textLabel="HSW-qp-Bgl" style="IBUITableViewCellStyleDefault" id="2xs-zq-d4f" userLabel="Ruth">
-                                        <rect key="frame" x="0.0" y="3277" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2745" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xs-zq-d4f" id="FxC-3k-hKc">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2606,16 +2598,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="S" id="k9m-RT-Y9K">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="T" id="sjs-Ur-O3r">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="The Song of Soloman" textLabel="oOP-gE-jui" style="IBUITableViewCellStyleDefault" id="A5o-H5-3Hh" userLabel="The Song of Soloman">
-                                        <rect key="frame" x="0.0" y="3378" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2790" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A5o-H5-3Hh" id="ukM-ZD-97C">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2630,9 +2616,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="Dcj-1d-QeA" style="IBUITableViewCellStyleDefault" id="Dcs-hw-nTM" userLabel="Titus">
-                                        <rect key="frame" x="0.0" y="3423" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2835" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dcs-hw-nTM" id="ULX-Gc-K4G">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2647,28 +2634,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="U" id="Set-vu-0fi">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="V" id="3sV-sX-vd1">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="W" id="sIM-qy-KfR">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="X" id="zDu-7K-c9D">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Y" id="TkR-wG-3Mi">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Z" id="65Z-5P-lFt">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="nBY-37-M3w" style="IBUITableViewCellStyleDefault" id="xtg-Yi-iND" userLabel="Zechariah">
-                                        <rect key="frame" x="0.0" y="3636" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2880" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtg-Yi-iND" id="Rwe-1m-kQd">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2683,9 +2652,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Genesis" textLabel="ODQ-YT-JZb" style="IBUITableViewCellStyleDefault" id="5Nn-Sl-7Fy" userLabel="Zephaniah">
-                                        <rect key="frame" x="0.0" y="3681" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="2925" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Nn-Sl-7Fy" id="VKh-mw-a9b">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="44.5"/>
@@ -2700,6 +2670,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
