@@ -51,9 +51,12 @@ class TraditionalSortBibleTableViewController: UITableViewController {
 		
 		let linkToVisit = biblePassages[indexPath.row]
 		
+		let vcTitle = tableView.cellForRow(at: indexPath)?.textLabel?.text
+		
 		
 		if linkToVisit != "" {
-			openVCAtSpecificURLForTable(link: "https://www.bible.com/bible/59/\(linkToVisit).1")
+			openVCAtSpecificURLForTable(link: "https://www.bible.com/bible/59/\(linkToVisit).1",
+										title: vcTitle)
 			//Life.Church appends .esv to the end of the query string automatically
 		}
 		else {

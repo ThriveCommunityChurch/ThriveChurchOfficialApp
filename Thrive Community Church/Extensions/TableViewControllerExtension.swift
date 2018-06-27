@@ -160,12 +160,12 @@ extension UITableViewController {
 		return alphLinkArr
 	}
 	
-	func openVCAtSpecificURLForTable(link: String) {
+	func openVCAtSpecificURLForTable(link: String, title: String?) {
 		
 		let vc = OpenBiblePassageViewController()
 		let passage = BiblePassage(url: link)
 		vc.link = passage.url
-		
+		vc.navigationItem.title = title ?? ""
 		navigationController?.show(vc, sender: self)
 	}
 	

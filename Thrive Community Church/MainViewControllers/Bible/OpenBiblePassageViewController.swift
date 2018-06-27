@@ -15,7 +15,6 @@ class OpenBiblePassageViewController: UIViewController, UIWebViewDelegate {
 	let spinner: UIActivityIndicatorView = UIActivityIndicatorView()
 	var link: String = ""
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
