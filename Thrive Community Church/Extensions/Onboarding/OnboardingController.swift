@@ -10,8 +10,8 @@ import UIKit
 
 // Make your life easier by declaring an OO extension to UIColor for things that are used often
 extension UIColor {
-	static var mainPink = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
-	static var bgPink = UIColor(red: 249/255, green: 207/255, blue: 224/255, alpha: 1)
+	static var mainGreen = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 1)
+	static var bgGreen = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 0.35)
 }
 
 // CONTROLLER
@@ -20,13 +20,13 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	
 	// don't just use Arrays - they crash easily if there are too few or many cells vs count
 	let pages = [
-		Page(imageName: "bear_first",
+		Page(imageName: "listen",
 			 headerText: "Join us today in our Fun & Games!",
 			 bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
-		Page(imageName: "heart_second",
+		Page(imageName: "notes",
 			 headerText: "Subscribe & get coupons on our daily events",
 			 bodyText: "Get notified of the savings imediately when we announce them on our website. Make sure to also give us any feedback you have."),
-		Page(imageName: "leaf_third",
+		Page(imageName: "bible",
 			 headerText: "VIP members special services",
 			 bodyText: "Join the private club of elite customers and you'll get entered into select drawings & giveaways.")
 	]
@@ -46,8 +46,8 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		let pc = UIPageControl()
 		pc.currentPage = 0
 		pc.numberOfPages = pages.count // access member of your class thanks to lazy var
-		pc.currentPageIndicatorTintColor = UIColor.mainPink
-		pc.pageIndicatorTintColor = UIColor.bgPink
+		pc.currentPageIndicatorTintColor = UIColor.mainGreen
+		pc.pageIndicatorTintColor = UIColor.bgGreen
 		return pc
 	}()
 	
@@ -56,7 +56,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		let button = UIButton(type: .system)
 		button.setTitle("NEXT", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-		button.setTitleColor(UIColor.mainPink, for: .normal)
+		button.setTitleColor(UIColor.mainGreen, for: .normal)
 		button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
 		return button
 	}()
