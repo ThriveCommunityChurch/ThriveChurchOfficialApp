@@ -22,6 +22,16 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
         sermonView.delegate = self
         sermonView.loadWebPage(url: "http://thrive-fl.org/teaching-series")
     	self.setLoadingSpinner(spinner: loading)
+		
+		
+		// Set the CollectionViewController to be visible from when the application starts
+		// A concrete layout object that organizes items into a grid with optional header and footer views for each section.
+		let viewLayout = UICollectionViewFlowLayout()
+		viewLayout.scrollDirection = .horizontal
+		let swipingController = OnboardingController(collectionViewLayout: viewLayout)
+		
+		self.present(swipingController, animated: true, completion: nil)
+		
     }
     
     override func didReceiveMemoryWarning() {
