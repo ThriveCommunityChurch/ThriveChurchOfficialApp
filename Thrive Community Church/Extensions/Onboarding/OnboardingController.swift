@@ -20,13 +20,13 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	
 	// don't just use Arrays - they crash easily if there are too few or many cells vs count
 	let pages = [
-		Page(imageName: "listen",
+		Page(imageName: "listen_img",
 			 headerText: "Join us today in our Fun & Games!",
 			 bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
-		Page(imageName: "notes",
+		Page(imageName: "notes_img",
 			 headerText: "Subscribe & get coupons on our daily events",
 			 bodyText: "Get notified of the savings imediately when we announce them on our website. Make sure to also give us any feedback you have."),
-		Page(imageName: "bible",
+		Page(imageName: "bible_img",
 			 headerText: "VIP members special services",
 			 bodyText: "Join the private club of elite customers and you'll get entered into select drawings & giveaways.")
 	]
