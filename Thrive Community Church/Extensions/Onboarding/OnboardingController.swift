@@ -13,7 +13,7 @@ extension UIColor {
 	static var mainBlue = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 1)
 	static var bgBlue = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 0.35)
 	static var lessLightLightGray = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
-	static var bgGreen = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
+	static var bgGreen = UIColor(red: 196/255, green: 214/255, blue: 118/255, alpha: 1)
 	
 }
 
@@ -76,7 +76,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		button.setTitle("Skip", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 		button.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
-		button.setTitleColor(.lightGray, for: .normal)
+		button.setTitleColor(UIColor.bgGreen, for: .normal)
 		return button
 	}()
 	
@@ -158,7 +158,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		setupBottomControls()
 		setupSkipButton()
 		
-		collectionView?.backgroundColor = UIColor(red: 120/255, green: 120/255, blue: 120/255, alpha: 1)
+		collectionView?.backgroundColor = UIColor(red: 27/255, green: 41/255, blue: 51/255, alpha: 1)
 		// add this line to prevent NSInternalInconsistencyException & register cells
 		collectionView?.register(OnboardingCell.self, forCellWithReuseIdentifier: "cellId") // adding custom View Cell - this is important too
 		collectionView?.isPagingEnabled = true // allows for snaps between the cells
