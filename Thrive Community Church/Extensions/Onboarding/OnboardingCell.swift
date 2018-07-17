@@ -35,9 +35,7 @@ class OnboardingCell: UICollectionViewCell {
 	
 	// Adding a closure for the bear image view
 	private let bearImageView: UIImageView = {
-		let imageView = UIImageView(image: #imageLiteral(resourceName: "ThriveFGCU"))
-		
-		// enables AutoLayout
+		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.contentMode = .scaleAspectFit // fit aspect for landscape + portrait
 		return imageView
@@ -46,18 +44,7 @@ class OnboardingCell: UICollectionViewCell {
 	// init of the fields, do not enter the text yet that will be seeon on screen
 	private let textDescriptor: UITextView = {
 		let textView = UITextView()
-		
-		// New way of assigning text attributes using a Dict
-		let attributedText = NSMutableAttributedString(string: "",
-													   attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18),
-																	NSAttributedStringKey.foregroundColor: UIColor.white])
-		
-		// Add more text to the end of the above text
-		attributedText.append(NSAttributedString(string: "",
-												 attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
-															  NSAttributedStringKey.foregroundColor: UIColor.lightGray]))
-		textView.attributedText = attributedText
-		textView.textAlignment = .center // centered
+		textView.textAlignment = .center
 		textView.isEditable = false
 		textView.isScrollEnabled = false
 		textView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +58,7 @@ class OnboardingCell: UICollectionViewCell {
 		setupLayout()
 	}
 	
-	// required for code to compile - throws error if something bad happens 'mkay
+	// required for code to compile - throws error if something bad happens
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -86,7 +73,7 @@ class OnboardingCell: UICollectionViewCell {
 		topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.60), // 0.6666 = 2/3 the height
+			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.60), // change this for more image room
 			topImageContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
 			
 			// Leading anchors instead - Because the left / right is strange in some rare cases
@@ -108,7 +95,7 @@ class OnboardingCell: UICollectionViewCell {
 			bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
 			
 			// add height / width constraints
-			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40), // 40% the height of the top view
+			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40), // change this for mote text room
 			
 			
 			// Add text constrints
