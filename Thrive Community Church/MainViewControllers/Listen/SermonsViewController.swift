@@ -30,8 +30,13 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
 		viewLayout.scrollDirection = .horizontal
 		let swipingController = OnboardingController(collectionViewLayout: viewLayout)
 		
-		self.present(swipingController, animated: true, completion: nil)
+		// do not load the view if the user has already completed it
+		let completedOB = swipingController.loadAndCheckOnboarding()
+//		if !completedOB {
+//			self.present(swipingController, animated: true, completion: nil)
+//		}
 		
+		self.present(swipingController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

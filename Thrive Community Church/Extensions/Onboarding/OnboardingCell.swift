@@ -10,6 +10,8 @@ import UIKit
 
 class OnboardingCell: UICollectionViewCell {
 	
+	let lightGray = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+	
 	var page: Page? {
 		didSet {
 			// use a guard to avoid a crash from forced unwrapping the name if it's nil
@@ -18,12 +20,13 @@ class OnboardingCell: UICollectionViewCell {
 			
 			// New way of assigning text attributes using a Dict
 			let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText,
-														   attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+														   attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18),
+																		NSAttributedStringKey.foregroundColor: UIColor.white])
 			
 			// Add more text to the end of the above text using String Interpilation
 			attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)",
 				attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
-							 NSAttributedStringKey.foregroundColor: UIColor.gray]))
+							 NSAttributedStringKey.foregroundColor: lightGray]))
 			
 			textDescriptor.attributedText = attributedText
 			textDescriptor.textAlignment = .center
@@ -40,19 +43,19 @@ class OnboardingCell: UICollectionViewCell {
 		return imageView
 	}()
 	
-	// adding a closure for the textView
+	// init of the fields, do not enter the text yet that will be seeon on screen
 	private let textDescriptor: UITextView = {
 		let textView = UITextView()
 		
 		// New way of assigning text attributes using a Dict
-		let attributedText = NSMutableAttributedString(string: "Join us today in our Fun & Games!",
-													   attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+		let attributedText = NSMutableAttributedString(string: "",
+													   attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18),
+																	NSAttributedStringKey.foregroundColor: UIColor.white])
 		
 		// Add more text to the end of the above text
-		attributedText.append(NSAttributedString(string: "\n\n\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.",
+		attributedText.append(NSAttributedString(string: "",
 												 attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
-															  NSAttributedStringKey.foregroundColor: UIColor.gray]))
-		
+															  NSAttributedStringKey.foregroundColor: UIColor.lightGray]))
 		textView.attributedText = attributedText
 		textView.textAlignment = .center // centered
 		textView.isEditable = false
@@ -64,6 +67,7 @@ class OnboardingCell: UICollectionViewCell {
 	// register the custom cell
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		
 		setupLayout()
 	}
 	
@@ -94,6 +98,10 @@ class OnboardingCell: UICollectionViewCell {
 		// otherwise you get an uncaught NSGenericException
 		topImageContainerView.addSubview(bearImageView) //add image as a subview to the halved view
 		addSubview(textDescriptor)
+		
+		// set the view to be transparent
+		textDescriptor.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+		
 		NSLayoutConstraint.activate([
 			// set constraints for X + Y
 			bearImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
@@ -103,7 +111,7 @@ class OnboardingCell: UICollectionViewCell {
 			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4), // Half the height of the top view
 			
 			
-			//            // Add text constrints
+			// Add text constrints
 			textDescriptor.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor),
 			textDescriptor.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
 			
