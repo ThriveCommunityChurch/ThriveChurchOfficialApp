@@ -14,7 +14,7 @@ extension UIColor {
 	static var bgBlue = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 0.35)
 	static var lessLightLightGray = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
 	static var bgGreen = UIColor(red: 196/255, green: 214/255, blue: 118/255, alpha: 1)
-	
+	static var lighterBlueGray = UIColor(red: 70/255, green: 106/255, blue: 134/255, alpha: 1)
 }
 
 // CONTROLLER
@@ -76,7 +76,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		button.setTitle("Skip", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 		button.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
-		button.setTitleColor(UIColor.bgGreen, for: .normal)
+		button.setTitleColor(UIColor.lighterBlueGray, for: .normal)
 		return button
 	}()
 	

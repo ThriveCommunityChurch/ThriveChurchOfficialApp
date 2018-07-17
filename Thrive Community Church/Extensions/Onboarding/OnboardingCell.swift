@@ -86,8 +86,8 @@ class OnboardingCell: UICollectionViewCell {
 		topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5), // 0.5 = half the height
-			topImageContainerView.topAnchor.constraint(equalTo: topAnchor),
+			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.60), // 0.6666 = 2/3 the height
+			topImageContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
 			
 			// Leading anchors instead - Because the left / right is strange in some rare cases
 			topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -108,7 +108,7 @@ class OnboardingCell: UICollectionViewCell {
 			bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
 			
 			// add height / width constraints
-			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4), // Half the height of the top view
+			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40), // 40% the height of the top view
 			
 			
 			// Add text constrints
