@@ -62,8 +62,4 @@ extension UIViewController {
 		navigationController?.show(vc, sender: self)
 	}
 	
-	func loadOnboarding() {
-		
-	}
-	
 }
