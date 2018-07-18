@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
             // report for an error
             print("Catches any errors with the AVPlayer")
         }
+		
         return true
     }
 
