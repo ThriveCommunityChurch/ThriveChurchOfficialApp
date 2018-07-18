@@ -18,12 +18,10 @@ class OnboardingCell: UICollectionViewCell {
 			guard let unwrappedPage = page else { return }
 			bearImageView.image = UIImage(named: unwrappedPage.imageName)
 			
-			// New way of assigning text attributes using a Dict
 			let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText,
 														   attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18),
 																		NSAttributedStringKey.foregroundColor: UIColor.white])
 			
-			// Add more text to the end of the above text using String Interpilation
 			attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)",
 				attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
 							 NSAttributedStringKey.foregroundColor: lightGray]))
@@ -33,15 +31,13 @@ class OnboardingCell: UICollectionViewCell {
 		}
 	}
 	
-	// Adding a closure for the bear image view
 	private let bearImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.contentMode = .scaleAspectFit // fit aspect for landscape + portrait
+		imageView.contentMode = .scaleAspectFit
 		return imageView
 	}()
 	
-	// init of the fields, do not enter the text yet that will be seeon on screen
 	private let textDescriptor: UITextView = {
 		let textView = UITextView()
 		textView.textAlignment = .center
@@ -51,58 +47,47 @@ class OnboardingCell: UICollectionViewCell {
 		return textView
 	}()
 	
-	// register the custom cell
+	// MARK: INIT
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		setupLayout()
 	}
 	
-	// required for code to compile - throws error if something bad happens
+	// This is required and will throw any fatal errors
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
 	
 	func setupLayout() {
-		// Add container to the top to make the graphic look nice
 		let topImageContainerView = UIView()
 		addSubview(topImageContainerView)
 		
-		// enable autoLayout
 		topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.60), // change this for more image room
+			// change this for more image room
+			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.60),
 			topImageContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
-			
 			// Leading anchors instead - Because the left / right is strange in some rare cases
 			topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor)
 		])
 		
-		// This also must be added to the view BEFORE constraints can be added to it
-		// otherwise you get an uncaught NSGenericException
-		topImageContainerView.addSubview(bearImageView) //add image as a subview to the halved view
+		// add before constraints to avoid a NSGenericException
+		topImageContainerView.addSubview(bearImageView)
 		addSubview(textDescriptor)
 		
-		// set the view to be transparent
 		textDescriptor.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
 		
 		NSLayoutConstraint.activate([
-			// set constraints for X + Y
 			bearImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
 			bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
-			
-			// add height / width constraints
-			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40), // change this for mote text room
-			
-			
-			// Add text constrints
+			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40),
 			textDescriptor.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor),
 			textDescriptor.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
-			
-			// constant on right / opposite must be negative
 			textDescriptor.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
 			textDescriptor.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])

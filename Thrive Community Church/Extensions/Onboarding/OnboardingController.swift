@@ -8,23 +8,12 @@
 
 import UIKit
 
-// Make your life easier by declaring an OO extension to UIColor for things that are used often
-extension UIColor {
-	static var mainBlue = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 1)
-	static var bgBlue = UIColor(red: 46/255, green: 190/255, blue: 216/255, alpha: 0.35)
-	static var lessLightLightGray = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
-	static var bgGreen = UIColor(red: 196/255, green: 214/255, blue: 118/255, alpha: 1)
-	static var lighterBlueGray = UIColor(red: 70/255, green: 106/255, blue: 134/255, alpha: 1)
-}
-
-// CONTROLLER
-// controls the each cell and how they are controlled
 class OnboardingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
 	let onboardingKey = "onboarding"
 	var onboardingString = String()
 	
-	// don't just use Arrays - they crash easily if there are too few or many cells vs count
+	// simple way to do this is just use an array
 	let pages = [
 		Page(imageName: "listen_img",
 			 headerText: "Take us with you on the go!",
@@ -40,7 +29,6 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 			 bodyText: "Tap DONE below to dive in and experience Thrive Community Church")
 	]
 	
-	// Add previous button - private so that no other .swift classes can access this
 	private let previousButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("", for: .normal)
@@ -50,17 +38,16 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		return button
 	}()
 	
-	// Dots at the bottom for viewing the page we are on & what not
+	// access to self thanks to lazy var
 	lazy var pageControl: UIPageControl = {
 		let pc = UIPageControl()
 		pc.currentPage = 0
-		pc.numberOfPages = pages.count // access member of your class thanks to lazy var
+		pc.numberOfPages = pages.count
 		pc.currentPageIndicatorTintColor = UIColor.mainBlue
 		pc.pageIndicatorTintColor = UIColor.bgBlue
 		return pc
 	}()
 	
-	// Add previous button - private so that no other .swift classes can access this
 	private let nextButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("NEXT", for: .normal)
@@ -70,7 +57,6 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		return button
 	}()
 	
-	// Add skip button - private so that no other .swift classes can access this
 	private let skipButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Skip", for: .normal)
@@ -85,7 +71,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		
 		// protect the crash for the 4 pages when 3 are visible
 		// uses min so we dont end up on page 4 of 3
-		let nextIndex = min(pageControl.currentPage + 1, pages.count - 1) // use the pc value for the value for what page we are on
+		let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
 		
 		if nextButton.titleLabel?.text == "DONE" && pageControl.currentPage == pages.count - 1 {
 			self.saveForCompletingOnboarding()
@@ -124,8 +110,8 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		
 		// protect the crash for the 4 pages when 3 are visible
 		// uses max so we dont end up on page -1
-		let nextIndex = max(pageControl.currentPage - 1, 0) // use the pc value for the value for what page we are on
-		pageControl.currentPage = nextIndex // reset value for pc.current
+		let nextIndex = max(pageControl.currentPage - 1, 0)
+		pageControl.currentPage = nextIndex
 		
 		if nextIndex == 0 {
 			self.previousButton.setTitle("", for: .normal)
@@ -148,9 +134,10 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
 											withVelocity velocity: CGPoint,
 											targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+		
 		let x = targetContentOffset.pointee.x
-		let pageID = x / view.frame.width // this is kinda cool
-		pageControl.currentPage = Int(pageID) // set the dot to be the current page
+		let pageID = x / view.frame.width
+		pageControl.currentPage = Int(pageID)
 		
 		if pageControl.currentPage == 0 {
 			self.previousButton.setTitle("", for: .normal)
@@ -166,6 +153,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		else {
 			self.nextButton.setTitle("NEXT", for: .normal)
 		}
+		
 	}
 	
 	// MARK: Start
@@ -177,20 +165,22 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		setupSkipButton()
 		
 		collectionView?.backgroundColor = UIColor(red: 27/255, green: 41/255, blue: 51/255, alpha: 1)
-		// add this line to prevent NSInternalInconsistencyException & register cells
-		collectionView?.register(OnboardingCell.self, forCellWithReuseIdentifier: "cellId") // adding custom View Cell - this is important too
-		collectionView?.isPagingEnabled = true // allows for snaps between the cells
+		// prevent NSInternalInconsistencyException & register cells
+		collectionView?.register(OnboardingCell.self, forCellWithReuseIdentifier: "cellId")
+		
+		// allows for snaps between the cells
+		collectionView?.isPagingEnabled = true
 		collectionView?.showsHorizontalScrollIndicator = false
 	}
 	
-	//using FilePrivate because the init of the button is private - this preserves the privacy
+	//using FilePrivate because the init of the button is private
 	fileprivate func setupBottomControls() {
 		
-		// Using UI Stack view for adding buttons to the bottom - much more effiencent & easy
 		let bottomControlsStackView = UIStackView(arrangedSubviews:
 			[previousButton, pageControl, nextButton])
 		
-		bottomControlsStackView.distribution = .fillEqually // Tells the stack view to split
+		// Tells the stack view to split
+		bottomControlsStackView.distribution = .fillEqually
 		view.addSubview(bottomControlsStackView)
 		
 		bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
