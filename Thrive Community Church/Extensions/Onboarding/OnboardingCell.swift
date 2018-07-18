@@ -69,7 +69,7 @@ class OnboardingCell: UICollectionViewCell {
 		
 		NSLayoutConstraint.activate([
 			// change this for more image room
-			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.60),
+			topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.58),
 			topImageContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
 			// Leading anchors instead - Because the left / right is strange in some rare cases
 			topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -85,7 +85,7 @@ class OnboardingCell: UICollectionViewCell {
 		NSLayoutConstraint.activate([
 			bearImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
 			bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
-			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40),
+			bearImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.42),
 			textDescriptor.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor),
 			textDescriptor.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
 			textDescriptor.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
