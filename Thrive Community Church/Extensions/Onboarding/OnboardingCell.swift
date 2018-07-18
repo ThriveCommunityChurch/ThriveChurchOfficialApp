@@ -107,5 +107,6 @@ class OnboardingCell: UICollectionViewCell {
 			textDescriptor.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
+	
 }
 

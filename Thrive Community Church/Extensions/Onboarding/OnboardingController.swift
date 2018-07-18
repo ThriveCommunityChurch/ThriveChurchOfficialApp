@@ -43,7 +43,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	// Add previous button - private so that no other .swift classes can access this
 	private let previousButton: UIButton = {
 		let button = UIButton(type: .system)
-		button.setTitle("PREV", for: .normal)
+		button.setTitle("", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
 		button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
 		button.setTitleColor(UIColor.lessLightLightGray, for: .normal)
@@ -87,15 +87,19 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		// uses min so we dont end up on page 4 of 3
 		let nextIndex = min(pageControl.currentPage + 1, pages.count - 1) // use the pc value for the value for what page we are on
 		
-		if (nextButton.titleLabel?.text == "DONE" && pageControl.currentPage == pages.count - 1) {
+		if nextButton.titleLabel?.text == "DONE" && pageControl.currentPage == pages.count - 1 {
 			self.saveForCompletingOnboarding()
 		}
 		else {
-			if (pages.count - 1 == nextIndex) {
+			if pages.count - 1 == nextIndex {
 				self.nextButton.setTitle("DONE", for: .normal)
 			}
 			else {
 				self.nextButton.setTitle("NEXT", for: .normal)
+			}
+			
+			if nextIndex > 0 {
+				self.previousButton.setTitle("PREV", for: .normal)
 			}
 			
 			// at the end
@@ -123,7 +127,14 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		let nextIndex = max(pageControl.currentPage - 1, 0) // use the pc value for the value for what page we are on
 		pageControl.currentPage = nextIndex // reset value for pc.current
 		
-		if (pages.count - 1 == nextIndex) {
+		if nextIndex == 0 {
+			self.previousButton.setTitle("", for: .normal)
+		}
+		else {
+			self.previousButton.setTitle("PREV", for: .normal)
+		}
+		
+		if pages.count - 1 == nextIndex {
 			self.nextButton.setTitle("DONE", for: .normal)
 		}
 		else {
@@ -141,9 +152,15 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		let pageID = x / view.frame.width // this is kinda cool
 		pageControl.currentPage = Int(pageID) // set the dot to be the current page
 		
+		if pageControl.currentPage == 0 {
+			self.previousButton.setTitle("", for: .normal)
+		}
+		else {
+			self.previousButton.setTitle("PREV", for: .normal)
+		}
 		
 		// change the text on the next button given the swipe action
-		if (pages.count - 1 == pageControl.currentPage) {
+		if pages.count - 1 == pageControl.currentPage {
 			self.nextButton.setTitle("DONE", for: .normal)
 		}
 		else {
@@ -152,6 +169,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	}
 	
 	// MARK: Start
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -239,6 +257,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 			}
 		}
 		return false
+		
 	}
+	
 }
-
