@@ -218,12 +218,21 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		
 		skipButton.translatesAutoresizingMaskIntoConstraints = false
 		
-		NSLayoutConstraint.activate([
-			skipButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-			skipButton.widthAnchor.constraint(equalToConstant: 40),
-			skipButton.heightAnchor.constraint(equalToConstant: 25),
-			skipButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 28)
-		])
+		if #available(iOS 11.0, *) {
+			NSLayoutConstraint.activate([
+				skipButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+				skipButton.widthAnchor.constraint(equalToConstant: 40),
+				skipButton.heightAnchor.constraint(equalToConstant: 25),
+				skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
+			])
+		} else {
+			NSLayoutConstraint.activate([
+				skipButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+				skipButton.widthAnchor.constraint(equalToConstant: 40),
+				skipButton.heightAnchor.constraint(equalToConstant: 25),
+				skipButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 28)
+			])
+		}
 	}
 	
 	// MARK: Save in UserDefaults
