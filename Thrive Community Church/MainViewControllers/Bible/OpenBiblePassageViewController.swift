@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 // loads webpage for any URL
 class OpenBiblePassageViewController: UIViewController, UIWebViewDelegate {
@@ -63,6 +64,12 @@ class OpenBiblePassageViewController: UIViewController, UIWebViewDelegate {
 		])
 		
 		webView.loadWebPage(url: link)
+		
+		Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+			AnalyticsParameterItemID: "id-BiblePassage",
+			AnalyticsParameterItemName: "BP-\(link)",
+			AnalyticsParameterContentType: "cont"
+		])
 	}
 	
 	func webViewDidStartLoad(_ webView: UIWebView) {
