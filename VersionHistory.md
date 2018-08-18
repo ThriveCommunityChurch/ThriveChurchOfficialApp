@@ -2,7 +2,7 @@
 - Reduced overhead when accessing Bible passages
 - Improved performance on Bible tab
 - iOS 12 Support
-- WIP
+- Overall Improved Performance & Reliability
 
 ### 1.6.3  —  May 25, 2018
 - Fixed an issue where emails could not be sent from certain devices
