@@ -1,5 +1,5 @@
 ### 1.6.4  —  TBD
-- Reduced overhead when accessing Bible passages
+- Reduced loading time when accessing Bible passages
 - Improved performance on Bible tab
 - iOS 12 Support
 - Overall Improved Performance & Reliability
