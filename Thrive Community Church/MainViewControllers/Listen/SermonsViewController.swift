@@ -6,7 +6,7 @@
 //  Copyright © 2016 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
+import Firebase
 import UIKit
 import AVFoundation
 
@@ -23,6 +23,12 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
         sermonView.loadWebPage(url: "http://thrive-fl.org/teaching-series")
     	self.setLoadingSpinner(spinner: loading)
 		
+		// Analytics
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-SermonWebView",
+			AnalyticsParameterItemName: "SermonWebView",
+			AnalyticsParameterContentType: "cont"
+		])
 		
 		// Set the CollectionViewController to be visible from when the application starts
 		// A concrete layout object that organizes items into a grid with optional header and footer views for each section.
@@ -33,6 +39,13 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
 		// do not load the view if the user has already completed it
 		let completedOB = swipingController.loadAndCheckOnboarding()
 		if !completedOB {
+			
+			Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: [
+				AnalyticsParameterItemID: "id-Onboarding",
+				AnalyticsParameterItemName: "Onboarding-init",
+				AnalyticsParameterContentType: "cont"
+			])
+			
 			self.present(swipingController, animated: true, completion: nil)
 		}
 	}

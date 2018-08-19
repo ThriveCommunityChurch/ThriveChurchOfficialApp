@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class OnboardingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
@@ -233,6 +234,13 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		let savedAlready = loadAndCheckOnboarding()
 		
 		if !savedAlready {
+			
+			Analytics.logEvent(AnalyticsEventTutorialComplete, parameters: [
+				AnalyticsParameterItemID: "id-Onboarding",
+				AnalyticsParameterItemName: "Onboarding-dismiss",
+				AnalyticsParameterContentType: "cont"
+			])
+			
 			let completedTask = "completed"
 			
 			UserDefaults.standard.set(completedTask, forKey: onboardingKey)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AlphabeticalSortBibleTableViewController: UITableViewController {
 	
@@ -52,9 +53,15 @@ class AlphabeticalSortBibleTableViewController: UITableViewController {
 		let linkToVisit = biblePassages[indexPath.row]
 		let vcTitle = tableView.cellForRow(at: indexPath)?.textLabel?.text
 		
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-AlphTVCL",
+			AnalyticsParameterItemName: "SelectedItem-\(vcTitle ?? "index \(indexPath.row)")",
+			AnalyticsParameterContentType: "cont"
+		])
+		
 		if linkToVisit != "" {
 			openVCAtSpecificURLForTable(link: "https://www.bible.com/bible/59/\(linkToVisit).1",
-				title: vcTitle)
+										title: vcTitle)
 			//Life.Church appends .esv to the end of the query string automatically
 		}
 		else {

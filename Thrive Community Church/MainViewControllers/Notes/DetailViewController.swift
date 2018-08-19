@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailViewController: UIViewController, UITextViewDelegate {
     
@@ -22,6 +23,13 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         saveAndUpdate()
 		// it is important that this be in here a second time -- notes have issues otherwise
         self.configureView()
+		
+		// Analytics
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-NotesDetailVC",
+			AnalyticsParameterItemName: "NotesDetailVC-init",
+			AnalyticsParameterContentType: "cont"
+		])
     }
     
     var detailItem: AnyObject? {
@@ -66,6 +74,12 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	
     @IBAction func share(_ sender: AnyObject) {
 		
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-NotesDetailVC",
+			AnalyticsParameterItemName: "Share",
+			AnalyticsParameterContentType: "cont"
+		])
+		
 		guard let textToShare = detailDescriptionLabel?.text else { return }
 		
 		let objectsToShare = [textToShare]
@@ -105,6 +119,12 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 				objects[currentIndex] = newNote
 			}
 		}
+		
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-NotesDetailVC",
+			AnalyticsParameterItemName: "Dismiss",
+			AnalyticsParameterContentType: "cont"
+		])
 		
         saveAndUpdate()
     }

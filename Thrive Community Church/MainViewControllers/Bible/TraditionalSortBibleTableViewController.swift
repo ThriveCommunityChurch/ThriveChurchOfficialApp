@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TraditionalSortBibleTableViewController: UITableViewController {
 
@@ -52,6 +53,12 @@ class TraditionalSortBibleTableViewController: UITableViewController {
 		let linkToVisit = biblePassages[indexPath.row]
 		
 		let vcTitle = tableView.cellForRow(at: indexPath)?.textLabel?.text
+		
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-TrTVCL",
+			AnalyticsParameterItemName: "SelectedItem-\(vcTitle ?? "index \(indexPath.row)")",
+			AnalyticsParameterContentType: "cont"
+		])
 		
 		
 		if linkToVisit != "" {
