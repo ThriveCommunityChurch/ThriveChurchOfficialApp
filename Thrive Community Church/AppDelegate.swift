@@ -96,14 +96,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground
         print("Will terminate")
     }
-    
-    // Use this method to perhaps advance the recording with a FF button?
-//    override func remoteControlReceived(with event: UIEvent?) {
-//
-//        let rc = event!.subtype // = 2
-//        let rc1 = event!.type   // 101 is Pause... 100 is Play
-//        print("does this work? \(rc.rawValue)")
-//        print("does this work? \(rc1.rawValue)")
-//    }
-	
+
 }
