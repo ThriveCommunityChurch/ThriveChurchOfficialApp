@@ -33,52 +33,55 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 		// lets not create a fild on the user's device if they can't even send us an email
 		if MFMailComposeViewController.canSendMail() {
 		
-		// vars to add to the file
-		let buildNum = build()
-		let uuid = UUID().uuidString.suffix(8)
-		let date = getDate()
-		
-		// Save data to file
-		let fileName = "\(uuid.suffix(3)).log"
-		let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
-														  in: .userDomainMask,
-														  appropriateFor: nil,
-														  create: true)
-		
-		let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
-		
-		let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
-			"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
-			"\n\nDevice Information" +
-			"\nDevice:  \(UIDevice.current.modelName)" +
-			"\nDevice Model:  \(UIDevice.current.model)" +
-			"\nCurrent Time: \(date)" +
-			"\niOS: \(UIDevice.current.systemVersion)" +
-			"\n\nApplication Information" +
-			"\nVersion: \(version())" +
-			"\nBuild #: \(buildNum)" +
-			"\nFeedback ID: \(uuid)"
-		
-		do {
-			// Write to the file
-			try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
-		} catch let error as NSError {
-			print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
-		}
-		
-		
-			let composeVC = MFMailComposeViewController()
+			// vars to add to the file
+			let buildNum = build()
+			let uuid = UUID().uuidString.suffix(8)
+			let date = getDate()
 			
-			composeVC.mailComposeDelegate = self
-			composeVC.setToRecipients(["wyatt@thrive-fl.org"])
-			composeVC.setSubject("Thrive iOS - ID: \(uuid)")
+			// Save data to file
+			let fileName = "\(uuid.suffix(3)).log"
+			let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
+															  in: .userDomainMask,
+															  appropriateFor: nil,
+															  create: true)
 			
-			if let fileData = NSData(contentsOfFile: fileURL.path) {
-				composeVC.addAttachmentData(fileData as Data,
-											mimeType: "text/txt",
-											fileName: "\(uuid.suffix(3)).log")
+			let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+				
+			
+			
+			let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
+				"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+				"\n\nDevice Information" +
+				"\nDevice:  \(UIDevice.current.modelName)" +
+				"\nCurrent Time: \(date)" +
+				"\niOS: \(UIDevice.current.systemVersion)" +
+				"\n\nApplication Information" +
+				"\nVersion: \(version())" +
+				"\nBuild #: \(buildNum)" +
+				"\nFeedback ID: \(uuid)"
+			
+			do {
+				// Write to the file
+				try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+				
+				let composeVC = MFMailComposeViewController()
+				
+				composeVC.mailComposeDelegate = self
+				composeVC.setToRecipients(["wyatt@thrive-fl.org"])
+				composeVC.setSubject("Thrive iOS - ID: \(uuid)")
+				
+				if let fileData = NSData(contentsOfFile: fileURL.path) {
+					composeVC.addAttachmentData(fileData as Data,
+												mimeType: "text/txt",
+												fileName: "\(uuid.suffix(3)).log")
+				}
+				self.present(composeVC, animated: true, completion: nil)
+				
+			} catch let error as NSError {
+				print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
+				
+				self.displayAlertForAction()
 			}
-			self.present(composeVC, animated: true, completion: nil)
 		}
 		else {
 			self.displayAlertForAction()
