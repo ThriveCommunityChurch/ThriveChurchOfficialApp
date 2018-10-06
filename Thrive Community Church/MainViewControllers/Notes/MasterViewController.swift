@@ -118,10 +118,8 @@ class MasterViewController: UITableViewController {
 				AnalyticsParameterItemName: "RemoveNote-AtIndex-\(indexPath.row)",
 				AnalyticsParameterContentType: "cont"
 			])
-        }
-        else if editingStyle == .insert {
-            // Create a new instance of the appropriate class,
-            // insert it into the array, and add a new row to the table view.
+			
+			setEditing(false, animated: true)
         }
     }
     
