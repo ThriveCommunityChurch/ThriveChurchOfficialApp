@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
             print("Catches any errors with the AVPlayer")
         }
 		
+		// configure firebase for analytics events
 		FirebaseApp.configure()
-		
+	
 		Analytics.logEvent(AnalyticsEventAppOpen, parameters: [
 			AnalyticsParameterItemID: "id-AppOpen",
 			AnalyticsParameterItemName: "AppOpen",
@@ -97,12 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
     }
     
     // Use this method to perhaps advance the recording with a FF button?
-    override func remoteControlReceived(with event: UIEvent?) {
-        
-        let rc = event!.subtype // = 2
-        let rc1 = event!.type   // 101 is Pause... 100 is Play
-        print("does this work? \(rc.rawValue)")
-        print("does this work? \(rc1.rawValue)")
-    }
-    
+//    override func remoteControlReceived(with event: UIEvent?) {
+//
+//        let rc = event!.subtype // = 2
+//        let rc1 = event!.type   // 101 is Pause... 100 is Play
+//        print("does this work? \(rc.rawValue)")
+//        print("does this work? \(rc1.rawValue)")
+//    }
+	
 }

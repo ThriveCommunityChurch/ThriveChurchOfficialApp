@@ -16,7 +16,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        appVersion.text = "App Version: " + version()
+        appVersion.text = "v\(version())"
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +29,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
 	
 	func writeTextFile() {
+		
+		// lets not create a fild on the user's device if they can't even send us an email
+		if MFMailComposeViewController.canSendMail() {
 		
 		// vars to add to the file
 		let buildNum = build()
@@ -48,6 +51,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 			"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
 			"\n\nDevice Information" +
 			"\nDevice:  \(UIDevice.current.modelName)" +
+			"\nDevice Model:  \(UIDevice.current.model)" +
 			"\nCurrent Time: \(date)" +
 			"\niOS: \(UIDevice.current.systemVersion)" +
 			"\n\nApplication Information" +
@@ -62,7 +66,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 			print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
 		}
 		
-		if MFMailComposeViewController.canSendMail() {
+		
 			let composeVC = MFMailComposeViewController()
 			
 			composeVC.mailComposeDelegate = self

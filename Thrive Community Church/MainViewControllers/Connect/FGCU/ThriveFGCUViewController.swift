@@ -26,10 +26,6 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
     }
     
     @IBAction func feedback(_ sender: AnyObject) {
-		// TODO: use a library for this
-//        let modelInfo = UIDevice.current.model
-//        let systeminfo = UIDevice.current.systemName
-//        let systemVersion = UIDevice.current.systemVersion
         
         if MFMailComposeViewController.canSendMail() {
             let uuid = UUID().uuidString.suffix(4)
@@ -42,6 +38,9 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
             present(composeVC, animated: true, completion: nil)
             self.present(composeVC, animated: true, completion: nil)
         }
+		else {
+			self.displayAlertForAction()
+		}
     }
 	
 	@IBAction func contactingThriveFGCU(_ sender: Any) {

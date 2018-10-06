@@ -22,6 +22,7 @@ class OpenBiblePassageViewController: UIViewController, UIWebViewDelegate {
 		spinner.translatesAutoresizingMaskIntoConstraints = false
 		webView.translatesAutoresizingMaskIntoConstraints = false
 		webView.delegate = self
+		webView.backgroundColor = .white
 		
 		setupViews()
 	}

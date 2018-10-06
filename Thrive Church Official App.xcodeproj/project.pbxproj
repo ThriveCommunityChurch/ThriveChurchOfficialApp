@@ -37,8 +37,6 @@
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
 		DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */; };
 		DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */; };
-		DCE363061F05610600725F11 /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83E1F0494FF002784E7 /* EventsFeedViewController.swift */; };
-		DCE363081F05610600725F11 /* FGCUEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8411F0494FF002784E7 /* FGCUEventsViewController.swift */; };
 		DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8421F0494FF002784E7 /* FGCUNotificationsViewController.swift */; };
 		DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8431F0494FF002784E7 /* FGCUSiteViewController.swift */; };
 		DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8441F0494FF002784E7 /* FGCUSocialViewController.swift */; };
@@ -115,8 +113,6 @@
 		DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactButtonViewController.swift; sourceTree = "<group>"; };
 		DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
-		DC01B83E1F0494FF002784E7 /* EventsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
-		DC01B8411F0494FF002784E7 /* FGCUEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUEventsViewController.swift; sourceTree = "<group>"; };
 		DC01B8421F0494FF002784E7 /* FGCUNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUNotificationsViewController.swift; sourceTree = "<group>"; };
 		DC01B8431F0494FF002784E7 /* FGCUSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUSiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8441F0494FF002784E7 /* FGCUSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUSocialViewController.swift; sourceTree = "<group>"; };
@@ -335,7 +331,6 @@
 				DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */,
 				DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */,
 				DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */,
-				DC01B83E1F0494FF002784E7 /* EventsFeedViewController.swift */,
 				DC01B83F1F0494FF002784E7 /* FGCU */,
 				DC01B8461F0494FF002784E7 /* MailChimpViewController.swift */,
 				DC01B8471F0494FF002784E7 /* PrayerRequestsViewController.swift */,
@@ -348,7 +343,6 @@
 		DC01B83F1F0494FF002784E7 /* FGCU */ = {
 			isa = PBXGroup;
 			children = (
-				DC01B8411F0494FF002784E7 /* FGCUEventsViewController.swift */,
 				DC01B8421F0494FF002784E7 /* FGCUNotificationsViewController.swift */,
 				DC01B8431F0494FF002784E7 /* FGCUSiteViewController.swift */,
 				DC01B8441F0494FF002784E7 /* FGCUSocialViewController.swift */,
@@ -662,10 +656,8 @@
 				DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */,
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
-				DCE363061F05610600725F11 /* EventsFeedViewController.swift in Sources */,
 				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
-				DCE363081F05610600725F11 /* FGCUEventsViewController.swift in Sources */,
 				DC21E1F620FBF0660054437D /* OnboardingCell.swift in Sources */,
 				DC21E1F120FBEDBA0054437D /* OnboardingController.swift in Sources */,
 				DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */,

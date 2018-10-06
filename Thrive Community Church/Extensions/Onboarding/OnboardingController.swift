@@ -24,7 +24,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 			 bodyText: "Taking notes during the message has never been easier. Our note taker supports a full Emoji keyboard, for creating notes with beautiful bullited lists. Notes are saved locally on your device, and sending your notes to friends or sharing them online is only one tap away."),
 		Page(imageName: "bible_img",
 			 headerText: "Read The Entire Bible!",
-			 bodyText: "With the power of YouVersion™️ and bible.com, the entire English Standard Version (ESV) of the bible is available at your fingertips. Take your bible with you, wherever you go."),
+			 bodyText: "With the power of YouVersion and bible.com, the entire English Standard Version (ESV) of the bible is available at your fingertips. Take your bible with you, wherever you go."),
 		Page(imageName: "final_img",
 			 headerText: "Ready To Get Started?",
 			 bodyText: "Tap DONE below to dive in and experience Thrive Community Church")
