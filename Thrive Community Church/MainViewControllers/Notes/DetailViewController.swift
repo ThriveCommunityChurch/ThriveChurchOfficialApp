@@ -143,13 +143,13 @@ class ActivityForNotesViewController: UIActivityViewController {
     internal func _shouldExcludeActivityType(_ activity: UIActivity) -> Bool {
         let activityTypesToExclude = [
             "com.apple.reminders.RemindersEditorExtension",
-            UIActivityType.openInIBooks,
-            UIActivityType.print,
-            UIActivityType.assignToContact,
-            UIActivityType.postToWeibo,
-            UIActivityType.postToFlickr,
-            UIActivityType.postToVimeo,
-            UIActivityType.postToTencentWeibo,
+			UIActivity.ActivityType.openInIBooks,
+            UIActivity.ActivityType.print,
+            UIActivity.ActivityType.assignToContact,
+            UIActivity.ActivityType.postToWeibo,
+            UIActivity.ActivityType.postToFlickr,
+            UIActivity.ActivityType.postToVimeo,
+            UIActivity.ActivityType.postToTencentWeibo,
             "com.google.Drive.ShareExtension",
             "com.apple.mobileslideshow.StreamShareService"
         ] as [Any]

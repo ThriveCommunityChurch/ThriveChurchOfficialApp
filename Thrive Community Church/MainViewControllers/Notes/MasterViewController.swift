@@ -106,7 +106,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit
-                                        editingStyle: UITableViewCellEditingStyle,
+										editingStyle: UITableViewCell.EditingStyle,
                                         forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {

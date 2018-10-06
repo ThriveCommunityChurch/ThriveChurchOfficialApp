@@ -48,6 +48,10 @@ class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewD
 			
 			self.present(swipingController, animated: true, completion: nil)
 		}
+		
+		// TODO: add observers or something like that for AVSession events and
+		// if someone tries to play video during an audio playback, pause the
+		// audio in favor of the video
 	}
     
     override func didReceiveMemoryWarning() {

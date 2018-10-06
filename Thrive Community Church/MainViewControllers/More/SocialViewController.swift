@@ -34,12 +34,12 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
             let message = "You need to download the Twitter app first"
             let alert = UIAlertController(title: alertTitle,
                                   message: message,
-                                  preferredStyle: UIAlertControllerStyle.alert)
+                                  preferredStyle: UIAlertController.Style.alert)
             let cancelButton = UIAlertAction(title: cancel,
-                                  style: UIAlertActionStyle.destructive,
+                                  style: UIAlertAction.Style.destructive,
                                   handler: nil)
             let downloadTwitter = UIAlertAction(title: downloadTitle,
-                                  style: UIAlertActionStyle.default,
+                                  style: UIAlertAction.Style.default,
                                       handler: { (action) -> Void in
                 
                 if let link = URL(string: "itms-apps://itunes.apple.com/app/id409789998"),
@@ -66,12 +66,12 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
             let message = "You need to download the Facebook app first"
             let alert = UIAlertController(title: alertTitle,
                                  message: message,
-                                 preferredStyle: UIAlertControllerStyle.alert)
+                                 preferredStyle: UIAlertController.Style.alert)
             let cancelButton = UIAlertAction(title: cancel,
-                                 style: UIAlertActionStyle.destructive,
+                                 style: UIAlertAction.Style.destructive,
                                  handler: nil)
             let downloadFacebook = UIAlertAction(title: downloadTitle,
-                                 style: UIAlertActionStyle.default,
+                                 style: UIAlertAction.Style.default,
                                      handler: { (action) -> Void in
                 
                 if let link = URL(string: "itms-apps://itunes.apple.com/app/id284882215"),
@@ -98,12 +98,12 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
             let message = "You need to download the Instagram app first"
             let alert = UIAlertController(title: alertTitle,
                                   message: message,
-                                  preferredStyle: UIAlertControllerStyle.alert)
+                                  preferredStyle: UIAlertController.Style.alert)
             let cancelButton = UIAlertAction(title: cancel,
-                                  style: UIAlertActionStyle.destructive,
+                                  style: UIAlertAction.Style.destructive,
                                   handler: nil)
             let downloadInstagram = UIAlertAction(title: downloadTitle,
-                                  style: UIAlertActionStyle.default,
+                                  style: UIAlertAction.Style.default,
                                       handler: { (action) -> Void in
                 
                 if let link = URL(string: "itms-apps://itunes.apple.com/app/id389801252"),

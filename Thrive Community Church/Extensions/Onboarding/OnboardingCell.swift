@@ -19,12 +19,12 @@ class OnboardingCell: UICollectionViewCell {
 			bearImageView.image = UIImage(named: unwrappedPage.imageName)
 			
 			let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText,
-														   attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18),
-																		NSAttributedStringKey.foregroundColor: UIColor.white])
+														   attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
+																		NSAttributedString.Key.foregroundColor: UIColor.white])
 			
 			attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)",
-				attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
-							 NSAttributedStringKey.foregroundColor: lightGray]))
+				attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
+							 NSAttributedString.Key.foregroundColor: lightGray]))
 			
 			textDescriptor.attributedText = attributedText
 			textDescriptor.textAlignment = .center

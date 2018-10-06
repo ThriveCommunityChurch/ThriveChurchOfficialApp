@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
-        launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+		launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         print("Application is Active")
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+			try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: .defaultToSpeaker)
             print("Setting the player to play no matter what")
             
             UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         print("application Will Resign Active")
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+			try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .defaultToSpeaker)
             print("AVAudioSession Category Playback OK")
             do {
                 try AVAudioSession.sharedInstance().setActive(true)
@@ -89,6 +89,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("application Did Become Active")
+		
+		do {
+			try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .defaultToSpeaker)
+			print("AVAudioSession Category Playback OK")
+			do {
+				try AVAudioSession.sharedInstance().setActive(false)
+				
+				print("AVAudioSession is Active")
+			} catch let error as NSError {
+				print(error.localizedDescription)
+				print("error 1 caught")
+			}
+		} catch let error as NSError {
+			print(error.localizedDescription)
+			print("error 2 caught")
+		}
     }
     
 
