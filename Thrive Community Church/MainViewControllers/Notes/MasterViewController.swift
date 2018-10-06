@@ -119,7 +119,6 @@ class MasterViewController: UITableViewController {
 				AnalyticsParameterContentType: "cont"
 			])
 			
-			setEditing(false, animated: true)
         }
     }
     
