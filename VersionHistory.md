@@ -1,8 +1,8 @@
 ### 1.6.4  —  TBD
-- Reduced loading time when accessing Bible passages
-- Improved performance on Bible tab
 - iOS 12 Support
-- Overall Improved Performance & Reliability
+- Significant Performance Improvements
+- Reduced loading time when accessing Bible passages
+- Fixed an issue where the application would crash on some devices when attempting to send an email
 
 ### 1.6.3  —  May 25, 2018
 - Fixed an issue where emails could not be sent from certain devices
