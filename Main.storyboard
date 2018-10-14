@@ -3094,7 +3094,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNa-dX-Y5F">
                                                 <rect key="frame" x="0.0" y="473" width="375" height="100"/>
                                                 <subviews>
-                                                    <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2018 Thrive Community Church.                                                                     All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
+                                                    <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2019 Thrive Community Church.                                                                     All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
                                                         <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -3612,7 +3612,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAF-DV-7kY">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThriveFGCU" translatesAutoresizingMaskIntoConstraints="NO" id="oZ6-k8-lOh">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FGCU_2018_logo" translatesAutoresizingMaskIntoConstraints="NO" id="oZ6-k8-lOh">
                                                 <rect key="frame" x="0.0" y="16" width="375" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="5Io-jt-74Q"/>
@@ -4721,12 +4721,12 @@
         <image name="Cellular" width="43" height="100"/>
         <image name="Connect" width="14.399999618530273" height="8.880000114440918"/>
         <image name="ConnectW" width="2560" height="720"/>
+        <image name="FGCU_2018_logo" width="2560" height="720"/>
         <image name="Forward Button" width="5.7600002288818359" height="10.800000190734863"/>
         <image name="Give" width="375" height="234"/>
         <image name="Listen" width="14.399999618530273" height="11.279999732971191"/>
         <image name="Made By" width="199.91999816894531" height="31.680000305175781"/>
         <image name="More" width="13" height="3.5999999046325684"/>
-        <image name="ThriveFGCU" width="2560" height="720"/>
         <image name="ThriveLogo" width="13.920000076293945" height="13.680000305175781"/>
         <image name="facebook_white" width="60" height="60"/>
         <image name="instagram_white" width="60" height="60"/>
