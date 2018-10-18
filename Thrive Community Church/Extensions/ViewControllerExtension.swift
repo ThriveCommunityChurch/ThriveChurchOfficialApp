@@ -13,6 +13,7 @@ extension UIViewController {
 	func setLoadingSpinner(spinner: UIActivityIndicatorView) {
 		
 		spinner.layer.cornerRadius = 4
+		spinner.activityIndicatorViewStyle = .whiteLarge
 		spinner.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255,
 										  alpha: 0.75)
 		spinner.color = .white
@@ -50,6 +51,15 @@ extension UIViewController {
 		else {
 			self.displayAlertForAction()
 		}
+	}
+	
+	func openVCAtSpecificURL(link: String) {
+		
+		let vc = OpenBiblePassageViewController()
+		let passage = BiblePassage(url: link)
+		vc.link = passage.url
+		
+		navigationController?.show(vc, sender: self)
 	}
 	
 }

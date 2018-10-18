@@ -1,3 +1,9 @@
+### 1.6.4  —  Oct 18, 2018
+- iOS 12 Support
+- Significant Performance Improvements
+- Reduced loading time when accessing Bible passages
+- Fixed an issue where the application would crash on some devices when attempting to send an email
+
 ### 1.6.3  —  May 25, 2018
 - Fixed an issue where emails could not be sent from certain devices
 - Improved User Experience across multiple screens

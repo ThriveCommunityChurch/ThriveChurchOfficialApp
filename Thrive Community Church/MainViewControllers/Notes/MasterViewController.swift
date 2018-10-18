@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Foundation
+import Firebase
 
 var objects: [String] = [String]()
 var currentIndex: Int = 0
@@ -112,10 +112,13 @@ class MasterViewController: UITableViewController {
         if editingStyle == .delete {
             objects.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        else if editingStyle == .insert {
-            // Create a new instance of the appropriate class,
-            // insert it into the array, and add a new row to the table view.
+			
+			Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+				AnalyticsParameterItemID: "id-NotesMasterVC",
+				AnalyticsParameterItemName: "RemoveNote-AtIndex-\(indexPath.row)",
+				AnalyticsParameterContentType: "cont"
+			])
+			
         }
     }
     
@@ -151,6 +154,12 @@ class MasterViewController: UITableViewController {
 		}
 		save()
 		
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-NotesMasterVC",
+			AnalyticsParameterItemName: "InsertNewNote",
+			AnalyticsParameterContentType: "cont"
+		])
+		
 		currentIndex = 0
 		self.performSegue(withIdentifier: "showDetail", sender: self)
 	}
@@ -158,12 +167,24 @@ class MasterViewController: UITableViewController {
     func save() {
         UserDefaults.standard.set(objects, forKey: notesKey)
         UserDefaults.standard.synchronize()
+		
+		Analytics.logEvent(AnalyticsEventLevelEnd, parameters: [
+			AnalyticsParameterItemID: "id-NotesMasterVC",
+			AnalyticsParameterItemName: "SaveFor-\(objects.count)",
+			AnalyticsParameterContentType: "cont"
+		])
     }
     
     func load() {
         if let loadedData = UserDefaults.standard.array(forKey: notesKey) as? [String] {
             objects = loadedData
         }
+		
+		Analytics.logEvent(AnalyticsEventLevelStart, parameters: [
+			AnalyticsParameterItemID: "id-NotesMasterVC",
+			AnalyticsParameterItemName: "LoadFor-\(objects.count)",
+			AnalyticsParameterContentType: "cont"
+		])
     }
     
 }

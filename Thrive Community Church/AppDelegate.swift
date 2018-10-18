@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import AVFoundation
 import CoreVideo
 import MediaPlayer
@@ -32,6 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
             // report for an error
             print("Catches any errors with the AVPlayer")
         }
+		
+		// configure firebase for analytics events
+		FirebaseApp.configure()
+	
+		Analytics.logEvent(AnalyticsEventAppOpen, parameters: [
+			AnalyticsParameterItemID: "id-AppOpen",
+			AnalyticsParameterItemName: "AppOpen",
+			AnalyticsParameterContentType: "cont"
+		])
+		
         return true
     }
 
@@ -62,6 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("application Did Enter Background")
+		
+		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+			AnalyticsParameterItemID: "id-AppInBackground",
+			AnalyticsParameterItemName: "AppInBackground",
+			AnalyticsParameterContentType: "cont"
+		])
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -79,14 +96,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground
         print("Will terminate")
     }
-    
-    // Use this method to perhaps advance the recording with a FF button?
-    override func remoteControlReceived(with event: UIEvent?) {
-        
-        let rc = event!.subtype // = 2
-        let rc1 = event!.type   // 101 is Pause... 100 is Play
-        print("does this work? \(rc.rawValue)")
-        print("does this work? \(rc1.rawValue)")
-    }
-    
+
 }
