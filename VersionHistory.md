@@ -1,4 +1,4 @@
-### 1.6.4  —  TBD
+### 1.6.4  —  Oct 18, 2018
 - iOS 12 Support
 - Significant Performance Improvements
 - Reduced loading time when accessing Bible passages
