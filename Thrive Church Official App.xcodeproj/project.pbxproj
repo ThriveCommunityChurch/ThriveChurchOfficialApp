@@ -14,6 +14,8 @@
 		41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */; };
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
+		DC0FB22B21CB400300908D06 /* SermonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */; };
+		DC0FB22D21CB406900908D06 /* ListenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */; };
 		DC21E1F120FBEDBA0054437D /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21E1F020FBEDBA0054437D /* OnboardingController.swift */; };
 		DC21E1F320FBEE690054437D /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21E1F220FBEE690054437D /* OnboardingPage.swift */; };
 		DC21E1F620FBF0660054437D /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21E1F520FBF0660054437D /* OnboardingCell.swift */; };
@@ -132,6 +134,8 @@
 		DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonsCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
 		DC21E1F020FBEDBA0054437D /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		DC21E1F220FBEE690054437D /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		DC21E1F520FBF0660054437D /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				DC01B84B1F0494FF002784E7 /* SermonsViewController.swift */,
+				DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */,
+				DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */,
 			);
 			path = Listen;
 			sourceTree = "<group>";
@@ -667,12 +673,14 @@
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DC21E1F620FBF0660054437D /* OnboardingCell.swift in Sources */,
 				DC21E1F120FBEDBA0054437D /* OnboardingController.swift in Sources */,
+				DC0FB22B21CB400300908D06 /* SermonsCollectionViewCell.swift in Sources */,
 				DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */,
 				DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */,
 				DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */,
 				DCE3630C1F05610600725F11 /* ThriveFGCUViewController.swift in Sources */,
 				DC21E1F320FBEE690054437D /* OnboardingPage.swift in Sources */,
 				DCE3630D1F05610600725F11 /* MailChimpViewController.swift in Sources */,
+				DC0FB22D21CB406900908D06 /* ListenCollectionViewController.swift in Sources */,
 				DCE3630E1F05610600725F11 /* PrayerRequestsViewController.swift in Sources */,
 				DCC2398C20FFFDC7005973FA /* UIColorExtension.swift in Sources */,
 				DCE3630F1F05610600725F11 /* ServeViewController.swift in Sources */,

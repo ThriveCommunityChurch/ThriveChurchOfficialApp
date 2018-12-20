@@ -4694,7 +4694,7 @@
         <!--Listen-->
         <scene sceneID="1b9-VL-fMB">
             <objects>
-                <collectionViewController id="zOG-Tz-Vdk" sceneMemberID="viewController">
+                <collectionViewController id="zOG-Tz-Vdk" customClass="ListenCollectionViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zmF-xE-m5i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4706,14 +4706,30 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RT2-ah-ZPg">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="RT2-ah-ZPg" customClass="SermonsCollectionViewCell" customModule="Thrive_Church_Official_App" customModuleProvider="target">
                                 <rect key="frame" x="3.5" y="0.0" width="368" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="368" height="207"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A1y-Jb-g5B">
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="207"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="207" id="Rc3-r6-aJL"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
                                 </view>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="A1y-Jb-g5B" secondAttribute="trailing" id="2uV-Uo-BSD"/>
+                                    <constraint firstItem="A1y-Jb-g5B" firstAttribute="top" secondItem="RT2-ah-ZPg" secondAttribute="top" id="HuZ-mr-sPN"/>
+                                    <constraint firstItem="A1y-Jb-g5B" firstAttribute="leading" secondItem="RT2-ah-ZPg" secondAttribute="leading" id="rOc-zU-KMW"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="seriesArt" destination="A1y-Jb-g5B" id="Ctc-o1-VLg"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
