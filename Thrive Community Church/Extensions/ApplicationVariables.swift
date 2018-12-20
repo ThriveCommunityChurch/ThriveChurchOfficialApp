@@ -1,5 +1,5 @@
 //
-//  StaticVars.swift
+//  ApplicationVariables.swift
 //  Thrive Church Official App
 //
 //  Created by Wyatt Baggett on 12/19/18.
