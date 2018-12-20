@@ -13,7 +13,6 @@ var objects: [String] = [String]()
 var currentIndex: Int = 0
 var masterView: MasterViewController?
 var detailViewController: DetailViewController?
-let notesKey: String = "notes"
 let newNote: String = "New Note"
 
 class MasterViewController: UITableViewController {
@@ -165,7 +164,7 @@ class MasterViewController: UITableViewController {
 	}
     
     func save() {
-        UserDefaults.standard.set(objects, forKey: notesKey)
+        UserDefaults.standard.set(objects, forKey: ApplicationVariables.NotesCacheKey)
         UserDefaults.standard.synchronize()
 		
 		Analytics.logEvent(AnalyticsEventLevelEnd, parameters: [
@@ -176,7 +175,7 @@ class MasterViewController: UITableViewController {
     }
     
     func load() {
-        if let loadedData = UserDefaults.standard.array(forKey: notesKey) as? [String] {
+        if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.NotesCacheKey) as? [String] {
             objects = loadedData
         }
 		

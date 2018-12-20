@@ -11,7 +11,6 @@ import Firebase
 
 class OnboardingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
-	let onboardingKey = "onboarding"
 	var onboardingString = String()
 	
 	// simple way to do this is just use an array
@@ -243,7 +242,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 			
 			let completedTask = "completed"
 			
-			UserDefaults.standard.set(completedTask, forKey: onboardingKey)
+			UserDefaults.standard.set(completedTask, forKey: ApplicationVariables.OnboardingCacheKey)
 			UserDefaults.standard.synchronize()
 			
 			self.dismiss(animated: true, completion: nil)
@@ -256,7 +255,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	
 	func loadAndCheckOnboarding() -> Bool {
 		
-		if let loadedData = UserDefaults.standard.string(forKey: onboardingKey) {
+		if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.OnboardingCacheKey) {
 			onboardingString = loadedData
 			
 			if onboardingString == "completed" {
