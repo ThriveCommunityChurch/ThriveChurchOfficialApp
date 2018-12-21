@@ -7,6 +7,9 @@ _Explaining something easily seen in the code_
 - Please be as descriptive as possible when creating new issues
 
 
+## Getting Started
+In order to test how the application will run against the Thrive Church Official API, ensure that your `Config.plist` contains a value for the key `APIUrl` this value will be the domain and port number (i.e. `localhost:12345`) for the API. That way the application can send a request to the correct API.
+
 ## How To Contribute
   1. Fork the repository.
   2. Install Xcode from the Mac App Store.                            
