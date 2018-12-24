@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class ListenCollectionViewController: UICollectionViewController {
 
+	var sermonSeries = [SermonSeriesSummary]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,9 +21,11 @@ class ListenCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+		
 
         // call the API and determine how many of them there are
+		sermonSeries = GetAllSermonSeries()
     }
 
     /*

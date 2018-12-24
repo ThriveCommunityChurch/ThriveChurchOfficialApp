@@ -135,5 +135,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 				UserDefaults.standard.synchronize()
 			}
 		}
+		
+		if apiDomain == "nil" {
+			// something went wrong here, and we aren't sure where the API is 
+		}
 	}
 }
