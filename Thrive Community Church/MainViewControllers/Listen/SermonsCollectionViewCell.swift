@@ -10,7 +10,36 @@ import UIKit
 
 class SermonsCollectionViewCell: UICollectionViewCell {
     
-	@IBOutlet weak var seriesArt: UIImageView!
+	let seriesArt: UIImageView = {
+		let image = UIImageView()
+		image.backgroundColor = .blue
+		image.translatesAutoresizingMaskIntoConstraints = false
+		image.contentMode = ContentMode.scaleToFill
+		// test with a 16:9 image
+		image.image = UIImage(named: "Give")
+		return image
+	}()
 	
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		
+		SetupViews()
+	}
 	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	func SetupViews() {
+		addSubview(seriesArt)
+		
+		// constraints for the series art view
+		NSLayoutConstraint.activate([
+			seriesArt.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+			seriesArt.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+			seriesArt.topAnchor.constraint(equalTo: self.topAnchor),
+			seriesArt.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+			]
+		)
+	}
 }

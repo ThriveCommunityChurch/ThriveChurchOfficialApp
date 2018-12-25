@@ -304,13 +304,13 @@
 		DC01B7F41F0494EE002784E7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */,
 				DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */,
 				DC64031E205783DE00176BFB /* TimestampExtension.swift */,
 				DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */,
 				DC45330020B468A90021C796 /* WebViewExtension.swift */,
 				DC2D8F8D20DC712A00C9C938 /* TableViewControllerExtension.swift */,
 				DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */,
-				DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */,
 				DC21E1F420FBEE820054437D /* Onboarding */,
 			);
 			path = Extensions;
