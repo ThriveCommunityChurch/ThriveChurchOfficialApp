@@ -28,7 +28,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		
 		
         // call the API and determine how many of them there are
-		//sermonSeries = GetAllSermonSeries()
+		fetchAllSermons()
     }
 
     /*
@@ -68,7 +68,11 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: view.frame.width, height: 200)
+		
+		let width = view.frame.width
+		let height = (view.frame.width) * (9 / 16) // 16x9 ratio
+		
+		return CGSize(width: width, height: height)
 	}
 
 }

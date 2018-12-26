@@ -12,6 +12,16 @@ extension ListenCollectionViewController {
 	
 	func GetAllSermonSeries() -> [SermonSeriesSummary] {
 		let sermons = [SermonSeriesSummary]()
+		
+		// make our GET request
+		
+		//create the url with NSURL
+		
+		return sermons
+	}
+	
+	func fetchAllSermons() {
+		
 		var apiDomain = "nil"
 		
 		// contact the API on the address we have cached
@@ -20,11 +30,22 @@ extension ListenCollectionViewController {
 			apiDomain = loadedData
 		}
 		
-		// make our GET request
+		// iOS is picky about SSL
 		
-		//create the url with NSURL
-		let url = URL(string: "\(apiDomain)/api/sermons")
-		
-		return sermons
+		let url = NSURL(string: "https://\(apiDomain)/api/sermons")
+		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
+			
+			// something went wrong here
+			if error != nil {
+				print(error)
+				
+				return
+			}
+			
+			
+			let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+			print(str)
+			
+		}.resume()
 	}
 }

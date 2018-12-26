@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 				
 				// in the event that we may change the deployment, we need to be able to update this in only one place
 				if apiDomain != apiString {
-					UserDefaults.standard.set(apiDomain, forKey: apiCacheKey)
+					UserDefaults.standard.set(apiString, forKey: apiCacheKey)
 					UserDefaults.standard.synchronize()
 				}
 			}

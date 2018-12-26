@@ -9,7 +9,7 @@
 import Foundation
 
 struct SermonSeriesSummary {
-	var _id: String
+	var Id: String
 	var Title: String
 	var StartDate: Date
 	var ArtUrl: String
