@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension ListenCollectionViewController {
 	
@@ -44,7 +45,7 @@ extension ListenCollectionViewController {
 		}.resume()
 	}
 	
-	func getSermonsForId(seriesId: String) {
+	func getSermonsForId(seriesId: String, image: UIImage) {
 		
 		let thing = "\(apiUrl)api/sermons/series/\(seriesId)"
 		let url = NSURL(string: thing)
@@ -58,13 +59,18 @@ extension ListenCollectionViewController {
 			
 			do {
 				
-				let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+				//let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
 				
 				let series = try JSONDecoder().decode(SermonSeries.self, from: data!)
 				
 				DispatchQueue.main.async {
 					// transition to another view
-					print("moving to display info about \(series)")
+					
+					let vc = SeriesViewController()
+					vc.SermonSeries = series
+					vc.seriesImage = image
+					
+					self.show(vc, sender: self)
 				}
 			}
 			catch let jsonError {

@@ -76,7 +76,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		let width = view.frame.width
-		let height = (view.frame.width) * (9 / 16) // 16x9 ratio
+		let height = (width) * (9 / 16) // 16x9 ratio
 		
 		return CGSize(width: width, height: height)
 	}
@@ -84,7 +84,13 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
 		let selectedSeries = sermonSeries[indexPath.row]
-		getSermonsForId(seriesId: selectedSeries.Id)
+		
+		if let imageFromCache = imageCache.object(forKey: selectedSeries.ArtUrl as NSString) {
+			
+			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+		}
+		
+		// go to the new VC with this info
 	}
 
 }

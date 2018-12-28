@@ -31,6 +31,7 @@
 		DC7348B721D539FB0057227D /* SermonSeriesSummaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */; };
 		DC7348B921D5D2500057227D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348B821D5D2500057227D /* UIImageViewExtension.swift */; };
 		DC7348BB21D5DE720057227D /* SermonSeriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348BA21D5DE720057227D /* SermonSeriesResponse.swift */; };
+		DC7348BD21D5EE550057227D /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348BC21D5EE550057227D /* SeriesViewController.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
 		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
@@ -162,6 +163,7 @@
 		DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonSeriesSummaryResponse.swift; sourceTree = "<group>"; };
 		DC7348B821D5D2500057227D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		DC7348BA21D5DE720057227D /* SermonSeriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonSeriesResponse.swift; sourceTree = "<group>"; };
+		DC7348BC21D5EE550057227D /* SeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB61AF921CB009B0049FCA2 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */,
 				DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */,
 				DCBCE19921D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift */,
+				DC7348BC21D5EE550057227D /* SeriesViewController.swift */,
 			);
 			path = Listen;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				DC21E1F120FBEDBA0054437D /* OnboardingController.swift in Sources */,
 				DC0FB22B21CB400300908D06 /* SermonsCollectionViewCell.swift in Sources */,
 				DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */,
+				DC7348BD21D5EE550057227D /* SeriesViewController.swift in Sources */,
 				DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */,
 				DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */,
 				DCE3630C1F05610600725F11 /* ThriveFGCUViewController.swift in Sources */,
