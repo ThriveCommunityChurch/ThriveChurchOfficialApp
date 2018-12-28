@@ -1,3 +1,7 @@
+### 1.7  —  TBD
+- Easy to view Sermon Series sorted by most recent
+- TBD
+
 ### 1.6.4  —  Oct 18, 2018
 - iOS 12 Support
 - Significant Performance Improvements
