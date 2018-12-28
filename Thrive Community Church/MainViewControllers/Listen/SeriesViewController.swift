@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SeriesViewController: UIViewController {
+class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
 	// MARK: - Setters
 	// public setters that need to be init before we can transition
@@ -22,8 +22,12 @@ class SeriesViewController: UIViewController {
 		didSet {
 			self.title = SermonSeries?.Name
 			series = SermonSeries
+			weekNum = series?.Messages.count ?? 0
 		}
 	}
+	
+	var messages = [SermonMessage]()
+	var weekNum: Int = 0
 	
 	private var series: SermonSeries?
 	
@@ -37,26 +41,34 @@ class SeriesViewController: UIViewController {
 	let startDate: UILabel = {
 		let label = UILabel()
 		label.textColor = .lightGray
-		label.font = UIFont(name: "Avenir-Medium", size: 16)
+		label.font = UIFont(name: "Avenir-Book", size: 16)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
-	let passageRef: UILabel = {
-		let label = UILabel()
-		label.textColor = .lightGray
-		label.font = UIFont(name: "Avenir-BookOblique", size: 13)
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
+	let seriesTable: UITableView = {
+		let table = UITableView()
+		table.backgroundColor = UIColor.almostBlack
+		table.frame = .zero
+		table.indicatorStyle = .white
+		table.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: table.frame.size.width, height: 1))
+		table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		table.translatesAutoresizingMaskIntoConstraints = false
+		return table
 	}()
+	
+	// MARK: - Methods
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		setupViews()
+		seriesTable.delegate = self
+		seriesTable.dataSource = self
 		
-		// TODO: ADD A LINK TO THE WEBSITE EITHER AT THE TOP RIGHT OR
-		// BELOW THE ART FOR THE SERIES, THAT MIGHT LOOK / FEEL NICE TO HAVE
+		self.seriesTable.register(SermonMessageTableViewCell.self, forCellReuseIdentifier: "Cell")
+		
+		setupViews()
+		loadMessagesForSeries()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -70,7 +82,7 @@ class SeriesViewController: UIViewController {
 		// add all the subviews
 		view.addSubview(seriesArt)
 		view.addSubview(startDate)
-		view.addSubview(passageRef)
+		view.addSubview(seriesTable)
 		
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
@@ -83,8 +95,10 @@ class SeriesViewController: UIViewController {
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
 				startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
 				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				passageRef.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				passageRef.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
 			])
 		}
 		else {
@@ -110,24 +124,64 @@ class SeriesViewController: UIViewController {
 		
 		// the passage refs will come from each message, which might look nice in
 		// a TableViewController at the bottom?
-//		passageRef.text = series
 	}
 	
 	func formatDataForPresentation(series: SermonSeries) -> SermonSeries{
 		
 		var response = series
-		let dateValue = series.StartDate
 		
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-		let date = dateFormatter.date(from: dateValue)
-		
-		let dateToStringFormatter = DateFormatter()
-		dateToStringFormatter.dateFormat = "M.d.yy"
-		let dateString = dateToStringFormatter.string(from: date!)
-		
-		response.StartDate = dateString
+		// format dates
+		response.StartDate = series.StartDate.FormatDateFromISO8601ForUI()
 		
 		return response
+	}
+	
+	func loadMessagesForSeries() {
+		
+		for var i in (series?.Messages)! {
+			i.WeekNum = weekNum
+			weekNum = weekNum - 1
+			
+			let date = i.Date.FormatDateFromISO8601ForUI()
+			i.Date = date
+			
+			messages.append(i)
+		}
+		
+		seriesTable.reloadData()
+	}
+	
+	// MARK: - Table View
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return messages.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = seriesTable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SermonMessageTableViewCell
+		
+		let selectedMessage = messages[indexPath.row]
+		
+		cell.title.text = selectedMessage.Title
+		cell.weekNum.text = "\(selectedMessage.WeekNum ?? 0)"
+		cell.date.text = selectedMessage.Date
+		cell.speaker.text = selectedMessage.Speaker
+		cell.passageRef.text = selectedMessage.PassageRef
+		
+		if selectedMessage.AudioUrl == nil {
+			cell.listenImage.isHidden = true
+		}
+		else {
+			cell.listenImage.isHidden = false
+		}
+		
+		if selectedMessage.VideoUrl == nil {
+			cell.watchImage.isHidden = true
+		}
+		else {
+			cell.watchImage.isHidden = false
+		}
+		
+		return cell
 	}
 }

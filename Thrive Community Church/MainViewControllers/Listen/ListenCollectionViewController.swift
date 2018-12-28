@@ -52,6 +52,8 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
         return sermonSeries.count
     }
 	
+	// MARk: - Collection View Delegate
+	
 	let imageCache = NSCache<NSString, UIImage>()
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -89,8 +91,6 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 			
 			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
 		}
-		
-		// go to the new VC with this info
 	}
 
 }
