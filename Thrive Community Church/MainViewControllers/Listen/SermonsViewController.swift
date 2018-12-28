@@ -10,7 +10,7 @@ import Firebase
 import UIKit
 import AVFoundation
 
-class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewDelegate {
+class SermonsViewController: UIViewController, AVAudioPlayerDelegate, UIWebViewDelegate, URLSessionDelegate {
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet var sermonView: UIWebView!
