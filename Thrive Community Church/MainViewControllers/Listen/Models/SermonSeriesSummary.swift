@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct SermonSeriesSummary {
-	var Id: String
-	var Title: String
-	var StartDate: Date
-	var ArtUrl: String
+struct SermonSeriesSummary: Decodable {
+	let Id: String
+	let Title: String
+	let StartDate: String
+	let ArtUrl: String
 }

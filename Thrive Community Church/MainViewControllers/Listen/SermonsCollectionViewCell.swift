@@ -12,11 +12,8 @@ class SermonsCollectionViewCell: UICollectionViewCell {
     
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
-		image.backgroundColor = .blue
 		image.translatesAutoresizingMaskIntoConstraints = false
 		image.contentMode = .scaleAspectFill
-		// test with a 16:9 image
-		image.image = UIImage(named: "Give")
 		image.clipsToBounds = true
 		return image
 	}()

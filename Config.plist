@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>APIUrl</key>
-	<string>localhost:5001</string>
+	<string>localhost:5000</string>
 </dict>
 </plist>

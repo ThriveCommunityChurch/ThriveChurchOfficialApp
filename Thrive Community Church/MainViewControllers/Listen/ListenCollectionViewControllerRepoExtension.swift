@@ -10,42 +10,66 @@ import Foundation
 
 extension ListenCollectionViewController {
 	
-	func GetAllSermonSeries() -> [SermonSeriesSummary] {
-		let sermons = [SermonSeriesSummary]()
-		
-		// make our GET request
-		
-		//create the url with NSURL
-		
-		return sermons
-	}
+	// MARK: - ThriveChurchOfficialAPI Requests
 	
 	func fetchAllSermons() {
-		
-		var apiDomain = "nil"
-		
-		// contact the API on the address we have cached
-		if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
-			
-			apiDomain = loadedData
-		}
-		
 		// iOS is picky about SSL
 		
-		let url = NSURL(string: "https://\(apiDomain)/api/sermons")
+		let url = NSURL(string: "\(apiUrl)api/sermons")
 		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
 			
 			// something went wrong here
 			if error != nil {
-				print(error)
-				
+				print(error!)
 				return
 			}
 			
+			do {
+				let summaries = try JSONDecoder().decode(SermonSeriesSummaryResponse.self, from: data!)
+				
+				// reset the array before we refill it
+				self.sermonSeries = [SermonSeriesSummary]()
+				
+				for i in summaries.Summaries {
+					self.sermonSeries.append(i)
+				}
+				
+				DispatchQueue.main.async {
+					self.collectionView?.reloadData()
+				}
+			}
+			catch let jsonError {
+				print(jsonError)
+			}
+		}.resume()
+	}
+	
+	func getSermonsForId(seriesId: String) {
+		
+		let thing = "\(apiUrl)api/sermons/series/\(seriesId)"
+		let url = NSURL(string: thing)
+		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
 			
-			let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-			print(str)
+			// something went wrong here
+			if error != nil {
+				print(error!)
+				return
+			}
 			
+			do {
+				
+				let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+				
+				let series = try JSONDecoder().decode(SermonSeries.self, from: data!)
+				
+				DispatchQueue.main.async {
+					// transition to another view
+					print("moving to display info about \(series)")
+				}
+			}
+			catch let jsonError {
+				print(jsonError)
+			}
 		}.resume()
 	}
 }

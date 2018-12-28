@@ -13,6 +13,8 @@ private let reuseIdentifier = "Cell"
 class ListenCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
 	var sermonSeries = [SermonSeriesSummary]()
+	var apiDomain = "nil"
+	var apiUrl: String = "nil"
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +28,16 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
         // Register cell classes
 		collectionView?.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		
+		// contact the API on the address we have cached
+		if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+			
+			apiDomain = loadedData
+			apiUrl = "http://\(apiDomain)/"
+		}
 		
         // call the API and determine how many of them there are
 		fetchAllSermons()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -51,21 +49,29 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 5
+        return sermonSeries.count
     }
+	
+	let imageCache = NSCache<NSString, UIImage>()
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SermonsCollectionViewCell
 		
-		// AsyncLoadUIImage(uri: "https://thrive-fl.org/wp-content/uploads/2018/02/Selfless_Art.jpg", cell: cell)
-		//cell.seriesArt = UIImageView()
+		// configure the cell
+		let selectedSeries = sermonSeries[indexPath.row]
 		
-        // Configure the cell
-    
+		if let imageFromCache = imageCache.object(forKey: selectedSeries.ArtUrl as NSString) {
+			
+			cell.seriesArt.image = imageFromCache
+		}
+		else {
+			// get the image from the API and update the image cache by reference
+			cell.seriesArt.loadImage(resourceUrl: selectedSeries.ArtUrl, cache: imageCache)
+		}
+		
         return cell
     }
-
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
@@ -73,6 +79,12 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		let height = (view.frame.width) * (9 / 16) // 16x9 ratio
 		
 		return CGSize(width: width, height: height)
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		let selectedSeries = sermonSeries[indexPath.row]
+		getSermonsForId(seriesId: selectedSeries.Id)
 	}
 
 }
