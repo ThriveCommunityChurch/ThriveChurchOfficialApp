@@ -103,12 +103,6 @@ class SermonMessageTableViewCell: UITableViewCell {
 		self.setupViews()
 	}
 	
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-	
 	func setupViews() {
 		
 		// add all the views to the main view

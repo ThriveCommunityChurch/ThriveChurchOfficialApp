@@ -37,6 +37,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		
         // call the API and determine how many of them there are
 		fetchAllSermons()
+		fetchLiveStream()
     }
 
     // MARK: UICollectionViewDataSource

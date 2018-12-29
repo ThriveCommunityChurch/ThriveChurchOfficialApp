@@ -182,6 +182,66 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			cell.watchImage.isHidden = false
 		}
 		
+		let selectedView = UIView()
+		selectedView.backgroundColor = UIColor.darkGray
+		cell.selectedBackgroundView = selectedView
+		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let selectedMessage = messages[indexPath.row]
+		
+		let alert = UIAlertController(title: "", message: "Please select an action", preferredStyle: .actionSheet)
+		var listenAction: UIAlertAction
+		var watchAction: UIAlertAction
+		
+		// these ifs both will prevent the Alert Actions from appearing if the message
+		// does not have this property set
+		if selectedMessage.AudioUrl != nil {
+			
+			listenAction = UIAlertAction(title: "Listen to week \(selectedMessage.WeekNum ?? 0)", style: .default) { (action) in
+				print("LISTENING TO THING...")
+				
+				self.deselectRow(indexPath: indexPath)
+				alert.dismiss(animated: true, completion: nil)
+			}
+			
+			alert.addAction(listenAction)
+		}
+		
+		if selectedMessage.AudioUrl != nil {
+			
+			watchAction = UIAlertAction(title: "Watch HD Sermon", style: .default) { (action) in
+				print("Opening YT...")
+				
+				self.deselectRow(indexPath: indexPath)
+				alert.dismiss(animated: true, completion: nil)
+			}
+			
+			alert.addAction(watchAction)
+		}
+		
+		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")", style: .default) { (action) in
+			print("ESV API for this passage is...")
+			
+			self.deselectRow(indexPath: indexPath)
+			alert.dismiss(animated: true, completion: nil)
+		}
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+			
+			self.deselectRow(indexPath: indexPath)
+			alert.dismiss(animated: true, completion: nil)
+		}
+	
+		alert.addAction(readPassageAction)
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	private func deselectRow(indexPath: IndexPath) {
+		// Change the selected background view of the cell back to unselected
+		seriesTable.deselectRow(at: indexPath, animated: true)
 	}
 }
