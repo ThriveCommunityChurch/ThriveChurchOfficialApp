@@ -12,6 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class ListenCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+	@IBOutlet weak var livestreamButton: UIBarButtonItem!
 	var sermonSeries = [SermonSeriesSummary]()
 	var apiDomain = "nil"
 	var apiUrl: String = "nil"
@@ -24,6 +25,8 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		
 		collectionView?.dataSource = self
 		collectionView?.delegate = self
+		
+		livestreamButton.isEnabled = false
 
         // Register cell classes
 		collectionView?.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
