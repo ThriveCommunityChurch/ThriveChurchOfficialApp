@@ -37,6 +37,7 @@
 		DC7348C321D6BDFE0057227D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348C221D6BDFE0057227D /* StringExtensions.swift */; };
 		DC7348C521D6F8070057227D /* LivestreamingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348C421D6F8070057227D /* LivestreamingResponse.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
+		DC80C45421D7391700AF08E1 /* LivePollingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
 		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB61AF921CB009B0049FCA2 /* Config.plist */; };
@@ -173,6 +174,7 @@
 		DC7348C221D6BDFE0057227D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		DC7348C421D6F8070057227D /* LivestreamingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivestreamingResponse.swift; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePollingResponse.swift; sourceTree = "<group>"; };
 		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB61AF921CB009B0049FCA2 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationVariables.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				DC7348BA21D5DE720057227D /* SermonSeriesResponse.swift */,
 				DC7348BE21D6AB800057227D /* SermonMessage.swift */,
 				DC7348C421D6F8070057227D /* LivestreamingResponse.swift */,
+				DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DC7348C521D6F8070057227D /* LivestreamingResponse.swift in Sources */,
+				DC80C45421D7391700AF08E1 /* LivePollingResponse.swift in Sources */,
 				DC21E1F620FBF0660054437D /* OnboardingCell.swift in Sources */,
 				DC21E1F120FBEDBA0054437D /* OnboardingController.swift in Sources */,
 				DC0FB22B21CB400300908D06 /* SermonsCollectionViewCell.swift in Sources */,

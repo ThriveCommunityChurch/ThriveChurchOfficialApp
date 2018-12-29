@@ -9,8 +9,8 @@
 import UIKit
 struct LivestreamingResponse: Decodable {
 	var IsLive: Bool = false
-	var VideoUrl: String
-	var Title: String
+	var VideoUrl: String?
+	var Title: String?
 	var SpecialEventTimes: String?
 	var IsSpecialEvent: Bool = false
 }

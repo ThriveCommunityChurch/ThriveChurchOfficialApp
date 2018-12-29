@@ -16,6 +16,10 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	var sermonSeries = [SermonSeriesSummary]()
 	var apiDomain = "nil"
 	var apiUrl: String = "nil"
+	var secondsRemaining: Double?
+	var expireTime: Date?
+	var timer = Timer()
+	var pollingData: LivePollingResponse?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
