@@ -158,7 +158,8 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = seriesTable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SermonMessageTableViewCell
+		let cell = seriesTable.dequeueReusableCell(withIdentifier: "Cell",
+												   for: indexPath) as! SermonMessageTableViewCell
 		
 		let selectedMessage = messages[indexPath.row]
 		
@@ -193,7 +194,9 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		let selectedMessage = messages[indexPath.row]
 		
-		let alert = UIAlertController(title: "", message: "Please select an action", preferredStyle: .actionSheet)
+		let alert = UIAlertController(title: "\(series?.Name ?? "") - Week \(selectedMessage.WeekNum ?? 0)",
+									  message: "Please select an action",
+									  preferredStyle: .actionSheet)
 		var listenAction: UIAlertAction
 		var watchAction: UIAlertAction
 		
@@ -201,8 +204,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		// does not have this property set
 		if selectedMessage.AudioUrl != nil {
 			
-			listenAction = UIAlertAction(title: "Listen to week \(selectedMessage.WeekNum ?? 0)", style: .default) { (action) in
-				print("LISTENING TO THING...")
+			listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
 				
 				self.deselectRow(indexPath: indexPath)
 				alert.dismiss(animated: true, completion: nil)
@@ -213,8 +215,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		if selectedMessage.AudioUrl != nil {
 			
-			watchAction = UIAlertAction(title: "Watch HD Sermon", style: .default) { (action) in
-				print("Opening YT...")
+			watchAction = UIAlertAction(title: "Watch in HD", style: .default) { (action) in
 				
 				self.deselectRow(indexPath: indexPath)
 				alert.dismiss(animated: true, completion: nil)
@@ -223,8 +224,8 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			alert.addAction(watchAction)
 		}
 		
-		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")", style: .default) { (action) in
-			print("ESV API for this passage is...")
+		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
+											  style: .default) { (action) in
 			
 			self.deselectRow(indexPath: indexPath)
 			alert.dismiss(animated: true, completion: nil)
