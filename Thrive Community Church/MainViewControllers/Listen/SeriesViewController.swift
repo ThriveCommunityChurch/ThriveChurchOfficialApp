@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
@@ -69,6 +70,10 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		setupViews()
 		loadMessagesForSeries()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(true)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -151,6 +156,19 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		seriesTable.reloadData()
 	}
 	
+	func playSermonAudio(rssUrl: String, message: SermonMessage) {
+		
+		// we created a globally shared instance of this variable, so that if we
+		// close this VC it should keep playing
+		SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
+														 sermonData: series!,
+														 selectedMessage: message,
+														 seriesImage: seriesImage)
+		
+		// do we want to transition them to the now playing VC?
+		// that might be cool
+	}
+	
 	// MARK: - Table View
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -207,18 +225,32 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
 				
 				self.deselectRow(indexPath: indexPath)
-				alert.dismiss(animated: true, completion: nil)
+				
+				// init a new AVPlayer or something to begin playing the audio
+				// once the audio is playing we will need to alert the NowPlayingVC
+				// that something is actively playing
+				
+				self.playSermonAudio(rssUrl: selectedMessage.AudioUrl!, message: selectedMessage)
 			}
 			
 			alert.addAction(listenAction)
 		}
 		
-		if selectedMessage.AudioUrl != nil {
+		if selectedMessage.VideoUrl != nil {
 			
 			watchAction = UIAlertAction(title: "Watch in HD", style: .default) { (action) in
 				
 				self.deselectRow(indexPath: indexPath)
-				alert.dismiss(animated: true, completion: nil)
+				
+				var youtubeId = selectedMessage.VideoUrl ?? ""
+				youtubeId = youtubeId.replacingOccurrences(of: "https://youtu.be/", with: "")
+				
+				// if youtube is installed open it there, otherwise just open the
+				var url = URL(string:"youtube://\(youtubeId)")!
+				if !UIApplication.shared.canOpenURL(url)  {
+					url = URL(string:"http://www.youtube.com/watch?v=\(youtubeId)")!
+				}
+				UIApplication.shared.open(url, options: [:], completionHandler: nil)
 			}
 			
 			alert.addAction(watchAction)
@@ -228,12 +260,10 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 											  style: .default) { (action) in
 			
 			self.deselectRow(indexPath: indexPath)
-			alert.dismiss(animated: true, completion: nil)
 		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
 			
 			self.deselectRow(indexPath: indexPath)
-			alert.dismiss(animated: true, completion: nil)
 		}
 	
 		alert.addAction(readPassageAction)

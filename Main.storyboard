@@ -4694,7 +4694,7 @@
         <!--Now Playing-->
         <scene sceneID="Gl8-sn-3nC">
             <objects>
-                <viewController title="Now Playing" id="IhB-8m-hBk" sceneMemberID="viewController">
+                <viewController title="Now Playing" id="IhB-8m-hBk" customClass="NowPlayingViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Oc-RG-JDN"/>
                         <viewControllerLayoutGuide type="bottom" id="wrh-9Y-uEH"/>
@@ -4733,6 +4733,9 @@
                             <constraint firstItem="uzT-hz-o4W" firstAttribute="top" secondItem="4Oc-RG-JDN" secondAttribute="bottom" id="vDh-32-uPk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="notPlayingText" destination="ST4-0k-6ea" id="4cC-Yv-Q9C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUJ-SI-R5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
