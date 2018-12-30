@@ -12,20 +12,6 @@ import AVFoundation
 
 extension NowPlayingViewController {
 	
-	/*
-		Order in the horiz controlsStackView is as follows:
-	
-		spacingView
-		rwStackView
-		spacingView2
-		pauseStackView
-		playStackView
-		spacingView3
-		ffStackView
-		spacingView4
-		stopStackView
-	*/
-	
 	@objc func playAudio() {
 		SermonAVPlayer.sharedInstance.play()
 		self.playButton.isEnabled = false
@@ -47,14 +33,7 @@ extension NowPlayingViewController {
 	@objc func stopAudio() {
 		SermonAVPlayer.sharedInstance.stop()
 		
-		self.playButton.isEnabled = false
-		self.stopButton.isEnabled = false
-		self.pauseButton.isEnabled = false
-		self.rwButton.isEnabled = false
-		self.ffButton.isEnabled = false
-		self.downloadButton.isEnabled = false
-		
-		dismiss(animated: true, completion: nil)
+		navigationController?.popViewController(animated: true)
 	}
 	
 	@objc func fastForward() {

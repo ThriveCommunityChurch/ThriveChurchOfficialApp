@@ -396,8 +396,8 @@ class NowPlayingViewController: UIViewController {
 
 		self.seriesArt.image = dataDump["sermonGraphic"] as? UIImage
 		self.messageTitleLabel.text = "\(dataDump["messageTitle"] as? String ?? "")"
-		self.speakerLabel.text = "Speaker: \(dataDump["speaker"] as? String ?? "")"
+		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "Date: \(dataDump["messageDate"] as? String ?? "")"
-		self.passageLabel.text = "Passage: \(dataDump["passageRef"] as? String ?? "")"
+		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
 	}
 }
