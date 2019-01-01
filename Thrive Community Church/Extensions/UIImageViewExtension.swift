@@ -11,7 +11,7 @@ import Foundation
 
 extension UIImageView {
 	
-	func loadImage(resourceUrl: String, cache: NSCache<NSString, UIImage>) {
+	func loadImage(resourceUrl: String) {
 		let url = NSURL(string: resourceUrl)
 		
 		image = nil
@@ -28,7 +28,8 @@ extension UIImageView {
 			DispatchQueue.main.async {
 				let image = UIImage(data: data!)
 				self.image = image
-				cache.setObject(image!, forKey: resourceUrl as NSString)
+				let imageDict = [resourceUrl: image ?? UIImage()]
+				ImageCache.sharedInstance.addImagesToCache(imageData: imageDict)
 			}
 		}.resume()
 	}
