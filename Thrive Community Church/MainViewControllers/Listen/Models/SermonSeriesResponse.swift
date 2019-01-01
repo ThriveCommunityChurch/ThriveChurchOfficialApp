@@ -11,7 +11,7 @@ import UIKit
 struct SermonSeries: Decodable {
 	var StartDate: String
 	var EndDate: String?
-	//var Messages: [SermonMessages]
+	var Messages: [SermonMessage]
 	var Name: String
 	var Year: String
 	var Slug: String

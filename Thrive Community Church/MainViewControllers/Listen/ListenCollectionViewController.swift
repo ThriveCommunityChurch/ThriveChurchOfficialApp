@@ -12,9 +12,14 @@ private let reuseIdentifier = "Cell"
 
 class ListenCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+	@IBOutlet weak var livestreamButton: UIBarButtonItem!
 	var sermonSeries = [SermonSeriesSummary]()
 	var apiDomain = "nil"
 	var apiUrl: String = "nil"
+	var secondsRemaining: Double?
+	var expireTime: Date?
+	var timer = Timer()
+	var pollingData: LivePollingResponse?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +29,8 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		
 		collectionView?.dataSource = self
 		collectionView?.delegate = self
+		
+		livestreamButton.isEnabled = false
 
         // Register cell classes
 		collectionView?.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -37,6 +44,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		
         // call the API and determine how many of them there are
 		fetchAllSermons()
+		fetchLiveStream()
     }
 
     // MARK: UICollectionViewDataSource
@@ -52,7 +60,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
         return sermonSeries.count
     }
 	
-	let imageCache = NSCache<NSString, UIImage>()
+	// MARk: - Collection View Delegate
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
@@ -61,13 +69,13 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		// configure the cell
 		let selectedSeries = sermonSeries[indexPath.row]
 		
-		if let imageFromCache = imageCache.object(forKey: selectedSeries.ArtUrl as NSString) {
+		if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
 			
 			cell.seriesArt.image = imageFromCache
 		}
 		else {
 			// get the image from the API and update the image cache by reference
-			cell.seriesArt.loadImage(resourceUrl: selectedSeries.ArtUrl, cache: imageCache)
+			cell.seriesArt.loadImage(resourceUrl: selectedSeries.ArtUrl)
 		}
 		
         return cell
@@ -76,7 +84,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		let width = view.frame.width
-		let height = (view.frame.width) * (9 / 16) // 16x9 ratio
+		let height = (width) * (9 / 16) // 16x9 ratio
 		
 		return CGSize(width: width, height: height)
 	}
@@ -84,7 +92,12 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
 		let selectedSeries = sermonSeries[indexPath.row]
-		getSermonsForId(seriesId: selectedSeries.Id)
+		
+		if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
+			
+			// load the sermon info from the API and transition when the GET is complete
+			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+		}
 	}
 
 }

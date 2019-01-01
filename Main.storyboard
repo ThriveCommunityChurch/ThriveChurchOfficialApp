@@ -4694,7 +4694,7 @@
         <!--Now Playing-->
         <scene sceneID="Gl8-sn-3nC">
             <objects>
-                <viewController title="Now Playing" id="IhB-8m-hBk" sceneMemberID="viewController">
+                <viewController title="Now Playing" id="IhB-8m-hBk" customClass="NowPlayingViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Oc-RG-JDN"/>
                         <viewControllerLayoutGuide type="bottom" id="wrh-9Y-uEH"/>
@@ -4733,6 +4733,9 @@
                             <constraint firstItem="uzT-hz-o4W" firstAttribute="top" secondItem="4Oc-RG-JDN" secondAttribute="bottom" id="vDh-32-uPk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="notPlayingText" destination="ST4-0k-6ea" id="4cC-Yv-Q9C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUJ-SI-R5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4769,6 +4772,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Listen" id="rcU-Yf-dJw">
+                        <barButtonItem key="leftBarButtonItem" image="live" id="00c-yv-CV2">
+                            <color key="tintColor" red="0.74509803919999995" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="playback" style="plain" id="iXq-Fb-JQT">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -4776,6 +4782,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="livestreamButton" destination="00c-yv-CV2" id="7De-Sj-HqL"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ6-rV-pEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4821,6 +4830,7 @@
         <image name="ThriveLogo" width="13.920000076293945" height="13.680000305175781"/>
         <image name="facebook_white" width="60" height="60"/>
         <image name="instagram_white" width="60" height="60"/>
+        <image name="live" width="50" height="50"/>
         <image name="notes" width="12" height="12"/>
         <image name="playback" width="40" height="38"/>
         <image name="twitter_white" width="60" height="60"/>
