@@ -66,5 +66,82 @@ extension NowPlayingViewController {
 	@objc func downloadAudio() {
 		
 		print("Coming soon to a downlod folder near you...")
+
+			
+		// save the audio that's currently playing to some place loaclly
+		guard let url = URL.init(string: messageForDownload?.AudioUrl ?? "") else { return }
+		let playerItem = AVPlayerItem.init(url: url)
+		let _ = AVPlayer.init(playerItem: playerItem)
+		// instead of above see this https://stackoverflow.com/a/37611489/6448167
+		
+		// update the message object for the new URI for that saved audio on the device
+		let currentUTCmilis = Date().timeIntervalSince1970 * 1000
+		messageForDownload?.DownloadedOn = currentUTCmilis
+		
+		// once the audio has been stored, save the object in UserDefaults in the following order:
+		// FIRST: get the downloadedMessageIds list from Defaults with the key in the AppVars
+		readDLMessageIds()
+		
+		// NEXT: Update the list in memory and then use that list to update the one in Defaults
+		addMessageToDownloadList(message: messageForDownload!)
+		
+		// on the series View controller table we can remove the download button option if a mesasge has been downloaded,
+		// for this we will need to look at the storage in Defaults and see which messages have been saved
+		
+		// messageForDownload
+		self.downloadedSermonsButton.isEnabled = true
+	}
+	
+	@objc func viewDownloads() {
+		// First: Go to the downloaded messages collection and see if there are any there
+		// if there are we can send these along to the next VC
+		
+	}
+	
+	func addMessageToDownloadList(message: SermonMessage) {
+			
+		self.downloadedMessageIds.append((messageForDownload?.MessageId)!)
+		
+		// we updated the list in memory, so write it down in defaults
+		UserDefaults.standard.set(self.downloadedMessageIds, forKey: ApplicationVariables.DownloadedMessages)
+		UserDefaults.standard.synchronize()
+		
+		// before we can place objects into Defaults they have to be encoded
+		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: message)
+		
+		// we have a reference to this message in the above Defaults array, so store everything
+		UserDefaults.standard.set(encodedData, forKey: message.MessageId)
+		UserDefaults.standard.synchronize()
+		
+		
+		// READ FROM THE messageId collection like so
+		//		let decoded  = userDefaults.standard.object(forKey: message.MessageId) as! Data
+		//		let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! SermonMessage
+		// but it's more than that https://stackoverflow.com/a/29987303/6448167
+		
+	}
+	
+	// do this on the DownloadPlayerVC
+//	func readDownloadedMessages() {
+//		let MessageIds = readDLMessageIds()
+//
+//		for messageId in MessageIds {
+//
+//		}
+//	}
+
+	func readDLMessageIds() {
+		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
+			self.downloadedMessageIds = loadedData
+		}
+	}
+	
+	func checkIfUserHasDownloads() {
+		// also disable the view downloads icon if they do not have any yet downloaded
+		self.readDLMessageIds()
+		
+		if downloadedMessageIds.count == 0 {
+			self.downloadedSermonsButton.isEnabled = false
+		}
 	}
 }

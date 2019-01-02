@@ -22,6 +22,10 @@ class SermonAVPlayer {
 	private var messageTitle: String = ""
 	private var sermonGraphic: UIImage? = nil
 	private var messageDate: String = ""
+	private var message: SermonMessage? = nil
+	
+	/// Flag for if this currently playing audio has been downloaded
+	private var isDownloaded: Bool = false
 	
 	public func initUsingRssString(rssUrl: String, sermonData: SermonSeries,
 								   selectedMessage: SermonMessage, seriesImage: UIImage) {
@@ -78,9 +82,13 @@ class SermonAVPlayer {
 		self.weekNum = selectedMessage.WeekNum ?? 0
 		self.sermonGraphic = seriesImage
 		self.messageDate = selectedMessage.Date
+		self.isDownloaded = selectedMessage.DownloadedOn != nil
+		
+		// load everything from the selected message and put it in the response one, we will use this
+		// as the message object we store in the UserDefaults for it's MessageId
+		message = selectedMessage
 	}
-	
-	
+
 	public func getDataForPlayback() -> [String: Any]? {
 		
 		if !self.isPlaying {
@@ -95,7 +103,9 @@ class SermonAVPlayer {
 						"passageRef": passageRef,
 						"messageTitle": messageTitle,
 						"sermonGraphic": sermonGraphic as Any,
-						"messageDate": messageDate]
+						"messageDate": messageDate,
+						"isDownloaded": isDownloaded,
+						"message": message as Any]
 		
 		return responseDict
 	}

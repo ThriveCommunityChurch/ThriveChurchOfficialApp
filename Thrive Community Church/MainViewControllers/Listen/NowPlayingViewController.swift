@@ -16,6 +16,10 @@ class NowPlayingViewController: UIViewController {
 	@IBOutlet weak var notPlayingText: UILabel!
 	var player: AVPlayer?
 	let seekDuration: Float64 = 15 // numSeconds
+	var isDownloaded: Bool = false
+	
+	var messageForDownload: SermonMessage?
+	var downloadedMessageIds = [String]()
 	
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
@@ -251,14 +255,20 @@ class NowPlayingViewController: UIViewController {
 		return button
 	}()
 	
+	let downloadedSermonsButton: UIBarButtonItem = {
+		let image = UIImage(named: "downloads")
+		let item = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(viewDownloads))
+		item.tintColor = UIColor.white
+		return item
+	}()
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		// TODO: Add a downloads view that allows a user to listen to anything that's
-		// been stored on their device. Use a Right nav bar button and a TableViewController
-		
-		// TODO: Also, a progress bar below where the controls are would be a suuper nice
+		// TODO: A progress bar below where the controls are would be a suuper nice
 		// added touch to this already cool feature
+		
+		self.navigationItem.rightBarButtonItem = downloadedSermonsButton
 
         let playerStatus = self.checkPlayerStatus()
 
@@ -267,6 +277,9 @@ class NowPlayingViewController: UIViewController {
 			self.notPlayingText.isHidden = true
 			setupViews()
 			player = SermonAVPlayer.sharedInstance.getPlayer()
+		}
+		else {
+			self.checkIfUserHasDownloads()
 		}
     }
 	
@@ -389,7 +402,9 @@ class NowPlayingViewController: UIViewController {
 								"passageRef": passageRef,
 								"messageTitle": messageTitle,
 								"sermonGraphic": sermonGraphic as Any,
-								"messageDate": messageDate]
+								"messageDate": messageDate,
+								"isDownloaded": isDownloaded,
+								"message": message]
 		*/
 		
 		let dataDump = SermonAVPlayer.sharedInstance.getDataForPlayback()!
@@ -399,5 +414,19 @@ class NowPlayingViewController: UIViewController {
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "Date: \(dataDump["messageDate"] as? String ?? "")"
 		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
+		self.messageForDownload = dataDump["message"] as? SermonMessage
+		
+		if isDownloaded && messageForDownload?.DownloadedOn != nil {
+			self.downloadButton.isEnabled = false
+		}
+		else {
+			// we can save us a step by taking the message that is in memory and just storing all this
+			
+			// we have to load this data into the messageForDownload object so that we can save it in Defaults
+			//messageForDownload.
+			messageForDownload =  dataDump["message"] as? SermonMessage
+		}
+		
+		self.checkIfUserHasDownloads()
 	}
 }

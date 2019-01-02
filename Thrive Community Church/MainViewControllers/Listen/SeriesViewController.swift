@@ -29,6 +29,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	var messages = [SermonMessage]()
 	var weekNum: Int = 0
+	var downloadedMessageIds: [String] = [String]()
 	
 	private var series: SermonSeries?
 	
@@ -70,6 +71,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		setupViews()
 		loadMessagesForSeries()
+		loadDownloadedMessages()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -217,6 +219,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 									  preferredStyle: .actionSheet)
 		var listenAction: UIAlertAction
 		var watchAction: UIAlertAction
+		var downloadAction: UIAlertAction
 		
 		// these ifs both will prevent the Alert Actions from appearing if the message
 		// does not have this property set
@@ -256,6 +259,20 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			alert.addAction(watchAction)
 		}
 		
+		// we should only be checking the property
+		if selectedMessage.DownloadedOn == nil {
+			downloadAction = UIAlertAction(title: "Download Week \(selectedMessage.WeekNum ?? 0)",
+			style: .default) { (action) in
+				
+				self.deselectRow(indexPath: indexPath)
+				// download the sermon Message the same way that we are doing it on the now playing VC
+				
+				print("Downloading now.........")
+			}
+			
+			alert.addAction(downloadAction)
+		}
+		
 		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
 											  style: .default) { (action) in
 			
@@ -265,7 +282,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			
 			self.deselectRow(indexPath: indexPath)
 		}
-	
+
 		alert.addAction(readPassageAction)
 		alert.addAction(cancelAction)
 		self.present(alert, animated: true, completion: nil)
@@ -274,5 +291,15 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	private func deselectRow(indexPath: IndexPath) {
 		// Change the selected background view of the cell back to unselected
 		seriesTable.deselectRow(at: indexPath, animated: true)
+	}
+	
+	private func loadDownloadedMessages() {
+		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
+			self.downloadedMessageIds = loadedData
+			
+			// now for the ones within this table lookup any that might have been downloaded
+			// from this list above and go to Defaults again to see when they were
+			// then send all the information over so we don't have to check again until someone performs a download action
+		}
 	}
 }

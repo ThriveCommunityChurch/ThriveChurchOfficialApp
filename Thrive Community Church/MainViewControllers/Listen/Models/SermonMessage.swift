@@ -17,4 +17,12 @@ struct SermonMessage: Decodable {
 	var Date: String
 	var MessageId: String
 	var WeekNum: Int?
+	
+	/// Number representing the time since Epoch that this message was downloaded
+	/// We will use these values to sort in descending order (most recent first)
+	var DownloadedOn: Double?
+	
+	/// If a message has been saved to the device, we need to know where the audio file
+	/// is stored on the device.
+	var LocalAudioURI: String?
 }
