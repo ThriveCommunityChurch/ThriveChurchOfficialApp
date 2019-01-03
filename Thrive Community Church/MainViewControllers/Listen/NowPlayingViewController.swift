@@ -20,6 +20,7 @@ class NowPlayingViewController: UIViewController {
 	
 	var messageForDownload: SermonMessage?
 	var downloadedMessageIds = [String]()
+	var currentMessageId: String? = nil
 	
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
@@ -279,7 +280,7 @@ class NowPlayingViewController: UIViewController {
 			player = SermonAVPlayer.sharedInstance.getPlayer()
 		}
 		else {
-			self.checkIfUserHasDownloads()
+			self.checkIfUserHasDownloads(isInit: true)
 		}
     }
 	
@@ -414,19 +415,15 @@ class NowPlayingViewController: UIViewController {
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "Date: \(dataDump["messageDate"] as? String ?? "")"
 		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
-		self.messageForDownload = dataDump["message"] as? SermonMessage
+		self.currentMessageId = (dataDump["message"] as? SermonMessage)?.MessageId
 		
-		if isDownloaded && messageForDownload?.DownloadedOn != nil {
-			self.downloadButton.isEnabled = false
-		}
-		else {
-			// we can save us a step by taking the message that is in memory and just storing all this
-			
-			// we have to load this data into the messageForDownload object so that we can save it in Defaults
-			//messageForDownload.
-			messageForDownload =  dataDump["message"] as? SermonMessage
-		}
-		
+		// inside here we will disable the download button
 		self.checkIfUserHasDownloads()
+		
+		// we don't want to allocate memory for this message object if we don't have to
+		if self.downloadButton.isEnabled {
+			self.messageForDownload = dataDump["message"] as? SermonMessage
+		}
+		
 	}
 }

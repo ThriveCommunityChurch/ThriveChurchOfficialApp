@@ -8,7 +8,8 @@
 
 import UIKit
 
-struct SermonMessage: Decodable {
+class SermonMessage: NSObject, Decodable, NSCoding {
+	
 	var AudioUrl: String?
 	var VideoUrl: String?
 	var PassageRef: String?
@@ -25,4 +26,46 @@ struct SermonMessage: Decodable {
 	/// If a message has been saved to the device, we need to know where the audio file
 	/// is stored on the device.
 	var LocalAudioURI: String?
+	
+	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
+		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?) {
+		self.AudioUrl = audio
+		self.VideoUrl = video
+		self.PassageRef = psg
+		self.Speaker = spkr
+		self.Title = name
+		self.Date = date
+		self.MessageId = id
+		self.WeekNum = wkNum
+		self.DownloadedOn = downloaded
+		self.LocalAudioURI = localURI
+	}
+	
+	required convenience init(coder aDecoder: NSCoder) {
+		let audio = aDecoder.decodeObject(forKey: "AudioUrl") as! String?
+		let video = aDecoder.decodeObject(forKey: "VideoUrl") as! String?
+		let psg = aDecoder.decodeObject(forKey: "PassageRef") as! String
+		let spkr = aDecoder.decodeObject(forKey: "Speaker") as! String
+		let name = aDecoder.decodeObject(forKey: "Title") as! String
+		let date = aDecoder.decodeObject(forKey: "Date") as! String
+		let id = aDecoder.decodeObject(forKey: "MessageId") as! String
+		let wkNum = aDecoder.decodeObject(forKey: "WeekNum") as! Int?
+		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as! Double?
+		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as! String?
+		self.init(audio: audio, video: video, psg: psg, spkr: spkr, name: name,
+				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded, localURI: localURI)
+	}
+	
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(AudioUrl, forKey: "AudioUrl")
+		aCoder.encode(VideoUrl, forKey: "VideoUrl")
+		aCoder.encode(PassageRef, forKey: "PassageRef")
+		aCoder.encode(Speaker, forKey: "Speaker")
+		aCoder.encode(Title, forKey: "Title")
+		aCoder.encode(Date, forKey: "Date")
+		aCoder.encode(MessageId, forKey: "MessageId")
+		aCoder.encode(WeekNum, forKey: "WeekNum")
+		aCoder.encode(DownloadedOn, forKey: "DownloadedOn")
+		aCoder.encode(LocalAudioURI, forKey: "LocalAudioURI")
+	}
 }

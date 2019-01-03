@@ -65,9 +65,6 @@ extension NowPlayingViewController {
 	
 	@objc func downloadAudio() {
 		
-		print("Coming soon to a downlod folder near you...")
-
-			
 		// save the audio that's currently playing to some place loaclly
 		guard let url = URL.init(string: messageForDownload?.AudioUrl ?? "") else { return }
 		let playerItem = AVPlayerItem.init(url: url)
@@ -88,14 +85,15 @@ extension NowPlayingViewController {
 		// on the series View controller table we can remove the download button option if a mesasge has been downloaded,
 		// for this we will need to look at the storage in Defaults and see which messages have been saved
 		
-		// messageForDownload
+		// change button behavior now that things are happening
 		self.downloadedSermonsButton.isEnabled = true
+		self.downloadButton.isEnabled = false
 	}
 	
 	@objc func viewDownloads() {
 		// First: Go to the downloaded messages collection and see if there are any there
 		// if there are we can send these along to the next VC
-		
+		print("\nGoing to downloads....")
 	}
 	
 	func addMessageToDownloadList(message: SermonMessage) {
@@ -113,12 +111,9 @@ extension NowPlayingViewController {
 		UserDefaults.standard.set(encodedData, forKey: message.MessageId)
 		UserDefaults.standard.synchronize()
 		
-		
 		// READ FROM THE messageId collection like so
-		//		let decoded  = userDefaults.standard.object(forKey: message.MessageId) as! Data
-		//		let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! SermonMessage
-		// but it's more than that https://stackoverflow.com/a/29987303/6448167
-		
+		//let decoded = UserDefaults.standard.object(forKey: message.MessageId) as! Data
+		//let decodedSermonMessage = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! SermonMessage
 	}
 	
 	// do this on the DownloadPlayerVC
@@ -133,15 +128,26 @@ extension NowPlayingViewController {
 	func readDLMessageIds() {
 		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
 			self.downloadedMessageIds = loadedData
+			
 		}
 	}
 	
-	func checkIfUserHasDownloads() {
+	func checkIfUserHasDownloads(isInit: Bool = false) {
+		
 		// also disable the view downloads icon if they do not have any yet downloaded
 		self.readDLMessageIds()
 		
 		if downloadedMessageIds.count == 0 {
 			self.downloadedSermonsButton.isEnabled = false
+		}
+		else {
+			if !isInit {
+				
+				// since this is called at the beginning we don't need to worry about calling it again
+				if self.downloadedMessageIds.contains(self.currentMessageId ?? "") {
+					self.downloadButton.isEnabled = false
+				}
+			}
 		}
 	}
 }

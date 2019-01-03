@@ -145,7 +145,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func loadMessagesForSeries() {
 		
-		for var i in (series?.Messages)! {
+		for i in (series?.Messages)! {
 			i.WeekNum = weekNum
 			weekNum = weekNum - 1
 			
