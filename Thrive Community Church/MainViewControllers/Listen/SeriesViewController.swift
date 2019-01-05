@@ -30,6 +30,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	var messages = [SermonMessage]()
 	var weekNum: Int = 0
 	var downloadedMessageIds: [String] = [String]()
+	var downloadedMessagesInSeries = [String]()
 	
 	private var series: SermonSeries?
 	
@@ -220,6 +221,9 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		var listenAction: UIAlertAction
 		var watchAction: UIAlertAction
 		var downloadAction: UIAlertAction
+		var isDownloaded = false
+		
+		
 		
 		// these ifs both will prevent the Alert Actions from appearing if the message
 		// does not have this property set
@@ -229,10 +233,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				
 				self.deselectRow(indexPath: indexPath)
 				
-				// init a new AVPlayer or something to begin playing the audio
-				// once the audio is playing we will need to alert the NowPlayingVC
-				// that something is actively playing
-				
+				// init a new shared instance of our AVPlayer, any VC has access to this
 				self.playSermonAudio(rssUrl: selectedMessage.AudioUrl!, message: selectedMessage)
 			}
 			
@@ -259,14 +260,15 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			alert.addAction(watchAction)
 		}
 		
-		// we should only be checking the property
-		if selectedMessage.DownloadedOn == nil {
+		// check if this message has been downloaded as part of this series yet
+		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) {
+			
 			downloadAction = UIAlertAction(title: "Download Week \(selectedMessage.WeekNum ?? 0)",
 			style: .default) { (action) in
 				
 				self.deselectRow(indexPath: indexPath)
-				// download the sermon Message the same way that we are doing it on the now playing VC
 				
+				// download the sermon Message the same way that we are doing it on the now playing VC
 				print("Downloading now.........")
 			}
 			
@@ -297,9 +299,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
 			self.downloadedMessageIds = loadedData
 			
-			// now for the ones within this table lookup any that might have been downloaded
-			// from this list above and go to Defaults again to see when they were
-			// then send all the information over so we don't have to check again until someone performs a download action
+			// we dont need the objects, thats too much
+			for message in messages {
+				
+				// refine our list down slightly from a large list of all messages in any series
+				// to only the ones in this series
+				if loadedData.contains(message.MessageId) {
+					
+					// TODO: make this a NSMutableSet (HashSet)
+					downloadedMessagesInSeries.append(message.MessageId)
+					
+				}
+			}
 		}
 	}
 }

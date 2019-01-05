@@ -12,15 +12,17 @@ import AVFoundation
 
 class NowPlayingViewController: UIViewController {
 
-	// UI Elements
-	@IBOutlet weak var notPlayingText: UILabel!
+	// Data structures for processing events & loading data
 	var player: AVPlayer?
 	let seekDuration: Float64 = 15 // numSeconds
 	var isDownloaded: Bool = false
-	
 	var messageForDownload: SermonMessage?
 	var downloadedMessageIds = [String]()
 	var currentMessageId: String? = nil
+	
+	// UI Elements
+	
+	@IBOutlet weak var notPlayingText: UILabel!
 	
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
@@ -256,18 +258,17 @@ class NowPlayingViewController: UIViewController {
 		return button
 	}()
 	
-	let downloadedSermonsButton: UIBarButtonItem = {
-		let image = UIImage(named: "downloads")
-		let item = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(viewDownloads))
-		item.tintColor = UIColor.white
-		return item
-	}()
+	var downloadedSermonsButton: UIBarButtonItem?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		// TODO: A progress bar below where the controls are would be a suuper nice
 		// added touch to this already cool feature
+		
+		let image = UIImage(named: "downloads")
+		downloadedSermonsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(viewDownloads))
+		downloadedSermonsButton?.tintColor = UIColor.white
 		
 		self.navigationItem.rightBarButtonItem = downloadedSermonsButton
 

@@ -24,10 +24,12 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 	}()
 	
 	var downloadedMessages = [SermonMessage]()
+	var downloadedMessageIds = [String]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		self.navigationItem.title = "Downloads"
        	setupViews()
 		retrieveDownloadsFromStorage()
     }
@@ -51,7 +53,6 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		
 		downloadsTableView.delegate = self
 		downloadsTableView.dataSource = self
-		
 	}
 	
 	func retrieveDownloadsFromStorage() {
