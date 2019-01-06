@@ -93,7 +93,6 @@ extension NowPlayingViewController {
 	@objc func viewDownloads() {
 		// First: Go to the downloaded messages collection and see if there are any there
 		// if there are we can send these along to the next VC
-		print("\nGoing to downloads....")
 		
 		let vc = SermonDownloadsViewController()
 		self.show(vc, sender: self)

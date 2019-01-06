@@ -16,4 +16,5 @@ extension UIColor {
 	static var lighterBlueGray = UIColor(red: 70/255, green: 106/255, blue: 134/255, alpha: 1)
 	static var bgDarkBlue = UIColor(red: 27/255, green: 41/255, blue: 51/255, alpha: 1)
 	static var almostBlack = UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
+	static var darkGrey = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
 }

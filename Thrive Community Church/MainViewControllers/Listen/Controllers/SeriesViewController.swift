@@ -223,8 +223,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		var downloadAction: UIAlertAction
 		var isDownloaded = false
 		
-		
-		
 		// these ifs both will prevent the Alert Actions from appearing if the message
 		// does not have this property set
 		if selectedMessage.AudioUrl != nil {
@@ -268,7 +266,8 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				
 				self.deselectRow(indexPath: indexPath)
 				
-				// download the sermon Message the same way that we are doing it on the now playing VC
+				// TODO: download the sermon Message the same way that we are doing it
+				// on the now playing VC
 				print("Downloading now.........")
 			}
 			
