@@ -27,8 +27,11 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// is stored on the device.
 	var LocalAudioURI: String?
 	
+	/// Physical Size of the downloaded file, we can report this to the user
+	var downloadSizeMB: Double?
+	
 	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
-		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?) {
+		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?) {
 		self.AudioUrl = audio
 		self.VideoUrl = video
 		self.PassageRef = psg
@@ -39,6 +42,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.WeekNum = wkNum
 		self.DownloadedOn = downloaded
 		self.LocalAudioURI = localURI
+		self.downloadSizeMB = size
 	}
 	
 	required convenience init(coder aDecoder: NSCoder) {
@@ -52,8 +56,10 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		let wkNum = aDecoder.decodeObject(forKey: "WeekNum") as! Int?
 		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as! Double?
 		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as! String?
+		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as! Double?
 		self.init(audio: audio, video: video, psg: psg, spkr: spkr, name: name,
-				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded, localURI: localURI)
+				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,
+				  localURI: localURI, size: size)
 	}
 	
 	func encode(with aCoder: NSCoder) {
@@ -67,5 +73,6 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		aCoder.encode(WeekNum, forKey: "WeekNum")
 		aCoder.encode(DownloadedOn, forKey: "DownloadedOn")
 		aCoder.encode(LocalAudioURI, forKey: "LocalAudioURI")
+		aCoder.encode(LocalAudioURI, forKey: "downloadSizeMB")
 	}
 }

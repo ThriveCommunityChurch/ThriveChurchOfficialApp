@@ -102,10 +102,10 @@ extension ListenCollectionViewController {
 					print(livestream)
 					
 					if livestream.IsLive {
-						self.livestreamButton.isEnabled = true
 						
 						// we also need to know how much longer is left on the stream
 						// so we need to call the polling route at least once
+						// so that we can make sure the stream hasn't passed and the API failed to update mongo
 						self.pollForLiveData()
 					}
 					else {
@@ -162,6 +162,9 @@ extension ListenCollectionViewController {
 		
 		self.timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(checkIfStreamExpired), userInfo: nil, repeats: true)
 		
+		// we need to check every 30 seconds but we should check right now
+		checkIfStreamExpired()
+		
 		/*
 			NOTE TO SELF:
 		
@@ -192,6 +195,7 @@ extension ListenCollectionViewController {
 				timer.invalidate()
 			}
 			else {
+				livestreamButton.isEnabled = true
 				expireTime = expireDate!
 			}
 		}
@@ -229,8 +233,9 @@ extension ListenCollectionViewController {
 		let nowDate = formatter.date(from: nowString)
 		let expireDate = stringToDateFormatter.date(from: expires)
 		
+		// we use the entire Date string here so that we are 100% sure that now
+		// is past whatever time the time should be, since we sanitize the dates
 		if nowDate! > expireDate! {
-			print("the stream is over")
 			return nil
 		}
 		else {

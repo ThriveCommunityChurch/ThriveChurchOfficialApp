@@ -204,6 +204,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			cell.watchImage.isHidden = false
 		}
 		
+		// make the selection color less intense
 		let selectedView = UIView()
 		selectedView.backgroundColor = UIColor.darkGray
 		cell.selectedBackgroundView = selectedView
@@ -221,7 +222,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		var listenAction: UIAlertAction
 		var watchAction: UIAlertAction
 		var downloadAction: UIAlertAction
-		var isDownloaded = false
 		
 		// these ifs both will prevent the Alert Actions from appearing if the message
 		// does not have this property set
@@ -229,7 +229,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			
 			listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
 				
-				self.deselectRow(indexPath: indexPath)
+				self.seriesTable.deselectRow(indexPath: indexPath)
 				
 				// init a new shared instance of our AVPlayer, any VC has access to this
 				self.playSermonAudio(rssUrl: selectedMessage.AudioUrl!, message: selectedMessage)
@@ -242,7 +242,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			
 			watchAction = UIAlertAction(title: "Watch in HD", style: .default) { (action) in
 				
-				self.deselectRow(indexPath: indexPath)
+				self.seriesTable.deselectRow(indexPath: indexPath)
 				
 				var youtubeId = selectedMessage.VideoUrl ?? ""
 				youtubeId = youtubeId.replacingOccurrences(of: "https://youtu.be/", with: "")
@@ -264,7 +264,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			downloadAction = UIAlertAction(title: "Download Week \(selectedMessage.WeekNum ?? 0)",
 			style: .default) { (action) in
 				
-				self.deselectRow(indexPath: indexPath)
+				self.seriesTable.deselectRow(indexPath: indexPath)
 				
 				// TODO: download the sermon Message the same way that we are doing it
 				// on the now playing VC
@@ -277,21 +277,16 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
 											  style: .default) { (action) in
 			
-			self.deselectRow(indexPath: indexPath)
+			self.seriesTable.deselectRow(indexPath: indexPath)
 		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
 			
-			self.deselectRow(indexPath: indexPath)
+			self.seriesTable.deselectRow(indexPath: indexPath)
 		}
 
 		alert.addAction(readPassageAction)
 		alert.addAction(cancelAction)
 		self.present(alert, animated: true, completion: nil)
-	}
-	
-	private func deselectRow(indexPath: IndexPath) {
-		// Change the selected background view of the cell back to unselected
-		seriesTable.deselectRow(at: indexPath, animated: true)
 	}
 	
 	private func loadDownloadedMessages() {

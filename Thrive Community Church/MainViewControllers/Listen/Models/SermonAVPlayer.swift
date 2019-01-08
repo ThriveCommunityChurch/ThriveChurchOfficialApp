@@ -32,9 +32,9 @@ class SermonAVPlayer {
 		
 		player = AVPlayer()
 		
-		guard let url = URL.init(string: rssUrl) else { return }
-		let playerItem = AVPlayerItem.init(url: url)
-		self.player = AVPlayer.init(playerItem: playerItem)
+		guard let url = URL(string: rssUrl) else { return }
+		let playerItem = AVPlayerItem(url: url)
+		self.player = AVPlayer(playerItem: playerItem)
 		self.play()
 		self.isPlaying = true
 		

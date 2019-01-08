@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 
-class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate {
 
 	let downloadsTableView: UITableView = {
 		let table = UITableView()
@@ -26,18 +26,28 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 	var downloadedMessages = [SermonMessage]()
 	var downloadedMessageIds = [String]()
 	
+	// Sorting flags
+	var alphaSelected: Bool = false
+	var dateSelected: Bool = false
+	var stampSelected: Bool = false
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		self.navigationItem.title = "Downloads"
 		
 		// register the cell class
-		self.downloadsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		self.downloadsTableView.register(DownloadedMessageTableViewCell.self, forCellReuseIdentifier: "Cell")
+		
+		let image = UIImage(named: "sorting")
+		let sortingbutton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(openSortingOptions))
+		sortingbutton.tintColor = UIColor.white
+		
+		self.navigationItem.rightBarButtonItem = sortingbutton
 		
        	setupViews()
 		retrieveDownloadsFromStorage()
     }
-	
 	
 	// MARK: - Table View Delegate Methods
 
@@ -47,13 +57,27 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = downloadsTableView.dequeueReusableCell(withIdentifier: "Cell",
-												   for: indexPath)
+												   for: indexPath) as! DownloadedMessageTableViewCell
 		
 		let message = downloadedMessages[indexPath.row]
 		
-		cell.textLabel?.text = message.Title
+		cell.titleLabel.text = message.Title
+		cell.dateLabel.text = message.Date
+		cell.speakerLabel.text = message.Speaker
+		
+		// make the selection color less intense
+		let selectedView = UIView()
+		selectedView.backgroundColor = UIColor.darkGray
+		cell.selectedBackgroundView = selectedView
 		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let message = downloadedMessages[indexPath.row]
+		
+		presentOptions(message: message, indexPath: indexPath)
 	}
 	
 	// MARK: - Methods
@@ -114,13 +138,136 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			}
 		}
 		
-		sortMessageData()
+		stampSelected = true
+		
+		sortMessagesByTimestampDesc()
 	}
 	
-	func sortMessageData() {
+	func presentOptions(message: SermonMessage, indexPath: IndexPath) {
 		
-		// we need to sort the messages by most recently downloaded, and perhaps
-		// give the user an option for sorting, either by name or by date given
+		let alert = UIAlertController(title: "\(message.Title)",
+									  message: "Please select an action",
+									  preferredStyle: .actionSheet)
+		
+		let listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
+			// listening
+			self.downloadsTableView.deselectRow(indexPath: indexPath)
+			
+			// look in the shared file folder for the mp3 and play it using
+			// SermonAVPlayer.sharedInstance
+			self.downloadedMessageIds.removeAll(where: { (value) -> Bool in
+				value == message.MessageId
+			})
+			
+		}
+		
+		let deleteAction = UIAlertAction(title: "Remove Download", style: .default) { (action) in
+			// Deleting
+			self.downloadsTableView.deselectRow(indexPath: indexPath)
+			
+			// look in the shared file folder for the mp3 and play it using
+			// SermonAVPlayer.sharedInstance
+			
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		alert.addAction(listenAction)
+		alert.addAction(deleteAction)
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true, completion: nil)
 	}
-
+	
+	@objc func openSortingOptions() {
+		
+		// popover? see https://github.com/kmcgill88/McPicker-iOS
+		
+		let alert = UIAlertController(title: "Sorting Options",
+									  message: "Please select a sorting option",
+									  preferredStyle: .actionSheet)
+		
+		var alphabeticalOption: UIAlertAction?
+		var dateOption: UIAlertAction?
+		var stampOption: UIAlertAction?
+		
+		if !alphaSelected {
+			alphabeticalOption = UIAlertAction(title: "Alphabetically",
+											   style: .default) { (action) in
+												
+				// sort by the name of each message
+				self.sortAlphaAsc()
+				self.alphaSelected = true
+				self.dateSelected = false
+				self.stampSelected = false
+			}
+			alert.addAction(alphabeticalOption ?? UIAlertAction())
+		}
+		
+		if !dateSelected {
+			dateOption = UIAlertAction(title: "Message Date",
+									   style: .default) { (action) in
+											
+				// sort by the day this sermon was given
+				self.sortMessageDateDesc()
+				self.alphaSelected = false
+				self.dateSelected = true
+				self.stampSelected = false
+			}
+			alert.addAction(dateOption ?? UIAlertAction())
+		}
+		
+		if !stampSelected {
+			stampOption = UIAlertAction(title: "Date Downloaded",
+										style: .default) { (action) in
+											
+				// sort by the day this sermon was downloaded
+				self.sortMessagesByTimestampDesc()
+				self.alphaSelected = false
+				self.dateSelected = false
+				self.stampSelected = true
+			}
+			alert.addAction(stampOption ?? UIAlertAction())
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		alert.addAction(cancel)
+		
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func sortMessageDateDesc() {
+		
+		let formatter = DateFormatter()
+		formatter.dateFormat = "M.d.yy"
+		
+		self.downloadedMessages = self.downloadedMessages.sorted {
+			// this Anonymous closure means is the one after the one we are looking at less than this one?
+			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
+			formatter.date(from: $1.Date) ?? Date() < formatter.date(from: $0.Date) ?? Date()
+		}
+		
+		self.downloadsTableView.reloadData()
+	}
+	
+	func sortAlphaAsc() {
+		
+		self.downloadedMessages = self.downloadedMessages.sorted {
+			// this Anonymous closure means is the one after the one we are looking at less than this one?
+			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
+			$0.Title < $1.Title
+		}
+		
+		self.downloadsTableView.reloadData()
+	}
+	
+	func sortMessagesByTimestampDesc() {
+		
+		self.downloadedMessages = self.downloadedMessages.sorted {
+			// this Anonymous closure means is the one after the one we are looking at less than this one?
+			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
+			$1.DownloadedOn?.isLess(than: $0.DownloadedOn ?? 0.0) ?? false
+		}
+		
+		self.downloadsTableView.reloadData()
+	}
 }

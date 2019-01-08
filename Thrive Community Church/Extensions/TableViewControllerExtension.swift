@@ -10,8 +10,7 @@ import UIKit
 
 
 extension UITableViewController {
-	
-	
+
 	func getUrlforTraditionalBookOrder() -> [String] {
 		
 		let tradLinkArr: [String] = [

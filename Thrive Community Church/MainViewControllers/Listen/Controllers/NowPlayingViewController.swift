@@ -19,6 +19,7 @@ class NowPlayingViewController: UIViewController {
 	var messageForDownload: SermonMessage?
 	var downloadedMessageIds = [String]()
 	var currentMessageId: String? = nil
+	var currentlyDownloading: Bool = false
 	
 	// UI Elements
 	
