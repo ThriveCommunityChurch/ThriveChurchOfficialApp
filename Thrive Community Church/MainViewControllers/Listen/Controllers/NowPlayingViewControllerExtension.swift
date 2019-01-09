@@ -65,13 +65,6 @@ extension NowPlayingViewController {
 	
 	@objc func downloadAudio() {
 		
-		// save the audio that's currently playing to some place loaclly
-//		guard let url = URL.init(string: messageForDownload?.AudioUrl ?? "") else { return }
-//		let playerItem = AVPlayerItem.init(url: url)
-//		let _ = AVPlayer.init(playerItem: playerItem)
-		// instead of above see this https://stackoverflow.com/a/37611489/6448167
-		
-		
 		// prevent multiple presses of the button
 		if !currentlyDownloading {
 			self.currentlyDownloading = true
@@ -144,16 +137,40 @@ extension NowPlayingViewController {
 					let location = location, error == nil
 				else { return }
 				do {
-					try FileManager.default.moveItem(at: location, to: outputURL)
-					print("file saved")
-					self.messageForDownload?.LocalAudioURI = "\(outputURL)" // aifc
+					// check that the user has enough disk space
+					let space = Storage.getFreeSpace().toMB()
 					
-					let size = Double(httpURLResponse.expectedContentLength) / 1024 / 1024
+					let size = Double(httpURLResponse.expectedContentLength).toMB()
 					self.messageForDownload?.downloadSizeMB = size
 					
-					self.finishDownload()
+					if size > space {
+						
+						// UI Elements need to be presented with the main method
+						// we should invoke this on the main thread asyncronously
+						DispatchQueue.main.async {
+							
+							// the user has no space to save this audio
+							self.currentlyDownloading = false
+							let alert = UIAlertController(title: "Error!",
+														  message: "Unable to download sermon message. " +
+								"Please clear some space and try again. \(size - space) needed.",
+								preferredStyle: .alert)
+							
+							let OkAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+							
+							alert.addAction(OkAction)
+							self.present(alert, animated: true, completion: nil)
+						}
+					}
+					else {
+						try FileManager.default.moveItem(at: location, to: outputURL)
+	
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // aifc
+						self.finishDownload()
+					}
 				} catch {
-
+					// an error ocurred
+					self.currentlyDownloading = false
 					print(error)
 				}
 			}
@@ -177,15 +194,17 @@ extension NowPlayingViewController {
 		// for this we will need to look at the storage in Defaults and see which messages have been saved
 		
 		// change button behavior now that things are happening
-		self.downloadedSermonsButton?.isEnabled = true
-		self.downloadButton.isEnabled = false
-		self.currentlyDownloading = false
+		DispatchQueue.main.async {
+			self.downloadedSermonsButton?.isEnabled = true
+			self.downloadButton.isEnabled = false
+			self.currentlyDownloading = false
+		}
 	}
 
 	func readDLMessageIds() {
 		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
-			self.downloadedMessageIds = loadedData
 			
+			self.downloadedMessageIds = loadedData
 		}
 	}
 	

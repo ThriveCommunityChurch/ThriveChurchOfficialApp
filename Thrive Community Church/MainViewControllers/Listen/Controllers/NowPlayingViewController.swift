@@ -20,6 +20,8 @@ class NowPlayingViewController: UIViewController {
 	var downloadedMessageIds = [String]()
 	var currentMessageId: String? = nil
 	var currentlyDownloading: Bool = false
+	var sermonSeriesArt: UIImage?
+	var loaded: Bool = false
 	
 	// UI Elements
 	
@@ -280,11 +282,55 @@ class NowPlayingViewController: UIViewController {
 			self.notPlayingText.isHidden = true
 			setupViews()
 			player = SermonAVPlayer.sharedInstance.getPlayer()
+			loaded = true
 		}
 		else {
 			self.checkIfUserHasDownloads(isInit: true)
 		}
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		if !loaded {
+			let playerStatus = self.checkPlayerStatus()
+			
+			if playerStatus {
+				
+				self.notPlayingText.isHidden = true
+				setupViews()
+				player = SermonAVPlayer.sharedInstance.getPlayer()
+				
+				// make sure that the buttons are init properly
+				loaded = true
+				self.playButton.isEnabled = false
+				self.stopButton.isEnabled = true
+				self.pauseButton.isEnabled = true
+				self.rwButton.isEnabled = true
+				self.ffButton.isEnabled = true
+			}
+			else {
+				self.checkIfUserHasDownloads(isInit: true)
+			}
+		}
+		
+		let playerStatus = self.checkPlayerStatus()
+		
+		if loaded && playerStatus {
+			
+			self.notPlayingText.isHidden = true
+			setupViews()
+			player = SermonAVPlayer.sharedInstance.getPlayer()
+			
+			// make sure that the buttons are init properly
+			loaded = true
+			self.playButton.isEnabled = false
+			self.stopButton.isEnabled = true
+			self.pauseButton.isEnabled = true
+			self.rwButton.isEnabled = true
+			self.ffButton.isEnabled = true
+		}
+	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -425,6 +471,7 @@ class NowPlayingViewController: UIViewController {
 		// we don't want to allocate memory for this message object if we don't have to
 		if self.downloadButton.isEnabled {
 			self.messageForDownload = dataDump["message"] as? SermonMessage
+			self.messageForDownload?.seriesArt = UIImagePNGRepresentation((dataDump["sermonGraphic"] as? UIImage)!)
 		}
 		
 	}

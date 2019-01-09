@@ -41,7 +41,7 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 	// use this to indicate to the user about how much space the stored item is taking up
 	let storageSizeLabel: UILabel = {
 		let label = UILabel()
-		label.textAlignment = .left
+		label.textAlignment = .right
 		label.font = UIFont(name: "Avenir-Light", size: 14)
 		label.textColor = .lightGray
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +71,7 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 		self.addSubview(titleLabel)
 		self.addSubview(dateLabel)
 		self.addSubview(speakerLabel)
+		self.addSubview(storageSizeLabel)
 		
 		// add constraints
 		NSLayoutConstraint.activate([
@@ -82,7 +83,9 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 			dateLabel.widthAnchor.constraint(equalToConstant: 50),
 			speakerLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8),
 			speakerLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-			speakerLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)
+			speakerLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+			storageSizeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+			storageSizeLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor)
 		])
 		
 	}

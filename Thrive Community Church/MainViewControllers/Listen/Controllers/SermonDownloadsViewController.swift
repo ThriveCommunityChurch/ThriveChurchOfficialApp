@@ -12,6 +12,7 @@ import AVFoundation
 
 class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate {
 
+	// UI Elements
 	let downloadsTableView: UITableView = {
 		let table = UITableView()
 		table.backgroundColor = UIColor.almostBlack
@@ -23,6 +24,9 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		return table
 	}()
 	
+	var sortingbutton: UIBarButtonItem?
+	
+	// Data types
 	var downloadedMessages = [SermonMessage]()
 	var downloadedMessageIds = [String]()
 	
@@ -30,6 +34,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 	var alphaSelected: Bool = false
 	var dateSelected: Bool = false
 	var stampSelected: Bool = false
+	var sizeSelected: Bool = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +45,8 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		self.downloadsTableView.register(DownloadedMessageTableViewCell.self, forCellReuseIdentifier: "Cell")
 		
 		let image = UIImage(named: "sorting")
-		let sortingbutton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(openSortingOptions))
-		sortingbutton.tintColor = UIColor.white
+		sortingbutton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(openSortingOptions))
+		sortingbutton?.tintColor = UIColor.white
 		
 		self.navigationItem.rightBarButtonItem = sortingbutton
 		
@@ -64,6 +69,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		cell.titleLabel.text = message.Title
 		cell.dateLabel.text = message.Date
 		cell.speakerLabel.text = message.Speaker
+		cell.storageSizeLabel.text = "\(message.downloadSizeMB?.rounded(toPlace: 1) ?? 0.0) MB"
 		
 		// make the selection color less intense
 		let selectedView = UIView()
@@ -138,9 +144,15 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			}
 		}
 		
+		// set the initial sorting
 		stampSelected = true
-		
 		sortMessagesByTimestampDesc()
+		
+		// however disable this button if there are only 1 items in the list
+		// because sorting 1 item makes no sense
+		if self.downloadedMessages.count == 1 {
+			self.sortingbutton?.isEnabled = false
+		}
 	}
 	
 	func presentOptions(message: SermonMessage, indexPath: IndexPath) {
@@ -154,10 +166,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			self.downloadsTableView.deselectRow(indexPath: indexPath)
 			
 			// look in the shared file folder for the mp3 and play it using
-			// SermonAVPlayer.sharedInstance
-			self.downloadedMessageIds.removeAll(where: { (value) -> Bool in
-				value == message.MessageId
-			})
+			SermonAVPlayer.sharedInstance.initLocally(selectedMessage: message)
 			
 		}
 		
@@ -167,10 +176,34 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			
 			// look in the shared file folder for the mp3 and play it using
 			// SermonAVPlayer.sharedInstance
+			do {
+				let fileUrl = URL(string: message.LocalAudioURI!)
+			    try FileManager.default.removeItem(at: fileUrl!)
+				print("File deleted")
+			}
+			catch {
+				print("\n\nERR: Delete Failed. File not found...\n\n")
+			}
+			UserDefaults.standard.removeObject(forKey: message.MessageId)
 			
+			self.downloadedMessageIds.removeAll(where: { (value) -> Bool in
+				value == message.MessageId
+			})
+			
+			// remove it from memory
+			self.downloadedMessages.remove(at: indexPath.row)
+			self.downloadsTableView.reloadData()
+			
+			// remove from UD
+			UserDefaults.standard.set(self.downloadedMessageIds, forKey: ApplicationVariables.DownloadedMessages)
+			UserDefaults.standard.synchronize()
+			
+			print("Successfully deleted download")
 		}
 		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+			self.downloadsTableView.deselectRow(indexPath: indexPath)
+		}
 		
 		alert.addAction(listenAction)
 		alert.addAction(deleteAction)
@@ -189,6 +222,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		var alphabeticalOption: UIAlertAction?
 		var dateOption: UIAlertAction?
 		var stampOption: UIAlertAction?
+		var sizeOption: UIAlertAction?
 		
 		if !alphaSelected {
 			alphabeticalOption = UIAlertAction(title: "Alphabetically",
@@ -212,6 +246,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 				self.alphaSelected = false
 				self.dateSelected = true
 				self.stampSelected = false
+				self.sizeSelected = false
 			}
 			alert.addAction(dateOption ?? UIAlertAction())
 		}
@@ -225,8 +260,23 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 				self.alphaSelected = false
 				self.dateSelected = false
 				self.stampSelected = true
+				self.sizeSelected = false
 			}
 			alert.addAction(stampOption ?? UIAlertAction())
+		}
+		
+		if !sizeSelected {
+			sizeOption = UIAlertAction(title: "File Size",
+										style: .default) { (action) in
+											
+				// sort by the day this sermon was downloaded
+				self.sortMessagesBySizeDesc()
+				self.alphaSelected = false
+				self.dateSelected = false
+				self.stampSelected = false
+				self.sizeSelected = true
+			}
+			alert.addAction(sizeOption ?? UIAlertAction())
 		}
 		
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -241,8 +291,6 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		formatter.dateFormat = "M.d.yy"
 		
 		self.downloadedMessages = self.downloadedMessages.sorted {
-			// this Anonymous closure means is the one after the one we are looking at less than this one?
-			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
 			formatter.date(from: $1.Date) ?? Date() < formatter.date(from: $0.Date) ?? Date()
 		}
 		
@@ -252,8 +300,6 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 	func sortAlphaAsc() {
 		
 		self.downloadedMessages = self.downloadedMessages.sorted {
-			// this Anonymous closure means is the one after the one we are looking at less than this one?
-			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
 			$0.Title < $1.Title
 		}
 		
@@ -266,6 +312,17 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			// this Anonymous closure means is the one after the one we are looking at less than this one?
 			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
 			$1.DownloadedOn?.isLess(than: $0.DownloadedOn ?? 0.0) ?? false
+		}
+		
+		self.downloadsTableView.reloadData()
+	}
+	
+	func sortMessagesBySizeDesc() {
+		
+		self.downloadedMessages = self.downloadedMessages.sorted {
+			// this Anonymous closure means is the one after the one we are looking at less than this one?
+			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
+			$1.downloadSizeMB?.isLess(than: $0.downloadSizeMB ?? 0.0) ?? false
 		}
 		
 		self.downloadsTableView.reloadData()

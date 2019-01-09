@@ -30,8 +30,12 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// Physical Size of the downloaded file, we can report this to the user
 	var downloadSizeMB: Double?
 	
+	// do we need to keep a NSCache here for the image when we download it?
+	var seriesArt: Data?
+	
 	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
-		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?) {
+		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?,
+		seriesArt: Data?) {
 		self.AudioUrl = audio
 		self.VideoUrl = video
 		self.PassageRef = psg
@@ -43,6 +47,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.DownloadedOn = downloaded
 		self.LocalAudioURI = localURI
 		self.downloadSizeMB = size
+		self.seriesArt = seriesArt
 	}
 	
 	required convenience init(coder aDecoder: NSCoder) {
@@ -57,9 +62,10 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as! Double?
 		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as! String?
 		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as! Double?
+		let art = aDecoder.decodeObject(forKey: "seriesArt") as! Data?
 		self.init(audio: audio, video: video, psg: psg, spkr: spkr, name: name,
 				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,
-				  localURI: localURI, size: size)
+				  localURI: localURI, size: size, seriesArt: art)
 	}
 	
 	func encode(with aCoder: NSCoder) {
@@ -73,6 +79,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		aCoder.encode(WeekNum, forKey: "WeekNum")
 		aCoder.encode(DownloadedOn, forKey: "DownloadedOn")
 		aCoder.encode(LocalAudioURI, forKey: "LocalAudioURI")
-		aCoder.encode(LocalAudioURI, forKey: "downloadSizeMB")
+		aCoder.encode(downloadSizeMB, forKey: "downloadSizeMB")
+		aCoder.encode(seriesArt, forKey: "seriesArt")
 	}
 }
