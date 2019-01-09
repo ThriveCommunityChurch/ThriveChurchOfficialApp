@@ -30,7 +30,8 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// Physical Size of the downloaded file, we can report this to the user
 	var downloadSizeMB: Double?
 	
-	// do we need to keep a NSCache here for the image when we download it?
+	// TODO: Move this to FileManager
+	/// Store byte representations of Images since these would need to be stored with FileManager otherwise
 	var seriesArt: Data?
 	
 	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
