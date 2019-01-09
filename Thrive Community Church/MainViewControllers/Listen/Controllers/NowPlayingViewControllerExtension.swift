@@ -77,15 +77,6 @@ extension NowPlayingViewController {
 		// First: Go to the downloaded messages collection and see if there are any there
 		// if there are we can send these along to the next VC
 		
-		/*
-		TODO: remove these guids from UD
-			"3cf76bc1-d8b2-4a9e-8f15-e52feee341c3"
-			"014fd984-e66c-4c96-81a9-410b856bad49"
-			"79118960-f44c-4eaf-86dd-378e6aa81309"
-			"40d72502-6571-424f-9978-559c3947cb25"
-			"275a5b48-fd7c-40a6-8a40-166061023e37"
-		*/
-		
 		let vc = SermonDownloadsViewController()
 		self.show(vc, sender: self)
 	}
