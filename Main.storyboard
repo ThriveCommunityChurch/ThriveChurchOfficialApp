@@ -4777,6 +4777,9 @@
                     <navigationItem key="navigationItem" title="Listen" id="rcU-Yf-dJw">
                         <barButtonItem key="leftBarButtonItem" image="live" id="00c-yv-CV2">
                             <color key="tintColor" red="0.74509803919999995" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="openLive:" destination="zOG-Tz-Vdk" id="4Ty-pm-NN7"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="playback" style="plain" id="iXq-Fb-JQT">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

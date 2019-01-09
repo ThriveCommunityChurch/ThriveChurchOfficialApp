@@ -20,6 +20,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	var expireTime: Date?
 	var timer = Timer()
 	var pollingData: LivePollingResponse?
+	var livestreamData: LivestreamingResponse?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,5 +100,20 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
 		}
 	}
+	
+	// MARK: - Methods
+	@IBAction func openLive(_ sender: Any) {
+		let url = URL(string: "https://facebook.com/thriveFl/videos/1234678")!
+		let appURL = URL(string: "fb://profile/157139164480128")!
+		
+		// if we can't open the link directly, then just go to the page in FB and hopefully they see we are streaming
+		if UIApplication.shared.canOpenURL(appURL) {
+			UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+		}
+		else {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+	}
+	
 
 }

@@ -400,6 +400,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		self.currentlyDownloading = false
 		self.messageForDownload = nil
+		print("Done!")
 	}
 	
 	private func readDLMessageIds() {

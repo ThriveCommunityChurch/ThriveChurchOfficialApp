@@ -98,14 +98,15 @@ extension ListenCollectionViewController {
 				let livestream = try JSONDecoder().decode(LivestreamingResponse.self, from: data!)
 
 				DispatchQueue.main.async {
-					// transition to another view
-					print(livestream)
 					
 					if livestream.IsLive {
 						
 						// we also need to know how much longer is left on the stream
 						// so we need to call the polling route at least once
 						// so that we can make sure the stream hasn't passed and the API failed to update mongo
+						
+						self.livestreamData = livestream
+						
 						self.pollForLiveData()
 					}
 					else {
