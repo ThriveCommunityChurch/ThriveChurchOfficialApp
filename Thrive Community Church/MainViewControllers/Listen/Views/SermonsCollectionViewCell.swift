@@ -37,7 +37,6 @@ class SermonsCollectionViewCell: UICollectionViewCell {
 			seriesArt.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 			seriesArt.topAnchor.constraint(equalTo: self.topAnchor),
 			seriesArt.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-			]
-		)
+		])
 	}
 }

@@ -22,19 +22,39 @@ class SermonAVPlayer {
 	private var messageTitle: String = ""
 	private var sermonGraphic: UIImage? = nil
 	private var messageDate: String = ""
+	private var message: SermonMessage? = nil
+	
+	/// Flag for if this currently playing audio has been downloaded
+	private var isDownloaded: Bool = false
 	
 	public func initUsingRssString(rssUrl: String, sermonData: SermonSeries,
 								   selectedMessage: SermonMessage, seriesImage: UIImage) {
 		
-		player = AVPlayer()
+		if self.isPlaying {
+			self.stop()
+		}
 		
-		guard let url = URL.init(string: rssUrl) else { return }
-		let playerItem = AVPlayerItem.init(url: url)
-		self.player = AVPlayer.init(playerItem: playerItem)
+		guard let url = URL(string: rssUrl) else { return }
+		let playerItem = AVPlayerItem(url: url)
+		self.player = AVPlayer(playerItem: playerItem)
 		self.play()
 		self.isPlaying = true
 		
 		self.registerData(sermonData: sermonData, selectedMessage: selectedMessage, seriesImage: seriesImage)
+	}
+	
+	public func initLocally(selectedMessage: SermonMessage) {
+		
+		if self.isPlaying {
+			self.stop()
+		}
+		
+		guard let url = URL(string: selectedMessage.LocalAudioURI ?? "") else { return }
+		self.player = AVPlayer(url: url)
+		self.play()
+		self.isPlaying = true
+		
+		self.registerDataFromLocal(selectedMessage: selectedMessage)
 	}
 	
 	public func pause() {
@@ -78,9 +98,28 @@ class SermonAVPlayer {
 		self.weekNum = selectedMessage.WeekNum ?? 0
 		self.sermonGraphic = seriesImage
 		self.messageDate = selectedMessage.Date
+		self.isDownloaded = selectedMessage.DownloadedOn != nil
+		
+		// load everything from the selected message and put it in the response one, we will use this
+		// as the message object we store in the UserDefaults for it's MessageId
+		message = selectedMessage
 	}
 	
-	
+	private func registerDataFromLocal(selectedMessage: SermonMessage) {
+		
+		self.passageRef = selectedMessage.PassageRef ?? ""
+		self.messageTitle = selectedMessage.Title
+		self.speaker = selectedMessage.Speaker
+		self.weekNum = selectedMessage.WeekNum ?? 0
+		self.sermonGraphic = selectedMessage.seriesArt?.uiImage
+		self.messageDate = selectedMessage.Date
+		self.isDownloaded = selectedMessage.DownloadedOn != nil
+		
+		// load everything from the selected message and put it in the response one, we will use this
+		// as the message object we store in the UserDefaults for it's MessageId
+		message = selectedMessage
+	}
+
 	public func getDataForPlayback() -> [String: Any]? {
 		
 		if !self.isPlaying {
@@ -95,12 +134,21 @@ class SermonAVPlayer {
 						"passageRef": passageRef,
 						"messageTitle": messageTitle,
 						"sermonGraphic": sermonGraphic as Any,
-						"messageDate": messageDate]
+						"messageDate": messageDate,
+						"isDownloaded": isDownloaded,
+						"message": message as Any]
 		
 		return responseDict
 	}
 	
 	public func getPlayer() -> AVPlayer {
 		return self.player!
+	}
+}
+
+// Use this to convert between images and data
+extension Data {
+	var uiImage: UIImage? {
+		return UIImage(data: self)
 	}
 }

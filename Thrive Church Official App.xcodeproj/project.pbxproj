@@ -15,7 +15,8 @@
 		41FF24A81D171EC30048E6AF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A61D171EC30048E6AF /* CoreAudio.framework */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
 		DC0FB22B21CB400300908D06 /* SermonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */; };
-		DC0FB22D21CB406900908D06 /* ListenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */; };
+		DC13383F21E582580089B3DD /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC13383E21E582580089B3DD /* DoubleExtension.swift */; };
+		DC13384121E584270089B3DD /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC13384021E584270089B3DD /* Storage.swift */; };
 		DC1EBF7D21D84503001B1673 /* SermonAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EBF7C21D84503001B1673 /* SermonAVPlayer.swift */; };
 		DC1EBF7F21D84A37001B1673 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EBF7E21D84A37001B1673 /* NowPlayingViewController.swift */; };
 		DC1EBF8121D8812F001B1673 /* NowPlayingViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EBF8021D8812F001B1673 /* NowPlayingViewControllerExtension.swift */; };
@@ -23,12 +24,16 @@
 		DC21E1F320FBEE690054437D /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21E1F220FBEE690054437D /* OnboardingPage.swift */; };
 		DC21E1F620FBF0660054437D /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21E1F520FBF0660054437D /* OnboardingCell.swift */; };
 		DC21E1F820FBF1040054437D /* OnboardingControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21E1F720FBF1040054437D /* OnboardingControllerExtension.swift */; };
+		DC246E2C21DA7A05007BA4D1 /* SermonDownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E2B21DA7A05007BA4D1 /* SermonDownloadsViewController.swift */; };
 		DC246E3021DA7D57007BA4D1 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E2F21DA7D57007BA4D1 /* ImageCache.swift */; };
 		DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2667DE1F37FBA20020424C /* SettingsViewController.swift */; };
 		DC2D8F8220DC60CE00C9C938 /* OpenBiblePassageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D8F8120DC60CE00C9C938 /* OpenBiblePassageViewController.swift */; };
 		DC2D8F8420DC64D000C9C938 /* BiblePassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D8F8320DC64D000C9C938 /* BiblePassage.swift */; };
 		DC2D8F8A20DC6E1700C9C938 /* TraditionalSortBibleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D8F8920DC6E1700C9C938 /* TraditionalSortBibleTableViewController.swift */; };
 		DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D8F8D20DC712A00C9C938 /* TableViewControllerExtension.swift */; };
+		DC3CAD3221E2497A00C17EAF /* DownloadedMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */; };
+		DC3CAD3C21E2B94400C17EAF /* ListenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */; };
+		DC3CAD3E21E2BDAC00C17EAF /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */; };
 		DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45330020B468A90021C796 /* WebViewExtension.swift */; };
 		DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */; };
 		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
@@ -64,7 +69,6 @@
 		DCE3630E1F05610600725F11 /* PrayerRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8471F0494FF002784E7 /* PrayerRequestsViewController.swift */; };
 		DCE3630F1F05610600725F11 /* ServeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8481F0494FF002784E7 /* ServeViewController.swift */; };
 		DCE363101F05610600725F11 /* SmallGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */; };
-		DCE363111F05610600725F11 /* SermonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84B1F0494FF002784E7 /* SermonsViewController.swift */; };
 		DCE363121F05610600725F11 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84D1F0494FF002784E7 /* AboutViewController.swift */; };
 		DCE363151F05610600725F11 /* giveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8501F0494FF002784E7 /* giveViewController.swift */; };
 		DCE363161F05610600725F11 /* ImNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8511F0494FF002784E7 /* ImNewViewController.swift */; };
@@ -140,7 +144,6 @@
 		DC01B8471F0494FF002784E7 /* PrayerRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRequestsViewController.swift; sourceTree = "<group>"; };
 		DC01B8481F0494FF002784E7 /* ServeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServeViewController.swift; sourceTree = "<group>"; };
 		DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallGroupViewController.swift; sourceTree = "<group>"; };
-		DC01B84B1F0494FF002784E7 /* SermonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonsViewController.swift; sourceTree = "<group>"; };
 		DC01B84D1F0494FF002784E7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		DC01B8501F0494FF002784E7 /* giveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = giveViewController.swift; sourceTree = "<group>"; };
 		DC01B8511F0494FF002784E7 /* ImNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImNewViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +153,8 @@
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonsCollectionViewCell.swift; sourceTree = "<group>"; };
-		DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
+		DC13383E21E582580089B3DD /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		DC13384021E584270089B3DD /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		DC1EBF7C21D84503001B1673 /* SermonAVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonAVPlayer.swift; sourceTree = "<group>"; };
 		DC1EBF7E21D84A37001B1673 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		DC1EBF8021D8812F001B1673 /* NowPlayingViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 		DC21E1F220FBEE690054437D /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		DC21E1F520FBF0660054437D /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		DC21E1F720FBF1040054437D /* OnboardingControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingControllerExtension.swift; sourceTree = "<group>"; };
+		DC246E2B21DA7A05007BA4D1 /* SermonDownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonDownloadsViewController.swift; sourceTree = "<group>"; };
 		DC246E2F21DA7D57007BA4D1 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		DC2667DE1F37FBA20020424C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DC2D8F8120DC60CE00C9C938 /* OpenBiblePassageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBiblePassageViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +173,9 @@
 		DC3835281F68D8C800F05E8B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3835291F68D8C800F05E8B /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC38352A1F68D8C800F05E8B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedMessageTableViewCell.swift; sourceTree = "<group>"; };
+		DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
+		DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		DC45330020B468A90021C796 /* WebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewExtension.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -340,6 +348,9 @@
 				DC7348B821D5D2500057227D /* UIImageViewExtension.swift */,
 				DC21E1F420FBEE820054437D /* Onboarding */,
 				DC7348C221D6BDFE0057227D /* StringExtensions.swift */,
+				DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */,
+				DC13383E21E582580089B3DD /* DoubleExtension.swift */,
+				DC13384021E584270089B3DD /* Storage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,17 +407,9 @@
 		DC01B84A1F0494FF002784E7 /* Listen */ = {
 			isa = PBXGroup;
 			children = (
+				DC3CAD3421E2B52C00C17EAF /* Controllers */,
+				DC3CAD3321E2B4A100C17EAF /* Views */,
 				DCBCE19821D1200F00E3DCA4 /* Models */,
-				DC01B84B1F0494FF002784E7 /* SermonsViewController.swift */,
-				DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */,
-				DC0FB22C21CB406900908D06 /* ListenCollectionViewController.swift */,
-				DCBCE19921D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift */,
-				DC1EBF7E21D84A37001B1673 /* NowPlayingViewController.swift */,
-				DC1EBF8021D8812F001B1673 /* NowPlayingViewControllerExtension.swift */,
-				DC7348BC21D5EE550057227D /* SeriesViewController.swift */,
-				DC7348C021D6AE5F0057227D /* SermonMessageTableViewCell.swift */,
-				DC1EBF7C21D84503001B1673 /* SermonAVPlayer.swift */,
-				DC246E2F21DA7D57007BA4D1 /* ImageCache.swift */,
 			);
 			path = Listen;
 			sourceTree = "<group>";
@@ -445,15 +448,40 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		DC3CAD3321E2B4A100C17EAF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */,
+				DC0FB22A21CB400300908D06 /* SermonsCollectionViewCell.swift */,
+				DC7348C021D6AE5F0057227D /* SermonMessageTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC3CAD3421E2B52C00C17EAF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */,
+				DCBCE19921D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift */,
+				DC1EBF7E21D84A37001B1673 /* NowPlayingViewController.swift */,
+				DC1EBF8021D8812F001B1673 /* NowPlayingViewControllerExtension.swift */,
+				DC7348BC21D5EE550057227D /* SeriesViewController.swift */,
+				DC246E2B21DA7A05007BA4D1 /* SermonDownloadsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		DCBCE19821D1200F00E3DCA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC246E2F21DA7D57007BA4D1 /* ImageCache.swift */,
+				DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */,
+				DC7348C421D6F8070057227D /* LivestreamingResponse.swift */,
+				DC1EBF7C21D84503001B1673 /* SermonAVPlayer.swift */,
+				DC7348BE21D6AB800057227D /* SermonMessage.swift */,
 				DCBCE19621D11F6500E3DCA4 /* SermonSeriesSummary.swift */,
 				DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */,
 				DC7348BA21D5DE720057227D /* SermonSeriesResponse.swift */,
-				DC7348BE21D6AB800057227D /* SermonMessage.swift */,
-				DC7348C421D6F8070057227D /* LivestreamingResponse.swift */,
-				DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -727,6 +755,7 @@
 				DCBCE19721D11F6500E3DCA4 /* SermonSeriesSummary.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */,
+				DC13383F21E582580089B3DD /* DoubleExtension.swift in Sources */,
 				DC246E2C21DA7A05007BA4D1 /* SermonDownloadsViewController.swift in Sources */,
 				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
@@ -738,20 +767,22 @@
 				DC0FB22B21CB400300908D06 /* SermonsCollectionViewCell.swift in Sources */,
 				DCE363091F05610600725F11 /* FGCUNotificationsViewController.swift in Sources */,
 				DC7348BD21D5EE550057227D /* SeriesViewController.swift in Sources */,
+				DC13384121E584270089B3DD /* Storage.swift in Sources */,
 				DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */,
+				DC3CAD3E21E2BDAC00C17EAF /* UITableViewExtension.swift in Sources */,
 				DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */,
 				DCE3630C1F05610600725F11 /* ThriveFGCUViewController.swift in Sources */,
 				DC21E1F320FBEE690054437D /* OnboardingPage.swift in Sources */,
 				DC7348C321D6BDFE0057227D /* StringExtensions.swift in Sources */,
 				DCE3630D1F05610600725F11 /* MailChimpViewController.swift in Sources */,
-				DC0FB22D21CB406900908D06 /* ListenCollectionViewController.swift in Sources */,
 				DCE3630E1F05610600725F11 /* PrayerRequestsViewController.swift in Sources */,
 				DCC2398C20FFFDC7005973FA /* UIColorExtension.swift in Sources */,
+				DC3CAD3C21E2B94400C17EAF /* ListenCollectionViewController.swift in Sources */,
 				DCE3630F1F05610600725F11 /* ServeViewController.swift in Sources */,
 				DC21E1F820FBF1040054437D /* OnboardingControllerExtension.swift in Sources */,
 				DCE363101F05610600725F11 /* SmallGroupViewController.swift in Sources */,
 				DC7348B721D539FB0057227D /* SermonSeriesSummaryResponse.swift in Sources */,
-				DCE363111F05610600725F11 /* SermonsViewController.swift in Sources */,
+				DC3CAD3221E2497A00C17EAF /* DownloadedMessageTableViewCell.swift in Sources */,
 				DC7348BB21D5DE720057227D /* SermonSeriesResponse.swift in Sources */,
 				DCE363121F05610600725F11 /* AboutViewController.swift in Sources */,
 				DCE363151F05610600725F11 /* giveViewController.swift in Sources */,

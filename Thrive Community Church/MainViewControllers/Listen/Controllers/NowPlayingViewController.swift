@@ -12,10 +12,20 @@ import AVFoundation
 
 class NowPlayingViewController: UIViewController {
 
-	// UI Elements
-	@IBOutlet weak var notPlayingText: UILabel!
+	// Data structures for processing events & loading data
 	var player: AVPlayer?
 	let seekDuration: Float64 = 15 // numSeconds
+	var isDownloaded: Bool = false
+	var messageForDownload: SermonMessage?
+	var downloadedMessageIds = [String]()
+	var currentMessageId: String? = nil
+	var currentlyDownloading: Bool = false
+	var sermonSeriesArt: UIImage?
+	var loaded: Bool = false
+	
+	// UI Elements
+	
+	@IBOutlet weak var notPlayingText: UILabel!
 	
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
@@ -251,14 +261,19 @@ class NowPlayingViewController: UIViewController {
 		return button
 	}()
 	
+	var downloadedSermonsButton: UIBarButtonItem?
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		// TODO: Add a downloads view that allows a user to listen to anything that's
-		// been stored on their device. Use a Right nav bar button and a TableViewController
-		
-		// TODO: Also, a progress bar below where the controls are would be a suuper nice
+		// TODO: A progress bar below where the controls are would be a suuper nice
 		// added touch to this already cool feature
+		
+		let image = UIImage(named: "downloads")
+		downloadedSermonsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(viewDownloads))
+		downloadedSermonsButton?.tintColor = UIColor.white
+		
+		self.navigationItem.rightBarButtonItem = downloadedSermonsButton
 
         let playerStatus = self.checkPlayerStatus()
 
@@ -267,8 +282,34 @@ class NowPlayingViewController: UIViewController {
 			self.notPlayingText.isHidden = true
 			setupViews()
 			player = SermonAVPlayer.sharedInstance.getPlayer()
+			loaded = true
+		}
+		else {
+			self.checkIfUserHasDownloads(isInit: true)
 		}
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		if !loaded {
+			let playerStatus = self.checkPlayerStatus()
+			
+			if playerStatus {
+				reinitForPlayingSound()
+			}
+			else {
+				self.checkIfUserHasDownloads(isInit: true)
+			}
+		}
+		
+		let playerStatus = self.checkPlayerStatus()
+		
+		if loaded && playerStatus {
+			
+			reinitForPlayingSound()
+		}
+	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -278,6 +319,21 @@ class NowPlayingViewController: UIViewController {
 	func checkPlayerStatus() -> Bool {
 		let status = SermonAVPlayer.sharedInstance.checkPlayingStatus()
 		return status
+	}
+	
+	private func reinitForPlayingSound() {
+		
+		self.notPlayingText.isHidden = true
+		setupViews()
+		player = SermonAVPlayer.sharedInstance.getPlayer()
+		
+		// make sure that the buttons are init properly
+		loaded = true
+		self.playButton.isEnabled = false
+		self.stopButton.isEnabled = true
+		self.pauseButton.isEnabled = true
+		self.rwButton.isEnabled = true
+		self.ffButton.isEnabled = true
 	}
 	
 	func setupViews() {
@@ -331,15 +387,26 @@ class NowPlayingViewController: UIViewController {
 				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				seriesArt.topAnchor.constraint(equalTo: view.topAnchor),
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				messageTitleLabel.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				messageTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-				messageTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+				playerControlsView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 24),
+				playerControlsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+				playerControlsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+				playerControlsView.heightAnchor.constraint(equalToConstant: 25),
 				detailsBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				detailsBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				detailsBackgroundView.topAnchor.constraint(equalTo: messageTitleLabel.bottomAnchor, constant: 16),
+				detailsBackgroundView.topAnchor.constraint(equalTo: playerControlsView.bottomAnchor, constant: 24),
 				detailsBackgroundView.heightAnchor.constraint(equalToConstant: 120),
-				speakerLabel.leadingAnchor.constraint(equalTo: detailsBackgroundView.leadingAnchor, constant: 16),
-				speakerLabel.topAnchor.constraint(equalTo: detailsBackgroundView.topAnchor, constant: 16)
+				messageTitleLabel.leadingAnchor.constraint(equalTo: detailsBackgroundView.leadingAnchor, constant: 16),
+				messageTitleLabel.topAnchor.constraint(equalTo: detailsBackgroundView.topAnchor, constant: 16),
+				speakerLabel.leadingAnchor.constraint(equalTo: messageTitleLabel.leadingAnchor),
+				speakerLabel.topAnchor.constraint(equalTo: messageTitleLabel.bottomAnchor, constant: 16),
+				dateLabel.leadingAnchor.constraint(equalTo: speakerLabel.leadingAnchor),
+				dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
+				passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+				passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
+				controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
+				controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
+				controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
+				controlsStackView.bottomAnchor.constraint(equalTo: playerControlsView.bottomAnchor)
 			])
 		}
 		
@@ -389,7 +456,9 @@ class NowPlayingViewController: UIViewController {
 								"passageRef": passageRef,
 								"messageTitle": messageTitle,
 								"sermonGraphic": sermonGraphic as Any,
-								"messageDate": messageDate]
+								"messageDate": messageDate,
+								"isDownloaded": isDownloaded,
+								"message": message]
 		*/
 		
 		let dataDump = SermonAVPlayer.sharedInstance.getDataForPlayback()!
@@ -399,5 +468,16 @@ class NowPlayingViewController: UIViewController {
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "Date: \(dataDump["messageDate"] as? String ?? "")"
 		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
+		self.currentMessageId = (dataDump["message"] as? SermonMessage)?.MessageId
+		
+		// inside here we will disable the download button
+		self.checkIfUserHasDownloads()
+		
+		// we don't want to allocate memory for this message object if we don't have to
+		if self.downloadButton.isEnabled {
+			self.messageForDownload = dataDump["message"] as? SermonMessage
+			self.messageForDownload?.seriesArt = UIImagePNGRepresentation((dataDump["sermonGraphic"] as? UIImage)!)
+		}
+		
 	}
 }

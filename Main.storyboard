@@ -4738,6 +4738,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUJ-SI-R5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem image="playback" style="plain" id="hVe-bH-gC5">
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-618.39999999999998" y="-3149.7751124437782"/>
         </scene>

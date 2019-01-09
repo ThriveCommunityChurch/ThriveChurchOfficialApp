@@ -15,4 +15,6 @@ class ApplicationVariables {
 	static var OnboardingCacheKey = "onboarding"
 	/// Cache key for reading the saved notes taken
 	static var NotesCacheKey = "notes"
+	/// Cache key for reading/writing UIDs from sermon messages
+	static var DownloadedMessages = "messageDownloads"
 }
