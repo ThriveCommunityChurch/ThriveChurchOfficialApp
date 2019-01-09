@@ -99,7 +99,7 @@ extension NowPlayingViewController {
 	
 	func saveFileToDisk() {
 		
-		let filename = "\(messageForDownload?.MessageId ?? "").aifc"
+		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
 		
 		let documentsDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory,
 														  in: FileManager.SearchPathDomainMask.userDomainMask).last!
