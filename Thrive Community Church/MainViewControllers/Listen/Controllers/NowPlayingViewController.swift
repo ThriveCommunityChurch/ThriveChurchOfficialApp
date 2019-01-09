@@ -296,18 +296,7 @@ class NowPlayingViewController: UIViewController {
 			let playerStatus = self.checkPlayerStatus()
 			
 			if playerStatus {
-				
-				self.notPlayingText.isHidden = true
-				setupViews()
-				player = SermonAVPlayer.sharedInstance.getPlayer()
-				
-				// make sure that the buttons are init properly
-				loaded = true
-				self.playButton.isEnabled = false
-				self.stopButton.isEnabled = true
-				self.pauseButton.isEnabled = true
-				self.rwButton.isEnabled = true
-				self.ffButton.isEnabled = true
+				reinitForPlayingSound()
 			}
 			else {
 				self.checkIfUserHasDownloads(isInit: true)
@@ -318,17 +307,7 @@ class NowPlayingViewController: UIViewController {
 		
 		if loaded && playerStatus {
 			
-			self.notPlayingText.isHidden = true
-			setupViews()
-			player = SermonAVPlayer.sharedInstance.getPlayer()
-			
-			// make sure that the buttons are init properly
-			loaded = true
-			self.playButton.isEnabled = false
-			self.stopButton.isEnabled = true
-			self.pauseButton.isEnabled = true
-			self.rwButton.isEnabled = true
-			self.ffButton.isEnabled = true
+			reinitForPlayingSound()
 		}
 	}
 	
@@ -340,6 +319,21 @@ class NowPlayingViewController: UIViewController {
 	func checkPlayerStatus() -> Bool {
 		let status = SermonAVPlayer.sharedInstance.checkPlayingStatus()
 		return status
+	}
+	
+	private func reinitForPlayingSound() {
+		
+		self.notPlayingText.isHidden = true
+		setupViews()
+		player = SermonAVPlayer.sharedInstance.getPlayer()
+		
+		// make sure that the buttons are init properly
+		loaded = true
+		self.playButton.isEnabled = false
+		self.stopButton.isEnabled = true
+		self.pauseButton.isEnabled = true
+		self.rwButton.isEnabled = true
+		self.ffButton.isEnabled = true
 	}
 	
 	func setupViews() {
@@ -393,15 +387,26 @@ class NowPlayingViewController: UIViewController {
 				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				seriesArt.topAnchor.constraint(equalTo: view.topAnchor),
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				messageTitleLabel.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				messageTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-				messageTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+				playerControlsView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 24),
+				playerControlsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+				playerControlsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+				playerControlsView.heightAnchor.constraint(equalToConstant: 25),
 				detailsBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				detailsBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				detailsBackgroundView.topAnchor.constraint(equalTo: messageTitleLabel.bottomAnchor, constant: 16),
+				detailsBackgroundView.topAnchor.constraint(equalTo: playerControlsView.bottomAnchor, constant: 24),
 				detailsBackgroundView.heightAnchor.constraint(equalToConstant: 120),
-				speakerLabel.leadingAnchor.constraint(equalTo: detailsBackgroundView.leadingAnchor, constant: 16),
-				speakerLabel.topAnchor.constraint(equalTo: detailsBackgroundView.topAnchor, constant: 16)
+				messageTitleLabel.leadingAnchor.constraint(equalTo: detailsBackgroundView.leadingAnchor, constant: 16),
+				messageTitleLabel.topAnchor.constraint(equalTo: detailsBackgroundView.topAnchor, constant: 16),
+				speakerLabel.leadingAnchor.constraint(equalTo: messageTitleLabel.leadingAnchor),
+				speakerLabel.topAnchor.constraint(equalTo: messageTitleLabel.bottomAnchor, constant: 16),
+				dateLabel.leadingAnchor.constraint(equalTo: speakerLabel.leadingAnchor),
+				dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
+				passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+				passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
+				controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
+				controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
+				controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
+				controlsStackView.bottomAnchor.constraint(equalTo: playerControlsView.bottomAnchor)
 			])
 		}
 		
