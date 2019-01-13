@@ -2,6 +2,7 @@
 - Easy to view Sermon Series sorted by most recent
 - Download Sermon Audio for easy listening without an internet connection
 - Sermon Audio playback controls
+- Watch Live Streams
 - TBD
 
 ### 1.6.4  —  Oct 18, 2018
