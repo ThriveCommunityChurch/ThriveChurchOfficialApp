@@ -103,10 +103,10 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	
 	// MARK: - Methods
 	@IBAction func openLive(_ sender: Any) {
-		let url = URL(string: "https://facebook.com/thriveFl/videos/1234678")!
+		let url = URL(string: "https://facebook.com/thriveFl/")!
 		let appURL = URL(string: "fb://profile/157139164480128")!
 		
-		// if we can't open the link directly, then just go to the page in FB and hopefully they see we are streaming
+		// Go to the page in FB and hopefully they see we are streaming
 		if UIApplication.shared.canOpenURL(appURL) {
 			UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
 		}
@@ -114,6 +114,5 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 			UIApplication.shared.open(url, options: [:], completionHandler: nil)
 		}
 	}
-	
 
 }
