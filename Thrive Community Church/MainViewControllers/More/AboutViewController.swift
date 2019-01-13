@@ -49,8 +49,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 				
 			
 			
+			let year = Calendar.current.component(.year, from: Date())
 			let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
-				"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+				"\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
 				"\n\nDevice Information" +
 				"\nDevice:  \(UIDevice.current.modelName)" +
 				"\nCurrent Time: \(date)" +

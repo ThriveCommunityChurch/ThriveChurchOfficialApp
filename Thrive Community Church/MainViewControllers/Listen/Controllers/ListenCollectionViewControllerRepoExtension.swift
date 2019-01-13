@@ -305,9 +305,9 @@ extension ListenCollectionViewController {
 			let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
 			
 			
-			
+			let year = Calendar.current.component(.year, from: Date())
 			let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
-				"\n©2018 Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+				"\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
 				"\n\nDevice Information" +
 				"\nDevice:  \(UIDevice.current.modelName)" +
 				"\nCurrent Time: \(date)" +
@@ -316,8 +316,8 @@ extension ListenCollectionViewController {
 				"\nVersion: \(version)" +
 				"\nBuild #: \(buildNum)" +
 			    "\nFeedback ID: \(uuid)" +
-				"\n\nIssue Details:\n" +
-			"Error Stacktrace: \n\n \(miscApiErrorText ?? "FATL ERR: UNABLE TO PARSE API ERROR!")"
+				"\n\nIssue Details\n" +
+			"Error Stacktrace: \n\n\(miscApiErrorText ?? "FATL ERR: UNABLE TO PARSE API ERROR!")"
 			
 			
 			do {
@@ -333,7 +333,7 @@ extension ListenCollectionViewController {
 				if let fileData = NSData(contentsOfFile: fileURL.path) {
 					composeVC.addAttachmentData(fileData as Data,
 												mimeType: "text/txt",
-												fileName: "\(uuid.suffix(3)).log")
+												fileName: "\(uuid).log")
 				}
 				self.present(composeVC, animated: true, completion: nil)
 				
@@ -363,6 +363,7 @@ extension ListenCollectionViewController {
 		case MFMailComposeResult.sent.rawValue:
 			// they sent us an email so hopefully we can fix it
 			self.retryCounter = 0
+			self.retryLimited = false
 			print("Sent")
 			
 		case MFMailComposeResult.failed.rawValue:
