@@ -201,7 +201,7 @@ MFMailComposeViewControllerDelegate {
 		checkConnectivity()
 		
 		if internetConnectionStatus != .unreachable {
-			if retryCounter >= 5 {
+			if retryCounter >= 3 {
 				// don't let anyone retry more than a few times because it looks like nothing is changing
 				// if a user is still having issues then the API is probably down
 				// or they are not online
