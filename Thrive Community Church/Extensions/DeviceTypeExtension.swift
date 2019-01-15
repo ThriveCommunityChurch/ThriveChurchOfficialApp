@@ -53,6 +53,10 @@ public extension UIDevice {
 		case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
 		case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
 		case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
+		case "iPad7,5": 				return "iPad 6th Gen (WiFi)"
+		case "iPad7,6": 				return "iPad 6th Gen (WiFi+Cellular)"
+		case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":return "iPad Pro 3rd Gen 11 Inch"
+		case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":return "iPad Pro 3rd Gen 12.9 Inch"
 		case "i386", "x86_64":                          return "Simulator"
 		default:                                        return identifier
 		}
