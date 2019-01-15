@@ -23,6 +23,7 @@ MFMailComposeViewControllerDelegate {
 	var timer = Timer()
 	var pollingData: LivePollingResponse?
 	var livestreamData: LivestreamingResponse?
+	var internetConnectionStatus: Network.Status = .unreachable
 	
 	// API Connectivity issues
 	var retryCounter: Int = 0
@@ -82,9 +83,18 @@ MFMailComposeViewControllerDelegate {
 		}
 		
         // call the API and determine how many of them there are
-		setupViews()
-		self.fetchAllSermons(isReset: false)
-		self.fetchLiveStream()
+		checkConnectivity()
+		
+		// assuming there is an internet connection, do the things
+		if internetConnectionStatus != .unreachable {
+			setupViews()
+			self.fetchAllSermons(isReset: false)
+			self.fetchLiveStream()
+		}
+		else {
+			setupViews()
+			self.enableErrorViews(status: self.internetConnectionStatus)
+		}
     }
 
     // MARK: UICollectionViewDataSource
@@ -188,20 +198,26 @@ MFMailComposeViewControllerDelegate {
 	@objc func retryPageLoad() {
 		
 		retryCounter = retryCounter + 1
+		checkConnectivity()
 		
-		if retryCounter >= 5 {
-			// don't let anyone retry more than a few times because it looks like nothing is changing
-			// if a user is still having issues then the API is probably down
-			// or they are not online
-			
-			retryLimited = true
-			fetchAllSermons(isReset: true)
+		if internetConnectionStatus != .unreachable {
+			if retryCounter >= 5 {
+				// don't let anyone retry more than a few times because it looks like nothing is changing
+				// if a user is still having issues then the API is probably down
+				// or they are not online
+				
+				retryLimited = true
+				fetchAllSermons(isReset: true)
+			}
+			else {
+				
+				// call the API and determine how many of them there are
+				self.fetchAllSermons(isReset: true)
+				self.fetchLiveStream()
+			}
 		}
 		else {
-			
-			// call the API and determine how many of them there are
-			self.fetchAllSermons(isReset: true)
-			self.fetchLiveStream()
+			self.enableErrorViews(status: self.internetConnectionStatus)
 		}
 	}
 

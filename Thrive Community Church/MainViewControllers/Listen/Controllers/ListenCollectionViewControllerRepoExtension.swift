@@ -26,8 +26,14 @@ extension ListenCollectionViewController {
 				self.miscApiErrorText = "\(error!)"
 				
 				DispatchQueue.main.async {
-					if self.apiErrorMessage.isHidden {
-						self.enableErrorViews()
+					
+					if self.internetConnectionStatus != .unreachable {
+						self.enableErrorViews(status: self.internetConnectionStatus)
+					}
+					else {
+						if self.apiErrorMessage.isHidden {
+							self.enableErrorViews(status: self.internetConnectionStatus)
+						}
 					}
 					
 					if self.retryLimited {
@@ -73,9 +79,15 @@ extension ListenCollectionViewController {
 			if error != nil {
 				
 				DispatchQueue.main.async {
-					if self.apiErrorMessage.isHidden {
-						self.miscApiErrorText = "\(error!)"
-						self.enableErrorViews()
+					self.miscApiErrorText = "\(error!)"
+					
+					if self.internetConnectionStatus != .unreachable {
+						self.enableErrorViews(status: self.internetConnectionStatus)
+					}
+					else {
+						if self.apiErrorMessage.isHidden {
+							self.enableErrorViews(status: self.internetConnectionStatus)
+						}
 					}
 					
 					if self.retryLimited {
@@ -376,7 +388,26 @@ extension ListenCollectionViewController {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
-	func enableErrorViews () {
+	func enableErrorViews (status: Network.Status) {
+		
+		if status == .unreachable {
+			// if they are offline update the message and inform them that they
+			// will be unable to use services
+			self.apiErrorMessage.text = "You are currently offline." +
+			"\n\nTo stream sermons, enable internet access and tap the button below."
+			self.retryButton.setTitle("I'm Online", for: .normal)
+			self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
+			self.retryButton.addTarget(self, action: #selector(testOnlineAndResetViews), for: .touchUpInside)
+		}
+		else {
+			apiErrorMessage.text = "An error ocurred while loading the content.\n\n" +
+				"Check your internet connection and try again. If the issue persists send " +
+			"us an email at \nwyatt@thrive-fl.org."
+			self.retryButton.setTitle("Retry?", for: .normal)
+			self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
+			self.retryButton.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
+		}
+		
 		self.apiErrorMessage.isHidden = false
 		self.backgroundView.isHidden = false
 		self.retryButton.isHidden = false
@@ -411,6 +442,24 @@ extension ListenCollectionViewController {
 			self.fetchLiveStream()
 			self.retryCounter = 0
 			self.retryLimited = false
+		}
+	}
+	
+	func checkConnectivity() {
+		// check status
+		guard let status = Network.reachability?.status else { return }
+		self.internetConnectionStatus = status
+	}
+	
+	@objc func testOnlineAndResetViews() {
+		
+		checkConnectivity()
+		
+		if self.internetConnectionStatus != .unreachable {
+			
+			// call the API and determine if the user is online
+			self.fetchAllSermons(isReset: true)
+			self.fetchLiveStream()
 		}
 	}
 }
