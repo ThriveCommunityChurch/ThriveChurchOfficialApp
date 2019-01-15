@@ -449,6 +449,11 @@ extension ListenCollectionViewController {
 		// check status
 		guard let status = Network.reachability?.status else { return }
 		self.internetConnectionStatus = status
+		
+		// override this on the Simulator and that way we can still develop things
+		if UIDevice.current.modelName == "Simulator" {
+			self.internetConnectionStatus == .wifi
+		}
 	}
 	
 	@objc func testOnlineAndResetViews() {
