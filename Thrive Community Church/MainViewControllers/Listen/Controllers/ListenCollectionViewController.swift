@@ -6,11 +6,13 @@
 //  Copyright © 2018 Thrive Community Church. All rights reserved.
 //
 
+import MessageUI
 import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ListenCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ListenCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
+MFMailComposeViewControllerDelegate {
 
 	@IBOutlet weak var livestreamButton: UIBarButtonItem!
 	var sermonSeries = [SermonSeriesSummary]()
@@ -21,6 +23,43 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 	var timer = Timer()
 	var pollingData: LivePollingResponse?
 	var livestreamData: LivestreamingResponse?
+	var internetConnectionStatus: Network.Status = .unreachable
+	
+	// API Connectivity issues
+	var retryCounter: Int = 0
+	var miscApiErrorText: String?
+	var retryLimited: Bool = false
+	
+	let apiErrorMessage: UILabel = {
+		let label = UILabel()
+		label.text = "An error ocurred while loading the content.\n\n" +
+		"Check your internet connection and try again. If the issue persists send " +
+		"us an email at \nwyatt@thrive-fl.org."
+		label.font = UIFont(name: "Avenir-Medium", size: 16)
+		label.textColor = .lightGray
+		label.textAlignment = .center
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.numberOfLines = 7
+		return label
+	}()
+	
+	let backgroundView: UIView = {
+		let view = UIView()
+		view.backgroundColor = UIColor.bgDarkBlue
+		view.translatesAutoresizingMaskIntoConstraints = true
+		return view
+	}()
+	
+	let retryButton: UIButton = {
+		let button = UIButton()
+		button.setTitle("Retry?", for: .normal)
+		button.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+		button.setTitleColor(UIColor.mainBlue, for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.backgroundColor = .clear
+		button.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
+		return button
+	}()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +83,18 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		}
 		
         // call the API and determine how many of them there are
-		fetchAllSermons()
-		fetchLiveStream()
+		checkConnectivity()
+		
+		// assuming there is an internet connection, do the things
+		if internetConnectionStatus != .unreachable {
+			setupViews()
+			self.fetchAllSermons(isReset: false)
+			self.fetchLiveStream()
+		}
+		else {
+			setupViews()
+			self.enableErrorViews(status: self.internetConnectionStatus)
+		}
     }
 
     // MARK: UICollectionViewDataSource
@@ -112,6 +161,63 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 		}
 		else {
 			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+	}
+	
+	func setupViews() {
+		view.addSubview(backgroundView)
+		view.addSubview(apiErrorMessage)
+		view.addSubview(retryButton)
+		
+		if #available(iOS 11.0, *) {
+			NSLayoutConstraint.activate([
+				apiErrorMessage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+				apiErrorMessage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
+				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
+				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
+				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16)
+				
+			])
+		}
+		else {
+			// Fallback on earlier versions
+			NSLayoutConstraint.activate([
+				apiErrorMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+				apiErrorMessage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+			])
+		}
+		
+		// set backgroundView frame to self
+		self.backgroundView.frame = view.frame
+		
+		self.resetErrorViews()
+	}
+	
+	@objc func retryPageLoad() {
+		
+		retryCounter = retryCounter + 1
+		checkConnectivity()
+		
+		if internetConnectionStatus != .unreachable {
+			if retryCounter >= 3 {
+				// don't let anyone retry more than a few times because it looks like nothing is changing
+				// if a user is still having issues then the API is probably down
+				// or they are not online
+				
+				retryLimited = true
+				fetchAllSermons(isReset: true)
+			}
+			else {
+				
+				// call the API and determine how many of them there are
+				self.fetchAllSermons(isReset: true)
+				self.fetchLiveStream()
+			}
+		}
+		else {
+			self.enableErrorViews(status: self.internetConnectionStatus)
 		}
 	}
 

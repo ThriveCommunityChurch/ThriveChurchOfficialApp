@@ -6,14 +6,14 @@
 //  Copyright © 2018 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
+import MessageUI
 import UIKit
 
 extension ListenCollectionViewController {
 	
 	// MARK: - ThriveChurchOfficialAPI Requests
 	
-	func fetchAllSermons() {
+	func fetchAllSermons(isReset: Bool) {
 		// iOS is picky about SSL
 		
 		let url = NSURL(string: "\(apiUrl)api/sermons")
@@ -22,6 +22,25 @@ extension ListenCollectionViewController {
 			// something went wrong here
 			if error != nil {
 				print(error!)
+				
+				self.miscApiErrorText = "\(error!)"
+				
+				DispatchQueue.main.async {
+					
+					if self.internetConnectionStatus != .unreachable {
+						self.enableErrorViews(status: self.internetConnectionStatus)
+					}
+					else {
+						if self.apiErrorMessage.isHidden {
+							self.enableErrorViews(status: self.internetConnectionStatus)
+						}
+					}
+					
+					if self.retryLimited {
+						self.presentErrorAlert()
+					}
+				}
+				
 				return
 			}
 			
@@ -36,6 +55,11 @@ extension ListenCollectionViewController {
 				}
 				
 				DispatchQueue.main.async {
+					
+					if isReset {
+						self.checkIfApiResponseIsActive()
+					}
+					
 					self.collectionView?.reloadData()
 				}
 			}
@@ -53,7 +77,24 @@ extension ListenCollectionViewController {
 			
 			// something went wrong here
 			if error != nil {
-				print(error!)
+				
+				DispatchQueue.main.async {
+					self.miscApiErrorText = "\(error!)"
+					
+					if self.internetConnectionStatus != .unreachable {
+						self.enableErrorViews(status: self.internetConnectionStatus)
+					}
+					else {
+						if self.apiErrorMessage.isHidden {
+							self.enableErrorViews(status: self.internetConnectionStatus)
+						}
+					}
+					
+					if self.retryLimited {
+						self.presentErrorAlert()
+					}
+				}
+				
 				return
 			}
 			
@@ -87,7 +128,7 @@ extension ListenCollectionViewController {
 
 			// something went wrong here
 			if error != nil {
-				print(error!)
+				
 				return
 			}
 
@@ -129,7 +170,9 @@ extension ListenCollectionViewController {
 			
 			// something went wrong here
 			if error != nil {
-				print(error!)
+				
+				self.miscApiErrorText = "\(error!)"
+				
 				return
 			}
 			
@@ -241,6 +284,187 @@ extension ListenCollectionViewController {
 		}
 		else {
 			return expireDate!
+		}
+	}
+	
+	// TODO: Make this a global extension method so it can be used all over
+	func composeEmail() {
+		
+		// lets not create a fild on the user's device if they can't even send us an email
+		if MFMailComposeViewController.canSendMail() {
+			
+			// vars to add to the file
+			var date = ""
+			let stringFromDate = Date().iso8601    // "2017-03-22T13:22:13.933Z"
+			if let dateFromString = stringFromDate.dateFromISO8601 {
+				date = dateFromString.iso8601      // "2017-03-22T13:22:13.933Z"
+			}
+			
+			// get info about the app on the device
+			let buldleDict = Bundle.main.infoDictionary!
+			let buildNum = buldleDict["CFBundleVersion"] as? String ?? ""
+			let version = buldleDict["CFBundleShortVersionString"] as? String ?? ""
+			
+			let uuid = UUID().uuidString.suffix(8)
+			
+			// Save data to file
+			let fileName = "\(uuid.suffix(3)).log"
+			let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
+															  in: .userDomainMask,
+															  appropriateFor: nil,
+															  create: true)
+			
+			let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+			
+			
+			let year = Calendar.current.component(.year, from: Date())
+			let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
+				"\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+				"\n\nDevice Information" +
+				"\nDevice:  \(UIDevice.current.modelName)" +
+				"\nCurrent Time: \(date)" +
+				"\niOS: \(UIDevice.current.systemVersion)" +
+				"\n\nApplication Information" +
+				"\nVersion: \(version)" +
+				"\nBuild #: \(buildNum)" +
+			    "\nFeedback ID: \(uuid)" +
+				"\n\nIssue Details\n" +
+			"Error Stacktrace: \n\n\(miscApiErrorText ?? "FATL ERR: UNABLE TO PARSE API ERROR!")"
+			
+			
+			do {
+				// Write to the file
+				try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+				
+				let composeVC = MFMailComposeViewController()
+				
+				composeVC.mailComposeDelegate = self
+				composeVC.setToRecipients(["wyatt@thrive-fl.org"])
+				composeVC.setSubject("Thrive iOS - ID: \(uuid)")
+				
+				if let fileData = NSData(contentsOfFile: fileURL.path) {
+					composeVC.addAttachmentData(fileData as Data,
+												mimeType: "text/txt",
+												fileName: "\(uuid).log")
+				}
+				self.present(composeVC, animated: true, completion: nil)
+				
+			} catch let error as NSError {
+				print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
+				
+				self.displayAlertForAction()
+			}
+		}
+		else {
+			self.displayAlertForAction()
+		}
+	}
+	
+	//Standard Mail compose controller code
+	func mailComposeController(_ controller: MFMailComposeViewController,
+							   didFinishWith result: MFMailComposeResult,
+							   error: Error?) {
+		
+		switch result.rawValue {
+		case MFMailComposeResult.cancelled.rawValue:
+			print("Cancelled")
+			
+		case MFMailComposeResult.saved.rawValue:
+			print("Saved")
+			
+		case MFMailComposeResult.sent.rawValue:
+			// they sent us an email so hopefully we can fix it
+			self.retryCounter = 0
+			self.retryLimited = false
+			print("Sent")
+			
+		case MFMailComposeResult.failed.rawValue:
+			print("Error: \(String(describing: error?.localizedDescription))")
+			
+		default:
+			break
+		}
+		
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+	func enableErrorViews (status: Network.Status) {
+		
+		if status == .unreachable {
+			// if they are offline update the message and inform them that they
+			// will be unable to use services
+			self.apiErrorMessage.text = "You are currently offline." +
+			"\n\nTo stream sermons, enable internet access and tap the button below."
+			self.retryButton.setTitle("I'm Online", for: .normal)
+			self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
+			self.retryButton.addTarget(self, action: #selector(testOnlineAndResetViews), for: .touchUpInside)
+		}
+		else {
+			apiErrorMessage.text = "An error ocurred while loading the content.\n\n" +
+				"Check your internet connection and try again. If the issue persists send " +
+			"us an email at \nwyatt@thrive-fl.org."
+			self.retryButton.setTitle("Retry?", for: .normal)
+			self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
+			self.retryButton.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
+		}
+		
+		self.apiErrorMessage.isHidden = false
+		self.backgroundView.isHidden = false
+		self.retryButton.isHidden = false
+	}
+	
+	func resetErrorViews() {
+		self.apiErrorMessage.isHidden = true
+		self.backgroundView.isHidden = true
+		self.retryButton.isHidden = true
+	}
+	
+	func presentErrorAlert() {
+		let alert = UIAlertController(title: "Having Issues?", message: "Send us an email and let us know what your issue is.", preferredStyle: .alert)
+		
+		let emailAlert = UIAlertAction(title: "Email Us", style: .default) { (alert) in
+			self.composeEmail()
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		alert.addAction(emailAlert)
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func checkIfApiResponseIsActive() {
+		
+		if self.sermonSeries.count > 1 {
+			
+			// Looks like everything is back to working
+			self.resetErrorViews()
+			self.fetchLiveStream()
+			self.retryCounter = 0
+			self.retryLimited = false
+		}
+	}
+	
+	func checkConnectivity() {
+		// check status
+		guard let status = Network.reachability?.status else { return }
+		self.internetConnectionStatus = status
+		
+		// override this on the Simulator and that way we can still develop things
+		if UIDevice.current.modelName == "Simulator" {
+			self.internetConnectionStatus = .wifi
+		}
+	}
+	
+	@objc func testOnlineAndResetViews() {
+		
+		checkConnectivity()
+		
+		if self.internetConnectionStatus != .unreachable {
+			
+			// call the API and determine if the user is online
+			self.fetchAllSermons(isReset: true)
+			self.fetchLiveStream()
 		}
 	}
 }

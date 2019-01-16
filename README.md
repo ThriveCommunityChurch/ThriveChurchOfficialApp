@@ -17,16 +17,15 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 ## Features
 
 * Listen to sermons on the go
+* Download sermons and listen offline
+* Watch livestreams
 * Read the entire Bible
 * Supporting iPhone X
 * Stay connected to Thrive FGCU
-* Donate to our ministry and setup automatic payments
+* Secure giving
 * Take notes during the sermon then share them with your friends or save them for later
-* See a listing of all current and upcoming events
 * Send an email directly to the pastoral staff
 * and many more!
-
-For a full listing of features visit our [Website](http://thrive-fl.org).
 
 ## Authors
 [**Wyatt Baggett**](https://github.com/ksigWyatt) - *Lead Designer and Developer* 
