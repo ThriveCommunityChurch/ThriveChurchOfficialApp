@@ -452,7 +452,7 @@ extension ListenCollectionViewController {
 		
 		// override this on the Simulator and that way we can still develop things
 		if UIDevice.current.modelName == "Simulator" {
-			self.internetConnectionStatus == .wifi
+			self.internetConnectionStatus = .wifi
 		}
 	}
 	
