@@ -166,8 +166,11 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			self.downloadsTableView.deselectRow(indexPath: indexPath)
 			
 			// look in the shared file folder for the mp3 and play it using
-			SermonAVPlayer.sharedInstance.initLocally(selectedMessage: message)
-			
+			DispatchQueue.main.async {
+				
+				// fire and forget this
+				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: message)
+			}
 		}
 		
 		let deleteAction = UIAlertAction(title: "Remove Download", style: .default) { (action) in

@@ -65,9 +65,21 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 												   for: indexPath) as! RecentlyWatchedTableViewCell
 		
 		let message = messages[indexPath.row]
+		let viewWidth = view.frame.width
+		
 		cell.date.text = message.Date
 		cell.seriesArt.image = message.seriesArt?.uiImage
+		
+		if (message.Title.count > 20) && (viewWidth < 350) {
+			cell.title.font = UIFont(name: "Avenir-Book", size: 10)
+		}
+		
 		cell.title.text = message.Title
+		
+		if (message.PassageRef?.count ?? 0 > 20) && (viewWidth < 350) {
+			cell.passageRef.font = UIFont(name: "Avenir-Light", size: 9)
+		}
+		
 		cell.passageRef.text = message.PassageRef
 		cell.speaker.text = message.Speaker
 		
@@ -96,6 +108,8 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		// add subviews
 		view.addSubview(recentlyPlayedTable)
 		view.addSubview(spinner)
+		
+		print(view.frame.width)
 
 		// constraints
 		if #available(iOS 11.0, *) {

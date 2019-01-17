@@ -165,10 +165,13 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		// we created a globally shared instance of this variable, so that if we
 		// close this VC it should keep playing
-		SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
-														 sermonData: series!,
-														 selectedMessage: message,
-														 seriesImage: seriesImage)
+		DispatchQueue.main.async {
+			// fire and forget this
+			SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
+															 sermonData: self.series!,
+															 selectedMessage: message,
+															 seriesImage: self.seriesImage)
+		}
 		
 		// do we want to transition them to the now playing VC?
 		// that might be cool

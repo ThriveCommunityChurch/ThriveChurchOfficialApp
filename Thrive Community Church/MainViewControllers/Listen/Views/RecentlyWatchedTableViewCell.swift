@@ -58,6 +58,8 @@ class RecentlyWatchedTableViewCell: UITableViewCell {
 	override init(style: RecentlyWatchedTableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
+		// if the device width is below some value then we need to change this
+
 		self.translatesAutoresizingMaskIntoConstraints = true
 		self.heightAnchor.constraint(equalToConstant: 80).isActive = true
 		self.backgroundColor = UIColor.almostBlack
@@ -79,7 +81,6 @@ class RecentlyWatchedTableViewCell: UITableViewCell {
 		self.addSubview(date)
 		self.addSubview(passageRef)
 		self.addSubview(speaker)
-		
 		
 		NSLayoutConstraint.activate([
 			seriesArt.leadingAnchor.constraint(equalTo: self.leadingAnchor),

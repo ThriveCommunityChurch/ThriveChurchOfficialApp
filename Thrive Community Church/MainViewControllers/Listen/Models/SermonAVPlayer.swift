@@ -43,9 +43,9 @@ class SermonAVPlayer {
 		
 		self.registerData(sermonData: sermonData, selectedMessage: selectedMessage, seriesImage: seriesImage)
 		
-		DispatchQueue.main.async {
+		DispatchQueue.main.async(execute: {
 			self.registerDateForRecentlyPlayed()
-		}
+		})
 	}
 	
 	public func initLocally(selectedMessage: SermonMessage) {
