@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 			AnalyticsParameterContentType: "cont"
 		])
 		
+//		UserDefaults.standard.removeObject(forKey: ApplicationVariables.RecentlyPlayed)
+//		UserDefaults.standard.synchronize()
+		
 		UpdateCacheForAPIDomain()
 		
 		// REACHABILITY

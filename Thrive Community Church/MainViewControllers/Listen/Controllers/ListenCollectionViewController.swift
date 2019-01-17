@@ -14,6 +14,7 @@ private let reuseIdentifier = "Cell"
 class ListenCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
 MFMailComposeViewControllerDelegate {
 
+	@IBOutlet weak var recentlyPlayedButton: UIBarButtonItem!
 	@IBOutlet weak var livestreamButton: UIBarButtonItem!
 	var sermonSeries = [SermonSeriesSummary]()
 	var apiDomain = "nil"
@@ -71,6 +72,7 @@ MFMailComposeViewControllerDelegate {
 		collectionView?.delegate = self
 		
 		livestreamButton.isEnabled = false
+		self.recentlyPlayedButton.isEnabled = false
 
         // Register cell classes
 		collectionView?.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -96,6 +98,11 @@ MFMailComposeViewControllerDelegate {
 			self.enableErrorViews(status: self.internetConnectionStatus)
 		}
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		self.retrieveRecentlyPlayed()
+	}
 
     // MARK: UICollectionViewDataSource
 

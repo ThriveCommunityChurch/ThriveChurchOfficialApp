@@ -65,8 +65,6 @@ class SermonMessageTableViewCell: UITableViewCell {
 		return label
 	}()
 	
-	// TODO: Only add this to any line that actaully has a video
-	// and so on for the audio
 	let watchImage: UIImageView = {
 		let image = UIImageView()
 		image.clipsToBounds = true
@@ -138,5 +136,4 @@ class SermonMessageTableViewCell: UITableViewCell {
 			listenImage.widthAnchor.constraint(equalToConstant: 20)
 		])
 	}
-
 }

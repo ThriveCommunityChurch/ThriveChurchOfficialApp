@@ -467,4 +467,14 @@ extension ListenCollectionViewController {
 			self.fetchLiveStream()
 		}
 	}
+	
+	func retrieveRecentlyPlayed() {
+		
+		// get the recently played sermon messages
+		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
+		if decoded != nil {
+			
+			self.recentlyPlayedButton.isEnabled = true
+		}
+	}
 }

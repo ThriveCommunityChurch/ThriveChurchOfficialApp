@@ -39,7 +39,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vwo-Ap-iYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-864" y="-204"/>
+            <point key="canvasLocation" x="-1724" y="-192"/>
         </scene>
         <!--More-->
         <scene sceneID="ae1-Js-dO2">
@@ -4775,12 +4775,20 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Listen" id="rcU-Yf-dJw">
-                        <barButtonItem key="leftBarButtonItem" image="live" id="00c-yv-CV2">
-                            <color key="tintColor" red="0.74509803919999995" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="openLive:" destination="zOG-Tz-Vdk" id="4Ty-pm-NN7"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="live" id="00c-yv-CV2">
+                                <color key="tintColor" red="0.74509803919999995" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="openLive:" destination="zOG-Tz-Vdk" id="4Ty-pm-NN7"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="RecentlyPlayed" id="udD-YT-VMq">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="T2s-xO-K1j" kind="show" id="FKq-nk-DKW"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="playback" style="plain" id="iXq-Fb-JQT">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -4790,6 +4798,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="livestreamButton" destination="00c-yv-CV2" id="7De-Sj-HqL"/>
+                        <outlet property="recentlyPlayedButton" destination="udD-YT-VMq" id="6V2-YR-9yr"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ6-rV-pEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4820,6 +4829,14 @@
             </objects>
             <point key="canvasLocation" x="398" y="-2436"/>
         </scene>
+        <!--Recently Played-->
+        <scene sceneID="Rst-yU-GSK">
+            <objects>
+                <viewController title="Recently Played" id="T2s-xO-K1j" customClass="RecentlyPlayedViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWN-NA-cfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1382" y="-3150"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Back Button" width="5.7600002288818359" height="10.800000190734863"/>
@@ -4833,6 +4850,7 @@
         <image name="Listen" width="14.399999618530273" height="11.279999732971191"/>
         <image name="Made By" width="199.91999816894531" height="31.680000305175781"/>
         <image name="More" width="13" height="3.5999999046325684"/>
+        <image name="RecentlyPlayed" width="50" height="50"/>
         <image name="ThriveLogo" width="13.920000076293945" height="13.680000305175781"/>
         <image name="facebook_white" width="60" height="60"/>
         <image name="instagram_white" width="60" height="60"/>

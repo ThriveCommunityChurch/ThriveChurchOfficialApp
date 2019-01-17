@@ -34,9 +34,12 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// Store byte representations of Images since these would need to be stored with FileManager otherwise
 	var seriesArt: Data?
 	
+	/// The timestamp when this message was played
+	var previouslyPlayed: Double?
+	
 	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
 		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?,
-		seriesArt: Data?) {
+		 seriesArt: Data?, played: Double?) {
 		self.AudioUrl = audio
 		self.VideoUrl = video
 		self.PassageRef = psg
@@ -49,6 +52,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.LocalAudioURI = localURI
 		self.downloadSizeMB = size
 		self.seriesArt = seriesArt
+		self.previouslyPlayed = played
 	}
 	
 	required convenience init(coder aDecoder: NSCoder) {
@@ -63,10 +67,11 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as! Double?
 		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as! String?
 		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as! Double?
+		let played = aDecoder.decodeObject(forKey: "previouslyPlayed") as! Double?
 		let art = aDecoder.decodeObject(forKey: "seriesArt") as! Data?
 		self.init(audio: audio, video: video, psg: psg, spkr: spkr, name: name,
 				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,
-				  localURI: localURI, size: size, seriesArt: art)
+				  localURI: localURI, size: size, seriesArt: art, played: played)
 	}
 	
 	func encode(with aCoder: NSCoder) {
@@ -82,5 +87,6 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		aCoder.encode(LocalAudioURI, forKey: "LocalAudioURI")
 		aCoder.encode(downloadSizeMB, forKey: "downloadSizeMB")
 		aCoder.encode(seriesArt, forKey: "seriesArt")
+		aCoder.encode(previouslyPlayed, forKey: "previouslyPlayed")
 	}
 }
