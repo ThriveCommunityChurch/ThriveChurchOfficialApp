@@ -21,6 +21,15 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		return table
 	}()
 	
+	let spinner: UIActivityIndicatorView = {
+		let indicator = UIActivityIndicatorView()
+		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.color = .white
+		indicator.backgroundColor = .clear
+		indicator.translatesAutoresizingMaskIntoConstraints = false
+		return indicator
+	}()
+	
 	// Variables
 	var messages = [SermonMessage]()
 
@@ -34,7 +43,11 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		self.recentlyPlayedTable.register(RecentlyWatchedTableViewCell.self, forCellReuseIdentifier: "Cell")
 		
 		setupViews()
-		retrieveRecentlyPlayed()
+		
+		// do this in the background because there's a lot of data here if the array is full
+		DispatchQueue.main.async {
+			self.retrieveRecentlyPlayed()
+		}
     }
 	
 	override func didReceiveMemoryWarning() {
@@ -82,6 +95,7 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		
 		// add subviews
 		view.addSubview(recentlyPlayedTable)
+		view.addSubview(spinner)
 
 		// constraints
 		if #available(iOS 11.0, *) {
@@ -89,7 +103,9 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 				recentlyPlayedTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 				recentlyPlayedTable.topAnchor.constraint(equalTo: view.topAnchor),
 				recentlyPlayedTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			])
 		} else {
 			// Fallback on earlier versions
@@ -97,12 +113,15 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 				recentlyPlayedTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				recentlyPlayedTable.topAnchor.constraint(equalTo: view.topAnchor),
 				recentlyPlayedTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			])
 		}
 		
 		// apparently declaring this above doesn't want to work
 		self.recentlyPlayedTable.backgroundColor = UIColor.almostBlack
+		self.spinner.startAnimating()
 	}
 	
 	func retrieveRecentlyPlayed() {
@@ -114,23 +133,11 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 			let decodedSermonMessages = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
 
 			// get the recently played sermon messages
-			
 			self.messages = decodedSermonMessages
-			
-			// indexes are always - 1, set this before we reload the table
-			self.sortMessagesMostRecentDescending()
 			
 			self.recentlyPlayedTable.reloadData()
 		}
-	}
-	
-	func sortMessagesMostRecentDescending() {
 		
-		// we'll only ever have to sort 10 of these
-		self.messages = self.messages.sorted {
-			// this Anonymous closure means is the one after the one we are looking at less than this one?
-			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
-			$1.previouslyPlayed?.isLess(than: $0.previouslyPlayed ?? 0.0) ?? false
-		}
+		self.spinner.stopAnimating()
 	}
 }

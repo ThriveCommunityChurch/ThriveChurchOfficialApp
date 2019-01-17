@@ -42,7 +42,10 @@ class SermonAVPlayer {
 		self.isPlaying = true
 		
 		self.registerData(sermonData: sermonData, selectedMessage: selectedMessage, seriesImage: seriesImage)
-		self.registerDateForRecentlyPlayed()
+		
+		DispatchQueue.main.async {
+			self.registerDateForRecentlyPlayed()
+		}
 	}
 	
 	public func initLocally(selectedMessage: SermonMessage) {
@@ -57,7 +60,10 @@ class SermonAVPlayer {
 		self.isPlaying = true
 		
 		self.registerDataFromLocal(selectedMessage: selectedMessage)
-		self.registerDateForRecentlyPlayed()
+		
+		DispatchQueue.main.async {
+			self.registerDateForRecentlyPlayed()
+		}
 	}
 	
 	public func pause() {
@@ -186,6 +192,9 @@ class SermonAVPlayer {
 			recentlyPlayed?.append(message!)
 		}
 		
+		// sort messages before we load anything on the UI
+		sortMessagesMostRecentDescending()
+		
 		// before we can place objects into Defaults they have to be encoded
 		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recentlyPlayed ?? [SermonMessage]())
 		
@@ -218,6 +227,16 @@ class SermonAVPlayer {
 		let eventIds = events.map { $0.MessageId}
 		let idset = Set(eventIds)
 		return Array(idset)
+	}
+	
+	func sortMessagesMostRecentDescending() {
+		
+		// we'll only ever have to sort 10 of these
+		self.recentlyPlayed = self.recentlyPlayed?.sorted {
+			// this Anonymous closure means is the one after the one we are looking at less than this one?
+			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
+			$1.previouslyPlayed?.isLess(than: $0.previouslyPlayed ?? 0.0) ?? false
+		}
 	}
 }
 

@@ -25,6 +25,7 @@ MFMailComposeViewControllerDelegate {
 	var pollingData: LivePollingResponse?
 	var livestreamData: LivestreamingResponse?
 	var internetConnectionStatus: Network.Status = .unreachable
+	var playedMessage: Bool = false
 	
 	// API Connectivity issues
 	var retryCounter: Int = 0
@@ -101,7 +102,13 @@ MFMailComposeViewControllerDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		self.retrieveRecentlyPlayed()
+		
+		// this will save us the trip a bunch of times assuming that we played something
+		if !playedMessage {
+			DispatchQueue.main.async {
+				self.retrieveRecentlyPlayed()
+			}
+		}
 	}
 
     // MARK: UICollectionViewDataSource

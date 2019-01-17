@@ -475,6 +475,7 @@ extension ListenCollectionViewController {
 		if decoded != nil {
 			
 			self.recentlyPlayedButton.isEnabled = true
+			playedMessage = true
 		}
 	}
 }
