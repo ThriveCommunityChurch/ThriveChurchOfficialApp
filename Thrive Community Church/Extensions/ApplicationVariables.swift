@@ -17,4 +17,6 @@ class ApplicationVariables {
 	static var NotesCacheKey = "notes"
 	/// Cache key for reading/writing UIDs from sermon messages
 	static var DownloadedMessages = "messageDownloads"
+	/// Cache key for reading/writing recently played messages
+	static var RecentlyPlayed = "recentlyPlayed"
 }
