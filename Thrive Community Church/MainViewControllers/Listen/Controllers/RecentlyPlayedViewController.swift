@@ -96,8 +96,6 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		let message = messages[indexPath.row]
 		
 		recentlyPlayedTable.deselectRow(indexPath: indexPath)
-		
-		print(message)
 	}
 		
 	// MARK: - Methods
@@ -108,8 +106,6 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		// add subviews
 		view.addSubview(recentlyPlayedTable)
 		view.addSubview(spinner)
-		
-		print(view.frame.width)
 
 		// constraints
 		if #available(iOS 11.0, *) {
