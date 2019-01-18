@@ -93,8 +93,6 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		let message = messages[indexPath.row]
-		
 		recentlyPlayedTable.deselectRow(indexPath: indexPath)
 	}
 		
