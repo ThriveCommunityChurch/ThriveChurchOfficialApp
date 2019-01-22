@@ -148,10 +148,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 				UserDefaults.standard.set(apiDomain, forKey: apiCacheKey)
 				UserDefaults.standard.synchronize()
 			}
+			else {
+				// file not found
+				fatalError("Local Config.plist not found. Please ensure your project includes this on the top level.")
+			}
 		}
 		
 		if apiDomain == "nil" {
-			// something went wrong here, and we aren't sure where the API is 
+			// something went wrong here, and we aren't sure where the API is
+			fatalError("API Address could not be determined.")
 		}
 	}
 }
