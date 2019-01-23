@@ -16,6 +16,8 @@ extension ListenCollectionViewController {
 	func fetchAllSermons(isReset: Bool) {
 		// iOS is picky about SSL
 		
+		// TODO: Update this to call the new Paging route
+		// sermons/page?PageNumber=pageNumber
 		let url = NSURL(string: "\(apiUrl)api/sermons")
 		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
 			

@@ -27,6 +27,14 @@ MFMailComposeViewControllerDelegate {
 	var internetConnectionStatus: Network.Status = .unreachable
 	var playedMessage: Bool = false
 	
+	// Loading View
+	var footerView: CustomFooterView?
+	var isLoading: Bool = false
+	let footerViewReuseIdentifier = "RefreshKey"
+	var pageNumber: Int = 1
+	//var pageInfo: PagingInfo? = nil // Mirror and add this to Decodable for the API response
+	
+	
 	// API Connectivity issues
 	var retryCounter: Int = 0
 	var miscApiErrorText: String?
@@ -77,6 +85,9 @@ MFMailComposeViewControllerDelegate {
 
         // Register cell classes
 		collectionView?.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+		collectionView?.register(UINib(nibName: "CustomFooterView", bundle: nil),
+									   forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+									   withReuseIdentifier: footerViewReuseIdentifier)
 		
 		// contact the API on the address we have cached
 		if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
@@ -124,7 +135,7 @@ MFMailComposeViewControllerDelegate {
         return sermonSeries.count
     }
 	
-	// MARk: - Collection View Delegate
+	// MARK: - Collection View Delegate
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
@@ -161,6 +172,107 @@ MFMailComposeViewControllerDelegate {
 			
 			// load the sermon info from the API and transition when the GET is complete
 			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+		}
+	}
+	
+	// MARK: - Collection View Pagination
+	
+	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		
+		if kind == UICollectionElementKindSectionFooter {
+			
+			let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+																			  withReuseIdentifier: footerViewReuseIdentifier,
+																			  for: indexPath) as! CustomFooterView
+			self.footerView = aFooterView
+			self.footerView?.backgroundColor = UIColor.clear
+			return aFooterView
+		}
+		else {
+			let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+																			 withReuseIdentifier: footerViewReuseIdentifier,
+																			 for: indexPath)
+			return headerView
+		}
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		return CGSize.zero
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		if isLoading {
+			return CGSize.zero
+		}
+		return CGSize(width: collectionView.bounds.size.width, height: 35)
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView
+								view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+		
+		if elementKind == UICollectionElementKindSectionFooter {
+			self.footerView?.prepareInitialAnimation()
+		}
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView
+								view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+		
+		if elementKind == UICollectionElementKindSectionFooter {
+			self.footerView?.stopAnimate()
+		}
+	}
+	
+	//compute the scroll value and play witht the threshold to get desired effect
+	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		
+		let contentOffset = scrollView.contentOffset.y
+		let contentHeight = scrollView.contentSize.height
+		let diffHeight = contentHeight - contentOffset
+		let frameHeight = scrollView.bounds.size.height
+		var triggerThreshold = Float((diffHeight - frameHeight)) / Float(100.0)
+		triggerThreshold = min(triggerThreshold, 0.0) / 2
+		
+		// we did some maths above to determine what force a user is pulling down with
+		// set a threshold before the event triggers
+		if fabs(triggerThreshold) <= 1.0 {
+			
+			let pullRatio  = min(fabs(triggerThreshold), 0.80)
+			self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio * 1.2))
+			if pullRatio >= 0.80 {
+				self.footerView?.animateFinal()
+			}
+		}
+	}
+	
+	//compute the offset and call the load method
+	override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+		
+		let contentOffset = scrollView.contentOffset.y
+		let contentHeight = scrollView.contentSize.height
+		let diffHeight = contentHeight - contentOffset
+		let frameHeight = scrollView.bounds.size.height
+		let pullHeight = fabs(diffHeight - frameHeight)
+		
+		// On some devices this value can be weird, and in our collection this value is abnormally high
+		// so we need to divide by 10 again to get to a more reasonable value
+		if pullHeight >= (diffHeight / 10) {
+			
+			if (self.footerView?.isAnimatingFinal)! {
+				print("load more trigger")
+				self.isLoading = true
+				self.footerView?.startAnimate()
+				
+				// loading more from the API
+				// TODO: call the API then run the lines below in the response
+				
+				DispatchQueue.main.async {
+					
+					self.collectionView?.reloadData()
+					self.isLoading = false
+					self.footerView?.stopAnimate()
+				}
+			}
 		}
 	}
 	
