@@ -14,11 +14,9 @@ extension ListenCollectionViewController {
 	// MARK: - ThriveChurchOfficialAPI Requests
 	
 	func fetchAllSermons(isReset: Bool) {
-		// iOS is picky about SSL
-		
-		// TODO: Update this to call the new Paging route
+
 		// sermons/page?PageNumber=pageNumber
-		let url = NSURL(string: "\(apiUrl)api/sermons")
+		let url = NSURL(string: "\(apiUrl)api/sermons/paged?PageNumber=\(pageNumber)")
 		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
 			
 			// something went wrong here
@@ -47,12 +45,16 @@ extension ListenCollectionViewController {
 			}
 			
 			do {
-				let summaries = try JSONDecoder().decode(SermonSeriesSummaryResponse.self, from: data!)
+				let pagedResponse = try JSONDecoder().decode(SermonsSummaryPagedResponse.self,
+															 from: data!)
 				
-				// reset the array before we refill it
-				self.sermonSeries = [SermonSeriesSummary]()
+				self.totalPages = pagedResponse.PagingInfo.TotalPageCount
+
+				if self.pageNumber >= self.totalPages {
+					self.overrideFooter = true
+				}
 				
-				for i in summaries.Summaries {
+				for i in pagedResponse.Summaries {
 					self.sermonSeries.append(i)
 				}
 				
@@ -60,6 +62,11 @@ extension ListenCollectionViewController {
 					
 					if isReset {
 						self.checkIfApiResponseIsActive()
+					}
+					
+					if self.pageNumber > 1 {
+						self.isLoading = false
+						self.footerView?.stopAnimate()
 					}
 					
 					self.collectionView?.reloadData()
