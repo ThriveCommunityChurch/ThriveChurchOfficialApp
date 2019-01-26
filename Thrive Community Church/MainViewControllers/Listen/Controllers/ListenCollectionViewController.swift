@@ -258,19 +258,22 @@ MFMailComposeViewControllerDelegate {
 		// On some devices this value can be weird, and in our collection this value is abnormally high
 		// so we need to divide by 10 again to get to a more reasonable value
 		
-		// this canyon called many times so we need to make sure that we aren't
-		if (self.footerView?.isAnimatingFinal)! && !self.isLoading {
-			print("load more trigger")
-			self.isLoading = true
-			self.footerView?.startAnimate()
+		if self.pageNumber < self.totalPages {
 			
-			// loading more from the API
-			// TODO: call the API then run the lines below in the response
-			// use self.overrideFooter
-			
-			// TODO: Implement something that prevents a user from requesting a page beyond the max!
-			self.pageNumber = self.pageNumber + 1
-			fetchAllSermons(isReset: false)
+			// this canyon called many times so we need to make sure that we aren't
+			if (self.footerView?.isAnimatingFinal)! && !self.isLoading {
+				
+				print("load more trigger")
+				self.isLoading = true
+				self.footerView?.startAnimate()
+				
+				// loading more from the API
+				// use self.overrideFooter
+				
+				// TODO: Implement something that prevents a user from requesting a page beyond the max!
+				self.pageNumber = self.pageNumber + 1
+				fetchAllSermons(isReset: false)
+			}
 		}
 	}
 	
