@@ -251,15 +251,14 @@ MFMailComposeViewControllerDelegate {
 		}
 	}
 	
-	//compute the offset and call the load method
 	override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 		
-		// On some devices this value can be weird, and in our collection this value is abnormally high
-		// so we need to divide by 10 again to get to a more reasonable value
-		
+		// assuming there are pages left, and we hit the threshold, when the view
+		// finishes moving then we can load the things
 		if self.pageNumber < self.totalPages {
 			
-			// this canyon called many times so we need to make sure that we aren't
+			// this is called many times so we need to make sure that we aren't
+			// doing the work more than we should
 			if (self.footerView?.isAnimatingFinal)! && !self.isLoading {
 				
 				print("load more trigger")
