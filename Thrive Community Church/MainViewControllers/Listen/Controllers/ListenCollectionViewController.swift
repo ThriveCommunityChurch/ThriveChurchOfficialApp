@@ -202,9 +202,14 @@ MFMailComposeViewControllerDelegate {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		
 		if isLoading {
 			return CGSize.zero
 		}
+		if overrideFooter {
+			return CGSize.zero
+		}
+		
 		return CGSize(width: collectionView.bounds.size.width, height: 35)
 	}
 	
@@ -253,7 +258,6 @@ MFMailComposeViewControllerDelegate {
 		let contentHeight = scrollView.contentSize.height
 		let diffHeight = contentHeight - contentOffset
 		let frameHeight = scrollView.bounds.size.height
-		let pullHeight = fabs(diffHeight - frameHeight)
 		
 		// On some devices this value can be weird, and in our collection this value is abnormally high
 		// so we need to divide by 10 again to get to a more reasonable value
