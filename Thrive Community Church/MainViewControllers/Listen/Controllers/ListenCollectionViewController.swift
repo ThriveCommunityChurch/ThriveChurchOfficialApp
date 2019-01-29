@@ -229,9 +229,9 @@ MFMailComposeViewControllerDelegate {
 		}
 	}
 	
-	//compute the scroll value and play witht the threshold to get desired effect
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		
+		// compute the scroll value and play with the threshold to get desired effect
 		let contentOffset = scrollView.contentOffset.y
 		let contentHeight = scrollView.contentSize.height
 		let diffHeight = contentHeight - contentOffset
