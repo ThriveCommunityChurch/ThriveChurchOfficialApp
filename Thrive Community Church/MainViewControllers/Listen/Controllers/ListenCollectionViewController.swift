@@ -310,7 +310,10 @@ MFMailComposeViewControllerDelegate {
 			NSLayoutConstraint.activate([
 				apiErrorMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
 				apiErrorMessage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
+				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
+				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
+				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16)
 			])
 		}
 		

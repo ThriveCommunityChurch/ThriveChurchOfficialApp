@@ -117,7 +117,13 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				seriesArt.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				seriesArt.topAnchor.constraint(equalTo: view.topAnchor),
-				seriesArt.heightAnchor.constraint(equalToConstant: height)
+				seriesArt.heightAnchor.constraint(equalToConstant: height),
+				startDate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
+				seriesTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+				seriesTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
 			])
 		}
 		
