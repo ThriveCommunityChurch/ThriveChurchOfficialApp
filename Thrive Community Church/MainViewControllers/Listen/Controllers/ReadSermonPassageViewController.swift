@@ -37,9 +37,10 @@ class ReadSermonPassageViewController: UIViewController {
 		view.backgroundColor = UIColor.bgDarkBlue
 		view.font = UIFont(name: "Avenir-Medium", size: 16)
 		view.textColor = .white
-		view.isUserInteractionEnabled = false
+		view.isUserInteractionEnabled = true
 		view.indicatorStyle = .white
 		view.isEditable = false
+		view.isSelectable = false
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
@@ -106,7 +107,7 @@ class ReadSermonPassageViewController: UIViewController {
 				
 				DispatchQueue.main.async {
 					
-					let str = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!)
+					let str = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
 					
 					// make a reusable dict
 					var attrs: [NSAttributedStringKey: Any] =
@@ -119,7 +120,7 @@ class ReadSermonPassageViewController: UIViewController {
 				
 					
 					var index: Int = 0
-					for i in str! {
+					for i in str {
 						
 						if  i == "\u{00b3}" ||
 							i == "\u{00b2}"
