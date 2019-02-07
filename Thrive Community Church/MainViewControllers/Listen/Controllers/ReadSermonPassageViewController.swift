@@ -45,6 +45,14 @@ class ReadSermonPassageViewController: UIViewController {
 		return view
 	}()
 	
+	let spinner: UIActivityIndicatorView = {
+		let indicator = UIActivityIndicatorView()
+		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.color = .white
+		indicator.backgroundColor = .clear
+		indicator.translatesAutoresizingMaskIntoConstraints = false
+		return indicator
+	}()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -60,6 +68,7 @@ class ReadSermonPassageViewController: UIViewController {
 	
 	func setupViews() {
 		view.addSubview(passageTextArea)
+		view.addSubview(spinner)
 		
 		// Constraints
 		if #available(iOS 11.0, *) {
@@ -67,16 +76,21 @@ class ReadSermonPassageViewController: UIViewController {
 				passageTextArea.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 				passageTextArea.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 				passageTextArea.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				passageTextArea.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+				passageTextArea.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			])
 		} else {
 			NSLayoutConstraint.activate([
 				passageTextArea.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				passageTextArea.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				passageTextArea.topAnchor.constraint(equalTo: view.topAnchor),
-				passageTextArea.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				passageTextArea.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			])
 		}
+		self.spinner.startAnimating()
 	}
 	
 	// MARK: - Methods
@@ -103,14 +117,9 @@ class ReadSermonPassageViewController: UIViewController {
 				let passageResponse = try JSONDecoder().decode(SermonPassageResponse.self,
 															 from: data!)
 				
-				print(passageResponse)
-				
 				DispatchQueue.main.async {
 					
 					let str = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
-					
-					// we are going to use this one to look at for when we replace things
-					var strCopy = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
 					
 					// make a reusable dict
 					var attrs: [NSAttributedStringKey: Any] =
@@ -120,9 +129,6 @@ class ReadSermonPassageViewController: UIViewController {
 						]
 					
 					let attStr = NSMutableAttributedString(string: passageResponse.Passage, attributes: attrs)
-					
-					let attStrCopy = NSMutableAttributedString(string: passageResponse.Passage, attributes: attrs)
-				
 					
 					var index: Int = 0
 					for i in str {
@@ -149,6 +155,7 @@ class ReadSermonPassageViewController: UIViewController {
 						index = index + 1
 					}
 					self.passageTextArea.attributedText = attStr
+					self.spinner.stopAnimating()
 				}
 			}
 			catch let jsonError {
