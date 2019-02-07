@@ -37,7 +37,7 @@ class ReadSermonPassageViewController: UIViewController {
 		view.backgroundColor = UIColor.bgDarkBlue
 		view.font = UIFont(name: "Avenir-Medium", size: 16)
 		view.textColor = .white
-		//view.isUserInteractionEnabled = false
+		view.isUserInteractionEnabled = false
 		view.indicatorStyle = .white
 		view.isEditable = false
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,8 +81,6 @@ class ReadSermonPassageViewController: UIViewController {
 	// MARK: - Methods
 	
 	func loadPassageFromESV(searchText: String) {
-		
-		var searchText = "Psalm 119"
 		
 		var encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 		encodedSearchText = encodedSearchText?.replacingOccurrences(of: ":", with: "%3A")
