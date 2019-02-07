@@ -294,8 +294,22 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
 											  style: .default) { (action) in
-			
+												
 			self.seriesTable.deselectRow(indexPath: indexPath)
+												
+			let vc = ReadSermonPassageViewController()
+			vc.Passage = selectedMessage.PassageRef ?? ""
+			
+			if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+				
+				let apiDomain = loadedData
+				vc.API = apiDomain
+				self.show(vc, sender: self)
+			}
+			else {
+				print("ERR: Error Ocurred while trying to read the API domain from User Defaults")
+			}
+			
 		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
 			
