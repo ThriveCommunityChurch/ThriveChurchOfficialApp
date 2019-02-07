@@ -72,6 +72,16 @@ MFMailComposeViewControllerDelegate {
 		return button
 	}()
 	
+	// TODO: Enable this
+	let spinner: UIActivityIndicatorView = {
+		let indicator = UIActivityIndicatorView()
+		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.color = .white
+		indicator.backgroundColor = .clear
+		indicator.translatesAutoresizingMaskIntoConstraints = false
+		return indicator
+	}()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

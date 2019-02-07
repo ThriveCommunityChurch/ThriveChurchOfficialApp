@@ -85,6 +85,8 @@
 		DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */; };
 		DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8571F0494FF002784E7 /* DetailViewController.swift */; };
 		DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8581F0494FF002784E7 /* MasterViewController.swift */; };
+		DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */; };
+		DCF6987C220AA9DC001B1A0C /* GetPassageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */; };
 		DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +219,8 @@
 		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSermonPassageViewController.swift; sourceTree = "<group>"; };
+		DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPassageResponse.swift; sourceTree = "<group>"; };
 		DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -489,6 +493,7 @@
 				DC7348BC21D5EE550057227D /* SeriesViewController.swift */,
 				DC246E2B21DA7A05007BA4D1 /* SermonDownloadsViewController.swift */,
 				DC0DE7F821EFF21C00820CE2 /* RecentlyPlayedViewController.swift */,
+				DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				DC7348BA21D5DE720057227D /* SermonSeriesResponse.swift */,
 				DC1DE6D321FAD75E00E73838 /* SermonsSummaryPagedResponse.swift */,
 				DC1DE6D521FAD7E100E73838 /* PageInfo.swift */,
+				DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -780,6 +786,7 @@
 				DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */,
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
 				DCBCE19721D11F6500E3DCA4 /* SermonSeriesSummary.swift in Sources */,
+				DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */,
 				DC0DE7F721EDA0A900820CE2 /* Reachability.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */,
@@ -788,6 +795,7 @@
 				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DC1EBF7F21D84A37001B1673 /* NowPlayingViewController.swift in Sources */,
+				DCF6987C220AA9DC001B1A0C /* GetPassageResponse.swift in Sources */,
 				DC7348C521D6F8070057227D /* LivestreamingResponse.swift in Sources */,
 				DC80C45421D7391700AF08E1 /* LivePollingResponse.swift in Sources */,
 				DC21E1F620FBF0660054437D /* OnboardingCell.swift in Sources */,
