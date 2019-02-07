@@ -109,6 +109,9 @@ class ReadSermonPassageViewController: UIViewController {
 					
 					let str = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
 					
+					// we are going to use this one to look at for when we replace things
+					var strCopy = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
+					
 					// make a reusable dict
 					var attrs: [NSAttributedStringKey: Any] =
 						[
@@ -117,18 +120,18 @@ class ReadSermonPassageViewController: UIViewController {
 						]
 					
 					let attStr = NSMutableAttributedString(string: passageResponse.Passage, attributes: attrs)
+					
+					let attStrCopy = NSMutableAttributedString(string: passageResponse.Passage, attributes: attrs)
 				
 					
 					var index: Int = 0
 					for i in str {
 						
-						// this is all a bit magic string-y but it works like you'd expect
-						
+						// this is all a bit magic string-y but it works about as well as you'd expect
 						if  i == "\u{00b3}" ||
 							i == "\u{00b2}"
 						{
 							// add the new attribute to the dict
-							
 							attrs[NSAttributedStringKey.baselineOffset] = 2
 							attrs[NSAttributedStringKey.font] = UIFont(name: "Avenir-Medium", size: 13.6)
 							
@@ -137,7 +140,7 @@ class ReadSermonPassageViewController: UIViewController {
 						else if i == "\u{00b9}" {
 							
 							// add the new attribute to the dict
-							attrs[NSAttributedStringKey.baselineOffset] = 2.1
+							attrs[NSAttributedStringKey.baselineOffset] = 2.25
 							attrs[NSAttributedStringKey.font] = UIFont(name: "Avenir-Medium", size: 13)
 							
 							attStr.setAttributes(attrs, range: NSRange(location: index, length: 1))
