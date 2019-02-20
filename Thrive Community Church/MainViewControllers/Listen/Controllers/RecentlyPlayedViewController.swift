@@ -149,6 +149,9 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 					// Delete the cache altogether for this
 					UserDefaults.standard.removeObject(forKey: ApplicationVariables.RecentlyPlayed)
 					UserDefaults.standard.synchronize()
+					
+					// dismiss self and return to the collection VC
+					self.navigationController?.popViewController(animated: true)
 				}
 				else {
 					// we also need to re-set the Cache for these values
@@ -161,9 +164,6 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 					UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
 					UserDefaults.standard.synchronize()
 				}
-				
-				// dismiss self and return to the collection VC
-				self.navigationController?.popViewController(animated: true)
 			}
 		}
 		
