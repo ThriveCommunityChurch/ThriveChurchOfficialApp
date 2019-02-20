@@ -126,10 +126,8 @@ MFMailComposeViewControllerDelegate {
 		super.viewWillAppear(true)
 		
 		// this will save us the trip a bunch of times assuming that we played something
-		if !playedMessage {
-			DispatchQueue.main.async {
-				self.retrieveRecentlyPlayed()
-			}
+		DispatchQueue.main.async {
+			self.retrieveRecentlyPlayed()
 		}
 	}
 

@@ -481,10 +481,14 @@ extension ListenCollectionViewController {
 		
 		// get the recently played sermon messages
 		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
-		if decoded != nil {
-			
+		
+		if decoded != nil {	
 			self.recentlyPlayedButton.isEnabled = true
-			playedMessage = true
+			self.playedMessage = true
+		}
+		else {
+			self.recentlyPlayedButton.isEnabled = false
+			self.playedMessage = false
 		}
 	}
 }

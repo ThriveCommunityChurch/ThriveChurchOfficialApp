@@ -37,9 +37,12 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// The timestamp when this message was played
 	var previouslyPlayed: Double?
 	
+	/// Friendly name of the sermon series
+	var seriesTitle: String?
+	
 	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
 		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?,
-		 seriesArt: Data?, played: Double?) {
+		 seriesArt: Data?, played: Double?, seriesTitle: String?) {
 		self.AudioUrl = audio
 		self.VideoUrl = video
 		self.PassageRef = psg
@@ -53,6 +56,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.downloadSizeMB = size
 		self.seriesArt = seriesArt
 		self.previouslyPlayed = played
+		self.seriesTitle = seriesTitle
 	}
 	
 	required convenience init(coder aDecoder: NSCoder) {
@@ -66,12 +70,14 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		let wkNum = aDecoder.decodeObject(forKey: "WeekNum") as! Int?
 		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as! Double?
 		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as! String?
+		let seriesTitle = aDecoder.decodeObject(forKey: "seriesTitle") as! String?
 		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as! Double?
 		let played = aDecoder.decodeObject(forKey: "previouslyPlayed") as! Double?
 		let art = aDecoder.decodeObject(forKey: "seriesArt") as! Data?
 		self.init(audio: audio, video: video, psg: psg, spkr: spkr, name: name,
 				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,
-				  localURI: localURI, size: size, seriesArt: art, played: played)
+				  localURI: localURI, size: size, seriesArt: art, played: played,
+				  seriesTitle: seriesTitle)
 	}
 	
 	func encode(with aCoder: NSCoder) {
@@ -88,5 +94,6 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		aCoder.encode(downloadSizeMB, forKey: "downloadSizeMB")
 		aCoder.encode(seriesArt, forKey: "seriesArt")
 		aCoder.encode(previouslyPlayed, forKey: "previouslyPlayed")
+		aCoder.encode(seriesTitle, forKey: "seriesTitle")
 	}
 }

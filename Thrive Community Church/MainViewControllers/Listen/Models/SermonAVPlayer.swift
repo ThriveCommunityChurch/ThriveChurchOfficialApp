@@ -15,6 +15,7 @@ class SermonAVPlayer {
 	
 	private var player: AVPlayer?
 	private var isPlaying: Bool = false
+	private var isPaused: Bool = false
 	private var seriesTitle: String = ""
 	private var weekNum: Int = 0
 	private var speaker: String = ""
@@ -28,7 +29,7 @@ class SermonAVPlayer {
 	/// Flag for if this currently playing audio has been downloaded
 	private var isDownloaded: Bool = false
 	
-	public func initUsingRssString(rssUrl: String, sermonData: SermonSeries,
+	public func initUsingRssString(rssUrl: String, sermonData: SermonSeries? = nil,
 								   selectedMessage: SermonMessage, seriesImage: UIImage) {
 		
 		if self.isPlaying {
@@ -41,7 +42,7 @@ class SermonAVPlayer {
 		self.play()
 		self.isPlaying = true
 		
-		self.registerData(sermonData: sermonData, selectedMessage: selectedMessage, seriesImage: seriesImage)
+		self.registerData(sermonData: sermonData ?? nil, selectedMessage: selectedMessage, seriesImage: seriesImage)
 		
 		DispatchQueue.main.async(execute: {
 			self.registerDateForRecentlyPlayed()
@@ -69,21 +70,28 @@ class SermonAVPlayer {
 	public func pause() {
 		self.player?.pause()
 		self.isPlaying = false
+		self.isPaused = true
 	}
 	
 	public func play() {
 		self.player?.play()
 		self.isPlaying = true
+		self.isPaused = false
 	}
 	
 	public func checkPlayingStatus() -> Bool {
 		return self.isPlaying
 	}
 	
+	public func checkPausedStatus() -> Bool {
+		return self.isPaused
+	}
+	
 	public func stop() {
 		self.player?.pause()
 		self.player = nil
 		self.isPlaying = false
+		self.isPaused = false
 		self.resetData()
 	}
 	
@@ -97,10 +105,10 @@ class SermonAVPlayer {
 		messageDate = ""
 	}
 	
-	private func registerData(sermonData: SermonSeries, selectedMessage: SermonMessage,
+	private func registerData(sermonData: SermonSeries? = nil, selectedMessage: SermonMessage,
 														seriesImage: UIImage) {
 		
-		self.seriesTitle = sermonData.Name
+		self.seriesTitle = sermonData?.Name ?? (selectedMessage.seriesTitle ?? "")
 		self.passageRef = selectedMessage.PassageRef ?? ""
 		self.messageTitle = selectedMessage.Title
 		self.speaker = selectedMessage.Speaker
@@ -132,9 +140,9 @@ class SermonAVPlayer {
 
 	public func getDataForPlayback() -> [String: Any]? {
 		
-		if !self.isPlaying {
-			return nil
-		}
+//		if !self.isPlaying || !self.isPaused {
+//			return nil
+//		}
 		
 		// the nice thing about swift is that we can respond with a dictionary of
 		// string to any type, meaning that a simple key lookup will give us whatever type the obj is
