@@ -211,10 +211,7 @@ MFMailComposeViewControllerDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
 		
-		if isLoading {
-			return CGSize.zero
-		}
-		if overrideFooter {
+		if isLoading || overrideFooter {
 			return CGSize.zero
 		}
 		
