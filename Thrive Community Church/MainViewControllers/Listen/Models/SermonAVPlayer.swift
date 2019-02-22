@@ -139,11 +139,7 @@ class SermonAVPlayer {
 	}
 
 	public func getDataForPlayback() -> [String: Any]? {
-		
-//		if !self.isPlaying || !self.isPaused {
-//			return nil
-//		}
-		
+				
 		// the nice thing about swift is that we can respond with a dictionary of
 		// string to any type, meaning that a simple key lookup will give us whatever type the obj is
 		let responseDict = ["seriesTitle": seriesTitle,
