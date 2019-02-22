@@ -45,7 +45,7 @@ MFMailComposeViewControllerDelegate {
 		let label = UILabel()
 		label.text = "An error ocurred while loading the content.\n\n" +
 		"Check your internet connection and try again. If the issue persists send " +
-		"us an email at \nwyatt@thrive-fl.org."
+		"us an email."
 		label.font = UIFont(name: "Avenir-Medium", size: 16)
 		label.textColor = .lightGray
 		label.textAlignment = .center
