@@ -125,7 +125,6 @@ MFMailComposeViewControllerDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		// this will save us the trip a bunch of times assuming that we played something
 		DispatchQueue.main.async {
 			self.retrieveRecentlyPlayed()
 		}
