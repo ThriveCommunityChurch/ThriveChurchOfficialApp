@@ -317,7 +317,11 @@ class NowPlayingViewController: UIViewController {
 	
 	// MARK: - Methods
 	func checkPlayerStatus() -> Bool {
-		let status = SermonAVPlayer.sharedInstance.checkPlayingStatus()
+		let playingStatus = SermonAVPlayer.sharedInstance.checkPlayingStatus()
+		let pausedStatus = SermonAVPlayer.sharedInstance.checkPausedStatus()
+		
+		// if either of these are true, then the player is active
+		let status = playingStatus || pausedStatus
 		return status
 	}
 	
@@ -330,8 +334,8 @@ class NowPlayingViewController: UIViewController {
 		// make sure that the buttons are init properly
 		loaded = true
 		self.playButton.isEnabled = false
-		self.stopButton.isEnabled = true
-		self.pauseButton.isEnabled = true
+		self.playButton.isEnabled = !SermonAVPlayer.sharedInstance.checkPlayingStatus()
+		self.pauseButton.isEnabled = !SermonAVPlayer.sharedInstance.checkPausedStatus()
 		self.rwButton.isEnabled = true
 		self.ffButton.isEnabled = true
 	}
@@ -440,7 +444,8 @@ class NowPlayingViewController: UIViewController {
 		spacingView7.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		
 		// since we are playing we need to disable the play button
-		self.playButton.isEnabled = false
+		self.playButton.isEnabled = !SermonAVPlayer.sharedInstance.checkPlayingStatus()
+		self.pauseButton.isEnabled = !SermonAVPlayer.sharedInstance.checkPausedStatus()
 		
 		self.addDataToViews()
 	}
@@ -477,6 +482,7 @@ class NowPlayingViewController: UIViewController {
 		if self.downloadButton.isEnabled {
 			self.messageForDownload = dataDump["message"] as? SermonMessage
 			self.messageForDownload?.seriesArt = UIImagePNGRepresentation((dataDump["sermonGraphic"] as? UIImage)!)
+			self.messageForDownload?.seriesTitle = "\(dataDump["messageTitle"] as? String ?? "")"
 		}
 		
 	}

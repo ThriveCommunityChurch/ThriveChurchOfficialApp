@@ -30,6 +30,30 @@ extension UIViewController {
 		present(alert, animated: true, completion: nil)
 	}
 	
+	/// present a notmal alert with some specific message
+	func presentBasicAlertWOTitle(message: String) {
+		let alert = UIAlertController(title: "",
+									  message: "\(message)",
+			preferredStyle: .alert)
+		
+		let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		
+		alert.addAction(okAction)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	/// present a normal alert with some specific message & title
+	func presentBasicAlertWTitle(title: String, message: String) {
+		let alert = UIAlertController(title: "\(title)",
+			message: "\(message)",
+			preferredStyle: .alert)
+		
+		let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		
+		alert.addAction(okAction)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
 	/// Still opens the url
 	func openUrlAnyways(link: String) {
 		guard let url = URL(string: link) else { return }

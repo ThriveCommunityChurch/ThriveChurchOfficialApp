@@ -94,6 +94,104 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		recentlyPlayedTable.deselectRow(indexPath: indexPath)
+		let selectedMessage = messages[indexPath.row]
+		
+		let alert = UIAlertController(title: selectedMessage.Title,
+									  message: "Please select an action",
+									  preferredStyle: .actionSheet)
+		
+		let listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
+			
+			// we created a globally shared instance of this variable, so that if we
+			// close this VC it should keep playing
+			DispatchQueue.main.async {
+				
+				// fire and forget this
+				SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: selectedMessage.AudioUrl ?? "",
+																 sermonData: nil,
+																 selectedMessage: selectedMessage,
+																 seriesImage: selectedMessage.seriesArt?.uiImage ?? UIImage())
+			}
+		}
+		
+		let removeAction = UIAlertAction(title: "Remove", style: .destructive) { (action) in
+			
+			// do this async on the main thread
+			DispatchQueue.main.async {
+				
+				let sharedInstance = SermonAVPlayer.sharedInstance
+				let isPlaying = sharedInstance.checkPlayingStatus()
+				let isPaused = sharedInstance.checkPausedStatus()
+				
+				if isPlaying || isPaused {
+					// we are currently playing something or if it's paused, so we can't remove that
+					
+					let data = sharedInstance.getDataForPlayback()
+					let playingMessage = data?["message"] as? SermonMessage
+					
+					if selectedMessage.MessageId == playingMessage?.MessageId {
+						// unable to remove this message
+						
+						self.presentBasicAlertWTitle(title: "Unable to Remove Item",
+													 message: "This sermon message is currently being played")
+						
+						// don't progress further
+						return
+					}
+				}
+				
+				self.messages.remove(at: indexPath.row)
+				self.recentlyPlayedTable.reloadData()
+				
+				// if we are removing the last one we should dismiss this view
+				if (self.messages.count == 0) {
+					
+					// Delete the cache altogether for this
+					UserDefaults.standard.removeObject(forKey: ApplicationVariables.RecentlyPlayed)
+					UserDefaults.standard.synchronize()
+					
+					// dismiss self and return to the collection VC
+					self.navigationController?.popViewController(animated: true)
+				}
+				else {
+					// we also need to re-set the Cache for these values
+					
+					// before we can place objects into Defaults they have to be encoded
+					let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self.messages)
+					
+					// we have a reference to this message in the above Defaults array,
+					// so store everything
+					UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
+					UserDefaults.standard.synchronize()
+				}
+			}
+		}
+		
+		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")", style: .default) { (action) in
+			
+			let vc = ReadSermonPassageViewController()
+			vc.Passage = selectedMessage.PassageRef ?? ""
+			
+			// load the API domain from the Cache
+			if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+				
+				let apiDomain = loadedData
+				vc.API = apiDomain
+				self.show(vc, sender: self)
+			}
+			else {
+				print("ERR: Error Ocurred while trying to read the API domain from User Defaults")
+			}
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		// add the actions and present the alert
+		alert.addAction(listenAction)
+		alert.addAction(readPassageAction)
+		alert.addAction(removeAction)
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true, completion: nil)
 	}
 		
 	// MARK: - Methods

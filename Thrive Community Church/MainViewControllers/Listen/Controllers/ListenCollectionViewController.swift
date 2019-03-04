@@ -125,11 +125,8 @@ MFMailComposeViewControllerDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		// this will save us the trip a bunch of times assuming that we played something
-		if !playedMessage {
-			DispatchQueue.main.async {
-				self.retrieveRecentlyPlayed()
-			}
+		DispatchQueue.main.async {
+			self.retrieveRecentlyPlayed()
 		}
 	}
 
@@ -213,10 +210,7 @@ MFMailComposeViewControllerDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
 		
-		if isLoading {
-			return CGSize.zero
-		}
-		if overrideFooter {
+		if isLoading || overrideFooter {
 			return CGSize.zero
 		}
 		
