@@ -1,4 +1,5 @@
 ### 1.7  —  TBD
+- Our biggest update yet!
 - Easy to view Sermon Series sorted by most recent
 - Download Sermon Audio for easy listening without an internet connection
 - Sermon Audio playback controls
