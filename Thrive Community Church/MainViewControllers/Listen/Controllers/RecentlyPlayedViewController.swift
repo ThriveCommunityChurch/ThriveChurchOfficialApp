@@ -40,7 +40,8 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		recentlyPlayedTable.delegate = self
 		recentlyPlayedTable.dataSource = self
 		
-		self.recentlyPlayedTable.register(RecentlyWatchedTableViewCell.self, forCellReuseIdentifier: "Cell")
+		self.recentlyPlayedTable.register(RecentlyWatchedTableViewCell.self,
+										  forCellReuseIdentifier: "Cell")
 		
 		setupViews()
 		
@@ -70,13 +71,13 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		cell.date.text = message.Date
 		cell.seriesArt.image = message.seriesArt?.uiImage
 		
-		if (message.Title.count > 20) && (viewWidth < 350) {
+		if (message.Title.count > 22) && (viewWidth < 350) {
 			cell.title.font = UIFont(name: "Avenir-Book", size: 10)
 		}
 		
 		cell.title.text = message.Title
 		
-		if (message.PassageRef?.count ?? 0 > 20) && (viewWidth < 350) {
+		if (message.PassageRef?.count ?? 0 > 15) && (viewWidth < 350) {
 			cell.passageRef.font = UIFont(name: "Avenir-Light", size: 9)
 		}
 		

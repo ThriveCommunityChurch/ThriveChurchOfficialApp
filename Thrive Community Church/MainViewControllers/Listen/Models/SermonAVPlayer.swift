@@ -170,7 +170,7 @@ class SermonAVPlayer {
 			
 			let decodedSermonMessages = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
 			
-			let count = decodedSermonMessages.count
+			var count = decodedSermonMessages.count
 			recentlyPlayed = decodedSermonMessages
 			let msg = message!
 			
@@ -178,26 +178,26 @@ class SermonAVPlayer {
 			msg.previouslyPlayed = Date().timeIntervalSince1970
 			
 			// if we have 9 or less, then we should register this one, because we will have 10
+			// if we always insert at 0 we'll always have the most recent at the top
 			if count <= 9 {
-				findAndMoveRecentPlayedToEnd(msg: msg, isFull: false)
+				count = self.removeMatchingMessages(msg: msg)
+				recentlyPlayed?.insert(msg, at: 0)
 			}
 			else {
-				// otherwise we need to remove the one at the front and add the new one at the end
-				// first however we need to check that this message is not already in the list
-				findAndMoveRecentPlayedToEnd(msg: msg, isFull: true)
 				
-				recentlyPlayed?.remove(at: 0)
-				recentlyPlayed?.append(message!)
+				// we need to move the one we have, so delete it wherever it's at
+				count = self.removeMatchingMessages(msg: msg)
+				
+				// THEN we can insert at 0 and pop the one on the end
+				recentlyPlayed?.remove(at: count - 1)
+				recentlyPlayed?.insert(msg, at: 0)
 			}
 		}
 		else {
 			// we haven't found anything in UD so add something
 			message?.previouslyPlayed = Date().timeIntervalSince1970
-			recentlyPlayed?.append(message!)
+			recentlyPlayed?.insert(message!, at: 0)
 		}
-		
-		// sort messages before we load anything on the UI
-		sortMessagesMostRecentDescending()
 		
 		// before we can place objects into Defaults they have to be encoded
 		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recentlyPlayed ?? [SermonMessage]())
@@ -210,7 +210,13 @@ class SermonAVPlayer {
 		recentlyPlayed = nil
 	}
 	
-	private func findAndMoveRecentPlayedToEnd(msg: SermonMessage, isFull: Bool) {
+	func getUniqueIDsFromArrayOfObjects(events: [SermonMessage]) -> [String] {
+		let eventIds = events.map { $0.MessageId}
+		let idset = Set(eventIds)
+		return Array(idset)
+	}
+	
+	func removeMatchingMessages(msg: SermonMessage) -> Int {
 		
 		// the Id index of the sermons here are in the same order
 		let idArray = getUniqueIDsFromArrayOfObjects(events: recentlyPlayed!)
@@ -222,15 +228,7 @@ class SermonAVPlayer {
 			})
 		}
 		
-		if !isFull {
-			recentlyPlayed?.append(msg)
-		}
-	}
-	
-	func getUniqueIDsFromArrayOfObjects(events: [SermonMessage]) -> [String] {
-		let eventIds = events.map { $0.MessageId}
-		let idset = Set(eventIds)
-		return Array(idset)
+		return recentlyPlayed?.count ?? 0
 	}
 	
 	func sortMessagesMostRecentDescending() {

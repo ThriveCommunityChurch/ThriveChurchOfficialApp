@@ -71,8 +71,7 @@ MFMailComposeViewControllerDelegate {
 		button.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
 		return button
 	}()
-	
-	// TODO: Enable this
+
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
 		indicator.activityIndicatorViewStyle = .whiteLarge
@@ -297,6 +296,7 @@ MFMailComposeViewControllerDelegate {
 		view.addSubview(backgroundView)
 		view.addSubview(apiErrorMessage)
 		view.addSubview(retryButton)
+		view.addSubview(spinner)
 		
 		if #available(iOS 11.0, *) {
 			NSLayoutConstraint.activate([
@@ -305,7 +305,11 @@ MFMailComposeViewControllerDelegate {
 				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
 				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
 				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
-				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16)
+				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
+				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+				spinner.heightAnchor.constraint(equalToConstant: 37),
+				spinner.widthAnchor.constraint(equalToConstant: 37)
 				
 			])
 		}
@@ -317,7 +321,11 @@ MFMailComposeViewControllerDelegate {
 				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
 				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
 				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
-				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16)
+				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
+				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+				spinner.heightAnchor.constraint(equalToConstant: 37),
+				spinner.widthAnchor.constraint(equalToConstant: 37)
 			])
 		}
 		
@@ -338,10 +346,14 @@ MFMailComposeViewControllerDelegate {
 				// if a user is still having issues then the API is probably down
 				// or they are not online
 				
+				self.enableLoadingScreen()
+				
 				retryLimited = true
 				fetchAllSermons(isReset: true)
 			}
 			else {
+				
+				self.enableLoadingScreen()
 				
 				// call the API and determine how many of them there are
 				self.fetchAllSermons(isReset: true)

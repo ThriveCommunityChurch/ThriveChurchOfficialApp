@@ -70,6 +70,8 @@ extension ListenCollectionViewController {
 					}
 					
 					self.collectionView?.reloadData()
+					
+					self.disableLoadingScreen()
 				}
 			}
 			catch let jsonError {
@@ -399,6 +401,8 @@ extension ListenCollectionViewController {
 	
 	func enableErrorViews (status: Network.Status) {
 		
+		self.disableLoadingScreen()
+		
 		if status == .unreachable {
 			// if they are offline update the message and inform them that they
 			// will be unable to use services
@@ -426,9 +430,24 @@ extension ListenCollectionViewController {
 		self.apiErrorMessage.isHidden = true
 		self.backgroundView.isHidden = true
 		self.retryButton.isHidden = true
+		
+		self.enableLoadingScreen()
+	}
+	
+	func enableLoadingScreen() {
+		self.spinner.isHidden = false
+		self.spinner.startAnimating()
+	}
+	
+	func disableLoadingScreen() {
+		self.spinner.isHidden = true
+		self.spinner.stopAnimating()
 	}
 	
 	func presentErrorAlert() {
+		
+		self.disableLoadingScreen()
+		
 		let alert = UIAlertController(title: "Having Issues?", message: "Send us an email and let us know what your issue is.", preferredStyle: .alert)
 		
 		let emailAlert = UIAlertAction(title: "Email Us", style: .default) { (alert) in
@@ -470,6 +489,8 @@ extension ListenCollectionViewController {
 		checkConnectivity()
 		
 		if self.internetConnectionStatus != .unreachable {
+			
+			self.enableLoadingScreen()
 			
 			// call the API and determine if the user is online
 			self.fetchAllSermons(isReset: true)

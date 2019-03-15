@@ -23,6 +23,14 @@ class NowPlayingViewController: UIViewController {
 	var sermonSeriesArt: UIImage?
 	var loaded: Bool = false
 	
+	var currentItem: AVPlayerItem? = nil
+
+	var totalAudioTime: Double? = nil
+	var currentTime: Double? = nil
+	var playerProgress: Float? = nil
+	var progressTimer: Timer? = nil
+	var lazyLoadDuration: Bool = false
+	
 	// UI Elements
 	
 	@IBOutlet weak var notPlayingText: UILabel!
@@ -42,6 +50,20 @@ class NowPlayingViewController: UIViewController {
 		label.numberOfLines = 2
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
+	}()
+	
+	let progressIndicator: UIProgressView = {
+		let indicator = UIProgressView()
+		indicator.progressTintColor = UIColor.mainBlue
+		indicator.trackTintColor = UIColor.darkGrey
+		indicator.translatesAutoresizingMaskIntoConstraints = false
+		return indicator
+	}()
+	
+	let progressContainerView: UIView = {
+		let view = UIView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
 	}()
 	
 	let detailsBackgroundView: UIView = {
@@ -187,6 +209,16 @@ class NowPlayingViewController: UIViewController {
 		return label
 	}()
 	
+	let durationLabel: UILabel = {
+		let label = UILabel()
+		label.textAlignment = .left
+		label.font = UIFont(name: "Avenir-Book", size: 15)
+		label.textColor = .lightGray
+		label.numberOfLines = 1
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -214,6 +246,17 @@ class NowPlayingViewController: UIViewController {
 		button.setImage(image, for: .normal)
 		button.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
 		return button
+	}()
+	
+	let spinner: UIActivityIndicatorView = {
+		let indicator = UIActivityIndicatorView()
+		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.color = .lightGray
+		indicator.backgroundColor = .clear
+		// Will need to scale down the spinner since it's a tad too big
+		indicator.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+		indicator.translatesAutoresizingMaskIntoConstraints = false
+		return indicator
 	}()
 	
 	let pauseButton: UIButton = {
@@ -282,6 +325,7 @@ class NowPlayingViewController: UIViewController {
 			self.notPlayingText.isHidden = true
 			setupViews()
 			player = SermonAVPlayer.sharedInstance.getPlayer()
+			
 			loaded = true
 		}
 		else {
@@ -292,6 +336,10 @@ class NowPlayingViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
+		// TODO: If a user has a message downloaded and is playing it,
+		// then they delete the download, the icon for download is still disabled
+		// when they return to this view
+
 		if !loaded {
 			let playerStatus = self.checkPlayerStatus()
 			
@@ -309,6 +357,13 @@ class NowPlayingViewController: UIViewController {
 			
 			reinitForPlayingSound()
 		}
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(true)
+		
+		// prevent mem leaks
+		self.removeTimer()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -344,6 +399,7 @@ class NowPlayingViewController: UIViewController {
 		
 		// add all the UI Elements first
 		view.addSubview(seriesArt)
+		view.addSubview(progressContainerView)
 		view.addSubview(playerControlsView)
 		view.addSubview(detailsBackgroundView)
 		playerControlsView.addSubview(controlsStackView)
@@ -351,6 +407,8 @@ class NowPlayingViewController: UIViewController {
 		detailsBackgroundView.addSubview(speakerLabel)
 		detailsBackgroundView.addSubview(dateLabel)
 		detailsBackgroundView.addSubview(passageLabel)
+		detailsBackgroundView.addSubview(durationLabel)
+		progressContainerView.addSubview(progressIndicator)
 		
 		// calculate the size for the image view
 		let width = view.frame.width
@@ -363,7 +421,15 @@ class NowPlayingViewController: UIViewController {
 				seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 				seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				playerControlsView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 24),
+				progressContainerView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
+				progressContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				progressContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				progressContainerView.heightAnchor.constraint(equalToConstant: 16),
+				progressIndicator.leadingAnchor.constraint(equalTo: progressContainerView.leadingAnchor, constant: 8),
+				progressIndicator.trailingAnchor.constraint(equalTo: progressContainerView.trailingAnchor, constant: -8),
+				progressIndicator.centerYAnchor.constraint(equalTo: progressContainerView.centerYAnchor),
+				progressIndicator.heightAnchor.constraint(equalToConstant: 3),
+				playerControlsView.topAnchor.constraint(equalTo: progressContainerView.bottomAnchor, constant: 16),
 				playerControlsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
 				playerControlsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
 				playerControlsView.heightAnchor.constraint(equalToConstant: 25),
@@ -379,6 +445,9 @@ class NowPlayingViewController: UIViewController {
 				dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
 				passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
 				passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
+				durationLabel.leadingAnchor.constraint(equalTo: passageLabel.leadingAnchor),
+				durationLabel.trailingAnchor.constraint(equalTo: passageLabel.trailingAnchor),
+				durationLabel.centerYAnchor.constraint(equalTo: speakerLabel.centerYAnchor),
 				controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
 				controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
 				controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
@@ -391,6 +460,14 @@ class NowPlayingViewController: UIViewController {
 				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				seriesArt.topAnchor.constraint(equalTo: view.topAnchor),
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
+				progressContainerView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
+				progressContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+				progressContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+				progressContainerView.heightAnchor.constraint(equalToConstant: 16),
+				progressIndicator.leadingAnchor.constraint(equalTo: progressContainerView.leadingAnchor, constant: 8),
+				progressIndicator.trailingAnchor.constraint(equalTo: progressContainerView.trailingAnchor, constant: -8),
+				progressIndicator.centerYAnchor.constraint(equalTo: progressContainerView.centerYAnchor),
+				progressIndicator.heightAnchor.constraint(equalToConstant: 3),
 				playerControlsView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 24),
 				playerControlsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
 				playerControlsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
@@ -407,6 +484,9 @@ class NowPlayingViewController: UIViewController {
 				dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
 				passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
 				passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
+				durationLabel.leadingAnchor.constraint(equalTo: passageLabel.leadingAnchor),
+				durationLabel.trailingAnchor.constraint(equalTo: passageLabel.trailingAnchor),
+				durationLabel.centerYAnchor.constraint(equalTo: speakerLabel.centerYAnchor),
 				controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
 				controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
 				controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
@@ -433,6 +513,7 @@ class NowPlayingViewController: UIViewController {
 		pauseStackView.addArrangedSubview(pauseButton)
 		stopStackView.addArrangedSubview(stopButton)
 		downloadStackView.addArrangedSubview(downloadButton)
+		downloadStackView.addArrangedSubview(spinner)
 		rwStackView.addArrangedSubview(rwButton)
 		ffStackView.addArrangedSubview(ffButton)
 		
@@ -484,6 +565,30 @@ class NowPlayingViewController: UIViewController {
 			self.messageForDownload?.seriesArt = UIImagePNGRepresentation((dataDump["sermonGraphic"] as? UIImage)!)
 			self.messageForDownload?.seriesTitle = "\(dataDump["messageTitle"] as? String ?? "")"
 		}
+		
+		// at the very end here we should render the progress bar of the player
+		// because these values may change ever so slightly as this method may take a few ms to execute
+		
+		//get the duration and playing time
+		currentItem = player?.currentItem
+		totalAudioTime = currentItem?.duration.seconds
+		currentTime = currentItem?.currentTime().seconds
+		let progress = (currentTime ?? 0.0) / (totalAudioTime ?? 1.0)
+		playerProgress = Float(progress)
+		
+		if (totalAudioTime == nil || totalAudioTime == 0) {
+			// Since this hasn't been loaded yet, give it a minute - and we will load this async later
+			lazyLoadDuration = true
+			self.durationLabel.text = totalAudioTime?.secondsToHoursMinutesSeconds()
+		}
+		
+		// stop any current animation
+		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+		
+		// set progressView to 0%, with animated set to false
+		self.progressIndicator.setProgress(playerProgress ?? 0.0, animated: true)
+		
+		progressTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.calculateAnimationsForProgressBar), userInfo: nil, repeats: true)
 		
 	}
 }
