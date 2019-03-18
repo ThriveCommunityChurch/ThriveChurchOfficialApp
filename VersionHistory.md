@@ -1,9 +1,10 @@
 ### 1.7  —  TBD
+- Our biggest update yet!
 - Easy to view Sermon Series sorted by most recent
 - Download Sermon Audio for easy listening without an internet connection
 - Sermon Audio playback controls
 - Watch Live Streams
-- See the 10 most recent Sermon Messages that you listened to
+- See the last 10 Sermon Messages that you listened to
 - TBD
 
 ### 1.6.4  —  Oct 18, 2018
