@@ -1476,7 +1476,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbx-pL-AXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="-3643"/>
+            <point key="canvasLocation" x="2361" y="-4566"/>
         </scene>
         <!--Alphabetical-->
         <scene sceneID="a1k-DL-7gX">
@@ -2688,86 +2688,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3N4-Ea-lSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="-2969"/>
-        </scene>
-        <!--Home / Listen-->
-        <scene sceneID="wg7-f3-ORb">
-            <objects>
-                <viewController title="Listen" extendedLayoutIncludesOpaqueBars="YES" id="8rJ-Kc-sve" userLabel="Home / Listen" customClass="SermonsViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-Qk-F1X">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-hG-3UM">
-                                <rect key="frame" x="169" y="273" width="37" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lna-l9-BaA">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="7Gf-Vy-S3k"/>
-                                    <barButtonItem image="Back Button" id="SUL-WR-NqF">
-                                        <connections>
-                                            <action selector="goBack" destination="UuV-Qk-F1X" id="Blo-Ub-rve"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="tOy-1e-5KK"/>
-                                    <barButtonItem image="Forward Button" id="J6v-Pr-qh9">
-                                        <connections>
-                                            <action selector="goForward" destination="UuV-Qk-F1X" id="Rbc-EW-Sa3"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="B7J-H7-fEt"/>
-                                    <barButtonItem systemItem="refresh" id="dl3-kJ-qb1">
-                                        <connections>
-                                            <action selector="reload" destination="UuV-Qk-F1X" id="cdu-Ld-J9A"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="1" style="plain" systemItem="fixedSpace" id="kbh-wP-EkD"/>
-                                    <barButtonItem systemItem="stop" id="c9x-Mk-tiR">
-                                        <connections>
-                                            <action selector="stopLoading" destination="UuV-Qk-F1X" id="tfM-Qw-SAo"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="4nU-gD-8f9"/>
-                                </items>
-                                <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="8JC-hG-3UM" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-42" id="B5K-uh-UyO"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="lna-l9-BaA" secondAttribute="bottom" id="EpV-Am-Aof"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="bottom" secondItem="lna-l9-BaA" secondAttribute="top" constant="44" id="GAn-ru-Ch2"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="leading" secondItem="lna-l9-BaA" secondAttribute="leading" id="Hht-hd-v2h"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lna-l9-BaA" secondAttribute="trailing" constant="-16" id="OFt-OY-Dv7"/>
-                            <constraint firstItem="8JC-hG-3UM" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Uza-pG-EZV"/>
-                            <constraint firstItem="lna-l9-BaA" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="Xps-8x-udk"/>
-                            <constraint firstItem="8JC-hG-3UM" firstAttribute="centerX" secondItem="lna-l9-BaA" secondAttribute="centerX" id="cJQ-qu-wPm"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-64" id="mV6-74-iTI"/>
-                            <constraint firstItem="UuV-Qk-F1X" firstAttribute="trailing" secondItem="lna-l9-BaA" secondAttribute="trailing" id="nMx-ll-tdj"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Listen" id="Dd5-UO-oyU"/>
-                    <connections>
-                        <outlet property="loading" destination="8JC-hG-3UM" id="XSu-sm-dST"/>
-                        <outlet property="sermonView" destination="UuV-Qk-F1X" id="lNX-hy-UxW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1447" y="-2436"/>
+            <point key="canvasLocation" x="2361" y="-3892"/>
         </scene>
         <!--Give-->
         <scene sceneID="3sF-nk-uj5">
@@ -4521,7 +4442,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOK-8w-0lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1447" y="-3306"/>
+            <point key="canvasLocation" x="1446" y="-4229"/>
         </scene>
         <!--Bible-->
         <scene sceneID="nhs-Mx-59I">
@@ -4545,7 +4466,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndP-iS-dA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="399" y="-3305"/>
+            <point key="canvasLocation" x="398" y="-4228"/>
         </scene>
         <!--Master-->
         <scene sceneID="FJs-dF-vrP">
@@ -4742,7 +4663,7 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="-618.39999999999998" y="-3149.7751124437782"/>
+            <point key="canvasLocation" x="2361" y="-3126"/>
         </scene>
         <!--Listen-->
         <scene sceneID="1b9-VL-fMB">
@@ -4803,7 +4724,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ6-rV-pEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-617" y="-2436"/>
+            <point key="canvasLocation" x="1446" y="-2816"/>
         </scene>
         <!--Listen-->
         <scene sceneID="oXA-YS-cNS">
@@ -4827,7 +4748,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qob-5N-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="398" y="-2436"/>
+            <point key="canvasLocation" x="398" y="-2816"/>
         </scene>
         <!--Recently Played-->
         <scene sceneID="Rst-yU-GSK">
@@ -4835,7 +4756,7 @@
                 <viewController title="Recently Played" id="T2s-xO-K1j" customClass="RecentlyPlayedViewController" customModule="Thrive_Church_Official_App" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWN-NA-cfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1382" y="-3150"/>
+            <point key="canvasLocation" x="2361" y="-2473"/>
         </scene>
     </scenes>
     <resources>
