@@ -169,18 +169,42 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func playSermonAudio(rssUrl: String, message: SermonMessage) {
 		
-		// we created a globally shared instance of this variable, so that if we
-		// close this VC it should keep playing
-		DispatchQueue.main.async {
+		// lets first check to see if they have this sermon message downloaded
+		let localMessage = self.retrieveDownloadFromStorage(sermonMessageID: message.MessageId)
+		
+		if (localMessage == nil) {
+			
+			// we created a globally shared instance of this variable, so that if we
+			// close this VC it should keep playing
+			DispatchQueue.main.async {
 			// fire and forget this
 			SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
 															 sermonData: self.series!,
 															 selectedMessage: message,
 															 seriesImage: self.seriesImage)
 		}
+	func retrieveDownloadFromStorage(sermonMessageID: String) -> SermonMessage? {
 		
-		// do we want to transition them to the now playing VC?
-		// that might be cool
+		var sermonMessage: SermonMessage?
+		
+		if let _ = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
+			
+			// now for each of these we need to go to UD and grab the physical objects,
+			// shouldn't take long since UD lookups are O(1)
+				
+			// objects are stored in UD as Data objects
+			let decoded = UserDefaults.standard.object(forKey: sermonMessageID) as? Data
+				
+			if decoded != nil {
+				
+				// reading from the messageId collection in UD
+				let decodedSermonMessage = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! SermonMessage
+				
+				sermonMessage = decodedSermonMessage
+			}
+		}
+		
+		return sermonMessage
 	}
 	
 	// MARK: - Table View
