@@ -182,7 +182,15 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 															 sermonData: self.series!,
 															 selectedMessage: message,
 															 seriesImage: self.seriesImage)
+			}
 		}
+		else {
+			DispatchQueue.main.async {
+				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: localMessage!)
+			}
+		}
+	}
+	
 	func retrieveDownloadFromStorage(sermonMessageID: String) -> SermonMessage? {
 		
 		var sermonMessage: SermonMessage?
