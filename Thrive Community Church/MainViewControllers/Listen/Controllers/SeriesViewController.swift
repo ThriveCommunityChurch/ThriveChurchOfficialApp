@@ -170,7 +170,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	func playSermonAudio(rssUrl: String, message: SermonMessage) {
 		
 		// lets first check to see if they have this sermon message downloaded
-		let localMessage = self.retrieveDownloadFromStorage(sermonMessageID: message.MessageId)
+		let localMessage = retrieveDownloadFromStorage(sermonMessageID: message.MessageId)
 		
 		if (localMessage == nil) {
 			
@@ -189,30 +189,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: localMessage!)
 			}
 		}
-	}
-	
-	func retrieveDownloadFromStorage(sermonMessageID: String) -> SermonMessage? {
-		
-		var sermonMessage: SermonMessage?
-		
-		if let _ = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
-			
-			// now for each of these we need to go to UD and grab the physical objects,
-			// shouldn't take long since UD lookups are O(1)
-				
-			// objects are stored in UD as Data objects
-			let decoded = UserDefaults.standard.object(forKey: sermonMessageID) as? Data
-				
-			if decoded != nil {
-				
-				// reading from the messageId collection in UD
-				let decodedSermonMessage = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! SermonMessage
-				
-				sermonMessage = decodedSermonMessage
-			}
-		}
-		
-		return sermonMessage
 	}
 	
 	// MARK: - Table View
@@ -303,7 +279,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		}
 		
 		// check if this message has been downloaded as part of this series yet
-		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) {
+		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) && !self.currentlyDownloading {
 			
 			downloadAction = UIAlertAction(title: "Download Week \(selectedMessage.WeekNum ?? 0)",
 			style: .default) { (action) in

@@ -103,15 +103,26 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		
 		let listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
 			
-			// we created a globally shared instance of this variable, so that if we
-			// close this VC it should keep playing
-			DispatchQueue.main.async {
-				
-				// fire and forget this
-				SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: selectedMessage.AudioUrl ?? "",
-																 sermonData: nil,
-																 selectedMessage: selectedMessage,
-																 seriesImage: selectedMessage.seriesArt?.uiImage ?? UIImage())
+			// lets first check to see if they have this sermon message downloaded
+			let localMessage = self.retrieveDownloadFromStorage(sermonMessageID: selectedMessage.MessageId)
+			
+			if (localMessage == nil) {
+			
+				// we created a globally shared instance of this variable, so that if we
+				// close this VC it should keep playing
+				DispatchQueue.main.async {
+					
+					// fire and forget this
+					SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: selectedMessage.AudioUrl ?? "",
+																	 sermonData: nil,
+																	 selectedMessage: selectedMessage,
+																	 seriesImage: selectedMessage.seriesArt?.uiImage ?? UIImage())
+				}
+			}
+			else {
+				DispatchQueue.main.async {
+					SermonAVPlayer.sharedInstance.initLocally(selectedMessage: localMessage!)
+				}
 			}
 		}
 		
