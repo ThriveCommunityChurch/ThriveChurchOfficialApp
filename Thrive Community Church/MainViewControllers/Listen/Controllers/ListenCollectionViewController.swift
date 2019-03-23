@@ -127,6 +127,16 @@ MFMailComposeViewControllerDelegate {
 		DispatchQueue.main.async {
 			self.retrieveRecentlyPlayed()
 		}
+		
+		//collectionView?.reloadData()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		//collectionView?.reloadData()
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		collectionView?.reloadData()
 	}
 
     // MARK: UICollectionViewDataSource
