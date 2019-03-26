@@ -14,11 +14,12 @@ extension NowPlayingViewController {
 	
 	@objc func playAudio() {
 		
-		if (reachedEnd) {
+		if (self.reachedEnd) {
 			// reset to the beginning
 			self.progressIndicator.setProgress(0.0, animated: false)
 			let time2: CMTime = CMTimeMake(Int64(0 * 1000 as Float64), 1000)
 			player?.seek(to: time2)
+			self.reachedEnd = false
 		}
 		
 		SermonAVPlayer.sharedInstance.play()
@@ -256,7 +257,9 @@ extension NowPlayingViewController {
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
 		
 		// set the animate method to have a beginning spot
-		self.progressIndicator.setProgress(self.playerProgress ?? 0.0, animated: false)
+		if (self.playerProgress?.isNaN)! {
+			self.progressIndicator.setProgress(self.playerProgress ?? 0.0, animated: false)
+		}
 		
 		// recalculate the current place in the bar
 		let timeNow = self.currentItem?.currentTime().seconds
