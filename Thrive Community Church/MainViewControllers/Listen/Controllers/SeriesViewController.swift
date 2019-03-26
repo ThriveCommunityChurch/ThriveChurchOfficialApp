@@ -279,7 +279,9 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		}
 		
 		// check if this message has been downloaded as part of this series yet
-		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) && !self.currentlyDownloading {
+		// if it has not we need to make sure that we don't try to download something we can't
+		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) &&
+			!self.currentlyDownloading && selectedMessage.AudioUrl != nil {
 			
 			downloadAction = UIAlertAction(title: "Download Week \(selectedMessage.WeekNum ?? 0)",
 			style: .default) { (action) in
