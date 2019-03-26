@@ -13,6 +13,14 @@ import AVFoundation
 extension NowPlayingViewController {
 	
 	@objc func playAudio() {
+		
+		if (reachedEnd) {
+			// reset to the beginning
+			self.progressIndicator.setProgress(0.0, animated: false)
+			let time2: CMTime = CMTimeMake(Int64(0 * 1000 as Float64), 1000)
+			player?.seek(to: time2)
+		}
+		
 		SermonAVPlayer.sharedInstance.play()
 		self.playButton.isEnabled = false
 		self.stopButton.isEnabled = true
@@ -263,12 +271,26 @@ extension NowPlayingViewController {
 		}
 		
 		// set progressView to 0%, with animated set to false
-		self.progressIndicator.setProgress(progress, animated: false)
+		// however if progress is NaN, set it to 0, if not then just set it to itself
+		self.progressIndicator.setProgress(progress.isNaN ? 0.0 : progress, animated: false)
 		
 		// 3-second animation changing from where it is now to where it shoudld be
 		UIView.animate(withDuration: 4, delay: 0, options: [], animations: { [unowned self] in
 			self.progressIndicator.layoutIfNeeded()
 		})
+		
+		if (progress >= 1.0) {
+			// stop any current animation
+			self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+			self.reachedEnd = true
+			
+			// if we reached the end, then remove the timer and return from this method
+			self.removeTimer()
+			self.playButton.isEnabled = true
+			self.pauseButton.isEnabled = false
+			
+			return
+		}
 	}
 	
 	func removeTimer() {

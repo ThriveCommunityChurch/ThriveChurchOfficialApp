@@ -22,6 +22,7 @@ class NowPlayingViewController: UIViewController {
 	var currentlyDownloading: Bool = false
 	var sermonSeriesArt: UIImage?
 	var loaded: Bool = false
+	var reachedEnd: Bool = false
 	
 	var currentItem: AVPlayerItem? = nil
 
@@ -359,8 +360,8 @@ class NowPlayingViewController: UIViewController {
 		}
 	}
 	
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(true)
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(true)
 		
 		// prevent mem leaks
 		self.removeTimer()
