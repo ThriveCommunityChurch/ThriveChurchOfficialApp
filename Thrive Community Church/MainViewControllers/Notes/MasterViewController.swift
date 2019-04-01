@@ -143,7 +143,7 @@ class MasterViewController: UITableViewController {
 	// Adds new object & changes name of the string of Master following the segue back
 	@objc func insertNewObject(_ sender: AnyObject) {
 		
-		if objects..isEmpty || objects[0] != newNote {
+		if objects.isEmpty || objects[0] != newNote {
 			
 			objects.insert(newNote, at: 0)
 			let indexPath = IndexPath(row: 0, section: 0)
