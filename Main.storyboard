@@ -4710,7 +4710,7 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" image="playback" style="plain" id="iXq-Fb-JQT">
+                        <barButtonItem key="rightBarButtonItem" image="playback" id="iXq-Fb-JQT">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="IhB-8m-hBk" kind="show" id="UQc-R5-0hg"/>
