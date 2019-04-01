@@ -43,7 +43,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         // Update the user interface for the detail item.
         saveAndUpdate()
 		
-        if objects.count == 0 {
+        if objects.isEmpty {
             return
         }
         
@@ -107,7 +107,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 		
-        if objects.count == 0 {
+        if objects.isEmpty {
             return
         }
         

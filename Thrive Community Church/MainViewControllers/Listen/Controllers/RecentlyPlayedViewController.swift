@@ -156,7 +156,7 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 				self.recentlyPlayedTable.reloadData()
 				
 				// if we are removing the last one we should dismiss this view
-				if (self.messages.count == 0) {
+				if self.messages.isEmpty {
 					
 					// Delete the cache altogether for this
 					UserDefaults.standard.removeObject(forKey: ApplicationVariables.RecentlyPlayed)

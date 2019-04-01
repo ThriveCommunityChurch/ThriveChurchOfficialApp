@@ -235,7 +235,7 @@ extension NowPlayingViewController {
 		// also disable the view downloads icon if they do not have any yet downloaded
 		self.readDLMessageIds()
 		
-		if downloadedMessageIds.count == 0 {
+		if downloadedMessageIds.isEmpty {
 			self.downloadedSermonsButton?.isEnabled = false
 		}
 		else {
