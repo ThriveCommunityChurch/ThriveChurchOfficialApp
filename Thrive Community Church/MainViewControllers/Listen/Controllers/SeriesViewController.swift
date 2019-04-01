@@ -169,18 +169,26 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func playSermonAudio(rssUrl: String, message: SermonMessage) {
 		
-		// we created a globally shared instance of this variable, so that if we
-		// close this VC it should keep playing
-		DispatchQueue.main.async {
+		// lets first check to see if they have this sermon message downloaded
+		let localMessage = retrieveDownloadFromStorage(sermonMessageID: message.MessageId)
+		
+		if (localMessage == nil) {
+			
+			// we created a globally shared instance of this variable, so that if we
+			// close this VC it should keep playing
+			DispatchQueue.main.async {
 			// fire and forget this
 			SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
 															 sermonData: self.series!,
 															 selectedMessage: message,
 															 seriesImage: self.seriesImage)
+			}
 		}
-		
-		// do we want to transition them to the now playing VC?
-		// that might be cool
+		else {
+			DispatchQueue.main.async {
+				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: localMessage!)
+			}
+		}
 	}
 	
 	// MARK: - Table View
@@ -271,7 +279,9 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		}
 		
 		// check if this message has been downloaded as part of this series yet
-		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) {
+		// if it has not we need to make sure that we don't try to download something we can't
+		if !downloadedMessagesInSeries.contains(selectedMessage.MessageId) &&
+			!self.currentlyDownloading && selectedMessage.AudioUrl != nil {
 			
 			downloadAction = UIAlertAction(title: "Download Week \(selectedMessage.WeekNum ?? 0)",
 			style: .default) { (action) in

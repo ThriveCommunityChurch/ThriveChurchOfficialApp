@@ -40,7 +40,8 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		recentlyPlayedTable.delegate = self
 		recentlyPlayedTable.dataSource = self
 		
-		self.recentlyPlayedTable.register(RecentlyWatchedTableViewCell.self, forCellReuseIdentifier: "Cell")
+		self.recentlyPlayedTable.register(RecentlyWatchedTableViewCell.self,
+										  forCellReuseIdentifier: "Cell")
 		
 		setupViews()
 		
@@ -70,13 +71,13 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		cell.date.text = message.Date
 		cell.seriesArt.image = message.seriesArt?.uiImage
 		
-		if (message.Title.count > 20) && (viewWidth < 350) {
+		if (message.Title.count > 22) && (viewWidth < 350) {
 			cell.title.font = UIFont(name: "Avenir-Book", size: 10)
 		}
 		
 		cell.title.text = message.Title
 		
-		if (message.PassageRef?.count ?? 0 > 20) && (viewWidth < 350) {
+		if (message.PassageRef?.count ?? 0 > 15) && (viewWidth < 350) {
 			cell.passageRef.font = UIFont(name: "Avenir-Light", size: 9)
 		}
 		
@@ -102,15 +103,26 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		
 		let listenAction = UIAlertAction(title: "Listen", style: .default) { (action) in
 			
-			// we created a globally shared instance of this variable, so that if we
-			// close this VC it should keep playing
-			DispatchQueue.main.async {
-				
-				// fire and forget this
-				SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: selectedMessage.AudioUrl ?? "",
-																 sermonData: nil,
-																 selectedMessage: selectedMessage,
-																 seriesImage: selectedMessage.seriesArt?.uiImage ?? UIImage())
+			// lets first check to see if they have this sermon message downloaded
+			let localMessage = self.retrieveDownloadFromStorage(sermonMessageID: selectedMessage.MessageId)
+			
+			if (localMessage == nil) {
+			
+				// we created a globally shared instance of this variable, so that if we
+				// close this VC it should keep playing
+				DispatchQueue.main.async {
+					
+					// fire and forget this
+					SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: selectedMessage.AudioUrl ?? "",
+																	 sermonData: nil,
+																	 selectedMessage: selectedMessage,
+																	 seriesImage: selectedMessage.seriesArt?.uiImage ?? UIImage())
+				}
+			}
+			else {
+				DispatchQueue.main.async {
+					SermonAVPlayer.sharedInstance.initLocally(selectedMessage: localMessage!)
+				}
 			}
 		}
 		

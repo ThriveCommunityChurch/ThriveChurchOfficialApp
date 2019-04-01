@@ -80,7 +80,6 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 			titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
 			dateLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-			dateLabel.widthAnchor.constraint(equalToConstant: 50),
 			speakerLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8),
 			speakerLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			speakerLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),

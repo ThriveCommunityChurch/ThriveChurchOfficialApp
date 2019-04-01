@@ -13,12 +13,23 @@ import AVFoundation
 extension NowPlayingViewController {
 	
 	@objc func playAudio() {
+		
+		if (self.reachedEnd) {
+			// reset to the beginning
+			self.progressIndicator.setProgress(0.0, animated: false)
+			let time2: CMTime = CMTimeMake(Int64(0 * 1000 as Float64), 1000)
+			player?.seek(to: time2)
+			self.reachedEnd = false
+		}
+		
 		SermonAVPlayer.sharedInstance.play()
 		self.playButton.isEnabled = false
 		self.stopButton.isEnabled = true
 		self.pauseButton.isEnabled = true
 		self.rwButton.isEnabled = true
 		self.ffButton.isEnabled = true
+		
+		self.startTimer()
 	}
 	
 	@objc func pauseAudio() {
@@ -28,10 +39,13 @@ extension NowPlayingViewController {
 		self.pauseButton.isEnabled = false
 		self.rwButton.isEnabled = true
 		self.ffButton.isEnabled = true
+		
+		self.removeTimer()
 	}
 	
 	@objc func stopAudio() {
 		SermonAVPlayer.sharedInstance.stop()
+		self.removeTimer()
 		
 		navigationController?.popViewController(animated: true)
 	}
@@ -48,6 +62,8 @@ extension NowPlayingViewController {
 			let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
 			player?.seek(to: time2)
 		}
+		
+		self.calculateAnimationsForProgressBar()
 	}
 	
 	@objc func rewind() {
@@ -61,9 +77,15 @@ extension NowPlayingViewController {
 		let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
 		player?.seek(to: time2)
 		
+		self.calculateAnimationsForProgressBar()
 	}
 	
 	@objc func downloadAudio() {
+		
+		self.downloadButton.isEnabled = false
+		self.downloadButton.isHidden = true
+		self.spinner.isHidden = false
+		self.spinner.startAnimating()
 		
 		// prevent multiple presses of the button
 		if !currentlyDownloading {
@@ -160,8 +182,13 @@ extension NowPlayingViewController {
 						self.finishDownload()
 					}
 				} catch {
-					// an error ocurred
+					// an error ocurred, let the user try again
+					self.downloadButton.isEnabled = false
 					self.currentlyDownloading = false
+					
+					self.downloadButton.isHidden = false
+					self.spinner.isHidden = true
+					self.spinner.stopAnimating()
 					print(error)
 				}
 			}
@@ -189,6 +216,10 @@ extension NowPlayingViewController {
 			self.downloadedSermonsButton?.isEnabled = true
 			self.downloadButton.isEnabled = false
 			self.currentlyDownloading = false
+			
+			self.downloadButton.isHidden = false
+			self.spinner.isHidden = true
+			self.spinner.stopAnimating()
 		}
 	}
 
@@ -216,5 +247,66 @@ extension NowPlayingViewController {
 				}
 			}
 		}
+	}
+	
+	/// Calculates an easy animation for the progress bar to follow,
+	/// can be called every few seconds or on a button press
+	@objc func calculateAnimationsForProgressBar() {
+		
+		// stop any current animation
+		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+		
+		// set the animate method to have a beginning spot
+		if (self.playerProgress?.isNaN)! {
+			self.progressIndicator.setProgress(self.playerProgress ?? 0.0, animated: false)
+		}
+		
+		// recalculate the current place in the bar
+		let timeNow = self.currentItem?.currentTime().seconds
+		let progress = Float((timeNow ?? 0.0) / (self.totalAudioTime ?? 1.0))
+		
+		if (lazyLoadDuration && totalAudioTime ?? 0.0 > 0.0) {
+			
+			DispatchQueue.main.async {
+				self.durationLabel.text = self.totalAudioTime!.secondsToHoursMinutesSeconds()
+				self.lazyLoadDuration = false
+			}
+		}
+		
+		// set progressView to 0%, with animated set to false
+		// however if progress is NaN, set it to 0, if not then just set it to itself
+		self.progressIndicator.setProgress(progress.isNaN ? 0.0 : progress, animated: false)
+		
+		// 3-second animation changing from where it is now to where it shoudld be
+		UIView.animate(withDuration: 4, delay: 0, options: [], animations: { [unowned self] in
+			self.progressIndicator.layoutIfNeeded()
+		})
+		
+		if (progress >= 1.0) {
+			// stop any current animation
+			self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+			self.reachedEnd = true
+			
+			// if we reached the end, then remove the timer and return from this method
+			self.removeTimer()
+			self.playButton.isEnabled = true
+			self.pauseButton.isEnabled = false
+			
+			return
+		}
+	}
+	
+	func removeTimer() {
+		
+		// stop any current animation
+		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+		
+		// stop looking for animations
+		self.progressTimer?.invalidate()
+		self.progressTimer = nil
+	}
+	
+	func startTimer() {
+		progressTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.calculateAnimationsForProgressBar), userInfo: nil, repeats: true)
 	}
 }
