@@ -128,6 +128,8 @@ MFMailComposeViewControllerDelegate {
 			self.retrieveRecentlyPlayed()
 		}
 		
+		refreshView()
+		
 		// Add an observer to keep track of this view while the app is in the background.
 		// Call the func to refresh it when we enter the foreground again, see issue #
 		NotificationCenter.default.addObserver(self,
