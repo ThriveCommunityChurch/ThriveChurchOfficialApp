@@ -498,6 +498,10 @@ extension ListenCollectionViewController {
 		}
 	}
 	
+	@objc func refreshView() {
+		self.collectionView?.reloadData()
+	}
+	
 	func retrieveRecentlyPlayed() {
 		
 		// get the recently played sermon messages

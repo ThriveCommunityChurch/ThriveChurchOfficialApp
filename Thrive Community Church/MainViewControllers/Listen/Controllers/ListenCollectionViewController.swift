@@ -35,7 +35,6 @@ MFMailComposeViewControllerDelegate {
 	var totalPages: Int = 1
 	var overrideFooter: Bool = false
 	
-	
 	// API Connectivity issues
 	var retryCounter: Int = 0
 	var miscApiErrorText: String?
@@ -114,6 +113,7 @@ MFMailComposeViewControllerDelegate {
 			setupViews()
 			self.fetchAllSermons(isReset: false)
 			self.fetchLiveStream()
+			
 		}
 		else {
 			setupViews()
@@ -127,6 +127,20 @@ MFMailComposeViewControllerDelegate {
 		DispatchQueue.main.async {
 			self.retrieveRecentlyPlayed()
 		}
+		
+		// Add an observer to keep track of this view while the app is in the background.
+		// Call the func to refresh it when we enter the foreground again, see issue #
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(refreshView),
+											   name: NSNotification.Name.UIApplicationWillEnterForeground,
+											   object: UIApplication.shared)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		// remove the observer we set in viewWillAppear() so we avoid mem leaks
+		NotificationCenter.default.removeObserver(self)
 	}
 
     // MARK: UICollectionViewDataSource
