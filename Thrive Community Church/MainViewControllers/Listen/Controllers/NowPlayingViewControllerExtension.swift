@@ -265,14 +265,6 @@ extension NowPlayingViewController {
 		let timeNow = self.currentItem?.currentTime().seconds
 		let progress = Float((timeNow ?? 0.0) / (self.totalAudioTime ?? 1.0))
 		
-		if (lazyLoadDuration && totalAudioTime ?? 0.0 > 0.0) {
-			
-			DispatchQueue.main.async {
-				self.durationLabel.text = self.totalAudioTime!.secondsToHoursMinutesSeconds()
-				self.lazyLoadDuration = false
-			}
-		}
-		
 		// set progressView to 0%, with animated set to false
 		// however if progress is NaN, set it to 0, if not then just set it to itself
 		self.progressIndicator.setProgress(progress.isNaN ? 0.0 : progress, animated: false)

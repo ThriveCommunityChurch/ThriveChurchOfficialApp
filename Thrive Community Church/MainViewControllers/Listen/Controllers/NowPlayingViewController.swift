@@ -555,7 +555,10 @@ class NowPlayingViewController: UIViewController {
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "Date: \(dataDump["messageDate"] as? String ?? "")"
 		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
-		self.currentMessageId = (dataDump["message"] as? SermonMessage)?.MessageId
+		
+		let sermonMessage = (dataDump["message"] as? SermonMessage)
+		self.currentMessageId = sermonMessage?.MessageId
+		self.totalAudioTime = sermonMessage?.AudioDuration
 		
 		// inside here we will disable the download button
 		self.checkIfUserHasDownloads()
@@ -572,16 +575,12 @@ class NowPlayingViewController: UIViewController {
 		
 		//get the duration and playing time
 		currentItem = player?.currentItem
-		totalAudioTime = currentItem?.duration.seconds
 		currentTime = currentItem?.currentTime().seconds
 		let progress = (currentTime ?? 0.0) / (totalAudioTime ?? 1.0)
 		playerProgress = Float(progress)
 		
-		if (totalAudioTime == nil || totalAudioTime == 0) {
-			// Since this hasn't been loaded yet, give it a minute - and we will load this async later
-			lazyLoadDuration = true
-			self.durationLabel.text = totalAudioTime?.secondsToHoursMinutesSeconds()
-		}
+		// set the duration text
+		self.durationLabel.text = totalAudioTime?.secondsToHoursMinutesSeconds()
 		
 		// stop any current animation
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
