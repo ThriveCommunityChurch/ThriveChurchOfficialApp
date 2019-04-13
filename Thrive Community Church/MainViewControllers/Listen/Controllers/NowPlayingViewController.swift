@@ -30,6 +30,7 @@ class NowPlayingViewController: UIViewController {
 	var currentTime: Double? = nil
 	var playerProgress: Float? = nil
 	var progressTimer: Timer? = nil
+	var currentProgressTimer: Timer? = nil
 	var lazyLoadDuration: Bool = false
 	
 	// UI Elements
@@ -63,6 +64,13 @@ class NowPlayingViewController: UIViewController {
 	
 	let progressContainerView: UIView = {
 		let view = UIView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	
+	let progressTrackerContainer: UIView = {
+		let view = UIView()
+		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
@@ -212,8 +220,18 @@ class NowPlayingViewController: UIViewController {
 	
 	let durationLabel: UILabel = {
 		let label = UILabel()
-		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Book", size: 15)
+		label.textAlignment = .center
+		label.font = UIFont(name: "Avenir-Book", size: 12)
+		label.textColor = .lightGray
+		label.numberOfLines = 1
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
+	let currentProgressLabel: UILabel = {
+		let label = UILabel()
+		label.textAlignment = .center
+		label.font = UIFont(name: "Avenir-Book", size: 12)
 		label.textColor = .lightGray
 		label.numberOfLines = 1
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -364,7 +382,7 @@ class NowPlayingViewController: UIViewController {
 		super.viewWillDisappear(true)
 		
 		// prevent mem leaks
-		self.removeTimer()
+		self.removeTimer(removeProgressTimer: false, removeBoth: true)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -401,14 +419,18 @@ class NowPlayingViewController: UIViewController {
 		// add all the UI Elements first
 		view.addSubview(seriesArt)
 		view.addSubview(progressContainerView)
+		view.addSubview(progressTrackerContainer)
 		view.addSubview(playerControlsView)
 		view.addSubview(detailsBackgroundView)
+		
+		// add the things to the containers
+		progressTrackerContainer.addSubview(durationLabel)
+		progressTrackerContainer.addSubview(currentProgressLabel)
 		playerControlsView.addSubview(controlsStackView)
 		detailsBackgroundView.addSubview(messageTitleLabel)
 		detailsBackgroundView.addSubview(speakerLabel)
 		detailsBackgroundView.addSubview(dateLabel)
 		detailsBackgroundView.addSubview(passageLabel)
-		detailsBackgroundView.addSubview(durationLabel)
 		progressContainerView.addSubview(progressIndicator)
 		
 		// calculate the size for the image view
@@ -430,10 +452,20 @@ class NowPlayingViewController: UIViewController {
 				progressIndicator.trailingAnchor.constraint(equalTo: progressContainerView.trailingAnchor, constant: -8),
 				progressIndicator.centerYAnchor.constraint(equalTo: progressContainerView.centerYAnchor),
 				progressIndicator.heightAnchor.constraint(equalToConstant: 3),
-				playerControlsView.topAnchor.constraint(equalTo: progressContainerView.bottomAnchor, constant: 16),
+				progressTrackerContainer.topAnchor.constraint(lessThanOrEqualTo: progressContainerView.bottomAnchor, constant: 0),
+				progressTrackerContainer.heightAnchor.constraint(equalToConstant: 16),
+				progressTrackerContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+				progressTrackerContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+				currentProgressLabel.leadingAnchor.constraint(equalTo: progressTrackerContainer.leadingAnchor),
+				currentProgressLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
+				currentProgressLabel.widthAnchor.constraint(equalToConstant: 35),
+				durationLabel.trailingAnchor.constraint(equalTo: progressTrackerContainer.trailingAnchor),
+				durationLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
+				durationLabel.widthAnchor.constraint(equalToConstant: 45),
+				playerControlsView.topAnchor.constraint(equalTo: progressTrackerContainer.bottomAnchor, constant: 16),
 				playerControlsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
 				playerControlsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-				playerControlsView.heightAnchor.constraint(equalToConstant: 25),
+				playerControlsView.heightAnchor.constraint(equalToConstant: 35),
 				detailsBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 				detailsBackgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 				detailsBackgroundView.topAnchor.constraint(equalTo: playerControlsView.bottomAnchor, constant: 24),
@@ -446,9 +478,6 @@ class NowPlayingViewController: UIViewController {
 				dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
 				passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
 				passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
-				durationLabel.leadingAnchor.constraint(equalTo: passageLabel.leadingAnchor),
-				durationLabel.trailingAnchor.constraint(equalTo: passageLabel.trailingAnchor),
-				durationLabel.centerYAnchor.constraint(equalTo: speakerLabel.centerYAnchor),
 				controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
 				controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
 				controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
@@ -553,7 +582,7 @@ class NowPlayingViewController: UIViewController {
 		self.seriesArt.image = dataDump["sermonGraphic"] as? UIImage
 		self.messageTitleLabel.text = "\(dataDump["messageTitle"] as? String ?? "")"
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
-		self.dateLabel.text = "Date: \(dataDump["messageDate"] as? String ?? "")"
+		self.dateLabel.text = "\(dataDump["messageDate"] as? String ?? "")"
 		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
 		
 		let sermonMessage = (dataDump["message"] as? SermonMessage)
@@ -579,8 +608,14 @@ class NowPlayingViewController: UIViewController {
 		let progress = (currentTime ?? 0.0) / (totalAudioTime ?? 1.0)
 		playerProgress = Float(progress)
 		
+		// set the current progres
+		self.currentProgressLabel.text = currentTime?.formatDurationForUI(displayAsPositional: true)
+		
+		// once we set the progress we need to setup a timer so that we can track the progress every second
+		self.setupCurrentProgressTracker()
+		
 		// set the duration text
-		self.durationLabel.text = totalAudioTime?.secondsToHoursMinutesSeconds()
+		self.durationLabel.text = totalAudioTime?.formatDurationForUI(displayAsPositional: true)
 		
 		// stop any current animation
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }

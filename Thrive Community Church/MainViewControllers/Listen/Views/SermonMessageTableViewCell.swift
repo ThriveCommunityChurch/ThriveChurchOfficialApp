@@ -22,7 +22,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 	let speaker: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Light", size: 12)
+		label.font = UIFont(name: "Avenir-Light", size: 13)
 		label.textColor = .lightGray
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -31,16 +31,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 	let date: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Light", size: 12)
-		label.textColor = .lightGray
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-	
-	let passageRef: UILabel = {
-		let label = UILabel()
-		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Light", size: 12)
+		label.font = UIFont(name: "Avenir-Light", size: 13)
 		label.textColor = .lightGray
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -61,6 +52,15 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.textColor = .lightGray
 		label.textAlignment = .center
 		label.text = "WK"
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
+	let durationLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont(name: "Avenir-Light", size: 12)
+		label.textColor = .lightGray
+		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -111,6 +111,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		self.addSubview(speaker)
 		self.addSubview(watchImage)
 		self.addSubview(listenImage)
+		self.addSubview(durationLabel)
 		
 		NSLayoutConstraint.activate([
 			weekNum.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
@@ -133,7 +134,10 @@ class SermonMessageTableViewCell: UITableViewCell {
 			listenImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
 			listenImage.centerYAnchor.constraint(equalTo: date.centerYAnchor),
 			listenImage.heightAnchor.constraint(equalToConstant: 20),
-			listenImage.widthAnchor.constraint(equalToConstant: 20)
+			listenImage.widthAnchor.constraint(equalToConstant: 20),
+			durationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -28),
+			durationLabel.widthAnchor.constraint(equalToConstant: 45),
+			durationLabel.centerYAnchor.constraint(equalTo: speaker.centerYAnchor)
 		])
 	}
 }

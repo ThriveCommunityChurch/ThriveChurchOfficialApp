@@ -11,7 +11,7 @@ import UIKit
 class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	var AudioUrl: String?
-	var AudioDuration: Double
+	var AudioDuration: Double?
 	var VideoUrl: String?
 	var PassageRef: String?
 	var Speaker: String

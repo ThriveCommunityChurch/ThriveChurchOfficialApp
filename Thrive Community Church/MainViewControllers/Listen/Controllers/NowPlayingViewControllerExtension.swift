@@ -40,12 +40,12 @@ extension NowPlayingViewController {
 		self.rwButton.isEnabled = true
 		self.ffButton.isEnabled = true
 		
-		self.removeTimer()
+		self.removeTimer(removeProgressTimer: false, removeBoth: true)
 	}
 	
 	@objc func stopAudio() {
 		SermonAVPlayer.sharedInstance.stop()
-		self.removeTimer()
+		self.removeTimer(removeProgressTimer: false, removeBoth: true)
 		
 		navigationController?.popViewController(animated: true)
 	}
@@ -178,7 +178,7 @@ extension NowPlayingViewController {
 					else {
 						try FileManager.default.moveItem(at: location, to: outputURL)
 	
-						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // aifc
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
 						self.finishDownload()
 					}
 				} catch {
@@ -280,7 +280,7 @@ extension NowPlayingViewController {
 			self.reachedEnd = true
 			
 			// if we reached the end, then remove the timer and return from this method
-			self.removeTimer()
+			self.removeTimer(removeProgressTimer: false, removeBoth: true)
 			self.playButton.isEnabled = true
 			self.pauseButton.isEnabled = false
 			
@@ -288,17 +288,66 @@ extension NowPlayingViewController {
 		}
 	}
 	
-	func removeTimer() {
+	func removeTimer(removeProgressTimer: Bool, removeBoth: Bool) {
 		
-		// stop any current animation
-		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+		// should we remove both of them?
+		if removeBoth {
+			self.currentProgressTimer?.invalidate()
+			self.currentProgressTimer = nil
+			
+			
+			// stop any current animation
+			self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+			
+			// stop looking for animations
+			self.progressTimer?.invalidate()
+			self.progressTimer = nil
+		}
 		
-		// stop looking for animations
-		self.progressTimer?.invalidate()
-		self.progressTimer = nil
+		if removeProgressTimer {
+			self.currentProgressTimer?.invalidate()
+			self.currentProgressTimer = nil
+		}
+		else {
+			// stop any current animation
+			self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+			
+			// stop looking for animations
+			self.progressTimer?.invalidate()
+			self.progressTimer = nil
+		}
+		
 	}
 	
 	func startTimer() {
 		progressTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.calculateAnimationsForProgressBar), userInfo: nil, repeats: true)
+		
+		self.setupCurrentProgressTracker()
+	}
+	
+	func setupCurrentProgressTracker() {
+		currentProgressTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.processCurrentLocationChange), userInfo: nil, repeats: true)
+	}
+	
+	@objc func processCurrentLocationChange() {
+		
+		self.currentTime = self.currentItem?.currentTime().seconds
+		
+		// first though we need to say that if the user reaches the end of the
+		// playback that this timer is disposed
+		
+		if self.currentTime ?? 0.0 > self.totalAudioTime ?? 0.0 ||
+			(self.currentTime ?? 0.0 + 1) >= self.totalAudioTime ?? 0.0 {
+			// so if now is past the total time or if 1 second from now we will end,
+			// remove and stop the timer
+			
+			self.removeTimer(removeProgressTimer: true, removeBoth: false)
+		}
+		
+		// set the current progres
+		self.currentProgressLabel.text = currentTime?.formatDurationForUI(displayAsPositional: true)
+		
+		// set the duration text
+		self.durationLabel.text = totalAudioTime?.formatDurationForUI(displayAsPositional: true)
 	}
 }
