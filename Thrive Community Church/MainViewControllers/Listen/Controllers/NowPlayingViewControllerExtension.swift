@@ -353,8 +353,6 @@ extension NowPlayingViewController {
 		// playback that this timer is disposed
 		
 		if self.currentTime ?? 0.0 >= self.totalAudioTime ?? 0.0
-//			||
-//			(self.currentTime ?? 0.0 + 3) >= self.totalAudioTime ?? 0.0
 		{
 			// so if now is past the total time or if 2 seconds from now we will end,
 			// remove and stop the timer
