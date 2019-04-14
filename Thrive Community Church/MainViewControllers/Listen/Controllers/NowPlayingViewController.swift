@@ -29,7 +29,6 @@ class NowPlayingViewController: UIViewController {
 	var totalAudioTime: Double? = nil
 	var currentTime: Double? = nil
 	var playerProgress: Float? = nil
-	var progressTimer: Timer? = nil
 	var currentProgressTimer: Timer? = nil
 	var lazyLoadDuration: Bool = false
 	
@@ -218,7 +217,7 @@ class NowPlayingViewController: UIViewController {
 		return label
 	}()
 	
-	let durationLabel: UILabel = {
+	let durationRemainderLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
 		label.font = UIFont(name: "Avenir-Book", size: 12)
@@ -342,7 +341,6 @@ class NowPlayingViewController: UIViewController {
 		if playerStatus {
 			
 			self.notPlayingText.isHidden = true
-			setupViews()
 			player = SermonAVPlayer.sharedInstance.getPlayer()
 			
 			loaded = true
@@ -382,7 +380,7 @@ class NowPlayingViewController: UIViewController {
 		super.viewWillDisappear(true)
 		
 		// prevent mem leaks
-		self.removeTimer(removeProgressTimer: false, removeBoth: true)
+		self.removeTimer()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -424,7 +422,7 @@ class NowPlayingViewController: UIViewController {
 		view.addSubview(detailsBackgroundView)
 		
 		// add the things to the containers
-		progressTrackerContainer.addSubview(durationLabel)
+		progressTrackerContainer.addSubview(durationRemainderLabel)
 		progressTrackerContainer.addSubview(currentProgressLabel)
 		playerControlsView.addSubview(controlsStackView)
 		detailsBackgroundView.addSubview(messageTitleLabel)
@@ -459,9 +457,9 @@ class NowPlayingViewController: UIViewController {
 				currentProgressLabel.leadingAnchor.constraint(equalTo: progressTrackerContainer.leadingAnchor),
 				currentProgressLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
 				currentProgressLabel.widthAnchor.constraint(equalToConstant: 35),
-				durationLabel.trailingAnchor.constraint(equalTo: progressTrackerContainer.trailingAnchor),
-				durationLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
-				durationLabel.widthAnchor.constraint(equalToConstant: 45),
+				durationRemainderLabel.trailingAnchor.constraint(equalTo: progressTrackerContainer.trailingAnchor),
+				durationRemainderLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
+				durationRemainderLabel.widthAnchor.constraint(equalToConstant: 45),
 				playerControlsView.topAnchor.constraint(equalTo: progressTrackerContainer.bottomAnchor, constant: 16),
 				playerControlsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
 				playerControlsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
@@ -514,9 +512,9 @@ class NowPlayingViewController: UIViewController {
 				dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
 				passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
 				passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
-				durationLabel.leadingAnchor.constraint(equalTo: passageLabel.leadingAnchor),
-				durationLabel.trailingAnchor.constraint(equalTo: passageLabel.trailingAnchor),
-				durationLabel.centerYAnchor.constraint(equalTo: speakerLabel.centerYAnchor),
+				durationRemainderLabel.leadingAnchor.constraint(equalTo: passageLabel.leadingAnchor),
+				durationRemainderLabel.trailingAnchor.constraint(equalTo: passageLabel.trailingAnchor),
+				durationRemainderLabel.centerYAnchor.constraint(equalTo: speakerLabel.centerYAnchor),
 				controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
 				controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
 				controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
@@ -615,15 +613,13 @@ class NowPlayingViewController: UIViewController {
 		self.setupCurrentProgressTracker()
 		
 		// set the duration text
-		self.durationLabel.text = totalAudioTime?.formatDurationForUI(displayAsPositional: true)
+		let durationRemaining = (self.totalAudioTime ?? 0.0) - (self.currentTime ?? 0.0)
+		self.durationRemainderLabel.text = "-\(durationRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
 		
 		// stop any current animation
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
 		
 		// set progressView to 0%, with animated set to false
-		self.progressIndicator.setProgress(playerProgress ?? 0.0, animated: true)
-		
-		progressTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.calculateAnimationsForProgressBar), userInfo: nil, repeats: true)
-		
+		self.progressIndicator.setProgress(playerProgress ?? 0.0, animated: false)
 	}
 }
