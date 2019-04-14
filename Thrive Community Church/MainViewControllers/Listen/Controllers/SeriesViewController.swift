@@ -207,7 +207,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		cell.weekNum.text = "\(selectedMessage.WeekNum ?? 0)"
 		cell.date.text = selectedMessage.Date
 		cell.speaker.text = selectedMessage.Speaker
-		cell.passageRef.text = selectedMessage.PassageRef
+		cell.durationLabel.text = selectedMessage.AudioDuration?.formatDurationForUI()
 		
 		if selectedMessage.AudioUrl == nil {
 			cell.listenImage.isHidden = true

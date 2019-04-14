@@ -30,14 +30,16 @@ extension Double {
 	}
 	
 	/// return a duration in minutes or hours for the length of a number of seconds
-	func secondsToHoursMinutesSeconds() -> String {
-		let (h, m, s) = self.secondsToHoursMinutesSeconds()
+	func formatDurationForUI(displayAsPositional: Bool = false) -> String? {
 		
-		if (h > 0.0) {
-			return "Length: \(Int(h)):, \(Int(m)):, \(Int(s))"
-		}
-		else {
-			return "Length: \(Int(m)):\(Int(s))"
-		}
+		let duration: TimeInterval = self // 2 minutes, 30 seconds
+		
+		let formatter = DateComponentsFormatter()
+		formatter.unitsStyle = displayAsPositional ? .positional : .abbreviated
+		formatter.allowedUnits = [ .minute, .second ]
+		formatter.zeroFormattingBehavior = [ .pad ]
+		
+		let formattedDuration = formatter.string(from: duration)
+		return formattedDuration
 	}
 }

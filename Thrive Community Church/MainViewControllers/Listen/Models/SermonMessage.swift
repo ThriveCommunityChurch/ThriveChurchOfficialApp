@@ -11,6 +11,7 @@ import UIKit
 class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	var AudioUrl: String?
+	var AudioDuration: Double?
 	var VideoUrl: String?
 	var PassageRef: String?
 	var Speaker: String
@@ -40,10 +41,11 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// Friendly name of the sermon series
 	var seriesTitle: String?
 	
-	init(audio: String?, video: String?, psg: String, spkr: String, name: String,
+	init(audio: String?, duration: Double, video: String?, psg: String, spkr: String, name: String,
 		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?,
 		 seriesArt: Data?, played: Double?, seriesTitle: String?) {
 		self.AudioUrl = audio
+		self.AudioDuration = duration
 		self.VideoUrl = video
 		self.PassageRef = psg
 		self.Speaker = spkr
@@ -61,6 +63,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	required convenience init(coder aDecoder: NSCoder) {
 		let audio = aDecoder.decodeObject(forKey: "AudioUrl") as! String?
+		let duration = aDecoder.decodeObject(forKey: "AudioDuration") as! Double?
 		let video = aDecoder.decodeObject(forKey: "VideoUrl") as! String?
 		let psg = aDecoder.decodeObject(forKey: "PassageRef") as! String
 		let spkr = aDecoder.decodeObject(forKey: "Speaker") as! String
@@ -74,7 +77,8 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as! Double?
 		let played = aDecoder.decodeObject(forKey: "previouslyPlayed") as! Double?
 		let art = aDecoder.decodeObject(forKey: "seriesArt") as! Data?
-		self.init(audio: audio, video: video, psg: psg, spkr: spkr, name: name,
+		
+		self.init(audio: audio, duration: duration ?? 0.0, video: video, psg: psg, spkr: spkr, name: name,
 				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,
 				  localURI: localURI, size: size, seriesArt: art, played: played,
 				  seriesTitle: seriesTitle)
@@ -82,6 +86,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	func encode(with aCoder: NSCoder) {
 		aCoder.encode(AudioUrl, forKey: "AudioUrl")
+		aCoder.encode(AudioDuration, forKey: "AudioDuration")
 		aCoder.encode(VideoUrl, forKey: "VideoUrl")
 		aCoder.encode(PassageRef, forKey: "PassageRef")
 		aCoder.encode(Speaker, forKey: "Speaker")

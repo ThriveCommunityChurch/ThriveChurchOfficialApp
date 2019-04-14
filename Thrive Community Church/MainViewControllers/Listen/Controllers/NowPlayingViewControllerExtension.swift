@@ -59,11 +59,30 @@ extension NowPlayingViewController {
 		
 		if newTime < CMTimeGetSeconds(duration) {
 			
+			self.removeTimer()
+			
+			self.currentTime = newTime
+			self.currentProgressLabel.text = self.currentTime?.formatDurationForUI(displayAsPositional: true)
+			
+			let timeRemaining = (self.totalAudioTime ?? 0.0) - newTime
+			self.durationRemainderLabel.text = "-\(timeRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
+			
 			let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
 			player?.seek(to: time2)
+			
+			DispatchQueue.main.async {
+				let progress = Float(newTime / (self.totalAudioTime ?? 1.0))
+				
+				// stop any current animation
+				self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+				
+				// set progressView to 0%, with animated set to false
+				// however if progress is NaN, set it to 0, if not then just set it to itself
+				self.progressIndicator.setProgress(progress.isNaN ? 0.0 : progress, animated: false)
+				
+				self.startTimer()
+			}
 		}
-		
-		self.calculateAnimationsForProgressBar()
 	}
 	
 	@objc func rewind() {
@@ -73,11 +92,32 @@ extension NowPlayingViewController {
 		
 		if newTime < 0 {
 			newTime = 0
+			self.currentTime = 0
 		}
+		
+		self.removeTimer()
+		
+		self.currentTime = newTime
+		self.currentProgressLabel.text = self.currentTime?.formatDurationForUI(displayAsPositional: true)
+		
+		let timeRemaining = (self.totalAudioTime ?? 0.0) - newTime
+		self.durationRemainderLabel.text = "-\(timeRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
+		
 		let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
 		player?.seek(to: time2)
 		
-		self.calculateAnimationsForProgressBar()
+		DispatchQueue.main.async {
+			let progress = Float(newTime / (self.totalAudioTime ?? 1.0))
+			
+			// stop any current animation
+			self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
+			
+			// set progressView to 0%, with animated set to false
+			// however if progress is NaN, set it to 0, if not then just set it to itself
+			self.progressIndicator.setProgress(progress.isNaN ? 0.0 : progress, animated: false)
+			
+			self.startTimer()
+		}
 	}
 	
 	@objc func downloadAudio() {
@@ -178,7 +218,7 @@ extension NowPlayingViewController {
 					else {
 						try FileManager.default.moveItem(at: location, to: outputURL)
 	
-						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // aifc
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
 						self.finishDownload()
 					}
 				} catch {
@@ -265,20 +305,12 @@ extension NowPlayingViewController {
 		let timeNow = self.currentItem?.currentTime().seconds
 		let progress = Float((timeNow ?? 0.0) / (self.totalAudioTime ?? 1.0))
 		
-		if (lazyLoadDuration && totalAudioTime ?? 0.0 > 0.0) {
-			
-			DispatchQueue.main.async {
-				self.durationLabel.text = self.totalAudioTime!.secondsToHoursMinutesSeconds()
-				self.lazyLoadDuration = false
-			}
-		}
-		
 		// set progressView to 0%, with animated set to false
 		// however if progress is NaN, set it to 0, if not then just set it to itself
 		self.progressIndicator.setProgress(progress.isNaN ? 0.0 : progress, animated: false)
 		
-		// 3-second animation changing from where it is now to where it shoudld be
-		UIView.animate(withDuration: 4, delay: 0, options: [], animations: { [unowned self] in
+		// 1-second animation changing from where it is now to where it shoudld be
+		UIView.animate(withDuration: 1, delay: 0, options: [], animations: { [unowned self] in
 			self.progressIndicator.layoutIfNeeded()
 		})
 		
@@ -297,16 +329,51 @@ extension NowPlayingViewController {
 	}
 	
 	func removeTimer() {
-		
+		self.currentProgressTimer?.invalidate()
+		self.currentProgressTimer = nil
+		self.currentProgressTimer = Timer()
+
 		// stop any current animation
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
-		
-		// stop looking for animations
-		self.progressTimer?.invalidate()
-		self.progressTimer = nil
 	}
 	
 	func startTimer() {
-		progressTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.calculateAnimationsForProgressBar), userInfo: nil, repeats: true)
+		self.setupCurrentProgressTracker()
+	}
+	
+	func setupCurrentProgressTracker() {
+		self.currentProgressTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.processCurrentLocationChange), userInfo: nil, repeats: true)
+	}
+	
+	@objc func processCurrentLocationChange() {
+		
+		self.currentTime = self.currentItem?.currentTime().seconds
+		
+		// first though we need to say that if the user reaches the end of the
+		// playback that this timer is disposed
+		
+		if self.currentTime ?? 0.0 >= self.totalAudioTime ?? 0.0
+		{
+			// so if now is past the total time or if 2 seconds from now we will end,
+			// remove and stop the timer
+			
+			self.currentProgressLabel.text = totalAudioTime?.formatDurationForUI(displayAsPositional: true)
+			
+			self.durationRemainderLabel.text = "-0:00"
+			
+			self.removeTimer()
+			return
+		}
+		
+		// set the current progres
+		self.currentProgressLabel.text = currentTime?.formatDurationForUI(displayAsPositional: true)
+		
+		// set the duration text
+		let durationRemaining = (self.totalAudioTime ?? 0.0) - (self.currentTime ?? 0.0)
+		self.durationRemainderLabel.text = "-\(durationRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
+		
+		DispatchQueue.main.async {
+			self.calculateAnimationsForProgressBar()
+		}
 	}
 }
