@@ -34,6 +34,7 @@ MFMailComposeViewControllerDelegate {
 	var pageNumber: Int = 1
 	var totalPages: Int = 1
 	var overrideFooter: Bool = false
+	var erorrViewLoaded: Bool = false
 	
 	// API Connectivity issues
 	var retryCounter: Int = 0
@@ -354,6 +355,8 @@ MFMailComposeViewControllerDelegate {
 		
 		retryCounter = retryCounter + 1
 		checkConnectivity()
+		erorrViewLoaded = false
+		resetErrorViews()
 		
 		if internetConnectionStatus != .unreachable {
 			if retryCounter >= 3 {

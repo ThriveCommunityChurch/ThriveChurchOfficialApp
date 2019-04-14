@@ -78,6 +78,14 @@ extension ListenCollectionViewController {
 				print(jsonError)
 			}
 		}.resume()
+		
+		// if 30 seconds after this API call is fired, and nothing is loaded show an error
+		DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+			
+			if self.sermonSeries.count == 0 {
+				self.enableErrorViews(status: nil, presentError: true)
+			}
+		}
 	}
 	
 	func getSermonsForId(seriesId: String, image: UIImage) {
@@ -399,26 +407,46 @@ extension ListenCollectionViewController {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
-	func enableErrorViews (status: Network.Status) {
+	func enableErrorViews (status: Network.Status? = nil, presentError: Bool = false) {
+		
+		if erorrViewLoaded {
+			return
+		}
 		
 		self.disableLoadingScreen()
 		
-		if status == .unreachable {
-			// if they are offline update the message and inform them that they
-			// will be unable to use services
-			self.apiErrorMessage.text = "You are currently offline." +
-			"\n\nTo stream sermons, enable internet access and tap the button below."
-			self.retryButton.setTitle("I'm Online", for: .normal)
-			self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
-			self.retryButton.addTarget(self, action: #selector(testOnlineAndResetViews), for: .touchUpInside)
-		}
-		else {
+		if presentError {
+			
 			apiErrorMessage.text = "An error ocurred while loading the content.\n\n" +
 				"Check your internet connection and try again. If the issue persists send " +
 			"us an email at \nwyatt@thrive-fl.org."
 			self.retryButton.setTitle("Retry?", for: .normal)
 			self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
 			self.retryButton.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
+			erorrViewLoaded = true
+		}
+		else {
+			if status == .unreachable {
+				// if they are offline update the message and inform them that they
+				// will be unable to use services
+				self.apiErrorMessage.text = "You are currently offline." +
+				"\n\nTo stream sermons, enable internet access and tap the button below."
+				self.retryButton.setTitle("I'm Online", for: .normal)
+				self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
+				self.retryButton.addTarget(self, action: #selector(testOnlineAndResetViews), for: .touchUpInside)
+				
+				erorrViewLoaded = true
+			}
+			else {
+				apiErrorMessage.text = "An error ocurred while loading the content.\n\n" +
+					"Check your internet connection and try again. If the issue persists send " +
+				"us an email at \nwyatt@thrive-fl.org."
+				self.retryButton.setTitle("Retry?", for: .normal)
+				self.retryButton.removeTarget(nil, action: nil, for: .allEvents)
+				self.retryButton.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
+				
+				erorrViewLoaded = true
+			}
 		}
 		
 		self.apiErrorMessage.isHidden = false
@@ -430,6 +458,7 @@ extension ListenCollectionViewController {
 		self.apiErrorMessage.isHidden = true
 		self.backgroundView.isHidden = true
 		self.retryButton.isHidden = true
+		erorrViewLoaded = false
 		
 		self.enableLoadingScreen()
 	}
@@ -487,6 +516,7 @@ extension ListenCollectionViewController {
 	@objc func testOnlineAndResetViews() {
 		
 		checkConnectivity()
+		erorrViewLoaded = false
 		
 		if self.internetConnectionStatus != .unreachable {
 			
