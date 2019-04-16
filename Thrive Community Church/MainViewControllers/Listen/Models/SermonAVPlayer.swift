@@ -12,6 +12,7 @@ import UIKit
 import MediaPlayer
 
 class SermonAVPlayer: NSObject {
+	
 	public static let sharedInstance = SermonAVPlayer()
 	
 	private var player: AVPlayer?
@@ -30,6 +31,8 @@ class SermonAVPlayer: NSObject {
 	
 	/// Flag for if this currently playing audio has been downloaded
 	private var isDownloaded: Bool = false
+	
+	// MARK: - Init
 	
 	public func initUsingRssString(rssUrl: String, sermonData: SermonSeries? = nil,
 								   selectedMessage: SermonMessage, seriesImage: UIImage) {
@@ -73,10 +76,11 @@ class SermonAVPlayer: NSObject {
 		}
 	}
 	
-	// I really don't like how this all works but it kinda does and theres literally only
-	// like 3 SO questions about this and there's 1 Apple Documentation page about any of this
-	// See https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfocenter
-	// for "docs" on this
+	// MARK: - Command Center Controls & Info
+	
+	// This is kinda thrown together, but surprizingly it works given the lack of docs on
+	// https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfocenter
+	
 	private func registerWithCommandCenter() {
 		
 		// init the progress timer, to set a 0.3s timer that checks to see when the playback starts
@@ -151,18 +155,6 @@ class SermonAVPlayer: NSObject {
 		player?.seek(to: time2)
 		
 		self.reinitNowPlayingInfoCenter(currentTime: newTime, isPaused: false)
-	}
-	
-	public func pause() {
-		self.player?.pause()
-		self.isPlaying = false
-		self.isPaused = true
-	}
-	
-	public func play() {
-		self.player?.play()
-		self.isPlaying = true
-		self.isPaused = false
 	}
 	
 	/// Use this method to generate the InfoCenter stuffs when the file is being downloaded
@@ -308,6 +300,20 @@ class SermonAVPlayer: NSObject {
 		return self.isPaused
 	}
 	
+	// MARK: - Playback Controls
+	
+	public func pause() {
+		self.player?.pause()
+		self.isPlaying = false
+		self.isPaused = true
+	}
+	
+	public func play() {
+		self.player?.play()
+		self.isPlaying = true
+		self.isPaused = false
+	}
+	
 	public func stop() {
 		self.player?.pause()
 		self.player = nil
@@ -434,13 +440,13 @@ class SermonAVPlayer: NSObject {
 		recentlyPlayed = nil
 	}
 	
-	func getUniqueIDsFromArrayOfObjects(events: [SermonMessage]) -> [String] {
+	private func getUniqueIDsFromArrayOfObjects(events: [SermonMessage]) -> [String] {
 		let eventIds = events.map { $0.MessageId}
 		let idset = Set(eventIds)
 		return Array(idset)
 	}
 	
-	func removeMatchingMessages(msg: SermonMessage) -> Int {
+	private func removeMatchingMessages(msg: SermonMessage) -> Int {
 		
 		// the Id index of the sermons here are in the same order
 		let idArray = getUniqueIDsFromArrayOfObjects(events: recentlyPlayed!)
@@ -455,7 +461,7 @@ class SermonAVPlayer: NSObject {
 		return recentlyPlayed?.count ?? 0
 	}
 	
-	func sortMessagesMostRecentDescending() {
+	private func sortMessagesMostRecentDescending() {
 		
 		// we'll only ever have to sort 10 of these
 		self.recentlyPlayed = self.recentlyPlayed?.sorted {
