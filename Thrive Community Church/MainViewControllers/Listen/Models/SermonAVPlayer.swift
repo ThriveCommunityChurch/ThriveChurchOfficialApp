@@ -53,9 +53,9 @@ class SermonAVPlayer: NSObject {
 		// a user can pause and play the audio with a swipe
 		registerWithCommandCenter()
 		
-		DispatchQueue.main.async(execute: {
-			self.registerDateForRecentlyPlayed()
-		})
+		DispatchQueue.main.async {
+			self.registerDataForRecentlyPlayed()
+		}
 	}
 	
 	public func initLocally(selectedMessage: SermonMessage) {
@@ -71,8 +71,12 @@ class SermonAVPlayer: NSObject {
 		
 		self.registerDataFromLocal(selectedMessage: selectedMessage)
 		
+		// we need to register the player object with the Control Center so that
+		// a user can pause and play the audio with a swipe
+		registerWithCommandCenter()
+		
 		DispatchQueue.main.async {
-			self.registerDateForRecentlyPlayed()
+			self.registerDataForRecentlyPlayed()
 		}
 	}
 	
@@ -337,7 +341,7 @@ class SermonAVPlayer: NSObject {
 	private func registerData(sermonData: SermonSeries? = nil, selectedMessage: SermonMessage,
 														seriesImage: UIImage) {
 		
-		self.seriesTitle = sermonData?.Name ?? (selectedMessage.seriesTitle ?? "")
+		self.seriesTitle = sermonData == nil ? (selectedMessage.seriesTitle ?? "") : sermonData?.Name ?? ""
 		self.passageRef = selectedMessage.PassageRef ?? ""
 		self.messageTitle = selectedMessage.Title
 		self.speaker = selectedMessage.Speaker
@@ -349,6 +353,7 @@ class SermonAVPlayer: NSObject {
 		// load everything from the selected message and put it in the response one, we will use this
 		// as the message object we store in the UserDefaults for it's MessageId
 		selectedMessage.seriesArt = UIImagePNGRepresentation(seriesImage)
+		selectedMessage.seriesTitle = self.seriesTitle
 		
 		message = selectedMessage
 	}
@@ -389,7 +394,7 @@ class SermonAVPlayer: NSObject {
 		return self.player!
 	}
 	
-	private func registerDateForRecentlyPlayed() {
+	private func registerDataForRecentlyPlayed() {
 		
 		// reset the data
 		recentlyPlayed = [SermonMessage]()
