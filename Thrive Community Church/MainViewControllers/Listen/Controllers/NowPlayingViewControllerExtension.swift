@@ -347,6 +347,19 @@ extension NowPlayingViewController {
 	
 	@objc func processCurrentLocationChange() {
 		
+		// at the same time we should look to see if the player is playing
+		let isPaused = SermonAVPlayer.sharedInstance.checkPausedStatus()
+		let isPlaying = SermonAVPlayer.sharedInstance.checkPlayingStatus()
+		
+		if isPaused {
+			self.playButton.isEnabled = true
+			self.pauseButton.isEnabled = false
+		}
+		else if isPlaying {
+			self.playButton.isEnabled = false
+			self.pauseButton.isEnabled = true
+		}
+		
 		self.currentTime = self.currentItem?.currentTime().seconds
 		
 		// first though we need to say that if the user reaches the end of the

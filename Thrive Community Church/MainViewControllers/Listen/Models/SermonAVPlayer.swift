@@ -115,17 +115,11 @@ class SermonAVPlayer: NSObject {
 		
 		self.pause()
 		
-		let currentTime = self.player?.currentTime().seconds
-		self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: true)
-		
 		return .success
 	}
 	
 	private func continuePlayback(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
 		self.play()
-		
-		let currentTime = self.player?.currentTime().seconds
-		self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: false)
 		
 		return .success
 	}
@@ -307,12 +301,20 @@ class SermonAVPlayer: NSObject {
 	// MARK: - Playback Controls
 	
 	public func pause() {
+		
+		let currentTime = self.player?.currentTime().seconds
+		self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: true)
+		
 		self.player?.pause()
 		self.isPlaying = false
 		self.isPaused = true
 	}
 	
 	public func play() {
+		
+		let currentTime = self.player?.currentTime().seconds
+		self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: false)
+		
 		self.player?.play()
 		self.isPlaying = true
 		self.isPaused = false
