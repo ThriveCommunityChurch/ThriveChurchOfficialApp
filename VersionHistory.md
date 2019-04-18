@@ -2,7 +2,7 @@
 - Our biggest update yet!
 - Easy to view sermon series (sorted by most recent)
 - Pull-Up from the bottom to load more sermon series'
-- Download Sermon Audio for easy listening without an internet connection
+- Download sermon audio for easy listening without an internet connection
 - Easily read relevant bible passages
 - Now Playing playback controls
 - You can now control audio playback from the Control Center (even if the device is locked)
