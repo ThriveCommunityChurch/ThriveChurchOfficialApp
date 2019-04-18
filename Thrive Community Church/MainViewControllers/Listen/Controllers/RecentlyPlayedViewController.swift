@@ -235,6 +235,9 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			])
+			
+			self.recentlyPlayedTable.rowHeight = UITableViewAutomaticDimension
+			self.recentlyPlayedTable.estimatedRowHeight = 80.0
 		}
 		
 		// apparently declaring this above doesn't want to work

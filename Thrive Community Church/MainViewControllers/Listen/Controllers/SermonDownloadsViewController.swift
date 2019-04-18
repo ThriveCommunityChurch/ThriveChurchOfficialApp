@@ -112,6 +112,9 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 				downloadsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				downloadsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 			])
+			
+			self.downloadsTableView.rowHeight = UITableViewAutomaticDimension
+			self.downloadsTableView.estimatedRowHeight = 90.0
 		}
 	}
 	

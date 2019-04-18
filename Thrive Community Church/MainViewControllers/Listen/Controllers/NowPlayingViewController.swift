@@ -367,12 +367,14 @@ class NowPlayingViewController: UIViewController {
 				self.checkIfUserHasDownloads(isInit: true)
 			}
 		}
-		
-		let playerStatus = self.checkPlayerStatus()
-		
-		if loaded && playerStatus {
+		else {
 			
-			reinitForPlayingSound()
+			let playerStatus = self.checkPlayerStatus()
+			
+			if loaded && playerStatus {
+				
+				reinitForPlayingSound()
+			}
 		}
 	}
 	
@@ -400,8 +402,9 @@ class NowPlayingViewController: UIViewController {
 	private func reinitForPlayingSound() {
 		
 		self.notPlayingText.isHidden = true
+		self.player = SermonAVPlayer.sharedInstance.getPlayer()
+		
 		setupViews()
-		player = SermonAVPlayer.sharedInstance.getPlayer()
 		
 		// make sure that the buttons are init properly
 		loaded = true
@@ -483,10 +486,12 @@ class NowPlayingViewController: UIViewController {
 			])
 		} else {
 			// Fallback on earlier versions
+			spinner.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+			
 			NSLayoutConstraint.activate([
 				seriesArt.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				seriesArt.topAnchor.constraint(equalTo: view.topAnchor),
+				seriesArt.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
 				progressContainerView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
 				progressContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

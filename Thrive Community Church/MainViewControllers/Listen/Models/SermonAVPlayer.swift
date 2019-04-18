@@ -312,12 +312,14 @@ class SermonAVPlayer: NSObject {
 	
 	public func play() {
 		
-		let currentTime = self.player?.currentTime().seconds
-		self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: false)
-		
 		self.player?.play()
 		self.isPlaying = true
 		self.isPaused = false
+		
+		if self.player != nil {
+			let currentTime = self.player?.currentTime().seconds
+			self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: false)
+		}
 	}
 	
 	public func stop() {
@@ -355,7 +357,6 @@ class SermonAVPlayer: NSObject {
 		// load everything from the selected message and put it in the response one, we will use this
 		// as the message object we store in the UserDefaults for it's MessageId
 		selectedMessage.seriesArt = UIImagePNGRepresentation(seriesImage)
-		selectedMessage.seriesTitle = self.seriesTitle
 		
 		message = selectedMessage
 	}

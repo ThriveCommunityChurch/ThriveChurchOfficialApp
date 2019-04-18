@@ -296,6 +296,10 @@ extension NowPlayingViewController {
 		// stop any current animation
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
 		
+		if self.player == nil || self.currentItem == nil{
+			return
+		}
+		
 		// set the animate method to have a beginning spot
 		if (self.playerProgress?.isNaN)! {
 			self.progressIndicator.setProgress(self.playerProgress ?? 0.0, animated: false)

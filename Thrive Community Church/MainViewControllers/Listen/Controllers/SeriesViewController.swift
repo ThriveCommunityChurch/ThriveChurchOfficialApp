@@ -114,17 +114,20 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		else {
 			// Fallback on earlier versions
 			NSLayoutConstraint.activate([
+				seriesArt.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
 				seriesArt.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				seriesArt.topAnchor.constraint(equalTo: view.topAnchor),
 				seriesArt.heightAnchor.constraint(equalToConstant: height),
 				startDate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
 				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
 				seriesTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				seriesTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				seriesTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor),
 				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
 			])
+			
+			self.seriesTable.rowHeight = UITableViewAutomaticDimension
+			self.seriesTable.estimatedRowHeight = 90.0
 		}
 		
 		let updatedSeriesInfo = formatDataForPresentation(series: series!)
@@ -160,6 +163,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			
 			let date = i.Date.FormatDateFromISO8601ForUI()
 			i.Date = date
+			i.seriesTitle = series?.Name
 			
 			messages.append(i)
 		}
@@ -288,7 +292,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				
 				self.seriesTable.deselectRow(indexPath: indexPath)
 				
-		
 				print("Downloading now.........")
 				
 				// prevent multiple presses of the button

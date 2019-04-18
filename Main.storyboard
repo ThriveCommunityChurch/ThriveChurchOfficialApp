@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -3835,7 +3835,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdP-V5-z1s">
-                                                <rect key="frame" x="0.0" y="271" width="375" height="37"/>
+                                                <rect key="frame" x="0.0" y="271" width="375" height="44.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <state key="normal" title="thrive-fl.org">
@@ -3846,7 +3846,7 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThriveLogo" translatesAutoresizingMaskIntoConstraints="NO" id="TeJ-v0-WHt">
-                                                <rect key="frame" x="42" y="279" width="35" height="21"/>
+                                                <rect key="frame" x="42" y="279" width="35" height="28.5"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram_white" translatesAutoresizingMaskIntoConstraints="NO" id="Sip-Bn-1tJ">
                                                 <rect key="frame" x="42" y="228" width="35" height="35"/>
@@ -4473,7 +4473,7 @@
             <objects>
                 <navigationController title="Master" extendedLayoutIncludesOpaqueBars="YES" id="F5X-el-dFB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="hNv-t8-EXo">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.19911351799999999" green="0.7287518382" blue="0.82996982340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -4760,25 +4760,25 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back Button" width="5.7600002288818359" height="10.800000190734863"/>
-        <image name="Bible" width="14.399999618530273" height="10.800000190734863"/>
-        <image name="Cellular" width="43" height="100"/>
-        <image name="Connect" width="14.399999618530273" height="8.880000114440918"/>
+        <image name="Back Button" width="12" height="22.5"/>
+        <image name="Bible" width="30" height="22.5"/>
+        <image name="Cellular" width="21.5" height="50"/>
+        <image name="Connect" width="30" height="18.5"/>
         <image name="ConnectW" width="2560" height="720"/>
         <image name="FGCU_2018_logo" width="2560" height="720"/>
-        <image name="Forward Button" width="5.7600002288818359" height="10.800000190734863"/>
-        <image name="Give" width="375" height="234"/>
-        <image name="Listen" width="14.399999618530273" height="11.279999732971191"/>
-        <image name="Made By" width="199.91999816894531" height="31.680000305175781"/>
-        <image name="More" width="13" height="3.5999999046325684"/>
-        <image name="RecentlyPlayed" width="50" height="50"/>
-        <image name="ThriveLogo" width="13.920000076293945" height="13.680000305175781"/>
-        <image name="facebook_white" width="60" height="60"/>
-        <image name="instagram_white" width="60" height="60"/>
-        <image name="live" width="50" height="50"/>
-        <image name="notes" width="12" height="12"/>
-        <image name="playback" width="40" height="38"/>
-        <image name="twitter_white" width="60" height="60"/>
+        <image name="Forward Button" width="12" height="22.5"/>
+        <image name="Give" width="187.5" height="117"/>
+        <image name="Listen" width="30" height="23.5"/>
+        <image name="Made By" width="833" height="132"/>
+        <image name="More" width="27" height="7.5"/>
+        <image name="RecentlyPlayed" width="25" height="25"/>
+        <image name="ThriveLogo" width="29" height="28.5"/>
+        <image name="facebook_white" width="30" height="30"/>
+        <image name="instagram_white" width="30" height="30"/>
+        <image name="live" width="25" height="25"/>
+        <image name="notes" width="25" height="25"/>
+        <image name="playback" width="20" height="19"/>
+        <image name="twitter_white" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DJE-eQ-FMo"/>
