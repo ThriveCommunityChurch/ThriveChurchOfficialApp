@@ -28,6 +28,7 @@ class SermonAVPlayer: NSObject {
 	private var message: SermonMessage? = nil
 	private var recentlyPlayed: [SermonMessage]?
 	private var progressTimer: Timer? = nil
+	private var registered: Bool = false
 	
 	/// Flag for if this currently playing audio has been downloaded
 	private var isDownloaded: Bool = false
@@ -227,6 +228,7 @@ class SermonAVPlayer: NSObject {
 		
 		let time = self.player?.currentItem?.currentTime().seconds
 		self.reinitNowPlayingInfoCenter(currentTime: time ?? 0.0, isPaused: false)
+		self.registered = true
 		
 		// enable the information to all come together in the command center
 		do {
@@ -288,6 +290,8 @@ class SermonAVPlayer: NSObject {
 		
 		// ignore control events
 		UIApplication.shared.endReceivingRemoteControlEvents()
+		
+		self.registered = false
 	}
 	
 	public func checkPlayingStatus() -> Bool {
@@ -316,7 +320,7 @@ class SermonAVPlayer: NSObject {
 		self.isPlaying = true
 		self.isPaused = false
 		
-		if self.player != nil {
+		if self.player != nil && registered {
 			let currentTime = self.player?.currentTime().seconds
 			self.reinitNowPlayingInfoCenter(currentTime: currentTime ?? 0.0, isPaused: false)
 		}
