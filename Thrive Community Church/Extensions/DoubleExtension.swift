@@ -39,7 +39,13 @@ extension Double {
 		formatter.allowedUnits = [ .minute, .second ]
 		formatter.zeroFormattingBehavior = [ .pad ]
 		
-		let formattedDuration = formatter.string(from: duration)
+		var formattedDuration = formatter.string(from: duration)
+		
+		// we don't need to show 0s
+		if !displayAsPositional {
+			formattedDuration = formattedDuration?.replacingOccurrences(of: " 0s", with: "")
+		}
+		
 		return formattedDuration
 	}
 }

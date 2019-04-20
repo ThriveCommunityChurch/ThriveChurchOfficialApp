@@ -205,32 +205,35 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let cell = seriesTable.dequeueReusableCell(withIdentifier: "Cell",
 												   for: indexPath) as! SermonMessageTableViewCell
 		
-		let selectedMessage = messages[indexPath.row]
+		DispatchQueue.main.async {
+			let selectedMessage = self.messages[indexPath.row]
+			
+			cell.title.text = selectedMessage.Title
+			cell.weekNum.text = "\(selectedMessage.WeekNum ?? 0)"
+			cell.date.text = selectedMessage.Date
+			cell.speaker.text = selectedMessage.Speaker
+			cell.durationLabel.text = selectedMessage.AudioDuration?.formatDurationForUI()
 		
-		cell.title.text = selectedMessage.Title
-		cell.weekNum.text = "\(selectedMessage.WeekNum ?? 0)"
-		cell.date.text = selectedMessage.Date
-		cell.speaker.text = selectedMessage.Speaker
-		cell.durationLabel.text = selectedMessage.AudioDuration?.formatDurationForUI()
 		
-		if selectedMessage.AudioUrl == nil {
-			cell.listenImage.isHidden = true
+			if selectedMessage.AudioUrl == nil {
+				cell.listenImage.isHidden = true
+			}
+			else {
+				cell.listenImage.isHidden = false
+			}
+			
+			if selectedMessage.VideoUrl == nil {
+				cell.watchImage.isHidden = true
+			}
+			else {
+				cell.watchImage.isHidden = false
+			}
+			
+			// make the selection color less intense
+			let selectedView = UIView()
+			selectedView.backgroundColor = UIColor.darkGray
+			cell.selectedBackgroundView = selectedView
 		}
-		else {
-			cell.listenImage.isHidden = false
-		}
-		
-		if selectedMessage.VideoUrl == nil {
-			cell.watchImage.isHidden = true
-		}
-		else {
-			cell.watchImage.isHidden = false
-		}
-		
-		// make the selection color less intense
-		let selectedView = UIView()
-		selectedView.backgroundColor = UIColor.darkGray
-		cell.selectedBackgroundView = selectedView
 		
 		return cell
 	}
