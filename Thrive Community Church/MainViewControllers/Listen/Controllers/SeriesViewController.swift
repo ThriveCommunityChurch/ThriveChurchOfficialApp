@@ -216,7 +216,11 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		
 			if selectedMessage.AudioUrl == nil {
+				
+				// if this sermon message has no audio associated with it then we need to
+				// hide the image as well as the playback label
 				cell.listenImage.isHidden = true
+				cell.durationLabel.isHidden = true
 			}
 			else {
 				cell.listenImage.isHidden = false
