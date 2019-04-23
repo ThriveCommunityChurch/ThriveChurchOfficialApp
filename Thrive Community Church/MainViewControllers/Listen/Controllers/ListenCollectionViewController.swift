@@ -82,9 +82,8 @@ MFMailComposeViewControllerDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+		
+		self.presentOnboarding()
 		
 		collectionView?.dataSource = self
 		collectionView?.delegate = self

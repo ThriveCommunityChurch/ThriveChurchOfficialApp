@@ -8,6 +8,7 @@
 
 import MessageUI
 import UIKit
+import Firebase
 
 extension ListenCollectionViewController {
 	
@@ -514,6 +515,28 @@ extension ListenCollectionViewController {
 		else {
 			self.recentlyPlayedButton.isEnabled = false
 			self.playedMessage = false
+		}
+	}
+	
+	func presentOnboarding() {
+		
+		// Set the CollectionViewController to be visible from when the application starts
+		// A concrete layout object that organizes items into a grid with optional header and footer views for each section.
+		let viewLayout = UICollectionViewFlowLayout()
+		viewLayout.scrollDirection = .horizontal
+		let swipingController = OnboardingController(collectionViewLayout: viewLayout)
+		
+		// do not load the view if the user has already completed it
+		let completedOB = swipingController.loadAndCheckOnboarding()
+		if !completedOB {
+			
+			Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: [
+				AnalyticsParameterItemID: "id-Onboarding",
+				AnalyticsParameterItemName: "Onboarding-init",
+				AnalyticsParameterContentType: "cont"
+			])
+			
+			self.present(swipingController, animated: true, completion: nil)
 		}
 	}
 }
