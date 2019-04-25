@@ -6,7 +6,7 @@
 - Easily read relevant bible passages
 - Now Playing playback controls
 - You can now control audio playback from the Control Center (even if the device is locked)
-- Watch live streams on Facebook
+- You can now watch Sunday live streams on FacebookLive 🎉
 - View the 10 most recent sermon messages you listened to
 - Performance Improvements
 
