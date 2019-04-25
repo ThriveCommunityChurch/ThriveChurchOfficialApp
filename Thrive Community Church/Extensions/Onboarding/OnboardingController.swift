@@ -11,14 +11,13 @@ import Firebase
 
 class OnboardingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
-	let onboardingKey = "onboarding"
 	var onboardingString = String()
 	
 	// simple way to do this is just use an array
 	let pages = [
 		Page(imageName: "listen_img",
 			 headerText: "Take us with you on the go!",
-			 bodyText: "Whether you're traveling or under the weather, you'll never miss a sermon series with our automatic weekly updates. Listen to sermons in the car, at work or in the gym. You can even stream your favorite messages in Full HD!"),
+			 bodyText: "Whether you're traveling or under the weather, you'll never miss a sermon series with our automatic weekly updates. Download sermons for listening in the car, at work or at the gym. You can even stream your favorite messages in Full HD!"),
 		Page(imageName: "notes_img",
 			 headerText: "Your Notes. Your Device.",
 			 bodyText: "Taking notes during the message has never been easier. Our note taker supports a full Emoji keyboard, for creating notes with beautiful bullited lists. Notes are saved locally on your device, and sending your notes to friends or sharing them online is only one tap away."),
@@ -243,7 +242,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 			
 			let completedTask = "completed"
 			
-			UserDefaults.standard.set(completedTask, forKey: onboardingKey)
+			UserDefaults.standard.set(completedTask, forKey: ApplicationVariables.OnboardingCacheKey)
 			UserDefaults.standard.synchronize()
 			
 			self.dismiss(animated: true, completion: nil)
@@ -256,7 +255,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	
 	func loadAndCheckOnboarding() -> Bool {
 		
-		if let loadedData = UserDefaults.standard.string(forKey: onboardingKey) {
+		if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.OnboardingCacheKey) {
 			onboardingString = loadedData
 			
 			if onboardingString == "completed" {

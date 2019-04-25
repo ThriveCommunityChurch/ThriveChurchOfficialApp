@@ -36,6 +36,9 @@ public extension UIDevice {
 		case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
 		case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
 		case "iPhone10,3", "iPhone10,6":                return "iPhone X"
+		case "iPhone11,2":                              return "iPhone XS"
+		case "iPhone11,6": 								return "iPhone XS Max"
+		case "iPhone11,8":								return "iPhone XR"
 		case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
 		case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
 		case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
@@ -50,6 +53,10 @@ public extension UIDevice {
 		case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
 		case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
 		case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
+		case "iPad7,5": 								return "iPad 6th Gen (WiFi)"
+		case "iPad7,6": 								return "iPad 6th Gen (WiFi+Cellular)"
+		case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":return "iPad Pro 3rd Gen 11 Inch"
+		case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":return "iPad Pro 3rd Gen 12.9 Inch"
 		case "i386", "x86_64":                          return "Simulator"
 		default:                                        return identifier
 		}

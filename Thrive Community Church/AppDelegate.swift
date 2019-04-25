@@ -43,6 +43,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 			AnalyticsParameterContentType: "cont"
 		])
 		
+		UpdateCacheForAPIDomain()
+		
+		// REACHABILITY
+		do {
+			Network.reachability = try Reachability(hostname: "www.google.com")
+			do {
+				try Network.reachability?.start()
+			} catch let error as Network.Error {
+				print(error)
+			} catch {
+				print(error)
+			}
+		} catch {
+			print(error)
+		}
+		
         return true
     }
 
@@ -96,5 +112,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground
         print("Will terminate")
     }
-
+	
+	private func UpdateCacheForAPIDomain() {
+		
+		let apiCacheKey = ApplicationVariables.ApiCacheKey
+		var apiDomain = "nil"
+		
+		var nsDictionary: NSDictionary?
+		
+		// check the cache first, if it's not there then look in the Plist
+		if let loadedData = UserDefaults.standard.string(forKey: apiCacheKey) {
+			
+			apiDomain = loadedData
+			
+			// look to see if this is different, if not do nothing different
+			if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
+				nsDictionary = NSDictionary(contentsOfFile: path)
+				
+				let apiString = nsDictionary?[apiCacheKey] as? String ?? ""
+				
+				// in the event that we may change the deployment, we need to be able to update this in only one place
+				if apiDomain != apiString {
+					UserDefaults.standard.set(apiString, forKey: apiCacheKey)
+					UserDefaults.standard.synchronize()
+				}
+			}
+		}
+		else {
+			
+			// not in the cache, look in .plist
+			if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
+				nsDictionary = NSDictionary(contentsOfFile: path)
+				
+				apiDomain = nsDictionary?[apiCacheKey] as? String ?? ""
+				UserDefaults.standard.set(apiDomain, forKey: apiCacheKey)
+				UserDefaults.standard.synchronize()
+			}
+			else {
+				// file not found
+				fatalError("Local Config.plist not found. Please ensure your project includes this on the top level.")
+			}
+		}
+		
+		if apiDomain == "nil" {
+			// something went wrong here, and we aren't sure where the API is
+			fatalError("API Address could not be determined.")
+		}
+	}
 }

@@ -1,3 +1,15 @@
+### 1.7  —  TBD
+- Our biggest update yet! 🎉
+- Easy to view sermon series (sorted by most recent) 🏠
+- Pull-Up from the bottom to load more sermon series' ⌛
+- Download sermon audio for easy listening without an internet connection 📶
+- Easily read relevant bible passages 📖
+- Now Playing playback controls 🎛️
+- You can now control audio playback from the Control Center even if the device is locked 🔒
+- You can now watch Sunday live streams on FacebookLive 👀
+- View the 10 most recent sermon messages you listened to 👂
+- Performance Improvements 💯
+
 ### 1.6.4  —  Oct 18, 2018
 - iOS 12 Support
 - Significant Performance Improvements
