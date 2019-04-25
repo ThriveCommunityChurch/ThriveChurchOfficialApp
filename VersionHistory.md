@@ -1,4 +1,4 @@
-### 1.7  —  TBD
+### 1.7  —  April 25, 2019
 - Our biggest update yet! 🎉
 - Easy to view sermon series (sorted by most recent) 🏠
 - Pull-Up from the bottom to load more sermon series' ⌛
