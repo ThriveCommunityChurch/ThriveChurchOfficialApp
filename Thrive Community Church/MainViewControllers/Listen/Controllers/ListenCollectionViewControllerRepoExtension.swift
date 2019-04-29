@@ -141,6 +141,7 @@ extension ListenCollectionViewController {
 			// something went wrong here
 			if error != nil {
 				
+				print("ERR returning live sermons \(error)")
 				return
 			}
 
@@ -150,7 +151,8 @@ extension ListenCollectionViewController {
 
 				let livestream = try JSONDecoder().decode(LivestreamingResponse.self, from: data!)
 
-				DispatchQueue.main.async {
+				// we NEED to be doing this 1 second later because otherwise we will get a 429
+				DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1, execute: {
 					
 					if livestream.IsLive {
 						
@@ -166,7 +168,7 @@ extension ListenCollectionViewController {
 						// maybe we can have an async thread here running that checks to see if every minute,
 						// we are getting close to beginning a live stream? (thoughts)
 					}
-				}
+				})
 			}
 			catch let jsonError {
 				print(jsonError)
@@ -198,7 +200,7 @@ extension ListenCollectionViewController {
 					// transition to another view
 					self.pollingData = pollData
 					
-					if pollData.IsLive {
+					if pollData.IsLive ?? false {
 						self.checkIfStreamIsActiveAsync()
 					}
 					else {
@@ -208,6 +210,9 @@ extension ListenCollectionViewController {
 			}
 			catch let jsonError {
 				print(jsonError)
+				
+				var thing = String(decoding: data!, as: UTF8.self)
+				print(thing)
 			}
 		}.resume()
 	}
@@ -288,6 +293,7 @@ extension ListenCollectionViewController {
 		
 		let nowDate = formatter.date(from: nowString)
 		let expireDate = stringToDateFormatter.date(from: expires)
+		let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: nowDate!))
 		
 		// we use the entire Date string here so that we are 100% sure that now
 		// is past whatever time the time should be, since we sanitize the dates
