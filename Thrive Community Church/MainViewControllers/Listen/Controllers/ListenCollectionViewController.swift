@@ -26,6 +26,7 @@ MFMailComposeViewControllerDelegate {
 	var livestreamData: LivestreamingResponse?
 	var internetConnectionStatus: Network.Status = .unreachable
 	var playedMessage: Bool = false
+	private var alreadySelected: Bool = false
 	
 	// Loading View
 	var footerView: CustomFooterView?
@@ -127,6 +128,8 @@ MFMailComposeViewControllerDelegate {
 			self.retrieveRecentlyPlayed()
 		}
 		
+		self.alreadySelected = false
+		
 		refreshView()
 		
 		// Add an observer to keep track of this view while the app is in the background.
@@ -187,12 +190,19 @@ MFMailComposeViewControllerDelegate {
 	
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
-		let selectedSeries = sermonSeries[indexPath.row]
-		
-		if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
+		// block segue of user interaction from popping more than once at a time
+		if !self.alreadySelected {
+			
+			// update the mutex for this API request
+			self.alreadySelected = true
+			
+			let selectedSeries = sermonSeries[indexPath.row]
+			
+			if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
 			
 			// load the sermon info from the API and transition when the GET is complete
-			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+				getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+			}
 		}
 	}
 	

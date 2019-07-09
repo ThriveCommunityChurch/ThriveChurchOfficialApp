@@ -273,6 +273,8 @@ extension ListenCollectionViewController {
 		// convert to the proper format
 		let dateToStringFormatter = DateFormatter()
 		dateToStringFormatter.dateFormat = "HH:mm:ss"
+		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		let expireDateString = dateToStringFormatter.string(from: date!)
 		
 		return expireDateString
@@ -290,18 +292,20 @@ extension ListenCollectionViewController {
 		// now that both our times are strings we can convert them back to dates and compare
 		let stringToDateFormatter = DateFormatter()
 		stringToDateFormatter.dateFormat = "HH:mm:ss"
+		stringToDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+		stringToDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		
-		let nowDate = formatter.date(from: nowString)
-		let expireDate = stringToDateFormatter.date(from: expires)
-		let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: nowDate!))
+		let nowDate = formatter.date(from: nowString) ?? Date()
+		let expireDate = stringToDateFormatter.date(from: expires) ?? Date()
+		let _ = Double(TimeZone.current.secondsFromGMT(for: nowDate))
 		
 		// we use the entire Date string here so that we are 100% sure that now
 		// is past whatever time the time should be, since we sanitize the dates
-		if nowDate! > expireDate! {
+		if expireDate < nowDate {
 			return nil
 		}
 		else {
-			return expireDate!
+			return expireDate
 		}
 	}
 	
