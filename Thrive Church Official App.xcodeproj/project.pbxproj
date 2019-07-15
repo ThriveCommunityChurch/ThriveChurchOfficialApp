@@ -524,10 +524,10 @@
 			buildConfigurationList = 41FCF8171CF21719006C366E /* Build configuration list for PBXNativeTarget "Thrive Church Official App" */;
 			buildPhases = (
 				DC974C8A3BE4A129CEEF0528 /* [CP] Check Pods Manifest.lock */,
-				41FCF7E91CF21719006C366E /* Sources */,
-				41FCF7EA1CF21719006C366E /* Frameworks */,
-				41FCF7EB1CF21719006C366E /* Resources */,
 				0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */,
+				41FCF7E91CF21719006C366E /* Sources */,
+				41FCF7EB1CF21719006C366E /* Resources */,
+				41FCF7EA1CF21719006C366E /* Frameworks */,
 				EA971F011D63B301007C3A2B /* ShellScript */,
 				EA37C15F1D85E13100D450EF /* Embed App Extensions */,
 			);
@@ -763,7 +763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
