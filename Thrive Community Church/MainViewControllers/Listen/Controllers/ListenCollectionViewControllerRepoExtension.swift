@@ -141,7 +141,7 @@ extension ListenCollectionViewController {
 			// something went wrong here
 			if error != nil {
 				
-				print("ERR returning live sermons \(error)")
+				print("ERR returning live sermons \(String(describing: error))")
 				return
 			}
 
@@ -210,9 +210,6 @@ extension ListenCollectionViewController {
 			}
 			catch let jsonError {
 				print(jsonError)
-				
-				var thing = String(decoding: data!, as: UTF8.self)
-				print(thing)
 			}
 		}.resume()
 	}
