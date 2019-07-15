@@ -92,9 +92,15 @@ before creating a PR.
 
 Travis will verify that any code changes are done in a style compliant way. Install
 `clang-format` and `swiftformat`.
-This command will get the right `clang-format` version:
+These commands will get the right versions:
 
-`brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/773cb75d360b58f32048f5964038d09825a507c8/Formula/clang-format.rb`
+```
+brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/773cb75d360b58f32048f5964038d09825a507c8/Formula/clang-format.rb
+brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/3dfea1004e0736754bbf49673cca8aaed8a94089/Formula/swiftformat.rb
+```
+
+Note: if you already have a newer version of these installed you may need to
+`brew switch` to this version.
 
 ### Running Unit Tests
 
@@ -169,10 +175,9 @@ very grateful!  We'd like to empower as many developers as we can to be able to 
 participate in the Firebase community.
 
 ### macOS and tvOS
-FirebaseAuth, FirebaseCore, FirebaseDatabase, FirebaseFunctions and FirebaseStorage now compile, run
-unit tests, and work on macOS and tvOS, thanks to contributions from the community. There are a few
-tweaks needed, like ensuring iOS-only, macOS-only, or tvOS-only code is correctly guarded with checks
-for `TARGET_OS_IOS`, `TARGET_OS_OSX` and `TARGET_OS_TV`.
+Thanks to contributions from the community, FirebaseAuth, FirebaseCore, FirebaseDatabase, FirebaseMessaging,
+FirebaseFirestore, FirebaseFunctions and FirebaseStorage now compile, run unit tests, and work on
+macOS and tvOS.
 
 For tvOS, checkout the [Sample](Example/tvOSSample).
 
@@ -181,11 +186,19 @@ actively developed primarily for iOS. While we can catch basic unit test issues 
 may be some changes where the SDK no longer works as expected on macOS or tvOS. If you encounter
 this, please [file an issue](https://github.com/firebase/firebase-ios-sdk/issues).
 
-For installation instructions, see [above](README.md#accessing-firebase-source-snapshots).
+Note that the Firebase pod is not available for macOS and tvOS.
 
-Note that the Firebase pod is not available for macOS and tvOS. Install a selection of the
-`FirebaseAuth`, `FirebaseCore`, `FirebaseDatabase`, `FirebaseFunctions`, and `FirebaseStorage`
-CocoaPods.
+To install, add a subset of the following to the Podfile:
+
+```
+pod 'FirebaseAuth'
+pod 'FirebaseCore'
+pod 'FirebaseDatabase'
+pod 'FirebaseFirestore'  # Only iOS and macOS
+pod 'FirebaseFunctions'
+pod 'FirebaseMessaging'  # Only iOS and tvOS
+pod 'FirebaseStorage'
+```
 
 ## Roadmap
 
