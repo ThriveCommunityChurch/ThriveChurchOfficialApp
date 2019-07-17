@@ -203,33 +203,60 @@ extension NowPlayingViewController {
 						DispatchQueue.main.async {
 							
 							// the user has no space to save this audio
+							let requiredSpace = (size - space).rounded(toPlace: 2)
+							var reqSpaceString: String = ""
+							
+							// if we have a number that is greater or equal to 1 then we
+							// should try to remove the trailing zeros. If its less
+							// than that we want them
+							if requiredSpace >= 1.0 {
+								reqSpaceString = requiredSpace.removeZerosFromEnd()
+							}
+							
 							self.currentlyDownloading = false
-							let alert = UIAlertController(title: "Error!",
+							self.presentBasicAlertWTitle(title: "Error!",
 														  message: "Unable to download sermon message. " +
-								"Please clear some space and try again. \(size - space) needed.",
-								preferredStyle: .alert)
-							
-							let OkAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-							
-							alert.addAction(OkAction)
-							self.present(alert, animated: true, completion: nil)
+								"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							self.spinner.stopAnimating()
 						}
 					}
 					else {
-						try FileManager.default.moveItem(at: location, to: outputURL)
-	
-						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
-						self.finishDownload()
+						
+						// so we need to make sure that the file we are trying to move exists where it should
+						// and that where we want to put it, there's not already something there
+						if FileManager.default.fileExists(atPath: "\(location)") &&
+							!FileManager.default.fileExists(atPath: "\(outputURL)") {
+							
+							try FileManager.default.moveItem(at: location, to: outputURL)
+							
+							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+							self.finishDownload()
+						}
+						else {
+							self.presentBasicAlertWTitle(title: "Error!",
+														 message: "An error occurred while attempting " +
+															"to download the file. Please ensure that this file is not already downloaded.")
+							self.spinner.isHidden = true
+							self.spinner.stopAnimating()
+						}
 					}
 				} catch {
 					// an error ocurred, let the user try again
-					self.downloadButton.isEnabled = false
-					self.currentlyDownloading = false
-					
-					self.downloadButton.isHidden = false
-					self.spinner.isHidden = true
-					self.spinner.stopAnimating()
-					print(error)
+					DispatchQueue.main.async {
+						self.downloadButton.isEnabled = false
+						self.currentlyDownloading = false
+						
+						self.downloadButton.isHidden = false
+						self.spinner.isHidden = true
+						self.spinner.stopAnimating()
+						
+						self.presentBasicAlertWTitle(title: "Error!",
+													 message: "An error occurred while attempting " +
+							"to download the file. Please ensure that this file is not already downloaded." +
+						"\n\nIf you continue to encounter this issue, send us an email via wyatt@thrive-fl.org.")
+						
+						print(error)
+					}
 				}
 			}
 		}.resume()
@@ -286,6 +313,17 @@ extension NowPlayingViewController {
 					self.downloadButton.isEnabled = false
 				}
 			}
+		}
+		
+		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
+		
+		let documentsDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory,
+														  in: FileManager.SearchPathDomainMask.userDomainMask).last!
+		
+		let outputURL = documentsDirectory.appendingPathComponent(filename)
+		
+		if FileManager.default.fileExists(atPath: "\(outputURL)") {
+			self.downloadButton.isEnabled = false
 		}
 	}
 	

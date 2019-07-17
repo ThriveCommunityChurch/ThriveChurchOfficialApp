@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 extension Double {
 	
@@ -15,6 +16,15 @@ extension Double {
 		
 		let divisor = pow(10.0, Double(toPlace))
 		return (self * divisor).rounded() / divisor
+	}
+	
+	/// Removes trailing zeros when you want 10 instead of 10.00 or 10.0
+	func removeZerosFromEnd() -> String {
+		let formatter = NumberFormatter()
+		let number = NSNumber(value: self)
+		formatter.minimumFractionDigits = 0
+		formatter.maximumFractionDigits = 16 //maximum digits in Double after dot (maximum precision)
+		return String(formatter.string(from: number) ?? "")
 	}
 	
 	/// converts the value to MB

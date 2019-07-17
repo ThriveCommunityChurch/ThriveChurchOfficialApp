@@ -83,6 +83,10 @@ extension ListenCollectionViewController {
 	
 	func getSermonsForId(seriesId: String, image: UIImage) {
 		
+		// TODO: we should cache this so that we don't have to go to the API
+		// every time for the same series that we've already visited
+		// maybe we can store this in NSData so its quick-er to access than UserDefaults
+		
 		let thing = "\(apiUrl)api/sermons/series/\(seriesId)"
 		let url = NSURL(string: thing)
 		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
