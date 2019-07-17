@@ -119,13 +119,7 @@ extension ListenCollectionViewController {
 				
 				let series = try JSONDecoder().decode(SermonSeries.self, from: data!)
 				
-				// make a deep copy
-				self.seriesMapping[seriesId] = SermonSeries(StartDate: series.StartDate,
-															EndDate: series.EndDate,
-															Messages: series.Messages,
-															Name: series.Name, Year: series.Year,
-															Slug: series.Slug, Thumbnail: series.Thumbnail,
-															ArtUrl: series.ArtUrl, LastUpdated: series.LastUpdated)
+				self.seriesMapping[seriesId] = series
 				
 				self.segueToSeriesDetailView(series: series, image: image)
 			}
