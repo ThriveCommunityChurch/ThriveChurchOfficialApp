@@ -82,6 +82,13 @@ MFMailComposeViewControllerDelegate {
 		return indicator
 	}()
 	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		
+		// in here we can clear some of the cache objects in order to save some system RSS
+		self.seriesMapping = [String: SermonSeries]()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
