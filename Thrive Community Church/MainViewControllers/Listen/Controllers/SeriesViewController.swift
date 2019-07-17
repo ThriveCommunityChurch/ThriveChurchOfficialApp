@@ -416,6 +416,9 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 							if requiredSpace >= 1.0 {
 								reqSpaceString = requiredSpace.removeZerosFromEnd()
 							}
+							else {
+								reqSpaceString = "\(requiredSpace)"
+							}
 							
 							self.currentlyDownloading = false
 							self.presentBasicAlertWTitle(title: "Error!",
