@@ -27,6 +27,7 @@ MFMailComposeViewControllerDelegate {
 	var internetConnectionStatus: Network.Status = .unreachable
 	var playedMessage: Bool = false
 	private var alreadySelected: Bool = false
+	var seriesMapping = [String: SermonSeries]()
 	
 	// Loading View
 	var footerView: CustomFooterView?
@@ -200,8 +201,26 @@ MFMailComposeViewControllerDelegate {
 			
 			if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
 			
-			// load the sermon info from the API and transition when the GET is complete
-				getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+				// if we haven't already gotten thid data from the API, go get it
+				// otherwise grab it from our cache
+				let series = seriesMapping[selectedSeries.Id]
+				
+				
+				if series == nil {
+					// load the sermon info from the API and transition when the GET is complete
+					self.getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+				}
+				// if this series is the current one, we still want to be able to make requests
+				// for updates on this series, as changes may occur while a user is using the app
+				else if series?.EndDate == nil {
+					
+					// load the sermon info from the API and transition when the GET is complete
+					self.getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+				}
+				else {
+					// we can force unwrap this here because we checked above that it's not nil
+					self.segueToSeriesDetailView(series: series!, image: imageFromCache)
+				}
 			}
 		}
 	}

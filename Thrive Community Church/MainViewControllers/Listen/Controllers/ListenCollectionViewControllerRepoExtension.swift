@@ -83,9 +83,8 @@ extension ListenCollectionViewController {
 	
 	func getSermonsForId(seriesId: String, image: UIImage) {
 		
-		// TODO: we should cache this so that we don't have to go to the API
-		// every time for the same series that we've already visited
-		// maybe we can store this in NSData so its quick-er to access than UserDefaults
+		// Note to self: This is being cached and updates to this will require an
+		// app restart in order to view changes on a series that is NOT the current one
 		
 		let thing = "\(apiUrl)api/sermons/series/\(seriesId)"
 		let url = NSURL(string: thing)
@@ -120,20 +119,33 @@ extension ListenCollectionViewController {
 				
 				let series = try JSONDecoder().decode(SermonSeries.self, from: data!)
 				
-				DispatchQueue.main.async {
-					// transition to another view
-					
-					let vc = SeriesViewController()
-					vc.SermonSeries = series
-					vc.seriesImage = image
-					
-					self.show(vc, sender: self)
-				}
+				// make a deep copy
+				self.seriesMapping[seriesId] = SermonSeries(StartDate: series.StartDate,
+															EndDate: series.EndDate,
+															Messages: series.Messages,
+															Name: series.Name, Year: series.Year,
+															Slug: series.Slug, Thumbnail: series.Thumbnail,
+															ArtUrl: series.ArtUrl, LastUpdated: series.LastUpdated)
+				
+				self.segueToSeriesDetailView(series: series, image: image)
 			}
 			catch let jsonError {
 				print(jsonError)
 			}
 		}.resume()
+	}
+	
+	func segueToSeriesDetailView(series: SermonSeries, image: UIImage) {
+		
+		DispatchQueue.main.async {
+			// transition to another view
+			
+			let vc = SeriesViewController()
+			vc.SermonSeries = series
+			vc.seriesImage = image
+			
+			self.show(vc, sender: self)
+		}
 	}
 	
 	func fetchLiveStream() {
