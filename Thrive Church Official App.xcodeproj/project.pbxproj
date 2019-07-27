@@ -628,10 +628,9 @@
 			};
 			buildConfigurationList = 41FCF7E81CF21719006C366E /* Build configuration list for PBXProject "Thrive Church Official App" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
