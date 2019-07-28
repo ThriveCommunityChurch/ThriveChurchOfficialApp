@@ -15,6 +15,8 @@ extension ListenCollectionViewController {
 	// MARK: - ThriveChurchOfficialAPI Requests
 	
 	func fetchAllSermons(isReset: Bool) {
+		
+		self.isLoading = true
 
 		// sermons/page?PageNumber=pageNumber
 		let url = NSURL(string: "\(apiUrl)api/sermons/paged?PageNumber=\(pageNumber)")
@@ -28,17 +30,21 @@ extension ListenCollectionViewController {
 				
 				DispatchQueue.main.async {
 					
-					if self.internetConnectionStatus != .unreachable {
-						self.enableErrorViews(status: self.internetConnectionStatus)
-					}
-					else {
-						if self.apiErrorMessage.isHidden {
+					// we don't need to display the error message again
+					if self.apiErrorMessage.isHidden {
+						
+						if self.internetConnectionStatus != .unreachable {
 							self.enableErrorViews(status: self.internetConnectionStatus)
 						}
-					}
-					
-					if self.retryLimited {
-						self.presentErrorAlert()
+						else {
+							if self.apiErrorMessage.isHidden {
+								self.enableErrorViews(status: self.internetConnectionStatus)
+							}
+						}
+						
+						if self.retryLimited {
+							self.presentErrorAlert()
+						}
 					}
 				}
 				
@@ -460,6 +466,7 @@ extension ListenCollectionViewController {
 	func disableLoadingScreen() {
 		self.spinner.isHidden = true
 		self.spinner.stopAnimating()
+		self.isLoading = false
 	}
 	
 	func presentErrorAlert() {

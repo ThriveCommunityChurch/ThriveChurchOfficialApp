@@ -22,6 +22,7 @@ MFMailComposeViewControllerDelegate {
 	var secondsRemaining: Double?
 	var expireTime: Date?
 	var timer = Timer()
+	var loading: Bool = false
 	var pollingData: LivePollingResponse?
 	var livestreamData: LivestreamingResponse?
 	var internetConnectionStatus: Network.Status = .unreachable
@@ -119,9 +120,20 @@ MFMailComposeViewControllerDelegate {
 		// assuming there is an internet connection, do the things
 		if internetConnectionStatus != .unreachable {
 			setupViews()
+			loading = true
 			self.fetchAllSermons(isReset: false)
 			self.fetchLiveStream()
 			
+			// in the event that this user is on a very slow network, this will help display a message on the UI
+			// so 2 minutes after this, check to see if we are still waiting for a response
+			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 60, execute: {
+				
+				if self.isLoading && self.sermonSeries.count == 0 {
+					self.enableErrorViews(status: Network.Status.wifi)
+				}
+				
+				self.isLoading = false
+			})
 		}
 		else {
 			setupViews()
@@ -386,19 +398,20 @@ MFMailComposeViewControllerDelegate {
 		checkConnectivity()
 		
 		if internetConnectionStatus != .unreachable {
+			
 			if retryCounter >= 3 {
 				// don't let anyone retry more than a few times because it looks like nothing is changing
 				// if a user is still having issues then the API is probably down
 				// or they are not online
 				
-				self.enableLoadingScreen()
+				self.resetErrorViews()
 				
 				retryLimited = true
 				fetchAllSermons(isReset: true)
 			}
 			else {
 				
-				self.enableLoadingScreen()
+				self.resetErrorViews()
 				
 				// call the API and determine how many of them there are
 				self.fetchAllSermons(isReset: true)
