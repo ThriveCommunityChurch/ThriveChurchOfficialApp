@@ -168,6 +168,19 @@ extension NowPlayingViewController {
 		
 		let outputURL = documentsDirectory.appendingPathComponent(filename)
 		
+		// so we need to make sure that the file that we downloaded does not already have a file
+		// where we want to put it, there's not already something there
+		let storageLocationAvailable = !FileManager.default.fileExists(atPath: "\(outputURL)")
+		
+		if !storageLocationAvailable {
+			
+			self.presentBasicAlertWTitle(title: "Error!",
+										 message: "An error occurred while attempting " +
+				"to download the file. Please ensure that this file is not already downloaded.")
+			self.spinner.isHidden = true
+			self.spinner.stopAnimating()
+		}
+		
 		// download it again, since taking the AVPlayer Data and storing it is annoyingly hard
 		let url = URL(string: (messageForDownload?.AudioUrl)!)!
 		
@@ -225,22 +238,13 @@ extension NowPlayingViewController {
 					}
 					else {
 						
-						// so we need to make sure that the file we are trying to move exists where it should
-						// and that where we want to put it, there's not already something there
-						if FileManager.default.fileExists(atPath: "\(location)") &&
-							!FileManager.default.fileExists(atPath: "\(outputURL)") {
+						// we already checked this above
+						if storageLocationAvailable {
 							
 							try FileManager.default.moveItem(at: location, to: outputURL)
 							
 							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
 							self.finishDownload()
-						}
-						else {
-							self.presentBasicAlertWTitle(title: "Error!",
-														 message: "An error occurred while attempting " +
-															"to download the file. Please ensure that this file is not already downloaded.")
-							self.spinner.isHidden = true
-							self.spinner.stopAnimating()
 						}
 					}
 				} catch {
