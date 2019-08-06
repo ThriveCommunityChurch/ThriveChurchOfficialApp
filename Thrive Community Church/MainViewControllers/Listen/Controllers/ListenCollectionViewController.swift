@@ -319,7 +319,7 @@ MFMailComposeViewControllerDelegate {
 			
 			// this is called many times so we need to make sure that we aren't
 			// doing the work more than we should
-			if (self.footerView?.isAnimatingFinal)! && !self.isLoading {
+			if self.footerView != nil && (self.footerView?.isAnimatingFinal)! && !self.isLoading {
 				
 				print("load more trigger")
 				self.isLoading = true
