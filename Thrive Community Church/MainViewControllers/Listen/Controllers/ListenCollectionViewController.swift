@@ -128,7 +128,7 @@ MFMailComposeViewControllerDelegate {
 			// so 2 minutes after this, check to see if we are still waiting for a response
 			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 60, execute: {
 				
-				if self.isLoading && self.sermonSeries.count == 0 {
+				if self.isLoading && self.sermonSeries.isEmpty {
 					self.enableErrorViews(status: Network.Status.wifi)
 				}
 				
