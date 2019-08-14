@@ -473,7 +473,9 @@ extension ListenCollectionViewController {
 		
 		self.disableLoadingScreen()
 		
-		let alert = UIAlertController(title: "Having Issues?", message: "Send us an email and let us know what your issue is.", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Having Issues?",
+									  message: "Send us an email and let us know what your issue is.",
+									  preferredStyle: .alert)
 		
 		let emailAlert = UIAlertAction(title: "Email Us", style: .default) { (alert) in
 			self.composeEmail()

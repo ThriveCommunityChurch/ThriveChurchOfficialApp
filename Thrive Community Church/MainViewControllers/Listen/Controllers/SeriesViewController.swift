@@ -140,9 +140,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			// set the updated information
 			startDate.text = "Started: \(updatedSeriesInfo.StartDate)"
 		}
-		
-		// the passage refs will come from each message, which might look nice in
-		// a TableViewController at the bottom?
 	}
 	
 	func formatDataForPresentation(series: SermonSeries) -> SermonSeries{
@@ -213,7 +210,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			cell.date.text = selectedMessage.Date
 			cell.speaker.text = selectedMessage.Speaker
 			cell.durationLabel.text = selectedMessage.AudioDuration?.formatDurationForUI()
-		
 		
 			if selectedMessage.AudioUrl == nil {
 				
