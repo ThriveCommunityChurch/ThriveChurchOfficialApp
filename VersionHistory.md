@@ -1,3 +1,11 @@
+### 1.7.1  —  TBD
+- Fixed an issue where tapping on a sermon series would load the page more than once
+- Fixed an issue where LIVE would appear active when we weren't streaming
+- Fixed an issue with scrolling on the Listen tab
+- 'Listen' tab performance improvements
+- Improvements when using slow networks
+- Additional bug fixes and stability improvements
+
 ### 1.7  —  April 25, 2019
 - Our biggest update yet! 🎉
 - Easy to view sermon series (sorted by most recent) 🏠

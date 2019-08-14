@@ -22,10 +22,13 @@ MFMailComposeViewControllerDelegate {
 	var secondsRemaining: Double?
 	var expireTime: Date?
 	var timer = Timer()
+	var loading: Bool = false
 	var pollingData: LivePollingResponse?
 	var livestreamData: LivestreamingResponse?
 	var internetConnectionStatus: Network.Status = .unreachable
 	var playedMessage: Bool = false
+	private var alreadySelected: Bool = false
+	var seriesMapping = [String: SermonSeries]()
 	
 	// Loading View
 	var footerView: CustomFooterView?
@@ -80,6 +83,13 @@ MFMailComposeViewControllerDelegate {
 		return indicator
 	}()
 	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		
+		// in here we can clear some of the cache objects in order to save some system RSS
+		self.seriesMapping = [String: SermonSeries]()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -110,9 +120,20 @@ MFMailComposeViewControllerDelegate {
 		// assuming there is an internet connection, do the things
 		if internetConnectionStatus != .unreachable {
 			setupViews()
+			loading = true
 			self.fetchAllSermons(isReset: false)
 			self.fetchLiveStream()
 			
+			// in the event that this user is on a very slow network, this will help display a message on the UI
+			// so 2 minutes after this, check to see if we are still waiting for a response
+			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 60, execute: {
+				
+				if self.isLoading && self.sermonSeries.isEmpty {
+					self.enableErrorViews(status: Network.Status.wifi)
+				}
+				
+				self.isLoading = false
+			})
 		}
 		else {
 			setupViews()
@@ -126,6 +147,8 @@ MFMailComposeViewControllerDelegate {
 		DispatchQueue.main.async {
 			self.retrieveRecentlyPlayed()
 		}
+		
+		self.alreadySelected = false
 		
 		refreshView()
 		
@@ -187,12 +210,32 @@ MFMailComposeViewControllerDelegate {
 	
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
-		let selectedSeries = sermonSeries[indexPath.row]
-		
-		if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
+		// block segue of user interaction from popping more than once at a time
+		if !self.alreadySelected {
 			
-			// load the sermon info from the API and transition when the GET is complete
-			getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+			// update the mutex for this API request
+			self.alreadySelected = true
+			
+			let selectedSeries = sermonSeries[indexPath.row]
+			
+			if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
+			
+				// if we haven't already gotten thid data from the API, go get it
+				// otherwise grab it from our cache
+				let series = seriesMapping[selectedSeries.Id]
+				
+				// if this series is the current one, we still want to be able to make requests
+				// for updates on this series, as changes may occur while a user is using the app
+				if series == nil || series?.EndDate == nil {
+					
+					// load the sermon info from the API and transition when the GET is complete
+					self.getSermonsForId(seriesId: selectedSeries.Id, image: imageFromCache)
+				}
+				else {
+					// we can force unwrap this here because we checked above that it's not nil
+					self.segueToSeriesDetailView(series: series!, image: imageFromCache)
+				}
+			}
 		}
 	}
 	
@@ -276,7 +319,7 @@ MFMailComposeViewControllerDelegate {
 			
 			// this is called many times so we need to make sure that we aren't
 			// doing the work more than we should
-			if (self.footerView?.isAnimatingFinal)! && !self.isLoading {
+			if self.footerView != nil && (self.footerView?.isAnimatingFinal)! && !self.isLoading {
 				
 				print("load more trigger")
 				self.isLoading = true
@@ -355,19 +398,20 @@ MFMailComposeViewControllerDelegate {
 		checkConnectivity()
 		
 		if internetConnectionStatus != .unreachable {
+			
 			if retryCounter >= 3 {
 				// don't let anyone retry more than a few times because it looks like nothing is changing
 				// if a user is still having issues then the API is probably down
 				// or they are not online
 				
-				self.enableLoadingScreen()
+				self.resetErrorViews()
 				
 				retryLimited = true
 				fetchAllSermons(isReset: true)
 			}
 			else {
 				
-				self.enableLoadingScreen()
+				self.resetErrorViews()
 				
 				// call the API and determine how many of them there are
 				self.fetchAllSermons(isReset: true)

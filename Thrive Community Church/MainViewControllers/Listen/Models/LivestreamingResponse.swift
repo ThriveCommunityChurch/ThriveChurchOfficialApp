@@ -6,8 +6,10 @@
 //  Copyright © 2018 Thrive Community Church. All rights reserved.
 //
 
+import Foundation
 import UIKit
-struct LivestreamingResponse: Decodable {
+
+class LivestreamingResponse: NSObject, Decodable {
 	var IsLive: Bool = false
 	var VideoUrl: String?
 	var Title: String?

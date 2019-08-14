@@ -370,6 +370,17 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		let outputURL = documentsDirectory.appendingPathComponent(filename)
 		
+		// so we need to make sure that the file that we downloaded does not already have a file
+		// where we want to put it, there's not already something there
+		let storageLocationAvailable = !FileManager.default.fileExists(atPath: "\(outputURL)")
+		
+		if !storageLocationAvailable {
+			
+			self.presentBasicAlertWTitle(title: "Error!",
+										 message: "An error occurred while attempting " +
+				"to download the file. Please ensure that this file is not already downloaded.")
+		}
+		
 		// download it again, since taking the AVPlayer Data and storing it is annoyingly hard
 		let url = URL(string: (messageForDownload?.AudioUrl)!)!
 		
@@ -406,26 +417,45 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 							
 							// the user has no space to save this audio
 							self.currentlyDownloading = false
-							let alert = UIAlertController(title: "Error!",
-														  message: "Unable to download sermon message. " +
-								"Please clear some space and try again. \(size - space) needed.",
-								preferredStyle: .alert)
 							
-							let OkAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+							let requiredSpace = (size - space).rounded(toPlace: 2)
+							var reqSpaceString: String = ""
 							
-							alert.addAction(OkAction)
-							self.present(alert, animated: true, completion: nil)
+							// if we have a number that is greater or equal to 1 then we
+							// should try to remove the trailing zeros. If its less
+							// than that we want them
+							if requiredSpace >= 1.0 {
+								reqSpaceString = requiredSpace.removeZerosFromEnd()
+							}
+							else {
+								reqSpaceString = "\(requiredSpace)"
+							}
+							
+							self.currentlyDownloading = false
+							self.presentBasicAlertWTitle(title: "Error!",
+														 message: "Unable to download sermon message. " +
+								"Please clear some space and try again. \(reqSpaceString) MB needed.")
 						}
 					}
 					else {
-						try FileManager.default.moveItem(at: location, to: outputURL)
-						
-						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // aifc
-						self.finishDownload()
+						// we already checked this above
+						if storageLocationAvailable {
+							
+							try FileManager.default.moveItem(at: location, to: outputURL)
+							
+							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+							self.finishDownload()
+						}
 					}
 				} catch {
 					// an error ocurred
 					self.currentlyDownloading = false
+					
+					self.presentBasicAlertWTitle(title: "Error!",
+												 message: "An error occurred while attempting " +
+													"to download the file. Please ensure that this file is not already downloaded." +
+						"\n\nIf you continue to encounter this issue, send us an email via wyatt@thrive-fl.org.")
+					
 					print(error)
 				}
 			}

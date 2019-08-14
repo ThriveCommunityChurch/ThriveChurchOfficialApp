@@ -16,6 +16,12 @@ extension String {
 		dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		let date = dateFormatter.date(from: self)
 		
+		// since we may not be able to make a deep copy of the object, we should
+		// just return what is requested because it's probably already formatted
+		if date == nil {
+			return self
+		}
+		
 		let dateToStringFormatter = DateFormatter()
 		dateToStringFormatter.dateFormat = "M.d.yy"
 		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)

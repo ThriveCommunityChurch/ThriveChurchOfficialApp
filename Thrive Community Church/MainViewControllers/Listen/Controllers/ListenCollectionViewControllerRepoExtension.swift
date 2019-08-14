@@ -15,6 +15,8 @@ extension ListenCollectionViewController {
 	// MARK: - ThriveChurchOfficialAPI Requests
 	
 	func fetchAllSermons(isReset: Bool) {
+		
+		self.isLoading = true
 
 		// sermons/page?PageNumber=pageNumber
 		let url = NSURL(string: "\(apiUrl)api/sermons/paged?PageNumber=\(pageNumber)")
@@ -28,17 +30,21 @@ extension ListenCollectionViewController {
 				
 				DispatchQueue.main.async {
 					
-					if self.internetConnectionStatus != .unreachable {
-						self.enableErrorViews(status: self.internetConnectionStatus)
-					}
-					else {
-						if self.apiErrorMessage.isHidden {
+					// we don't need to display the error message again
+					if self.apiErrorMessage.isHidden {
+						
+						if self.internetConnectionStatus != .unreachable {
 							self.enableErrorViews(status: self.internetConnectionStatus)
 						}
-					}
-					
-					if self.retryLimited {
-						self.presentErrorAlert()
+						else {
+							if self.apiErrorMessage.isHidden {
+								self.enableErrorViews(status: self.internetConnectionStatus)
+							}
+						}
+						
+						if self.retryLimited {
+							self.presentErrorAlert()
+						}
 					}
 				}
 				
@@ -83,6 +89,9 @@ extension ListenCollectionViewController {
 	
 	func getSermonsForId(seriesId: String, image: UIImage) {
 		
+		// Note to self: This is being cached and updates to this will require an
+		// app restart in order to view changes on a series that is NOT the current one
+		
 		let thing = "\(apiUrl)api/sermons/series/\(seriesId)"
 		let url = NSURL(string: thing)
 		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
@@ -116,20 +125,27 @@ extension ListenCollectionViewController {
 				
 				let series = try JSONDecoder().decode(SermonSeries.self, from: data!)
 				
-				DispatchQueue.main.async {
-					// transition to another view
-					
-					let vc = SeriesViewController()
-					vc.SermonSeries = series
-					vc.seriesImage = image
-					
-					self.show(vc, sender: self)
-				}
+				self.seriesMapping[seriesId] = series
+				
+				self.segueToSeriesDetailView(series: series, image: image)
 			}
 			catch let jsonError {
 				print(jsonError)
 			}
 		}.resume()
+	}
+	
+	func segueToSeriesDetailView(series: SermonSeries, image: UIImage) {
+		
+		DispatchQueue.main.async {
+			// transition to another view
+			
+			let vc = SeriesViewController()
+			vc.SermonSeries = series
+			vc.seriesImage = image
+			
+			self.show(vc, sender: self)
+		}
 	}
 	
 	func fetchLiveStream() {
@@ -141,6 +157,7 @@ extension ListenCollectionViewController {
 			// something went wrong here
 			if error != nil {
 				
+				print("ERR returning live sermons \(String(describing: error))")
 				return
 			}
 
@@ -150,7 +167,8 @@ extension ListenCollectionViewController {
 
 				let livestream = try JSONDecoder().decode(LivestreamingResponse.self, from: data!)
 
-				DispatchQueue.main.async {
+				// we NEED to be doing this 1 second later because otherwise we will get a 429
+				DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1, execute: {
 					
 					if livestream.IsLive {
 						
@@ -166,7 +184,7 @@ extension ListenCollectionViewController {
 						// maybe we can have an async thread here running that checks to see if every minute,
 						// we are getting close to beginning a live stream? (thoughts)
 					}
-				}
+				})
 			}
 			catch let jsonError {
 				print(jsonError)
@@ -198,7 +216,7 @@ extension ListenCollectionViewController {
 					// transition to another view
 					self.pollingData = pollData
 					
-					if pollData.IsLive {
+					if pollData.IsLive ?? false {
 						self.checkIfStreamIsActiveAsync()
 					}
 					else {
@@ -268,6 +286,8 @@ extension ListenCollectionViewController {
 		// convert to the proper format
 		let dateToStringFormatter = DateFormatter()
 		dateToStringFormatter.dateFormat = "HH:mm:ss"
+		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		let expireDateString = dateToStringFormatter.string(from: date!)
 		
 		return expireDateString
@@ -285,17 +305,20 @@ extension ListenCollectionViewController {
 		// now that both our times are strings we can convert them back to dates and compare
 		let stringToDateFormatter = DateFormatter()
 		stringToDateFormatter.dateFormat = "HH:mm:ss"
+		stringToDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+		stringToDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		
-		let nowDate = formatter.date(from: nowString)
-		let expireDate = stringToDateFormatter.date(from: expires)
+		let nowDate = formatter.date(from: nowString) ?? Date()
+		let expireDate = stringToDateFormatter.date(from: expires) ?? Date()
+		let _ = Double(TimeZone.current.secondsFromGMT(for: nowDate))
 		
 		// we use the entire Date string here so that we are 100% sure that now
 		// is past whatever time the time should be, since we sanitize the dates
-		if nowDate! > expireDate! {
+		if expireDate < nowDate {
 			return nil
 		}
 		else {
-			return expireDate!
+			return expireDate
 		}
 	}
 	
@@ -443,6 +466,7 @@ extension ListenCollectionViewController {
 	func disableLoadingScreen() {
 		self.spinner.isHidden = true
 		self.spinner.stopAnimating()
+		self.isLoading = false
 	}
 	
 	func presentErrorAlert() {
