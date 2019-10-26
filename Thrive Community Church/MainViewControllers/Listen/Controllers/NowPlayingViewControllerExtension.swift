@@ -17,7 +17,7 @@ extension NowPlayingViewController {
 		if (self.reachedEnd) {
 			// reset to the beginning
 			self.progressIndicator.setProgress(0.0, animated: false)
-			let time2: CMTime = CMTimeMake(Int64(0 * 1000 as Float64), 1000)
+			let time2: CMTime = CMTimeMake(value: Int64(0 * 1000 as Float64), timescale: 1000)
 			player?.seek(to: time2)
 			self.reachedEnd = false
 		}
@@ -67,7 +67,7 @@ extension NowPlayingViewController {
 			let timeRemaining = (self.totalAudioTime ?? 0.0) - newTime
 			self.durationRemainderLabel.text = "-\(timeRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
 			
-			let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+			let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
 			player?.seek(to: time2)
 			
 			DispatchQueue.main.async {
@@ -103,7 +103,7 @@ extension NowPlayingViewController {
 		let timeRemaining = (self.totalAudioTime ?? 0.0) - newTime
 		self.durationRemainderLabel.text = "-\(timeRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
 		
-		let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+		let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
 		player?.seek(to: time2)
 		
 		DispatchQueue.main.async {

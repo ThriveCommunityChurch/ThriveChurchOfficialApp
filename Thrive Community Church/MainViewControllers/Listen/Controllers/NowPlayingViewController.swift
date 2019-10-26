@@ -268,7 +268,7 @@ class NowPlayingViewController: UIViewController {
 	
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.style = .whiteLarge
 		indicator.color = .lightGray
 		indicator.backgroundColor = .clear
 		// Will need to scale down the spinner since it's a tad too big
@@ -605,7 +605,7 @@ class NowPlayingViewController: UIViewController {
 		// we don't want to allocate memory for this message object if we don't have to
 		if self.downloadButton.isEnabled {
 			self.messageForDownload = dataDump["message"] as? SermonMessage
-			self.messageForDownload?.seriesArt = UIImagePNGRepresentation((dataDump["sermonGraphic"] as? UIImage)!)
+			self.messageForDownload?.seriesArt = (dataDump["sermonGraphic"] as? UIImage)!.pngData()
 			self.messageForDownload?.seriesTitle = "\(dataDump["messageTitle"] as? String ?? "")"
 		}
 		

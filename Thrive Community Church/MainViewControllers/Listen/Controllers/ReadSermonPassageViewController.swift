@@ -47,7 +47,7 @@ class ReadSermonPassageViewController: UIViewController {
 	
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.style = .whiteLarge
 		indicator.color = .white
 		indicator.backgroundColor = .clear
 		indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -122,7 +122,7 @@ class ReadSermonPassageViewController: UIViewController {
 					let str = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
 					
 					// make a reusable dict
-					var attrs: [NSAttributedStringKey: Any] =
+					var attrs: [NSAttributedString.Key: Any] =
 						[
 							NSAttributedString.Key.foregroundColor: UIColor.white,
 							NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16) as Any
@@ -138,16 +138,16 @@ class ReadSermonPassageViewController: UIViewController {
 							i == "\u{00b2}"
 						{
 							// add the new attribute to the dict
-							attrs[NSAttributedStringKey.baselineOffset] = 2
-							attrs[NSAttributedStringKey.font] = UIFont(name: "Avenir-Medium", size: 13.6)
+							attrs[NSAttributedString.Key.baselineOffset] = 2
+							attrs[NSAttributedString.Key.font] = UIFont(name: "Avenir-Medium", size: 13.6)
 							
 							attStr.setAttributes(attrs, range: NSRange(location: index, length: 1))
 						}
 						else if i == "\u{00b9}" {
 							
 							// add the new attribute to the dict
-							attrs[NSAttributedStringKey.baselineOffset] = 2.25
-							attrs[NSAttributedStringKey.font] = UIFont(name: "Avenir-Medium", size: 13)
+							attrs[NSAttributedString.Key.baselineOffset] = 2.25
+							attrs[NSAttributedString.Key.font] = UIFont(name: "Avenir-Medium", size: 13)
 							
 							attStr.setAttributes(attrs, range: NSRange(location: index, length: 1))
 						}

@@ -126,7 +126,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
 			])
 			
-			self.seriesTable.rowHeight = UITableViewAutomaticDimension
+			self.seriesTable.rowHeight = UITableView.automaticDimension
 			self.seriesTable.estimatedRowHeight = 90.0
 		}
 		
@@ -347,7 +347,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		UserDefaults.standard.synchronize()
 		
 		// before we save this we need to make sure we set the series Art
-		messageForDownload?.seriesArt = UIImagePNGRepresentation(seriesImage)
+		messageForDownload?.seriesArt = seriesImage.pngData()
 		
 		// before we can place objects into Defaults they have to be encoded
 		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: messageForDownload!)
