@@ -3019,7 +3019,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textView>
                                                     <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Made By" translatesAutoresizingMaskIntoConstraints="NO" id="vJy-6V-wtY">
-                                                        <rect key="frame" x="100" y="8" width="175.00000000000023" height="27"/>
+                                                        <rect key="frame" x="100" y="8" width="175" height="27"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
