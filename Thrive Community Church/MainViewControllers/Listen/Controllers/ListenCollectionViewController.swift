@@ -76,7 +76,7 @@ MFMailComposeViewControllerDelegate {
 
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.style = .whiteLarge
 		indicator.color = .white
 		indicator.backgroundColor = .clear
 		indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +104,7 @@ MFMailComposeViewControllerDelegate {
         // Register cell classes
 		collectionView?.register(SermonsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView?.register(UINib(nibName: "CustomFooterView", bundle: nil),
-									   forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+								 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
 									   withReuseIdentifier: footerViewReuseIdentifier)
 		
 		// contact the API on the address we have cached
@@ -156,7 +156,7 @@ MFMailComposeViewControllerDelegate {
 		// Call the func to refresh it when we enter the foreground again, see issue #
 		NotificationCenter.default.addObserver(self,
 											   selector: #selector(refreshView),
-											   name: NSNotification.Name.UIApplicationWillEnterForeground,
+											   name: NSNotification.Name.NSExtensionHostWillEnterForeground,
 											   object: UIApplication.shared)
 	}
 	
@@ -243,7 +243,7 @@ MFMailComposeViewControllerDelegate {
 	
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		
-		if kind == UICollectionElementKindSectionFooter {
+		if kind == UICollectionView.elementKindSectionFooter {
 			
 			let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
 																			  withReuseIdentifier: footerViewReuseIdentifier,
@@ -276,7 +276,7 @@ MFMailComposeViewControllerDelegate {
 	override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView
 								view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
 		
-		if elementKind == UICollectionElementKindSectionFooter {
+		if elementKind == UICollectionView.elementKindSectionFooter {
 			self.footerView?.prepareInitialAnimation()
 		}
 	}
@@ -284,7 +284,7 @@ MFMailComposeViewControllerDelegate {
 	override func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView
 								view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
 		
-		if elementKind == UICollectionElementKindSectionFooter {
+		if elementKind == UICollectionView.elementKindSectionFooter {
 			self.footerView?.stopAnimate()
 		}
 	}
@@ -301,9 +301,9 @@ MFMailComposeViewControllerDelegate {
 		
 		// we did some maths above to determine what force a user is pulling down with
 		// set a threshold before the event triggers
-		if fabs(triggerThreshold) <= 1.0 {
+		if abs(triggerThreshold) <= 1.0 {
 			
-			let pullRatio  = min(fabs(triggerThreshold), 0.80)
+			let pullRatio  = min(abs(triggerThreshold), 0.80)
 			self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio * 1.2))
 			if pullRatio >= 0.80 {
 				self.footerView?.animateFinal()

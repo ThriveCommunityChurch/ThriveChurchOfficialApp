@@ -43,8 +43,8 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func regionSetup() {
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(26.448174, -81.816173),
-											MKCoordinateSpanMake(0.05, 0.07))
+		let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(26.448174, -81.816173),
+										span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.07))
         
         directionsMapView.setRegion(region, animated: true)
     }
@@ -54,10 +54,10 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
         directionsMapView.showsTraffic = !directionsMapView.showsTraffic
 		
 		if directionsMapView.showsTraffic == true {
-			sender.setTitle("Hide Traffic", for: UIControlState())
+			sender.setTitle("Hide Traffic", for: UIControl.State())
 		}
 		else {
-			sender.setTitle("Show Traffic", for: UIControlState())
+			sender.setTitle("Show Traffic", for: UIControl.State())
 		}
     }
     

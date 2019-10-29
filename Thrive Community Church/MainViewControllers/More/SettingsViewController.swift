@@ -24,14 +24,14 @@ class SettingsViewController: UIViewController {
         let alert = UIAlertController(title: "Notice!",
                   message: "Disabling Cellular Data may affect the performance of the" +
                   " application. Doing this is only reccomended when connected to a WiFi network.",
-                  preferredStyle: UIAlertControllerStyle.alert)
+				  preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Continue",
-                  style: UIAlertActionStyle.destructive,
+									  style: UIAlertAction.Style.destructive,
                   handler: { action in
                         self.goToSettings()
         }))
         alert.addAction(UIAlertAction(title: "Cancel",
-                                    style: UIAlertActionStyle.cancel,
+									  style: UIAlertAction.Style.cancel,
                                     handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController {
     
     func goToSettings () {
         
-        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+		if let appSettings = URL(string: UIApplication.openSettingsURLString) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
             }
@@ -49,9 +49,9 @@ class SettingsViewController: UIViewController {
                 let alert = UIAlertController(title: "Oops!",
                                              message: "Your device isn't currently running iOS 10" +
                         " Access the settings by going to Settings -> Thrive Community Church",
-                                             preferredStyle: UIAlertControllerStyle.alert)
+											 preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Continue",
-                                            style: UIAlertActionStyle.default,
+                                            style: UIAlertAction.Style.default,
                                             handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

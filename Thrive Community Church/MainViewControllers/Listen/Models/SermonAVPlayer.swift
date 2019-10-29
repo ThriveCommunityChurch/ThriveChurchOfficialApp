@@ -134,7 +134,7 @@ class SermonAVPlayer: NSObject {
 		
 		if newTime < CMTimeGetSeconds(duration) {
 			
-			let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+			let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
 			player?.seek(to: time2)
 			
 			self.reinitNowPlayingInfoCenter(currentTime: newTime, isPaused: false)
@@ -150,7 +150,7 @@ class SermonAVPlayer: NSObject {
 			newTime = 0
 		}
 		
-		let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+		let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
 		player?.seek(to: time2)
 		
 		self.reinitNowPlayingInfoCenter(currentTime: newTime, isPaused: false)
@@ -232,7 +232,10 @@ class SermonAVPlayer: NSObject {
 		
 		// enable the information to all come together in the command center
 		do {
-			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: [])
+			var cat = AVAudioSession.sharedInstance().category
+			cat = .playback
+			
+			try AVAudioSession.sharedInstance().setCategory(cat)
 			
 			do {
 				try AVAudioSession.sharedInstance().setActive(true)
@@ -360,7 +363,7 @@ class SermonAVPlayer: NSObject {
 		
 		// load everything from the selected message and put it in the response one, we will use this
 		// as the message object we store in the UserDefaults for it's MessageId
-		selectedMessage.seriesArt = UIImagePNGRepresentation(seriesImage)
+		selectedMessage.seriesArt = seriesImage.pngData()
 		
 		message = selectedMessage
 	}
