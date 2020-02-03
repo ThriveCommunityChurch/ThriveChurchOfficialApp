@@ -1,7 +1,7 @@
 ### 1.7.2  —  TBD
 - Fixed an issue with a broken link within the Connect tab
 - Fixed an issue with the graphic on the Connect tab
-- Performance imporvements
+- Other minor bug fixes
 
 ### 1.7.1  —  Aug 13, 2019
 - Fixed an issue where tapping on a sermon series would load the page more than once
