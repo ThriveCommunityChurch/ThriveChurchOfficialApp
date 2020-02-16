@@ -53,6 +53,7 @@
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC80C45421D7391700AF08E1 /* LivePollingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
+		DC9C0C0423B31AAC00C96788 /* ViewPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */; };
 		DCA0A18C21F82A0A00C8A04B /* CustomCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */; };
 		DCA0A18E21F82E6B00C8A04B /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */; };
 		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
@@ -205,6 +206,7 @@
 		DC7348C421D6F8070057227D /* LivestreamingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivestreamingResponse.swift; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePollingResponse.swift; sourceTree = "<group>"; };
+		DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlayerViewController.swift; sourceTree = "<group>"; };
 		DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionFooterView.swift; sourceTree = "<group>"; };
 		DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooterView.xib; sourceTree = "<group>"; };
 		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -491,6 +493,7 @@
 				DC246E2B21DA7A05007BA4D1 /* SermonDownloadsViewController.swift */,
 				DC0DE7F821EFF21C00820CE2 /* RecentlyPlayedViewController.swift */,
 				DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */,
+				DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */,
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
 				DCBCE19721D11F6500E3DCA4 /* SermonSeriesSummary.swift in Sources */,
+				DC9C0C0423B31AAC00C96788 /* ViewPlayerViewController.swift in Sources */,
 				DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */,
 				DC0DE7F721EDA0A900820CE2 /* Reachability.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,

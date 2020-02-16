@@ -274,12 +274,11 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				var youtubeId = selectedMessage.VideoUrl ?? ""
 				youtubeId = youtubeId.replacingOccurrences(of: "https://youtu.be/", with: "")
 				
-				// if youtube is installed open it there, otherwise just open the
-				var url = URL(string:"youtube://\(youtubeId)")!
-				if !UIApplication.shared.canOpenURL(url)  {
-					url = URL(string:"http://www.youtube.com/watch?v=\(youtubeId)")!
-				}
-				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				let videoView = ViewPlayerViewController()
+				videoView.VideoId = youtubeId
+				videoView.Message = selectedMessage
+				
+				self.navigationController?.show(videoView, sender: self)
 			}
 			
 			alert.addAction(watchAction)

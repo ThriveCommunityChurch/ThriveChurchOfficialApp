@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SermonMessage: NSObject, Decodable, NSCoding {
+public class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	var AudioUrl: String?
 	var AudioDuration: Double?
@@ -61,7 +61,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.seriesTitle = seriesTitle
 	}
 	
-	required convenience init(coder aDecoder: NSCoder) {
+	required convenience public init(coder aDecoder: NSCoder) {
 		let audio = aDecoder.decodeObject(forKey: "AudioUrl") as! String?
 		let duration = aDecoder.decodeObject(forKey: "AudioDuration") as! Double?
 		let video = aDecoder.decodeObject(forKey: "VideoUrl") as! String?
@@ -84,7 +84,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 				  seriesTitle: seriesTitle)
 	}
 	
-	func encode(with aCoder: NSCoder) {
+	public func encode(with aCoder: NSCoder) {
 		aCoder.encode(AudioUrl, forKey: "AudioUrl")
 		aCoder.encode(AudioDuration, forKey: "AudioDuration")
 		aCoder.encode(VideoUrl, forKey: "VideoUrl")
