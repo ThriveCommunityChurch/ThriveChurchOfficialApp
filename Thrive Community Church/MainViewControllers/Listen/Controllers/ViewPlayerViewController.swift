@@ -54,6 +54,23 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 		return label
 	}()
 	
+	let calendarImg: UIImageView = {
+		let view = UIImageView()
+		view.backgroundColor = .clear
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.image = UIImage.init(named: "calendar")
+		return view
+	}()
+	
+	let dateText: UILabel = {
+		let label = UILabel()
+		label.textAlignment = .left
+		label.font = UIFont(name: "Avenir-Book", size: 17)
+		label.textColor = .lightGray
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
 	let spinner:  UIActivityIndicatorView = {
 		let view = UIActivityIndicatorView()
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -88,10 +105,19 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 		
 		view.backgroundColor = .bgDarkBlue
 		
+		let openYTButton = UIBarButtonItem(title: "",
+										   style: .plain,
+										   target: self,
+										   action: #selector(watchOnYT))
+		openYTButton.image = UIImage(named: "youtube")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+		self.navigationItem.rightBarButtonItem = openYTButton
+		
 		// add all the subviews
 		view.addSubview(videoBG)
 		view.addSubview(userImg)
 		view.addSubview(speakerText)
+		view.addSubview(calendarImg)
+		view.addSubview(dateText)
 		
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
@@ -109,8 +135,16 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 				speakerText.leadingAnchor.constraint(equalTo: userImg.trailingAnchor, constant: 10),
 				speakerText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
 													constant: -24),
-				speakerText.topAnchor.constraint(equalTo: userImg.topAnchor),
-				speakerText.bottomAnchor.constraint(equalTo: userImg.bottomAnchor)
+				speakerText.centerYAnchor.constraint(equalTo: userImg.centerYAnchor),
+				speakerText.bottomAnchor.constraint(equalTo: userImg.bottomAnchor),
+				calendarImg.leadingAnchor.constraint(equalTo: userImg.leadingAnchor),
+				calendarImg.heightAnchor.constraint(equalTo: userImg.heightAnchor),
+				calendarImg.widthAnchor.constraint(equalTo: userImg.widthAnchor),
+				calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 14),
+				dateText.leadingAnchor.constraint(equalTo: speakerText.leadingAnchor),
+				dateText.trailingAnchor.constraint(equalTo: speakerText.trailingAnchor),
+				dateText.heightAnchor.constraint(equalTo: speakerText.heightAnchor),
+				dateText.centerYAnchor.constraint(equalTo: calendarImg.centerYAnchor)
 			])	
 		}
 		else {
@@ -145,7 +179,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 		self.loadYoutube(videoID: self.videoId)
 	}
 	
-	func watchOnYT() {
+	@objc func watchOnYT() {
 		
 		// Open in YT app?
 		
@@ -199,6 +233,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 	
 	func loadMetadata() {
 		self.speakerText.text = self.message.Speaker
+		self.dateText.text = self.message.Date
 	}
 	
 	public func webView(_ webView: WKWebView,
