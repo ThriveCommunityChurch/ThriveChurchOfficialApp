@@ -103,7 +103,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 	
 	func setupViews() {
 		
-		view.backgroundColor = .bgDarkBlue
+		view.backgroundColor = .almostBlack
 		
 		let openYTButton = UIBarButtonItem(title: "",
 										   style: .plain,
