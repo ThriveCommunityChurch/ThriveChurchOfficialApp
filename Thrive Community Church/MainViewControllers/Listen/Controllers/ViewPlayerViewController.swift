@@ -48,7 +48,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 	let speakerText: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Book", size: 17)
+		label.font = UIFont(name: "Avenir-Book", size: 19)
 		label.textColor = .lightGray
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -65,7 +65,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 	let dateText: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Book", size: 17)
+		label.font = UIFont(name: "Avenir-Book", size: 19)
 		label.textColor = .lightGray
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -128,10 +128,10 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 				videoBG.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 				videoBG.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
 				videoBG.heightAnchor.constraint(equalToConstant: height),
-				userImg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-				userImg.topAnchor.constraint(equalTo: videoBG.bottomAnchor, constant: 24),
-				userImg.heightAnchor.constraint(equalToConstant: 18),
-				userImg.widthAnchor.constraint(equalToConstant: 18),
+				userImg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26),
+				userImg.topAnchor.constraint(equalTo: videoBG.bottomAnchor, constant: 26),
+				userImg.heightAnchor.constraint(equalToConstant: 20),
+				userImg.widthAnchor.constraint(equalToConstant: 20),
 				speakerText.leadingAnchor.constraint(equalTo: userImg.trailingAnchor, constant: 10),
 				speakerText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
 													constant: -24),
@@ -140,7 +140,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 				calendarImg.leadingAnchor.constraint(equalTo: userImg.leadingAnchor),
 				calendarImg.heightAnchor.constraint(equalTo: userImg.heightAnchor),
 				calendarImg.widthAnchor.constraint(equalTo: userImg.widthAnchor),
-				calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 14),
+				calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 16),
 				dateText.leadingAnchor.constraint(equalTo: speakerText.leadingAnchor),
 				dateText.trailingAnchor.constraint(equalTo: speakerText.trailingAnchor),
 				dateText.heightAnchor.constraint(equalTo: speakerText.heightAnchor),
