@@ -274,6 +274,11 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				var youtubeId = selectedMessage.VideoUrl ?? ""
 				youtubeId = youtubeId.replacingOccurrences(of: "https://youtu.be/", with: "")
 				
+				// register this one in recently played when they click to watch the video
+				// after this point, we don't REALLY care if they watched it or not
+				let selectedMessage = self.messages[indexPath.row]
+				selectedMessage.registerDataForRecentlyPlayed()
+				
 				let videoView = ViewPlayerViewController()
 				videoView.VideoId = youtubeId
 				videoView.Message = selectedMessage
@@ -293,14 +298,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			style: .default) { (action) in
 				
 				self.seriesTable.deselectRow(indexPath: indexPath)
-				
-				print("Downloading now.........")
-				
-				// prevent multiple presses of the button
-				if !self.currentlyDownloading {
-					self.currentlyDownloading = true
+								
+				DispatchQueue.main.async {
+					let selectedRow = self.seriesTable.cellForRow(at: indexPath) as! SermonMessageTableViewCell
 					
-					self.saveFileToDisk()
+					selectedRow.downloadSpinner.startAnimating()
+					
+					// prevent multiple presses of the button
+					if !self.currentlyDownloading {
+						self.currentlyDownloading = true
+						
+						self.saveFileToDisk(selectedRow: selectedRow)
+					}
 				}
 			}
 			
@@ -356,7 +365,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		UserDefaults.standard.synchronize()
 	}
 	
-	private func saveFileToDisk() {
+	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell) {
 		
 		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
 		
@@ -436,6 +445,10 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 						// we already checked this above
 						if storageLocationAvailable {
 							
+							DispatchQueue.main.async {
+								selectedRow.downloadSpinner.stopAnimating()
+							}
+							
 							try FileManager.default.moveItem(at: location, to: outputURL)
 							
 							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
@@ -468,7 +481,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		self.currentlyDownloading = false
 		self.messageForDownload = nil
-		print("Done!")
 	}
 	
 	private func readDLMessageIds() {

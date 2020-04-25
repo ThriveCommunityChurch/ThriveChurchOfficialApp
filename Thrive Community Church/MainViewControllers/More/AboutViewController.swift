@@ -53,13 +53,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 			let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
 				"\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
 				"\n\nDevice Information" +
-				"\nDevice:  \(UIDevice.current.modelName)" +
+				"\nDevice: \(UIDevice.current.modelName)" +
 				"\nCurrent Time: \(date)" +
 				"\niOS: \(UIDevice.current.systemVersion)" +
 				"\n\nApplication Information" +
 				"\nVersion: \(version())" +
 				"\nBuild #: \(buildNum)" +
-				"\nFeedback ID: \(uuid)"
+			    "\nFeedback ID: \(uuid)"
 			
 			do {
 				// Write to the file
@@ -74,7 +74,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 				if let fileData = NSData(contentsOfFile: fileURL.path) {
 					composeVC.addAttachmentData(fileData as Data,
 												mimeType: "text/txt",
-												fileName: "\(uuid.suffix(3)).log")
+												fileName: "\(uuid.suffix(5)).log")
 				}
 				self.present(composeVC, animated: true, completion: nil)
 				
