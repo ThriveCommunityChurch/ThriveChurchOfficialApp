@@ -69,7 +69,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		cell.titleLabel.text = message.Title
 		cell.dateLabel.text = message.Date
 		cell.speakerLabel.text = message.Speaker
-		cell.storageSizeLabel.text = "\(message.downloadSizeMB?.rounded(toPlace: 1) ?? 0.0) MB"
+		cell.storageSizeLabel.text = "\(message.AudioFileSize?.rounded(toPlace: 1) ?? 0.0) MB"
 		
 		// make the selection color less intense
 		let selectedView = UIView()
@@ -328,7 +328,7 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		self.downloadedMessages = self.downloadedMessages.sorted {
 			// this Anonymous closure means is the one after the one we are looking at less than this one?
 			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
-			$1.downloadSizeMB?.isLess(than: $0.downloadSizeMB ?? 0.0) ?? false
+			$1.AudioFileSize?.isLess(than: $0.AudioFileSize ?? 0.0) ?? false
 		}
 		
 		self.downloadsTableView.reloadData()

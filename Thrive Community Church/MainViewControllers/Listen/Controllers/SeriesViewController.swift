@@ -308,7 +308,43 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 					if !self.currentlyDownloading {
 						self.currentlyDownloading = true
 						
-						self.saveFileToDisk(selectedRow: selectedRow)
+						// check that the user has enough disk space
+						let space = Storage.getFreeSpace().toMB()
+						
+						let size = selectedMessage.AudioFileSize ?? 0.0
+						
+						if size > space {
+							
+							// UI Elements need to be presented with the main method
+							// we should invoke this on the main thread asyncronously
+							DispatchQueue.main.async {
+								
+								// the user has no space to save this audio
+								self.currentlyDownloading = false
+								
+								let requiredSpace = (size - space).rounded(toPlace: 2)
+								var reqSpaceString: String = ""
+								
+								// if we have a number that is greater or equal to 1 then we
+								// should try to remove the trailing zeros. If its less
+								// than that we want them
+								if requiredSpace >= 1.0 {
+									reqSpaceString = requiredSpace.removeZerosFromEnd()
+								}
+								else {
+									reqSpaceString = "\(requiredSpace)"
+								}
+								
+								self.currentlyDownloading = false
+								self.presentBasicAlertWTitle(title: "Error!",
+															 message: "Unable to download sermon message. " +
+									"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							}
+						}
+						else {
+
+							self.saveFileToDisk(selectedRow: selectedRow, selectedMessage: selectedMessage)
+						}
 					}
 				}
 			}
@@ -365,7 +401,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		UserDefaults.standard.synchronize()
 	}
 	
-	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell) {
+	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell, selectedMessage: SermonMessage) {
 		
 		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
 		
@@ -407,53 +443,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 					let location = location, error == nil
 					else { return }
 				do {
-					// check that the user has enough disk space
-					let space = Storage.getFreeSpace().toMB()
 					
-					let size = Double(httpURLResponse.expectedContentLength).toMB()
-					self.messageForDownload?.downloadSizeMB = size
-					
-					if size > space {
+					// we already checked this above
+					if storageLocationAvailable {
 						
-						// UI Elements need to be presented with the main method
-						// we should invoke this on the main thread asyncronously
 						DispatchQueue.main.async {
-							
-							// the user has no space to save this audio
-							self.currentlyDownloading = false
-							
-							let requiredSpace = (size - space).rounded(toPlace: 2)
-							var reqSpaceString: String = ""
-							
-							// if we have a number that is greater or equal to 1 then we
-							// should try to remove the trailing zeros. If its less
-							// than that we want them
-							if requiredSpace >= 1.0 {
-								reqSpaceString = requiredSpace.removeZerosFromEnd()
-							}
-							else {
-								reqSpaceString = "\(requiredSpace)"
-							}
-							
-							self.currentlyDownloading = false
-							self.presentBasicAlertWTitle(title: "Error!",
-														 message: "Unable to download sermon message. " +
-								"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							selectedRow.downloadSpinner.stopAnimating()
 						}
-					}
-					else {
-						// we already checked this above
-						if storageLocationAvailable {
-							
-							DispatchQueue.main.async {
-								selectedRow.downloadSpinner.stopAnimating()
-							}
-							
-							try FileManager.default.moveItem(at: location, to: outputURL)
-							
-							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
-							self.finishDownload()
-						}
+						
+						try FileManager.default.moveItem(at: location, to: outputURL)
+						
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+						self.finishDownload()
 					}
 				} catch {
 					// an error ocurred

@@ -151,8 +151,25 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 			NSLayoutConstraint.activate([
 				videoBG.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				videoBG.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				videoBG.topAnchor.constraint(equalTo: view.topAnchor),
-				videoBG.heightAnchor.constraint(equalToConstant: height)
+				videoBG.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor),
+				videoBG.heightAnchor.constraint(equalToConstant: height),
+				userImg.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
+				userImg.topAnchor.constraint(equalTo: videoBG.bottomAnchor, constant: 26),
+				userImg.heightAnchor.constraint(equalToConstant: 20),
+				userImg.widthAnchor.constraint(equalToConstant: 20),
+				speakerText.leadingAnchor.constraint(equalTo: userImg.trailingAnchor, constant: 10),
+				speakerText.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+													constant: -24),
+				speakerText.centerYAnchor.constraint(equalTo: userImg.centerYAnchor),
+				speakerText.bottomAnchor.constraint(equalTo: userImg.bottomAnchor),
+				calendarImg.leadingAnchor.constraint(equalTo: userImg.leadingAnchor),
+				calendarImg.heightAnchor.constraint(equalTo: userImg.heightAnchor),
+				calendarImg.widthAnchor.constraint(equalTo: userImg.widthAnchor),
+				calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 16),
+				dateText.leadingAnchor.constraint(equalTo: speakerText.leadingAnchor),
+				dateText.trailingAnchor.constraint(equalTo: speakerText.trailingAnchor),
+				dateText.heightAnchor.constraint(equalTo: speakerText.heightAnchor),
+				dateText.centerYAnchor.constraint(equalTo: calendarImg.centerYAnchor)
 			])
 		}
 		
@@ -168,8 +185,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 			spinner.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			spinner.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			spinner.centerYAnchor.constraint(equalTo: videoBG.centerYAnchor),
-			spinner.heightAnchor.constraint(equalToConstant: 25),
-			spinner.widthAnchor.constraint(equalToConstant: 25),
+			spinner.centerXAnchor.constraint(equalTo: videoBG.centerXAnchor),
 			progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			progressView.bottomAnchor.constraint(equalTo: videoBG.bottomAnchor),
@@ -187,11 +203,11 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 		let urlString = "youtube://\(videoId)"
 						
 		var url = URL(string: urlString)!
-		if !UIApplication.shared.canOpenURL(url)  {
-			url = URL(string:"http://www.youtube.com/watch?v=\(videoId)")!
+		if 	UIApplication.shared.canOpenURL(url)  {
 			UIApplication.shared.open(url)
 		}
 		else {
+			url = URL(string:"http://www.youtube.com/watch?v=\(videoId)")!
 			UIApplication.shared.open(url)
 		}
 	}
