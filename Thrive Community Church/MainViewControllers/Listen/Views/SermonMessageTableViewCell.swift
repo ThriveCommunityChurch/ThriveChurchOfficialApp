@@ -85,6 +85,14 @@ class SermonMessageTableViewCell: UITableViewCell {
 		return image
 	}()
 	
+	let downloadSpinner: UIActivityIndicatorView = {
+		let indicator = UIActivityIndicatorView()
+		indicator.color = .white
+		indicator.backgroundColor = .clear
+		indicator.translatesAutoresizingMaskIntoConstraints = false
+		return indicator
+	}()
+	
 	override init(style: SermonMessageTableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
@@ -112,6 +120,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		self.addSubview(watchImage)
 		self.addSubview(listenImage)
 		self.addSubview(durationLabel)
+		self.addSubview(downloadSpinner)
 		
 		NSLayoutConstraint.activate([
 			weekNum.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
@@ -137,7 +146,11 @@ class SermonMessageTableViewCell: UITableViewCell {
 			listenImage.widthAnchor.constraint(equalToConstant: 20),
 			durationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -28),
 			durationLabel.widthAnchor.constraint(equalToConstant: 45),
-			durationLabel.centerYAnchor.constraint(equalTo: speaker.centerYAnchor)
+			durationLabel.centerYAnchor.constraint(equalTo: speaker.centerYAnchor),
+			downloadSpinner.centerYAnchor.constraint(equalTo: date.centerYAnchor),
+			downloadSpinner.heightAnchor.constraint(equalToConstant: 22),
+			downloadSpinner.widthAnchor.constraint(equalToConstant: 22),
+			downloadSpinner.trailingAnchor.constraint(equalTo: watchImage.leadingAnchor, constant: -24)
 		])
 	}
 }

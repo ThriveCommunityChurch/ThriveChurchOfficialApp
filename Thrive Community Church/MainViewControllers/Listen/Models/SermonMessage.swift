@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SermonMessage: NSObject, Decodable, NSCoding {
+public class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	var AudioUrl: String?
 	var AudioDuration: Double?
+	var AudioFileSize: Double?
 	var VideoUrl: String?
 	var PassageRef: String?
 	var Speaker: String
@@ -28,7 +29,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	/// is stored on the device.
 	var LocalAudioURI: String?
 	
-	/// Physical Size of the downloaded file, we can report this to the user
+	/// DEPRECATED: Physical Size of the downloaded file, we can report this to the user
 	var downloadSizeMB: Double?
 	
 	// TODO: Move this to FileManager
@@ -43,7 +44,7 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 	
 	init(audio: String?, duration: Double, video: String?, psg: String, spkr: String, name: String,
 		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?,
-		 seriesArt: Data?, played: Double?, seriesTitle: String?) {
+		 seriesArt: Data?, played: Double?, seriesTitle: String?, audioFileSize: Double?) {
 		self.AudioUrl = audio
 		self.AudioDuration = duration
 		self.VideoUrl = video
@@ -59,11 +60,13 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.seriesArt = seriesArt
 		self.previouslyPlayed = played
 		self.seriesTitle = seriesTitle
+		self.AudioFileSize = audioFileSize
 	}
 	
-	required convenience init(coder aDecoder: NSCoder) {
+	required convenience public init(coder aDecoder: NSCoder) {
 		let audio = aDecoder.decodeObject(forKey: "AudioUrl") as! String?
 		let duration = aDecoder.decodeObject(forKey: "AudioDuration") as! Double?
+		let fileSize = aDecoder.decodeObject(forKey: "AudioFileSize") as! Double?
 		let video = aDecoder.decodeObject(forKey: "VideoUrl") as! String?
 		let psg = aDecoder.decodeObject(forKey: "PassageRef") as! String
 		let spkr = aDecoder.decodeObject(forKey: "Speaker") as! String
@@ -81,10 +84,10 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		self.init(audio: audio, duration: duration ?? 0.0, video: video, psg: psg, spkr: spkr, name: name,
 				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,
 				  localURI: localURI, size: size, seriesArt: art, played: played,
-				  seriesTitle: seriesTitle)
+				  seriesTitle: seriesTitle, audioFileSize: fileSize)
 	}
 	
-	func encode(with aCoder: NSCoder) {
+	public func encode(with aCoder: NSCoder) {
 		aCoder.encode(AudioUrl, forKey: "AudioUrl")
 		aCoder.encode(AudioDuration, forKey: "AudioDuration")
 		aCoder.encode(VideoUrl, forKey: "VideoUrl")
@@ -100,5 +103,6 @@ class SermonMessage: NSObject, Decodable, NSCoding {
 		aCoder.encode(seriesArt, forKey: "seriesArt")
 		aCoder.encode(previouslyPlayed, forKey: "previouslyPlayed")
 		aCoder.encode(seriesTitle, forKey: "seriesTitle")
+		aCoder.encode(AudioFileSize, forKey: "AudioFileSize")
 	}
 }

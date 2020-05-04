@@ -343,7 +343,7 @@ extension ListenCollectionViewController {
 			let uuid = UUID().uuidString.suffix(8)
 			
 			// Save data to file
-			let fileName = "\(uuid.suffix(3)).log"
+			let fileName = "\(uuid.suffix(5)).log"
 			let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
 															  in: .userDomainMask,
 															  appropriateFor: nil,

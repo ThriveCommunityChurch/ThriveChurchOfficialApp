@@ -55,7 +55,7 @@ class SermonAVPlayer: NSObject {
 		registerWithCommandCenter()
 		
 		DispatchQueue.main.async {
-			self.registerDataForRecentlyPlayed()
+			selectedMessage.registerDataForRecentlyPlayed()
 		}
 	}
 	
@@ -77,7 +77,7 @@ class SermonAVPlayer: NSObject {
 		registerWithCommandCenter()
 		
 		DispatchQueue.main.async {
-			self.registerDataForRecentlyPlayed()
+			selectedMessage.registerDataForRecentlyPlayed()
 		}
 	}
 	
@@ -255,7 +255,8 @@ class SermonAVPlayer: NSObject {
 					MPMediaItemPropertyTitle: self.messageTitle,
 					MPNowPlayingInfoPropertyPlaybackRate: isPaused ? NSNumber(value: 0.0) : NSNumber(value: 1.0),
 					MPMediaItemPropertyArtist: self.speaker,
-					MPMediaItemPropertyArtwork: MPMediaItemArtwork(boundsSize: self.sermonGraphic?.size ?? CGSize(width: 300, height: 300), requestHandler: { (size) -> UIImage in
+					MPMediaItemPropertyArtwork:
+						MPMediaItemArtwork(boundsSize: self.sermonGraphic?.size ?? CGSize(width: 300, height: 300), requestHandler: { (size) -> UIImage in
 						return self.sermonGraphic ?? UIImage(named: "App_Icon_Large")!
 					}),
 					MPMediaItemPropertyAlbumTitle: self.seriesTitle,
@@ -402,87 +403,5 @@ class SermonAVPlayer: NSObject {
 	
 	public func getPlayer() -> AVPlayer {
 		return self.player!
-	}
-	
-	private func registerDataForRecentlyPlayed() {
-		
-		// reset the data
-		recentlyPlayed = [SermonMessage]()
-		
-		// get the recently played sermon messages
-		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
-		if decoded != nil {
-			
-			let decodedSermonMessages = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
-			
-			var count = decodedSermonMessages.count
-			recentlyPlayed = decodedSermonMessages
-			let msg = message!
-			
-			// set the timestamp for this message using ms since epoch
-			msg.previouslyPlayed = Date().timeIntervalSince1970
-			
-			// if we have 9 or less, then we should register this one, because we will have 10
-			// if we always insert at 0 we'll always have the most recent at the top
-			if count <= 9 {
-				count = self.removeMatchingMessages(msg: msg)
-				recentlyPlayed?.insert(msg, at: 0)
-			}
-			else {
-				
-				// we need to move the one we have, so delete it wherever it's at
-				count = self.removeMatchingMessages(msg: msg)
-				
-				// THEN we can insert at 0 and pop the one on the end
-				recentlyPlayed?.remove(at: count - 1)
-				recentlyPlayed?.insert(msg, at: 0)
-			}
-		}
-		else {
-			// we haven't found anything in UD so add something
-			message?.previouslyPlayed = Date().timeIntervalSince1970
-			recentlyPlayed?.insert(message!, at: 0)
-		}
-		
-		// before we can place objects into Defaults they have to be encoded
-		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recentlyPlayed ?? [SermonMessage]())
-		
-		// we have a reference to this message in the above Defaults array, so store everything
-		UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
-		UserDefaults.standard.synchronize()
-		
-		// once we are doen reset the data again to avoid memory leaks
-		recentlyPlayed = nil
-	}
-	
-	private func getUniqueIDsFromArrayOfObjects(events: [SermonMessage]) -> [String] {
-		let eventIds = events.map { $0.MessageId}
-		let idset = Set(eventIds)
-		return Array(idset)
-	}
-	
-	private func removeMatchingMessages(msg: SermonMessage) -> Int {
-		
-		// the Id index of the sermons here are in the same order
-		let idArray = getUniqueIDsFromArrayOfObjects(events: recentlyPlayed!)
-		
-		if idArray.contains(msg.MessageId) {
-			// remove all instances of the message we are playing
-			recentlyPlayed?.removeAll(where: { (sermonMessage) -> Bool in
-				sermonMessage.MessageId == msg.MessageId
-			})
-		}
-		
-		return recentlyPlayed?.count ?? 0
-	}
-	
-	private func sortMessagesMostRecentDescending() {
-		
-		// we'll only ever have to sort 10 of these
-		self.recentlyPlayed = self.recentlyPlayed?.sorted {
-			// this Anonymous closure means is the one after the one we are looking at less than this one?
-			// if so then it goes before us, otherwise we are first, since higher numbers should be on top
-			$1.previouslyPlayed?.isLess(than: $0.previouslyPlayed ?? 0.0) ?? false
-		}
 	}
 }

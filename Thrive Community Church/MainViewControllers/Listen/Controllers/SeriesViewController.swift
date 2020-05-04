@@ -274,12 +274,16 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				var youtubeId = selectedMessage.VideoUrl ?? ""
 				youtubeId = youtubeId.replacingOccurrences(of: "https://youtu.be/", with: "")
 				
-				// if youtube is installed open it there, otherwise just open the
-				var url = URL(string:"youtube://\(youtubeId)")!
-				if !UIApplication.shared.canOpenURL(url)  {
-					url = URL(string:"http://www.youtube.com/watch?v=\(youtubeId)")!
-				}
-				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				// register this one in recently played when they click to watch the video
+				// after this point, we don't REALLY care if they watched it or not
+				let selectedMessage = self.messages[indexPath.row]
+				selectedMessage.registerDataForRecentlyPlayed()
+				
+				let videoView = ViewPlayerViewController()
+				videoView.VideoId = youtubeId
+				videoView.Message = selectedMessage
+				
+				self.navigationController?.show(videoView, sender: self)
 			}
 			
 			alert.addAction(watchAction)
@@ -294,14 +298,54 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			style: .default) { (action) in
 				
 				self.seriesTable.deselectRow(indexPath: indexPath)
-				
-				print("Downloading now.........")
-				
-				// prevent multiple presses of the button
-				if !self.currentlyDownloading {
-					self.currentlyDownloading = true
+								
+				DispatchQueue.main.async {
+					let selectedRow = self.seriesTable.cellForRow(at: indexPath) as! SermonMessageTableViewCell
 					
-					self.saveFileToDisk()
+					selectedRow.downloadSpinner.startAnimating()
+					
+					// prevent multiple presses of the button
+					if !self.currentlyDownloading {
+						self.currentlyDownloading = true
+						
+						// check that the user has enough disk space
+						let space = Storage.getFreeSpace().toMB()
+						
+						let size = selectedMessage.AudioFileSize ?? 0.0
+						
+						if size > space {
+							
+							// UI Elements need to be presented with the main method
+							// we should invoke this on the main thread asyncronously
+							DispatchQueue.main.async {
+								
+								// the user has no space to save this audio
+								self.currentlyDownloading = false
+								
+								let requiredSpace = (size - space).rounded(toPlace: 2)
+								var reqSpaceString: String = ""
+								
+								// if we have a number that is greater or equal to 1 then we
+								// should try to remove the trailing zeros. If its less
+								// than that we want them
+								if requiredSpace >= 1.0 {
+									reqSpaceString = requiredSpace.removeZerosFromEnd()
+								}
+								else {
+									reqSpaceString = "\(requiredSpace)"
+								}
+								
+								self.currentlyDownloading = false
+								self.presentBasicAlertWTitle(title: "Error!",
+															 message: "Unable to download sermon message. " +
+									"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							}
+						}
+						else {
+
+							self.saveFileToDisk(selectedRow: selectedRow, selectedMessage: selectedMessage)
+						}
+					}
 				}
 			}
 			
@@ -357,7 +401,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		UserDefaults.standard.synchronize()
 	}
 	
-	private func saveFileToDisk() {
+	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell, selectedMessage: SermonMessage) {
 		
 		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
 		
@@ -399,49 +443,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 					let location = location, error == nil
 					else { return }
 				do {
-					// check that the user has enough disk space
-					let space = Storage.getFreeSpace().toMB()
 					
-					let size = Double(httpURLResponse.expectedContentLength).toMB()
-					self.messageForDownload?.downloadSizeMB = size
-					
-					if size > space {
+					// we already checked this above
+					if storageLocationAvailable {
 						
-						// UI Elements need to be presented with the main method
-						// we should invoke this on the main thread asyncronously
 						DispatchQueue.main.async {
-							
-							// the user has no space to save this audio
-							self.currentlyDownloading = false
-							
-							let requiredSpace = (size - space).rounded(toPlace: 2)
-							var reqSpaceString: String = ""
-							
-							// if we have a number that is greater or equal to 1 then we
-							// should try to remove the trailing zeros. If its less
-							// than that we want them
-							if requiredSpace >= 1.0 {
-								reqSpaceString = requiredSpace.removeZerosFromEnd()
-							}
-							else {
-								reqSpaceString = "\(requiredSpace)"
-							}
-							
-							self.currentlyDownloading = false
-							self.presentBasicAlertWTitle(title: "Error!",
-														 message: "Unable to download sermon message. " +
-								"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							selectedRow.downloadSpinner.stopAnimating()
 						}
-					}
-					else {
-						// we already checked this above
-						if storageLocationAvailable {
-							
-							try FileManager.default.moveItem(at: location, to: outputURL)
-							
-							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
-							self.finishDownload()
-						}
+						
+						try FileManager.default.moveItem(at: location, to: outputURL)
+						
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+						self.finishDownload()
 					}
 				} catch {
 					// an error ocurred
@@ -469,7 +482,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		self.currentlyDownloading = false
 		self.messageForDownload = nil
-		print("Done!")
 	}
 	
 	private func readDLMessageIds() {

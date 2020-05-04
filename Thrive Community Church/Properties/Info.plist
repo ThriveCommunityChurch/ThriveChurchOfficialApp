@@ -34,6 +34,7 @@
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>youtube</string>
 		<string>fbauth2</string>
 		<string>fbapi</string>
 		<string>twitter</string>

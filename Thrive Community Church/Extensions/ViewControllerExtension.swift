@@ -77,15 +77,6 @@ extension UIViewController {
 		}
 	}
 	
-	func openVCAtSpecificURL(link: String) {
-		
-		let vc = OpenBiblePassageViewController()
-		let passage = BiblePassage(url: link)
-		vc.link = passage.url
-		
-		navigationController?.show(vc, sender: self)
-	}
-	
 	func retrieveDownloadFromStorage(sermonMessageID: String) -> SermonMessage? {
 		
 		var sermonMessage: SermonMessage?
