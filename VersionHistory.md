@@ -1,6 +1,12 @@
 ### 1.7.2  —  TBD
+- This is our final update for iOS 10, please upgrade your device to iOS 11 or newer to receive further updates
 - Fixed an issue with a broken link within the Connect tab
+- Watch HD videos within the app or on your YouTube app
+- Watching sermon videos now includes them in your recently played list
+- YouVersion support for reading the Bible
+- Fixed an issue where devices on iOS 12+ would not open videos in the YouTube app
 - Fixed an issue with the graphic on the Connect tab
+- Performance improvements with audio download
 - Other minor bug fixes
 
 ### 1.7.1  —  Aug 13, 2019
