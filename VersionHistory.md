@@ -1,5 +1,5 @@
 ### 1.7.2  —  TBD
-- This is our final update for iOS 10, please upgrade your device to iOS 11 or newer to receive further updates
+- This is our final update for iOS 10, please update your device to iOS 11 or newer to receive further updates
 - Fixed an issue with a broken link within the Connect tab
 - Watch HD videos within the app or on your YouTube app
 - Watching sermon videos now includes them in your recently played list
