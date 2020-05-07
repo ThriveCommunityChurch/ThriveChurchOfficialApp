@@ -55,7 +55,7 @@ class SermonAVPlayer: NSObject {
 		registerWithCommandCenter()
 		
 		DispatchQueue.main.async {
-			selectedMessage.registerDataForRecentlyPlayed()
+			selectedMessage.registerDataForRecentlyPlayed(seriesImage: seriesImage)
 		}
 	}
 	

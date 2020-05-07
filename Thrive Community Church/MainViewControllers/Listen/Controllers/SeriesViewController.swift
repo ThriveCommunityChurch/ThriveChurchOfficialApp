@@ -277,7 +277,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				// register this one in recently played when they click to watch the video
 				// after this point, we don't REALLY care if they watched it or not
 				let selectedMessage = self.messages[indexPath.row]
-				selectedMessage.registerDataForRecentlyPlayed()
+				selectedMessage.registerDataForRecentlyPlayed(seriesImage: self.seriesArt.image)
 				
 				let videoView = ViewPlayerViewController()
 				videoView.VideoId = youtubeId

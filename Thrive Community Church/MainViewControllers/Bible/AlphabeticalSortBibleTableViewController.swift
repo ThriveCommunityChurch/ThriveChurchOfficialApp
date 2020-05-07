@@ -79,6 +79,8 @@ class AlphabeticalSortBibleTableViewController: UITableViewController {
 			AnalyticsParameterContentType: "cont"
 		])
 		
+		tableView.deselectRow(at: indexPath, animated: true)
+		
 		if linkToVisit != "" {
 			openYouVersionBiblePassage(link: "https://www.bible.com/bible/59/\(linkToVisit).1",
 										title: vcTitle)

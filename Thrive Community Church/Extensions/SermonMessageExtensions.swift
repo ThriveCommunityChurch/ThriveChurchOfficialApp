@@ -7,39 +7,59 @@
 //
 
 import Foundation
+import UIKit
 
 extension SermonMessage {
 	
-	public func registerDataForRecentlyPlayed() {
+	public func registerDataForRecentlyPlayed(seriesImage: UIImage? = nil) {
 		
 		// reset the data
-		var recentlyPlayed = [SermonMessage]()
+		var recentlyPlayed: [SermonMessage] = [SermonMessage]()
 		
 		// get the recently played sermon messages
 		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
 		if decoded != nil {
 			
-			let decodedSermonMessages = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
+			recentlyPlayed = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
+			let count = recentlyPlayed.count
 			
-			var count = decodedSermonMessages.count
-			recentlyPlayed = decodedSermonMessages
+			// the Id index of the sermons here are in the same order
+			let idArray = getUniqueIDsFromArrayOfObjects(events: recentlyPlayed)
+			
+			// if this list already contains the message, and its the only one
+			// just return because we won't be doing anything new
+			if count == 1 && idArray.contains(self.MessageId) {
+				return
+			}
 			
 			// set the timestamp for this message using ms since epoch
 			self.previouslyPlayed = NSTimeIntervalSince1970
 			
+			// set the image from the above series if it hasn't already been set
+			if self.seriesArt == nil {
+				self.seriesArt = seriesImage?.pngData()
+			}
+			
+			print("PREVIOUS \(recentlyPlayed.count)")
+			
 			// if we have 9 or less, then we should register this one, because we will have 10
 			// if we always insert at 0 we'll always have the most recent at the top
 			if count <= 9 {
-				count = removeMatchingMessages(recentlyPlayed: recentlyPlayed)
+				recentlyPlayed = removeMatchingMessages(recentlyPlayed: recentlyPlayed)
+				
+				print("AFTER REMOVAL \(recentlyPlayed.count)")
+				
 				recentlyPlayed.insert(self, at: 0)
+				
+				print("AFTER INSERT \(recentlyPlayed.count)")
 			}
 			else {
 				
 				// we need to move the one we have, so delete it wherever it's at
-				count = self.removeMatchingMessages(recentlyPlayed: recentlyPlayed)
+				recentlyPlayed = self.removeMatchingMessages(recentlyPlayed: recentlyPlayed)
 				
 				// THEN we can insert at 0 and pop the one on the end
-				recentlyPlayed.remove(at: count - 1)
+				recentlyPlayed.remove(at: recentlyPlayed.count - 1)
 				recentlyPlayed.insert(self, at: 0)
 			}
 		}
@@ -49,6 +69,8 @@ extension SermonMessage {
 			recentlyPlayed.insert(self, at: 0)
 		}
 		
+		print("LAST \(recentlyPlayed.count)")
+		
 		// before we can place objects into Defaults they have to be encoded
 		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recentlyPlayed)
 		
@@ -57,8 +79,9 @@ extension SermonMessage {
 		UserDefaults.standard.synchronize()
 	}
 	
-	private func removeMatchingMessages(recentlyPlayed: [SermonMessage]) -> Int {
+	private func removeMatchingMessages(recentlyPlayed: [SermonMessage]) -> [SermonMessage] {
 		
+		// we can't mutate the param because its a let constant
 		var recents = recentlyPlayed
 		
 		// the Id index of the sermons here are in the same order
@@ -71,7 +94,7 @@ extension SermonMessage {
 			})
 		}
 		
-		return recents.count
+		return recents
 	}
 	
 	private func getUniqueIDsFromArrayOfObjects(events: [SermonMessage]) -> [String] {

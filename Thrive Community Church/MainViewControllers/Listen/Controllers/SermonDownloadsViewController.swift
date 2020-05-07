@@ -69,7 +69,13 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		cell.titleLabel.text = message.Title
 		cell.dateLabel.text = message.Date
 		cell.speakerLabel.text = message.Speaker
-		cell.storageSizeLabel.text = "\(message.AudioFileSize?.rounded(toPlace: 1) ?? 0.0) MB"
+		
+		if message.AudioFileSize != nil {
+			cell.storageSizeLabel.text = "\(message.AudioFileSize?.rounded(toPlace: 1) ?? 0.0) MB"
+		}
+		else {
+			cell.storageSizeLabel.text = "\(message.downloadSizeMB?.rounded(toPlace: 1) ?? 0.0) MB"
+		}
 		
 		// make the selection color less intense
 		let selectedView = UIView()
