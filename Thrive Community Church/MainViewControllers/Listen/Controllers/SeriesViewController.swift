@@ -352,31 +352,37 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			alert.addAction(downloadAction)
 		}
 		
-		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
-											  style: .default) { (action) in
-												
-			self.seriesTable.deselectRow(indexPath: indexPath)
-												
-			let vc = ReadSermonPassageViewController()
-			vc.Passage = selectedMessage.PassageRef ?? ""
-			
-			if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+		if selectedMessage.PassageRef != nil {
+		
+			let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
+												  style: .default) { (action) in
+													
+				self.seriesTable.deselectRow(indexPath: indexPath)
+													
+				let vc = ReadSermonPassageViewController()
+				vc.Passage = selectedMessage.PassageRef ?? ""
 				
-				let apiDomain = loadedData
-				vc.API = apiDomain
-				self.show(vc, sender: self)
-			}
-			else {
-				print("ERR: Error Ocurred while trying to read the API domain from User Defaults")
+				if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+					
+					let apiDomain = loadedData
+					vc.API = apiDomain
+					self.show(vc, sender: self)
+				}
+				else {
+					print("ERR: Error Ocurred while trying to read the API domain from User Defaults")
+				}
+				
 			}
 			
+			alert.addAction(readPassageAction)
 		}
+		
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
 			
 			self.seriesTable.deselectRow(indexPath: indexPath)
 		}
 
-		alert.addAction(readPassageAction)
+		
 		alert.addAction(cancelAction)
 		self.present(alert, animated: true, completion: nil)
 	}
