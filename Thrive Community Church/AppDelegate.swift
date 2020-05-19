@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
-        launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+		launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         print("Application is Active")
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             print("Setting the player to play no matter what")
             
             UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
         print("application Will Resign Active")
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             print("AVAudioSession Category Playback OK")
             do {
                 try AVAudioSession.sharedInstance().setActive(true)

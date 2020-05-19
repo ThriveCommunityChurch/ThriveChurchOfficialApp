@@ -32,7 +32,6 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 
 ### Testing Team
 
-* **Debora Lobaina** - QA / Testing
 * **Phil Klopke** - Testing
 * **[Joel Butcher](https://github.com/joelbutcher)** - QA
 

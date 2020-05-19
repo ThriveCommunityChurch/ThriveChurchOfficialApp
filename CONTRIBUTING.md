@@ -15,10 +15,11 @@ In order to test how the application will run against the Thrive Church Official
   2. Install Xcode from the Mac App Store.                            
 _macOS Requited to run Xcode_
   3. Clone the project to your machine.
-  4. Make your changes.
-  5. Make sure that your changes follow the Google Code Style Guide, found [here](https://developers.google.com/style/).             
+  4. Send an email to wyatt@thrive-fl.org to be sent the project assets and marketing images.
+  5. Make your changes.
+  6. Make sure that your changes follow the Google Code Style Guide, found [here](https://developers.google.com/style/).             
 _This makes code easier to read_
-  6. Create a Pull Request to the Branch `dev` and wait for your request to be approved.
+  7. Create a Pull Request to the Branch `dev` and wait for your request to be approved.
   
   ## Required Frameworks 
   _These are required to get the application to compile. Perform these before running the application in Xcode._              

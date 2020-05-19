@@ -17,7 +17,7 @@ extension NowPlayingViewController {
 		if (self.reachedEnd) {
 			// reset to the beginning
 			self.progressIndicator.setProgress(0.0, animated: false)
-			let time2: CMTime = CMTimeMake(Int64(0 * 1000 as Float64), 1000)
+			let time2: CMTime = CMTimeMake(value: Int64(0 * 1000 as Float64), timescale: 1000)
 			player?.seek(to: time2)
 			self.reachedEnd = false
 		}
@@ -67,7 +67,7 @@ extension NowPlayingViewController {
 			let timeRemaining = (self.totalAudioTime ?? 0.0) - newTime
 			self.durationRemainderLabel.text = "-\(timeRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
 			
-			let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+			let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
 			player?.seek(to: time2)
 			
 			DispatchQueue.main.async {
@@ -103,7 +103,7 @@ extension NowPlayingViewController {
 		let timeRemaining = (self.totalAudioTime ?? 0.0) - newTime
 		self.durationRemainderLabel.text = "-\(timeRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
 		
-		let time2: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+		let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
 		player?.seek(to: time2)
 		
 		DispatchQueue.main.async {
@@ -131,7 +131,41 @@ extension NowPlayingViewController {
 		if !currentlyDownloading {
 			self.currentlyDownloading = true
 			
-			saveFileToDisk()
+			// check that the user has enough disk space
+			let space = Storage.getFreeSpace().toMB()
+			
+			let size = messageForDownload?.AudioFileSize ?? 0.0
+			
+			if size > space {
+				
+				// UI Elements need to be presented with the main method
+				// we should invoke this on the main thread asyncronously
+				DispatchQueue.main.async {
+					
+					// the user has no space to save this audio
+					let requiredSpace = (size - space).rounded(toPlace: 2)
+					var reqSpaceString: String = ""
+					
+					// if we have a number that is greater or equal to 1 then we
+					// should try to remove the trailing zeros. If its less
+					// than that we want them
+					if requiredSpace >= 1.0 {
+						reqSpaceString = requiredSpace.removeZerosFromEnd()
+					}
+					else {
+						reqSpaceString = "\(requiredSpace)"
+					}
+					
+					self.currentlyDownloading = false
+					self.presentBasicAlertWTitle(title: "Error!",
+												  message: "Unable to download sermon message. " +
+						"Please clear some space and try again. \(reqSpaceString) MB needed.")
+					self.spinner.stopAnimating()
+				}
+			}
+			else {
+				self.saveFileToDisk()
+			}
 		}
 	}
 	
@@ -203,49 +237,13 @@ extension NowPlayingViewController {
 					let location = location, error == nil
 				else { return }
 				do {
-					// check that the user has enough disk space
-					let space = Storage.getFreeSpace().toMB()
-					
-					let size = Double(httpURLResponse.expectedContentLength).toMB()
-					self.messageForDownload?.downloadSizeMB = size
-					
-					if size > space {
+					// we already checked this above
+					if storageLocationAvailable {
 						
-						// UI Elements need to be presented with the main method
-						// we should invoke this on the main thread asyncronously
-						DispatchQueue.main.async {
-							
-							// the user has no space to save this audio
-							let requiredSpace = (size - space).rounded(toPlace: 2)
-							var reqSpaceString: String = ""
-							
-							// if we have a number that is greater or equal to 1 then we
-							// should try to remove the trailing zeros. If its less
-							// than that we want them
-							if requiredSpace >= 1.0 {
-								reqSpaceString = requiredSpace.removeZerosFromEnd()
-							}
-							else {
-								reqSpaceString = "\(requiredSpace)"
-							}
-							
-							self.currentlyDownloading = false
-							self.presentBasicAlertWTitle(title: "Error!",
-														  message: "Unable to download sermon message. " +
-								"Please clear some space and try again. \(reqSpaceString) MB needed.")
-							self.spinner.stopAnimating()
-						}
-					}
-					else {
+						try FileManager.default.moveItem(at: location, to: outputURL)
 						
-						// we already checked this above
-						if storageLocationAvailable {
-							
-							try FileManager.default.moveItem(at: location, to: outputURL)
-							
-							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
-							self.finishDownload()
-						}
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+						self.finishDownload()
 					}
 				} catch {
 					// an error ocurred, let the user try again

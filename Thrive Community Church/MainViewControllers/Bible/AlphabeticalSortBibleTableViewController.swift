@@ -11,6 +11,7 @@ import Firebase
 
 class AlphabeticalSortBibleTableViewController: UITableViewController {
 	
+	private var reuseIdentifier = "Cell"
 	var biblePassages: [String] = []
 	
 	override func viewDidLoad() {
@@ -19,8 +20,14 @@ class AlphabeticalSortBibleTableViewController: UITableViewController {
 		biblePassages = self.getUrlforAlphabeticalBookOrder()
 		
 		// Always 1 pixel off after the removal
+		tableView?.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		tableView.register(BibleSelectionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+		
+		// Always 1 pixel off after the removal
 		tableView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: -1, right: 0)
 		
+		tableView?.backgroundColor = UIColor(red: 27/255, green: 27/255, blue: 27/255, alpha: 1.0)
+
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -48,6 +55,19 @@ class AlphabeticalSortBibleTableViewController: UITableViewController {
 		return section == 0 ? 1.0 : 32
 	}
 	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! BibleSelectionTableViewCell
+		
+		// configure the cell
+		let selectedSeries = getAlphaBooksSorted()
+		
+		cell.cellText.text = selectedSeries[indexPath.row]
+		
+        return cell
+	}
+
+	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		let linkToVisit = biblePassages[indexPath.row]
@@ -59,8 +79,10 @@ class AlphabeticalSortBibleTableViewController: UITableViewController {
 			AnalyticsParameterContentType: "cont"
 		])
 		
+		tableView.deselectRow(at: indexPath, animated: true)
+		
 		if linkToVisit != "" {
-			openVCAtSpecificURLForTable(link: "https://www.bible.com/bible/59/\(linkToVisit).1",
+			openYouVersionBiblePassage(link: "https://www.bible.com/bible/59/\(linkToVisit).1",
 										title: vcTitle)
 			//Life.Church appends .esv to the end of the query string automatically
 		}

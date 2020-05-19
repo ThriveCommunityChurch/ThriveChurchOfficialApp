@@ -126,7 +126,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
 			])
 			
-			self.seriesTable.rowHeight = UITableViewAutomaticDimension
+			self.seriesTable.rowHeight = UITableView.automaticDimension
 			self.seriesTable.estimatedRowHeight = 90.0
 		}
 		
@@ -274,12 +274,16 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 				var youtubeId = selectedMessage.VideoUrl ?? ""
 				youtubeId = youtubeId.replacingOccurrences(of: "https://youtu.be/", with: "")
 				
-				// if youtube is installed open it there, otherwise just open the
-				var url = URL(string:"youtube://\(youtubeId)")!
-				if !UIApplication.shared.canOpenURL(url)  {
-					url = URL(string:"http://www.youtube.com/watch?v=\(youtubeId)")!
-				}
-				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				// register this one in recently played when they click to watch the video
+				// after this point, we don't REALLY care if they watched it or not
+				let selectedMessage = self.messages[indexPath.row]
+				selectedMessage.registerDataForRecentlyPlayed(seriesImage: self.seriesArt.image)
+				
+				let videoView = ViewPlayerViewController()
+				videoView.VideoId = youtubeId
+				videoView.Message = selectedMessage
+				
+				self.navigationController?.show(videoView, sender: self)
 			}
 			
 			alert.addAction(watchAction)
@@ -294,45 +298,91 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			style: .default) { (action) in
 				
 				self.seriesTable.deselectRow(indexPath: indexPath)
-				
-				print("Downloading now.........")
-				
-				// prevent multiple presses of the button
-				if !self.currentlyDownloading {
-					self.currentlyDownloading = true
+								
+				DispatchQueue.main.async {
+					let selectedRow = self.seriesTable.cellForRow(at: indexPath) as! SermonMessageTableViewCell
 					
-					self.saveFileToDisk()
+					selectedRow.downloadSpinner.startAnimating()
+					
+					// prevent multiple presses of the button
+					if !self.currentlyDownloading {
+						self.currentlyDownloading = true
+						
+						// check that the user has enough disk space
+						let space = Storage.getFreeSpace().toMB()
+						
+						let size = selectedMessage.AudioFileSize ?? 0.0
+						
+						if size > space {
+							
+							// UI Elements need to be presented with the main method
+							// we should invoke this on the main thread asyncronously
+							DispatchQueue.main.async {
+								
+								// the user has no space to save this audio
+								self.currentlyDownloading = false
+								
+								let requiredSpace = (size - space).rounded(toPlace: 2)
+								var reqSpaceString: String = ""
+								
+								// if we have a number that is greater or equal to 1 then we
+								// should try to remove the trailing zeros. If its less
+								// than that we want them
+								if requiredSpace >= 1.0 {
+									reqSpaceString = requiredSpace.removeZerosFromEnd()
+								}
+								else {
+									reqSpaceString = "\(requiredSpace)"
+								}
+								
+								self.currentlyDownloading = false
+								self.presentBasicAlertWTitle(title: "Error!",
+															 message: "Unable to download sermon message. " +
+									"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							}
+						}
+						else {
+
+							self.saveFileToDisk(selectedRow: selectedRow, selectedMessage: selectedMessage)
+						}
+					}
 				}
 			}
 			
 			alert.addAction(downloadAction)
 		}
 		
-		let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
-											  style: .default) { (action) in
-												
-			self.seriesTable.deselectRow(indexPath: indexPath)
-												
-			let vc = ReadSermonPassageViewController()
-			vc.Passage = selectedMessage.PassageRef ?? ""
-			
-			if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+		if selectedMessage.PassageRef != nil {
+		
+			let readPassageAction = UIAlertAction(title: "Read \(selectedMessage.PassageRef ?? "")",
+												  style: .default) { (action) in
+													
+				self.seriesTable.deselectRow(indexPath: indexPath)
+													
+				let vc = ReadSermonPassageViewController()
+				vc.Passage = selectedMessage.PassageRef ?? ""
 				
-				let apiDomain = loadedData
-				vc.API = apiDomain
-				self.show(vc, sender: self)
-			}
-			else {
-				print("ERR: Error Ocurred while trying to read the API domain from User Defaults")
+				if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+					
+					let apiDomain = loadedData
+					vc.API = apiDomain
+					self.show(vc, sender: self)
+				}
+				else {
+					print("ERR: Error Ocurred while trying to read the API domain from User Defaults")
+				}
+				
 			}
 			
+			alert.addAction(readPassageAction)
 		}
+		
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
 			
 			self.seriesTable.deselectRow(indexPath: indexPath)
 		}
 
-		alert.addAction(readPassageAction)
+		
 		alert.addAction(cancelAction)
 		self.present(alert, animated: true, completion: nil)
 	}
@@ -347,7 +397,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		UserDefaults.standard.synchronize()
 		
 		// before we save this we need to make sure we set the series Art
-		messageForDownload?.seriesArt = UIImagePNGRepresentation(seriesImage)
+		messageForDownload?.seriesArt = seriesImage.pngData()
 		
 		// before we can place objects into Defaults they have to be encoded
 		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: messageForDownload!)
@@ -357,7 +407,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		UserDefaults.standard.synchronize()
 	}
 	
-	private func saveFileToDisk() {
+	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell, selectedMessage: SermonMessage) {
 		
 		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
 		
@@ -399,49 +449,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 					let location = location, error == nil
 					else { return }
 				do {
-					// check that the user has enough disk space
-					let space = Storage.getFreeSpace().toMB()
 					
-					let size = Double(httpURLResponse.expectedContentLength).toMB()
-					self.messageForDownload?.downloadSizeMB = size
-					
-					if size > space {
+					// we already checked this above
+					if storageLocationAvailable {
 						
-						// UI Elements need to be presented with the main method
-						// we should invoke this on the main thread asyncronously
 						DispatchQueue.main.async {
-							
-							// the user has no space to save this audio
-							self.currentlyDownloading = false
-							
-							let requiredSpace = (size - space).rounded(toPlace: 2)
-							var reqSpaceString: String = ""
-							
-							// if we have a number that is greater or equal to 1 then we
-							// should try to remove the trailing zeros. If its less
-							// than that we want them
-							if requiredSpace >= 1.0 {
-								reqSpaceString = requiredSpace.removeZerosFromEnd()
-							}
-							else {
-								reqSpaceString = "\(requiredSpace)"
-							}
-							
-							self.currentlyDownloading = false
-							self.presentBasicAlertWTitle(title: "Error!",
-														 message: "Unable to download sermon message. " +
-								"Please clear some space and try again. \(reqSpaceString) MB needed.")
+							selectedRow.downloadSpinner.stopAnimating()
 						}
-					}
-					else {
-						// we already checked this above
-						if storageLocationAvailable {
-							
-							try FileManager.default.moveItem(at: location, to: outputURL)
-							
-							self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
-							self.finishDownload()
-						}
+						
+						try FileManager.default.moveItem(at: location, to: outputURL)
+						
+						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+						self.finishDownload()
 					}
 				} catch {
 					// an error ocurred
@@ -469,7 +488,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		self.currentlyDownloading = false
 		self.messageForDownload = nil
-		print("Done!")
 	}
 	
 	private func readDLMessageIds() {

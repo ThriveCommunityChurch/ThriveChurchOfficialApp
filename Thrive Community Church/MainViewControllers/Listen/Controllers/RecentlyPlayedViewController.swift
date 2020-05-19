@@ -23,7 +23,7 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 	
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.activityIndicatorViewStyle = .whiteLarge
+		indicator.style = .whiteLarge
 		indicator.color = .white
 		indicator.backgroundColor = .clear
 		indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -236,7 +236,7 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 			])
 			
-			self.recentlyPlayedTable.rowHeight = UITableViewAutomaticDimension
+			self.recentlyPlayedTable.rowHeight = UITableView.automaticDimension
 			self.recentlyPlayedTable.estimatedRowHeight = 80.0
 		}
 		

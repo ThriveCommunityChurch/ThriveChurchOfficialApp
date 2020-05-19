@@ -1,3 +1,15 @@
+### 1.7.2  —  May 19, 2020
+- This is our final update for iOS 10, please update your device to iOS 11 or newer to receive further updates
+- Make sure to stay updated, we have some new & exciting things coming soon
+- Fixed an issue with a broken link within the Connect tab
+- Watch HD videos within the app or on your YouTube app
+- Watching sermon videos now includes them in your recently played list
+- YouVersion support for reading the Bible
+- Fixed an issue where devices on iOS 12+ would not open videos in the YouTube app
+- Fixed an issue with the graphic on the Connect tab
+- Performance improvements with audio download
+- Other minor bug fixes
+
 ### 1.7.1  —  Aug 13, 2019
 - Fixed an issue where tapping on a sermon series would load the page more than once
 - Fixed an issue where LIVE would appear active when we weren't streaming
