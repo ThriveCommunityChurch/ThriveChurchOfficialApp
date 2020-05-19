@@ -1,4 +1,4 @@
-### 1.7.2  —  TBD
+### 1.7.2  —  May 19, 2020
 - This is our final update for iOS 10, please update your device to iOS 11 or newer to receive further updates
 - Make sure to stay updated, we have some new & exciting things coming soon
 - Fixed an issue with a broken link within the Connect tab
