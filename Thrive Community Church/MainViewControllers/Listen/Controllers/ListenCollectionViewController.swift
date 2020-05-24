@@ -355,36 +355,19 @@ MFMailComposeViewControllerDelegate {
 		view.addSubview(retryButton)
 		view.addSubview(spinner)
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				apiErrorMessage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-				apiErrorMessage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
-				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
-				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
-				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-				spinner.heightAnchor.constraint(equalToConstant: 37),
-				spinner.widthAnchor.constraint(equalToConstant: 37)
-				
-			])
-		}
-		else {
-			// Fallback on earlier versions
-			NSLayoutConstraint.activate([
-				apiErrorMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-				apiErrorMessage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
-				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
-				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
-				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-				spinner.heightAnchor.constraint(equalToConstant: 37),
-				spinner.widthAnchor.constraint(equalToConstant: 37)
-			])
-		}
+		NSLayoutConstraint.activate([
+			apiErrorMessage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			apiErrorMessage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+			apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
+			retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
+			retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
+			retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
+			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			spinner.heightAnchor.constraint(equalToConstant: 37),
+			spinner.widthAnchor.constraint(equalToConstant: 37)
+			
+		])
 		
 		// set backgroundView frame to self
 		self.backgroundView.frame = view.frame

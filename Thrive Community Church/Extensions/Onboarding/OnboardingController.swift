@@ -185,22 +185,12 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		
 		bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-				bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), // safe for landscape
-				bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
-			])
-		} else {
-			// Fallback on earlier versions
-			NSLayoutConstraint.activate([
-				bottomControlsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-				bottomControlsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor), // safe for landscape
-				bottomControlsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
-			])
-		}
+		NSLayoutConstraint.activate([
+			bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), // safe for landscape
+			bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+		])
 	}
 	
 	fileprivate func setupSkipButton() {
@@ -208,21 +198,12 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		
 		skipButton.translatesAutoresizingMaskIntoConstraints = false
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				skipButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-				skipButton.widthAnchor.constraint(equalToConstant: 40),
-				skipButton.heightAnchor.constraint(equalToConstant: 25),
-				skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				skipButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-				skipButton.widthAnchor.constraint(equalToConstant: 40),
-				skipButton.heightAnchor.constraint(equalToConstant: 25),
-				skipButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 28)
-			])
-		}
+		NSLayoutConstraint.activate([
+			skipButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+			skipButton.widthAnchor.constraint(equalToConstant: 40),
+			skipButton.heightAnchor.constraint(equalToConstant: 25),
+			skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
+		])
 	}
 	
 	// MARK: Save in UserDefaults

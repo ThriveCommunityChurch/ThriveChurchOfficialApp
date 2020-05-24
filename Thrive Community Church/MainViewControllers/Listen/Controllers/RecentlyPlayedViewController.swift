@@ -216,29 +216,14 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		view.addSubview(spinner)
 
 		// constraints
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				recentlyPlayedTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				recentlyPlayedTable.topAnchor.constraint(equalTo: view.topAnchor),
-				recentlyPlayedTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-			])
-		} else {
-			// Fallback on earlier versions
-			NSLayoutConstraint.activate([
-				recentlyPlayedTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				recentlyPlayedTable.topAnchor.constraint(equalTo: view.topAnchor),
-				recentlyPlayedTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-			])
-			
-			self.recentlyPlayedTable.rowHeight = UITableView.automaticDimension
-			self.recentlyPlayedTable.estimatedRowHeight = 80.0
-		}
+		NSLayoutConstraint.activate([
+			recentlyPlayedTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			recentlyPlayedTable.topAnchor.constraint(equalTo: view.topAnchor),
+			recentlyPlayedTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			recentlyPlayedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+		])
 		
 		// apparently declaring this above doesn't want to work
 		self.recentlyPlayedTable.backgroundColor = UIColor.almostBlack

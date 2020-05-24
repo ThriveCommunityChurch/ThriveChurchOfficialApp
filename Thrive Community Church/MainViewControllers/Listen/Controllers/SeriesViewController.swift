@@ -97,38 +97,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
-				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
-			])
-		}
-		else {
-			// Fallback on earlier versions
-			NSLayoutConstraint.activate([
-				seriesArt.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
-				seriesArt.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				seriesArt.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				startDate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				seriesTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				seriesTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				seriesTable.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor),
-				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
-			])
-			
-			self.seriesTable.rowHeight = UITableView.automaticDimension
-			self.seriesTable.estimatedRowHeight = 90.0
-		}
+		NSLayoutConstraint.activate([
+			seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			seriesArt.heightAnchor.constraint(equalToConstant: height),
+			startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
+			startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
+			seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
+		])
 		
 		let updatedSeriesInfo = formatDataForPresentation(series: series!)
 		
