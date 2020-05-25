@@ -42,6 +42,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	lazy var pageControl: UIPageControl = {
 		let pc = UIPageControl()
 		pc.currentPage = 0
+		pc.translatesAutoresizingMaskIntoConstraints = false
 		pc.numberOfPages = pages.count
 		pc.currentPageIndicatorTintColor = UIColor.mainBlue
 		pc.pageIndicatorTintColor = UIColor.bgBlue
@@ -51,6 +52,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	private let nextButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("NEXT", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
 		button.setTitleColor(UIColor.mainBlue, for: .normal)
 		button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
@@ -60,6 +62,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	private let skipButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Skip", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 		button.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
 		button.setTitleColor(UIColor.lighterBlueGray, for: .normal)
@@ -195,8 +198,6 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 	
 	fileprivate func setupSkipButton() {
 		view.addSubview(skipButton)
-		
-		skipButton.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
 			skipButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),

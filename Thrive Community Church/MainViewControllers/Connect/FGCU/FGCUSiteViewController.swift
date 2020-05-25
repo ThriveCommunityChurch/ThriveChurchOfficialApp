@@ -6,20 +6,37 @@
 //  Copyright © 2016 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import WebKit
 
-class FGCUSiteViewController: UIViewController, UIWebViewDelegate {
-
+class FGCUSiteViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    @IBOutlet var FGCUWebView: UIWebView!
+	
+	let FGCUWebView: WKWebView = {
+		let view = WKWebView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        FGCUWebView.delegate = self
-        FGCUWebView.loadWebPage(url: "http://thrive-fl.org/youth/college/")
+		FGCUWebView.uiDelegate = self
+		FGCUWebView.navigationDelegate = self
+		
+		view.insertSubview(FGCUWebView, at: 0)
+		NSLayoutConstraint.activate([
+			FGCUWebView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			FGCUWebView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			FGCUWebView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			FGCUWebView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+		])
+		
+		let url = URL(string: "http://thrive-fl.org/youth/college/")!
+		let request = URLRequest(url: url)
+		FGCUWebView.load(request)
+		
         self.setLoadingSpinner(spinner: loading)
     }
 	
@@ -28,14 +45,12 @@ class FGCUSiteViewController: UIViewController, UIWebViewDelegate {
 	
     }
 
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        loading.startAnimating()
-        
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        loading.stopAnimating()
-        
-    }
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		loading.stopAnimating()
+	}
+	
+	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+		loading.startAnimating()
+	}
     
 }
