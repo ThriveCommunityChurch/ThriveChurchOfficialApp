@@ -10,9 +10,9 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
  
 ## System Requirements
 
-* iPhone running iOS 10.0 or Later
-* iPhone 5S or newer
-* Valid iTunes Account
+* iPhone running iOS 11.0 or Later
+* iPhone 5s or newer
+* Valid App Store Account
 
 ## Features
 
@@ -20,7 +20,6 @@ Visit the [download link](https://itunes.apple.com/us/app/thrive-church-official
 * Download sermons and listen offline
 * Watch livestreams
 * Read the entire Bible
-* Supporting iPhone X
 * Stay connected to Thrive FGCU
 * Secure giving
 * Take notes during the sermon then share them with your friends or save them for later
