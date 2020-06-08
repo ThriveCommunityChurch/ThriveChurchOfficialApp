@@ -216,6 +216,8 @@ extension ListenCollectionViewController {
 					// transition to another view
 					self.pollingData = pollData
 					
+					print("We are live? \(pollData.IsLive ?? false)")
+					
 					if pollData.IsLive ?? false {
 						self.checkIfStreamIsActiveAsync()
 					}
@@ -255,7 +257,12 @@ extension ListenCollectionViewController {
 	}
 	
 	@objc func checkIfStreamExpired() {
-		let expireDateString = self.getExpirationDateString(expireDate: (self.pollingData?.StreamExpirationTime)!)
+		
+		let expirationDate = self.pollingData?.StreamExpirationTime
+		
+		print("Expires at: \(expirationDate ?? "UNKNOWN")")
+		
+		let expireDateString = self.getExpirationDateString(input: expirationDate!)
 		
 		if expireDateString == nil || expireDateString == "" {
 			livestreamButton.isEnabled = false
@@ -277,18 +284,18 @@ extension ListenCollectionViewController {
 	
 	/// Returns a Date object where ONLY the TIME is to be used
 	/// Returns null if the stream is no longer active (past the expire date)
-	func getExpirationDateString(expireDate: String) -> String? {
+	func getExpirationDateString(input expireDate: String) -> String? {
 		
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-		let date = dateFormatter.date(from: expireDate)
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+		let date = dateFormatter.date(from: expireDate)!
 		
 		// convert to the proper format
 		let dateToStringFormatter = DateFormatter()
 		dateToStringFormatter.dateFormat = "HH:mm:ss"
 		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
 		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		let expireDateString = dateToStringFormatter.string(from: date!)
+		let expireDateString = dateToStringFormatter.string(from: date)
 		
 		return expireDateString
 	}
