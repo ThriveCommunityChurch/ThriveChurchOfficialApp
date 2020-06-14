@@ -11,10 +11,9 @@
 // into safari. - NO Exceptions
 
 
-import Foundation
 import UIKit
 
-class giveViewController: UIViewController, UIWebViewDelegate {
+class giveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,6 @@ class giveViewController: UIViewController, UIWebViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
 }

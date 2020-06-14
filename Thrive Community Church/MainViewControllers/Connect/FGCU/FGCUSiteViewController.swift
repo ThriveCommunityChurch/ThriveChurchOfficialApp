@@ -42,7 +42,6 @@ class FGCUSiteViewController: UIViewController, WKUIDelegate, WKNavigationDelega
 	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-	
     }
 
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

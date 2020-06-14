@@ -878,10 +878,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-gL-VuT">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="638"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LIr-Y8-Tcx">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -891,29 +887,13 @@
                                 <rect key="frame" x="0.0" y="569" width="375" height="49"/>
                                 <items>
                                     <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="nHu-xG-Xbj"/>
-                                    <barButtonItem image="Back Button" id="goB-db-wpM">
-                                        <connections>
-                                            <action selector="goBack" destination="TZK-gL-VuT" id="mbC-2a-NlG"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem image="Back Button" id="goB-db-wpM"/>
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="VGO-fJ-Ee9"/>
-                                    <barButtonItem image="Forward Button" id="rre-8R-Jfc">
-                                        <connections>
-                                            <action selector="goForward" destination="TZK-gL-VuT" id="AKu-0c-kzy"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem image="Forward Button" id="rre-8R-Jfc"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AyQ-CF-ahE"/>
-                                    <barButtonItem systemItem="refresh" id="VnQ-Ea-k4B">
-                                        <connections>
-                                            <action selector="reload" destination="TZK-gL-VuT" id="55N-vS-HQL"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="VnQ-Ea-k4B"/>
                                     <barButtonItem width="1" style="plain" systemItem="fixedSpace" id="034-rX-M9P"/>
-                                    <barButtonItem systemItem="stop" id="L1n-UK-tyN">
-                                        <connections>
-                                            <action selector="stopLoading" destination="TZK-gL-VuT" id="PmS-OL-9nj"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="stop" id="L1n-UK-tyN"/>
                                     <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="GJv-0z-fmR"/>
                                 </items>
                                 <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -921,20 +901,15 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerY" secondItem="mYo-Fa-Ekl" secondAttribute="centerY" id="72f-E5-bCB"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="trailing" secondItem="TZK-gL-VuT" secondAttribute="trailing" id="B0I-te-idq"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="bottom" secondItem="TZK-gL-VuT" secondAttribute="bottom" id="BQI-Pe-ini"/>
-                            <constraint firstItem="TZK-gL-VuT" firstAttribute="top" secondItem="vNq-lc-Eyq" secondAttribute="bottom" constant="-64" id="Eoo-wK-66p"/>
-                            <constraint firstAttribute="trailing" secondItem="TZK-gL-VuT" secondAttribute="trailing" id="PZI-x7-kGM"/>
                             <constraint firstItem="GW2-PX-RXl" firstAttribute="top" secondItem="ucj-qV-Us7" secondAttribute="bottom" id="Pi2-a1-fG0"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="leading" secondItem="TZK-gL-VuT" secondAttribute="leading" id="j4I-e2-6DV"/>
+                            <constraint firstItem="ucj-qV-Us7" firstAttribute="centerX" secondItem="LIr-Y8-Tcx" secondAttribute="centerX" id="c2g-vZ-fJf"/>
+                            <constraint firstItem="ucj-qV-Us7" firstAttribute="leading" secondItem="mYo-Fa-Ekl" secondAttribute="leadingMargin" constant="-16" id="ggZ-Ub-E4d"/>
                             <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerX" secondItem="mYo-Fa-Ekl" secondAttribute="centerX" id="xbp-l8-Lmz"/>
-                            <constraint firstItem="TZK-gL-VuT" firstAttribute="leading" secondItem="mYo-Fa-Ekl" secondAttribute="leading" id="ztj-Yj-LDq"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="loading" destination="LIr-Y8-Tcx" id="FYs-FQ-aky"/>
-                        <outlet property="websiteView" destination="TZK-gL-VuT" id="tgB-Kf-RcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffB-PE-rAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1890,8 +1865,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Webview" destination="SZ4-o5-qkK" id="tuc-Ri-P5E"/>
                         <outlet property="loading" destination="CTm-Rh-iAh" id="aj0-Em-Vb5"/>
+                        <outlet property="webview" destination="SZ4-o5-qkK" id="tuc-Ri-P5E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Mk-Ut-zq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
