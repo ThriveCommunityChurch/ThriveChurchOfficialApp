@@ -38,7 +38,6 @@
 		DC3CAD3221E2497A00C17EAF /* DownloadedMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */; };
 		DC3CAD3C21E2B94400C17EAF /* ListenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */; };
 		DC3CAD3E21E2BDAC00C17EAF /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */; };
-		DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45330020B468A90021C796 /* WebViewExtension.swift */; };
 		DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */; };
 		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
 		DC7348B721D539FB0057227D /* SermonSeriesSummaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */; };
@@ -191,7 +190,6 @@
 		DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedMessageTableViewCell.swift; sourceTree = "<group>"; };
 		DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
 		DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		DC45330020B468A90021C796 /* WebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewExtension.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeExtension.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */,
 				DC64031E205783DE00176BFB /* TimestampExtension.swift */,
 				DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */,
-				DC45330020B468A90021C796 /* WebViewExtension.swift */,
 				DC2D8F8D20DC712A00C9C938 /* TableViewControllerExtension.swift */,
 				DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */,
 				DC7348B821D5D2500057227D /* UIImageViewExtension.swift */,
@@ -531,8 +528,8 @@
 				41FCF7EA1CF21719006C366E /* Frameworks */,
 				41FCF7EB1CF21719006C366E /* Resources */,
 				0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */,
-				EA971F011D63B301007C3A2B /* ShellScript */,
 				EA37C15F1D85E13100D450EF /* Embed App Extensions */,
+				EA971F011D63B301007C3A2B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -688,11 +685,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,16 +755,20 @@
 		};
 		EA971F011D63B301007C3A2B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -796,7 +799,6 @@
 				DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */,
 				DC13383F21E582580089B3DD /* DoubleExtension.swift in Sources */,
 				DC246E2C21DA7A05007BA4D1 /* SermonDownloadsViewController.swift in Sources */,
-				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DC1EBF7F21D84A37001B1673 /* NowPlayingViewController.swift in Sources */,
 				DCF6987C220AA9DC001B1A0C /* GetPassageResponse.swift in Sources */,
@@ -1000,7 +1002,7 @@
 				CURRENT_PROJECT_VERSION = 1.7.3.2;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
@@ -1025,7 +1027,7 @@
 				CURRENT_PROJECT_VERSION = 1.7.3.2;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";

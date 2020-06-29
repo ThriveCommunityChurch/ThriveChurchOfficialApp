@@ -6,35 +6,50 @@
 //  Copyright © 2016 Thrive Community Church. All rights reserved.
 //
 
-import Foundation
+import WebKit
 import UIKit
 
-class PrayerRequestsViewController: UIViewController, UIWebViewDelegate {
+class PrayerRequestsViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    @IBOutlet var prayerRequestsView: UIWebView!
+        
+    let prayerRequestsView: WKWebView = {
+		let view = WKWebView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prayerRequestsView.delegate = self
-        prayerRequestsView.loadWebPage(url: "http://thrive-fl.org/prayer-requests")
+        prayerRequestsView.uiDelegate = self
+		prayerRequestsView.navigationDelegate = self
+		
+		view.insertSubview(prayerRequestsView, at: 0)
+		NSLayoutConstraint.activate([
+			prayerRequestsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			prayerRequestsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			prayerRequestsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			prayerRequestsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+		])
+		
+		let url = URL(string: "http://thrive-fl.org/prayer-requests")!
+		let request = URLRequest(url: url)
+		prayerRequestsView.load(request)
+		
         self.setLoadingSpinner(spinner: loading)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
 
-    }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        loading.startAnimating()
-        
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        loading.stopAnimating()
-        
-    }
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		loading.stopAnimating()
+	}
+	
+	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+		loading.startAnimating()
+	}
     
 }
