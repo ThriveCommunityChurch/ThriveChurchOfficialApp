@@ -113,7 +113,7 @@ MFMailComposeViewControllerDelegate {
 			apiDomain = loadedData
 			apiUrl = "http://\(apiDomain)/"
 		}
-		
+				
         // call the API and determine how many of them there are
 		checkConnectivity()
 		

@@ -262,14 +262,14 @@ extension ListenCollectionViewController {
 		
 		print("Expires at: \(expirationDate ?? "UNKNOWN")")
 		
-		let expireDateString = self.getExpirationDateString(input: expirationDate!)
+		let expireDate = self.getExpirationDateString(input: expirationDate!)
 		
-		if expireDateString == nil || expireDateString == "" {
+		if expireDate == nil {
 			livestreamButton.isEnabled = false
 			timer.invalidate()
 		}
 		else {
-			let expireDate = checkExpire(expires: expireDateString!)
+			let expireDate = checkExpire(expires: expireDate!)
 			
 			if expireDate == nil {
 				livestreamButton.isEnabled = false
@@ -284,48 +284,28 @@ extension ListenCollectionViewController {
 	
 	/// Returns a Date object where ONLY the TIME is to be used
 	/// Returns null if the stream is no longer active (past the expire date)
-	func getExpirationDateString(input expireDate: String) -> String? {
+	func getExpirationDateString(input expireDate: String) -> Date? {
+		
+		let dateTemp = String(describing: expireDate)
 		
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-		let date = dateFormatter.date(from: expireDate)!
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		let date = dateFormatter.date(from: dateTemp) ?? nil
 		
-		// convert to the proper format
-		let dateToStringFormatter = DateFormatter()
-		dateToStringFormatter.dateFormat = "HH:mm:ss"
-		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
-		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		let expireDateString = dateToStringFormatter.string(from: date)
-		
-		return expireDateString
+		return date
 	}
 	
-	private func checkExpire(expires: String) -> Date? {
+	private func checkExpire(expires: Date) -> Date? {
 		
 		let now = Date()
-		let formatter = DateFormatter()
-		formatter.locale = Locale(identifier: "en_US_POSIX")
-		formatter.timeZone = TimeZone(secondsFromGMT: 0)
-		formatter.dateFormat = "HH:mm:ss"
-		let nowString = formatter.string(from: now)
-		
-		// now that both our times are strings we can convert them back to dates and compare
-		let stringToDateFormatter = DateFormatter()
-		stringToDateFormatter.dateFormat = "HH:mm:ss"
-		stringToDateFormatter.locale = Locale(identifier: "en_US_POSIX")
-		stringToDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		
-		let nowDate = formatter.date(from: nowString) ?? Date()
-		let expireDate = stringToDateFormatter.date(from: expires) ?? Date()
-		let _ = Double(TimeZone.current.secondsFromGMT(for: nowDate))
 		
 		// we use the entire Date string here so that we are 100% sure that now
 		// is past whatever time the time should be, since we sanitize the dates
-		if expireDate < nowDate {
+		if expires <= now {
 			return nil
 		}
 		else {
-			return expireDate
+			return expires
 		}
 	}
 	

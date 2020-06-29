@@ -64,11 +64,18 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
     
     @IBAction func openPhoneToCall(_ sender: AnyObject) {
         
-        let tel = 2396873430 as UInt32
-        if let url = URL(string: "tel://\(tel)"){
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            print("Calling")
-        }
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.PhoneMain) as? Data
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			if let url = URL(string: "tel://\(decoded.Value ?? "2396873430")"){
+				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				print("Calling")
+			}
+		}
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController,

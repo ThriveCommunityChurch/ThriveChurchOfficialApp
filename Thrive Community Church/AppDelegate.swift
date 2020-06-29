@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate {
 		
 		UpdateCacheForAPIDomain()
 		
+		ConfigurationExtension.LoadConfigs()
+		
 		// REACHABILITY
 		do {
 			Network.reachability = try Reachability(hostname: "www.google.com")
