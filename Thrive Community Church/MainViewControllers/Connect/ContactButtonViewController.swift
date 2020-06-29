@@ -22,11 +22,23 @@ class ContactButtonViewController: UIViewController, MFMailComposeViewController
     
     @IBAction func emailUs(_ sender: AnyObject) {
         
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.EmailMain) as? Data
+		
+		var email = ""
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			email = "\(decoded.Value ?? "info@thrive-fl.org")"
+		}
+		
         if MFMailComposeViewController.canSendMail() {
             
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
-            composeVC.setToRecipients(["info@thrive-fl.org"])
+            composeVC.setToRecipients([email])
             present(composeVC, animated: true, completion: nil)
         }
 		else {

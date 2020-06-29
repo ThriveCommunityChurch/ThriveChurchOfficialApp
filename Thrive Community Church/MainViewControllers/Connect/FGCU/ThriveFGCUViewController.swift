@@ -21,8 +21,19 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
     }
     
     @IBAction func openDirections(_ sender: AnyObject) {
+		
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.AddressMain) as? Data
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			let address = "\(decoded.Value ?? "Thrive Community Church")".replacingOccurrences(of: " ", with: "+")
+			
+			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(address))&dirflg=d")
+		}
         
-        self.openUrlAnyways(link: "http://maps.apple.com/?daddr=Thrive+Community+Church&dirflg=d")
     }
     
     @IBAction func feedback(_ sender: AnyObject) {
@@ -45,11 +56,23 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 	
 	@IBAction func contactingThriveFGCU(_ sender: Any) {
 		
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.EmailMain) as? Data
+		
+		var email = ""
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			email = "\(decoded.Value ?? "info@thrive-fl.org")"
+		}
+		
 		if MFMailComposeViewController.canSendMail() {
 			
 			let composeVC = MFMailComposeViewController()
 			composeVC.mailComposeDelegate = self
-			composeVC.setToRecipients(["info@thrive-fl.org"])
+			composeVC.setToRecipients([email])
 			composeVC.setSubject("Thrive FGCU")
 			present(composeVC, animated: true, completion: nil)
 			self.present(composeVC, animated: true, completion: nil)

@@ -64,8 +64,17 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
     // Opens in Apple Maps
     @IBAction func findRoute(_ sender: AnyObject) {
 		
-		self.openUrlAnyways(link: "http://maps.apple.com/?daddr=" +
-			"Thrive+Community+Church&dirflg=d")
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.AddressMain) as? Data
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			let address = "\(decoded.Value ?? "Thrive Community Church")".replacingOccurrences(of: " ", with: "+")
+			
+			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(address))&dirflg=d")
+		}
     }
 	
 }
