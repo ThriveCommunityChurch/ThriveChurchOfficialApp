@@ -22,7 +22,19 @@ class giveViewController: UIViewController {
     // opens the application in safari
     @IBAction func donation(_ sender: AnyObject) {
         
-        let url = URL(string: "https://goo.gl/bSrZ9K")
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Give) as? Data
+		
+		var giveLink = "https://goo.gl/bSrZ9K"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			giveLink = "\(decoded.Value ?? "https://goo.gl/bSrZ9K")"
+		}
+		
+        let url = URL(string: giveLink)
         
         if UIApplication.shared.canOpenURL(url!) {
 			UIApplication.shared.open(url!, options: [:], completionHandler: nil)

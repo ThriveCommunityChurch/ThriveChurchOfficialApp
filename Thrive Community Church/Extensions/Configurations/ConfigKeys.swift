@@ -25,6 +25,7 @@ class ConfigKeys {
 	var IG_Social: String = "IG_Social_URL"
 	var Website: String = "Website_URL"
 	var Team: String = "Team_URL"
+	//var LocationName: String = "Location_Name"
 	
 	public func GetAllKeys() -> [String] {
         var s = [String]()

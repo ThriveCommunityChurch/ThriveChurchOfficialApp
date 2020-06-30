@@ -33,7 +33,19 @@ class PrayerRequestsViewController: UIViewController, WKUIDelegate, WKNavigation
 			prayerRequestsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
 		])
 		
-		let url = URL(string: "http://thrive-fl.org/prayer-requests")!
+		//let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Prayer) as? Data
+		
+		var prayerLink = "http://thrive-fl.org/prayer-requests"
+		
+//		if data != nil {
+//			
+//			// reading from the messageId collection in UD
+//			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+//			
+//			prayerLink = "\(decoded.Value ?? "http://thrive-fl.org/prayer-requests")"
+//		}
+		
+		let url = URL(string: prayerLink)!
 		let request = URLRequest(url: url)
 		prayerRequestsView.load(request)
 		

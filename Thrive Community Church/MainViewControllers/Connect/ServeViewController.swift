@@ -33,7 +33,19 @@ class ServeViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 			serveWebView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
 		])
 		
-		let url = URL(string: "http://thrive-fl.org/get-involved/")!
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Serve) as? Data
+		
+		var serveLink = "http://thrive-fl.org/get-involved/"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			serveLink = "\(decoded.Value ?? "http://thrive-fl.org/get-involved/")"
+		}
+		
+		let url = URL(string: serveLink)!
 		let request = URLRequest(url: url)
 		serveWebView.load(request)
 		

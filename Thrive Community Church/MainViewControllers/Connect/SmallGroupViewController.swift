@@ -33,7 +33,19 @@ class SmallGroupViewController: UIViewController, WKUIDelegate, WKNavigationDele
 			smallGroup.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
 		])
 		
-		let url = URL(string: "http://thrive-fl.org/join-small-group")!
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.SmallGroup) as? Data
+		
+		var groupsLink = "http://thrive-fl.org/join-small-group"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			groupsLink = "\(decoded.Value ?? "http://thrive-fl.org/join-small-group")"
+		}
+		
+		let url = URL(string: groupsLink)!
 		let request = URLRequest(url: url)
 		smallGroup.load(request)
 		

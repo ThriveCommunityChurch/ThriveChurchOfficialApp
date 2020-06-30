@@ -29,7 +29,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 			// reading from the messageId collection in UD
 			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
 			
-			let address = "\(decoded.Value ?? "Thrive Community Church")".replacingOccurrences(of: " ", with: "+")
+			let address = "\(decoded.Value ?? "20041 S Tamiami Trl #1 Estero, FL 33928")".replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "\n", with: "%20")
 			
 			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(address))&dirflg=d")
 		}
@@ -58,7 +58,7 @@ class ThriveFGCUViewController: UIViewController, MFMailComposeViewControllerDel
 		
 		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.EmailMain) as? Data
 		
-		var email = ""
+		var email = "info@thrive-fl.org"
 		
 		if data != nil {
 			
