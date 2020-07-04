@@ -12,6 +12,7 @@ import MapKit
 class DirectionsViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var directionsMapView: MKMapView!
+	var address: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +20,34 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
         directionsMapView.delegate = self
         cameraSetup()
         regionSetup()
+		
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.AddressMain) as? Data
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			address = "20041 S Tamiami Trl #1\nEstero, FL 33928"
+		}
+		
+		//let locationData = UserDefaults.standard.object(forKey: ConfigKeys.shared.LocationName) as? Data
+		var locationName: String = "Thrive Community Church"
+
+//		if locationData != nil {
+//
+//			// reading from the messageId collection in UD
+//			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+//
+//			locationName = "\(decoded.Value ?? "Thrive Community Church")"
+//		}
         
         // Dropping Pin
         let dropPin = MKPointAnnotation()
         let thriveLocation = CLLocationCoordinate2DMake(26.448174, -81.816173)
         dropPin.coordinate = thriveLocation
-        dropPin.title = "Thrive Community Church"
-        dropPin.subtitle = "20041 S Tamiami Trl #1\nEstero, FL 33928"
+        dropPin.title = locationName
+        dropPin.subtitle = address
         directionsMapView.addAnnotation(dropPin)
 		directionsMapView.selectedAnnotations = [dropPin]
 		directionsMapView.showsScale = true
@@ -64,8 +86,10 @@ class DirectionsViewController: UIViewController, MKMapViewDelegate {
     // Opens in Apple Maps
     @IBAction func findRoute(_ sender: AnyObject) {
 		
-		self.openUrlAnyways(link: "http://maps.apple.com/?daddr=" +
-			"Thrive+Community+Church&dirflg=d")
+		let formattedAddress = self.address.replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "\n", with: "%20")
+		
+		self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(formattedAddress))&dirflg=d")
     }
+	
 	
 }

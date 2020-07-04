@@ -33,7 +33,19 @@ class MeetTheTeamViewController: UIViewController, WKUIDelegate, WKNavigationDel
 			teamView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
 		])
 		
-		let url = URL(string: "http://thrive-fl.org/team")!
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Team) as? Data
+		
+		var teamLink = "http://thrive-fl.org/team/"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			teamLink = "\(decoded.Value ?? "http://thrive-fl.org/team/")"
+		}
+		
+		let url = URL(string: teamLink)!
 		let request = URLRequest(url: url)
 		teamView.load(request)
 		

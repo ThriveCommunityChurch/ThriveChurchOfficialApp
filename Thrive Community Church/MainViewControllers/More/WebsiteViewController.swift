@@ -33,7 +33,19 @@ class WebsiteViewController: UIViewController, WKUIDelegate, WKNavigationDelegat
 			websiteView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
 		])
 		
-		let url = URL(string: "http://thrive-fl.org")!
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Website) as? Data
+		
+		var siteLink = "http://thrive-fl.org"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			siteLink = "\(decoded.Value ?? "http://thrive-fl.org")"
+		}
+		
+		let url = URL(string: siteLink)!
 		let request = URLRequest(url: url)
 		websiteView.load(request)
 		

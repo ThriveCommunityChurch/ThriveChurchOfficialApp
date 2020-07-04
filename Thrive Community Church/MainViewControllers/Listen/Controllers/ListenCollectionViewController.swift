@@ -113,7 +113,7 @@ MFMailComposeViewControllerDelegate {
 			apiDomain = loadedData
 			apiUrl = "http://\(apiDomain)/"
 		}
-		
+				
         // call the API and determine how many of them there are
 		checkConnectivity()
 		
@@ -337,8 +337,33 @@ MFMailComposeViewControllerDelegate {
 	
 	// MARK: - Methods
 	@IBAction func openLive(_ sender: Any) {
-		let url = URL(string: "https://facebook.com/thriveFl/")!
-		let appURL = URL(string: "fb://profile/157139164480128")!
+		
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Live) as? Data
+		
+		var liveLink = "https://facebook.com/thriveFl/"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			liveLink = "\(decoded.Value ?? "https://facebook.com/thriveFl/")"
+		}
+		
+		let fbData = UserDefaults.standard.object(forKey: ConfigKeys.shared.FBPageID) as? Data
+		
+		var fbId = "157139164480128"
+		
+		if fbData != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
+			
+			fbId = "\(decoded.Value ?? "157139164480128")"
+		}
+		
+		let url = URL(string: liveLink)!
+		let appURL = URL(string: "fb://profile/\(fbId))")!
 		
 		// Go to the page in FB and hopefully they see we are streaming
 		if UIApplication.shared.canOpenURL(appURL) {

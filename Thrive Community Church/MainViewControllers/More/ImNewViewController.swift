@@ -33,7 +33,19 @@ class ImNewViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 			imNew.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
 		])
 		
-		let url = URL(string: "http://thrive-fl.org/im-new/")!
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.ImNew) as? Data
+		
+		var newLink = "http://thrive-fl.org/im-new/"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			newLink = "\(decoded.Value ?? "http://thrive-fl.org/im-new/")"
+		}
+		
+		let url = URL(string: newLink)!
 		let request = URLRequest(url: url)
 		imNew.load(request)
 		
