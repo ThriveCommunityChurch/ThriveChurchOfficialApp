@@ -22,13 +22,24 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    let twitterID: String = "twitter:///user?screen_name=Thrive_FL"
     @IBAction func openingTwitter(_ sender: AnyObject) {
 		
-		guard let profileLink = URL(string: twitterID) else { return }
+		let twData = UserDefaults.standard.object(forKey: ConfigKeys.shared.TWUsername) as? Data
+		
+		var twUsername = "Thrive_FL"
+		
+		if twData != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: twData!) as! ConfigSetting
+			
+			twUsername = "\(decoded.Value ?? "Thrive_FL")"
+		}
+		
+		let appURL = URL(string: "twitter:///user?screen_name=\(twUsername))")!
         
-        if UIApplication.shared.canOpenURL(profileLink) {
-			UIApplication.shared.open(profileLink, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(appURL) {
+			UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
         }
         else {
             let message = "You need to download the Twitter app first"
@@ -54,13 +65,24 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
         }
     }
     
-	let fbURLID: String = "fb://profile/157139164480128"
     @IBAction func openingFacebook(_ sender: AnyObject) {
-
-		guard let profileLink = URL(string: fbURLID) else { return }
 		
-        if UIApplication.shared.canOpenURL(profileLink) {
-            UIApplication.shared.open(profileLink, options: [:], completionHandler: nil)
+		let fbData = UserDefaults.standard.object(forKey: ConfigKeys.shared.FBPageID) as? Data
+		
+		var fbId = "157139164480128"
+		
+		if fbData != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
+			
+			fbId = "\(decoded.Value ?? "157139164480128")"
+		}
+		
+		let appURL = URL(string: "fb://profile/\(fbId))")!
+		
+        if UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
         }
         else {
             let message = "You need to download the Facebook app first"
@@ -86,13 +108,24 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
         }
     }
     
-    let instagramHooks = "instagram://user?username=thrive_fl"
     @IBAction func openingInstagram(_ sender: AnyObject) {
 		
-		guard let instagramUrl = URL(string: instagramHooks) else { return }
+		let igData = UserDefaults.standard.object(forKey: ConfigKeys.shared.IGUSername) as? Data
 		
-        if UIApplication.shared.canOpenURL(instagramUrl) {
-            UIApplication.shared.open(instagramUrl, options: [:], completionHandler: nil)
+		var igUsername = "thrive_fl"
+		
+		if igData != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: igData!) as! ConfigSetting
+			
+			igUsername = "\(decoded.Value ?? "thrive_fl")"
+		}
+		
+		let appURL = URL(string: "instagram://user?username=\(igUsername))")!
+		
+        if UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
         }
         else {
             let message = "You need to download the Instagram app first"

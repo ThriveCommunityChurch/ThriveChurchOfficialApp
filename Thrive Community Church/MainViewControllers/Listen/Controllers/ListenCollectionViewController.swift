@@ -350,8 +350,20 @@ MFMailComposeViewControllerDelegate {
 			liveLink = "\(decoded.Value ?? "https://facebook.com/thriveFl/")"
 		}
 		
+		let fbData = UserDefaults.standard.object(forKey: ConfigKeys.shared.FBPageID) as? Data
+		
+		var fbId = "157139164480128"
+		
+		if fbData != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
+			
+			fbId = "\(decoded.Value ?? "157139164480128")"
+		}
+		
 		let url = URL(string: liveLink)!
-		let appURL = URL(string: "fb://profile/157139164480128")!
+		let appURL = URL(string: "fb://profile/\(fbId))")!
 		
 		// Go to the page in FB and hopefully they see we are streaming
 		if UIApplication.shared.canOpenURL(appURL) {
