@@ -13,6 +13,7 @@ enum ConfigType: String, Codable {
 	case Email
 	case Link
 	case Misc
+	case Social
 	
 	enum Key: CodingKey {
         case rawValue
@@ -34,6 +35,8 @@ enum ConfigType: String, Codable {
             self = .Link
         case 3:
             self = .Misc
+        case 4:
+            self = .Social
         default:
             throw CodingError.unknownValue
         }
@@ -49,6 +52,8 @@ enum ConfigType: String, Codable {
             self = .Link
         case "Misc":
             self = .Misc
+		case "Social":
+			self = .Social
 		default:
 			throw CodingError.unknownValue
 		}
@@ -65,6 +70,8 @@ enum ConfigType: String, Codable {
             try container.encode(2, forKey: .rawValue)
         case .Misc:
             try container.encode(3, forKey: .rawValue)
+        case .Social:
+            try container.encode(4, forKey: .rawValue)
         }
     }
 }
