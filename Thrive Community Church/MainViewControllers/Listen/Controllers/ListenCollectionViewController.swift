@@ -365,7 +365,7 @@ MFMailComposeViewControllerDelegate {
 		let encodedURL = liveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 
 		let url = URL(string: encodedURL)!
-		let appURL = URL(string: "fb://profile/\(fbId))")!
+		let appURL = URL(string: "fb://profile/\(fbId)")!
 		
 		// Go to the page in FB and hopefully they see we are streaming
 		if UIApplication.shared.canOpenURL(appURL) {
