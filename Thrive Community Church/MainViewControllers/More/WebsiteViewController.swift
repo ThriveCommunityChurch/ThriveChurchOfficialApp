@@ -45,7 +45,9 @@ class WebsiteViewController: UIViewController, WKUIDelegate, WKNavigationDelegat
 			siteLink = "\(decoded.Value ?? "http://thrive-fl.org")"
 		}
 		
-		let url = URL(string: siteLink)!
+		let encodedURL = siteLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
 		let request = URLRequest(url: url)
 		websiteView.load(request)
 		

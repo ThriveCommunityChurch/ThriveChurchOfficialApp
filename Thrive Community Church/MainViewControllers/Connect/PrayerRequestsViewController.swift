@@ -35,7 +35,7 @@ class PrayerRequestsViewController: UIViewController, WKUIDelegate, WKNavigation
 		
 		//let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Prayer) as? Data
 		
-		var prayerLink = "http://thrive-fl.org/prayer-requests"
+		let prayerLink = "http://thrive-fl.org/prayer-requests"
 		
 //		if data != nil {
 //			
@@ -45,6 +45,8 @@ class PrayerRequestsViewController: UIViewController, WKUIDelegate, WKNavigation
 //			prayerLink = "\(decoded.Value ?? "http://thrive-fl.org/prayer-requests")"
 //		}
 		
+		//let encodedURL = self.prayerLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
 		let url = URL(string: prayerLink)!
 		let request = URLRequest(url: url)
 		prayerRequestsView.load(request)

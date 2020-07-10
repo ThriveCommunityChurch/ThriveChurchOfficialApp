@@ -45,7 +45,9 @@ class ImNewViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 			newLink = "\(decoded.Value ?? "http://thrive-fl.org/im-new/")"
 		}
 		
-		let url = URL(string: newLink)!
+		let encodedURL = newLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
 		let request = URLRequest(url: url)
 		imNew.load(request)
 		

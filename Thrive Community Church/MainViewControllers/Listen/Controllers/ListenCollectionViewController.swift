@@ -362,7 +362,9 @@ MFMailComposeViewControllerDelegate {
 			fbId = "\(decoded.Value ?? "157139164480128")"
 		}
 		
-		let url = URL(string: liveLink)!
+		let encodedURL = liveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
 		let appURL = URL(string: "fb://profile/\(fbId))")!
 		
 		// Go to the page in FB and hopefully they see we are streaming

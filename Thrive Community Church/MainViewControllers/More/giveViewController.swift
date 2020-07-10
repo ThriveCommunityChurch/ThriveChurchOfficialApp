@@ -34,13 +34,16 @@ class giveViewController: UIViewController {
 			giveLink = "\(decoded.Value ?? "https://goo.gl/bSrZ9K")"
 		}
 		
-        let url = URL(string: giveLink)
+		
+        let encodedURL = giveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
         
-        if UIApplication.shared.canOpenURL(url!) {
-			UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(url) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         else {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     

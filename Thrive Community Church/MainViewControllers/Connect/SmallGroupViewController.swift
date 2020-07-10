@@ -45,7 +45,9 @@ class SmallGroupViewController: UIViewController, WKUIDelegate, WKNavigationDele
 			groupsLink = "\(decoded.Value ?? "http://thrive-fl.org/join-small-group")"
 		}
 		
-		let url = URL(string: groupsLink)!
+		let encodedURL = groupsLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
 		let request = URLRequest(url: url)
 		smallGroup.load(request)
 		

@@ -36,7 +36,7 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 			twUsername = "\(decoded.Value ?? "Thrive_FL")"
 		}
 		
-		let appURL = URL(string: "twitter:///user?screen_name=\(twUsername))")!
+		let appURL = URL(string: "twitter:///user?screen_name=\(twUsername)")!
         
         if UIApplication.shared.canOpenURL(appURL) {
 			UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
@@ -79,7 +79,8 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 			fbId = "\(decoded.Value ?? "157139164480128")"
 		}
 		
-		let appURL = URL(string: "fb://profile/\(fbId))")!
+		let appURL = URL(string: "fb://profile/\(fbId)")!
+		print(appURL.absoluteString)
 		
         if UIApplication.shared.canOpenURL(appURL) {
             UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
@@ -122,7 +123,7 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 			igUsername = "\(decoded.Value ?? "thrive_fl")"
 		}
 		
-		let appURL = URL(string: "instagram://user?username=\(igUsername))")!
+		let appURL = URL(string: "instagram://user?username=\(igUsername)")!
 		
         if UIApplication.shared.canOpenURL(appURL) {
             UIApplication.shared.open(appURL, options: [:], completionHandler: nil)

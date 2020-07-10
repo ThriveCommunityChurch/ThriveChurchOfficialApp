@@ -45,7 +45,9 @@ class MeetTheTeamViewController: UIViewController, WKUIDelegate, WKNavigationDel
 			teamLink = "\(decoded.Value ?? "http://thrive-fl.org/team/")"
 		}
 		
-		let url = URL(string: teamLink)!
+		let encodedURL = teamLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
 		let request = URLRequest(url: url)
 		teamView.load(request)
 		
