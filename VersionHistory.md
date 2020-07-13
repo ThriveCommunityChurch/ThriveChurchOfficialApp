@@ -1,4 +1,4 @@
-### 1.7.4 —  TBD
+### 1.7.4 —  July 12, 2020
 - Fixing an issue where the application would crash on startup while we were live
 - Misc changes behind the scenes means less unnecessary updates for you
 - Misc bug fixes
