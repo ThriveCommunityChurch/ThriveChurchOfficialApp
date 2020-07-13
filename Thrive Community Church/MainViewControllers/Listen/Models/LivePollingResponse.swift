@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 class LivePollingResponse: NSObject, Decodable {
 	var StreamExpirationTime: String?

@@ -11,10 +11,9 @@
 // into safari. - NO Exceptions
 
 
-import Foundation
 import UIKit
 
-class giveViewController: UIViewController, UIWebViewDelegate {
+class giveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +22,33 @@ class giveViewController: UIViewController, UIWebViewDelegate {
     // opens the application in safari
     @IBAction func donation(_ sender: AnyObject) {
         
-        let url = URL(string: "https://goo.gl/bSrZ9K")
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Give) as? Data
+		
+		var giveLink = "https://goo.gl/bSrZ9K"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			giveLink = "\(decoded.Value ?? "https://goo.gl/bSrZ9K")"
+		}
+		
+		
+        let encodedURL = giveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
         
-        if UIApplication.shared.canOpenURL(url!) {
-			UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(url) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         else {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
 }

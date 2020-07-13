@@ -103,25 +103,12 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		
 		
 		// constraints
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				downloadsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				downloadsTableView.topAnchor.constraint(equalTo: view.topAnchor),
-				downloadsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				downloadsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-			])
-		} else {
-			// Fallback on earlier versions
-			NSLayoutConstraint.activate([
-				downloadsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				downloadsTableView.topAnchor.constraint(equalTo: view.topAnchor),
-				downloadsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				downloadsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-			])
-			
-			self.downloadsTableView.rowHeight = UITableView.automaticDimension
-			self.downloadsTableView.estimatedRowHeight = 90.0
-		}
+		NSLayoutConstraint.activate([
+			downloadsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			downloadsTableView.topAnchor.constraint(equalTo: view.topAnchor),
+			downloadsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			downloadsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
 	}
 	
 	func retrieveDownloadsFromStorage() {

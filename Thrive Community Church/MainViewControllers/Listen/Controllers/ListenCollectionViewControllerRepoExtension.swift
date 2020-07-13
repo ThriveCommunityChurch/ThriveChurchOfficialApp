@@ -262,42 +262,28 @@ extension ListenCollectionViewController {
 		
 		print("Expires at: \(expirationDate ?? "UNKNOWN")")
 		
-		let expireDateString = self.getExpirationDateString(input: expirationDate!)
+		var expireDate = self.getExpirationDateString(input: expirationDate!)
 		
-		if expireDateString == nil || expireDateString == "" {
+		// if the above parse fails, then the livestream may have been configured manually
+		if (expireDate == nil) {
+			
+			// if that's the case then there are some very minor adjustments that beed to be made
+			// in order for the parsing of the time to work - it mainly has to do with the date formattings in Swift
+			let manualExpireDateString = self.getManualExpirationDateString(input: expirationDate!)
+			expireDate = self.checkExpire(expires: manualExpireDateString!)
+		}
+		else {
+			expireDate = checkExpire(expires: expireDate!)
+		}
+		
+		if expireDate == nil {
 			livestreamButton.isEnabled = false
 			timer.invalidate()
 		}
 		else {
-			let expireDate = checkExpire(expires: expireDateString!)
-			
-			if expireDate == nil {
-				livestreamButton.isEnabled = false
-				timer.invalidate()
-			}
-			else {
-				livestreamButton.isEnabled = true
-				expireTime = expireDate!
-			}
+			livestreamButton.isEnabled = true
+			expireTime = expireDate!
 		}
-	}
-	
-	/// Returns a Date object where ONLY the TIME is to be used
-	/// Returns null if the stream is no longer active (past the expire date)
-	func getExpirationDateString(input expireDate: String) -> String? {
-		
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-		let date = dateFormatter.date(from: expireDate)!
-		
-		// convert to the proper format
-		let dateToStringFormatter = DateFormatter()
-		dateToStringFormatter.dateFormat = "HH:mm:ss"
-		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
-		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		let expireDateString = dateToStringFormatter.string(from: date)
-		
-		return expireDateString
 	}
 	
 	private func checkExpire(expires: String) -> Date? {
@@ -326,6 +312,51 @@ extension ListenCollectionViewController {
 		}
 		else {
 			return expireDate
+		}
+	}
+	
+	/// Returns a Date object where ONLY the TIME is to be used
+	/// Returns null if the stream is no longer active (past the expire date)
+	func getExpirationDateString(input expireDate: String) -> Date? {
+		
+		let dateTemp = String(describing: expireDate)
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		let date = dateFormatter.date(from: dateTemp) ?? nil
+		
+		return date
+	}
+	
+	/// Returns a Date object where ONLY the TIME is to be used
+	/// Returns null if the stream is no longer active (past the expire date)
+	func getManualExpirationDateString(input expireDate: String) -> String? {
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+		let date = dateFormatter.date(from: expireDate)!
+		
+		// convert to the proper format
+		let dateToStringFormatter = DateFormatter()
+		dateToStringFormatter.dateFormat = "HH:mm:ss"
+		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		let expireDateString = dateToStringFormatter.string(from: date)
+		
+		return expireDateString
+	}
+	
+	private func checkExpire(expires: Date) -> Date? {
+		
+		let now = Date()
+		
+		// we use the entire Date string here so that we are 100% sure that now
+		// is past whatever time the time should be, since we sanitize the dates
+		if expires <= now {
+			return nil
+		}
+		else {
+			return expires
 		}
 	}
 	

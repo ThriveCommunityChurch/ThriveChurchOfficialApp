@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M7a-g9-DxG">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -212,63 +212,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Jz-bvZ">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-3H-5Mu">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-fU-340">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="OE7-DV-hGx"/>
-                                    <barButtonItem image="Back Button" id="tnT-tb-5Rk">
-                                        <connections>
-                                            <action selector="goBack" destination="5Fc-Jz-bvZ" id="mWH-wZ-yye"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="o0M-B8-gaC"/>
-                                    <barButtonItem image="Forward Button" id="ShD-RO-eof">
-                                        <connections>
-                                            <action selector="goForward" destination="5Fc-Jz-bvZ" id="sqR-eB-0Oo"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Tcg-mq-qc3"/>
-                                    <barButtonItem systemItem="refresh" id="98I-8Z-MKH">
-                                        <connections>
-                                            <action selector="reload" destination="5Fc-Jz-bvZ" id="sVD-By-eBi"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="2" style="plain" systemItem="fixedSpace" id="TQi-rY-Izv"/>
-                                    <barButtonItem systemItem="stop" id="Z4A-Yu-iRm">
-                                        <connections>
-                                            <action selector="stopLoading" destination="5Fc-Jz-bvZ" id="ap4-7e-zsp"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="sGT-R3-pJA"/>
-                                </items>
-                                <color key="tintColor" red="0.52091652154922485" green="0.57278048992156982" blue="0.22736778855323792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7VO-fU-340" firstAttribute="bottom" secondItem="5Fc-Jz-bvZ" secondAttribute="bottom" id="3ja-1d-cdx"/>
-                            <constraint firstAttribute="trailing" secondItem="5Fc-Jz-bvZ" secondAttribute="trailing" id="6kf-Ca-Hwi"/>
-                            <constraint firstItem="XY7-pT-MVA" firstAttribute="top" secondItem="7VO-fU-340" secondAttribute="bottom" id="8Yi-Ou-7rc"/>
                             <constraint firstItem="Zh1-3H-5Mu" firstAttribute="centerX" secondItem="rEN-Zg-HxL" secondAttribute="centerX" id="W5l-oN-X7U"/>
-                            <constraint firstItem="7VO-fU-340" firstAttribute="leading" secondItem="5Fc-Jz-bvZ" secondAttribute="leading" id="aAV-qs-eJ9"/>
                             <constraint firstItem="Zh1-3H-5Mu" firstAttribute="centerY" secondItem="rEN-Zg-HxL" secondAttribute="centerY" id="hLZ-4i-grG"/>
-                            <constraint firstItem="7VO-fU-340" firstAttribute="trailing" secondItem="5Fc-Jz-bvZ" secondAttribute="trailing" id="kCd-vv-c8K"/>
-                            <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="top" secondItem="RF9-aU-Hs1" secondAttribute="bottom" constant="-64" id="yj3-GU-TrJ"/>
-                            <constraint firstItem="5Fc-Jz-bvZ" firstAttribute="leading" secondItem="rEN-Zg-HxL" secondAttribute="leading" id="zym-2F-Sue"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="ImNew" destination="5Fc-Jz-bvZ" id="XCF-5d-ZLg"/>
                         <outlet property="loading" destination="Zh1-3H-5Mu" id="JcY-ss-bzG"/>
                     </connections>
                 </viewController>
@@ -578,7 +535,7 @@
                                                 <color key="textColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOSs Supported: 10+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVw-BB-BQF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOSs Supported: 11+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVw-BB-BQF">
                                                 <rect key="frame" x="0.0" y="69" width="375" height="23"/>
                                                 <accessibility key="accessibilityConfiguration" label="version">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -737,10 +694,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdF-GA-vsI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-lp-WNZ">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -749,17 +702,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DQB-lp-WNZ" firstAttribute="centerX" secondItem="tdF-GA-vsI" secondAttribute="centerX" id="1WA-uY-mBY"/>
-                            <constraint firstItem="tdF-GA-vsI" firstAttribute="leading" secondItem="kJ1-sO-qHJ" secondAttribute="leading" id="FRu-G7-2wL"/>
-                            <constraint firstItem="tdF-GA-vsI" firstAttribute="top" secondItem="kJ1-sO-qHJ" secondAttribute="top" id="btF-K2-0Li"/>
-                            <constraint firstItem="DQB-lp-WNZ" firstAttribute="centerY" secondItem="tdF-GA-vsI" secondAttribute="centerY" id="lpG-8z-rue"/>
-                            <constraint firstItem="tdF-GA-vsI" firstAttribute="bottom" secondItem="RNI-81-rgl" secondAttribute="top" constant="49" id="mpX-ff-G5W"/>
-                            <constraint firstAttribute="trailing" secondItem="tdF-GA-vsI" secondAttribute="trailing" id="zpi-uf-RkZ"/>
+                            <constraint firstItem="DQB-lp-WNZ" firstAttribute="centerY" secondItem="kJ1-sO-qHJ" secondAttribute="centerY" id="Tno-4U-igb"/>
+                            <constraint firstItem="DQB-lp-WNZ" firstAttribute="centerX" secondItem="kJ1-sO-qHJ" secondAttribute="centerX" id="ZmS-q2-Wf2"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="loading" destination="DQB-lp-WNZ" id="CbB-q4-4cK"/>
-                        <outlet property="teamView" destination="tdF-GA-vsI" id="ULi-hJ-Hyv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeB-Dx-rGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -878,63 +826,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-gL-VuT">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="638"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LIr-Y8-Tcx">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucj-qV-Us7">
-                                <rect key="frame" x="0.0" y="569" width="375" height="49"/>
-                                <items>
-                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="nHu-xG-Xbj"/>
-                                    <barButtonItem image="Back Button" id="goB-db-wpM">
-                                        <connections>
-                                            <action selector="goBack" destination="TZK-gL-VuT" id="mbC-2a-NlG"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="VGO-fJ-Ee9"/>
-                                    <barButtonItem image="Forward Button" id="rre-8R-Jfc">
-                                        <connections>
-                                            <action selector="goForward" destination="TZK-gL-VuT" id="AKu-0c-kzy"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AyQ-CF-ahE"/>
-                                    <barButtonItem systemItem="refresh" id="VnQ-Ea-k4B">
-                                        <connections>
-                                            <action selector="reload" destination="TZK-gL-VuT" id="55N-vS-HQL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="1" style="plain" systemItem="fixedSpace" id="034-rX-M9P"/>
-                                    <barButtonItem systemItem="stop" id="L1n-UK-tyN">
-                                        <connections>
-                                            <action selector="stopLoading" destination="TZK-gL-VuT" id="PmS-OL-9nj"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="3" style="plain" systemItem="fixedSpace" id="GJv-0z-fmR"/>
-                                </items>
-                                <color key="tintColor" red="0.52091652150000001" green="0.57278048989999997" blue="0.22736778860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerY" secondItem="mYo-Fa-Ekl" secondAttribute="centerY" id="72f-E5-bCB"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="trailing" secondItem="TZK-gL-VuT" secondAttribute="trailing" id="B0I-te-idq"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="bottom" secondItem="TZK-gL-VuT" secondAttribute="bottom" id="BQI-Pe-ini"/>
-                            <constraint firstItem="TZK-gL-VuT" firstAttribute="top" secondItem="vNq-lc-Eyq" secondAttribute="bottom" constant="-64" id="Eoo-wK-66p"/>
-                            <constraint firstAttribute="trailing" secondItem="TZK-gL-VuT" secondAttribute="trailing" id="PZI-x7-kGM"/>
-                            <constraint firstItem="GW2-PX-RXl" firstAttribute="top" secondItem="ucj-qV-Us7" secondAttribute="bottom" id="Pi2-a1-fG0"/>
-                            <constraint firstItem="ucj-qV-Us7" firstAttribute="leading" secondItem="TZK-gL-VuT" secondAttribute="leading" id="j4I-e2-6DV"/>
                             <constraint firstItem="LIr-Y8-Tcx" firstAttribute="centerX" secondItem="mYo-Fa-Ekl" secondAttribute="centerX" id="xbp-l8-Lmz"/>
-                            <constraint firstItem="TZK-gL-VuT" firstAttribute="leading" secondItem="mYo-Fa-Ekl" secondAttribute="leading" id="ztj-Yj-LDq"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="loading" destination="LIr-Y8-Tcx" id="FYs-FQ-aky"/>
-                        <outlet property="websiteView" destination="TZK-gL-VuT" id="tgB-Kf-RcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffB-PE-rAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1085,34 +991,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-CX-dQa">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Mlz-0f-ETn">
-                                <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Mlz-0f-ETn" firstAttribute="centerX" secondItem="lcf-CX-dQa" secondAttribute="centerX" id="Rum-Dn-q9g"/>
-                            <constraint firstItem="Mlz-0f-ETn" firstAttribute="centerY" secondItem="lcf-CX-dQa" secondAttribute="centerY" id="T1x-CA-g2Z"/>
-                            <constraint firstAttribute="trailing" secondItem="lcf-CX-dQa" secondAttribute="trailing" id="XmF-66-hBj"/>
-                            <constraint firstItem="SSh-LJ-cMb" firstAttribute="top" secondItem="lcf-CX-dQa" secondAttribute="bottom" constant="-49" id="cIj-nK-cDi"/>
-                            <constraint firstItem="lcf-CX-dQa" firstAttribute="top" secondItem="4aE-1a-gFA" secondAttribute="bottom" constant="-64" id="g5N-TX-PH4"/>
-                            <constraint firstItem="lcf-CX-dQa" firstAttribute="leading" secondItem="HTv-9h-wbJ" secondAttribute="leading" id="oJM-4O-WQk"/>
-                            <constraint firstItem="lcf-CX-dQa" firstAttribute="top" secondItem="HTv-9h-wbJ" secondAttribute="topMargin" constant="64" id="zzt-Ft-Sgg"/>
+                            <constraint firstItem="Mlz-0f-ETn" firstAttribute="centerX" secondItem="HTv-9h-wbJ" secondAttribute="centerX" id="acE-z9-Nkc"/>
+                            <constraint firstItem="Mlz-0f-ETn" firstAttribute="centerY" secondItem="HTv-9h-wbJ" secondAttribute="centerY" id="nk8-I3-Y90"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="zzt-Ft-Sgg"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="loading" destination="Mlz-0f-ETn" id="eEb-Mo-u60"/>
-                        <outlet property="serveWebView" destination="lcf-CX-dQa" id="FT2-54-jYr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgc-Kz-Vj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1305,10 +1197,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xq8-xA-gia">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cDx-iy-OdO">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1317,16 +1205,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xq8-xA-gia" firstAttribute="leading" secondItem="HW0-Nm-JnO" secondAttribute="leading" id="43E-7M-M4r"/>
-                            <constraint firstItem="cDx-iy-OdO" firstAttribute="centerY" secondItem="xq8-xA-gia" secondAttribute="centerY" id="5bd-7F-0T1"/>
-                            <constraint firstItem="cDx-iy-OdO" firstAttribute="centerX" secondItem="xq8-xA-gia" secondAttribute="centerX" id="7cn-91-w4p"/>
-                            <constraint firstItem="xq8-xA-gia" firstAttribute="top" secondItem="HW0-Nm-JnO" secondAttribute="top" id="Yc3-uH-roV"/>
-                            <constraint firstItem="xq8-xA-gia" firstAttribute="bottom" secondItem="UxY-JQ-EEM" secondAttribute="top" constant="49" id="viY-JP-o1l"/>
-                            <constraint firstAttribute="trailing" secondItem="xq8-xA-gia" secondAttribute="trailing" id="yX3-IO-qLu"/>
+                            <constraint firstItem="cDx-iy-OdO" firstAttribute="centerY" secondItem="HW0-Nm-JnO" secondAttribute="centerY" id="Jk9-nC-APG"/>
+                            <constraint firstItem="cDx-iy-OdO" firstAttribute="centerX" secondItem="HW0-Nm-JnO" secondAttribute="centerX" id="dsX-jT-flR"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="FGCUWebView" destination="xq8-xA-gia" id="DAz-yO-ijh"/>
                         <outlet property="loading" destination="cDx-iy-OdO" id="qEp-xz-YuT"/>
                     </connections>
                 </viewController>
@@ -1488,23 +1371,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osm-Aa-eMh">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-dk-AvO">
-                                <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="osm-Aa-eMh" secondAttribute="bottom" id="8ea-vF-UEj" userLabel="bottomMargin = Prayer Requests View.bottom"/>
-                            <constraint firstAttribute="trailing" secondItem="osm-Aa-eMh" secondAttribute="trailing" id="9gv-8D-q9f"/>
-                            <constraint firstItem="cF5-dk-AvO" firstAttribute="centerY" secondItem="osm-Aa-eMh" secondAttribute="centerY" id="BLA-Uw-9RN"/>
-                            <constraint firstItem="osm-Aa-eMh" firstAttribute="leading" secondItem="uMV-sU-ubS" secondAttribute="leading" id="DoV-sg-voV"/>
-                            <constraint firstItem="osm-Aa-eMh" firstAttribute="top" secondItem="B7W-eH-M04" secondAttribute="bottom" constant="-64" id="EZr-QQ-zpr"/>
-                            <constraint firstItem="cF5-dk-AvO" firstAttribute="centerX" secondItem="osm-Aa-eMh" secondAttribute="centerX" id="vWb-AS-xg8"/>
+                            <constraint firstItem="cF5-dk-AvO" firstAttribute="centerX" secondItem="uMV-sU-ubS" secondAttribute="centerX" id="Hti-Q6-yJu"/>
+                            <constraint firstItem="cF5-dk-AvO" firstAttribute="centerY" secondItem="uMV-sU-ubS" secondAttribute="centerY" id="nqV-4S-XSC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Prayer Request" id="6fi-1w-7L4">
@@ -1513,7 +1389,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loading" destination="cF5-dk-AvO" id="12s-6d-ZuT"/>
-                        <outlet property="prayerRequestsView" destination="osm-Aa-eMh" id="nkF-E2-Rr3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPe-3r-0v8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1839,30 +1714,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afd-Ur-IrZ">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="736"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6sh-Eg-2T1">
-                                <rect key="frame" x="169" y="329.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="afd-Ur-IrZ" secondAttribute="trailing" id="8bC-eH-nmA"/>
-                            <constraint firstItem="afd-Ur-IrZ" firstAttribute="leading" secondItem="lRd-Rs-86R" secondAttribute="leading" id="HtS-oj-MZ6"/>
-                            <constraint firstItem="6sh-Eg-2T1" firstAttribute="centerY" secondItem="afd-Ur-IrZ" secondAttribute="centerY" id="Pxv-u4-KJU"/>
-                            <constraint firstItem="afd-Ur-IrZ" firstAttribute="top" secondItem="Pcq-2R-na5" secondAttribute="bottom" constant="-64" id="Vyb-Iq-gTe"/>
-                            <constraint firstItem="afd-Ur-IrZ" firstAttribute="bottom" secondItem="fYU-Ja-HB1" secondAttribute="top" constant="49" id="hRX-Kh-RDe"/>
-                            <constraint firstItem="6sh-Eg-2T1" firstAttribute="centerX" secondItem="afd-Ur-IrZ" secondAttribute="centerX" id="uJ4-zl-YBn"/>
+                            <constraint firstItem="6sh-Eg-2T1" firstAttribute="centerY" secondItem="lRd-Rs-86R" secondAttribute="centerY" id="Obf-4Y-ODC"/>
+                            <constraint firstItem="6sh-Eg-2T1" firstAttribute="centerX" secondItem="lRd-Rs-86R" secondAttribute="centerX" id="RBC-Fv-zRu"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loading" destination="6sh-Eg-2T1" id="yLc-D0-wjP"/>
-                        <outlet property="smallGroup" destination="afd-Ur-IrZ" id="ozT-cU-lhC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOn-Gv-y5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1881,28 +1747,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZ4-o5-qkK">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CTm-Rh-iAh">
-                                <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SZ4-o5-qkK" firstAttribute="top" secondItem="hou-Ji-kzF" secondAttribute="bottom" constant="-64" id="5Fg-xF-OMS"/>
-                            <constraint firstAttribute="trailing" secondItem="SZ4-o5-qkK" secondAttribute="trailing" id="Q3r-iU-hLm"/>
-                            <constraint firstItem="SZ4-o5-qkK" firstAttribute="leading" secondItem="XAR-IZ-3dL" secondAttribute="leading" id="S3i-Uz-c3h"/>
-                            <constraint firstItem="CTm-Rh-iAh" firstAttribute="centerX" secondItem="SZ4-o5-qkK" secondAttribute="centerX" id="TLR-qd-jzv"/>
-                            <constraint firstItem="SZ4-o5-qkK" firstAttribute="bottom" secondItem="B57-yf-G9T" secondAttribute="top" constant="49" id="msq-jB-quW"/>
-                            <constraint firstItem="CTm-Rh-iAh" firstAttribute="centerY" secondItem="SZ4-o5-qkK" secondAttribute="centerY" id="wC2-c7-doJ"/>
+                            <constraint firstItem="CTm-Rh-iAh" firstAttribute="centerY" secondItem="XAR-IZ-3dL" secondAttribute="centerY" id="Cfp-LL-Oyv"/>
+                            <constraint firstItem="CTm-Rh-iAh" firstAttribute="centerX" secondItem="XAR-IZ-3dL" secondAttribute="centerX" id="P3L-kW-8Pk"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Webview" destination="SZ4-o5-qkK" id="tuc-Ri-P5E"/>
                         <outlet property="loading" destination="CTm-Rh-iAh" id="aj0-Em-Vb5"/>
                     </connections>
                 </viewController>
@@ -2330,13 +2187,11 @@
         <segue reference="4mJ-rJ-QcU"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Back Button" width="12" height="22.5"/>
         <image name="Bible" width="30" height="22.5"/>
         <image name="Cellular" width="21.5" height="50"/>
         <image name="Connect" width="30" height="18.5"/>
         <image name="Connect_2019" width="634" height="356"/>
         <image name="FGCU_2018_logo" width="2560" height="720"/>
-        <image name="Forward Button" width="12" height="22.5"/>
         <image name="Give" width="187.5" height="117"/>
         <image name="Listen" width="30" height="23.5"/>
         <image name="Made By" width="833" height="132"/>

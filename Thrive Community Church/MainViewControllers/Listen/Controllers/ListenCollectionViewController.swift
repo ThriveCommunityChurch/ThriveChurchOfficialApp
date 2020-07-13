@@ -113,7 +113,7 @@ MFMailComposeViewControllerDelegate {
 			apiDomain = loadedData
 			apiUrl = "http://\(apiDomain)/"
 		}
-		
+				
         // call the API and determine how many of them there are
 		checkConnectivity()
 		
@@ -337,8 +337,35 @@ MFMailComposeViewControllerDelegate {
 	
 	// MARK: - Methods
 	@IBAction func openLive(_ sender: Any) {
-		let url = URL(string: "https://facebook.com/thriveFl/")!
-		let appURL = URL(string: "fb://profile/157139164480128")!
+		
+		let data = UserDefaults.standard.object(forKey: ConfigKeys.shared.Live) as? Data
+		
+		var liveLink = "https://facebook.com/thriveFl/"
+		
+		if data != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+			
+			liveLink = "\(decoded.Value ?? "https://facebook.com/thriveFl/")"
+		}
+		
+		let fbData = UserDefaults.standard.object(forKey: ConfigKeys.shared.FBPageID) as? Data
+		
+		var fbId = "157139164480128"
+		
+		if fbData != nil {
+			
+			// reading from the messageId collection in UD
+			let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
+			
+			fbId = "\(decoded.Value ?? "157139164480128")"
+		}
+		
+		let encodedURL = liveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+
+		let url = URL(string: encodedURL)!
+		let appURL = URL(string: "fb://profile/\(fbId)")!
 		
 		// Go to the page in FB and hopefully they see we are streaming
 		if UIApplication.shared.canOpenURL(appURL) {
@@ -355,36 +382,19 @@ MFMailComposeViewControllerDelegate {
 		view.addSubview(retryButton)
 		view.addSubview(spinner)
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				apiErrorMessage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-				apiErrorMessage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
-				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
-				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
-				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-				spinner.heightAnchor.constraint(equalToConstant: 37),
-				spinner.widthAnchor.constraint(equalToConstant: 37)
-				
-			])
-		}
-		else {
-			// Fallback on earlier versions
-			NSLayoutConstraint.activate([
-				apiErrorMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-				apiErrorMessage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-				apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
-				retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
-				retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
-				retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-				spinner.heightAnchor.constraint(equalToConstant: 37),
-				spinner.widthAnchor.constraint(equalToConstant: 37)
-			])
-		}
+		NSLayoutConstraint.activate([
+			apiErrorMessage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			apiErrorMessage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+			apiErrorMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
+			retryButton.leadingAnchor.constraint(equalTo: apiErrorMessage.leadingAnchor, constant: 64),
+			retryButton.trailingAnchor.constraint(equalTo: apiErrorMessage.trailingAnchor, constant: -64),
+			retryButton.topAnchor.constraint(equalTo: apiErrorMessage.bottomAnchor, constant: 16),
+			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			spinner.heightAnchor.constraint(equalToConstant: 37),
+			spinner.widthAnchor.constraint(equalToConstant: 37)
+			
+		])
 		
 		// set backgroundView frame to self
 		self.backgroundView.frame = view.frame

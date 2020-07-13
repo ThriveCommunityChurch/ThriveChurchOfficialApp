@@ -71,25 +71,15 @@ class ReadSermonPassageViewController: UIViewController {
 		view.addSubview(spinner)
 		
 		// Constraints
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				passageTextArea.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				passageTextArea.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				passageTextArea.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				passageTextArea.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				passageTextArea.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				passageTextArea.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				passageTextArea.topAnchor.constraint(equalTo: view.topAnchor),
-				passageTextArea.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-				spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-				spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-			])
-		}
+		NSLayoutConstraint.activate([
+			passageTextArea.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			passageTextArea.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			passageTextArea.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			passageTextArea.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+		])
+		
 		self.spinner.startAnimating()
 	}
 	

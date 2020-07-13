@@ -1,4 +1,10 @@
-### 1.7.3  —  TBD
+### 1.7.4 —  July 12, 2020
+- Fixing an issue where the application would crash on startup while we were live
+- Misc changes behind the scenes means less unnecessary updates for you
+- Misc bug fixes
+- Supporting iOS 11+
+
+### 1.7.3  —  June 9, 2020
 - Fixed an issue with the LIVE button not becoming active
 
 ### 1.7.2  —  May 19, 2020

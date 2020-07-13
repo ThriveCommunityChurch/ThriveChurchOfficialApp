@@ -13,6 +13,12 @@
 		41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF7F01CF21719006C366E /* AppDelegate.swift */; };
 		41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
+		DC096B9C24A81EDD00CFD252 /* ConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096B9B24A81EDD00CFD252 /* ConfigurationExtension.swift */; };
+		DC096B9F24A8287400CFD252 /* ConfigurationSettingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096B9E24A8287400CFD252 /* ConfigurationSettingResponse.swift */; };
+		DC096BA124A8292700CFD252 /* ConfigType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096BA024A8292700CFD252 /* ConfigType.swift */; };
+		DC096BA424A84FF400CFD252 /* ConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096BA324A84FF400CFD252 /* ConfigKeys.swift */; };
+		DC096BA624A854A500CFD252 /* ConfigsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096BA524A854A500CFD252 /* ConfigsCollection.swift */; };
+		DC096BA824A98F3300CFD252 /* ConfigSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096BA724A98F3300CFD252 /* ConfigSetting.swift */; };
 		DC0DE7F721EDA0A900820CE2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DE7F621EDA0A900820CE2 /* Reachability.swift */; };
 		DC0DE7F921EFF21C00820CE2 /* RecentlyPlayedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DE7F821EFF21C00820CE2 /* RecentlyPlayedViewController.swift */; };
 		DC0DE7FB21EFF41F00820CE2 /* RecentlyWatchedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DE7FA21EFF41F00820CE2 /* RecentlyWatchedTableViewCell.swift */; };
@@ -38,7 +44,6 @@
 		DC3CAD3221E2497A00C17EAF /* DownloadedMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */; };
 		DC3CAD3C21E2B94400C17EAF /* ListenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */; };
 		DC3CAD3E21E2BDAC00C17EAF /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */; };
-		DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45330020B468A90021C796 /* WebViewExtension.swift */; };
 		DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */; };
 		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
 		DC7348B721D539FB0057227D /* SermonSeriesSummaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */; };
@@ -63,7 +68,6 @@
 		DCBCE19721D11F6500E3DCA4 /* SermonSeriesSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBCE19621D11F6500E3DCA4 /* SermonSeriesSummary.swift */; };
 		DCBCE19A21D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBCE19921D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift */; };
 		DCC2398C20FFFDC7005973FA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */; };
-		DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */; };
 		DCCA9B31245FB08900657EB7 /* BibleSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCA9B30245FB08900657EB7 /* BibleSelectionTableViewCell.swift */; };
 		DCDFCE5C1FA00C700011AEC3 /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
 		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
@@ -162,6 +166,12 @@
 		DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		DC096B9B24A81EDD00CFD252 /* ConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationExtension.swift; sourceTree = "<group>"; };
+		DC096B9E24A8287400CFD252 /* ConfigurationSettingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSettingResponse.swift; sourceTree = "<group>"; };
+		DC096BA024A8292700CFD252 /* ConfigType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigType.swift; sourceTree = "<group>"; };
+		DC096BA324A84FF400CFD252 /* ConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigKeys.swift; sourceTree = "<group>"; };
+		DC096BA524A854A500CFD252 /* ConfigsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigsCollection.swift; sourceTree = "<group>"; };
+		DC096BA724A98F3300CFD252 /* ConfigSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSetting.swift; sourceTree = "<group>"; };
 		DC0DE7F621EDA0A900820CE2 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DC0DE7F821EFF21C00820CE2 /* RecentlyPlayedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedViewController.swift; sourceTree = "<group>"; };
 		DC0DE7FA21EFF41F00820CE2 /* RecentlyWatchedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyWatchedTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,7 +201,6 @@
 		DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedMessageTableViewCell.swift; sourceTree = "<group>"; };
 		DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
 		DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		DC45330020B468A90021C796 /* WebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewExtension.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeExtension.swift; sourceTree = "<group>"; };
@@ -216,7 +225,6 @@
 		DCBCE19621D11F6500E3DCA4 /* SermonSeriesSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonSeriesSummary.swift; sourceTree = "<group>"; };
 		DCBCE19921D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewControllerRepoExtension.swift; sourceTree = "<group>"; };
 		DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModalViewController.swift; sourceTree = "<group>"; };
 		DCCA9B30245FB08900657EB7 /* BibleSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -360,11 +368,11 @@
 		DC01B7F41F0494EE002784E7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DC096BA224A84FBA00CFD252 /* Configurations */,
 				DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */,
 				DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */,
 				DC64031E205783DE00176BFB /* TimestampExtension.swift */,
 				DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */,
-				DC45330020B468A90021C796 /* WebViewExtension.swift */,
 				DC2D8F8D20DC712A00C9C938 /* TableViewControllerExtension.swift */,
 				DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */,
 				DC7348B821D5D2500057227D /* UIImageViewExtension.swift */,
@@ -405,7 +413,6 @@
 		DC01B83B1F0494FF002784E7 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
-				DCC9D46E1F316A7C0055F548 /* ContactModalViewController.swift */,
 				DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */,
 				DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */,
 				DC01B83F1F0494FF002784E7 /* FGCU */,
@@ -458,6 +465,19 @@
 				DC01B8581F0494FF002784E7 /* MasterViewController.swift */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		DC096BA224A84FBA00CFD252 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				DC096B9E24A8287400CFD252 /* ConfigurationSettingResponse.swift */,
+				DC096B9B24A81EDD00CFD252 /* ConfigurationExtension.swift */,
+				DC096BA024A8292700CFD252 /* ConfigType.swift */,
+				DC096BA324A84FF400CFD252 /* ConfigKeys.swift */,
+				DC096BA524A854A500CFD252 /* ConfigsCollection.swift */,
+				DC096BA724A98F3300CFD252 /* ConfigSetting.swift */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 		DC21E1F420FBEE820054437D /* Onboarding */ = {
@@ -531,8 +551,8 @@
 				41FCF7EA1CF21719006C366E /* Frameworks */,
 				41FCF7EB1CF21719006C366E /* Resources */,
 				0029630EC3F9BA85531C325F /* [CP] Embed Pods Frameworks */,
-				EA971F011D63B301007C3A2B /* ShellScript */,
 				EA37C15F1D85E13100D450EF /* Embed App Extensions */,
+				EA971F011D63B301007C3A2B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -688,11 +708,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,16 +778,20 @@
 		};
 		EA971F011D63B301007C3A2B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -777,26 +803,30 @@
 				DC246E3021DA7D57007BA4D1 /* ImageCache.swift in Sources */,
 				DC2D8F8A20DC6E1700C9C938 /* TraditionalSortBibleTableViewController.swift in Sources */,
 				DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */,
+				DC096BA124A8292700CFD252 /* ConfigType.swift in Sources */,
 				DC1DE6D421FAD75E00E73838 /* SermonsSummaryPagedResponse.swift in Sources */,
 				DC7348B921D5D2500057227D /* UIImageViewExtension.swift in Sources */,
 				DCCA9B31245FB08900657EB7 /* BibleSelectionTableViewCell.swift in Sources */,
 				DC64031D2057821E00176BFB /* DeviceTypeExtension.swift in Sources */,
-				DCC9D46F1F316A7C0055F548 /* ContactModalViewController.swift in Sources */,
+				DC096BA824A98F3300CFD252 /* ConfigSetting.swift in Sources */,
 				DC0DE7FD21F01A1400820CE2 /* DataExtension.swift in Sources */,
 				DC1EBF7D21D84503001B1673 /* SermonAVPlayer.swift in Sources */,
+				DC096BA424A84FF400CFD252 /* ConfigKeys.swift in Sources */,
 				DC2D8F8420DC64D000C9C938 /* BiblePassage.swift in Sources */,
 				DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */,
 				DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */,
+				DC096BA624A854A500CFD252 /* ConfigsCollection.swift in Sources */,
 				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
+				DC096B9F24A8287400CFD252 /* ConfigurationSettingResponse.swift in Sources */,
 				DCBCE19721D11F6500E3DCA4 /* SermonSeriesSummary.swift in Sources */,
 				DC9C0C0423B31AAC00C96788 /* ViewPlayerViewController.swift in Sources */,
+				DC096B9C24A81EDD00CFD252 /* ConfigurationExtension.swift in Sources */,
 				DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */,
 				DC0DE7F721EDA0A900820CE2 /* Reachability.swift in Sources */,
 				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */,
 				DC13383F21E582580089B3DD /* DoubleExtension.swift in Sources */,
 				DC246E2C21DA7A05007BA4D1 /* SermonDownloadsViewController.swift in Sources */,
-				DC45330120B468A90021C796 /* WebViewExtension.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DC1EBF7F21D84A37001B1673 /* NowPlayingViewController.swift in Sources */,
 				DCF6987C220AA9DC001B1A0C /* GetPassageResponse.swift in Sources */,
@@ -997,12 +1027,12 @@
 				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.7.3.2;
+				CURRENT_PROJECT_VERSION = 1.7.4.3;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.7.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
 				PRODUCT_NAME = "Thrive Church Official App";
 				PROVISIONING_PROFILE = "";
@@ -1022,12 +1052,12 @@
 				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.7.3.2;
+				CURRENT_PROJECT_VERSION = 1.7.4.3;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.7.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
 				PRODUCT_NAME = "Thrive Church Official App";
 				PROVISIONING_PROFILE = "";

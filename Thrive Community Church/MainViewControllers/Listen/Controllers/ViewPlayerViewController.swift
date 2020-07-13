@@ -122,56 +122,29 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				videoBG.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				videoBG.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				videoBG.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				videoBG.heightAnchor.constraint(equalToConstant: height),
-				userImg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26),
-				userImg.topAnchor.constraint(equalTo: videoBG.bottomAnchor, constant: 26),
-				userImg.heightAnchor.constraint(equalToConstant: 20),
-				userImg.widthAnchor.constraint(equalToConstant: 20),
-				speakerText.leadingAnchor.constraint(equalTo: userImg.trailingAnchor, constant: 10),
-				speakerText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-													constant: -24),
-				speakerText.centerYAnchor.constraint(equalTo: userImg.centerYAnchor),
-				speakerText.bottomAnchor.constraint(equalTo: userImg.bottomAnchor),
-				calendarImg.leadingAnchor.constraint(equalTo: userImg.leadingAnchor),
-				calendarImg.heightAnchor.constraint(equalTo: userImg.heightAnchor),
-				calendarImg.widthAnchor.constraint(equalTo: userImg.widthAnchor),
-				calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 16),
-				dateText.leadingAnchor.constraint(equalTo: speakerText.leadingAnchor),
-				dateText.trailingAnchor.constraint(equalTo: speakerText.trailingAnchor),
-				dateText.heightAnchor.constraint(equalTo: speakerText.heightAnchor),
-				dateText.centerYAnchor.constraint(equalTo: calendarImg.centerYAnchor)
-			])	
-		}
-		else {
-			NSLayoutConstraint.activate([
-				videoBG.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				videoBG.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				videoBG.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor),
-				videoBG.heightAnchor.constraint(equalToConstant: height),
-				userImg.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-				userImg.topAnchor.constraint(equalTo: videoBG.bottomAnchor, constant: 26),
-				userImg.heightAnchor.constraint(equalToConstant: 20),
-				userImg.widthAnchor.constraint(equalToConstant: 20),
-				speakerText.leadingAnchor.constraint(equalTo: userImg.trailingAnchor, constant: 10),
-				speakerText.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-													constant: -24),
-				speakerText.centerYAnchor.constraint(equalTo: userImg.centerYAnchor),
-				speakerText.bottomAnchor.constraint(equalTo: userImg.bottomAnchor),
-				calendarImg.leadingAnchor.constraint(equalTo: userImg.leadingAnchor),
-				calendarImg.heightAnchor.constraint(equalTo: userImg.heightAnchor),
-				calendarImg.widthAnchor.constraint(equalTo: userImg.widthAnchor),
-				calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 16),
-				dateText.leadingAnchor.constraint(equalTo: speakerText.leadingAnchor),
-				dateText.trailingAnchor.constraint(equalTo: speakerText.trailingAnchor),
-				dateText.heightAnchor.constraint(equalTo: speakerText.heightAnchor),
-				dateText.centerYAnchor.constraint(equalTo: calendarImg.centerYAnchor)
-			])
-		}
+		NSLayoutConstraint.activate([
+			videoBG.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			videoBG.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			videoBG.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			videoBG.heightAnchor.constraint(equalToConstant: height),
+			userImg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26),
+			userImg.topAnchor.constraint(equalTo: videoBG.bottomAnchor, constant: 26),
+			userImg.heightAnchor.constraint(equalToConstant: 20),
+			userImg.widthAnchor.constraint(equalToConstant: 20),
+			speakerText.leadingAnchor.constraint(equalTo: userImg.trailingAnchor, constant: 10),
+			speakerText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+												constant: -24),
+			speakerText.centerYAnchor.constraint(equalTo: userImg.centerYAnchor),
+			speakerText.bottomAnchor.constraint(equalTo: userImg.bottomAnchor),
+			calendarImg.leadingAnchor.constraint(equalTo: userImg.leadingAnchor),
+			calendarImg.heightAnchor.constraint(equalTo: userImg.heightAnchor),
+			calendarImg.widthAnchor.constraint(equalTo: userImg.widthAnchor),
+			calendarImg.topAnchor.constraint(equalTo: userImg.bottomAnchor, constant: 16),
+			dateText.leadingAnchor.constraint(equalTo: speakerText.leadingAnchor),
+			dateText.trailingAnchor.constraint(equalTo: speakerText.trailingAnchor),
+			dateText.heightAnchor.constraint(equalTo: speakerText.heightAnchor),
+			dateText.centerYAnchor.constraint(equalTo: calendarImg.centerYAnchor)
+		])
 		
 		self.setSpinner(spinner: spinner)
 		self.spinner.startAnimating()
