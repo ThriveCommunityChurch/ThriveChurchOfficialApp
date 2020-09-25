@@ -11,8 +11,6 @@ import Foundation
 class ApplicationVariables {
 	/// Cache key for reading the ThriveChurchOfficialAPI domain address from plist and UserDefaults
 	static var ApiCacheKey = "APIUrl"
-	/// Cache key for accessing the ESV API key from Plist
-	static var ESVApiCacheKey = "ESVApiKey"
 	/// Cache key for reading whether or not a user completed onboarding
 	static var OnboardingCacheKey = "onboarding"
 	/// Cache key for reading the saved notes taken

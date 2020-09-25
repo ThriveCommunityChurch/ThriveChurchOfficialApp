@@ -33,7 +33,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	var downloadedMessagesInSeries = [String]()
 	var currentlyDownloading: Bool = false
 	var messageForDownload: SermonMessage?
-	var esvApiKey: String = ""
 	
 	private var series: SermonSeries?
 	
@@ -76,13 +75,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		setupViews()
 		loadMessagesForSeries()
 		loadDownloadedMessages()
-		
-		// look to see if this is different, if not do nothing different
-		if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
-			let nsDictionary = NSDictionary(contentsOfFile: path)
-			
-			self.esvApiKey = nsDictionary?[ApplicationVariables.ESVApiCacheKey] as? String ?? ""
-		}
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -427,7 +419,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			
 			if location == nil || response == nil {
 				print("Response or location are nil, failing")
-				return
 			}
 			else {
 				// what do we wanna do if this download fails or never finishes
