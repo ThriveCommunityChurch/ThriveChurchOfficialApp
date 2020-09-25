@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 
 class ReadSermonPassageViewController: UIViewController {
@@ -30,6 +32,11 @@ class ReadSermonPassageViewController: UIViewController {
 	
 	private var passageToSearch: String = ""
 	private var apiUrl: String = ""
+	private var esvApiKey: String = ""
+	
+	// This time, we'll declare avPlayer as an instance variable,
+	// which means it exists as long as our view controller exists.
+	var player: AVPlayer!
 	
 	// MARK: - UI Elements
 	let passageTextArea: UITextView = {
@@ -59,6 +66,13 @@ class ReadSermonPassageViewController: UIViewController {
 		
 		setupViews()
 		loadPassageFromESV(searchText: self.passageToSearch)
+		
+		// grab the API key for the ESV API from the config file
+		if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
+			let nsDictionary = NSDictionary(contentsOfFile: path)
+			
+			self.esvApiKey = nsDictionary?[ApplicationVariables.ESVApiCacheKey] as? String ?? ""
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -70,6 +84,14 @@ class ReadSermonPassageViewController: UIViewController {
 		view.addSubview(passageTextArea)
 		view.addSubview(spinner)
 		
+		var image = UIImage(named: "Listen")
+		image = resizeImage(image: image!, targetSize: CGSize(width: 25, height: 25))!
+		let listenAudioButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(loadAudioFromESV))
+		listenAudioButton.tintColor = UIColor.white
+		
+		self.navigationItem.rightBarButtonItem = listenAudioButton
+
+				
 		// Constraints
 		NSLayoutConstraint.activate([
 			passageTextArea.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -152,6 +174,45 @@ class ReadSermonPassageViewController: UIViewController {
 				print(jsonError)
 			}
 		}.resume()
+	}
+	
+	@objc func loadAudioFromESV() {
+		
+		// for some reason this method of all the others wants this to be explicitly defined
+		let queryString = "https://api.esv.org/v3/passage/audio/?q=\(self.passageToSearch)"
+		let encoded = queryString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+		
+		guard let url = URL(string: encoded!) else { return }
+		var request = URLRequest(url: url)
+		request.httpMethod = "GET"
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.setValue("Token \(esvApiKey)", forHTTPHeaderField: "Authorization")
+		request.timeoutInterval = 60.0
+				
+		do {
+			
+			let headers: [String: String] = [
+			   "Authorization": "Token \(esvApiKey)",
+				"Content-Type": "application/json"
+			]
+			let asset = AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
+			let playerItem = AVPlayerItem(asset: asset)
+			player = AVPlayer(playerItem: playerItem)
+			player.automaticallyWaitsToMinimizeStalling = false
+			player.isMuted = false
+			player.rate = 1.0
+			
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [.allowBluetooth])
+            print("Playback OK")
+            try AVAudioSession.sharedInstance().setActive(true)
+            print("Session is Active")
+			
+			player.play()
+			
+		}
+		catch let error {
+			print(error)
+		}
 	}
 	
 }
