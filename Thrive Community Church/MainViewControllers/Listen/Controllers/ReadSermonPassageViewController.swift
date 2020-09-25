@@ -67,7 +67,7 @@ class ReadSermonPassageViewController: UIViewController {
 		setupViews()
 		loadPassageFromESV(searchText: self.passageToSearch)
 		
-		// look to see if this is different, if not do nothing different
+		// grab the API key for the ESV API from the config file
 		if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
 			let nsDictionary = NSDictionary(contentsOfFile: path)
 			
