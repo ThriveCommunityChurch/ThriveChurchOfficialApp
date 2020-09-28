@@ -182,7 +182,7 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			
 			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
 																				 setting: decoded,
-																				 title: "Join a Small Group")
+																				 title: "Join a small group")
 			
 			tempList.append(settingToAdd)
 		}

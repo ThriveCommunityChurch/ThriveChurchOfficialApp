@@ -17,6 +17,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         super.viewDidLoad()
 
         appVersion.text = "v\(version())"
+		navigationController?.title = "About"
     }
 
     override func didReceiveMemoryWarning() {
