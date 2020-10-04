@@ -1,4 +1,4 @@
-### 1.7.4 —  October 10, 2020
+### 1.7.4 —  Oct 10, 2020
 - You can now LISTEN to Bible passages
 - When choosing to read a sermon bible passage, you can now click the listen icon to listen to that passage
 - Misc minor improvements
