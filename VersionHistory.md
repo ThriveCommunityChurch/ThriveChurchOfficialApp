@@ -1,3 +1,8 @@
+### 1.7.4 —  October 10, 2020
+- You can now LISTEN to Bible passages
+- When choosing to read a sermon bible passage, you can now click the listen icon to listen to that passage
+- Misc minor improvements
+
 ### 1.7.4 —  July 12, 2020
 - Fixing an issue where the application would crash on startup while we were live
 - Misc changes behind the scenes means less unnecessary updates for you
