@@ -1,6 +1,6 @@
-## 1.7
+# 1.7
 <details>
-  <summary>Rev. 5 —  Oct 10, 2020</summary>
+  <summary>Rev. 5 —  Oct 10, 2020 <strong>(current)</strong></summary>
     <ul>
       <li>You can now LISTEN to Bible passages</li>
       <li>When choosing to read a sermon bible passage, you can now click the listen icon to listen to that passage</li>
@@ -64,7 +64,8 @@
 <li>Performance Improvements 💯</li>
 </details>
 
-## 1.6
+
+# 1.6
 <details>
   <summary>Rev. 4  —  Oct 18, 2018</summary>
 <ul>
@@ -116,7 +117,7 @@
 </ul>
 </details>
 
-## 1.5
+# 1.5
 <details>
   <summary>Rev. 1 — Sept 15, 2017</summary>
   <ul>
@@ -137,7 +138,7 @@
 </ul>
 </details>
 
-## 1.3
+# 1.3
 <details>
   <summary>Initial Release  —  May 24, 2017</summary>
   <ul>
@@ -147,7 +148,7 @@
 </ul>
 </details>
 
-## 1.2
+# 1.2
 <details>
   <summary>Initial Release  —  Jan 18, 2017</summary>
   <ul>
@@ -158,7 +159,7 @@
 </ul>
 </details>
 
-## 1.0
+# 1.0
 <details>
   <summary>Initial Release  —  Aug 14, 2016</summary>
   <ul>
