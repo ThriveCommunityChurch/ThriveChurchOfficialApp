@@ -1,8 +1,8 @@
 # 1.7
-### Rev. 5
+### Rev. 5 (current)
 
 <details>
-  <summary>Oct 10, 2020 <strong>(current)</strong></summary>
+  <summary>Oct 10, 2020</summary>
     <ul>
       <li>You can now LISTEN to Bible passages</li>
       <li>When choosing to read a sermon bible passage, you can now click the listen icon to listen to that passage</li>
