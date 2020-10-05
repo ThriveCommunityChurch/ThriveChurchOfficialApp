@@ -1,6 +1,8 @@
 # 1.7
+### Rev. 5
+
 <details>
-  <summary>Rev. 5 —  Oct 10, 2020 <strong>(current)</strong></summary>
+  <summary>Oct 10, 2020 <strong>(current)</strong></summary>
     <ul>
       <li>You can now LISTEN to Bible passages</li>
       <li>When choosing to read a sermon bible passage, you can now click the listen icon to listen to that passage</li>
@@ -8,8 +10,9 @@
     </ul>
 </details>
 
+### Rev. 4
 <details>
-  <summary>Rev. 4 —  July 12, 2020</summary>
+  <summary>Jul 12, 2020</summary>
     <ul>
 <li>Fixing an issue where the application would crash on startup while we were live</li>
 <li>Misc changes behind the scenes means less unnecessary updates for you</li>
@@ -17,14 +20,16 @@
 <li>Supporting iOS 11+</li>
 </details>
 
+### Rev. 3
 <details>
-  <summary>Rev. 3  —  June 9, 2020</summary>
+  <summary>Jun 9, 2020</summary>
     <ul>
 <li>Fixed an issue with the LIVE button not becoming active</li>
 </details>
 
+### Rev. 2
 <details>
-  <summary>Rev. 2  —  May 19, 2020</summary>
+  <summary>May 19, 2020</summary>
     <ul>
 <li>This is our final update for iOS 10, please update your device to iOS 11 or newer to receive further updates</li>
 <li>Make sure to stay updated, we have some new & exciting things coming soon</li>
@@ -38,8 +43,9 @@
 <li>Other minor bug fixes</li>
 </details>
 
+### Rev. 1
 <details>
-  <summary>Rev. 1  —  Aug 13, 2019</summary>
+  <summary>Aug 13, 2019</summary>
     <ul>
 <li>Fixed an issue where tapping on a sermon series would load the page more than once</li>
 <li>Fixed an issue where LIVE would appear active when we weren't streaming</li>
@@ -49,8 +55,9 @@
 <li>Additional bug fixes and stability improvements</li>
 </details>
 
+### Initial Release
 <details>
-  <summary>Initial Release —  April 25, 2019</summary>
+  <summary>Apr 25, 2019</summary>
     <ul>
 <li>Our biggest update yet! 🎉</li>
 <li>Easy to view sermon series (sorted by most recent) 🏠</li>
@@ -66,8 +73,9 @@
 
 
 # 1.6
+### Rev. 4
 <details>
-  <summary>Rev. 4  —  Oct 18, 2018</summary>
+  <summary>Oct 18, 2018</summary>
 <ul>
 <li>iOS 12 Support</li>
 <li>Significant Performance Improvements</li>
@@ -76,8 +84,9 @@
 </ul>
 </details>
 
+### Rev. 3
 <details>
-  <summary>Rev. 3  —  May 25, 2018</summary>
+  <summary>May 25, 2018</summary>
 <ul>
 <li>Fixed an issue where emails could not be sent from certain devices</li>
 <li>Improved User Experience across multiple screens</li>
@@ -86,8 +95,9 @@
 </ul>
 </details>
 
+### Rev. 2
 <details>
-  <summary>Rev. 2  —  Mar 18, 2018</summary>
+  <summary>Mar 18, 2018</summary>
 <ul>
 <li>Improved the experience for reporting issues via email feedback</li>
 <li>Notes with specific text will now not be overwritten</li>
@@ -97,8 +107,9 @@
 </ul>
 </details>
 
+### Rev. 1
 <details>
-  <summary>Rev. 1  —  Feb 7, 2018</summary>
+  <summary>Feb 7, 2018</summary>
 <ul> 
 <li>Fixed an issue where the notes page would crash if there were no notes currently saved</li>
 <li>Fixed an issue where the cursor would completely dissapear when taking a long note</li>
@@ -106,8 +117,9 @@
 </ul>
 </details>
 
+### Initial Release
 <details>
-  <summary>Initial Release  —  Nov 18, 2017</summary>
+  <summary>Nov 18, 2017</summary>
   <ul>
 <li>UI Improvements</li>
 <li>Supports iPhone X</li>
@@ -118,8 +130,9 @@
 </details>
 
 # 1.5
+### Rev. 1
 <details>
-  <summary>Rev. 1 — Sept 15, 2017</summary>
+  <summary>Sep 15, 2017</summary>
   <ul>
 <li>Fixed the text area on the Notes tab</li>
 <li>Fixed Translucent Navigation Bars</li>
@@ -127,8 +140,9 @@
 </ul>
 </details>
 
+### Initial Release
 <details>
-  <summary>Initial Release  —  Aug 27, 2017</summary>
+  <summary>Aug 27, 2017</summary>
   <ul>
 <li>Major UI Overhaul</li>
 <li>Improvements to the User Experience</li>
@@ -139,8 +153,9 @@
 </details>
 
 # 1.3
+### Initial Release
 <details>
-  <summary>Initial Release  —  May 24, 2017</summary>
+  <summary>May 24, 2017</summary>
   <ul>
 <li>Minor Updates and Improvements</li>
 <li>Optimizations</li>
@@ -149,8 +164,9 @@
 </details>
 
 # 1.2
+### Initial Release
 <details>
-  <summary>Initial Release  —  Jan 18, 2017</summary>
+  <summary>Jan 18, 2017</summary>
   <ul>
 <li>You can now watch sermons in HD Video</li>
 <li>Stay connected to Thrive FGCU</li>
@@ -160,8 +176,9 @@
 </details>
 
 # 1.0
+### Initial Release
 <details>
-  <summary>Initial Release  —  Aug 14, 2016</summary>
+  <summary>Aug 14, 2016</summary>
   <ul>
 <li>Initial Release</li>
 </ul>
