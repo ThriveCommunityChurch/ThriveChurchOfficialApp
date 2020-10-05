@@ -1,4 +1,5 @@
-# 1.7 ### Rev. 5 (current)
+# 1.7 
+### Rev. 5 (current)
 
 <details>
     <summary>Oct 10, 2020</summary>
@@ -71,7 +72,8 @@
 </details>
 
 
-# 1.6 ### Rev. 4
+# 1.6 
+### Rev. 4
 <details>
     <summary>Oct 18, 2018</summary>
     <ul>
@@ -127,7 +129,8 @@
     </ul>
 </details>
 
-# 1.5 ### Rev. 1
+# 1.5 
+### Rev. 1
 <details>
     <summary>Sep 15, 2017</summary>
     <ul>
@@ -149,7 +152,8 @@
     </ul>
 </details>
 
-# 1.3 ### Initial Release
+# 1.3 
+### Initial Release
 <details>
     <summary>May 24, 2017</summary>
     <ul>
@@ -159,7 +163,8 @@
     </ul>
 </details>
 
-# 1.2 ### Initial Release
+# 1.2 
+### Initial Release
 <details>
     <summary>Jan 18, 2017</summary>
     <ul>
@@ -170,7 +175,8 @@
     </ul>
 </details>
 
-# 1.0 ### Initial Release
+# 1.0 
+### Initial Release
 <details>
     <summary>Aug 14, 2016</summary>
     <ul>
