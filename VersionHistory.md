@@ -5,6 +5,7 @@
     <summary>TBD</summary>
     <ul>
         <li>Sign up to receive notifications from us right on your phone!</li>
+        <li>Fixing an issue with users who attempt to listen to sermon audio from recently played when they only have 1 recently played item</li>
         <li>More changes behind the scenes to reduce the overall number of updates you need to download</li>
     </ul>
 </details>
