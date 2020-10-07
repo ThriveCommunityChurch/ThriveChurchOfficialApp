@@ -1,6 +1,15 @@
 # 1.7 
-### Rev. 5 (current)
 
+### Rev. 6 (current)
+<details>
+    <summary>TBD</summary>
+    <ul>
+        <li>Sign up to receive notifications from us right on your phone!</li>
+        <li>More changes behind the scenes to reduce the overall number of updates you need to download</li>
+    </ul>
+</details>
+
+### Rev. 5
 <details>
     <summary>Oct 10, 2020</summary>
     <ul>
