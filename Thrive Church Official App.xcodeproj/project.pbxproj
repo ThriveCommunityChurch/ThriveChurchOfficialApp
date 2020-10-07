@@ -60,11 +60,11 @@
 		DC9C0C0423B31AAC00C96788 /* ViewPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */; };
 		DCA0A18C21F82A0A00C8A04B /* CustomCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */; };
 		DCA0A18E21F82E6B00C8A04B /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */; };
-		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
 		DCACA58824F1E2FC004871D6 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */; };
 		DCACA58A24F30DFC004871D6 /* DynamicConfigResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */; };
 		DCACA58C24FAE612004871D6 /* GenericSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */; };
 		DCACA58E24FAF296004871D6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */; };
+		DCB15BEE252E319F002D28D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */; };
 		DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB61AF921CB009B0049FCA2 /* Config.plist */; };
 		DCB61AFE21CB07B60049FCA2 /* ApplicationVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */; };
 		DCBA77AF20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */; };
@@ -89,6 +89,7 @@
 		DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */; };
 		DCF6987C220AA9DC001B1A0C /* GetPassageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */; };
 		DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */; };
+		DCF9385A252E254D009EACEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
 		DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -192,7 +193,6 @@
 		DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
 		DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
-		DC593B1A1F56542000616A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC64031C2057821E00176BFB /* DeviceTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeExtension.swift; sourceTree = "<group>"; };
 		DC64031E205783DE00176BFB /* TimestampExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampExtension.swift; sourceTree = "<group>"; };
 		DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonSeriesSummaryResponse.swift; sourceTree = "<group>"; };
@@ -213,6 +213,7 @@
 		DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicConfigResponse.swift; sourceTree = "<group>"; };
 		DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSiteViewController.swift; sourceTree = "<group>"; };
 		DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DCB61AF921CB009B0049FCA2 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationVariables.swift; sourceTree = "<group>"; };
 		DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalSortBibleTableViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +237,7 @@
 			files = (
 				DCDFCE5C1FA00C700011AEC3 /* Pods_Thrive_Church_Official_App.framework in Frameworks */,
 				41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */,
+				DCF9385A252E254D009EACEF /* AudioToolbox.framework in Frameworks */,
 				DCBAC83C2364881A0036E93E /* CoreAudio.framework in Frameworks */,
 				413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */,
 			);
@@ -277,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB61AF921CB009B0049FCA2 /* Config.plist */,
-				DC593B1A1F56542000616A28 /* GoogleService-Info.plist */,
+				DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */,
 				DCE362BF1F05603300725F11 /* Main.storyboard */,
 				DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */,
 				DC7652711EEB5395007C0998 /* Assets.xcassets */,
@@ -665,12 +667,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */,
 				DCE362C01F0560E400725F11 /* Main.storyboard in Resources */,
 				DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */,
 				DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */,
 				DCA0A18E21F82E6B00C8A04B /* CustomFooterView.xib in Resources */,
 				DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */,
+				DCB15BEE252E319F002D28D8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,12 +702,14 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
