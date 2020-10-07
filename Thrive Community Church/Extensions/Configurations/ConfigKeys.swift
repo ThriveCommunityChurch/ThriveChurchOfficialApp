@@ -25,10 +25,11 @@ class ConfigKeys {
 	var IG_Social: String = "IG_Social_URL"
 	var Website: String = "Website_URL"
 	var Team: String = "Team_URL"
-	//var LocationName: String = "Location_Name"
+	var LocationName: String = "Location_Name"
 	var FBPageID: String = "FB_PageId"
 	var TWUsername: String = "TW_uName"
 	var IGUSername: String = "IG_uName"
+	var Prayers: String = "Prayer_URL"
 	
 	public func GetAllKeys() -> [String] {
         var s = [String]()

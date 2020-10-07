@@ -61,6 +61,10 @@
 		DCA0A18C21F82A0A00C8A04B /* CustomCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */; };
 		DCA0A18E21F82E6B00C8A04B /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */; };
 		DCA554441F6AD46600E00006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC593B1A1F56542000616A28 /* GoogleService-Info.plist */; };
+		DCACA58824F1E2FC004871D6 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */; };
+		DCACA58A24F30DFC004871D6 /* DynamicConfigResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */; };
+		DCACA58C24FAE612004871D6 /* GenericSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */; };
+		DCACA58E24FAF296004871D6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */; };
 		DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB61AF921CB009B0049FCA2 /* Config.plist */; };
 		DCB61AFE21CB07B60049FCA2 /* ApplicationVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */; };
 		DCBA77AF20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */; };
@@ -72,21 +76,14 @@
 		DCDFCE5C1FA00C700011AEC3 /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
 		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
-		DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */; };
-		DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */; };
 		DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8431F0494FF002784E7 /* FGCUSiteViewController.swift */; };
 		DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8441F0494FF002784E7 /* FGCUSocialViewController.swift */; };
 		DCE3630C1F05610600725F11 /* ThriveFGCUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8451F0494FF002784E7 /* ThriveFGCUViewController.swift */; };
 		DCE3630D1F05610600725F11 /* MailChimpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8461F0494FF002784E7 /* MailChimpViewController.swift */; };
-		DCE3630E1F05610600725F11 /* PrayerRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8471F0494FF002784E7 /* PrayerRequestsViewController.swift */; };
 		DCE3630F1F05610600725F11 /* ServeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8481F0494FF002784E7 /* ServeViewController.swift */; };
 		DCE363101F05610600725F11 /* SmallGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */; };
 		DCE363121F05610600725F11 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B84D1F0494FF002784E7 /* AboutViewController.swift */; };
-		DCE363151F05610600725F11 /* giveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8501F0494FF002784E7 /* giveViewController.swift */; };
-		DCE363161F05610600725F11 /* ImNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8511F0494FF002784E7 /* ImNewViewController.swift */; };
-		DCE363171F05610600725F11 /* MeetTheTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */; };
 		DCE363181F05610600725F11 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8531F0494FF002784E7 /* SocialViewController.swift */; };
-		DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */; };
 		DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8571F0494FF002784E7 /* DetailViewController.swift */; };
 		DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8581F0494FF002784E7 /* MasterViewController.swift */; };
 		DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */; };
@@ -149,21 +146,14 @@
 		AFC35240AEAFA3ADBFDE705E /* Pods-Thrive Church Official App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thrive Church Official App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App.debug.xcconfig"; sourceTree = "<group>"; };
 		DC01B7F01F04921B002784E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactButtonViewController.swift; sourceTree = "<group>"; };
-		DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		DC01B8431F0494FF002784E7 /* FGCUSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUSiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8441F0494FF002784E7 /* FGCUSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCUSocialViewController.swift; sourceTree = "<group>"; };
 		DC01B8451F0494FF002784E7 /* ThriveFGCUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThriveFGCUViewController.swift; sourceTree = "<group>"; };
 		DC01B8461F0494FF002784E7 /* MailChimpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailChimpViewController.swift; sourceTree = "<group>"; };
-		DC01B8471F0494FF002784E7 /* PrayerRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRequestsViewController.swift; sourceTree = "<group>"; };
 		DC01B8481F0494FF002784E7 /* ServeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServeViewController.swift; sourceTree = "<group>"; };
 		DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallGroupViewController.swift; sourceTree = "<group>"; };
 		DC01B84D1F0494FF002784E7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		DC01B8501F0494FF002784E7 /* giveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = giveViewController.swift; sourceTree = "<group>"; };
-		DC01B8511F0494FF002784E7 /* ImNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImNewViewController.swift; sourceTree = "<group>"; };
-		DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetTheTeamViewController.swift; sourceTree = "<group>"; };
 		DC01B8531F0494FF002784E7 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
-		DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		DC01B8571F0494FF002784E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC01B8581F0494FF002784E7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DC096B9B24A81EDD00CFD252 /* ConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationExtension.swift; sourceTree = "<group>"; };
@@ -219,6 +209,10 @@
 		DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionFooterView.swift; sourceTree = "<group>"; };
 		DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooterView.xib; sourceTree = "<group>"; };
 		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
+		DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicConfigResponse.swift; sourceTree = "<group>"; };
+		DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSiteViewController.swift; sourceTree = "<group>"; };
+		DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		DCB61AF921CB009B0049FCA2 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationVariables.swift; sourceTree = "<group>"; };
 		DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalSortBibleTableViewController.swift; sourceTree = "<group>"; };
@@ -413,13 +407,11 @@
 		DC01B83B1F0494FF002784E7 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
-				DC01B83C1F0494FF002784E7 /* ContactButtonViewController.swift */,
-				DC01B83D1F0494FF002784E7 /* DirectionsViewController.swift */,
 				DC01B83F1F0494FF002784E7 /* FGCU */,
 				DC01B8461F0494FF002784E7 /* MailChimpViewController.swift */,
-				DC01B8471F0494FF002784E7 /* PrayerRequestsViewController.swift */,
 				DC01B8481F0494FF002784E7 /* ServeViewController.swift */,
 				DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */,
+				DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */,
 			);
 			path = Connect;
 			sourceTree = "<group>";
@@ -448,12 +440,10 @@
 			isa = PBXGroup;
 			children = (
 				DC01B84D1F0494FF002784E7 /* AboutViewController.swift */,
-				DC01B8501F0494FF002784E7 /* giveViewController.swift */,
-				DC01B8511F0494FF002784E7 /* ImNewViewController.swift */,
-				DC01B8521F0494FF002784E7 /* MeetTheTeamViewController.swift */,
 				DC01B8531F0494FF002784E7 /* SocialViewController.swift */,
-				DC01B8541F0494FF002784E7 /* WebsiteViewController.swift */,
 				DC2667DE1F37FBA20020424C /* SettingsViewController.swift */,
+				DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */,
+				DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -476,6 +466,7 @@
 				DC096BA324A84FF400CFD252 /* ConfigKeys.swift */,
 				DC096BA524A854A500CFD252 /* ConfigsCollection.swift */,
 				DC096BA724A98F3300CFD252 /* ConfigSetting.swift */,
+				DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -816,14 +807,12 @@
 				DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */,
 				DC2D8F8E20DC712A00C9C938 /* TableViewControllerExtension.swift in Sources */,
 				DC096BA624A854A500CFD252 /* ConfigsCollection.swift in Sources */,
-				DCE363041F05610600725F11 /* ContactButtonViewController.swift in Sources */,
 				DC096B9F24A8287400CFD252 /* ConfigurationSettingResponse.swift in Sources */,
 				DCBCE19721D11F6500E3DCA4 /* SermonSeriesSummary.swift in Sources */,
 				DC9C0C0423B31AAC00C96788 /* ViewPlayerViewController.swift in Sources */,
 				DC096B9C24A81EDD00CFD252 /* ConfigurationExtension.swift in Sources */,
 				DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */,
 				DC0DE7F721EDA0A900820CE2 /* Reachability.swift in Sources */,
-				DCE363051F05610600725F11 /* DirectionsViewController.swift in Sources */,
 				DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */,
 				DC13383F21E582580089B3DD /* DoubleExtension.swift in Sources */,
 				DC246E2C21DA7A05007BA4D1 /* SermonDownloadsViewController.swift in Sources */,
@@ -838,6 +827,7 @@
 				DC7348BD21D5EE550057227D /* SeriesViewController.swift in Sources */,
 				DC13384121E584270089B3DD /* Storage.swift in Sources */,
 				DC0DE7F921EFF21C00820CE2 /* RecentlyPlayedViewController.swift in Sources */,
+				DCACA58824F1E2FC004871D6 /* ConnectTableViewController.swift in Sources */,
 				DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */,
 				DC3CAD3E21E2BDAC00C17EAF /* UITableViewExtension.swift in Sources */,
 				DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */,
@@ -845,9 +835,10 @@
 				DC21E1F320FBEE690054437D /* OnboardingPage.swift in Sources */,
 				DC7348C321D6BDFE0057227D /* StringExtensions.swift in Sources */,
 				DCE3630D1F05610600725F11 /* MailChimpViewController.swift in Sources */,
-				DCE3630E1F05610600725F11 /* PrayerRequestsViewController.swift in Sources */,
+				DCACA58C24FAE612004871D6 /* GenericSiteViewController.swift in Sources */,
 				DCC2398C20FFFDC7005973FA /* UIColorExtension.swift in Sources */,
 				DC3CAD3C21E2B94400C17EAF /* ListenCollectionViewController.swift in Sources */,
+				DCACA58E24FAF296004871D6 /* MoreTableViewController.swift in Sources */,
 				DCE3630F1F05610600725F11 /* ServeViewController.swift in Sources */,
 				DCA0A18C21F82A0A00C8A04B /* CustomCollectionFooterView.swift in Sources */,
 				DC21E1F820FBF1040054437D /* OnboardingControllerExtension.swift in Sources */,
@@ -857,18 +848,15 @@
 				DC7348BB21D5DE720057227D /* SermonSeriesResponse.swift in Sources */,
 				DC0DE7FB21EFF41F00820CE2 /* RecentlyWatchedTableViewCell.swift in Sources */,
 				DCE363121F05610600725F11 /* AboutViewController.swift in Sources */,
-				DCE363151F05610600725F11 /* giveViewController.swift in Sources */,
-				DCE363161F05610600725F11 /* ImNewViewController.swift in Sources */,
 				DCBCE19A21D1204A00E3DCA4 /* ListenCollectionViewControllerRepoExtension.swift in Sources */,
 				DCB61AFE21CB07B60049FCA2 /* ApplicationVariables.swift in Sources */,
 				DCBA77AF20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift in Sources */,
-				DCE363171F05610600725F11 /* MeetTheTeamViewController.swift in Sources */,
 				DC1DE6D621FAD7E100E73838 /* PageInfo.swift in Sources */,
 				DC7348BF21D6AB800057227D /* SermonMessage.swift in Sources */,
 				DCE363181F05610600725F11 /* SocialViewController.swift in Sources */,
 				DC1EBF8121D8812F001B1673 /* NowPlayingViewControllerExtension.swift in Sources */,
+				DCACA58A24F30DFC004871D6 /* DynamicConfigResponse.swift in Sources */,
 				DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */,
-				DCE363191F05610600725F11 /* WebsiteViewController.swift in Sources */,
 				DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */,
 				DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */,
 				41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */,
