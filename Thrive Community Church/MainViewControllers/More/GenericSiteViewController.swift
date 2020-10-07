@@ -23,9 +23,9 @@ class GenericSiteViewController: UIViewController, WKUIDelegate, WKNavigationDel
 		return view
 	}()
 	
-	var link: String = "https://google.com"
+	var link: String = "https://google.com/"
 	
-	public var site: String = "https://google.com" {
+	public var site: String = "https://google.com/" {
 		didSet {
 			self.link = site.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 		}
