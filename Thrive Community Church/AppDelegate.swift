@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 		Messaging.messaging().apnsToken = deviceToken
 		
-			
+		// Make sure that firebase has this APN token so that it knows where to send the notification
 		Messaging.messaging().setAPNSToken(deviceToken, type: MessagingAPNSTokenType.prod)
 	}
 	
