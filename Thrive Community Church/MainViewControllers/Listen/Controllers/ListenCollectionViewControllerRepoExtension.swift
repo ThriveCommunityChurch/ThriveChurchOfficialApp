@@ -183,6 +183,11 @@ extension ListenCollectionViewController {
 					else {
 						// maybe we can have an async thread here running that checks to see if every minute,
 						// we are getting close to beginning a live stream? (thoughts)
+						
+						DispatchQueue.main.async {
+							self.nextLive = Date(timeIntervalSince1970: 1602424800)
+							self.setBannerTime(nextLive: self.nextLive!)
+						}
 					}
 				})
 			}
@@ -205,7 +210,6 @@ extension ListenCollectionViewController {
 				
 				return
 			}
-			
 			do {
 				
 				//let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
