@@ -208,7 +208,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNa-dX-Y5F">
                                                 <rect key="frame" x="0.0" y="473" width="375" height="100"/>
                                                 <subviews>
-                                                    <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2020 Thrive Community Church.                                                                     All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
+                                                    <textView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="© 2021 Thrive Community Church.                                                                     All Rights Reserved. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enr-Jp-ZRk">
                                                         <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -693,7 +693,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ew-aj-zQJ">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="50"/>
+                                            <rect key="frame" x="8" y="0.0" width="359" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
