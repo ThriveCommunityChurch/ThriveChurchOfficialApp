@@ -54,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 		
 		application.registerForRemoteNotifications()
 		
+		// we can only reset this on each application launch AFTER we're registered for notifications
+		UIApplication.shared.applicationIconBadgeNumber = 0
+		
 		Messaging.messaging().token { token, error in
 		  if let error = error {
 			print("Error fetching FCM registration token: \(error)")
