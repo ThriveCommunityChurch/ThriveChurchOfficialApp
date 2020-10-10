@@ -53,18 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 		  completionHandler: {_, _ in })
 		
 		application.registerForRemoteNotifications()
-		
-		// we can only reset this on each application launch AFTER we're registered for notifications
-		UIApplication.shared.applicationIconBadgeNumber = 0
-		
-		Messaging.messaging().token { token, error in
-		  if let error = error {
-			print("Error fetching FCM registration token: \(error)")
-		  }
-		  else if let token = token {
-			print("FCM registration token: \(token)")
-		  }
-		}
 				
 		UpdateCacheForAPIDomain()
 		
@@ -95,9 +83,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 	}
 	
 	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-		print("Firebase registration token: \(String(describing: fcmToken))")
+		
+		Messaging.messaging().token { token, error in
+			
+			if (fcmToken == token) {
+				print("FCM Tokens match!")
+			}
+			
+			if let error = error {
+				print("Error fetching FCM registration token: \(error)")
+			}
+			else if let token = token {
+				print("FCM registration token: \(token)")
+			}
+		}
 
-	  let dataDict:[String: String] = ["token": fcmToken ]
+		let dataDict:[String: String] = ["token": fcmToken ]
 	  
 		NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
 	}
@@ -107,25 +108,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 								willPresent notification: UNNotification,
 	  withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 		
-	  let userInfo = notification.request.content.userInfo
+	    let userInfo = notification.request.content.userInfo
 
-	  // With swizzling disabled you must let Messaging know about the message, for Analytics
-	  Messaging.messaging().appDidReceiveMessage(userInfo)
-
-	  // Change this to your preferred presentation option
-	  completionHandler([[.alert, .sound]])
+	    // With swizzling disabled you must let Messaging know about the message, for Analytics
+	    Messaging.messaging().appDidReceiveMessage(userInfo)
+		
+		
+	    // Change this to your preferred presentation option
+	    completionHandler([[.alert, .badge, .sound]])
 	}
 
 	func userNotificationCenter(_ center: UNUserNotificationCenter,
 								didReceive response: UNNotificationResponse,
 								withCompletionHandler completionHandler: @escaping () -> Void) {
 		
-	  let userInfo = response.notification.request.content.userInfo
+		  let userInfo = response.notification.request.content.userInfo
 
-	  // With swizzling disabled you must let Messaging know about the message, for Analytics
-	  Messaging.messaging().appDidReceiveMessage(userInfo)
+		  // With swizzling disabled you must let Messaging know about the message, for Analytics
+		  Messaging.messaging().appDidReceiveMessage(userInfo)
 
-	  completionHandler()
+		  completionHandler()
 	}
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -165,11 +167,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+		
         print("application Will Enter Foreground")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+		
+		// we can only reset this on each application launch AFTER we're registered for notifications
+		UIApplication.shared.applicationIconBadgeNumber = 0
+		
         print("application Did Become Active")
     }
     
