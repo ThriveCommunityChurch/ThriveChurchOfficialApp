@@ -66,6 +66,12 @@ extension SermonMessage {
 		else {
 			// we haven't found anything in UD so add something
 			self.previouslyPlayed = NSTimeIntervalSince1970
+			
+			// set the image from the above series if it hasn't already been set
+			if self.seriesArt == nil {
+				self.seriesArt = seriesImage?.pngData()
+			}
+			
 			recentlyPlayed.insert(self, at: 0)
 		}
 		
