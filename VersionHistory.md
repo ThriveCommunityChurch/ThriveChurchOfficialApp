@@ -2,7 +2,7 @@
 
 ### Rev. 6 (current)
 <details>
-    <summary>TBD</summary>
+    <summary>Oct. 17, 2020</summary>
     <ul>
         <li>Sign up to receive notifications from us right on your phone!</li>
         <li>Fixing an issue with users who attempt to listen to sermon audio from recently played when they only have 1 recently played item</li>
