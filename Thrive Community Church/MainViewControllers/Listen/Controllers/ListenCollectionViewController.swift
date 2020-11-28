@@ -404,8 +404,20 @@ MFMailComposeViewControllerDelegate {
 		view.addSubview(countdownBannerView)
 		
 		let now = Date()
+		let nowDateFormatter = DateFormatter()
+		nowDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+		nowDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		nowDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		let nowString = nowDateFormatter.string(from: now)
 		
-		let remaining: TimeInterval = nextLive.timeIntervalSince(now)
+		let nowDate = nowDateFormatter.date(from: nowString) ?? Date()
+		
+		let remaining: TimeInterval = nextLive.timeIntervalSince(nowDate)
+		
+		if (remaining.isZero || remaining.isLess(than: 0.0)) {
+			return
+		}
+		
 		let formatter = DateComponentsFormatter()
 		formatter.allowedUnits = [.day, .hour, .minute, .second]
 		formatter.unitsStyle = .abbreviated
@@ -454,6 +466,12 @@ MFMailComposeViewControllerDelegate {
 		let now = Date()
 		
 		let remaining: TimeInterval = nextLive?.timeIntervalSince(now) ?? 0
+		
+		if (remaining.isZero || remaining.isLess(than: 0.0)) {
+			self.countdownBannerView.isHidden = true
+			self.removeTimer()
+		}
+		
 		let formatter = DateComponentsFormatter()
 		formatter.allowedUnits = [.day, .hour, .minute, .second]
 		formatter.unitsStyle = .abbreviated
