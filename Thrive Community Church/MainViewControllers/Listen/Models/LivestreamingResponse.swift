@@ -15,4 +15,5 @@ class LivestreamingResponse: NSObject, Decodable {
 	var Title: String?
 	var SpecialEventTimes: String?
 	var IsSpecialEvent: Bool = false
+	var NextLive: String?
 }

@@ -183,6 +183,18 @@ extension ListenCollectionViewController {
 					else {
 						// maybe we can have an async thread here running that checks to see if every minute,
 						// we are getting close to beginning a live stream? (thoughts)
+						
+						DispatchQueue.main.async {
+							// get the next time from the API
+							let nowDateFormatter = DateFormatter()
+							nowDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+							nowDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+							nowDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+							
+							self.nextLive = nowDateFormatter.date(from: livestream.NextLive ?? "") ?? Date()
+							
+							self.setBannerTime(nextLive: self.nextLive!)
+						}
 					}
 				})
 			}
@@ -205,7 +217,6 @@ extension ListenCollectionViewController {
 				
 				return
 			}
-			
 			do {
 				
 				//let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)

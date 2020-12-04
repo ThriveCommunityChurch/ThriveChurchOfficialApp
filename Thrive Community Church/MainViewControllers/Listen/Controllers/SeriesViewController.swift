@@ -231,6 +231,14 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let selectedMessage = messages[indexPath.row]
 		messageForDownload = selectedMessage
 		
+		// tapping on an item that has no options doesn't do anything
+		if selectedMessage.AudioUrl == nil && selectedMessage.VideoUrl == nil &&
+			selectedMessage.PassageRef == nil
+			{
+				self.seriesTable.deselectRow(indexPath: indexPath)
+				return
+			}
+		
 		let alert = UIAlertController(title: "\(series?.Name ?? "") - Week \(selectedMessage.WeekNum ?? 0)",
 									  message: "Please select an action",
 									  preferredStyle: .actionSheet)

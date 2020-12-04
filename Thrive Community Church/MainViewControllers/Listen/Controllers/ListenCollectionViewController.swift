@@ -21,6 +21,7 @@ MFMailComposeViewControllerDelegate {
 	var apiUrl: String = "nil"
 	var secondsRemaining: Double?
 	var expireTime: Date?
+	var nextLive: Date?
 	var timer = Timer()
 	var loading: Bool = false
 	var pollingData: LivePollingResponse?
@@ -29,6 +30,7 @@ MFMailComposeViewControllerDelegate {
 	var playedMessage: Bool = false
 	private var alreadySelected: Bool = false
 	var seriesMapping = [String: SermonSeries]()
+	var countdownTimer: Timer? = nil
 	
 	// Loading View
 	var footerView: CustomFooterView?
@@ -59,8 +61,24 @@ MFMailComposeViewControllerDelegate {
 	let backgroundView: UIView = {
 		let view = UIView()
 		view.backgroundColor = UIColor.bgDarkBlue
-		view.translatesAutoresizingMaskIntoConstraints = true
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
+	}()
+	
+	let countdownBannerView: UIView = {
+		let view = UIView()
+		view.backgroundColor = .clear
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	
+	let countdownBannerLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont(name: "Avenir-Medium", size: 15)
+		label.textColor = .lessLightLightGray
+		label.textAlignment = .center
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
 	}()
 	
 	let retryButton: UIButton = {
@@ -374,6 +392,93 @@ MFMailComposeViewControllerDelegate {
 		else {
 			UIApplication.shared.open(url, options: [:], completionHandler: nil)
 		}
+	}
+	
+	func removeTimer() {
+		self.countdownTimer?.invalidate()
+		self.countdownTimer = nil
+		self.countdownTimer = Timer()
+	}
+	
+	func setBannerTime(nextLive: Date) {
+		view.addSubview(countdownBannerView)
+		
+		let now = Date()
+		let nowDateFormatter = DateFormatter()
+		nowDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+		nowDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		nowDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		let nowString = nowDateFormatter.string(from: now)
+		
+		let nowDate = nowDateFormatter.date(from: nowString) ?? Date()
+		
+		let remaining: TimeInterval = nextLive.timeIntervalSince(nowDate)
+		
+		if (remaining.isZero || remaining.isLess(than: 0.0)) {
+			return
+		}
+		
+		let formatter = DateComponentsFormatter()
+		formatter.allowedUnits = [.day, .hour, .minute, .second]
+		formatter.unitsStyle = .abbreviated
+
+		let formattedString = formatter.string(from: remaining)!
+		
+		countdownBannerLabel.text = "We're live in \(formattedString)"
+		
+		NSLayoutConstraint.activate([
+			countdownBannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			countdownBannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			countdownBannerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			countdownBannerView.heightAnchor.constraint(equalToConstant: 22)
+		])
+		
+		let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+		let blurEffectView = UIVisualEffectView(effect: blurEffect)
+		blurEffectView.frame = countdownBannerView.bounds
+		blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		countdownBannerView.addSubview(blurEffectView)
+		
+		
+		countdownBannerView.addSubview(countdownBannerLabel)
+		NSLayoutConstraint.activate([
+			countdownBannerLabel.centerYAnchor.constraint(equalTo: countdownBannerView.centerYAnchor),
+			countdownBannerLabel.centerXAnchor.constraint(equalTo: countdownBannerView.centerXAnchor)
+		])
+		
+		startTimerCountdownForNextLive(remaining: remaining)
+	}
+	
+	func startTimerCountdownForNextLive(remaining: TimeInterval) {
+		
+		
+		self.countdownTimer = Timer.scheduledTimer(timeInterval: 1.0,
+														 target: self,
+														 selector: #selector(self.processCountdownTimerChange),
+														 userInfo: nil, repeats: true)
+		
+		// make the timer tick even when the user is scrolling
+		RunLoop.current.add(self.countdownTimer!, forMode: .common)
+	}
+	
+	@objc func processCountdownTimerChange() {
+		
+		let now = Date()
+		
+		let remaining: TimeInterval = nextLive?.timeIntervalSince(now) ?? 0
+		
+		if (remaining.isZero || remaining.isLess(than: 0.0)) {
+			self.countdownBannerView.isHidden = true
+			self.removeTimer()
+		}
+		
+		let formatter = DateComponentsFormatter()
+		formatter.allowedUnits = [.day, .hour, .minute, .second]
+		formatter.unitsStyle = .abbreviated
+
+		let formattedString = formatter.string(from: remaining)!
+		
+		countdownBannerLabel.text = "We're live in \(formattedString)"
 	}
 	
 	func setupViews() {
