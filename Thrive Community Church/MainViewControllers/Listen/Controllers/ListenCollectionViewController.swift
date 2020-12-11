@@ -470,6 +470,8 @@ MFMailComposeViewControllerDelegate {
 		if (remaining.isZero || remaining.isLess(than: 0.0)) {
 			self.countdownBannerView.isHidden = true
 			self.removeTimer()
+			self.livestreamButton.isEnabled = true
+			self.expireTime = self.nextLive
 		}
 		
 		let formatter = DateComponentsFormatter()
