@@ -471,7 +471,13 @@ MFMailComposeViewControllerDelegate {
 			self.countdownBannerView.isHidden = true
 			self.removeTimer()
 			self.livestreamButton.isEnabled = true
-			self.expireTime = self.nextLive
+			
+			// let's check after 30s if the stream is "really active"
+			// this allows the stream to expire after it should but gives the server 30s
+			// to set the stream as acive
+			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 30, execute: {
+				self.pollForLiveData()
+			})
 		}
 		
 		let formatter = DateComponentsFormatter()
