@@ -1,6 +1,14 @@
 # 1.7 
 
-### Rev. 6 (current)
+### Rev. 7 (current)
+<details>
+    <summary>TBD</summary>
+    <ul>
+        <li>You'll now be able to see how long until we go live!</li>
+    </ul>
+</details>
+
+### Rev. 6
 <details>
     <summary>Oct. 17, 2020</summary>
     <ul>
