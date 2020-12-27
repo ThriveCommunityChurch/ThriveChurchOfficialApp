@@ -32,13 +32,6 @@ extension Double {
 		return (Double(self) / 1024 / 1024)
 	}
 	
-	/// return a number of seconds into a number of hours minutes and seconds
-	func secondsToHoursMinutesSeconds() -> (Double, Double, Double) {
-		let (hr,  minf) = modf (self / 3600)
-		let (min, secf) = modf (60 * minf)
-		return (hr, min, 60 * secf)
-	}
-	
 	/// return a duration in minutes or hours for the length of a number of seconds
 	func formatDurationForUI(displayAsPositional: Bool = false) -> String? {
 		
