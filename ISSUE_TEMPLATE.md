@@ -1,10 +1,9 @@
 ## User Story
-
 As a _____ I want ______ , so that ______.
 
 ### Acceptance Criteria
-- [ ] Add "yes/no" items to the list so it's known for certian this was done.
-- [ ] Email was Recieved
+- [ ] Add "yes/no" items to the list so it's known for certain this was done.
+- [ ] Email was Received
 
 ## Tasks
 - [ ] Add simple tasks that we need to accomplish to get to the goal of completing the story.
