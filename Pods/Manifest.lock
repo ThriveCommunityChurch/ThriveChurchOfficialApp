@@ -1,4 +1,5 @@
 PODS:
+  - FeedKit (9.1.2)
   - Firebase/Analytics (6.33.0):
     - Firebase/Core
   - Firebase/Core (6.33.0):
@@ -90,6 +91,7 @@ PODS:
   - Protobuf (3.13.0)
 
 DEPENDENCIES:
+  - FeedKit (~> 9.0)
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Crashlytics
@@ -97,6 +99,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - FeedKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -113,6 +116,7 @@ SPEC REPOS:
     - Protobuf
 
 SPEC CHECKSUMS:
+  FeedKit: 71653273ab08e618cd6fd1301ca08fc02dca6a9e
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
   FirebaseAnalytics: 5dd088bd2e67bb9d13dbf792d1164ceaf3052193
   FirebaseCore: d889d9e12535b7f36ac8bfbf1713a0836a3012cd
@@ -128,6 +132,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
 
-PODFILE CHECKSUM: e60168a224880415341bab7e12fbdb908140c87f
+PODFILE CHECKSUM: 7091fb7bc4d761e1d978a2a94861c5434cea431b
 
 COCOAPODS: 1.9.2

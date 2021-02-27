@@ -57,7 +57,7 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			
 			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(formattedAddress ?? ""))&dirflg=d")
 		}
-		else if (config.Setting == nil) {
+		else if (config.Setting == nil && config.CellTitle != "Announcements") {
 			self.present(config.Destination, animated: true, completion: nil)
 		}
 		else {
@@ -202,6 +202,14 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			
 			tempList.append(settingToAdd)
 		}
+		
+		let announcementsVC = RSSTableViewController()
+		
+		let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: announcementsVC,
+																			 setting: nil,
+																			 title: "Announcements")
+		
+		tempList.append(settingToAdd)
 		
 		var response: [Int: DynamicConfigResponse] = [Int: DynamicConfigResponse]()
 		

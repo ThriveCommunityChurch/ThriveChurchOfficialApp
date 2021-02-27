@@ -54,6 +54,8 @@
 		DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348C021D6AE5F0057227D /* SermonMessageTableViewCell.swift */; };
 		DC7348C321D6BDFE0057227D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348C221D6BDFE0057227D /* StringExtensions.swift */; };
 		DC7348C521D6F8070057227D /* LivestreamingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348C421D6F8070057227D /* LivestreamingResponse.swift */; };
+		DC735F4425E6D8300056CB65 /* RSSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC735F4325E6D8300056CB65 /* RSSTableViewController.swift */; };
+		DC735F4925E6D9050056CB65 /* RSSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC735F4825E6D9050056CB65 /* RSSTableViewCell.swift */; };
 		DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7652711EEB5395007C0998 /* Assets.xcassets */; };
 		DC80C45421D7391700AF08E1 /* LivePollingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */; };
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
@@ -89,6 +91,7 @@
 		DCF6987A220A87AD001B1A0C /* ReadSermonPassageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */; };
 		DCF6987C220AA9DC001B1A0C /* GetPassageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */; };
 		DCF88FD420AE4E9000516C2D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */; };
+		DCF8A09725E6FB0C00B3A405 /* RSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8A09625E6FB0C00B3A405 /* RSSViewController.swift */; };
 		DCF9385A252E254D009EACEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
 		DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -203,6 +206,8 @@
 		DC7348C021D6AE5F0057227D /* SermonMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonMessageTableViewCell.swift; sourceTree = "<group>"; };
 		DC7348C221D6BDFE0057227D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		DC7348C421D6F8070057227D /* LivestreamingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivestreamingResponse.swift; sourceTree = "<group>"; };
+		DC735F4325E6D8300056CB65 /* RSSTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSTableViewController.swift; sourceTree = "<group>"; };
+		DC735F4825E6D9050056CB65 /* RSSTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSTableViewCell.swift; sourceTree = "<group>"; };
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC80C45321D7391700AF08E1 /* LivePollingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePollingResponse.swift; sourceTree = "<group>"; };
 		DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlayerViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +231,7 @@
 		DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSermonPassageViewController.swift; sourceTree = "<group>"; };
 		DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPassageResponse.swift; sourceTree = "<group>"; };
 		DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		DCF8A09625E6FB0C00B3A405 /* RSSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSViewController.swift; sourceTree = "<group>"; };
 		DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonMessageExtensions.swift; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -414,6 +420,9 @@
 				DC01B8481F0494FF002784E7 /* ServeViewController.swift */,
 				DC01B8491F0494FF002784E7 /* SmallGroupViewController.swift */,
 				DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */,
+				DC735F4325E6D8300056CB65 /* RSSTableViewController.swift */,
+				DC735F4825E6D9050056CB65 /* RSSTableViewCell.swift */,
+				DCF8A09625E6FB0C00B3A405 /* RSSViewController.swift */,
 			);
 			path = Connect;
 			sourceTree = "<group>";
@@ -700,6 +709,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Thrive Church Official App/Pods-Thrive Church Official App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -707,6 +717,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -819,6 +830,8 @@
 				DC0DE7F721EDA0A900820CE2 /* Reachability.swift in Sources */,
 				DC7348C121D6AE5F0057227D /* SermonMessageTableViewCell.swift in Sources */,
 				DC13383F21E582580089B3DD /* DoubleExtension.swift in Sources */,
+				DC735F4925E6D9050056CB65 /* RSSTableViewCell.swift in Sources */,
+				DCF8A09725E6FB0C00B3A405 /* RSSViewController.swift in Sources */,
 				DC246E2C21DA7A05007BA4D1 /* SermonDownloadsViewController.swift in Sources */,
 				DC2667DF1F37FBA20020424C /* SettingsViewController.swift in Sources */,
 				DC1EBF7F21D84A37001B1673 /* NowPlayingViewController.swift in Sources */,
@@ -859,6 +872,7 @@
 				DC7348BF21D6AB800057227D /* SermonMessage.swift in Sources */,
 				DCE363181F05610600725F11 /* SocialViewController.swift in Sources */,
 				DC1EBF8121D8812F001B1673 /* NowPlayingViewControllerExtension.swift in Sources */,
+				DC735F4425E6D8300056CB65 /* RSSTableViewController.swift in Sources */,
 				DCACA58A24F30DFC004871D6 /* DynamicConfigResponse.swift in Sources */,
 				DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */,
 				DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */,
@@ -1022,7 +1036,7 @@
 				CURRENT_PROJECT_VERSION = 1.7.7.3;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.7.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
@@ -1031,7 +1045,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1047,7 +1061,7 @@
 				CURRENT_PROJECT_VERSION = 1.7.7.3;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.7.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
@@ -1056,7 +1070,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

@@ -10,6 +10,7 @@ target 'Thrive Church Official App' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
+  pod 'FeedKit', '~> 9.0'
 
   target 'Thrive Church Official AppTests' do
     inherit! :search_paths
