@@ -131,11 +131,17 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 					print("\nERR LOADING RSS: SermonMessage for ID \(messageId) could not be found in UserDefaults. The save operation may not have completed properly or synchronize() may not have been called.")
 				}
 				else {
-				
-					// reading from the messageId collection in UD
-					let decodedSermonMessage = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! SermonMessage
-					
-					self.downloadedMessages.append(decodedSermonMessage)
+
+					do {
+						// reading from the messageId collection in UD
+						let decodedSermonMessage = try NSKeyedUnarchiver.unarchivedObject(ofClass: SermonMessage.self, from: decoded!)
+						
+						self.downloadedMessages.append(decodedSermonMessage!)
+					}
+					catch let errorMessage {
+						print(errorMessage)
+						print("Error reading downloaded sermons from UserDefaults")
+				   }
 				}
 			}
 		}
