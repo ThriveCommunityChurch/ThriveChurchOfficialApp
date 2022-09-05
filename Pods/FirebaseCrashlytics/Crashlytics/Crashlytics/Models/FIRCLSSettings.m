@@ -251,30 +251,6 @@ NSString *const AppVersion = @"app_version";
   return 60 * 60;
 }
 
-#pragma mark - Identifiers
-
-- (nullable NSString *)orgID {
-  return self.fabricSettings[@"org_id"];
-}
-
-- (nullable NSString *)fetchedBundleID {
-  return self.fabricSettings[@"bundle_id"];
-}
-
-#pragma mark - Onboarding / Update
-
-- (NSString *)appStatus {
-  return self.appSettings[@"status"];
-}
-
-- (BOOL)appNeedsOnboarding {
-  return [self.appStatus isEqualToString:@"new"];
-}
-
-- (BOOL)appUpdateRequired {
-  return [[self.appSettings objectForKey:@"update_required"] boolValue];
-}
-
 #pragma mark - On / Off Switches
 
 - (BOOL)errorReportingEnabled {
@@ -303,19 +279,14 @@ NSString *const AppVersion = @"app_version";
   return YES;
 }
 
-- (BOOL)shouldUseNewReportEndpoint {
-  NSNumber *value = [self appSettings][@"report_upload_variant"];
+- (BOOL)metricKitCollectionEnabled {
+  NSNumber *value = [self featuresSettings][@"collect_metric_kit"];
 
-  // Default to use the new endpoint when settings were not successfully fetched
-  // or there's an unexpected issue
-  if (value == nil) {
-    return YES;
+  if (value != nil) {
+    return value.boolValue;
   }
 
-  // 0 - Unknown
-  // 1 - Legacy
-  // 2 - New
-  return value.intValue == 2;
+  return NO;
 }
 
 #pragma mark - Optional Limit Overrides
@@ -352,6 +323,38 @@ NSString *const AppVersion = @"app_version";
   }
 
   return 64;
+}
+
+#pragma mark - On Demand Reporting Parameters
+
+- (double)onDemandUploadRate {
+  NSNumber *value = self.settingsDictionary[@"on_demand_upload_rate_per_minute"];
+
+  if (value != nil) {
+    return value.doubleValue;
+  }
+
+  return 10;  // on-demand uploads allowed per minute
+}
+
+- (double)onDemandBackoffBase {
+  NSNumber *value = self.settingsDictionary[@"on_demand_backoff_base"];
+
+  if (value != nil) {
+    return [value doubleValue];
+  }
+
+  return 1.5;  // base of exponent for exponential backoff
+}
+
+- (uint32_t)onDemandBackoffStepDuration {
+  NSNumber *value = self.settingsDictionary[@"on_demand_backoff_step_duration_seconds"];
+
+  if (value != nil) {
+    return value.unsignedIntValue;
+  }
+
+  return 6;  // step duration for exponential backoff
 }
 
 @end
