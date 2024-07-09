@@ -262,13 +262,13 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "download")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
+        button.addTarget(NowPlayingViewController.self, action: #selector(downloadAudio), for: .touchUpInside)
 		return button
 	}()
 	
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.style = .whiteLarge
+		indicator.style = .large
 		indicator.color = .lightGray
 		indicator.backgroundColor = .clear
 		// Will need to scale down the spinner since it's a tad too big
@@ -282,7 +282,7 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "pause")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.addTarget(self, action: #selector(pauseAudio), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pauseAudio), for: .touchUpInside)
 		return button
 	}()
 	
@@ -291,7 +291,7 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "fastForward")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.addTarget(self, action: #selector(fastForward), for: .touchUpInside)
+        button.addTarget(self, action: #selector(fastForward), for: .touchUpInside)
 		return button
 	}()
 	
@@ -300,7 +300,7 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "rewind")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.addTarget(self, action: #selector(rewind), for: .touchUpInside)
+        button.addTarget(self, action: #selector(rewind), for: .touchUpInside)
 		return button
 	}()
 	
@@ -309,7 +309,7 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "play")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.addTarget(self, action: #selector(playAudio), for: .touchUpInside)
+        button.addTarget(self, action: #selector(playAudio), for: .touchUpInside)
 		return button
 	}()
 	
@@ -318,7 +318,7 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "stop")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.addTarget(self, action: #selector(stopAudio), for: .touchUpInside)
+        button.addTarget(self, action: #selector(stopAudio), for: .touchUpInside)
 		return button
 	}()
 	

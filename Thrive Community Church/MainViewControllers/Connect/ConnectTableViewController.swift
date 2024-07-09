@@ -57,7 +57,7 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			
 			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(formattedAddress ?? ""))&dirflg=d")
 		}
-		else if (config.Setting == nil) {
+		else if (config.Setting == nil && config.CellTitle != "Announcements") {
 			self.present(config.Destination, animated: true, completion: nil)
 		}
 		else {
@@ -94,9 +94,16 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 				var email: String = "info@thrive-fl.org"
 				
 				// reading from the messageId collection in UD
-				let decoded = NSKeyedUnarchiver.unarchiveObject(with: emailData!) as! ConfigSetting
+                var decoded: ConfigSetting? = nil
+                
+                do {
+                    decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: emailData!)
+                }
+                catch {
+                    
+                }
 				
-				email = "\(decoded.Value ?? "info@thrive-fl.org")"
+				email = "\(decoded?.Value ?? "info@thrive-fl.org")"
 				
 				vc.addAction(UIAlertAction(title: "Email us", style: .default, handler: { (action) in
 					
@@ -119,9 +126,16 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 				vc.addAction(UIAlertAction(title: "Call us", style: .default, handler: { (action) in
 					
 					// reading from the messageId collection in UD
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: phoneData!) as! ConfigSetting
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: phoneData!)
+                    }
+                    catch {
+                        
+                    }
 					
-					if let url = URL(string: "tel://\(decoded.Value ?? "2396873430")") {
+					if let url = URL(string: "tel://\(decoded?.Value ?? "2396873430")") {
 						
 						if UIApplication.shared.canOpenURL(url) {
 							UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -136,16 +150,20 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			
 			if (prayersData != nil) {
 				
-				vc.addAction(UIAlertAction(title: "Submit a prayer request", style: .default, handler: { (action) in
+                vc.addAction(UIAlertAction(title: "Submit a prayer request", style: .default, handler: { (action) in
 					
 					// reading from the messageId collection in UD
-					let prayerDecoded = NSKeyedUnarchiver.unarchiveObject(with: prayersData!) as! ConfigSetting
-					
-					let prayerVC = GenericSiteViewController()
-					prayerVC.link = prayerDecoded.Value!
-					prayerVC.navHeader = "Prayer request"
-					
-					self.show(prayerVC, sender: self)
+                    do {
+                        if let prayerDecoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: prayersData!) {
+                            let prayerVC = GenericSiteViewController()
+                            prayerVC.link = prayerDecoded.Value!
+                            prayerVC.navHeader = "Prayer request"
+                            
+                            self.show(prayerVC, sender: self)
+                        }
+                        
+                    }
+                    catch {}
 				}))
 			}
 			
@@ -160,7 +178,14 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 		if addressData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: addressData!) as! ConfigSetting
+            var decoded: ConfigSetting? = nil
+            
+            do {
+                decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: addressData!)
+            }
+            catch {
+                
+            }
 			
 			let nowhere = UIViewController()
 			
@@ -174,34 +199,50 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 		if smallGroupData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: smallGroupData!) as! ConfigSetting
-			
-			let groupsVC = GenericSiteViewController()
-			groupsVC.link = decoded.Value!
-			groupsVC.navHeader = "Join a small group"
-			
-			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
-																				 setting: decoded,
-																				 title: "Join a small group")
-			
-			tempList.append(settingToAdd)
+            do {
+                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: smallGroupData!) {
+                    let groupsVC = GenericSiteViewController()
+                    groupsVC.link = decoded.Value!
+                    groupsVC.navHeader = "Join a small group"
+                    
+                    let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
+                                                                                         setting: decoded,
+                                                                                         title: "Join a small group")
+                    
+                    tempList.append(settingToAdd)
+                }
+                
+            }
+            catch {}
 		}
 		
 		if serveData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: serveData!) as! ConfigSetting
-			
-			let groupsVC = GenericSiteViewController()
-			groupsVC.link = decoded.Value!
-			groupsVC.navHeader = "Serve"
-			
-			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
-																				 setting: decoded,
-																				 title: "Serve")
-			
-			tempList.append(settingToAdd)
+            do {
+                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: serveData!) {
+                    let groupsVC = GenericSiteViewController()
+                    groupsVC.link = decoded.Value!
+                    groupsVC.navHeader = "Serve"
+                    
+                    let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
+                                                                                         setting: decoded,
+                                                                                         title: "Serve")
+                    
+                    tempList.append(settingToAdd)
+                }
+                
+            }
+            catch {}
 		}
+		
+		let announcementsVC = RSSTableViewController()
+		
+		let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: announcementsVC,
+																			 setting: nil,
+																			 title: "Announcements")
+		
+		tempList.append(settingToAdd)
 		
 		var response: [Int: DynamicConfigResponse] = [Int: DynamicConfigResponse]()
 		

@@ -193,7 +193,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
 		
-		let headerHeight = UIApplication.shared.statusBarFrame.height +
+		let headerHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0 +
 		self.navigationController!.navigationBar.frame.height
 		
         if let youtubeURL = URL(string: "https://www.youtube.com/embed/\(videoID)?playsinline=1") {
@@ -258,7 +258,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 	
 	func setSpinner(spinner: UIActivityIndicatorView) {
 		
-		spinner.style = .whiteLarge
+        spinner.style = UIActivityIndicatorView.Style.large
 		spinner.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255,
 										  alpha: 0.60)
 		spinner.color = .white

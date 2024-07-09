@@ -36,10 +36,15 @@ class ConfigurationExtension {
 															 from: data!)
 				
 				// before we can place objects into Defaults they have to be encoded
-				let encodedConfig: Data = NSKeyedArchiver.archivedData(withRootObject: config)
-				
-				UserDefaults.standard.set(encodedConfig, forKey: key)
-				UserDefaults.standard.synchronize()
+                do {
+                    let encodedConfig: Data = try NSKeyedArchiver.archivedData(withRootObject: config, requiringSecureCoding: true)
+                    
+                    UserDefaults.standard.set(encodedConfig, forKey: key)
+                    UserDefaults.standard.synchronize()
+                }
+                catch {
+                    
+                }
 				
 				completion(config)
 			}
@@ -49,7 +54,7 @@ class ConfigurationExtension {
 		}.resume()
 	}
 	
-	public static func LoadConfigs() {
+	public static func RetrieveConfigurations() {
 		
 		var apiUrl: String = ""
 		
@@ -68,8 +73,10 @@ class ConfigurationExtension {
 		}
 		
 		query = String(query.dropLast())
+        let urlString = "\(apiUrl)api/config/list/?\(query)"
+        print("Configs URL: \(urlString)")
 		
-		let url = NSURL(string: "\(apiUrl)api/config/list/?\(query)")
+		let url = NSURL(string: urlString)
 		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
 			
 			// something went wrong here
@@ -94,13 +101,18 @@ class ConfigurationExtension {
 					let localConfig = ConfigSetting(key: config.Key, value: config.Value, type: enumValue)
 					
 					// before we can place objects into Defaults they have to be encoded
-					let encodedConfig: Data = NSKeyedArchiver.archivedData(withRootObject: localConfig)
-
-					print(config.Key!)
-					UserDefaults.standard.set(encodedConfig, forKey: config.Key!)
-					UserDefaults.standard.synchronize()
-
-					configsList.append(localConfig)
+                    do {
+                        let encodedConfig: Data = try NSKeyedArchiver.archivedData(withRootObject: localConfig, requiringSecureCoding: true)
+                        UserDefaults.standard.set(encodedConfig, forKey: config.Key!)
+                        UserDefaults.standard.synchronize()
+                        
+                        print(config.Key!)
+                        configsList.append(localConfig)
+                    }
+                    catch let error {
+                        print("Failed to set config for \(config.Key!)")
+                        throw error
+                    }
 				}
 				
 			}

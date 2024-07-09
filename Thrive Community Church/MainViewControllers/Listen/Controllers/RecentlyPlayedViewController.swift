@@ -23,7 +23,7 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 	
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.style = .whiteLarge
+		indicator.style = .large
 		indicator.color = .white
 		indicator.backgroundColor = .clear
 		indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -169,12 +169,17 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 					// we also need to re-set the Cache for these values
 					
 					// before we can place objects into Defaults they have to be encoded
-					let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self.messages)
-					
-					// we have a reference to this message in the above Defaults array,
-					// so store everything
-					UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
-					UserDefaults.standard.synchronize()
+                    do {
+                        let encodedData: Data = try NSKeyedArchiver.archivedData(withRootObject: self.messages, requiringSecureCoding: true)
+                        
+                        // we have a reference to this message in the above Defaults array,
+                        // so store everything
+                        UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
+                        UserDefaults.standard.synchronize()
+                    }
+                    catch {
+                        
+                    }
 				}
 			}
 		}
@@ -236,8 +241,16 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
 		if decoded != nil {
 			
-			let decodedSermonMessages = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
-
+            var decodedSermonMessages: [SermonMessage] = [SermonMessage]()
+            
+            do {
+                decodedSermonMessages = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: SermonMessage.self, from: decoded!) ?? [SermonMessage]()
+            }
+            catch {
+                decodedSermonMessages = [SermonMessage]()
+                return
+            }
+            
 			// get the recently played sermon messages
 			self.messages = decodedSermonMessages
 			

@@ -101,7 +101,6 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		// add subviews
 		view.addSubview(downloadsTableView)
 		
-		
 		// constraints
 		NSLayoutConstraint.activate([
 			downloadsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -115,6 +114,8 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		
 		// reinit the object just to make sure that there's nothing in it
 		self.downloadedMessages = [SermonMessage]()
+        
+        UserDefaults.standard.synchronize()
 		
 		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
 			self.downloadedMessageIds = loadedData
@@ -131,11 +132,17 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 					print("\nERR LOADING RSS: SermonMessage for ID \(messageId) could not be found in UserDefaults. The save operation may not have completed properly or synchronize() may not have been called.")
 				}
 				else {
-				
-					// reading from the messageId collection in UD
-					let decodedSermonMessage = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! SermonMessage
-					
-					self.downloadedMessages.append(decodedSermonMessage)
+
+					do {
+						// reading from the messageId collection in UD
+						let decodedSermonMessage = try NSKeyedUnarchiver.unarchivedObject(ofClass: SermonMessage.self, from: decoded!)
+						
+						self.downloadedMessages.append(decodedSermonMessage!)
+					}
+					catch let errorMessage {
+						print(errorMessage)
+						print("Error reading downloaded sermons from UserDefaults")
+				   }
 				}
 			}
 		}

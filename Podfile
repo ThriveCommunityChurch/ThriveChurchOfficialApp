@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
+platform :ios, '15.0'
 
 target 'Thrive Church Official App' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -10,6 +10,7 @@ target 'Thrive Church Official App' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
+  pod 'FeedKit', '~> 9.0'
 
   target 'Thrive Church Official AppTests' do
     inherit! :search_paths

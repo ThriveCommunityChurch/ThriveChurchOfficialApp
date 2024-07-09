@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ConfigSetting: NSObject, Decodable, NSCoding {
+class ConfigSetting: NSObject, Decodable, NSCoding, NSSecureCoding {
+    
+    public static var supportsSecureCoding: Bool = true
+    
 	var `Type`: ConfigType
 	var Key: String?
 	var Value: String?

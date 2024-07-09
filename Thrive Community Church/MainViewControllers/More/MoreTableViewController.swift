@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class MoreTableViewController: UITableViewController  {
+class MoreTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 	
 	var configurations: [Int: DynamicConfigResponse] = [Int: DynamicConfigResponse]()
 	let alertTitle = "Alert"
@@ -61,10 +62,87 @@ class MoreTableViewController: UITableViewController  {
 			self.openUrlAnyways(link: config.Setting?.Value ?? "")
 		}
 		else if (config.CellTitle == "About") {
-			self.performSegue(withIdentifier: "about", sender: self)
+            let year = Calendar.current.component(.year, from: Date())
+            
+            let alert = UIAlertController(title: "App Version",
+                                          message: "\(self.version())\n\n©\(year) Thrive Community Church",
+                                          preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "Send Logs", style: .default, handler: { action in
+                // lets not create a fild on the user's device if they can't even send us an email
+                if MFMailComposeViewController.canSendMail() {
+                
+                    // vars to add to the file
+                    let buildNum = self.build()
+                    let uuid = UUID().uuidString.suffix(8)
+                    let date = self.getDate()
+                    
+                    // Save data to file
+                    let fileName = "\(uuid).log"
+                    let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
+                                                                      in: .userDomainMask,
+                                                                      appropriateFor: nil,
+                                                                      create: true)
+                    
+                    let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+                    
+                    var systemInfo = utsname()
+                    uname(&systemInfo)
+                    
+                    let identifier = Mirror(reflecting: systemInfo.machine).children.reduce("") { identifier, element in
+                        guard let value = element.value as? Int8, value != 0 else { return identifier }
+                        return identifier + String(UnicodeScalar(UInt8(value)))
+                    }
+                    
+                    let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
+                        "\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+                        "\n\nDevice Information" +
+                        "\nIdentifier: \(identifier)" +
+                        "\nLocalizedModel: \(UIDevice.current.localizedModel)" +
+                        "\nDeviceName: \(UIDevice.current.name)" +
+                        "\nModel: \(UIDevice.current.model)" +
+                        "\nCurrent Time: \(date)" +
+                        "\niOS: \(UIDevice.current.systemVersion)" +
+                        "\n\nApplication Information" +
+                        "\nVersion: \(self.version())" +
+                        "\nBuild #: \(buildNum)" +
+                        "\nFeedback ID: \(uuid)"
+                    
+                    do {
+                        // Write to the file
+                        try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+                        
+                        let composeVC = MFMailComposeViewController()
+                        
+                        composeVC.mailComposeDelegate = self
+                        composeVC.setToRecipients(["wyatt@thrive-fl.org"])
+                        composeVC.setSubject("Thrive iOS - ID: \(uuid)")
+                        
+                        if let fileData = NSData(contentsOfFile: fileURL.path) {
+                            composeVC.addAttachmentData(fileData as Data,
+                                                        mimeType: "text/plain",
+                                                        fileName: "\(uuid).log")
+                        }
+                        self.present(composeVC, animated: true, completion: nil)
+                        
+                    } catch let error as NSError {
+                        print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
+                        
+                        self.displayAlertForAction()
+                    }
+                }
+                else {
+                    self.displayAlertForAction()
+                }
+                    
+            }))
+           
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            
+            self.present(alert, animated: true)
 		}
 		else if (config.CellTitle == "Settings") {
-			self.performSegue(withIdentifier: "settings", sender: self)
+            self.openUrlAnyways(link: UIApplication.openSettingsURLString)
 		}
 		else {
 			self.show(config.Destination, sender: self)
@@ -72,6 +150,52 @@ class MoreTableViewController: UITableViewController  {
 	}
 	
 	// MARK: - Methods
+    
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as? String ?? ""
+        return "\(version)"
+    }
+    
+    func build() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let build = dictionary["CFBundleVersion"] as? String ?? ""
+        return "\(build)"
+    }
+    
+    //Standard Mail compose controller code
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                                                   error: Error?) {
+        
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("Cancelled")
+            
+        case MFMailComposeResult.saved.rawValue:
+            print("Saved")
+            
+        case MFMailComposeResult.sent.rawValue:
+            print("Sent")
+            
+        case MFMailComposeResult.failed.rawValue:
+            print("Error: \(String(describing: error?.localizedDescription))")
+            
+        default:
+            break
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func getDate() -> String {
+        
+        let stringFromDate = Date().iso8601    // "2017-03-22T13:22:13.933Z"
+        if let dateFromString = stringFromDate.dateFromISO8601 {
+            return dateFromString.iso8601      // "2017-03-22T13:22:13.933Z"
+        }
+        return stringFromDate
+    }
 	
 	func loadConfigs() -> [Int: DynamicConfigResponse] {
 		
@@ -93,31 +217,37 @@ class MoreTableViewController: UITableViewController  {
 		if imNewData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: imNewData!) as! ConfigSetting
-			
-			let newVC = GenericSiteViewController()
-			newVC.link = decoded.Value!
-			newVC.navHeader = "I'm New"
-			
-			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: newVC,
-																				 setting: decoded,
-																				 title: "I'm New")
-			
-			tempList.append(settingToAdd)
+            do {
+                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: imNewData!) {
+                    let newVC = GenericSiteViewController()
+                    newVC.link = decoded.Value!
+                    newVC.navHeader = "I'm New"
+                    
+                    let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: newVC,
+                                                                                         setting: decoded,
+                                                                                         title: "I'm New")
+                    
+                    tempList.append(settingToAdd)
+                }
+            }
+            catch {}
 		}
 		
 		if giveData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: giveData!) as! ConfigSetting
-			
-			let nowhere = UIViewController()
-			
-			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: nowhere,
-																				 setting: decoded,
-																				 title: "Give")
-			
-			tempList.append(settingToAdd)
+            do {
+                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: giveData!) {
+                    let nowhere = UIViewController()
+                    
+                    let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: nowhere,
+                                                                                         setting: decoded,
+                                                                                         title: "Give")
+                    
+                    tempList.append(settingToAdd)
+                }
+            }
+            catch {}
 		}
 		
 		if (fbData != nil || fbPageData != nil || igData != nil || igUsernameData != nil ||
@@ -131,9 +261,17 @@ class MoreTableViewController: UITableViewController  {
 								
 				vc.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { (action) in
 					
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbPageData!) as! ConfigSetting
+                    
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: fbPageData!)
+                    }
+                    catch {
+                        
+                    }
 					
-					let fbId = "\(decoded.Value ?? "157139164480128")"
+					let fbId = "\(decoded?.Value ?? "157139164480128")"
 					
 					let appURL = URL(string: "fb://profile/\(fbId)")!
 					print(appURL.absoluteString)
@@ -169,10 +307,17 @@ class MoreTableViewController: UITableViewController  {
 			else if (fbData != nil) {
 				
 				vc.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { (action) in
-					
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
-					
-					let fbURL = URL(string: "\(decoded.Value ?? "")")!
+                    
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: fbData!)
+                    }
+                    catch {
+                        
+                    }
+										
+					let fbURL = URL(string: "\(decoded?.Value ?? "")")!
 					print(fbURL.absoluteString)
 					
 					if UIApplication.shared.canOpenURL(fbURL) {
@@ -189,9 +334,16 @@ class MoreTableViewController: UITableViewController  {
 				
 				vc.addAction(UIAlertAction(title: "Instagram", style: .default, handler: { (action) in
 					
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: igUsernameData!) as! ConfigSetting
-					
-					let igUsername = "\(decoded.Value ?? "thrive_fl")"
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: igUsernameData!)
+                    }
+                    catch {
+                        
+                    }
+                    
+					let igUsername = "\(decoded?.Value ?? "thrive_fl")"
 
 					let appURL = URL(string: "instagram://user?username=\(igUsername)")!
 					print(appURL.absoluteString)
@@ -228,9 +380,16 @@ class MoreTableViewController: UITableViewController  {
 				
 				vc.addAction(UIAlertAction(title: "Instagram", style: .default, handler: { (action) in
 					
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: igData!) as! ConfigSetting
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: igData!)
+                    }
+                    catch {
+                        
+                    }
 					
-					let igURL = URL(string: "\(decoded.Value ?? "")")!
+					let igURL = URL(string: "\(decoded?.Value ?? "")")!
 					print(igURL.absoluteString)
 					
 					if UIApplication.shared.canOpenURL(igURL) {
@@ -245,11 +404,18 @@ class MoreTableViewController: UITableViewController  {
 			
 			if (twUsernameData != nil) {
 				
-				vc.addAction(UIAlertAction(title: "Twitter", style: .default, handler: { (action) in
+				vc.addAction(UIAlertAction(title: "X", style: .default, handler: { (action) in
 					
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: twUsernameData!) as! ConfigSetting
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: twUsernameData!)
+                    }
+                    catch {
+                        
+                    }
 					
-					let twUsername = "\(decoded.Value ?? "Thrive_FL")"
+					let twUsername = "\(decoded?.Value ?? "Thrive_FL")"
 
 					let appURL = URL(string: "twitter:///user?screen_name=\(twUsername)")!
 					print(appURL.absoluteString)
@@ -258,7 +424,7 @@ class MoreTableViewController: UITableViewController  {
 						UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
 					}
 					else {
-						let message = "You need to download the Twitter app first"
+						let message = "You need to download the X app first"
 						let alert = UIAlertController(title: self.alertTitle,
 											  message: message,
 											  preferredStyle: UIAlertController.Style.alert)
@@ -284,11 +450,18 @@ class MoreTableViewController: UITableViewController  {
 			}
 			else if (twData != nil) {
 				
-				vc.addAction(UIAlertAction(title: "Twitter", style: .default, handler: { (action) in
+				vc.addAction(UIAlertAction(title: "X", style: .default, handler: { (action) in
 					
-					let decoded = NSKeyedUnarchiver.unarchiveObject(with: twData!) as! ConfigSetting
-					
-					let twURL = URL(string: "\(decoded.Value ?? "")")!
+                    var decoded: ConfigSetting? = nil
+                    
+                    do {
+                        decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: twData!)
+                    }
+                    catch {
+                        
+                    }
+                    
+					let twURL = URL(string: "\(decoded?.Value ?? "")")!
 					print(twURL.absoluteString)
 					
 					if UIApplication.shared.canOpenURL(twURL) {
@@ -312,17 +485,20 @@ class MoreTableViewController: UITableViewController  {
 		if teamData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: teamData!) as! ConfigSetting
-			
-			let teamVC = GenericSiteViewController()
-			teamVC.link = decoded.Value!
-			teamVC.navHeader = "Meet the team"
-			
-			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: teamVC,
-																				 setting: decoded,
-																				 title: "Meet the team")
-			
-			tempList.append(settingToAdd)
+            do {
+                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: teamData!) {
+                    let teamVC = GenericSiteViewController()
+                    teamVC.link = decoded.Value!
+                    teamVC.navHeader = "Meet the team"
+                    
+                    let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: teamVC,
+                                                                                         setting: decoded,
+                                                                                         title: "Meet the team")
+                    
+                    tempList.append(settingToAdd)
+                }
+            }
+            catch {}
 		}
 		
 		let nowhere = UIViewController()

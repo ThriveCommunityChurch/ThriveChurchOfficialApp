@@ -186,11 +186,17 @@ extension NowPlayingViewController {
 		UserDefaults.standard.synchronize()
 		
 		// before we can place objects into Defaults they have to be encoded
-		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: message)
-		
-		// we have a reference to this message in the above Defaults array, so store everything
-		UserDefaults.standard.set(encodedData, forKey: message.MessageId)
-		UserDefaults.standard.synchronize()
+        var encodedData: Data? = nil
+        do {
+            encodedData = try NSKeyedArchiver.archivedData(withRootObject: message, requiringSecureCoding: true)
+            
+            // we have a reference to this message in the above Defaults array, so store everything
+            UserDefaults.standard.set(encodedData, forKey: message.MessageId)
+            UserDefaults.standard.synchronize()
+        }
+        catch {
+            
+        }
 	}
 	
 	func saveFileToDisk() {
