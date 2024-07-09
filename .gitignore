@@ -11,12 +11,10 @@
 GoogleService-Info.plist
 
 #Graphics
-*.png
 *.jpg
 *.jpeg
 *.tiff
 *.bmp
-*Contents.json
 
 ## Build generated
 build/
