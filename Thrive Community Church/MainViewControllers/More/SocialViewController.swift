@@ -29,11 +29,16 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 		var twUsername = "Thrive_FL"
 		
 		if twData != nil {
-			
-			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: twData!) as! ConfigSetting
-			
-			twUsername = "\(decoded.Value ?? "Thrive_FL")"
+            
+            // reading from the messageId collection in UD
+            do {
+                let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: twData!)!
+                
+                twUsername = "\(decoded.Value ?? "Thrive_FL")"
+            }
+            catch {
+                
+            }
 		}
 		
 		let appURL = URL(string: "twitter:///user?screen_name=\(twUsername)")!
@@ -42,7 +47,7 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 			UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
         }
         else {
-            let message = "You need to download the Twitter app first"
+            let message = "You need to download the X app first"
             let alert = UIAlertController(title: alertTitle,
                                   message: message,
                                   preferredStyle: UIAlertController.Style.alert)
@@ -74,9 +79,14 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 		if fbData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
-			
-			fbId = "\(decoded.Value ?? "157139164480128")"
+            do {
+                let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: fbData!)!
+                
+                fbId = "\(decoded.Value ?? "157139164480128")"
+            }
+            catch {
+                
+            }
 		}
 		
 		let appURL = URL(string: "fb://profile/\(fbId)")!
@@ -118,9 +128,14 @@ class SocialViewController: UIViewController, UIApplicationDelegate {
 		if igData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: igData!) as! ConfigSetting
-			
-			igUsername = "\(decoded.Value ?? "thrive_fl")"
+            do {
+                let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: igData!)!
+                
+                igUsername = "\(decoded.Value ?? "thrive_fl")"
+            }
+            catch {
+                
+            }
 		}
 		
 		let appURL = URL(string: "instagram://user?username=\(igUsername)")!

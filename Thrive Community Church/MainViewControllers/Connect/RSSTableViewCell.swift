@@ -31,10 +31,7 @@ class RSSTableViewCell: UITableViewCell {
 	override init(style: RSSTableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
-		self.translatesAutoresizingMaskIntoConstraints = true
-		self.heightAnchor.constraint(equalToConstant: 70).isActive = true
 		self.backgroundColor = UIColor.almostBlack
-		
 		self.accessoryType = .disclosureIndicator
 		
 		self.setupViews()
@@ -43,9 +40,7 @@ class RSSTableViewCell: UITableViewCell {
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		
-		self.heightAnchor.constraint(equalToConstant: 70).isActive = true
 		self.backgroundColor = UIColor.almostBlack
-		
 		self.accessoryType = .disclosureIndicator
 		
 		self.setupViews()

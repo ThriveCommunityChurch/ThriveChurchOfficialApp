@@ -54,7 +54,7 @@ class ReadSermonPassageViewController: UIViewController {
 	
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.style = .whiteLarge
+        indicator.style = UIActivityIndicatorView.Style.large
 		indicator.color = .white
 		indicator.backgroundColor = .clear
 		indicator.translatesAutoresizingMaskIntoConstraints = false

@@ -40,9 +40,16 @@ class SmallGroupViewController: UIViewController, WKUIDelegate, WKNavigationDele
 		if data != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
-			
-			groupsLink = "\(decoded.Value ?? "http://thrive-fl.org/join-small-group")"
+            var decoded: ConfigSetting? = nil
+            
+            do {
+                 decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: data!)
+            }
+            catch {
+                
+            }
+            
+			groupsLink = "\(decoded?.Value ?? "http://thrive-fl.org/join-small-group")"
 		}
 		
 		let encodedURL = groupsLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

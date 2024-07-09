@@ -148,229 +148,6 @@ extension ListenCollectionViewController {
 		}
 	}
 	
-	func fetchLiveStream() {
-
-		let thing = "\(apiUrl)api/sermons/live/"
-		let url = NSURL(string: thing)
-		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
-
-			// something went wrong here
-			if error != nil {
-				
-				print("ERR returning live sermons \(String(describing: error))")
-				return
-			}
-
-			do {
-
-				//let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-
-				let livestream = try JSONDecoder().decode(LivestreamingResponse.self, from: data!)
-
-				// we NEED to be doing this 1 second later because otherwise we will get a 429
-				DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1, execute: {
-					
-					if livestream.IsLive {
-						
-						// we also need to know how much longer is left on the stream
-						// so we need to call the polling route at least once
-						// so that we can make sure the stream hasn't passed and the API failed to update mongo
-						
-						self.livestreamData = livestream
-						
-						self.pollForLiveData()
-					}
-					else {
-						// maybe we can have an async thread here running that checks to see if every minute,
-						// we are getting close to beginning a live stream? (thoughts)
-						
-						DispatchQueue.main.async {
-							// get the next time from the API
-							let nowDateFormatter = DateFormatter()
-							nowDateFormatter.locale = Locale(identifier: "en_US_POSIX")
-							nowDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-							nowDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-							
-							self.nextLive = nowDateFormatter.date(from: livestream.NextLive ?? "") ?? Date()
-							
-							self.setBannerTime(nextLive: self.nextLive!)
-						}
-					}
-				})
-			}
-			catch let jsonError {
-				print(jsonError)
-			}
-		}.resume()
-	}
-	
-	func pollForLiveData() {
-		
-		let thing = "\(apiUrl)api/sermons/live/poll"
-		let url = NSURL(string: thing)
-		URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
-			
-			// something went wrong here
-			if error != nil {
-				
-				self.miscApiErrorText = "\(error!)"
-				
-				return
-			}
-			do {
-				
-				//let JSON = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-				
-				let pollData = try JSONDecoder().decode(LivePollingResponse.self, from: data!)
-				
-				DispatchQueue.main.async {
-					// transition to another view
-					self.pollingData = pollData
-					
-					print("We are live? \(pollData.IsLive ?? false)")
-					
-					if pollData.IsLive ?? false {
-						self.checkIfStreamIsActiveAsync()
-					}
-					else {
-						self.livestreamButton.isEnabled = false
-					}
-				}
-			}
-			catch let jsonError {
-				print(jsonError)
-			}
-		}.resume()
-	}
-	
-	func checkIfStreamIsActiveAsync() {
-		// do this every 30sec to cut down on the Client load &
-		// we might want to dynamically generate this timer in the future, but I like this
-		
-		self.timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(checkIfStreamExpired), userInfo: nil, repeats: true)
-		
-		// we need to check every 30 seconds but we should check right now
-		checkIfStreamExpired()
-		
-		/*
-			NOTE TO SELF:
-		
-			This code block and everything contained therein is going to end up becoming
-			somewhat of a memory leak. This method will continue to be executed, even on
-			other views. We should do what we can to limit the excess mem leakage.
-		
-			Perhaps when the view transitions to viewDidDissapear we can kill the timer,
-			then when we transition back within viewWillAppear we can call the methods again
-			and allow them to continue to execute. This will save us a TON of headache in the
-			future with bugs related to this, plus it'll slowly eat away at the client's RSS.
-		
-		*/
-	}
-	
-	@objc func checkIfStreamExpired() {
-		
-		let expirationDate = self.pollingData?.StreamExpirationTime
-		
-		print("Expires at: \(expirationDate ?? "UNKNOWN")")
-		
-		var expireDate = self.getExpirationDateString(input: expirationDate!)
-		
-		// if the above parse fails, then the livestream may have been configured manually
-		if (expireDate == nil) {
-			
-			// if that's the case then there are some very minor adjustments that beed to be made
-			// in order for the parsing of the time to work - it mainly has to do with the date formattings in Swift
-			let manualExpireDateString = self.getManualExpirationDateString(input: expirationDate!)
-			expireDate = self.checkExpire(expires: manualExpireDateString!)
-		}
-		else {
-			expireDate = checkExpire(expires: expireDate!)
-		}
-		
-		if expireDate == nil {
-			livestreamButton.isEnabled = false
-			timer.invalidate()
-		}
-		else {
-			livestreamButton.isEnabled = true
-			expireTime = expireDate!
-		}
-	}
-	
-	private func checkExpire(expires: String) -> Date? {
-		
-		let now = Date()
-		let formatter = DateFormatter()
-		formatter.locale = Locale(identifier: "en_US_POSIX")
-		formatter.timeZone = TimeZone(secondsFromGMT: 0)
-		formatter.dateFormat = "HH:mm:ss"
-		let nowString = formatter.string(from: now)
-		
-		// now that both our times are strings we can convert them back to dates and compare
-		let stringToDateFormatter = DateFormatter()
-		stringToDateFormatter.dateFormat = "HH:mm:ss"
-		stringToDateFormatter.locale = Locale(identifier: "en_US_POSIX")
-		stringToDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		
-		let nowDate = formatter.date(from: nowString) ?? Date()
-		let expireDate = stringToDateFormatter.date(from: expires) ?? Date()
-		let _ = Double(TimeZone.current.secondsFromGMT(for: nowDate))
-		
-		// we use the entire Date string here so that we are 100% sure that now
-		// is past whatever time the time should be, since we sanitize the dates
-		if expireDate < nowDate {
-			return nil
-		}
-		else {
-			return expireDate
-		}
-	}
-	
-	/// Returns a Date object where ONLY the TIME is to be used
-	/// Returns null if the stream is no longer active (past the expire date)
-	func getExpirationDateString(input expireDate: String) -> Date? {
-		
-		let dateTemp = String(describing: expireDate)
-		
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-		let date = dateFormatter.date(from: dateTemp) ?? nil
-		
-		return date
-	}
-	
-	/// Returns a Date object where ONLY the TIME is to be used
-	/// Returns null if the stream is no longer active (past the expire date)
-	func getManualExpirationDateString(input expireDate: String) -> String? {
-		
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-		let date = dateFormatter.date(from: expireDate)!
-		
-		// convert to the proper format
-		let dateToStringFormatter = DateFormatter()
-		dateToStringFormatter.dateFormat = "HH:mm:ss"
-		dateToStringFormatter.locale = Locale(identifier: "en_US_POSIX")
-		dateToStringFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		let expireDateString = dateToStringFormatter.string(from: date)
-		
-		return expireDateString
-	}
-	
-	private func checkExpire(expires: Date) -> Date? {
-		
-		let now = Date()
-		
-		// we use the entire Date string here so that we are 100% sure that now
-		// is past whatever time the time should be, since we sanitize the dates
-		if expires <= now {
-			return nil
-		}
-		else {
-			return expires
-		}
-	}
-	
 	// TODO: Make this a global extension method so it can be used all over
 	func composeEmail() {
 		
@@ -405,7 +182,7 @@ extension ListenCollectionViewController {
 			let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
 				"\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
 				"\n\nDevice Information" +
-				"\nDevice:  \(UIDevice.current.modelName)" +
+				"\nDevice Identifier:  \(UIDevice.current.modelName)" +
 				"\nCurrent Time: \(date)" +
 				"\niOS: \(UIDevice.current.systemVersion)" +
 				"\n\nApplication Information" +
@@ -543,7 +320,6 @@ extension ListenCollectionViewController {
 			
 			// Looks like everything is back to working
 			self.resetErrorViews()
-			self.fetchLiveStream()
 			self.retryCounter = 0
 			self.retryLimited = false
 		}
@@ -553,9 +329,9 @@ extension ListenCollectionViewController {
 		// check status
 		guard let status = Network.reachability?.status else { return }
 		self.internetConnectionStatus = status
-		
+        
 		// override this on the Simulator and that way we can still develop things
-		if UIDevice.current.modelName == "Simulator" {
+		if UIDevice.current.modelName == "Simulator" || UIDevice.current.modelName == "arm64" {
 			self.internetConnectionStatus = .wifi
 		}
 	}
@@ -570,7 +346,6 @@ extension ListenCollectionViewController {
 			
 			// call the API and determine if the user is online
 			self.fetchAllSermons(isReset: true)
-			self.fetchLiveStream()
 		}
 	}
 	
@@ -581,16 +356,26 @@ extension ListenCollectionViewController {
 	func retrieveRecentlyPlayed() {
 		
 		// get the recently played sermon messages
-		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
-		
-		if decoded != nil {	
-			self.recentlyPlayedButton.isEnabled = true
-			self.playedMessage = true
-		}
-		else {
-			self.recentlyPlayedButton.isEnabled = false
-			self.playedMessage = false
-		}
+        // reading from the messageId collection in UD
+        let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
+        if decoded != nil {
+            
+            var recent: [SermonMessage] = [SermonMessage]()
+            self.recentlyPlayedButton.isEnabled = false
+            self.playedMessage = false
+            
+            do {
+                recent = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: SermonMessage.self, from: decoded!) ?? [SermonMessage]()
+            }
+            catch {
+                return
+            }
+            
+            if (recent.count > 0) {
+                self.recentlyPlayedButton.isEnabled = true
+                self.playedMessage = true
+            }
+        }
 	}
 	
 	func presentOnboarding() {

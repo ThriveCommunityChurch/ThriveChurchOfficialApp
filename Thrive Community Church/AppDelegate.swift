@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 				
 		UpdateCacheForAPIDomain()
 		
-		ConfigurationExtension.LoadConfigs()
+        ConfigurationExtension.RetrieveConfigurations()
 		
 		// REACHABILITY
 		do {
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 		Messaging.messaging().setAPNSToken(deviceToken, type: MessagingAPNSTokenType.prod)
 	}
 	
-	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
 		
 		Messaging.messaging().token { token, error in
 			
@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 			}
 		}
 
-		let dataDict:[String: String] = ["token": fcmToken ]
+		let dataDict:[String: String] = ["token": fcmToken ?? "" ]
 	  
 		NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
 	}
@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 		
 		
 	    // Change this to your preferred presentation option
-	    completionHandler([[.alert, .badge, .sound]])
+        completionHandler([[.badge, .sound]])
 	}
 
 	func userNotificationCenter(_ center: UNUserNotificationCenter,

@@ -101,7 +101,6 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		// add subviews
 		view.addSubview(downloadsTableView)
 		
-		
 		// constraints
 		NSLayoutConstraint.activate([
 			downloadsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -115,6 +114,8 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		
 		// reinit the object just to make sure that there's nothing in it
 		self.downloadedMessages = [SermonMessage]()
+        
+        UserDefaults.standard.synchronize()
 		
 		if let loadedData = UserDefaults.standard.array(forKey: ApplicationVariables.DownloadedMessages) as? [String] {
 			self.downloadedMessageIds = loadedData

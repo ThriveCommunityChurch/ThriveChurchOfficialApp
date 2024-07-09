@@ -8,8 +8,10 @@
 
 import UIKit
 
-public class SermonMessage: NSObject, Decodable, NSCoding {
-	
+public class SermonMessage: NSObject, Decodable, NSCoding, NSSecureCoding {
+    
+    public static var supportsSecureCoding: Bool = true
+    
 	var AudioUrl: String?
 	var AudioDuration: Double?
 	var AudioFileSize: Double?

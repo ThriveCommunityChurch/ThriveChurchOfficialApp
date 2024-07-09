@@ -40,9 +40,16 @@ class ServeViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 		if data != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+            var decoded: ConfigSetting? = nil
+            
+            do {
+                decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: data!)
+            }
+            catch {
+                
+            }
 			
-			self.serveLink = "\(decoded.Value ?? "http://thrive-fl.org/get-involved/")"
+			self.serveLink = "\(decoded?.Value ?? "http://thrive-fl.org/get-involved/")"
 		}
 		
 		let encodedURL = self.serveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

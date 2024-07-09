@@ -13,7 +13,7 @@ extension UIViewController {
 	func setLoadingSpinner(spinner: UIActivityIndicatorView) {
 		
 		spinner.layer.cornerRadius = 4
-		spinner.style = .whiteLarge
+        spinner.style = UIActivityIndicatorView.Style.large
 		spinner.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255,
 										  alpha: 0.75)
 		spinner.color = .white
@@ -118,9 +118,12 @@ extension UIViewController {
 			if decoded != nil {
 				
 				// reading from the messageId collection in UD
-				let decodedSermonMessage = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! SermonMessage
-				
-				sermonMessage = decodedSermonMessage
+                do {
+                    sermonMessage = try NSKeyedUnarchiver.unarchivedObject(ofClass: SermonMessage.self, from: decoded!)
+                }
+                catch {
+                    return nil
+                }
 			}
 		}
 		

@@ -20,7 +20,14 @@ extension SermonMessage {
 		let decoded = UserDefaults.standard.object(forKey: ApplicationVariables.RecentlyPlayed) as? Data
 		if decoded != nil {
 			
-			recentlyPlayed = NSKeyedUnarchiver.unarchiveObject(with: decoded ?? Data()) as! [SermonMessage]
+            do {
+                recentlyPlayed = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: SermonMessage.self, from: decoded!) ?? [SermonMessage]()
+            }
+            catch {
+                recentlyPlayed = [SermonMessage]()
+                return
+            }
+            
 			let count = recentlyPlayed.count
 			
 			// the Id index of the sermons here are in the same order
@@ -78,11 +85,16 @@ extension SermonMessage {
 		print("LAST \(recentlyPlayed.count)")
 		
 		// before we can place objects into Defaults they have to be encoded
-		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recentlyPlayed)
-		
-		// we have a reference to this message in the above Defaults array, so store everything
-		UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
-		UserDefaults.standard.synchronize()
+        do {
+            let encodedData: Data = try NSKeyedArchiver.archivedData(withRootObject: recentlyPlayed, requiringSecureCoding: false)
+            
+            // we have a reference to this message in the above Defaults array, so store everything
+            UserDefaults.standard.set(encodedData, forKey: ApplicationVariables.RecentlyPlayed)
+            UserDefaults.standard.synchronize()
+        }
+        catch {
+            
+        }
 	}
 	
 	private func removeMatchingMessages(recentlyPlayed: [SermonMessage]) -> [SermonMessage] {

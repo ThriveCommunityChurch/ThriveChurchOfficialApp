@@ -34,6 +34,9 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	var currentlyDownloading: Bool = false
 	var messageForDownload: SermonMessage?
 	var esvApiKey: String = ""
+    var internetConnectionStatus: Network.Status = .unreachable
+    var apiUrl: String = ""
+    var apiDomain = "nil"
 	
 	private var series: SermonSeries?
 	
@@ -162,16 +165,36 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let localMessage = retrieveDownloadFromStorage(sermonMessageID: message.MessageId)
 		
 		if (localMessage == nil) {
-			
-			// we created a globally shared instance of this variable, so that if we
-			// close this VC it should keep playing
-			DispatchQueue.main.async {
-			// fire and forget this
-			SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
-															 sermonData: self.series!,
-															 selectedMessage: message,
-															 seriesImage: self.seriesImage)
-			}
+            
+            checkConnectivity()
+            
+            if internetConnectionStatus != .unreachable {
+                
+                // we created a globally shared instance of this variable, so that if we
+                // close this VC it should keep playing
+                DispatchQueue.main.async {
+                    
+                self.markMessagePlayed(messageId: message.MessageId)
+                    
+                // fire and forget this
+                SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
+                                                                 sermonData: self.series!,
+                                                                 selectedMessage: message,
+                                                                 seriesImage: self.seriesImage)
+                }
+                
+            }
+            else {
+                
+                let alert = UIAlertController(title: "Oops!",
+                                              message: "You are currently offline. Please reconnect and again later.",
+                                              preferredStyle: .alert)
+            
+                let okAction = UIAlertAction(title: "Ok", style: .default)
+                alert.addAction(okAction)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
 		}
 		else {
 			DispatchQueue.main.async {
@@ -179,6 +202,43 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			}
 		}
 	}
+    
+    func checkConnectivity() {
+        // check status
+        guard let status = Network.reachability?.status else { return }
+        self.internetConnectionStatus = status
+        
+        // override this on the Simulator and that way we can still develop things
+        if UIDevice.current.modelName == "Simulator" || UIDevice.current.modelName == "arm64" {
+            self.internetConnectionStatus = .wifi
+        }
+    }
+    
+    func markMessagePlayed(messageId: String) {
+        
+        // contact the API on the address we have cached
+        if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
+            
+            apiDomain = loadedData
+            apiUrl = "http://\(apiDomain)/"
+        }
+        
+        // Note to self: This is being cached and updates to this will require an
+        // app restart in order to view changes on a series that is NOT the current one
+        
+        let thing = "\(apiUrl)api/sermons/series/message\(messageId)/played"
+        let url = NSURL(string: thing)
+        URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
+            
+            // something went wrong here
+            if error != nil {
+                
+                // in this case we don't need to tell the user that this reuquest failed
+                
+                return
+            }
+        }.resume()
+    }
 	
 	// MARK: - Table View
 	
@@ -396,11 +456,17 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		messageForDownload?.seriesArt = seriesImage.pngData()
 		
 		// before we can place objects into Defaults they have to be encoded
-		let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: messageForDownload!)
-		
-		// we have a reference to this message in the above Defaults array, so store everything
-		UserDefaults.standard.set(encodedData, forKey: (messageForDownload?.MessageId)!)
-		UserDefaults.standard.synchronize()
+        do {
+            let encodedData: Data = try NSKeyedArchiver.archivedData(withRootObject: messageForDownload!, requiringSecureCoding: true)
+            
+            // we have a reference to this message in the above Defaults array, so store everything
+            UserDefaults.standard.set(encodedData, forKey: (messageForDownload?.MessageId)!)
+            UserDefaults.standard.synchronize()
+        }
+        catch {
+            
+        }
+
 	}
 	
 	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell, selectedMessage: SermonMessage) {

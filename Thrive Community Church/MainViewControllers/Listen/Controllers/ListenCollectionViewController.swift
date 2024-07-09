@@ -15,22 +15,14 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 MFMailComposeViewControllerDelegate {
 
 	@IBOutlet weak var recentlyPlayedButton: UIBarButtonItem!
-	@IBOutlet weak var livestreamButton: UIBarButtonItem!
 	var sermonSeries = [SermonSeriesSummary]()
 	var apiDomain = "nil"
 	var apiUrl: String = "nil"
-	var secondsRemaining: Double?
-	var expireTime: Date?
-	var nextLive: Date?
-	var timer = Timer()
-	var loading: Bool = false
-	var pollingData: LivePollingResponse?
-	var livestreamData: LivestreamingResponse?
+    var loading: Bool = false
 	var internetConnectionStatus: Network.Status = .unreachable
 	var playedMessage: Bool = false
 	private var alreadySelected: Bool = false
 	var seriesMapping = [String: SermonSeries]()
-	var countdownTimer: Timer? = nil
 	
 	// Loading View
 	var footerView: CustomFooterView?
@@ -65,22 +57,6 @@ MFMailComposeViewControllerDelegate {
 		return view
 	}()
 	
-	let countdownBannerView: UIView = {
-		let view = UIView()
-		view.backgroundColor = .clear
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
-	
-	let countdownBannerLabel: UILabel = {
-		let label = UILabel()
-		label.font = UIFont(name: "Avenir-Medium", size: 15)
-		label.textColor = .lessLightLightGray
-		label.textAlignment = .center
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-	
 	let retryButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Retry?", for: .normal)
@@ -88,13 +64,13 @@ MFMailComposeViewControllerDelegate {
 		button.setTitleColor(UIColor.mainBlue, for: .normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .clear
-		button.addTarget(self, action: #selector(retryPageLoad), for: .touchUpInside)
+        button.addTarget(ListenCollectionViewController.self, action: #selector(retryPageLoad), for: .touchUpInside)
 		return button
 	}()
 
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
-		indicator.style = .whiteLarge
+        indicator.style = .large
 		indicator.color = .white
 		indicator.backgroundColor = .clear
 		indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -115,8 +91,6 @@ MFMailComposeViewControllerDelegate {
 		
 		collectionView?.dataSource = self
 		collectionView?.delegate = self
-		
-		livestreamButton.isEnabled = false
 		self.recentlyPlayedButton.isEnabled = false
 
         // Register cell classes
@@ -140,7 +114,6 @@ MFMailComposeViewControllerDelegate {
 			setupViews()
 			loading = true
 			self.fetchAllSermons(isReset: false)
-			self.fetchLiveStream()
 			
 			// in the event that this user is on a very slow network, this will help display a message on the UI
 			// so 2 minutes after this, check to see if we are still waiting for a response
@@ -363,9 +336,16 @@ MFMailComposeViewControllerDelegate {
 		if data != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
+            var decoded: ConfigSetting? = nil
+            
+            do {
+                decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: data!)
+            }
+            catch {
+                
+            }
 			
-			liveLink = "\(decoded.Value ?? "https://facebook.com/thriveFl/")"
+			liveLink = "\(decoded?.Value ?? "https://facebook.com/thriveFl/")"
 		}
 		
 		let fbData = UserDefaults.standard.object(forKey: ConfigKeys.shared.FBPageID) as? Data
@@ -375,9 +355,16 @@ MFMailComposeViewControllerDelegate {
 		if fbData != nil {
 			
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: fbData!) as! ConfigSetting
+            var decoded: ConfigSetting? = nil
+            
+            do {
+                decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: fbData!)
+            }
+            catch {
+                
+            }
 			
-			fbId = "\(decoded.Value ?? "157139164480128")"
+			fbId = "\(decoded?.Value ?? "157139164480128")"
 		}
 		
 		let encodedURL = liveLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
@@ -392,101 +379,6 @@ MFMailComposeViewControllerDelegate {
 		else {
 			UIApplication.shared.open(url, options: [:], completionHandler: nil)
 		}
-	}
-	
-	func removeTimer() {
-		self.countdownTimer?.invalidate()
-		self.countdownTimer = nil
-		self.countdownTimer = Timer()
-	}
-	
-	func setBannerTime(nextLive: Date) {
-		view.addSubview(countdownBannerView)
-		
-		let now = Date()
-		let nowDateFormatter = DateFormatter()
-		nowDateFormatter.locale = Locale(identifier: "en_US_POSIX")
-		nowDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-		nowDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-		let nowString = nowDateFormatter.string(from: now)
-		
-		let nowDate = nowDateFormatter.date(from: nowString) ?? Date()
-		
-		let remaining: TimeInterval = nextLive.timeIntervalSince(nowDate)
-		
-		if (remaining.isZero || remaining.isLess(than: 0.0)) {
-			return
-		}
-		
-		let formatter = DateComponentsFormatter()
-		formatter.allowedUnits = [.day, .hour, .minute, .second]
-		formatter.unitsStyle = .abbreviated
-
-		let formattedString = formatter.string(from: remaining)!
-		
-		countdownBannerLabel.text = "We're live in \(formattedString)"
-		
-		NSLayoutConstraint.activate([
-			countdownBannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			countdownBannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			countdownBannerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			countdownBannerView.heightAnchor.constraint(equalToConstant: 22)
-		])
-		
-		let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-		let blurEffectView = UIVisualEffectView(effect: blurEffect)
-		blurEffectView.frame = countdownBannerView.bounds
-		blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-		countdownBannerView.addSubview(blurEffectView)
-		
-		
-		countdownBannerView.addSubview(countdownBannerLabel)
-		NSLayoutConstraint.activate([
-			countdownBannerLabel.centerYAnchor.constraint(equalTo: countdownBannerView.centerYAnchor),
-			countdownBannerLabel.centerXAnchor.constraint(equalTo: countdownBannerView.centerXAnchor)
-		])
-		
-		startTimerCountdownForNextLive(remaining: remaining)
-	}
-	
-	func startTimerCountdownForNextLive(remaining: TimeInterval) {
-		
-		
-		self.countdownTimer = Timer.scheduledTimer(timeInterval: 1.0,
-														 target: self,
-														 selector: #selector(self.processCountdownTimerChange),
-														 userInfo: nil, repeats: true)
-		
-		// make the timer tick even when the user is scrolling
-		RunLoop.current.add(self.countdownTimer!, forMode: .common)
-	}
-	
-	@objc func processCountdownTimerChange() {
-		
-		let now = Date()
-		
-		let remaining: TimeInterval = nextLive?.timeIntervalSince(now) ?? 0
-		
-		if (remaining.isZero || remaining.isLess(than: 0.0)) {
-			self.countdownBannerView.isHidden = true
-			self.removeTimer()
-			self.livestreamButton.isEnabled = true
-			
-			// let's check after 30s if the stream is "really active"
-			// this allows the stream to expire after it should but gives the server 30s
-			// to set the stream as acive
-			DispatchQueue.main.asyncAfter(wallDeadline: .now() + 30, execute: {
-				self.pollForLiveData()
-			})
-		}
-		
-		let formatter = DateComponentsFormatter()
-		formatter.allowedUnits = [.day, .hour, .minute, .second]
-		formatter.unitsStyle = .abbreviated
-
-		let formattedString = formatter.string(from: remaining)!
-		
-		countdownBannerLabel.text = "We're live in \(formattedString)"
 	}
 	
 	func setupViews() {
@@ -538,7 +430,6 @@ MFMailComposeViewControllerDelegate {
 				
 				// call the API and determine how many of them there are
 				self.fetchAllSermons(isReset: true)
-				self.fetchLiveStream()
 			}
 		}
 		else {

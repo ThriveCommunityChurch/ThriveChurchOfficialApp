@@ -18,9 +18,9 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		Page(imageName: "listen_img",
 			 headerText: "Take us with you on the go!",
 			 bodyText: "Whether you're traveling or under the weather, you'll never miss a sermon series with our automatic weekly updates. Download sermons for listening in the car, at work or at the gym. You can even stream your favorite messages in Full HD!"),
-		Page(imageName: "notes_img",
-			 headerText: "Your Notes. Your Device.",
-			 bodyText: "Taking notes during the message has never been easier. Our note taker supports a full Emoji keyboard, for creating notes with beautiful bullited lists. Notes are saved locally on your device, and sending your notes to friends or sharing them online is only one tap away."),
+		//Page(imageName: "notes_img",
+		//	 headerText: "Your Notes. Your Device.",
+		//	 bodyText: "Taking notes during the message has never been easier. Our note taker supports a full Emoji keyboard, for creating notes with beautiful bullited lists. Notes are saved locally on your device, and sending your notes to friends or sharing them online is only one tap away."),
 		Page(imageName: "bible_img",
 			 headerText: "Read The Entire Bible!",
 			 bodyText: "With the power of YouVersion and bible.com, the entire English Standard Version (ESV) of the bible is available at your fingertips. Take your bible with you, wherever you go."),
@@ -33,7 +33,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		let button = UIButton(type: .system)
 		button.setTitle("", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-		button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
 		button.setTitleColor(UIColor.lessLightLightGray, for: .normal)
 		return button
 	}()
@@ -55,7 +55,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
 		button.setTitleColor(UIColor.mainBlue, for: .normal)
-		button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
 		return button
 	}()
 	
@@ -64,7 +64,7 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
 		button.setTitle("Skip", for: .normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-		button.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
 		button.setTitleColor(UIColor.lighterBlueGray, for: .normal)
 		return button
 	}()

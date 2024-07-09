@@ -27,7 +27,7 @@ class RSSTableViewController: UITableViewController {
 		tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
 		tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
-		
+        tableView.delegate = self
 		tableView.register(RSSTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
 		
 		let parser = FeedParser(URL: feedURL) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
@@ -51,6 +51,10 @@ class RSSTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
