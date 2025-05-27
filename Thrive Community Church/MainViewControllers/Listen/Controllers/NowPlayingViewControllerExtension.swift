@@ -250,7 +250,7 @@ extension NowPlayingViewController {
 
 						try FileManager.default.moveItem(at: location, to: outputURL)
 
-						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+						self.messageForDownload?.LocalAudioURI = outputURL.path // Store file path, not URL string
 						self.finishDownload()
 					}
 				} catch {

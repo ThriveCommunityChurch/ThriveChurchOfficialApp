@@ -188,15 +188,32 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 			// Deleting
 			self.downloadsTableView.deselectRow(indexPath: indexPath)
 
-			// look in the shared file folder for the mp3 and play it using
-			// SermonAVPlayer.sharedInstance
+			// look in the shared file folder for the mp3 and delete it
 			do {
-				let fileUrl = URL(string: message.LocalAudioURI!)
-			    try FileManager.default.removeItem(at: fileUrl!)
-				print("File deleted")
+				guard let localPath = message.LocalAudioURI else {
+					print("ERROR: LocalAudioURI is nil for message: \(message.MessageId)")
+					return
+				}
+
+				// Handle both old format (URL string) and new format (file path)
+				let fileUrl: URL
+				if localPath.hasPrefix("file://") {
+					// Old format: URL string - convert to URL directly
+					guard let urlFromString = URL(string: localPath) else {
+						print("ERROR: Invalid URL string in LocalAudioURI: \(localPath)")
+						return
+					}
+					fileUrl = urlFromString
+				} else {
+					// New format: file path - create file URL
+					fileUrl = URL(fileURLWithPath: localPath)
+				}
+
+			    try FileManager.default.removeItem(at: fileUrl)
+				print("File deleted: \(localPath)")
 			}
 			catch {
-				print("\n\nERR: Delete Failed. File not found...\n\n")
+				print("\n\nERR: Delete Failed. File not found: \(error.localizedDescription)\n\n")
 			}
 			UserDefaults.standard.removeObject(forKey: message.MessageId)
 

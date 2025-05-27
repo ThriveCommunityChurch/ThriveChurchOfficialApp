@@ -29,17 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
         appCoordinator = AppCoordinator(window: window)
         appCoordinator?.start()
 
-        do {
-			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            print("Setting the player to play no matter what")
-
-            UIApplication.shared.beginReceivingRemoteControlEvents()
-            print("Enabling Remote Control Events")
-        }
-        catch {
-            // report for an error
-            print("Catches any errors with the AVPlayer")
-        }
+        // Audio session will be configured only when actually playing audio
+        // This prevents interfering with other apps' audio sessions
+        print("Audio session will be configured when audio playback starts")
 
 		// configure firebase for analytics events
 		FirebaseApp.configure()
@@ -142,20 +134,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVAudioPlayerDelegate, UN
 
         print("application Will Resign Active")
 
-        do {
-			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            print("AVAudioSession Category Playback OK")
+        // Only configure audio session if our app is currently playing audio
+        // This prevents interfering with other apps' ongoing audio playback
+        if SermonAVPlayer.sharedInstance.checkPlayingStatus() {
             do {
-                try AVAudioSession.sharedInstance().setActive(true)
-
-                print("AVAudioSession is Active")
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                print("AVAudioSession Category Playback OK - App is playing audio")
+                do {
+                    try AVAudioSession.sharedInstance().setActive(true)
+                    print("AVAudioSession is Active - App is playing audio")
+                } catch let error as NSError {
+                    print("Error activating audio session: \(error.localizedDescription)")
+                }
             } catch let error as NSError {
-                print(error.localizedDescription)
-                print("error 1 caught")
+                print("Error setting audio session category: \(error.localizedDescription)")
             }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-            print("error 2 caught")
+        } else {
+            print("Not configuring audio session - app is not playing audio")
         }
     }
 

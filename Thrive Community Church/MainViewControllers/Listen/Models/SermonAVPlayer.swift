@@ -68,7 +68,34 @@ class SermonAVPlayer: NSObject {
 			self.stop()
 		}
 
-		guard let url = URL(string: selectedMessage.LocalAudioURI ?? "") else { return }
+		guard let localPath = selectedMessage.LocalAudioURI,
+			  !localPath.isEmpty else {
+			print("ERROR: LocalAudioURI is nil or empty for message: \(selectedMessage.MessageId)")
+			return
+		}
+
+		// Handle both old format (URL string) and new format (file path)
+		let url: URL
+		if localPath.hasPrefix("file://") {
+			// Old format: URL string - convert to URL directly
+			guard let urlFromString = URL(string: localPath) else {
+				print("ERROR: Invalid URL string in LocalAudioURI: \(localPath)")
+				return
+			}
+			url = urlFromString
+			print("Playing local file (old format) from: \(url.absoluteString)")
+		} else {
+			// New format: file path - create file URL
+			url = URL(fileURLWithPath: localPath)
+			print("Playing local file (new format) from: \(url.absoluteString)")
+		}
+
+		// Verify file exists before attempting playback
+		if !FileManager.default.fileExists(atPath: url.path) {
+			print("ERROR: Local audio file does not exist at path: \(url.path)")
+			return
+		}
+
 		self.player = AVPlayer(url: url)
 		self.play()
 		self.isPlaying = true
@@ -236,21 +263,21 @@ class SermonAVPlayer: NSObject {
 		self.reinitNowPlayingInfoCenter(currentTime: time ?? 0.0, isPaused: false)
 		self.registered = true
 
-		// enable the information to all come together in the command center
+		// Configure audio session respectfully - only when we're actually playing
 		do {
-			var cat = AVAudioSession.sharedInstance().category
-			cat = .playback
-
-			try AVAudioSession.sharedInstance().setCategory(cat)
+			// Use .playback category with .mixWithOthers option to be more respectful
+			// This allows other apps to resume their audio when we're not actively playing
+			try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP])
+			print("Audio session category set to playback with respectful options")
 
 			do {
 				try AVAudioSession.sharedInstance().setActive(true)
+				print("Audio session activated for playback")
 			} catch let error as NSError {
-				print(error.localizedDescription)
-
+				print("Error activating audio session: \(error.localizedDescription)")
 			}
 		} catch let error as NSError {
-			print(error.localizedDescription)
+			print("Error setting audio session category: \(error.localizedDescription)")
 		}
 	}
 
@@ -301,6 +328,14 @@ class SermonAVPlayer: NSObject {
 		// ignore control events
 		UIApplication.shared.endReceivingRemoteControlEvents()
 
+		// Deactivate audio session to allow other apps to reclaim audio
+		do {
+			try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+			print("Audio session deactivated - other apps can now resume audio")
+		} catch let error as NSError {
+			print("Error deactivating audio session: \(error.localizedDescription)")
+		}
+
 		self.registered = false
 	}
 
@@ -322,9 +357,27 @@ class SermonAVPlayer: NSObject {
 		self.player?.pause()
 		self.isPlaying = false
 		self.isPaused = true
+
+		// Optionally deactivate audio session when paused to allow other apps to play
+		// We'll reactivate it when play is called again
+		do {
+			try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+			print("Audio session deactivated on pause - other apps can now play audio")
+		} catch let error as NSError {
+			print("Error deactivating audio session on pause: \(error.localizedDescription)")
+		}
 	}
 
 	public func play() {
+
+		// Reactivate audio session when resuming playback
+		do {
+			try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP])
+			try AVAudioSession.sharedInstance().setActive(true)
+			print("Audio session reactivated for playback")
+		} catch let error as NSError {
+			print("Error reactivating audio session: \(error.localizedDescription)")
+		}
 
 		self.player?.play()
 		self.isPlaying = true

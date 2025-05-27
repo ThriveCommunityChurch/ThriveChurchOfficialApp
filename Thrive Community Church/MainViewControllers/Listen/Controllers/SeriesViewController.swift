@@ -164,8 +164,15 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		// lets first check to see if they have this sermon message downloaded
 		let localMessage = retrieveDownloadFromStorage(sermonMessageID: message.MessageId)
 
-		if (localMessage == nil) {
-
+		if let downloadedMessage = localMessage {
+			// Play from downloaded file
+			print("Playing downloaded sermon: \(downloadedMessage.Title)")
+			DispatchQueue.main.async {
+				self.markMessagePlayed(messageId: message.MessageId)
+				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: downloadedMessage)
+			}
+		} else {
+			// Stream from server
             checkConnectivity()
 
             if internetConnectionStatus != .unreachable {
@@ -195,11 +202,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
                 self.present(alert, animated: true, completion: nil)
             }
-		}
-		else {
-			DispatchQueue.main.async {
-				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: localMessage!)
-			}
 		}
 	}
 
@@ -524,7 +526,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 						try FileManager.default.moveItem(at: location, to: outputURL)
 
-						self.messageForDownload?.LocalAudioURI = "\(outputURL)" // mp3
+						self.messageForDownload?.LocalAudioURI = outputURL.path // Store file path, not URL string
 						self.finishDownload()
 					}
 				} catch {
