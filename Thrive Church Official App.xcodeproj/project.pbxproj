@@ -11,8 +11,6 @@
 		41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41341BF71D08716B0070AEF5 /* Social.framework */; };
 		413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */; };
 		41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF7F01CF21719006C366E /* AppDelegate.swift */; };
-		DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAPPCOORD1234567890123456 /* AppCoordinator.swift */; };
-		DCUNARCHIVEREXT123456790 /* NSKeyedUnarchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */; };
 		41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
 		DC096B9C24A81EDD00CFD252 /* ConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096B9B24A81EDD00CFD252 /* ConfigurationExtension.swift */; };
@@ -59,12 +57,12 @@
 		DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */; };
 		DC9C0C0423B31AAC00C96788 /* ViewPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */; };
 		DCA0A18C21F82A0A00C8A04B /* CustomCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */; };
-		DCA0A18E21F82E6B00C8A04B /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */; };
 		DCA48C932C2A6B8F00381DEE /* DeviceTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA48C922C2A6B8F00381DEE /* DeviceTypeExtension.swift */; };
 		DCACA58824F1E2FC004871D6 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */; };
 		DCACA58A24F30DFC004871D6 /* DynamicConfigResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */; };
 		DCACA58C24FAE612004871D6 /* GenericSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */; };
 		DCACA58E24FAF296004871D6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */; };
+		DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAPPCOORD1234567890123456 /* AppCoordinator.swift */; };
 		DCB15BEE252E319F002D28D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */; };
 		DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB61AF921CB009B0049FCA2 /* Config.plist */; };
 		DCB61AFE21CB07B60049FCA2 /* ApplicationVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */; };
@@ -91,6 +89,7 @@
 		DCF8A09725E6FB0C00B3A405 /* RSSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8A09625E6FB0C00B3A405 /* RSSViewController.swift */; };
 		DCF9385A252E254D009EACEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
 		DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */; };
+		DCUNARCHIVEREXT123456790 /* NSKeyedUnarchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,8 +128,6 @@
 		413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thrive Church Official App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF7F01CF21719006C366E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DCAPPCOORD1234567890123456 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverExtension.swift; sourceTree = "<group>"; };
 		41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Church Official App.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrive_Community_ChurchTests.swift; sourceTree = "<group>"; };
 		41FCF8091CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -206,13 +203,13 @@
 		DC7652711EEB5395007C0998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC9C0C0323B31AAC00C96788 /* ViewPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlayerViewController.swift; sourceTree = "<group>"; };
 		DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionFooterView.swift; sourceTree = "<group>"; };
-		DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooterView.xib; sourceTree = "<group>"; };
 		DCA48C922C2A6B8F00381DEE /* DeviceTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceTypeExtension.swift; path = "Thrive Community Church/Extensions/DeviceTypeExtension.swift"; sourceTree = SOURCE_ROOT; };
 		DCA554461F6AD47B00E00006 /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCACA58724F1E2FC004871D6 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		DCACA58924F30DFC004871D6 /* DynamicConfigResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicConfigResponse.swift; sourceTree = "<group>"; };
 		DCACA58B24FAE612004871D6 /* GenericSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSiteViewController.swift; sourceTree = "<group>"; };
 		DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		DCAPPCOORD1234567890123456 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DCB61AF921CB009B0049FCA2 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationVariables.swift; sourceTree = "<group>"; };
@@ -227,6 +224,7 @@
 		DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		DCF8A09625E6FB0C00B3A405 /* RSSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSViewController.swift; sourceTree = "<group>"; };
 		DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonMessageExtensions.swift; sourceTree = "<group>"; };
+		DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverExtension.swift; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1039,12 +1037,12 @@
 				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.7.8.38;
+				CURRENT_PROJECT_VERSION = 1.7.9.313;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.7.8;
+				MARKETING_VERSION = 1.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
 				PRODUCT_NAME = "Thrive Church Official App";
 				PROVISIONING_PROFILE = "";
@@ -1067,12 +1065,12 @@
 				CODE_SIGN_ENTITLEMENTS = "Thrive Church Official App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.7.8.38;
+				CURRENT_PROJECT_VERSION = 1.7.9.313;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.7.8;
+				MARKETING_VERSION = 1.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thrive-fl.ThriveCommunityChurch";
 				PRODUCT_NAME = "Thrive Church Official App";
 				PROVISIONING_PROFILE = "";
