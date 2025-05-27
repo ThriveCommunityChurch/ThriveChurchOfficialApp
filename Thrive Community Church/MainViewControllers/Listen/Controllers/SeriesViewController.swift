@@ -60,8 +60,12 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		table.backgroundColor = UIColor.almostBlack
 		table.frame = .zero
 		table.indicatorStyle = .white
-		table.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: table.frame.size.width, height: 1))
-		table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		table.separatorStyle = .none
+		table.showsVerticalScrollIndicator = true
+		table.contentInsetAdjustmentBehavior = .automatic
+		table.estimatedRowHeight = 120
+		table.rowHeight = UITableView.automaticDimension
+		table.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: table.frame.size.width, height: 20))
 		table.translatesAutoresizingMaskIntoConstraints = false
 		return table
 	}()
@@ -252,37 +256,31 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let cell = seriesTable.dequeueReusableCell(withIdentifier: "Cell",
 												   for: indexPath) as! SermonMessageTableViewCell
 
-		DispatchQueue.main.async {
-			let selectedMessage = self.messages[indexPath.row]
+		let selectedMessage = messages[indexPath.row]
 
-			cell.title.text = selectedMessage.Title
-			cell.weekNum.text = "\(selectedMessage.WeekNum ?? 0)"
-			cell.date.text = selectedMessage.Date
-			cell.speaker.text = selectedMessage.Speaker
-			cell.durationLabel.text = selectedMessage.AudioDuration?.formatDurationForUI()
+		// Configure cell content
+		cell.title.text = selectedMessage.Title
+		cell.weekNum.text = "\(selectedMessage.WeekNum ?? 0)"
+		cell.date.text = selectedMessage.Date
+		cell.speaker.text = selectedMessage.Speaker
 
-			if selectedMessage.AudioUrl == nil {
+		// Configure duration
+		if let duration = selectedMessage.AudioDuration?.formatDurationForUI() {
+			cell.durationLabel.text = duration
+			cell.durationLabel.isHidden = false
+		} else {
+			cell.durationLabel.isHidden = true
+		}
 
-				// if this sermon message has no audio associated with it then we need to
-				// hide the image as well as the playback label
-				cell.listenImage.isHidden = true
-				cell.durationLabel.isHidden = true
-			}
-			else {
-				cell.listenImage.isHidden = false
-			}
+		// Configure media availability using new methods
+		cell.setAudioAvailable(selectedMessage.AudioUrl != nil)
+		cell.setVideoAvailable(selectedMessage.VideoUrl != nil)
 
-			if selectedMessage.VideoUrl == nil {
-				cell.watchImage.isHidden = true
-			}
-			else {
-				cell.watchImage.isHidden = false
-			}
-
-			// make the selection color less intense
-			let selectedView = UIView()
-			selectedView.backgroundColor = UIColor.darkGray
-			cell.selectedBackgroundView = selectedView
+		// Configure download status
+		if downloadedMessagesInSeries.contains(selectedMessage.MessageId) {
+			cell.showDownloadedStatus()
+		} else {
+			cell.hideDownloadProgress()
 		}
 
 		return cell
@@ -357,52 +355,53 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 				self.seriesTable.deselectRow(indexPath: indexPath)
 
-				DispatchQueue.main.async {
-					let selectedRow = self.seriesTable.cellForRow(at: indexPath) as! SermonMessageTableViewCell
+				// prevent multiple presses of the button
+				if !self.currentlyDownloading {
+					self.currentlyDownloading = true
 
-					selectedRow.downloadSpinner.startAnimating()
+					// Show download progress immediately
+					DispatchQueue.main.async {
+						if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+							selectedRow.showDownloadProgress()
+						}
+					}
 
-					// prevent multiple presses of the button
-					if !self.currentlyDownloading {
-						self.currentlyDownloading = true
+					// check that the user has enough disk space
+					let space = Storage.getFreeSpace().toMB()
+					let size = selectedMessage.AudioFileSize ?? 0.0
 
-						// check that the user has enough disk space
-						let space = Storage.getFreeSpace().toMB()
-
-						let size = selectedMessage.AudioFileSize ?? 0.0
-
-						if size > space {
-
-							// UI Elements need to be presented with the main method
-							// we should invoke this on the main thread asyncronously
-							DispatchQueue.main.async {
-
-								// the user has no space to save this audio
-								self.currentlyDownloading = false
-
-								let requiredSpace = (size - space).rounded(toPlace: 2)
-								var reqSpaceString: String = ""
-
-								// if we have a number that is greater or equal to 1 then we
-								// should try to remove the trailing zeros. If its less
-								// than that we want them
-								if requiredSpace >= 1.0 {
-									reqSpaceString = requiredSpace.removeZerosFromEnd()
-								}
-								else {
-									reqSpaceString = "\(requiredSpace)"
-								}
-
-								self.currentlyDownloading = false
-								self.presentBasicAlertWTitle(title: "Error!",
-															 message: "Unable to download sermon message. " +
-									"Please clear some space and try again. \(reqSpaceString) MB needed.")
+					if size > space {
+						// UI Elements need to be presented with the main method
+						// we should invoke this on the main thread asyncronously
+						DispatchQueue.main.async {
+							// Hide download progress and show error
+							if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+								selectedRow.hideDownloadProgress()
 							}
-						}
-						else {
 
-							self.saveFileToDisk(selectedRow: selectedRow, selectedMessage: selectedMessage)
+							// the user has no space to save this audio
+							self.currentlyDownloading = false
+
+							let requiredSpace = (size - space).rounded(toPlace: 2)
+							var reqSpaceString: String = ""
+
+							// if we have a number that is greater or equal to 1 then we
+							// should try to remove the trailing zeros. If its less
+							// than that we want them
+							if requiredSpace >= 1.0 {
+								reqSpaceString = requiredSpace.removeZerosFromEnd()
+							}
+							else {
+								reqSpaceString = "\(requiredSpace)"
+							}
+
+							self.presentBasicAlertWTitle(title: "Error!",
+														 message: "Unable to download sermon message. " +
+								"Please clear some space and try again. \(reqSpaceString) MB needed.")
 						}
+					}
+					else {
+						self.saveFileToDisk(indexPath: indexPath, selectedMessage: selectedMessage)
 					}
 				}
 			}
@@ -471,7 +470,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 	}
 
-	private func saveFileToDisk(selectedRow: SermonMessageTableViewCell, selectedMessage: SermonMessage) {
+	private func saveFileToDisk(indexPath: IndexPath, selectedMessage: SermonMessage) {
 
 		let filename = "\(messageForDownload?.MessageId ?? "").mp3"
 
@@ -485,12 +484,18 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let storageLocationAvailable = !FileManager.default.fileExists(atPath: "\(outputURL)")
 
 		if !storageLocationAvailable {
-
 			DispatchQueue.main.async {
+				// Hide download progress
+				if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+					selectedRow.hideDownloadProgress()
+				}
+
+				self.currentlyDownloading = false
 				self.presentBasicAlertWTitle(title: "Error!",
 											 message: "An error occurred while attempting " +
 					"to download the file. Please ensure that this file is not already downloaded.")
 			}
+			return
 		}
 
 		// download it again, since taking the AVPlayer Data and storing it is annoyingly hard
@@ -501,10 +506,23 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 			if error != nil {
 				print(error as Any)
+				DispatchQueue.main.async {
+					if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+						selectedRow.hideDownloadProgress()
+					}
+					self.currentlyDownloading = false
+				}
+				return
 			}
 
 			if location == nil || response == nil {
 				print("Response or location are nil, failing")
+				DispatchQueue.main.async {
+					if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+						selectedRow.hideDownloadProgress()
+					}
+					self.currentlyDownloading = false
+				}
 				return
 			}
 			else {
@@ -514,26 +532,33 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 					httpURLResponse.statusCode == 200,
 					let mimeType = response?.mimeType, mimeType.hasPrefix("audio"),
 					let location = location, error == nil
-					else { return }
+					else {
+						DispatchQueue.main.async {
+							if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+								selectedRow.hideDownloadProgress()
+							}
+							self.currentlyDownloading = false
+						}
+						return
+					}
 				do {
 
 					// we already checked this above
 					if storageLocationAvailable {
-
-						DispatchQueue.main.async {
-							selectedRow.downloadSpinner.stopAnimating()
-						}
-
 						try FileManager.default.moveItem(at: location, to: outputURL)
 
 						self.messageForDownload?.LocalAudioURI = outputURL.path // Store file path, not URL string
-						self.finishDownload()
+						self.finishDownload(indexPath: indexPath)
 					}
 				} catch {
 					// an error ocurred
 					self.currentlyDownloading = false
 
 					DispatchQueue.main.async {
+						if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+							selectedRow.hideDownloadProgress()
+						}
+
 						self.presentBasicAlertWTitle(title: "Error!",
 													 message: "An error occurred while attempting " +
 														"to download the file. Please ensure that this file is not already downloaded." +
@@ -546,7 +571,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		}.resume()
 	}
 
-	private func finishDownload() {
+	private func finishDownload(indexPath: IndexPath) {
 
 		// update the message object for the new URI for that saved audio on the device
 		let currentUTCmilis = Date().timeIntervalSince1970 * 1000
@@ -554,6 +579,13 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 		// NEXT: Update the list in memory and then use that list to update the one in Defaults
 		addMessageToDownloadList()
+
+		// Update UI on main thread
+		DispatchQueue.main.async {
+			if let selectedRow = self.seriesTable.cellForRow(at: indexPath) as? SermonMessageTableViewCell {
+				selectedRow.showDownloadedStatus()
+			}
+		}
 
 		self.currentlyDownloading = false
 		self.messageForDownload = nil
