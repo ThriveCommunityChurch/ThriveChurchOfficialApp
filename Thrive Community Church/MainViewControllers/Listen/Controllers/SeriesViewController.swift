@@ -112,28 +112,40 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
 
-		NSLayoutConstraint.activate([
-			seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			seriesArt.heightAnchor.constraint(equalToConstant: height),
-			startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
-			startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-			seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-			seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
-		])
+		// Check if this is the current series (no EndDate)
+		let isCurrentSeries = series?.StartDate != nil && series?.EndDate == nil
 
-		let updatedSeriesInfo = formatDataForPresentation(series: series!)
-
-		// set the properties
-		if series?.StartDate != nil && series?.EndDate == nil {
+		if isCurrentSeries {
+			// Current series: show "Current Series" text and normal layout
 			startDate.text = "Current Series"
-		}
-		else {
-			// set the updated information
-			startDate.text = "Started: \(updatedSeriesInfo.StartDate)"
+			startDate.isHidden = false
+
+			NSLayoutConstraint.activate([
+				seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+				seriesArt.heightAnchor.constraint(equalToConstant: height),
+				startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
+				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
+				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
+			])
+		} else {
+			// Non-current series: hide text and make table touch bottom of image
+			startDate.isHidden = true
+
+			NSLayoutConstraint.activate([
+				seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+				seriesArt.heightAnchor.constraint(equalToConstant: height),
+				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+				seriesTable.topAnchor.constraint(equalTo: seriesArt.bottomAnchor)
+			])
 		}
 	}
 
