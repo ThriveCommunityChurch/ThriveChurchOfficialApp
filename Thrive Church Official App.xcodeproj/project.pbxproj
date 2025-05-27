@@ -11,6 +11,8 @@
 		41341BF81D08716B0070AEF5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41341BF71D08716B0070AEF5 /* Social.framework */; };
 		413C263C1CFE3EFC00D8AE26 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */; };
 		41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF7F01CF21719006C366E /* AppDelegate.swift */; };
+		DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAPPCOORD1234567890123456 /* AppCoordinator.swift */; };
+		DCUNARCHIVEREXT123456790 /* NSKeyedUnarchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */; };
 		41FCF8081CF21719006C366E /* Thrive_Community_ChurchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */; };
 		68C52DF074924D43C5FEBA5A /* Pods_Thrive_Church_Official_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFC81711DE067EE192456F /* Pods_Thrive_Church_Official_AppUITests.framework */; };
 		DC096B9C24A81EDD00CFD252 /* ConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC096B9B24A81EDD00CFD252 /* ConfigurationExtension.swift */; };
@@ -73,7 +75,6 @@
 		DCC2398C20FFFDC7005973FA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */; };
 		DCCA9B31245FB08900657EB7 /* BibleSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCA9B30245FB08900657EB7 /* BibleSelectionTableViewCell.swift */; };
 		DCDFCE5C1FA00C700011AEC3 /* Pods_Thrive_Church_Official_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB99E1F4640C3FCA51CD9F /* Pods_Thrive_Church_Official_App.framework */; };
-		DCE362C01F0560E400725F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE362BF1F05603300725F11 /* Main.storyboard */; };
 		DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */; };
 		DCE3630A1F05610600725F11 /* FGCUSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8431F0494FF002784E7 /* FGCUSiteViewController.swift */; };
 		DCE3630B1F05610600725F11 /* FGCUSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC01B8441F0494FF002784E7 /* FGCUSocialViewController.swift */; };
@@ -128,6 +129,8 @@
 		413C263B1CFE3EFC00D8AE26 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		41FCF7ED1CF21719006C366E /* Thrive Church Official App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thrive Church Official App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF7F01CF21719006C366E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DCAPPCOORD1234567890123456 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverExtension.swift; sourceTree = "<group>"; };
 		41FCF8031CF21719006C366E /* Thrive Church Official App.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrive Church Official App.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCF8071CF21719006C366E /* Thrive_Community_ChurchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrive_Community_ChurchTests.swift; sourceTree = "<group>"; };
 		41FCF8091CF21719006C366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,7 +222,6 @@
 		DCC2398B20FFFDC7005973FA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		DCCA9B30245FB08900657EB7 /* BibleSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		DCCC096E1F68DEC5003395C0 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		DCE362BF1F05603300725F11 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DCF69879220A87AD001B1A0C /* ReadSermonPassageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSermonPassageViewController.swift; sourceTree = "<group>"; };
 		DCF6987B220AA9DC001B1A0C /* GetPassageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPassageResponse.swift; sourceTree = "<group>"; };
 		DCF88FD320AE4E9000516C2D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -278,7 +280,6 @@
 			children = (
 				DCB61AF921CB009B0049FCA2 /* Config.plist */,
 				DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */,
-				DCE362BF1F05603300725F11 /* Main.storyboard */,
 				DC01B7F21F04936E002784E7 /* LaunchScreen.storyboard */,
 				DC7652711EEB5395007C0998 /* Assets.xcassets */,
 				41FF24A51D171EC30048E6AF /* AudioToolbox.framework */,
@@ -309,6 +310,7 @@
 			children = (
 				DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */,
 				41FCF7F01CF21719006C366E /* AppDelegate.swift */,
+				DCAPPCOORD1234567890123456 /* AppCoordinator.swift */,
 				DC01B7F71F0494FF002784E7 /* MainViewControllers */,
 				DC01B7F41F0494EE002784E7 /* Extensions */,
 				DC01B7EF1F04921B002784E7 /* Properties */,
@@ -377,6 +379,7 @@
 				DC0DE7F621EDA0A900820CE2 /* Reachability.swift */,
 				DC0DE7FC21F01A1400820CE2 /* DataExtension.swift */,
 				DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */,
+				DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,7 +493,6 @@
 				DC7348C021D6AE5F0057227D /* SermonMessageTableViewCell.swift */,
 				DC0DE7FA21EFF41F00820CE2 /* RecentlyWatchedTableViewCell.swift */,
 				DCA0A18B21F82A0A00C8A04B /* CustomCollectionFooterView.swift */,
-				DCA0A18D21F82E6B00C8A04B /* CustomFooterView.xib */,
 				DCCA9B30245FB08900657EB7 /* BibleSelectionTableViewCell.swift */,
 			);
 			path = Views;
@@ -666,10 +668,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCE362C01F0560E400725F11 /* Main.storyboard in Resources */,
 				DCE362C11F0560E400725F11 /* LaunchScreen.storyboard in Resources */,
 				DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */,
-				DCA0A18E21F82E6B00C8A04B /* CustomFooterView.xib in Resources */,
 				DC7652721EEB5395007C0998 /* Assets.xcassets in Resources */,
 				DCB15BEE252E319F002D28D8 /* GoogleService-Info.plist in Resources */,
 			);
@@ -882,6 +882,8 @@
 				DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */,
 				DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */,
 				41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */,
+				DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */,
+				DCUNARCHIVEREXT123456790 /* NSKeyedUnarchiverExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

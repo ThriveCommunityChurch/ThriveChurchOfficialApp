@@ -10,13 +10,29 @@ import UIKit
 import MessageUI
 
 class ConnectTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
-	
+
 	var configurations: [Int: DynamicConfigResponse] = [Int: DynamicConfigResponse]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
+        setupTableView()
+        setupNavigationBar()
 		self.configurations = self.loadConfigs()
+    }
+
+    // MARK: - Setup Views
+    func setupTableView() {
+        tableView.backgroundColor = UIColor.almostBlack
+        tableView.separatorColor = UIColor.clear
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 60
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+    }
+
+    func setupNavigationBar() {
+        title = "Connect"
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     // MARK: - Table view data source
@@ -29,32 +45,38 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 		return configurations.count
     }
 
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
 		let config = configurations[indexPath.row]
-		
+
 		if (config != nil) {
 			cell.textLabel?.text = config?.CellTitle
 		}
-		
+
 		cell.textLabel?.textColor = .white
 		cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 17)
 		cell.accessoryType = .disclosureIndicator
+		cell.backgroundColor = UIColor.almostBlack
+
+		// Set selection background color
+		let selectedView = UIView()
+		selectedView.backgroundColor = UIColor.darkGray
+		cell.selectedBackgroundView = selectedView
 
         return cell
     }
-	
+
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
+
 		let config = configurations[indexPath.row]!
-		
+
 		tableView.deselectRow(at: indexPath, animated: true)
-		
+
 		if (config.Setting?.Key == ConfigKeys.shared.AddressMain) {
 			let formattedAddress = config.Setting?.Value?.replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "\n", with: "%20")
-			
+
 			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(formattedAddress ?? ""))&dirflg=d")
 		}
 		else if (config.Setting == nil && config.CellTitle != "Announcements") {
@@ -64,51 +86,51 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			self.show(config.Destination, sender: self)
 		}
 	}
-	
+
 	// MARK: - Methods
-	
+
 	func loadConfigs() -> [Int: DynamicConfigResponse] {
-		
+
 		var tempList: [DynamicConfigResponse] = [DynamicConfigResponse]()
 
 		// load all the configs so we can count how many we have to present
 		let addressData = UserDefaults.standard.object(forKey: ConfigKeys.shared.AddressMain) as? Data
-		
+
 		let serveData = UserDefaults.standard.object(forKey: ConfigKeys.shared.Serve) as? Data
 		let smallGroupData = UserDefaults.standard.object(forKey: ConfigKeys.shared.SmallGroup) as? Data
-		
+
 		// AT LEAST ONE of the following must be present in order for us to display "Contact Us"
 		let emailData = UserDefaults.standard.object(forKey: ConfigKeys.shared.EmailMain) as? Data
 		let phoneData = UserDefaults.standard.object(forKey: ConfigKeys.shared.PhoneMain) as? Data
 		let prayersData = UserDefaults.standard.object(forKey: ConfigKeys.shared.Prayers) as? Data
-		
-		
+
+
 		if (emailData != nil || phoneData != nil || prayersData != nil) {
-			
+
 			let vc = UIAlertController(title: "Contact us",
 									   message: "Please select an option",
 									   preferredStyle: .actionSheet)
-						
+
 			if (emailData != nil) {
-				
+
 				var email: String = "info@thrive-fl.org"
-				
+
 				// reading from the messageId collection in UD
                 var decoded: ConfigSetting? = nil
-                
+
                 do {
                     decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: emailData!)
                 }
                 catch {
-                    
+
                 }
-				
+
 				email = "\(decoded?.Value ?? "info@thrive-fl.org")"
-				
+
 				vc.addAction(UIAlertAction(title: "Email us", style: .default, handler: { (action) in
-					
+
 					if MFMailComposeViewController.canSendMail() {
-						
+
 						let composeVC = MFMailComposeViewController()
 						composeVC.mailComposeDelegate = self
 						composeVC.setToRecipients([email])
@@ -117,26 +139,26 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 					else {
 						self.displayAlertForAction()
 					}
-					
+
 				}))
 			}
-			
+
 			if (phoneData != nil) {
-				
+
 				vc.addAction(UIAlertAction(title: "Call us", style: .default, handler: { (action) in
-					
+
 					// reading from the messageId collection in UD
                     var decoded: ConfigSetting? = nil
-                    
+
                     do {
                         decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: phoneData!)
                     }
                     catch {
-                        
+
                     }
-					
+
 					if let url = URL(string: "tel://\(decoded?.Value ?? "2396873430")") {
-						
+
 						if UIApplication.shared.canOpenURL(url) {
 							UIApplication.shared.open(url, options: [:], completionHandler: nil)
 							print("Calling")
@@ -147,138 +169,155 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 					}
 				}))
 			}
-			
+
 			if (prayersData != nil) {
-				
+
                 vc.addAction(UIAlertAction(title: "Submit a prayer request", style: .default, handler: { (action) in
-					
+
 					// reading from the messageId collection in UD
                     do {
                         if let prayerDecoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: prayersData!) {
                             let prayerVC = GenericSiteViewController()
                             prayerVC.link = prayerDecoded.Value!
                             prayerVC.navHeader = "Prayer request"
-                            
+
                             self.show(prayerVC, sender: self)
                         }
-                        
+
                     }
                     catch {}
 				}))
 			}
-			
+
 			vc.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-			
+
 			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: vc,
 																				 setting: nil,
 																				 title: "Contact us")
 			tempList.append(settingToAdd)
 		}
-		
+
 		if addressData != nil {
-			
+
 			// reading from the messageId collection in UD
             var decoded: ConfigSetting? = nil
-            
+
+            // Use secure coding with explicit allowed classes
+            let allowedClasses = NSSet(array: [
+                ConfigSetting.self,
+                NSString.self,
+                NSNumber.self,
+                NSData.self,
+                NSDate.self
+            ])
+
             do {
-                decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: addressData!)
+                decoded = try NSKeyedUnarchiver.unarchivedObject(ofClasses: allowedClasses as! Set<AnyHashable>, from: addressData!) as? ConfigSetting
+            } catch {
+                decoded = nil
             }
-            catch {
-                
-            }
-			
+
 			let nowhere = UIViewController()
-			
+
 			let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: nowhere,
 																				 setting: decoded,
 																				 title: "Get directions")
-			
+
 			tempList.append(settingToAdd)
 		}
-		
+
 		if smallGroupData != nil {
-			
+
 			// reading from the messageId collection in UD
             do {
                 if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: smallGroupData!) {
                     let groupsVC = GenericSiteViewController()
                     groupsVC.link = decoded.Value!
                     groupsVC.navHeader = "Join a small group"
-                    
+
                     let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
                                                                                          setting: decoded,
                                                                                          title: "Join a small group")
-                    
+
                     tempList.append(settingToAdd)
                 }
-                
+
             }
             catch {}
 		}
-		
+
 		if serveData != nil {
-			
+
 			// reading from the messageId collection in UD
+            // Use secure coding with explicit allowed classes
+            let allowedClasses = NSSet(array: [
+                ConfigSetting.self,
+                NSString.self,
+                NSNumber.self,
+                NSData.self,
+                NSDate.self
+            ])
+
             do {
-                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: serveData!) {
+                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClasses: allowedClasses as! Set<AnyHashable>, from: serveData!) as? ConfigSetting {
                     let groupsVC = GenericSiteViewController()
                     groupsVC.link = decoded.Value!
                     groupsVC.navHeader = "Serve"
-                    
+
                     let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
                                                                                          setting: decoded,
                                                                                          title: "Serve")
-                    
+
                     tempList.append(settingToAdd)
                 }
-                
+            } catch {
+                // Handle error silently
             }
-            catch {}
 		}
-		
+
 		let announcementsVC = RSSTableViewController()
-		
+
 		let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: announcementsVC,
 																			 setting: nil,
 																			 title: "Announcements")
-		
+
 		tempList.append(settingToAdd)
-		
+
 		var response: [Int: DynamicConfigResponse] = [Int: DynamicConfigResponse]()
-		
+
 		var count = 0
 		for config in tempList {
-			
+
 			response[count] = config
-			
+
 			count += 1
 		}
-		
+
 		return response
 	}
-	
+
     // Standard Mail compose controller code
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult,
                                error: Error?) {
-        
+
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
             print("Cancelled")
-            
+
         case MFMailComposeResult.saved.rawValue:
             print("Saved")
-            
+
         case MFMailComposeResult.sent.rawValue:
             print("Sent")
-            
+
         case MFMailComposeResult.failed.rawValue:
             print("Error: \(String(describing: error?.localizedDescription))")
-            
+
         default:
             break
         }
-        
+
         self.dismiss(animated: true, completion: nil)
     }
 

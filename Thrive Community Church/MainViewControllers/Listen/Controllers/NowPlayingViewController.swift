@@ -23,7 +23,7 @@ class NowPlayingViewController: UIViewController {
 	var sermonSeriesArt: UIImage?
 	var loaded: Bool = false
 	var reachedEnd: Bool = false
-	
+
 	var currentItem: AVPlayerItem? = nil
 
 	var totalAudioTime: Double? = nil
@@ -31,18 +31,27 @@ class NowPlayingViewController: UIViewController {
 	var playerProgress: Float? = nil
 	var currentProgressTimer: Timer? = nil
 	var lazyLoadDuration: Bool = false
-	
+
 	// UI Elements
-	
-	@IBOutlet weak var notPlayingText: UILabel!
-	
+
+	let notPlayingText: UILabel = {
+		let label = UILabel()
+		label.text = "No audio is currently playing"
+		label.textAlignment = .center
+		label.font = UIFont(name: "Avenir-Medium", size: 18)
+		label.textColor = .lightGray
+		label.numberOfLines = 0
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
 		image.backgroundColor = .red
 		image.translatesAutoresizingMaskIntoConstraints = false
 		return image
 	}()
-	
+
 	let messageTitleLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
@@ -52,7 +61,7 @@ class NowPlayingViewController: UIViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let progressIndicator: UIProgressView = {
 		let indicator = UIProgressView()
 		indicator.progressTintColor = UIColor.mainBlue
@@ -60,82 +69,82 @@ class NowPlayingViewController: UIViewController {
 		indicator.translatesAutoresizingMaskIntoConstraints = false
 		return indicator
 	}()
-	
+
 	let progressContainerView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let progressTrackerContainer: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let detailsBackgroundView: UIView = {
 		let view = UIView()
 		view.backgroundColor = UIColor.almostBlack
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let playerControlsView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView2: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView3: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView4: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView5: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView6: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let spacingView7: UIView = {
 		let view = UIView()
 		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	
+
 	let controlsStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .horizontal
@@ -145,7 +154,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	// Stack views for each item in list
 	let downloadStackView: UIStackView = {
 		let stack = UIStackView()
@@ -156,7 +165,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	let playStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
@@ -166,7 +175,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	let pauseStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
@@ -176,7 +185,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	let stopStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
@@ -186,7 +195,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	let rwStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
@@ -196,7 +205,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	let ffStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
@@ -206,7 +215,7 @@ class NowPlayingViewController: UIViewController {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
-	
+
 	let speakerLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -216,7 +225,7 @@ class NowPlayingViewController: UIViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let durationRemainderLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
@@ -226,7 +235,7 @@ class NowPlayingViewController: UIViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let currentProgressLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
@@ -236,7 +245,7 @@ class NowPlayingViewController: UIViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -246,7 +255,7 @@ class NowPlayingViewController: UIViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let passageLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .right
@@ -256,7 +265,7 @@ class NowPlayingViewController: UIViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let downloadButton: UIButton = {
 		let button = UIButton()
 		let image = UIImage(named: "download")
@@ -265,7 +274,7 @@ class NowPlayingViewController: UIViewController {
         button.addTarget(NowPlayingViewController.self, action: #selector(downloadAudio), for: .touchUpInside)
 		return button
 	}()
-	
+
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
 		indicator.style = .large
@@ -276,7 +285,7 @@ class NowPlayingViewController: UIViewController {
 		indicator.translatesAutoresizingMaskIntoConstraints = false
 		return indicator
 	}()
-	
+
 	let pauseButton: UIButton = {
 		let button = UIButton()
 		let image = UIImage(named: "pause")
@@ -285,7 +294,7 @@ class NowPlayingViewController: UIViewController {
         button.addTarget(self, action: #selector(pauseAudio), for: .touchUpInside)
 		return button
 	}()
-	
+
 	let ffButton: UIButton = {
 		let button = UIButton()
 		let image = UIImage(named: "fastForward")
@@ -294,7 +303,7 @@ class NowPlayingViewController: UIViewController {
         button.addTarget(self, action: #selector(fastForward), for: .touchUpInside)
 		return button
 	}()
-	
+
 	let rwButton: UIButton = {
 		let button = UIButton()
 		let image = UIImage(named: "rewind")
@@ -303,7 +312,7 @@ class NowPlayingViewController: UIViewController {
         button.addTarget(self, action: #selector(rewind), for: .touchUpInside)
 		return button
 	}()
-	
+
 	let playButton: UIButton = {
 		let button = UIButton()
 		let image = UIImage(named: "play")
@@ -312,7 +321,7 @@ class NowPlayingViewController: UIViewController {
         button.addTarget(self, action: #selector(playAudio), for: .touchUpInside)
 		return button
 	}()
-	
+
 	let stopButton: UIButton = {
 		let button = UIButton()
 		let image = UIImage(named: "stop")
@@ -321,45 +330,65 @@ class NowPlayingViewController: UIViewController {
         button.addTarget(self, action: #selector(stopAudio), for: .touchUpInside)
 		return button
 	}()
-	
+
 	var downloadedSermonsButton: UIBarButtonItem?
-	
+
 	override func viewDidLoad() {
         super.viewDidLoad()
-		
+
+        setupInitialViews()
+        setupNavigationBar()
+
 		// TODO: A progress bar below where the controls are would be a suuper nice
 		// added touch to this already cool feature
-		
-		let image = UIImage(named: "downloads")
-		downloadedSermonsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(viewDownloads))
-		downloadedSermonsButton?.tintColor = UIColor.white
-		
-		self.navigationItem.rightBarButtonItem = downloadedSermonsButton
 
         let playerStatus = self.checkPlayerStatus()
 
 		if playerStatus {
-			
+
 			self.notPlayingText.isHidden = true
 			player = SermonAVPlayer.sharedInstance.getPlayer()
-			
+
 			loaded = true
 		}
 		else {
 			self.checkIfUserHasDownloads(isInit: true)
 		}
     }
-	
+
+    // MARK: - Setup Views
+    func setupInitialViews() {
+        view.backgroundColor = UIColor.almostBlack
+        view.addSubview(notPlayingText)
+
+        NSLayoutConstraint.activate([
+            notPlayingText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            notPlayingText.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            notPlayingText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            notPlayingText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+
+    func setupNavigationBar() {
+        title = "Now Playing"
+
+        let image = UIImage(named: "downloads")
+        downloadedSermonsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(viewDownloads))
+        downloadedSermonsButton?.tintColor = UIColor.white
+
+        navigationItem.rightBarButtonItem = downloadedSermonsButton
+    }
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		
+
 		// TODO: If a user has a message downloaded and is playing it,
 		// then they delete the download, the icon for download is still disabled
 		// when they return to this view
 
 		if !loaded {
 			let playerStatus = self.checkPlayerStatus()
-			
+
 			if playerStatus {
 				reinitForPlayingSound()
 			}
@@ -368,44 +397,44 @@ class NowPlayingViewController: UIViewController {
 			}
 		}
 		else {
-			
+
 			let playerStatus = self.checkPlayerStatus()
-			
+
 			if loaded && playerStatus {
-				
+
 				reinitForPlayingSound()
 			}
 		}
 	}
-	
+
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(true)
-		
+
 		// prevent mem leaks
 		self.removeTimer()
 	}
-	
+
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
-	
+
 	// MARK: - Methods
 	func checkPlayerStatus() -> Bool {
 		let playingStatus = SermonAVPlayer.sharedInstance.checkPlayingStatus()
 		let pausedStatus = SermonAVPlayer.sharedInstance.checkPausedStatus()
-		
+
 		// if either of these are true, then the player is active
 		let status = playingStatus || pausedStatus
 		return status
 	}
-	
+
 	private func reinitForPlayingSound() {
-		
+
 		self.notPlayingText.isHidden = true
 		self.player = SermonAVPlayer.sharedInstance.getPlayer()
-		
+
 		setupViews()
-		
+
 		// make sure that the buttons are init properly
 		loaded = true
 		self.playButton.isEnabled = false
@@ -414,16 +443,16 @@ class NowPlayingViewController: UIViewController {
 		self.rwButton.isEnabled = true
 		self.ffButton.isEnabled = true
 	}
-	
+
 	func setupViews() {
-		
+
 		// add all the UI Elements first
 		view.addSubview(seriesArt)
 		view.addSubview(progressContainerView)
 		view.addSubview(progressTrackerContainer)
 		view.addSubview(playerControlsView)
 		view.addSubview(detailsBackgroundView)
-		
+
 		// add the things to the containers
 		progressTrackerContainer.addSubview(durationRemainderLabel)
 		progressTrackerContainer.addSubview(currentProgressLabel)
@@ -433,11 +462,11 @@ class NowPlayingViewController: UIViewController {
 		detailsBackgroundView.addSubview(dateLabel)
 		detailsBackgroundView.addSubview(passageLabel)
 		progressContainerView.addSubview(progressIndicator)
-		
+
 		// calculate the size for the image view
 		let width = view.frame.width
 		let height = (width) * (9 / 16) // 16x9 ratio
-		
+
 		// now add the constraints
 		NSLayoutConstraint.activate([
 			seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -483,7 +512,7 @@ class NowPlayingViewController: UIViewController {
 			controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
 			controlsStackView.bottomAnchor.constraint(equalTo: playerControlsView.bottomAnchor)
 		])
-		
+
 		// add elements to the stack view
 		controlsStackView.addArrangedSubview(spacingView)
 		controlsStackView.addArrangedSubview(rwStackView)
@@ -498,7 +527,7 @@ class NowPlayingViewController: UIViewController {
 		controlsStackView.addArrangedSubview(spacingView6)
 		controlsStackView.addArrangedSubview(downloadStackView)
 		controlsStackView.addArrangedSubview(spacingView7)
-		
+
 		playStackView.addArrangedSubview(playButton)
 		pauseStackView.addArrangedSubview(pauseButton)
 		stopStackView.addArrangedSubview(stopButton)
@@ -506,26 +535,26 @@ class NowPlayingViewController: UIViewController {
 		downloadStackView.addArrangedSubview(spinner)
 		rwStackView.addArrangedSubview(rwButton)
 		ffStackView.addArrangedSubview(ffButton)
-		
+
 		spacingView2.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView3.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView4.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView5.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView6.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView7.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
-		
+
 		// since we are playing we need to disable the play button
 		self.playButton.isEnabled = !SermonAVPlayer.sharedInstance.checkPlayingStatus()
 		self.pauseButton.isEnabled = !SermonAVPlayer.sharedInstance.checkPausedStatus()
-		
+
 		self.addDataToViews()
 	}
-	
+
 	func addDataToViews() {
-		
+
 		/*
 		the response of this method call is [String: Any] currently appearing like so:
-		
+
 			let responseDict = ["seriesTitle": seriesTitle,
 								"weekNum": weekNum,
 								"speaker": speaker,
@@ -536,7 +565,7 @@ class NowPlayingViewController: UIViewController {
 								"isDownloaded": isDownloaded,
 								"message": message]
 		*/
-		
+
 		let dataDump = SermonAVPlayer.sharedInstance.getDataForPlayback()!
 
 		self.seriesArt.image = dataDump["sermonGraphic"] as? UIImage
@@ -544,43 +573,43 @@ class NowPlayingViewController: UIViewController {
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "\(dataDump["messageDate"] as? String ?? "")"
 		self.passageLabel.text = "\(dataDump["passageRef"] as? String ?? "")"
-		
+
 		let sermonMessage = (dataDump["message"] as? SermonMessage)
 		self.currentMessageId = sermonMessage?.MessageId
 		self.totalAudioTime = sermonMessage?.AudioDuration
-		
+
 		// inside here we will disable the download button
 		self.checkIfUserHasDownloads()
-		
+
 		// we don't want to allocate memory for this message object if we don't have to
 		if self.downloadButton.isEnabled {
 			self.messageForDownload = dataDump["message"] as? SermonMessage
 			self.messageForDownload?.seriesArt = (dataDump["sermonGraphic"] as? UIImage)!.pngData()
 			self.messageForDownload?.seriesTitle = "\(dataDump["messageTitle"] as? String ?? "")"
 		}
-		
+
 		// at the very end here we should render the progress bar of the player
 		// because these values may change ever so slightly as this method may take a few ms to execute
-		
+
 		//get the duration and playing time
 		currentItem = player?.currentItem
 		currentTime = currentItem?.currentTime().seconds
 		let progress = (currentTime ?? 0.0) / (totalAudioTime ?? 1.0)
 		playerProgress = Float(progress)
-		
+
 		// set the current progres
 		self.currentProgressLabel.text = currentTime?.formatDurationForUI(displayAsPositional: true)
-		
+
 		// once we set the progress we need to setup a timer so that we can track the progress every second
 		self.setupCurrentProgressTracker()
-		
+
 		// set the duration text
 		let durationRemaining = (self.totalAudioTime ?? 0.0) - (self.currentTime ?? 0.0)
 		self.durationRemainderLabel.text = "-\(durationRemaining.formatDurationForUI(displayAsPositional: true) ?? "")"
-		
+
 		// stop any current animation
 		self.progressIndicator.layer.sublayers?.forEach { $0.removeAllAnimations() }
-		
+
 		// set progressView to 0%, with animated set to false
 		self.progressIndicator.setProgress(playerProgress ?? 0.0, animated: false)
 	}
