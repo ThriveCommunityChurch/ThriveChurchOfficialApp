@@ -9,7 +9,7 @@
 import UIKit
 
 class DownloadedMessageTableViewCell: UITableViewCell {
-	
+
 	// UI Elements
 	let titleLabel: UILabel = {
 		let label = UILabel()
@@ -19,7 +19,7 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -28,7 +28,7 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let speakerLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -37,7 +37,7 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	// use this to indicate to the user about how much space the stored item is taking up
 	let storageSizeLabel: UILabel = {
 		let label = UILabel()
@@ -51,28 +51,31 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 	// override init methods
 	override init(style: DownloadedMessageTableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		
+
 		self.translatesAutoresizingMaskIntoConstraints = true
-		self.heightAnchor.constraint(equalToConstant: 90).isActive = true
+		// Set height constraint with lower priority to avoid conflicts with table view's automatic sizing
+		let heightConstraint = self.heightAnchor.constraint(equalToConstant: 90)
+		heightConstraint.priority = UILayoutPriority(999)
+		heightConstraint.isActive = true
 		self.backgroundColor = UIColor.almostBlack
-		
+
 		self.setupViews()
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		
+
 		self.setupViews()
 	}
-	
+
 	func setupViews() {
-		
+
 		// adding subviews
 		self.addSubview(titleLabel)
 		self.addSubview(dateLabel)
 		self.addSubview(speakerLabel)
 		self.addSubview(storageSizeLabel)
-		
+
 		// add constraints
 		NSLayoutConstraint.activate([
 			titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -86,7 +89,7 @@ class DownloadedMessageTableViewCell: UITableViewCell {
 			storageSizeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
 			storageSizeLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor)
 		])
-		
+
 	}
 
 }

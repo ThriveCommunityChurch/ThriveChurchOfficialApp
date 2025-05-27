@@ -271,7 +271,6 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "download")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-        button.addTarget(NowPlayingViewController.self, action: #selector(downloadAudio), for: .touchUpInside)
 		return button
 	}()
 
@@ -291,7 +290,6 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "pause")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(pauseAudio), for: .touchUpInside)
 		return button
 	}()
 
@@ -300,7 +298,6 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "fastForward")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(fastForward), for: .touchUpInside)
 		return button
 	}()
 
@@ -309,7 +306,6 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "rewind")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(rewind), for: .touchUpInside)
 		return button
 	}()
 
@@ -318,7 +314,6 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "play")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(playAudio), for: .touchUpInside)
 		return button
 	}()
 
@@ -327,7 +322,6 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "stop")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(stopAudio), for: .touchUpInside)
 		return button
 	}()
 
@@ -339,7 +333,6 @@ class NowPlayingViewController: UIViewController {
         setupInitialViews()
         setupNavigationBar()
 
-		// TODO: A progress bar below where the controls are would be a suuper nice
 		// added touch to this already cool feature
 
         let playerStatus = self.checkPlayerStatus()
@@ -535,6 +528,14 @@ class NowPlayingViewController: UIViewController {
 		downloadStackView.addArrangedSubview(spinner)
 		rwStackView.addArrangedSubview(rwButton)
 		ffStackView.addArrangedSubview(ffButton)
+
+		// Setup button targets
+		playButton.addTarget(self, action: #selector(playAudio), for: .touchUpInside)
+		pauseButton.addTarget(self, action: #selector(pauseAudio), for: .touchUpInside)
+		stopButton.addTarget(self, action: #selector(stopAudio), for: .touchUpInside)
+		downloadButton.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
+		rwButton.addTarget(self, action: #selector(rewind), for: .touchUpInside)
+		ffButton.addTarget(self, action: #selector(fastForward), for: .touchUpInside)
 
 		spacingView2.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView3.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true

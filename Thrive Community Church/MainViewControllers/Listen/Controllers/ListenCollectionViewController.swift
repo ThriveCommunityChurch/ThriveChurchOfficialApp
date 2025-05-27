@@ -15,6 +15,7 @@ class ListenCollectionViewController: UICollectionViewController, UICollectionVi
 MFMailComposeViewControllerDelegate {
 
 	var recentlyPlayedButton: UIBarButtonItem!
+	var nowPlayingButton: UIBarButtonItem!
 	var sermonSeries = [SermonSeriesSummary]()
 	var apiDomain = "nil"
 	var apiUrl: String = "nil"
@@ -447,15 +448,29 @@ MFMailComposeViewControllerDelegate {
 	// MARK: - Setup Navigation Bar
 	func setupNavigationBar() {
 		title = "Listen"
-		let image = UIImage(named: "RecentlyPlayed")
-		recentlyPlayedButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(openRecentlyPlayed))
+		let recentlyPlayedImage = UIImage(named: "RecentlyPlayed")
+		recentlyPlayedButton = UIBarButtonItem(image: recentlyPlayedImage, style: .plain, target: self, action: #selector(openRecentlyPlayed))
 		recentlyPlayedButton?.tintColor = UIColor.white
-		navigationItem.rightBarButtonItem = recentlyPlayedButton
+
+		// Add Now Playing button - always visible so users can access downloaded content
+		let nowPlayingImage = UIImage(named: "playback") // Using Playback icon for now playing
+		nowPlayingButton = UIBarButtonItem(image: nowPlayingImage, style: .plain, target: self, action: #selector(openNowPlaying))
+		nowPlayingButton?.tintColor = UIColor.white
+
+		// Set both buttons in navigation bar - Now Playing button is always visible
+		navigationItem.rightBarButtonItems = [recentlyPlayedButton!, nowPlayingButton!]
 	}
 
 	@objc func openRecentlyPlayed() {
 		let recentlyPlayedVC = RecentlyPlayedViewController()
 		navigationController?.pushViewController(recentlyPlayedVC, animated: true)
 	}
+
+	@objc func openNowPlaying() {
+		let nowPlayingVC = NowPlayingViewController()
+		navigationController?.pushViewController(nowPlayingVC, animated: true)
+	}
+
+
 
 }

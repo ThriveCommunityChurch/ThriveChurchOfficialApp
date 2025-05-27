@@ -41,9 +41,9 @@ class PrayerRequestsViewController: UIViewController, WKUIDelegate, WKNavigation
 		if data != nil {
 
 			// reading from the messageId collection in UD
-			let decoded = NSKeyedUnarchiver.unarchiveObject(with: data!) as! ConfigSetting
-
-			prayerLink = "\(decoded.Value ?? "http://thrive-fl.org/prayer-requests")"
+			if let decoded = NSKeyedUnarchiver.safelyUnarchiveConfigSetting(from: data!) {
+				prayerLink = "\(decoded.Value ?? "http://thrive-fl.org/prayer-requests")"
+			}
 		}
 
 		let encodedURL = prayerLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

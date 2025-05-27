@@ -18,7 +18,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let speaker: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -27,7 +27,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let date: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
@@ -36,7 +36,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let weekNum: UILabel = {
 		let label = UILabel()
 		label.font = UIFont(name: "Avenir-Light", size: 11)
@@ -45,7 +45,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let wk: UILabel = {
 		let label = UILabel()
 		label.font = UIFont(name: "Avenir-Light", size: 6)
@@ -55,7 +55,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let durationLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont(name: "Avenir-Light", size: 12)
@@ -64,7 +64,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
+
 	let watchImage: UIImageView = {
 		let image = UIImageView()
 		image.clipsToBounds = true
@@ -74,7 +74,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		image.image = UIImage(named: "videoPlayer")
 		return image
 	}()
-	
+
 	let listenImage: UIImageView = {
 		let image = UIImageView()
 		image.clipsToBounds = true
@@ -84,7 +84,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		image.image = UIImage(named: "audioPlayer")
 		return image
 	}()
-	
+
 	let downloadSpinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
 		indicator.color = .white
@@ -92,25 +92,28 @@ class SermonMessageTableViewCell: UITableViewCell {
 		indicator.translatesAutoresizingMaskIntoConstraints = false
 		return indicator
 	}()
-	
+
 	override init(style: SermonMessageTableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		
+
 		self.translatesAutoresizingMaskIntoConstraints = true
-		self.heightAnchor.constraint(equalToConstant: 90).isActive = true
+		// Set height constraint with lower priority to avoid conflicts with table view's automatic sizing
+		let heightConstraint = self.heightAnchor.constraint(equalToConstant: 90)
+		heightConstraint.priority = UILayoutPriority(999)
+		heightConstraint.isActive = true
 		self.backgroundColor = UIColor.almostBlack
-		
+
 		self.setupViews()
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		
+
 		self.setupViews()
 	}
-	
+
 	func setupViews() {
-		
+
 		// add all the views to the main view
 		self.addSubview(weekNum)
 		self.addSubview(title)
@@ -121,7 +124,7 @@ class SermonMessageTableViewCell: UITableViewCell {
 		self.addSubview(listenImage)
 		self.addSubview(durationLabel)
 		self.addSubview(downloadSpinner)
-		
+
 		NSLayoutConstraint.activate([
 			weekNum.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
 			weekNum.centerYAnchor.constraint(equalTo: self.centerYAnchor),

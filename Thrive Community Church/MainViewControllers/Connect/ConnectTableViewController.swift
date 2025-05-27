@@ -175,17 +175,13 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
                 vc.addAction(UIAlertAction(title: "Submit a prayer request", style: .default, handler: { (action) in
 
 					// reading from the messageId collection in UD
-                    do {
-                        if let prayerDecoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: prayersData!) {
-                            let prayerVC = GenericSiteViewController()
-                            prayerVC.link = prayerDecoded.Value!
-                            prayerVC.navHeader = "Prayer request"
+                    if let prayerDecoded = NSKeyedUnarchiver.safelyUnarchiveConfigSetting(from: prayersData!) {
+                        let prayerVC = GenericSiteViewController()
+                        prayerVC.link = prayerDecoded.Value!
+                        prayerVC.navHeader = "Prayer request"
 
-                            self.show(prayerVC, sender: self)
-                        }
-
+                        self.show(prayerVC, sender: self)
                     }
-                    catch {}
 				}))
 			}
 
@@ -229,21 +225,17 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 		if smallGroupData != nil {
 
 			// reading from the messageId collection in UD
-            do {
-                if let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClass: ConfigSetting.self, from: smallGroupData!) {
-                    let groupsVC = GenericSiteViewController()
-                    groupsVC.link = decoded.Value!
-                    groupsVC.navHeader = "Join a small group"
+            if let decoded = NSKeyedUnarchiver.safelyUnarchiveConfigSetting(from: smallGroupData!) {
+                let groupsVC = GenericSiteViewController()
+                groupsVC.link = decoded.Value!
+                groupsVC.navHeader = "Join a small group"
 
-                    let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
-                                                                                         setting: decoded,
-                                                                                         title: "Join a small group")
+                let settingToAdd: DynamicConfigResponse = DynamicConfigResponse.init(destination: groupsVC,
+                                                                                     setting: decoded,
+                                                                                     title: "Join a small group")
 
-                    tempList.append(settingToAdd)
-                }
-
+                tempList.append(settingToAdd)
             }
-            catch {}
 		}
 
 		if serveData != nil {
