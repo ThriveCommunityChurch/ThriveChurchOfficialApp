@@ -29,6 +29,10 @@ extension ListenCollectionViewController {
 				self.miscApiErrorText = "\(error!)"
 
 				DispatchQueue.main.async {
+					// Reset loading states on error
+					self.isLoading = false
+					self.isPreloading = false
+					self.footerView?.stopAnimate()
 
 					// we don't need to display the error message again
 					if self.apiErrorMessage.isHidden {
@@ -71,8 +75,10 @@ extension ListenCollectionViewController {
 						self.checkIfApiResponseIsActive()
 					}
 
+					// Handle loading states for both regular loading and preloading
 					if self.pageNumber > 1 {
 						self.isLoading = false
+						self.isPreloading = false
 						self.footerView?.stopAnimate()
 					}
 

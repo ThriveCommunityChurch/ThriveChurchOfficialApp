@@ -33,6 +33,16 @@ MFMailComposeViewControllerDelegate {
 	var totalPages: Int = 1
 	var overrideFooter: Bool = false
 
+	// Improved Pagination
+	var isPreloading: Bool = false
+	private let preloadThreshold: CGFloat = 0.8 // Load next page when 80% scrolled
+	private var lastContentOffset: CGFloat = 0
+	private var scrollDirection: ScrollDirection = .down
+
+	private enum ScrollDirection {
+		case up, down
+	}
+
 	// API Connectivity issues
 	var retryCounter: Int = 0
 	var miscApiErrorText: String?
@@ -183,23 +193,48 @@ MFMailComposeViewControllerDelegate {
 		let selectedSeries = sermonSeries[indexPath.row]
 
 		if let imageFromCache = ImageCache.sharedInstance.getImagesForKey(rssUrl: selectedSeries.ArtUrl) {
-
+			// Image is cached, display immediately without any loading state
 			cell.seriesArt.image = imageFromCache
+			cell.hideLoadingState()
 		}
 		else {
-			// get the image from the API and update the image cache by reference
-			cell.seriesArt.loadImage(resourceUrl: selectedSeries.ArtUrl)
+			// Show loading state while image loads from network
+			cell.showLoadingState()
+
+			// Load image from network
+			cell.loadImageWithCompletion(resourceUrl: selectedSeries.ArtUrl) { [weak cell] success in
+				DispatchQueue.main.async {
+					// Hide loading state immediately when image loading completes
+					cell?.hideLoadingState()
+				}
+			}
 		}
+
+		// Check if we need to preload next page (improved pagination)
+		checkForPreload(at: indexPath)
 
         return cell
     }
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-		let width = view.frame.width
-		let height = (width) * (9 / 16) // 16x9 ratio
+		// Account for horizontal margins (16pt on each side) and vertical spacing (8pt total)
+		let horizontalMargins: CGFloat = 32 // 16pt on each side
+		let verticalSpacing: CGFloat = 8 // 4pt top + 4pt bottom
 
-		return CGSize(width: width, height: height)
+		let availableWidth = view.frame.width - horizontalMargins
+		let cardWidth = availableWidth
+		let cardHeight = (cardWidth * (9.0 / 16.0)) + verticalSpacing // 16:9 ratio + spacing
+
+		return CGSize(width: view.frame.width, height: cardHeight)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return 0 // Spacing is handled within the cell
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return 0
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -284,49 +319,54 @@ MFMailComposeViewControllerDelegate {
 	}
 
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		// Track scroll direction
+		let currentOffset = scrollView.contentOffset.y
+		scrollDirection = currentOffset > lastContentOffset ? .down : .up
+		lastContentOffset = currentOffset
 
-		// compute the scroll value and play with the threshold to get desired effect
-		let contentOffset = scrollView.contentOffset.y
-		let contentHeight = scrollView.contentSize.height
-		let diffHeight = contentHeight - contentOffset
-		let frameHeight = scrollView.bounds.size.height
-		var triggerThreshold = Float((diffHeight - frameHeight)) / Float(100.0)
-		triggerThreshold = min(triggerThreshold, 0.0) / 2
-
-		// we did some maths above to determine what force a user is pulling down with
-		// set a threshold before the event triggers
-		if abs(triggerThreshold) <= 1.0 {
-
-			let pullRatio  = min(abs(triggerThreshold), 0.80)
-			self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio * 1.2))
-			if pullRatio >= 0.80 {
-				self.footerView?.animateFinal()
-			}
+		// Check for predictive loading when scrolling down
+		if scrollDirection == .down {
+			checkForPredictiveLoading(scrollView: scrollView)
 		}
 	}
 
-	override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+	// MARK: - Improved Pagination Methods
 
-		// assuming there are pages left, and we hit the threshold, when the view
-		// finishes moving then we can load the things
-		if self.pageNumber < self.totalPages {
+	private func checkForPreload(at indexPath: IndexPath) {
+		// Check if we're approaching the end of current content
+		let totalItems = sermonSeries.count
+		let threshold = Int(Double(totalItems) * preloadThreshold)
 
-			// this is called many times so we need to make sure that we aren't
-			// doing the work more than we should
-			if self.footerView != nil && (self.footerView?.isAnimatingFinal)! && !self.isLoading {
-
-				print("load more trigger")
-				self.isLoading = true
-				self.footerView?.startAnimate()
-
-				// loading more from the API
-				// use self.overrideFooter
-
-				// TODO: Implement something that prevents a user from requesting a page beyond the max!
-				self.pageNumber = self.pageNumber + 1
-				fetchAllSermons(isReset: false)
-			}
+		if indexPath.row >= threshold && !isPreloading && pageNumber < totalPages {
+			triggerPreload()
 		}
+	}
+
+	private func checkForPredictiveLoading(scrollView: UIScrollView) {
+		let contentHeight = scrollView.contentSize.height
+		let scrollViewHeight = scrollView.frame.height
+		let scrollOffset = scrollView.contentOffset.y
+
+		// Calculate how much of the content has been scrolled
+		let scrollPercentage = scrollOffset / (contentHeight - scrollViewHeight)
+
+		// Trigger preload when user has scrolled 80% of the content
+		if scrollPercentage >= preloadThreshold && !isPreloading && pageNumber < totalPages {
+			triggerPreload()
+		}
+	}
+
+	private func triggerPreload() {
+		guard !isPreloading && !isLoading && pageNumber < totalPages else { return }
+
+		print("Triggering predictive load for page \(pageNumber + 1)")
+		isPreloading = true
+		pageNumber += 1
+
+		// Show subtle loading indicator in footer
+		footerView?.startAnimate()
+
+		fetchAllSermons(isReset: false)
 	}
 
 	// MARK: - Methods
