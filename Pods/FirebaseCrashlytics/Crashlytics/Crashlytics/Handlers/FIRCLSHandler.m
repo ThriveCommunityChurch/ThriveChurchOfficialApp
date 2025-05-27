@@ -22,12 +22,17 @@
 
 #import "Crashlytics/Crashlytics/Controllers/FIRCLSReportManager_Private.h"
 
-void FIRCLSHandler(FIRCLSFile* file, thread_t crashedThread, void* uapVoid) {
+void FIRCLSHandler(FIRCLSFile* file,
+                   thread_t crashedThread,
+                   void* uapVoid,
+                   bool shouldSuspendThread) {
   FIRCLSProcess process;
 
   FIRCLSProcessInit(&process, crashedThread, uapVoid);
 
-  FIRCLSProcessSuspendAllOtherThreads(&process);
+  if (shouldSuspendThread) {
+    FIRCLSProcessSuspendAllOtherThreads(&process);
+  }
 
   FIRCLSProcessRecordAllThreads(&process, file);
 
@@ -42,20 +47,10 @@ void FIRCLSHandler(FIRCLSFile* file, thread_t crashedThread, void* uapVoid) {
   FIRCLSHostWriteDiskUsage(file);
 
   // This is the first common point where various crash handlers call into
-  // Store a crash file marker to indicate that a crash has occured
+  // Store a crash file marker to indicate that a crash has occurred
   FIRCLSCreateCrashedMarkerFile();
 
-  FIRCLSProcessResumeAllOtherThreads(&process);
-
-  // clean up after ourselves
-  FIRCLSProcessDestroy(&process);
-}
-
-void FIRCLSHandlerAttemptImmediateDelivery(void) {
-  // now, attempt to relay the event to the delegate
-  FIRCLSReportManager* manager = (__bridge id)_firclsContext.readonly->delegate;
-
-  if ([manager respondsToSelector:@selector(potentiallySubmittableCrashOccurred)]) {
-    [manager potentiallySubmittableCrashOccurred];
+  if (shouldSuspendThread) {
+    FIRCLSProcessResumeAllOtherThreads(&process);
   }
 }

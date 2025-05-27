@@ -65,7 +65,7 @@ dispatch_queue_t GetGULSwizzlingQueue(void) {
         [inv setArgument:&(currentImp) atIndex:2];
         [inv setArgument:&(newImp) atIndex:3];
         [inv setArgument:&(resolvedClass) atIndex:4];
-        [inv setArgument:(void *_Nonnull) & (selector) atIndex:5];
+        [inv setArgument:(void *_Nonnull)&(selector) atIndex:5];
         [inv invoke];
       }
     }
@@ -89,11 +89,12 @@ dispatch_queue_t GetGULSwizzlingQueue(void) {
         IMP testOriginal;
         [inv getReturnValue:&testOriginal];
         if (originalImpOfClass != testOriginal) {
-          GULLogWarning(kGULLoggerSwizzler, NO,
-                        [NSString stringWithFormat:@"I-SWZ%06ld",
-                                                   (long)kGULSwizzlerMessageCodeMethodSwizzling000],
-                        @"Swizzling class: %@ SEL:%@ after it has been previously been swizzled.",
-                        NSStringFromClass(resolvedClass), NSStringFromSelector(selector));
+          GULOSLogWarning(
+              kGULLogSubsystem, kGULLoggerSwizzler, NO,
+              [NSString
+                  stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeMethodSwizzling000],
+              @"Swizzling class: %@ SEL:%@ after it has been previously been swizzled.",
+              NSStringFromClass(resolvedClass), NSStringFromSelector(selector));
         }
       }
     }

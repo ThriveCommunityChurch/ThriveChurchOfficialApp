@@ -443,14 +443,21 @@ NSString *_Nonnull FIRMessagingStringFromSQLiteResult(int result) {
 
 - (void)createTableWithName:(NSString *)tableName command:(NSString *)command {
   FIRMessaging_MUST_NOT_BE_MAIN_THREAD();
-  char *error;
+  char *error = NULL;
   NSString *createDatabase = [NSString stringWithFormat:command, kTablePrefix, tableName];
   if (sqlite3_exec(self->_database, [createDatabase UTF8String], NULL, NULL, &error) != SQLITE_OK) {
     // remove db before failing
     [self removeDatabase];
-    NSString *errorMessage = [NSString
-        stringWithFormat:@"Couldn't create table: %@ %@", kCreateTableOutgoingRmqMessages,
-                         [NSString stringWithCString:error encoding:NSUTF8StringEncoding]];
+    NSString *sqlError;
+    if (error != NULL) {
+      sqlError = [NSString stringWithCString:error encoding:NSUTF8StringEncoding];
+      sqlite3_free(error);
+    } else {
+      sqlError = @"(null)";
+    }
+    NSString *errorMessage =
+        [NSString stringWithFormat:@"Couldn't create table: %@ with command: %@ error: %@",
+                                   kCreateTableOutgoingRmqMessages, createDatabase, sqlError];
     FIRMessagingLoggerError(kFIRMessagingMessageCodeRmq2PersistentStoreErrorCreatingTable, @"%@",
                             errorMessage);
     NSAssert(NO, errorMessage);
@@ -482,10 +489,12 @@ NSString *_Nonnull FIRMessagingStringFromSQLiteResult(int result) {
 
     BOOL didOpenDatabase = YES;
     if (![fileManager fileExistsAtPath:path]) {
-      // We've to separate between different versions here because of backwards compatbility issues.
-      int result = sqlite3_open_v2(
-          [path UTF8String], &self -> _database,
-          SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_FILEPROTECTION_NONE, NULL);
+      // We've to separate between different versions here because of backward compatibility issues.
+      int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE;
+#ifdef SQLITE_OPEN_FILEPROTECTION_NONE
+      flags |= SQLITE_OPEN_FILEPROTECTION_NONE;
+#endif
+      int result = sqlite3_open_v2([path UTF8String], &self -> _database, flags, NULL);
       if (result != SQLITE_OK) {
         NSString *errorString = FIRMessagingStringFromSQLiteResult(result);
         NSString *errorMessage = [NSString
@@ -502,9 +511,11 @@ NSString *_Nonnull FIRMessagingStringFromSQLiteResult(int result) {
       [self createTableWithName:kTableS2DRmqIds command:kCreateTableS2DRmqIds];
     } else {
       // Calling sqlite3_open should create the database, since the file doesn't exist.
-      int result = sqlite3_open_v2(
-          [path UTF8String], &self -> _database,
-          SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_FILEPROTECTION_NONE, NULL);
+      int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE;
+#ifdef SQLITE_OPEN_FILEPROTECTION_NONE
+      flags |= SQLITE_OPEN_FILEPROTECTION_NONE;
+#endif
+      int result = sqlite3_open_v2([path UTF8String], &self -> _database, flags, NULL);
       if (result != SQLITE_OK) {
         NSString *errorString = FIRMessagingStringFromSQLiteResult(result);
         NSString *errorMessage =

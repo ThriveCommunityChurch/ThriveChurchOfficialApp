@@ -43,7 +43,7 @@ FIRCLSAllocatorRef FIRCLSAllocatorCreate(size_t writableSpace, size_t readableSp
   readableSpace += sizeof(FIRCLSAllocator);  // add the space for our allocator itself
 
   // we can only protect at the page level, so we need all of our regions to be
-  // exact multples of pages.  But, we don't need anything in the special-case of zero.
+  // exact multiples of pages.  But, we don't need anything in the special-case of zero.
 
   writableRegion.size = 0;
   if (writableSpace > 0) {
@@ -55,8 +55,8 @@ FIRCLSAllocatorRef FIRCLSAllocatorCreate(size_t writableSpace, size_t readableSp
     readableRegion.size = ((readableSpace / pageSize) + 1) * pageSize;
   }
 
-  // Make one big, continous allocation, adding additional pages for our guards.  Note
-  // that we cannot use malloc (or valloc) in this case, because we need to assert full
+  // Make one big, continuous allocation, adding additional pages for our guards.  Note
+  // that we cannot use malloc, calloc (or valloc) in this case, because we need to assert full
   // ownership over these allocations.  mmap is a much better choice.  We also mark these
   // pages as MAP_NOCACHE.
   allocationSize = writableRegion.size + readableRegion.size + pageSize * 3;
@@ -174,10 +174,10 @@ void* FIRCLSAllocatorSafeAllocateFromRegion(FIRCLSAllocationRegion* region, size
 
     // this shouldn't happen unless we make a mistake with our size pre-computations
     if ((uintptr_t)originalCursor - (uintptr_t)region->start + size > region->size) {
-      FIRCLSSDKLog("Unable to allocate sufficient memory, falling back to malloc\n");
-      void* ptr = malloc(size);
+      FIRCLSSDKLog("Unable to allocate sufficient memory, falling back to calloc\n");
+      void* ptr = calloc(1, size);
       if (!ptr) {
-        FIRCLSSDKLog("Unable to malloc in FIRCLSAllocatorSafeAllocateFromRegion\n");
+        FIRCLSSDKLog("Unable to calloc in FIRCLSAllocatorSafeAllocateFromRegion\n");
         return NULL;
       }
       return ptr;
@@ -195,21 +195,21 @@ void* FIRCLSAllocatorSafeAllocate(FIRCLSAllocatorRef allocator,
   FIRCLSAllocationRegion* region;
 
   if (!allocator) {
-    // fall back to malloc in this case
-    FIRCLSSDKLog("Allocator invalid, falling back to malloc\n");
-    void* ptr = malloc(size);
+    // fall back to calloc in this case
+    FIRCLSSDKLog("Allocator invalid, falling back to calloc\n");
+    void* ptr = calloc(1, size);
     if (!ptr) {
-      FIRCLSSDKLog("Unable to malloc in FIRCLSAllocatorSafeAllocate\n");
+      FIRCLSSDKLog("Unable to calloc in FIRCLSAllocatorSafeAllocate\n");
       return NULL;
     }
     return ptr;
   }
 
   if (allocator->protectionEnabled) {
-    FIRCLSSDKLog("Allocator already protected, falling back to malloc\n");
-    void* ptr = malloc(size);
+    FIRCLSSDKLog("Allocator already protected, falling back to calloc\n");
+    void* ptr = calloc(1, size);
     if (!ptr) {
-      FIRCLSSDKLog("Unable to malloc in FIRCLSAllocatorSafeAllocate\n");
+      FIRCLSSDKLog("Unable to calloc in FIRCLSAllocatorSafeAllocate\n");
       return NULL;
     }
     return ptr;
