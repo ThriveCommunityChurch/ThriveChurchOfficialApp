@@ -29,8 +29,11 @@ class MoreTableViewController: UITableViewController, MFMailComposeViewControlle
         tableView.backgroundColor = UIColor.almostBlack
         tableView.separatorColor = UIColor.clear
         tableView.separatorStyle = .none
-        tableView.rowHeight = 60
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.rowHeight = 80 // Increased height for card design
+        tableView.register(ModernMoreTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+
+        // Add spacing for card layout
+        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
 
     func setupNavigationBar() {
@@ -49,23 +52,32 @@ class MoreTableViewController: UITableViewController, MFMailComposeViewControlle
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! ModernMoreTableViewCell
 
 		let config = configurations[indexPath.row]
 
-		if (config != nil) {
-			cell.textLabel?.text = config?.CellTitle
+		if let config = config {
+			// Determine subtitle based on content type
+			var subtitle: String? = nil
+
+			if config.CellTitle == "I'm New" {
+				subtitle = "Learn about our church and community"
+			} else if config.CellTitle == "Give" {
+				subtitle = "Support our mission and ministry"
+			} else if config.CellTitle == "Social" {
+				subtitle = "Follow us on social media"
+			} else if config.CellTitle == "Meet the team" {
+				subtitle = "Get to know our staff and leadership"
+			} else if config.CellTitle == "Settings" {
+				subtitle = "Manage app preferences and notifications"
+			} else if config.CellTitle == "About" {
+				subtitle = "App version and information"
+			} else if config.CellTitle == "Send Logs" {
+				subtitle = "Send diagnostic information to support"
+			}
+
+			cell.configure(title: config.CellTitle, subtitle: subtitle)
 		}
-
-		cell.textLabel?.textColor = .white
-		cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 17)
-		cell.accessoryType = .disclosureIndicator
-		cell.backgroundColor = UIColor.almostBlack
-
-		// Set selection background color
-		let selectedView = UIView()
-		selectedView.backgroundColor = UIColor.darkGray
-		cell.selectedBackgroundView = selectedView
 
 		return cell
 	}
@@ -82,81 +94,15 @@ class MoreTableViewController: UITableViewController, MFMailComposeViewControlle
 		else if (config.Setting?.Key == ConfigKeys.shared.Give) {
 			self.openUrlAnyways(link: config.Setting?.Value ?? "")
 		}
+		else if (config.CellTitle == "Send Logs") {
+			self.sendLogsToSupport()
+		}
 		else if (config.CellTitle == "About") {
             let year = Calendar.current.component(.year, from: Date())
 
-            let alert = UIAlertController(title: "App Version",
-                                          message: "\(self.version())\n\n©\(year) Thrive Community Church",
+            let alert = UIAlertController(title: "About Thrive Church App",
+                                          message: "Version: \(self.version()) (Build \(self.build()))\n\n©\(year) Thrive Community Church\n\nThis app helps you stay connected with our church community, access sermons, take notes, and more.",
                                           preferredStyle: .actionSheet)
-
-            alert.addAction(UIAlertAction(title: "Send Logs", style: .default, handler: { action in
-                // lets not create a fild on the user's device if they can't even send us an email
-                if MFMailComposeViewController.canSendMail() {
-
-                    // vars to add to the file
-                    let buildNum = self.build()
-                    let uuid = UUID().uuidString.suffix(8)
-                    let date = self.getDate()
-
-                    // Save data to file
-                    let fileName = "\(uuid).log"
-                    let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
-                                                                      in: .userDomainMask,
-                                                                      appropriateFor: nil,
-                                                                      create: true)
-
-                    let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
-
-                    var systemInfo = utsname()
-                    uname(&systemInfo)
-
-                    let identifier = Mirror(reflecting: systemInfo.machine).children.reduce("") { identifier, element in
-                        guard let value = element.value as? Int8, value != 0 else { return identifier }
-                        return identifier + String(UnicodeScalar(UInt8(value)))
-                    }
-
-                    let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
-                        "\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
-                        "\n\nDevice Information" +
-                        "\nIdentifier: \(identifier)" +
-                        "\nLocalizedModel: \(UIDevice.current.localizedModel)" +
-                        "\nDeviceName: \(UIDevice.current.name)" +
-                        "\nModel: \(UIDevice.current.model)" +
-                        "\nCurrent Time: \(date)" +
-                        "\niOS: \(UIDevice.current.systemVersion)" +
-                        "\n\nApplication Information" +
-                        "\nVersion: \(self.version())" +
-                        "\nBuild #: \(buildNum)" +
-                        "\nFeedback ID: \(uuid)"
-
-                    do {
-                        // Write to the file
-                        try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
-
-                        let composeVC = MFMailComposeViewController()
-
-                        composeVC.mailComposeDelegate = self
-                        composeVC.setToRecipients(["wyatt@thrive-fl.org"])
-                        composeVC.setSubject("Thrive iOS - ID: \(uuid)")
-
-                        if let fileData = NSData(contentsOfFile: fileURL.path) {
-                            composeVC.addAttachmentData(fileData as Data,
-                                                        mimeType: "text/plain",
-                                                        fileName: "\(uuid).log")
-                        }
-                        self.present(composeVC, animated: true, completion: nil)
-
-                    } catch let error as NSError {
-                        print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
-
-                        self.displayAlertForAction()
-                    }
-                }
-                else {
-                    self.displayAlertForAction()
-                }
-
-            }))
 
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
 
@@ -216,6 +162,76 @@ class MoreTableViewController: UITableViewController, MFMailComposeViewControlle
             return dateFromString.iso8601      // "2017-03-22T13:22:13.933Z"
         }
         return stringFromDate
+    }
+
+    func sendLogsToSupport() {
+        // Check if device can send mail
+        if MFMailComposeViewController.canSendMail() {
+            let year = Calendar.current.component(.year, from: Date())
+
+            // vars to add to the file
+            let buildNum = self.build()
+            let uuid = UUID().uuidString.suffix(8)
+            let date = self.getDate()
+
+            // Save data to file
+            let fileName = "\(uuid).log"
+            let documentDirURL = try! FileManager.default.url(for: .documentDirectory,
+                                                              in: .userDomainMask,
+                                                              appropriateFor: nil,
+                                                              create: true)
+
+            let fileURL = documentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+
+            var systemInfo = utsname()
+            uname(&systemInfo)
+
+            let identifier = Mirror(reflecting: systemInfo.machine).children.reduce("") { identifier, element in
+                guard let value = element.value as? Int8, value != 0 else { return identifier }
+                return identifier + String(UnicodeScalar(UInt8(value)))
+            }
+
+            let writeString = "PLEASE DO NOT MODIFY THE CONTENTS OF THIS FILE\n" +
+                "\n©\(year) Thrive Community Church. All information collected is used solely for product development and is never sold.\n" +
+                "\n\nDevice Information" +
+                "\nIdentifier: \(identifier)" +
+                "\nLocalizedModel: \(UIDevice.current.localizedModel)" +
+                "\nDeviceName: \(UIDevice.current.name)" +
+                "\nModel: \(UIDevice.current.model)" +
+                "\nCurrent Time: \(date)" +
+                "\niOS: \(UIDevice.current.systemVersion)" +
+                "\n\nApplication Information" +
+                "\nVersion: \(self.version())" +
+                "\nBuild #: \(buildNum)" +
+                "\nFeedback ID: \(uuid)"
+
+            do {
+                // Write to the file
+                try writeString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+
+                let composeVC = MFMailComposeViewController()
+
+                composeVC.mailComposeDelegate = self
+                composeVC.setToRecipients(["wyatt@thrive-fl.org"])
+                composeVC.setSubject("Thrive iOS - ID: \(uuid)")
+                composeVC.setMessageBody("Please describe any issues you're experiencing with the app:", isHTML: false)
+
+                if let fileData = NSData(contentsOfFile: fileURL.path) {
+                    composeVC.addAttachmentData(fileData as Data,
+                                                mimeType: "text/plain",
+                                                fileName: "\(uuid).log")
+                }
+                self.present(composeVC, animated: true, completion: nil)
+
+            } catch let error as NSError {
+                print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
+
+                self.displayAlertForAction()
+            }
+        }
+        else {
+            self.displayAlertForAction()
+        }
     }
 
 	func loadConfigs() -> [Int: DynamicConfigResponse] {
@@ -549,6 +565,11 @@ class MoreTableViewController: UITableViewController, MFMailComposeViewControlle
 																			 title: "Settings")
 		tempList.append(settingsOption)
 
+		let sendLogsOption: DynamicConfigResponse = DynamicConfigResponse.init(destination: nowhere,
+																			 setting: nil,
+																			 title: "Send Logs")
+		tempList.append(sendLogsOption)
+
 		let aboutOption: DynamicConfigResponse = DynamicConfigResponse.init(destination: nowhere,
 																			 setting: nil,
 																			 title: "About")
@@ -567,4 +588,152 @@ class MoreTableViewController: UITableViewController, MFMailComposeViewControlle
 		return response
 	}
 
+}
+
+// MARK: - Modern More Table View Cell
+
+class ModernMoreTableViewCell: UITableViewCell {
+
+    // MARK: - UI Elements
+
+    // Card Container
+    private let cardContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGrey
+        view.layer.cornerRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 8
+        view.layer.shadowOpacity = 0.4
+        view.layer.masksToBounds = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // Title Label
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .white
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    // Subtitle Label
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Book", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .lightGray
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    // Disclosure Indicator
+    private let disclosureIndicator: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = .lightGray
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    // MARK: - Initialization
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
+    }
+
+    // MARK: - Setup Methods
+
+    private func setupViews() {
+        backgroundColor = .almostBlack
+        selectionStyle = .none
+
+        // Configure cell appearance
+        layer.masksToBounds = false
+
+        // Add main container
+        contentView.addSubview(cardContainer)
+
+        // Add content to card
+        cardContainer.addSubview(titleLabel)
+        cardContainer.addSubview(subtitleLabel)
+        cardContainer.addSubview(disclosureIndicator)
+
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            // Card container constraints with 16pt horizontal margins and 8pt vertical spacing
+            cardContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            cardContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+
+            // Title label constraints
+            titleLabel.topAnchor.constraint(equalTo: cardContainer.topAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: cardContainer.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: disclosureIndicator.leadingAnchor, constant: -12),
+
+            // Subtitle label constraints
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            subtitleLabel.leadingAnchor.constraint(equalTo: cardContainer.leadingAnchor, constant: 16),
+            subtitleLabel.trailingAnchor.constraint(equalTo: disclosureIndicator.leadingAnchor, constant: -12),
+            subtitleLabel.bottomAnchor.constraint(lessThanOrEqualTo: cardContainer.bottomAnchor, constant: -12),
+
+            // Disclosure indicator constraints
+            disclosureIndicator.centerYAnchor.constraint(equalTo: cardContainer.centerYAnchor),
+            disclosureIndicator.trailingAnchor.constraint(equalTo: cardContainer.trailingAnchor, constant: -16),
+            disclosureIndicator.widthAnchor.constraint(equalToConstant: 8),
+            disclosureIndicator.heightAnchor.constraint(equalToConstant: 12)
+        ])
+    }
+
+    // MARK: - Configuration
+
+    func configure(title: String, subtitle: String?) {
+        titleLabel.text = title
+
+        if let subtitle = subtitle, !subtitle.isEmpty {
+            subtitleLabel.text = subtitle
+            subtitleLabel.isHidden = false
+        } else {
+            subtitleLabel.isHidden = true
+        }
+    }
+
+    // MARK: - Touch Animation
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animatePress(pressed: true)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animatePress(pressed: false)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animatePress(pressed: false)
+    }
+
+    private func animatePress(pressed: Bool) {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .allowUserInteraction) {
+            self.transform = pressed ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
+            self.cardContainer.layer.shadowOpacity = pressed ? 0.2 : 0.4
+        }
+    }
 }
