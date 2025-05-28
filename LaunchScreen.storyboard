@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,45 +12,52 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tCH-Cb-Cud"/>
-                        <viewControllerLayoutGuide type="bottom" id="oLt-Ce-rmU"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xTm-bL-bIm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LauchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-At-Wrm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
+                            <!-- Background Image - Full Screen -->
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LauchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-At-Wrm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+
+                            <!-- Thrive Logo - Centered with fixed height -->
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThriveCirclesWhite" translatesAutoresizingMaskIntoConstraints="NO" id="5iv-WB-rYh">
-                                <rect key="frame" x="82" y="124" width="211" height="210"/>
+                                <rect key="frame" x="102" y="147" width="210" height="210"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="LiS-Eg-2lv"/>
+                                    <constraint firstAttribute="height" constant="210" id="logo-height"/>
+                                    <constraint firstAttribute="width" constant="210" id="logo-width"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="© 2024 Thrive Community Church                                                          All Rights Reserved" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="35s-QM-jPx">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+
+                            <!-- Copyright Label - Bottom aligned -->
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Thrive Community Church&#10;All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35s-QM-jPx">
+                                <rect key="frame" x="16" y="812" width="382" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="xyo-0I-vq9"/>
+                                    <constraint firstAttribute="height" constant="50" id="copyright-height"/>
                                 </constraints>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.37392715669014087" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.37392715669014087" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="35s-QM-jPx" firstAttribute="leading" secondItem="mK0-At-Wrm" secondAttribute="leading" id="0xN-aI-gSF"/>
-                            <constraint firstItem="5iv-WB-rYh" firstAttribute="centerX" secondItem="35s-QM-jPx" secondAttribute="centerX" id="E3S-Rg-PyM"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="mK0-At-Wrm" secondAttribute="bottom" constant="-43" id="GTk-NB-xfV"/>
-                            <constraint firstItem="oLt-Ce-rmU" firstAttribute="top" secondItem="35s-QM-jPx" secondAttribute="bottom" id="Jci-Xc-qiu"/>
-                            <constraint firstItem="mK0-At-Wrm" firstAttribute="leading" secondItem="xTm-bL-bIm" secondAttribute="leading" id="Lej-fb-afl"/>
-                            <constraint firstItem="35s-QM-jPx" firstAttribute="trailing" secondItem="mK0-At-Wrm" secondAttribute="trailing" id="c8Z-le-zkJ"/>
-                            <constraint firstItem="mK0-At-Wrm" firstAttribute="top" secondItem="xTm-bL-bIm" secondAttribute="top" id="dPZ-vi-bl1"/>
-                            <constraint firstItem="5iv-WB-rYh" firstAttribute="top" secondItem="tCH-Cb-Cud" secondAttribute="bottom" constant="104" id="gMY-z1-Zgv"/>
-                            <constraint firstAttribute="trailing" secondItem="mK0-At-Wrm" secondAttribute="trailing" id="q12-ec-NkS"/>
-                            <constraint firstItem="5iv-WB-rYh" firstAttribute="leading" secondItem="xTm-bL-bIm" secondAttribute="leadingMargin" constant="66" id="x82-62-Kwr"/>
+                            <!-- Background Image Constraints - Full Screen -->
+                            <constraint firstItem="mK0-At-Wrm" firstAttribute="top" secondItem="xTm-bL-bIm" secondAttribute="top" id="bg-top"/>
+                            <constraint firstItem="mK0-At-Wrm" firstAttribute="leading" secondItem="xTm-bL-bIm" secondAttribute="leading" id="bg-leading"/>
+                            <constraint firstAttribute="trailing" secondItem="mK0-At-Wrm" secondAttribute="trailing" id="bg-trailing"/>
+                            <constraint firstAttribute="bottom" secondItem="mK0-At-Wrm" secondAttribute="bottom" id="bg-bottom"/>
+
+                            <!-- Logo Constraints - Centered horizontally, positioned from top -->
+                            <constraint firstItem="5iv-WB-rYh" firstAttribute="centerX" secondItem="xTm-bL-bIm" secondAttribute="centerX" id="logo-centerX"/>
+                            <constraint firstItem="5iv-WB-rYh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="104" id="logo-top"/>
+
+                            <!-- Copyright Constraints - Bottom aligned with margins -->
+                            <constraint firstItem="35s-QM-jPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="copyright-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="35s-QM-jPx" secondAttribute="trailing" constant="16" id="copyright-trailing"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="35s-QM-jPx" secondAttribute="bottom" id="copyright-bottom"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -61,5 +69,8 @@
     <resources>
         <image name="LauchScreen" width="1080" height="1920"/>
         <image name="ThriveCirclesWhite" width="600" height="586"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
