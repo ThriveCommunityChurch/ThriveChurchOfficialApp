@@ -674,12 +674,19 @@ class ModernMoreTableViewCell: UITableViewCell {
     }
 
     private func setupConstraints() {
+        // Create bottom constraint with lower priority to avoid conflicts
+        let bottomConstraint = cardContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
+        bottomConstraint.priority = UILayoutPriority(999) // High but not required
+
         NSLayoutConstraint.activate([
             // Card container constraints with 16pt horizontal margins and 8pt vertical spacing
-            cardContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            cardContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            cardContainer.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
+            bottomConstraint,
             cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+
+            // Minimum height constraint to prevent zero-height issues
+            cardContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 72),
 
             // Title label constraints
             titleLabel.topAnchor.constraint(equalTo: cardContainer.topAnchor, constant: 12),
