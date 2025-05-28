@@ -1,5 +1,5 @@
 //
-//  SermonMessage.swift
+//  SermonMessage.swift
 //  Thrive Church Official App
 //
 //  Created by Wyatt Baggett on 12/28/18.
@@ -44,7 +44,7 @@ public class SermonMessage: NSObject, Decodable, NSCoding, NSSecureCoding {
 	/// Friendly name of the sermon series
 	var seriesTitle: String?
 	
-	init(audio: String?, duration: Double, video: String?, psg: String, spkr: String, name: String,
+	init(audio: String?, duration: Double, video: String?, psg: String?, spkr: String, name: String,
 		 date: String, id: String, wkNum: Int, downloaded: Double?, localURI: String?, size: Double?,
 		 seriesArt: Data?, played: Double?, seriesTitle: String?, audioFileSize: Double?) {
 		self.AudioUrl = audio
@@ -66,22 +66,22 @@ public class SermonMessage: NSObject, Decodable, NSCoding, NSSecureCoding {
 	}
 	
 	required convenience public init(coder aDecoder: NSCoder) {
-		let audio = aDecoder.decodeObject(forKey: "AudioUrl") as! String?
-		let duration = aDecoder.decodeObject(forKey: "AudioDuration") as! Double?
-		let fileSize = aDecoder.decodeObject(forKey: "AudioFileSize") as! Double?
-		let video = aDecoder.decodeObject(forKey: "VideoUrl") as! String?
-		let psg = aDecoder.decodeObject(forKey: "PassageRef") as! String
-		let spkr = aDecoder.decodeObject(forKey: "Speaker") as! String
-		let name = aDecoder.decodeObject(forKey: "Title") as! String
-		let date = aDecoder.decodeObject(forKey: "Date") as! String
-		let id = aDecoder.decodeObject(forKey: "MessageId") as! String
-		let wkNum = aDecoder.decodeObject(forKey: "WeekNum") as! Int?
-		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as! Double?
-		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as! String?
-		let seriesTitle = aDecoder.decodeObject(forKey: "seriesTitle") as! String?
-		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as! Double?
-		let played = aDecoder.decodeObject(forKey: "previouslyPlayed") as! Double?
-		let art = aDecoder.decodeObject(forKey: "seriesArt") as! Data?
+		let audio = aDecoder.decodeObject(forKey: "AudioUrl") as? String
+		let duration = aDecoder.decodeObject(forKey: "AudioDuration") as? Double
+		let fileSize = aDecoder.decodeObject(forKey: "AudioFileSize") as? Double
+		let video = aDecoder.decodeObject(forKey: "VideoUrl") as? String
+		let psg = aDecoder.decodeObject(forKey: "PassageRef") as? String
+		let spkr = aDecoder.decodeObject(forKey: "Speaker") as? String ?? ""
+		let name = aDecoder.decodeObject(forKey: "Title") as? String ?? ""
+		let date = aDecoder.decodeObject(forKey: "Date") as? String ?? ""
+		let id = aDecoder.decodeObject(forKey: "MessageId") as? String ?? ""
+		let wkNum = aDecoder.decodeObject(forKey: "WeekNum") as? Int
+		let downloaded = aDecoder.decodeObject(forKey: "DownloadedOn") as? Double
+		let localURI = aDecoder.decodeObject(forKey: "LocalAudioURI") as? String
+		let seriesTitle = aDecoder.decodeObject(forKey: "seriesTitle") as? String
+		let size = aDecoder.decodeObject(forKey: "downloadSizeMB") as? Double
+		let played = aDecoder.decodeObject(forKey: "previouslyPlayed") as? Double
+		let art = aDecoder.decodeObject(forKey: "seriesArt") as? Data
 		
 		self.init(audio: audio, duration: duration ?? 0.0, video: video, psg: psg, spkr: spkr, name: name,
 				  date: date, id: id, wkNum: wkNum ?? 0, downloaded: downloaded,

@@ -32,46 +32,75 @@ class NowPlayingViewController: UIViewController {
 	var currentProgressTimer: Timer? = nil
 	var lazyLoadDuration: Bool = false
 
-	// UI Elements
+	// UI Elements with modern design
 
 	let notPlayingText: UILabel = {
 		let label = UILabel()
 		label.text = "No audio is currently playing"
 		label.textAlignment = .center
-		label.font = UIFont(name: "Avenir-Medium", size: 18)
+		label.font = UIFont(name: "Avenir-Medium", size: 20)
 		label.textColor = .lightGray
 		label.numberOfLines = 0
 		label.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add subtle text shadow for better readability
+		label.layer.shadowColor = UIColor.black.cgColor
+		label.layer.shadowOffset = CGSize(width: 0, height: 1)
+		label.layer.shadowRadius = 2
+		label.layer.shadowOpacity = 0.3
+
 		return label
 	}()
 
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
-		image.backgroundColor = .red
+		image.backgroundColor = .darkGrey
+		image.contentMode = .scaleAspectFill
+		image.clipsToBounds = true
+		image.layer.cornerRadius = 12
 		image.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add modern card shadow
+		image.layer.shadowColor = UIColor.black.cgColor
+		image.layer.shadowOffset = CGSize(width: 0, height: 4)
+		image.layer.shadowRadius = 8
+		image.layer.shadowOpacity = 0.4
+		image.layer.masksToBounds = false
+
 		return image
 	}()
 
 	let messageTitleLabel: UILabel = {
 		let label = UILabel()
-		label.textAlignment = .center
-		label.font = UIFont(name: "Avenir-Medium", size: 16)
-		label.textColor = .lightGray
-		label.numberOfLines = 2
+		label.textAlignment = .left
+		label.font = UIFont(name: "Avenir-Heavy", size: 28)
+		label.textColor = .white
+		label.numberOfLines = 0
+		label.lineBreakMode = .byWordWrapping
 		label.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add subtle text shadow for better readability
+		label.layer.shadowColor = UIColor.black.cgColor
+		label.layer.shadowOffset = CGSize(width: 0, height: 1)
+		label.layer.shadowRadius = 2
+		label.layer.shadowOpacity = 0.3
+
 		return label
 	}()
 
 	let progressIndicator: UIProgressView = {
 		let indicator = UIProgressView()
 		indicator.progressTintColor = UIColor.mainBlue
-		indicator.trackTintColor = UIColor.darkGrey
+		indicator.trackTintColor = UIColor.darkGrey.withAlphaComponent(0.3)
+		indicator.layer.cornerRadius = 2
+		indicator.clipsToBounds = true
 		indicator.translatesAutoresizingMaskIntoConstraints = false
 		return indicator
 	}()
 
 	let progressContainerView: UIView = {
 		let view = UIView()
+		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
@@ -86,13 +115,32 @@ class NowPlayingViewController: UIViewController {
 	let detailsBackgroundView: UIView = {
 		let view = UIView()
 		view.backgroundColor = UIColor.almostBlack
+		view.layer.cornerRadius = 12
 		view.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add modern card shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0, height: 4)
+		view.layer.shadowRadius = 8
+		view.layer.shadowOpacity = 0.4
+		view.layer.masksToBounds = false
+
 		return view
 	}()
 
 	let playerControlsView: UIView = {
 		let view = UIView()
+		view.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.3)
+		view.layer.cornerRadius = 12
 		view.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add subtle shadow for depth
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0, height: 2)
+		view.layer.shadowRadius = 4
+		view.layer.shadowOpacity = 0.3
+		view.layer.masksToBounds = false
+
 		return view
 	}()
 
@@ -219,9 +267,10 @@ class NowPlayingViewController: UIViewController {
 	let speakerLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Book", size: 15)
-		label.textColor = .lightGray
+		label.font = UIFont(name: "Avenir-Medium", size: 18)
+		label.textColor = .mainBlue
 		label.numberOfLines = 2
+		label.lineBreakMode = .byWordWrapping
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -229,7 +278,7 @@ class NowPlayingViewController: UIViewController {
 	let durationRemainderLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
-		label.font = UIFont(name: "Avenir-Book", size: 12)
+		label.font = UIFont(name: "Avenir-Medium", size: 14)
 		label.textColor = .lightGray
 		label.numberOfLines = 1
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -239,7 +288,7 @@ class NowPlayingViewController: UIViewController {
 	let currentProgressLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
-		label.font = UIFont(name: "Avenir-Book", size: 12)
+		label.font = UIFont(name: "Avenir-Medium", size: 14)
 		label.textColor = .lightGray
 		label.numberOfLines = 1
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -249,9 +298,10 @@ class NowPlayingViewController: UIViewController {
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont(name: "Avenir-Book", size: 15)
+		label.font = UIFont(name: "Avenir-Book", size: 16)
 		label.textColor = .lightGray
 		label.numberOfLines = 2
+		label.lineBreakMode = .byWordWrapping
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -259,9 +309,10 @@ class NowPlayingViewController: UIViewController {
 	let passageLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .right
-		label.font = UIFont(name: "Avenir-Book", size: 15)
-		label.textColor = .lightGray
+		label.font = UIFont(name: "Avenir-Medium", size: 16)
+		label.textColor = .mainBlue.withAlphaComponent(0.8)
 		label.numberOfLines = 2
+		label.lineBreakMode = .byWordWrapping
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -271,13 +322,20 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "download")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
+		button.tintColor = .white
+		button.backgroundColor = UIColor.mainBlue.withAlphaComponent(0.8)
+		button.layer.cornerRadius = 8
+		button.layer.shadowColor = UIColor.mainBlue.cgColor
+		button.layer.shadowOffset = CGSize(width: 0, height: 2)
+		button.layer.shadowRadius = 4
+		button.layer.shadowOpacity = 0.3
 		return button
 	}()
 
 	let spinner: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
 		indicator.style = .large
-		indicator.color = .lightGray
+		indicator.color = .mainBlue
 		indicator.backgroundColor = .clear
 		// Will need to scale down the spinner since it's a tad too big
 		indicator.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
@@ -290,6 +348,9 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "pause")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
+		button.tintColor = .white
+		button.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.6)
+		button.layer.cornerRadius = 8
 		return button
 	}()
 
@@ -298,6 +359,9 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "fastForward")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
+		button.tintColor = .white
+		button.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.6)
+		button.layer.cornerRadius = 8
 		return button
 	}()
 
@@ -306,6 +370,9 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "rewind")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
+		button.tintColor = .white
+		button.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.6)
+		button.layer.cornerRadius = 8
 		return button
 	}()
 
@@ -314,6 +381,13 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "play")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
+		button.tintColor = .white
+		button.backgroundColor = UIColor.mainBlue
+		button.layer.cornerRadius = 8
+		button.layer.shadowColor = UIColor.mainBlue.cgColor
+		button.layer.shadowOffset = CGSize(width: 0, height: 2)
+		button.layer.shadowRadius = 4
+		button.layer.shadowOpacity = 0.4
 		return button
 	}()
 
@@ -322,6 +396,13 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "stop")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
+		button.tintColor = .white
+		button.backgroundColor = UIColor.red.withAlphaComponent(0.8)
+		button.layer.cornerRadius = 8
+		button.layer.shadowColor = UIColor.red.cgColor
+		button.layer.shadowOffset = CGSize(width: 0, height: 2)
+		button.layer.shadowRadius = 4
+		button.layer.shadowOpacity = 0.3
 		return button
 	}()
 
@@ -456,54 +537,78 @@ class NowPlayingViewController: UIViewController {
 		detailsBackgroundView.addSubview(passageLabel)
 		progressContainerView.addSubview(progressIndicator)
 
-		// calculate the size for the image view
-		let width = view.frame.width
+		// calculate the size for the image view with modern aspect ratio
+		let width = view.frame.width - 32 // Account for 16pt margins on each side
 		let height = (width) * (9 / 16) // 16x9 ratio
 
-		// now add the constraints
+		// now add the constraints with modern spacing and margins
 		NSLayoutConstraint.activate([
-			seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			// Series Art with 16pt horizontal margins and modern card design
+			seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+			seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
 			seriesArt.heightAnchor.constraint(equalToConstant: height),
-			progressContainerView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-			progressContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			progressContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			progressContainerView.heightAnchor.constraint(equalToConstant: 16),
-			progressIndicator.leadingAnchor.constraint(equalTo: progressContainerView.leadingAnchor, constant: 8),
-			progressIndicator.trailingAnchor.constraint(equalTo: progressContainerView.trailingAnchor, constant: -8),
+
+			// Progress Container with improved spacing
+			progressContainerView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 24),
+			progressContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			progressContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+			progressContainerView.heightAnchor.constraint(equalToConstant: 20),
+
+			// Progress Indicator with enhanced styling
+			progressIndicator.leadingAnchor.constraint(equalTo: progressContainerView.leadingAnchor),
+			progressIndicator.trailingAnchor.constraint(equalTo: progressContainerView.trailingAnchor),
 			progressIndicator.centerYAnchor.constraint(equalTo: progressContainerView.centerYAnchor),
-			progressIndicator.heightAnchor.constraint(equalToConstant: 3),
-			progressTrackerContainer.topAnchor.constraint(lessThanOrEqualTo: progressContainerView.bottomAnchor, constant: 0),
-			progressTrackerContainer.heightAnchor.constraint(equalToConstant: 16),
-			progressTrackerContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-			progressTrackerContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+			progressIndicator.heightAnchor.constraint(equalToConstant: 4),
+
+			// Progress Tracker with consistent spacing
+			progressTrackerContainer.topAnchor.constraint(equalTo: progressContainerView.bottomAnchor, constant: 8),
+			progressTrackerContainer.heightAnchor.constraint(equalToConstant: 20),
+			progressTrackerContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			progressTrackerContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+
+			// Progress Labels with improved positioning
 			currentProgressLabel.leadingAnchor.constraint(equalTo: progressTrackerContainer.leadingAnchor),
 			currentProgressLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
-			currentProgressLabel.widthAnchor.constraint(equalToConstant: 35),
+			currentProgressLabel.widthAnchor.constraint(equalToConstant: 50),
 			durationRemainderLabel.trailingAnchor.constraint(equalTo: progressTrackerContainer.trailingAnchor),
 			durationRemainderLabel.centerYAnchor.constraint(equalTo: progressTrackerContainer.centerYAnchor),
-			durationRemainderLabel.widthAnchor.constraint(equalToConstant: 45),
-			playerControlsView.topAnchor.constraint(equalTo: progressTrackerContainer.bottomAnchor, constant: 16),
-			playerControlsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-			playerControlsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-			playerControlsView.heightAnchor.constraint(equalToConstant: 35),
-			detailsBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			detailsBackgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			durationRemainderLabel.widthAnchor.constraint(equalToConstant: 60),
+
+			// Player Controls with modern card design
+			playerControlsView.topAnchor.constraint(equalTo: progressTrackerContainer.bottomAnchor, constant: 24),
+			playerControlsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			playerControlsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+			playerControlsView.heightAnchor.constraint(equalToConstant: 60),
+
+			// Details Background with enhanced spacing
+			detailsBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			detailsBackgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 			detailsBackgroundView.topAnchor.constraint(equalTo: playerControlsView.bottomAnchor, constant: 24),
-			detailsBackgroundView.heightAnchor.constraint(equalToConstant: 120),
-			messageTitleLabel.leadingAnchor.constraint(equalTo: detailsBackgroundView.leadingAnchor, constant: 16),
-			messageTitleLabel.topAnchor.constraint(equalTo: detailsBackgroundView.topAnchor, constant: 16),
+			detailsBackgroundView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140),
+
+			// Content within details card with improved hierarchy
+			messageTitleLabel.leadingAnchor.constraint(equalTo: detailsBackgroundView.leadingAnchor, constant: 20),
+			messageTitleLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -20),
+			messageTitleLabel.topAnchor.constraint(equalTo: detailsBackgroundView.topAnchor, constant: 20),
+
 			speakerLabel.leadingAnchor.constraint(equalTo: messageTitleLabel.leadingAnchor),
-			speakerLabel.topAnchor.constraint(equalTo: messageTitleLabel.bottomAnchor, constant: 16),
+			speakerLabel.trailingAnchor.constraint(equalTo: messageTitleLabel.trailingAnchor),
+			speakerLabel.topAnchor.constraint(equalTo: messageTitleLabel.bottomAnchor, constant: 12),
+
 			dateLabel.leadingAnchor.constraint(equalTo: speakerLabel.leadingAnchor),
-			dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 16),
+			dateLabel.topAnchor.constraint(equalTo: speakerLabel.bottomAnchor, constant: 8),
+			dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: detailsBackgroundView.bottomAnchor, constant: -20),
+
+			passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -20),
 			passageLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-			passageLabel.trailingAnchor.constraint(equalTo: detailsBackgroundView.trailingAnchor, constant: -16),
-			controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor),
-			controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor),
-			controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor),
-			controlsStackView.bottomAnchor.constraint(equalTo: playerControlsView.bottomAnchor)
+			passageLabel.leadingAnchor.constraint(greaterThanOrEqualTo: dateLabel.trailingAnchor, constant: 16),
+
+			// Controls Stack View with proper padding
+			controlsStackView.leadingAnchor.constraint(equalTo: playerControlsView.leadingAnchor, constant: 16),
+			controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor, constant: -16),
+			controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor, constant: 12),
+			controlsStackView.bottomAnchor.constraint(equalTo: playerControlsView.bottomAnchor, constant: -12)
 		])
 
 		// add elements to the stack view
@@ -529,13 +634,30 @@ class NowPlayingViewController: UIViewController {
 		rwStackView.addArrangedSubview(rwButton)
 		ffStackView.addArrangedSubview(ffButton)
 
-		// Setup button targets
+		// Setup button targets with enhanced feedback
 		playButton.addTarget(self, action: #selector(playAudio), for: .touchUpInside)
+		playButton.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+		playButton.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+
 		pauseButton.addTarget(self, action: #selector(pauseAudio), for: .touchUpInside)
+		pauseButton.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+		pauseButton.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+
 		stopButton.addTarget(self, action: #selector(stopAudio), for: .touchUpInside)
+		stopButton.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+		stopButton.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+
 		downloadButton.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
+		downloadButton.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+		downloadButton.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+
 		rwButton.addTarget(self, action: #selector(rewind), for: .touchUpInside)
+		rwButton.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+		rwButton.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+
 		ffButton.addTarget(self, action: #selector(fastForward), for: .touchUpInside)
+		ffButton.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+		ffButton.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
 
 		spacingView2.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
 		spacingView3.widthAnchor.constraint(equalTo: spacingView.widthAnchor).isActive = true
@@ -613,5 +735,37 @@ class NowPlayingViewController: UIViewController {
 
 		// set progressView to 0%, with animated set to false
 		self.progressIndicator.setProgress(playerProgress ?? 0.0, animated: false)
+	}
+
+	// MARK: - Enhanced Button Interactions
+
+	@objc private func buttonTouchDown(_ sender: UIButton) {
+		// Add haptic feedback based on button type
+		let feedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle
+
+		if sender == playButton || sender == pauseButton {
+			feedbackStyle = .medium
+		} else if sender == stopButton {
+			feedbackStyle = .heavy
+		} else {
+			feedbackStyle = .light
+		}
+
+		let impactFeedback = UIImpactFeedbackGenerator(style: feedbackStyle)
+		impactFeedback.impactOccurred()
+
+		// Add visual feedback with spring animation
+		UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: [.curveEaseInOut, .allowUserInteraction]) {
+			sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+			sender.alpha = 0.8
+		}
+	}
+
+	@objc private func buttonTouchUp(_ sender: UIButton) {
+		// Reset visual state with smooth spring animation
+		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: [.curveEaseInOut, .allowUserInteraction]) {
+			sender.transform = .identity
+			sender.alpha = 1.0
+		}
 	}
 }
