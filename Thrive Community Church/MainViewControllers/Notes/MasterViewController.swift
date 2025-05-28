@@ -37,9 +37,13 @@ class MasterViewController: UITableViewController {
     // MARK: - Setup Views
     func setupTableView() {
         tableView.backgroundColor = UIColor.almostBlack
-        tableView.separatorColor = UIColor.gray
-        tableView.rowHeight = 60
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.separatorColor = UIColor.clear
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 80 // Increased height for card design
+        tableView.register(ModernNotesTableViewCell.self, forCellReuseIdentifier: "Cell")
+
+        // Add spacing for card layout
+        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
 
     func setupNavigationBar() {
@@ -106,14 +110,13 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
-                                             for: indexPath)
+                                             for: indexPath) as! ModernNotesTableViewCell
 
         let object = objects[(indexPath as NSIndexPath).row]
-		cell.backgroundColor = UIColor.almostBlack
-		cell.textLabel?.font = UIFont(name: "AvenirNext-Medium", size: 15)
-		cell.textLabel?.textColor = UIColor.white
-		cell.textLabel?.numberOfLines = 2
-        cell.textLabel!.text = object == newNote ? "New Note" : object
+        let displayText = object == newNote ? "New Note" : object
+
+        cell.configure(with: displayText)
+
         return cell
     }
 
@@ -221,4 +224,176 @@ class MasterViewController: UITableViewController {
 		])
     }
 
+}
+
+// MARK: - Modern Notes Table View Cell
+
+class ModernNotesTableViewCell: UITableViewCell {
+
+    // MARK: - UI Elements
+
+    // Card Container
+    private let cardContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGrey
+        view.layer.cornerRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 8
+        view.layer.shadowOpacity = 0.4
+        view.layer.masksToBounds = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // Note Text Label
+    private let noteTextLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .white
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    // Note Preview Label (for longer notes)
+    private let notePreviewLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Book", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .lightGray
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    // Disclosure Indicator
+    private let disclosureIndicator: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = .lightGray
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    // MARK: - Initialization
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
+    }
+
+    // MARK: - Setup Methods
+
+    private func setupViews() {
+        backgroundColor = .almostBlack
+        selectionStyle = .none
+
+        // Configure cell appearance
+        layer.masksToBounds = false
+
+        // Add main container
+        contentView.addSubview(cardContainer)
+
+        // Add content to card
+        cardContainer.addSubview(noteTextLabel)
+        cardContainer.addSubview(notePreviewLabel)
+        cardContainer.addSubview(disclosureIndicator)
+
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            // Card container constraints with 16pt horizontal margins and 8pt vertical spacing
+            cardContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            cardContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+
+            // Note text label constraints
+            noteTextLabel.topAnchor.constraint(equalTo: cardContainer.topAnchor, constant: 12),
+            noteTextLabel.leadingAnchor.constraint(equalTo: cardContainer.leadingAnchor, constant: 16),
+            noteTextLabel.trailingAnchor.constraint(equalTo: disclosureIndicator.leadingAnchor, constant: -12),
+
+            // Note preview label constraints
+            notePreviewLabel.topAnchor.constraint(equalTo: noteTextLabel.bottomAnchor, constant: 4),
+            notePreviewLabel.leadingAnchor.constraint(equalTo: cardContainer.leadingAnchor, constant: 16),
+            notePreviewLabel.trailingAnchor.constraint(equalTo: disclosureIndicator.leadingAnchor, constant: -12),
+            notePreviewLabel.bottomAnchor.constraint(lessThanOrEqualTo: cardContainer.bottomAnchor, constant: -12),
+
+            // Disclosure indicator constraints
+            disclosureIndicator.centerYAnchor.constraint(equalTo: cardContainer.centerYAnchor),
+            disclosureIndicator.trailingAnchor.constraint(equalTo: cardContainer.trailingAnchor, constant: -16),
+            disclosureIndicator.widthAnchor.constraint(equalToConstant: 8),
+            disclosureIndicator.heightAnchor.constraint(equalToConstant: 12)
+        ])
+    }
+
+    // MARK: - Configuration
+
+    func configure(with noteText: String) {
+        if noteText == "New Note" || noteText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            noteTextLabel.text = "New Note"
+            noteTextLabel.textColor = .lightGray
+            notePreviewLabel.text = "Tap to start writing..."
+            notePreviewLabel.isHidden = false
+        } else {
+            // Split the note into title and preview
+            let lines = noteText.components(separatedBy: .newlines)
+            let firstLine = lines.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+
+            if firstLine.isEmpty {
+                noteTextLabel.text = "Note"
+                noteTextLabel.textColor = .white
+            } else {
+                noteTextLabel.text = firstLine
+                noteTextLabel.textColor = .white
+            }
+
+            // Show preview if there's more content
+            if lines.count > 1 {
+                let remainingText = lines.dropFirst().joined(separator: " ").trimmingCharacters(in: .whitespacesAndNewlines)
+                if !remainingText.isEmpty {
+                    notePreviewLabel.text = remainingText
+                    notePreviewLabel.isHidden = false
+                } else {
+                    notePreviewLabel.isHidden = true
+                }
+            } else {
+                notePreviewLabel.isHidden = true
+            }
+        }
+    }
+
+    // MARK: - Touch Animation
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animatePress(pressed: true)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animatePress(pressed: false)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animatePress(pressed: false)
+    }
+
+    private func animatePress(pressed: Bool) {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .allowUserInteraction) {
+            self.transform = pressed ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
+            self.cardContainer.layer.shadowOpacity = pressed ? 0.2 : 0.4
+        }
+    }
 }

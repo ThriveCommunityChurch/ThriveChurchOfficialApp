@@ -105,26 +105,9 @@ class DetailViewController: UIViewController, UITextViewDelegate {
 	func setupNavigationBar() {
 		navigationItem.title = "Notes"
 
-		let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
 		let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
 
-		navigationItem.rightBarButtonItems = [saveButton, shareButton]
-	}
-
-	@objc func saveNote() {
-		// Force save the current note
-		saveAndUpdate()
-
-		// Show confirmation
-		let alert = UIAlertController(title: "Saved", message: "Your note has been saved successfully.", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default))
-		present(alert, animated: true)
-
-		Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-			AnalyticsParameterItemID: "id-NotesDetailVC",
-			AnalyticsParameterItemName: "ManualSave",
-			AnalyticsParameterContentType: "cont"
-		])
+		navigationItem.rightBarButtonItems = [shareButton]
 	}
 
     @objc func share() {
