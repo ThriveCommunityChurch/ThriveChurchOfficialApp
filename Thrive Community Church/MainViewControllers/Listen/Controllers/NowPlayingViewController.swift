@@ -52,21 +52,26 @@ class NowPlayingViewController: UIViewController {
 		return label
 	}()
 
+	let seriesArtContainer: UIView = {
+		let container = UIView()
+		container.backgroundColor = .clear
+		container.layer.cornerRadius = 12
+		container.layer.shadowColor = UIColor.black.cgColor
+		container.layer.shadowOffset = CGSize(width: 0, height: 4)
+		container.layer.shadowRadius = 8
+		container.layer.shadowOpacity = 0.4
+		container.layer.masksToBounds = false
+		container.translatesAutoresizingMaskIntoConstraints = false
+		return container
+	}()
+
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
 		image.backgroundColor = .darkGrey
 		image.contentMode = .scaleAspectFill
-		image.clipsToBounds = true
 		image.layer.cornerRadius = 12
+		image.layer.masksToBounds = true
 		image.translatesAutoresizingMaskIntoConstraints = false
-
-		// Add modern card shadow
-		image.layer.shadowColor = UIColor.black.cgColor
-		image.layer.shadowOffset = CGSize(width: 0, height: 4)
-		image.layer.shadowRadius = 8
-		image.layer.shadowOpacity = 0.4
-		image.layer.masksToBounds = false
-
 		return image
 	}()
 
@@ -130,17 +135,8 @@ class NowPlayingViewController: UIViewController {
 
 	let playerControlsView: UIView = {
 		let view = UIView()
-		view.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.3)
-		view.layer.cornerRadius = 12
+		view.backgroundColor = .clear
 		view.translatesAutoresizingMaskIntoConstraints = false
-
-		// Add subtle shadow for depth
-		view.layer.shadowColor = UIColor.black.cgColor
-		view.layer.shadowOffset = CGSize(width: 0, height: 2)
-		view.layer.shadowRadius = 4
-		view.layer.shadowOpacity = 0.3
-		view.layer.masksToBounds = false
-
 		return view
 	}()
 
@@ -322,13 +318,8 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "download")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.tintColor = .white
-		button.backgroundColor = UIColor.mainBlue.withAlphaComponent(0.8)
-		button.layer.cornerRadius = 8
-		button.layer.shadowColor = UIColor.mainBlue.cgColor
-		button.layer.shadowOffset = CGSize(width: 0, height: 2)
-		button.layer.shadowRadius = 4
-		button.layer.shadowOpacity = 0.3
+		button.tintColor = .mainBlue
+		button.backgroundColor = .clear
 		return button
 	}()
 
@@ -349,8 +340,7 @@ class NowPlayingViewController: UIViewController {
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
 		button.tintColor = .white
-		button.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.6)
-		button.layer.cornerRadius = 8
+		button.backgroundColor = .clear
 		return button
 	}()
 
@@ -360,8 +350,7 @@ class NowPlayingViewController: UIViewController {
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
 		button.tintColor = .white
-		button.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.6)
-		button.layer.cornerRadius = 8
+		button.backgroundColor = .clear
 		return button
 	}()
 
@@ -371,8 +360,7 @@ class NowPlayingViewController: UIViewController {
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
 		button.tintColor = .white
-		button.backgroundColor = UIColor.darkGrey.withAlphaComponent(0.6)
-		button.layer.cornerRadius = 8
+		button.backgroundColor = .clear
 		return button
 	}()
 
@@ -381,13 +369,8 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "play")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.tintColor = .white
-		button.backgroundColor = UIColor.mainBlue
-		button.layer.cornerRadius = 8
-		button.layer.shadowColor = UIColor.mainBlue.cgColor
-		button.layer.shadowOffset = CGSize(width: 0, height: 2)
-		button.layer.shadowRadius = 4
-		button.layer.shadowOpacity = 0.4
+		button.tintColor = .mainBlue
+		button.backgroundColor = .clear
 		return button
 	}()
 
@@ -396,13 +379,8 @@ class NowPlayingViewController: UIViewController {
 		let image = UIImage(named: "stop")
 		button.imageView?.contentMode = .scaleAspectFit
 		button.setImage(image, for: .normal)
-		button.tintColor = .white
-		button.backgroundColor = UIColor.red.withAlphaComponent(0.8)
-		button.layer.cornerRadius = 8
-		button.layer.shadowColor = UIColor.red.cgColor
-		button.layer.shadowOffset = CGSize(width: 0, height: 2)
-		button.layer.shadowRadius = 4
-		button.layer.shadowOpacity = 0.3
+		button.tintColor = .red
+		button.backgroundColor = .clear
 		return button
 	}()
 
@@ -521,7 +499,8 @@ class NowPlayingViewController: UIViewController {
 	func setupViews() {
 
 		// add all the UI Elements first
-		view.addSubview(seriesArt)
+		view.addSubview(seriesArtContainer)
+		seriesArtContainer.addSubview(seriesArt)
 		view.addSubview(progressContainerView)
 		view.addSubview(progressTrackerContainer)
 		view.addSubview(playerControlsView)
@@ -543,14 +522,20 @@ class NowPlayingViewController: UIViewController {
 
 		// now add the constraints with modern spacing and margins
 		NSLayoutConstraint.activate([
-			// Series Art with 16pt horizontal margins and modern card design
-			seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-			seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-			seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-			seriesArt.heightAnchor.constraint(equalToConstant: height),
+			// Series Art Container with 16pt horizontal margins and modern card design
+			seriesArtContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+			seriesArtContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+			seriesArtContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+			seriesArtContainer.heightAnchor.constraint(equalToConstant: height),
+
+			// Series Art fills the container
+			seriesArt.leadingAnchor.constraint(equalTo: seriesArtContainer.leadingAnchor),
+			seriesArt.trailingAnchor.constraint(equalTo: seriesArtContainer.trailingAnchor),
+			seriesArt.topAnchor.constraint(equalTo: seriesArtContainer.topAnchor),
+			seriesArt.bottomAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor),
 
 			// Progress Container with improved spacing
-			progressContainerView.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 24),
+			progressContainerView.topAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor, constant: 24),
 			progressContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 			progressContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 			progressContainerView.heightAnchor.constraint(equalToConstant: 20),
@@ -754,16 +739,16 @@ class NowPlayingViewController: UIViewController {
 		let impactFeedback = UIImpactFeedbackGenerator(style: feedbackStyle)
 		impactFeedback.impactOccurred()
 
-		// Add visual feedback with spring animation
+		// Enhanced visual feedback for elegant button design
 		UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: [.curveEaseInOut, .allowUserInteraction]) {
-			sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-			sender.alpha = 0.8
+			sender.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+			sender.alpha = 0.6
 		}
 	}
 
 	@objc private func buttonTouchUp(_ sender: UIButton) {
 		// Reset visual state with smooth spring animation
-		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: [.curveEaseInOut, .allowUserInteraction]) {
+		UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: [.curveEaseInOut, .allowUserInteraction]) {
 			sender.transform = .identity
 			sender.alpha = 1.0
 		}
