@@ -67,12 +67,38 @@ class NowPlayingViewController: UIViewController {
 
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
-		image.backgroundColor = .darkGrey
+		image.backgroundColor = .clear // Clear background since we have the blurred background on iPad
 		image.contentMode = .scaleAspectFill
 		image.layer.cornerRadius = 12
 		image.layer.masksToBounds = true
 		image.translatesAutoresizingMaskIntoConstraints = false
 		return image
+	}()
+
+	// Background image view with blur effect for iPad layered design
+	private let backgroundImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.backgroundColor = .darkGrey
+		imageView.contentMode = .scaleAspectFill
+		imageView.layer.cornerRadius = 12
+		imageView.layer.masksToBounds = true
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add blur effect
+		let blurEffect = UIBlurEffect(style: .dark)
+		let blurEffectView = UIVisualEffectView(effect: blurEffect)
+		blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.addSubview(blurEffectView)
+
+		// Make blur effect fill the entire image view
+		NSLayoutConstraint.activate([
+			blurEffectView.topAnchor.constraint(equalTo: imageView.topAnchor),
+			blurEffectView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+			blurEffectView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+			blurEffectView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
+		])
+
+		return imageView
 	}()
 
 	let messageTitleLabel: UILabel = {
@@ -410,7 +436,13 @@ class NowPlayingViewController: UIViewController {
 
     // MARK: - Setup Views
     func setupInitialViews() {
-        view.backgroundColor = UIColor.almostBlack
+        // Fix iPad white bar issue - ensure view background extends to bottom edge
+        view.backgroundColor = UIColor.bgDarkBlue
+
+        // Ensure view fills entire screen (iOS 15+ minimum deployment target)
+        extendedLayoutIncludesOpaqueBars = true
+        edgesForExtendedLayout = .all
+
         view.addSubview(notPlayingText)
 
         NSLayoutConstraint.activate([
@@ -459,6 +491,18 @@ class NowPlayingViewController: UIViewController {
 		}
 	}
 
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+		// Ensure the blur effect view maintains proper bounds for iPad
+		// This helps with any layout issues during rotation or initial load
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			if let blurView = backgroundImageView.subviews.first(where: { $0 is UIVisualEffectView }) {
+				blurView.frame = backgroundImageView.bounds
+			}
+		}
+	}
+
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(true)
 
@@ -497,10 +541,24 @@ class NowPlayingViewController: UIViewController {
 	}
 
 	func setupViews() {
+		// Fix background color for consistency
+		view.backgroundColor = UIColor.bgDarkBlue
 
 		// add all the UI Elements first
 		view.addSubview(seriesArtContainer)
-		seriesArtContainer.addSubview(seriesArt)
+
+		// Device-specific image setup
+		let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+
+		if isIPad {
+			// iPad: Use layered design with blurred background
+			seriesArtContainer.addSubview(backgroundImageView) // Add background first
+			seriesArtContainer.addSubview(seriesArt) // Add foreground on top
+		} else {
+			// iPhone: Use simple single-image approach
+			seriesArtContainer.addSubview(seriesArt) // Only add the main image
+		}
+
 		view.addSubview(progressContainerView)
 		view.addSubview(progressTrackerContainer)
 		view.addSubview(playerControlsView)
@@ -522,20 +580,59 @@ class NowPlayingViewController: UIViewController {
 		let width = min(availableWidth, maxWidth)
 		let height = (width) * (9 / 16) // 16x9 ratio
 
+		// Setup image constraints based on device type
+		var imageConstraints: [NSLayoutConstraint] = []
+
+		if isIPad {
+			// iPad: Setup layered design with background and foreground images
+			let backgroundImageConstraints = [
+				backgroundImageView.topAnchor.constraint(equalTo: seriesArtContainer.topAnchor),
+				backgroundImageView.leadingAnchor.constraint(equalTo: seriesArtContainer.leadingAnchor),
+				backgroundImageView.trailingAnchor.constraint(equalTo: seriesArtContainer.trailingAnchor),
+				backgroundImageView.bottomAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor)
+			]
+
+			// iPad foreground image: centered with 16:9 aspect ratio for proper image display
+			let padding: CGFloat = 32 // More generous padding for iPad layered design
+			let foregroundImageConstraints = [
+				seriesArt.centerXAnchor.constraint(equalTo: seriesArtContainer.centerXAnchor),
+				seriesArt.centerYAnchor.constraint(equalTo: seriesArtContainer.centerYAnchor),
+				seriesArt.leadingAnchor.constraint(greaterThanOrEqualTo: seriesArtContainer.leadingAnchor, constant: padding),
+				seriesArt.trailingAnchor.constraint(lessThanOrEqualTo: seriesArtContainer.trailingAnchor, constant: -padding),
+				seriesArt.topAnchor.constraint(greaterThanOrEqualTo: seriesArtContainer.topAnchor, constant: padding),
+				seriesArt.bottomAnchor.constraint(lessThanOrEqualTo: seriesArtContainer.bottomAnchor, constant: -padding),
+				// CRITICAL: Maintain 16:9 aspect ratio for proper image display
+				seriesArt.widthAnchor.constraint(equalTo: seriesArt.heightAnchor, multiplier: 16.0/9.0)
+			]
+
+			// Add priority constraints to make the foreground image as large as possible within padding
+			// while respecting the 16:9 aspect ratio
+			let widthConstraint = seriesArt.widthAnchor.constraint(equalTo: seriesArtContainer.widthAnchor, constant: -padding * 2)
+			let heightConstraint = seriesArt.heightAnchor.constraint(equalTo: seriesArtContainer.heightAnchor, constant: -padding * 2)
+			widthConstraint.priority = UILayoutPriority(998) // Lower priority than aspect ratio
+			heightConstraint.priority = UILayoutPriority(998) // Lower priority than aspect ratio
+
+			imageConstraints = backgroundImageConstraints + foregroundImageConstraints + [widthConstraint, heightConstraint]
+		} else {
+			// iPhone: Simple single-image approach filling the entire container
+			imageConstraints = [
+				seriesArt.topAnchor.constraint(equalTo: seriesArtContainer.topAnchor),
+				seriesArt.leadingAnchor.constraint(equalTo: seriesArtContainer.leadingAnchor),
+				seriesArt.trailingAnchor.constraint(equalTo: seriesArtContainer.trailingAnchor),
+				seriesArt.bottomAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor)
+			]
+		}
+
 		// now add the constraints with modern spacing and margins
-		NSLayoutConstraint.activate([
+		let containerConstraints = [
 			// Series Art Container with 16pt horizontal margins and modern card design
 			seriesArtContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 			seriesArtContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 			seriesArtContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-			seriesArtContainer.heightAnchor.constraint(equalToConstant: height),
+			seriesArtContainer.heightAnchor.constraint(equalToConstant: height)
+		]
 
-			// Series Art fills the container
-			seriesArt.leadingAnchor.constraint(equalTo: seriesArtContainer.leadingAnchor),
-			seriesArt.trailingAnchor.constraint(equalTo: seriesArtContainer.trailingAnchor),
-			seriesArt.topAnchor.constraint(equalTo: seriesArtContainer.topAnchor),
-			seriesArt.bottomAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor),
-
+		let layoutConstraints = [
 			// Progress Container with improved spacing
 			progressContainerView.topAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor, constant: 24),
 			progressContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -596,7 +693,10 @@ class NowPlayingViewController: UIViewController {
 			controlsStackView.trailingAnchor.constraint(equalTo: playerControlsView.trailingAnchor, constant: -16),
 			controlsStackView.topAnchor.constraint(equalTo: playerControlsView.topAnchor, constant: 12),
 			controlsStackView.bottomAnchor.constraint(equalTo: playerControlsView.bottomAnchor, constant: -12)
-		])
+		]
+
+		// Activate all constraints
+		NSLayoutConstraint.activate(containerConstraints + imageConstraints + layoutConstraints)
 
 		// add elements to the stack view
 		controlsStackView.addArrangedSubview(spacingView)
@@ -678,7 +778,15 @@ class NowPlayingViewController: UIViewController {
 
 		let dataDump = SermonAVPlayer.sharedInstance.getDataForPlayback()!
 
-		self.seriesArt.image = dataDump["sermonGraphic"] as? UIImage
+		// Set series art image with device-specific handling
+		let seriesImage = dataDump["sermonGraphic"] as? UIImage
+		self.seriesArt.image = seriesImage
+
+		// Only set background image for iPad (layered design)
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			self.backgroundImageView.image = seriesImage
+		}
+
 		self.messageTitleLabel.text = "\(dataDump["messageTitle"] as? String ?? "")"
 		self.speakerLabel.text = "\(dataDump["speaker"] as? String ?? "")"
 		self.dateLabel.text = "\(dataDump["messageDate"] as? String ?? "")"

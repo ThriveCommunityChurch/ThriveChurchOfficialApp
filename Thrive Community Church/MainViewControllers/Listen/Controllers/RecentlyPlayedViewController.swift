@@ -49,6 +49,16 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 
 		setupViews()
 
+		// Fix iPad white bar issue - ensure view background extends to bottom edge
+		view.backgroundColor = UIColor.bgDarkBlue
+
+		// Ensure view fills entire screen (iOS 15+ minimum deployment target)
+		extendedLayoutIncludesOpaqueBars = true
+		edgesForExtendedLayout = .all
+
+		// Ensure table view extends to bottom edge without white bar
+		recentlyPlayedTable.contentInsetAdjustmentBehavior = .automatic
+
 		// do this in the background because there's a lot of data here if the array is full
 		DispatchQueue.main.async {
 			self.retrieveRecentlyPlayed()
@@ -231,7 +241,8 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 	// MARK: - Methods
 	func setupViews() {
 
-		view.layer.backgroundColor = UIColor.almostBlack.cgColor
+		// Use consistent background color to prevent white bars
+		view.backgroundColor = UIColor.bgDarkBlue
 
 		// add subviews
 		view.addSubview(recentlyPlayedTable)
@@ -247,8 +258,8 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		])
 
-		// apparently declaring this above doesn't want to work
-		self.recentlyPlayedTable.backgroundColor = UIColor.almostBlack
+		// Use consistent background color for table view
+		self.recentlyPlayedTable.backgroundColor = UIColor.bgDarkBlue
 		self.spinner.startAnimating()
 	}
 
