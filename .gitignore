@@ -83,3 +83,5 @@ fastlane/test_output
 Config\.plist
 
 Notes
+
+UI_TEST_EXECUTION_REPORT.md
