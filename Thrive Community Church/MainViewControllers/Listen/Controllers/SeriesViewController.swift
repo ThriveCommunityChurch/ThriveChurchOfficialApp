@@ -15,7 +15,23 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	// public setters that need to be init before we can transition
 	public var seriesImage = UIImage() {
 		didSet {
-			self.seriesArt.image = seriesImage
+			// Ensure we're on the main thread for UI updates
+			DispatchQueue.main.async {
+				// Always set the main series art image
+				self.seriesArt.image = self.seriesImage
+
+				// Only set background image for iPad (layered design)
+				if UIDevice.current.userInterfaceIdiom == .pad {
+					self.backgroundImageView.image = self.seriesImage
+				}
+
+				// Debug logging to help track image sizing issues
+				if let image = self.seriesImage.cgImage {
+					let imageSize = CGSize(width: image.width, height: image.height)
+					let aspectRatio = Double(image.width) / Double(image.height)
+					print("SeriesViewController: Image loaded - Size: \(imageSize), Aspect Ratio: \(String(format: "%.2f", aspectRatio))")
+				}
+			}
 		}
 	}
 
@@ -41,8 +57,53 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	private var series: SermonSeries?
 
 	// MARK: - UI Elements
+
+	// Container view for shadow effects
+	private let seriesArtContainer: UIView = {
+		let container = UIView()
+		container.backgroundColor = .clear
+		container.layer.cornerRadius = 12
+		container.layer.shadowColor = UIColor.black.cgColor
+		container.layer.shadowOffset = CGSize(width: 0, height: 4)
+		container.layer.shadowRadius = 8
+		container.layer.shadowOpacity = 0.4
+		container.layer.masksToBounds = false
+		container.translatesAutoresizingMaskIntoConstraints = false
+		return container
+	}()
+
+	// Background image view with blur effect for full-width coverage
+	private let backgroundImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.backgroundColor = .darkGrey
+		imageView.contentMode = .scaleAspectFill
+		imageView.layer.cornerRadius = 12
+		imageView.layer.masksToBounds = true
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+
+		// Add blur effect
+		let blurEffect = UIBlurEffect(style: .dark)
+		let blurEffectView = UIVisualEffectView(effect: blurEffect)
+		blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.addSubview(blurEffectView)
+
+		// Make blur effect fill the entire image view
+		NSLayoutConstraint.activate([
+			blurEffectView.topAnchor.constraint(equalTo: imageView.topAnchor),
+			blurEffectView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+			blurEffectView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+			blurEffectView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
+		])
+
+		return imageView
+	}()
+
 	let seriesArt: UIImageView = {
 		let image = UIImageView()
+		image.backgroundColor = .clear // Clear background since we have the blurred background
+		image.contentMode = .scaleAspectFill // Use scaleAspectFill to ensure image fills the space
+		image.layer.cornerRadius = 12
+		image.layer.masksToBounds = true
 		image.translatesAutoresizingMaskIntoConstraints = false
 		return image
 	}()
@@ -90,10 +151,166 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 			self.esvApiKey = nsDictionary?[ApplicationVariables.ESVApiCacheKey] as? String ?? ""
 		}
+
+		// Ensure view background matches to prevent white bars
+		view.backgroundColor = UIColor.bgDarkBlue
+
+		// Ensure table view extends to bottom edge without white bar (iOS 15+ minimum deployment target)
+		seriesTable.contentInsetAdjustmentBehavior = .automatic
+
+		// Ensure view fills entire screen
+		extendedLayoutIncludesOpaqueBars = true
+		edgesForExtendedLayout = .all
+	}
+
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+		// Ensure the blur effect view maintains proper bounds
+		// This helps with any layout issues during rotation or initial load
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			if let blurView = backgroundImageView.subviews.first(where: { $0 is UIVisualEffectView }) {
+				blurView.frame = backgroundImageView.bounds
+			}
+		}
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(true)
+	}
+
+	// Store constraints for proper cleanup during rotation
+	private var currentConstraints: [NSLayoutConstraint] = []
+
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+
+		// Update constraints after rotation completes
+		coordinator.animate(alongsideTransition: nil) { _ in
+			// Deactivate current constraints cleanly
+			NSLayoutConstraint.deactivate(self.currentConstraints)
+			self.currentConstraints.removeAll()
+
+			// Recalculate and apply new constraints for the new orientation
+			self.updateConstraintsForCurrentOrientation()
+		}
+	}
+
+	private func updateConstraintsForCurrentOrientation() {
+		// Calculate new dimensions
+		let screenWidth = view.frame.width
+		let screenHeight = view.frame.height
+		let cardMargin: CGFloat = 16
+		let cardWidth = screenWidth - (cardMargin * 2)
+
+		// Calculate card height with device-specific considerations
+		let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+		let isLandscape = screenWidth > screenHeight
+
+		var cardHeight: CGFloat
+
+		if isIPad {
+			if isLandscape {
+				// iPad landscape: Use a more generous portion for better visual impact
+				cardHeight = min(screenHeight * 0.5, cardWidth * 0.7) // Max 50% of height or 70% of width
+			} else {
+				// iPad portrait: Use a balanced approach that's more prominent
+				cardHeight = min(screenHeight * 0.4, cardWidth * 0.8) // Max 40% of height or 80% of width
+			}
+		} else {
+			// iPhone: Use strict 16:9 aspect ratio for consistent appearance
+			cardHeight = cardWidth * (9.0 / 16.0) // Traditional 16:9 ratio
+		}
+
+		// Check if this is the current series (no EndDate)
+		let isCurrentSeries = series?.StartDate != nil && series?.EndDate == nil
+
+		// Setup container constraints (with margins for modern card design)
+		let containerConstraints = [
+			seriesArtContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: cardMargin),
+			seriesArtContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -cardMargin),
+			seriesArtContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cardMargin),
+			seriesArtContainer.heightAnchor.constraint(equalToConstant: cardHeight)
+		]
+
+		// Setup image constraints based on device type
+		var imageConstraints: [NSLayoutConstraint] = []
+
+		if isIPad {
+			// iPad: Setup layered design with background and foreground images
+			let backgroundImageConstraints = [
+				backgroundImageView.topAnchor.constraint(equalTo: seriesArtContainer.topAnchor),
+				backgroundImageView.leadingAnchor.constraint(equalTo: seriesArtContainer.leadingAnchor),
+				backgroundImageView.trailingAnchor.constraint(equalTo: seriesArtContainer.trailingAnchor),
+				backgroundImageView.bottomAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor)
+			]
+
+			// iPad foreground image: centered with 16:9 aspect ratio for proper image display
+			let padding: CGFloat = 32 // More generous padding for iPad layered design
+			let foregroundImageConstraints = [
+				seriesArt.centerXAnchor.constraint(equalTo: seriesArtContainer.centerXAnchor),
+				seriesArt.centerYAnchor.constraint(equalTo: seriesArtContainer.centerYAnchor),
+				seriesArt.leadingAnchor.constraint(greaterThanOrEqualTo: seriesArtContainer.leadingAnchor, constant: padding),
+				seriesArt.trailingAnchor.constraint(lessThanOrEqualTo: seriesArtContainer.trailingAnchor, constant: -padding),
+				seriesArt.topAnchor.constraint(greaterThanOrEqualTo: seriesArtContainer.topAnchor, constant: padding),
+				seriesArt.bottomAnchor.constraint(lessThanOrEqualTo: seriesArtContainer.bottomAnchor, constant: -padding),
+				// CRITICAL: Maintain 16:9 aspect ratio for proper image display
+				seriesArt.widthAnchor.constraint(equalTo: seriesArt.heightAnchor, multiplier: 16.0/9.0)
+			]
+
+			// Add priority constraints to make the foreground image as large as possible within padding
+			// while respecting the 16:9 aspect ratio
+			let widthConstraint = seriesArt.widthAnchor.constraint(equalTo: seriesArtContainer.widthAnchor, constant: -padding * 2)
+			let heightConstraint = seriesArt.heightAnchor.constraint(equalTo: seriesArtContainer.heightAnchor, constant: -padding * 2)
+			widthConstraint.priority = UILayoutPriority(998) // Lower priority than aspect ratio
+			heightConstraint.priority = UILayoutPriority(998) // Lower priority than aspect ratio
+
+			imageConstraints = backgroundImageConstraints + foregroundImageConstraints + [widthConstraint, heightConstraint]
+		} else {
+			// iPhone: Simple single-image approach filling the entire container
+			imageConstraints = [
+				seriesArt.topAnchor.constraint(equalTo: seriesArtContainer.topAnchor),
+				seriesArt.leadingAnchor.constraint(equalTo: seriesArtContainer.leadingAnchor),
+				seriesArt.trailingAnchor.constraint(equalTo: seriesArtContainer.trailingAnchor),
+				seriesArt.bottomAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor)
+			]
+		}
+
+		// Setup table and label constraints
+		var layoutConstraints: [NSLayoutConstraint] = []
+
+		if isCurrentSeries {
+			// Current series: show "Current Series" text and normal layout
+			startDate.text = "Current Series"
+			startDate.isHidden = false
+
+			let currentSeriesConstraints = [
+				startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
+				startDate.topAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor, constant: 16),
+				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
+			]
+
+			layoutConstraints = currentSeriesConstraints
+		} else {
+			// Non-current series: hide text and make table touch bottom of image
+			startDate.isHidden = true
+
+			let nonCurrentSeriesConstraints = [
+				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+				seriesTable.topAnchor.constraint(equalTo: seriesArtContainer.bottomAnchor, constant: 16)
+			]
+
+			layoutConstraints = nonCurrentSeriesConstraints
+		}
+
+		// Store and activate all constraints
+		currentConstraints = containerConstraints + imageConstraints + layoutConstraints
+		NSLayoutConstraint.activate(currentConstraints)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -104,49 +321,26 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		// setup the view itself
 		view.backgroundColor = UIColor.bgDarkBlue
 
-		// add all the subviews
-		view.addSubview(seriesArt)
+		// add all the subviews with modern card-based hierarchy
+		view.addSubview(seriesArtContainer)
+
+		// iPad-specific constraints for landscape orientation
+		let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+
+		if isIPad {
+			// iPad: Use layered design with blurred background
+			seriesArtContainer.addSubview(backgroundImageView) // Add background first
+			seriesArtContainer.addSubview(seriesArt) // Add foreground on top
+		} else {
+			// iPhone: Use simple single-image approach
+			seriesArtContainer.addSubview(seriesArt) // Only add the main image
+		}
+
 		view.addSubview(startDate)
 		view.addSubview(seriesTable)
 
-		let width = view.frame.width
-		let height = (width) * (9 / 16) // 16x9 ratio
-
-		// Check if this is the current series (no EndDate)
-		let isCurrentSeries = series?.StartDate != nil && series?.EndDate == nil
-
-		if isCurrentSeries {
-			// Current series: show "Current Series" text and normal layout
-			startDate.text = "Current Series"
-			startDate.isHidden = false
-
-			NSLayoutConstraint.activate([
-				seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				startDate.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
-				startDate.topAnchor.constraint(equalTo: seriesArt.bottomAnchor, constant: 16),
-				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-				seriesTable.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 16)
-			])
-		} else {
-			// Non-current series: hide text and make table touch bottom of image
-			startDate.isHidden = true
-
-			NSLayoutConstraint.activate([
-				seriesArt.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				seriesArt.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				seriesArt.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-				seriesArt.heightAnchor.constraint(equalToConstant: height),
-				seriesTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-				seriesTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-				seriesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-				seriesTable.topAnchor.constraint(equalTo: seriesArt.bottomAnchor)
-			])
-		}
+		// Use the new constraint management system
+		updateConstraintsForCurrentOrientation()
 	}
 
 	func formatDataForPresentation(series: SermonSeries) -> SermonSeries{
@@ -453,6 +647,19 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
 		alert.addAction(cancelAction)
+
+		// Configure popover for iPad
+		if let popover = alert.popoverPresentationController {
+			if let cell = seriesTable.cellForRow(at: indexPath) {
+				popover.sourceView = cell
+				popover.sourceRect = cell.bounds
+			} else {
+				popover.sourceView = seriesTable
+				popover.sourceRect = CGRect(x: seriesTable.bounds.midX, y: seriesTable.bounds.midY, width: 0, height: 0)
+			}
+			popover.permittedArrowDirections = [.up, .down]
+		}
+
 		self.present(alert, animated: true, completion: nil)
 	}
 

@@ -517,7 +517,9 @@ class NowPlayingViewController: UIViewController {
 		progressContainerView.addSubview(progressIndicator)
 
 		// calculate the size for the image view with modern aspect ratio
-		let width = view.frame.width - 32 // Account for 16pt margins on each side
+		let availableWidth = view.frame.width - 32 // Account for 16pt margins on each side
+		let maxWidth: CGFloat = 500 // Maximum width for better proportions on iPad
+		let width = min(availableWidth, maxWidth)
 		let height = (width) * (9 / 16) // 16x9 ratio
 
 		// now add the constraints with modern spacing and margins

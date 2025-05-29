@@ -90,6 +90,7 @@
 		DCF9385A252E254D009EACEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FF24A51D171EC30048E6AF /* AudioToolbox.framework */; };
 		DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */; };
 		DCUNARCHIVEREXT123456790 /* NSKeyedUnarchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */; };
+		DCBIBLESELECTION123456790 /* BibleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBIBLESELECTION123456789 /* BibleSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		DCF8A09625E6FB0C00B3A405 /* RSSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSViewController.swift; sourceTree = "<group>"; };
 		DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonMessageExtensions.swift; sourceTree = "<group>"; };
 		DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverExtension.swift; sourceTree = "<group>"; };
+		DCBIBLESELECTION123456789 /* BibleSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleSelectionViewController.swift; sourceTree = "<group>"; };
 		EA37C14F1D85BEE500D450EF /* Thrive Church Official App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Thrive Church Official App.entitlements"; path = "../Thrive Church Official App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -400,6 +402,7 @@
 				DC2D8F8320DC64D000C9C938 /* BiblePassage.swift */,
 				DC2D8F8920DC6E1700C9C938 /* TraditionalSortBibleTableViewController.swift */,
 				DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */,
+				DCBIBLESELECTION123456789 /* BibleSelectionViewController.swift */,
 			);
 			path = Bible;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */,
 				DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */,
 				DCUNARCHIVEREXT123456790 /* NSKeyedUnarchiverExtension.swift in Sources */,
+				DCBIBLESELECTION123456790 /* BibleSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,7 +1063,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1091,7 +1095,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

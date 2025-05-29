@@ -76,11 +76,11 @@ class SermonsCollectionViewCell: UICollectionViewCell {
 
 	private func setupConstraints() {
 		NSLayoutConstraint.activate([
-			// Card Container - with margins for spacing
+			// Card Container - fills the cell with small margins for spacing
 			cardContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-			cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-			cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 			cardContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+			cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+			cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
 			// Series Art - fills card container
 			seriesArt.topAnchor.constraint(equalTo: cardContainer.topAnchor),

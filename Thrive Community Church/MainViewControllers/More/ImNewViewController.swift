@@ -53,6 +53,13 @@ class ImNewViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 		imNew.load(request)
 
         self.setLoadingSpinner(spinner: loading)
+
+        // Ensure view background matches to prevent white bars
+        view.backgroundColor = UIColor.almostBlack
+
+        // Ensure view fills entire screen
+        extendedLayoutIncludesOpaqueBars = true
+        edgesForExtendedLayout = .all
     }
 
     // MARK: - Setup Views
@@ -62,9 +69,9 @@ class ImNewViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
 
         NSLayoutConstraint.activate([
             imNew.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            imNew.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            imNew.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            imNew.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            imNew.bottomAnchor.constraint(equalTo: view.bottomAnchor), // Extend to bottom edge
+            imNew.leadingAnchor.constraint(equalTo: view.leadingAnchor), // Extend to edges
+            imNew.trailingAnchor.constraint(equalTo: view.trailingAnchor), // Extend to edges
             loading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loading.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])

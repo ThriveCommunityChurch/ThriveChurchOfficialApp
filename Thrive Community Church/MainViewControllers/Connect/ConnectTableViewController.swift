@@ -19,6 +19,9 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
         setupTableView()
         setupNavigationBar()
 		self.configurations = self.loadConfigs()
+
+		// Ensure view background matches table view to prevent white bars
+		view.backgroundColor = UIColor.almostBlack
     }
 
     // MARK: - Setup Views
@@ -31,6 +34,13 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 
         // Add spacing for card layout
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+
+        // Ensure table view extends to bottom edge without white bar (iOS 15+ minimum deployment target)
+        tableView.contentInsetAdjustmentBehavior = .automatic
+
+        // Ensure table view fills entire view
+        extendedLayoutIncludesOpaqueBars = true
+        edgesForExtendedLayout = .all
     }
 
     func setupNavigationBar() {
@@ -88,6 +98,10 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 			self.openUrlAnyways(link: "http://maps.apple.com/?daddr=\(formattedAddress ?? ""))&dirflg=d")
 		}
 		else if (config.Setting == nil && config.CellTitle != "Announcements") {
+			// Configure popover for iPad if it's an action sheet
+			if let alertController = config.Destination as? UIAlertController {
+				configurePopoverForActionSheet(alertController, sourceIndexPath: indexPath)
+			}
 			self.present(config.Destination, animated: true, completion: nil)
 		}
 		else {
@@ -96,6 +110,19 @@ class ConnectTableViewController: UITableViewController, MFMailComposeViewContro
 	}
 
 	// MARK: - Methods
+
+	private func configurePopoverForActionSheet(_ alertController: UIAlertController, sourceIndexPath: IndexPath) {
+		if let popover = alertController.popoverPresentationController {
+			if let cell = tableView.cellForRow(at: sourceIndexPath) {
+				popover.sourceView = cell
+				popover.sourceRect = cell.bounds
+			} else {
+				popover.sourceView = tableView
+				popover.sourceRect = CGRect(x: tableView.bounds.midX, y: tableView.bounds.midY, width: 0, height: 0)
+			}
+			popover.permittedArrowDirections = [.up, .down]
+		}
+	}
 
 	func loadConfigs() -> [Int: DynamicConfigResponse] {
 
@@ -412,11 +439,22 @@ class ModernConnectTableViewCell: UITableViewCell {
         bottomConstraint.priority = UILayoutPriority(999) // High but not required
 
         NSLayoutConstraint.activate([
-            // Card container constraints with 16pt horizontal margins and 8pt vertical spacing
+            // Card container constraints with adaptive width for iPad
             cardContainer.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
             bottomConstraint,
-            cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            cardContainer.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            // Width constraints for adaptive layout
+            cardContainer.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 16),
+            cardContainer.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16),
+            cardContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 600), // Maximum width for readability
+
+            // Prefer to fill available width but respect maximum
+            {
+                let widthConstraint = cardContainer.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32)
+                widthConstraint.priority = .defaultHigh
+                return widthConstraint
+            }(),
 
             // Minimum height constraint to prevent zero-height issues
             cardContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 72),

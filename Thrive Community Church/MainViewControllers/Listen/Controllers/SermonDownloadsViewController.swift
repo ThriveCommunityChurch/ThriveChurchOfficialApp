@@ -239,6 +239,19 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		alert.addAction(listenAction)
 		alert.addAction(deleteAction)
 		alert.addAction(cancelAction)
+
+		// Configure popover for iPad
+		if let popover = alert.popoverPresentationController {
+			if let cell = downloadsTableView.cellForRow(at: indexPath) {
+				popover.sourceView = cell
+				popover.sourceRect = cell.bounds
+			} else {
+				popover.sourceView = downloadsTableView
+				popover.sourceRect = CGRect(x: downloadsTableView.bounds.midX, y: downloadsTableView.bounds.midY, width: 0, height: 0)
+			}
+			popover.permittedArrowDirections = [.up, .down]
+		}
+
 		self.present(alert, animated: true, completion: nil)
 	}
 
@@ -312,6 +325,19 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		alert.addAction(cancel)
+
+		// Configure popover for iPad
+		if let popover = alert.popoverPresentationController {
+			// Use navigation bar button as source for sorting options
+			if let navigationBar = navigationController?.navigationBar {
+				popover.sourceView = navigationBar
+				popover.sourceRect = CGRect(x: navigationBar.bounds.maxX - 50, y: navigationBar.bounds.maxY, width: 0, height: 0)
+			} else {
+				popover.sourceView = view
+				popover.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+			}
+			popover.permittedArrowDirections = [.up, .down]
+		}
 
 		self.present(alert, animated: true, completion: nil)
 	}

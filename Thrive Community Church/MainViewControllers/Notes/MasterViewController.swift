@@ -32,6 +32,9 @@ class MasterViewController: UITableViewController {
         masterView = self
         // Called when the user Taps "Notes" icon -- buttons are all added before the segue
         load()
+
+        // Ensure view background matches table view to prevent white bars
+        view.backgroundColor = UIColor.almostBlack
     }
 
     // MARK: - Setup Views
@@ -44,6 +47,17 @@ class MasterViewController: UITableViewController {
 
         // Add spacing for card layout
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+
+        // Ensure table view extends to bottom edge without white bar
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .automatic
+        } else {
+            automaticallyAdjustsScrollViewInsets = true
+        }
+
+        // Ensure table view fills entire view
+        extendedLayoutIncludesOpaqueBars = true
+        edgesForExtendedLayout = .all
     }
 
     func setupNavigationBar() {
@@ -316,11 +330,22 @@ class ModernNotesTableViewCell: UITableViewCell {
         bottomConstraint.priority = UILayoutPriority(999) // High but not required
 
         NSLayoutConstraint.activate([
-            // Card container constraints with 16pt horizontal margins and 8pt vertical spacing
+            // Card container constraints with adaptive width for iPad
             cardContainer.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
             bottomConstraint,
-            cardContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            cardContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            cardContainer.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            // Width constraints for adaptive layout
+            cardContainer.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 16),
+            cardContainer.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16),
+            cardContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 600), // Maximum width for readability
+
+            // Prefer to fill available width but respect maximum
+            {
+                let widthConstraint = cardContainer.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32)
+                widthConstraint.priority = .defaultHigh
+                return widthConstraint
+            }(),
 
             // Minimum height constraint to prevent zero-height issues
             cardContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 72),

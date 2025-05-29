@@ -102,6 +102,9 @@ MFMailComposeViewControllerDelegate {
 		setupCollectionView()
 		self.presentOnboarding()
 
+		// Ensure view background matches collection view to prevent white bars
+		view.backgroundColor = UIColor.almostBlack
+
 		collectionView?.dataSource = self
 		collectionView?.delegate = self
 		// Note: recentlyPlayedButton.isEnabled will be set in retrieveRecentlyPlayed()
@@ -162,6 +165,19 @@ MFMailComposeViewControllerDelegate {
 											   selector: #selector(refreshView),
 											   name: NSNotification.Name.NSExtensionHostWillEnterForeground,
 											   object: UIApplication.shared)
+
+		// Add observer for orientation changes to refresh layout
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(orientationDidChange),
+											   name: UIDevice.orientationDidChangeNotification,
+											   object: nil)
+	}
+
+	@objc private func orientationDidChange() {
+		// Invalidate layout to recalculate cell sizes for new orientation
+		DispatchQueue.main.async {
+			self.collectionView?.collectionViewLayout.invalidateLayout()
+		}
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
@@ -218,23 +234,72 @@ MFMailComposeViewControllerDelegate {
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-		// Account for horizontal margins (16pt on each side) and vertical spacing (8pt total)
-		let horizontalMargins: CGFloat = 32 // 16pt on each side
-		let verticalSpacing: CGFloat = 8 // 4pt top + 4pt bottom
+		// Get section insets from flow layout
+		let sectionInsets: UIEdgeInsets
+		if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+			sectionInsets = flowLayout.sectionInset
+		} else {
+			sectionInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+		}
 
-		let availableWidth = view.frame.width - horizontalMargins
-		let cardWidth = availableWidth
-		let cardHeight = (cardWidth * (9.0 / 16.0)) + verticalSpacing // 16:9 ratio + spacing
+		// Account for section insets and inter-item spacing
+		let horizontalInsets = sectionInsets.left + sectionInsets.right
+		let verticalSpacing: CGFloat = 8 // 4pt top + 4pt bottom for card spacing
+		let interItemSpacing: CGFloat = 16 // Space between columns on iPad
 
-		return CGSize(width: view.frame.width, height: cardHeight)
+		let availableWidth = view.frame.width - horizontalInsets
+
+		// Determine number of columns based on device and orientation
+		let numberOfColumns = getNumberOfColumns()
+
+		// Calculate card width accounting for inter-item spacing
+		let totalInterItemSpacing = CGFloat(numberOfColumns - 1) * interItemSpacing
+		let cardWidth = (availableWidth - totalInterItemSpacing) / CGFloat(numberOfColumns)
+
+		// Apply maximum width constraint for readability
+		let maxCardWidth: CGFloat = 600
+		let finalCardWidth = min(cardWidth, maxCardWidth)
+		let cardHeight = (finalCardWidth * (9.0 / 16.0)) + verticalSpacing // 16:9 ratio + spacing
+
+		return CGSize(width: finalCardWidth, height: cardHeight)
+	}
+
+	private func getNumberOfColumns() -> Int {
+		// iPhone: Always 1 column
+		if UIDevice.current.userInterfaceIdiom == .phone {
+			return 1
+		}
+
+		// iPad: Adaptive based on orientation and screen size
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			let screenWidth = view.frame.width
+
+			// Portrait: Always 2 columns for all iPad models
+			if view.frame.height > view.frame.width {
+				return 2
+			}
+			// Landscape: 2-3 columns based on screen width
+			else {
+				// iPad Pro 12.9" in landscape: 3 columns (width > 1200)
+				if screenWidth > 1200 {
+					return 3
+				}
+				// iPad Air and smaller iPads in landscape: 2 columns
+				else {
+					return 2
+				}
+			}
+		}
+
+		return 1 // Default fallback
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 0 // Spacing is handled within the cell
+		return 8 // Vertical spacing between rows
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return getNumberOfColumns() > 1 ? 16 : 0 // Horizontal spacing between columns on iPad
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -483,6 +548,19 @@ MFMailComposeViewControllerDelegate {
 	// MARK: - Setup Views
 	func setupCollectionView() {
 		collectionView.backgroundColor = UIColor.almostBlack
+
+		// Ensure collection view extends to bottom edge without white bar (iOS 15+ minimum deployment target)
+		collectionView.contentInsetAdjustmentBehavior = .automatic
+
+		// Ensure collection view fills entire view
+		extendedLayoutIncludesOpaqueBars = true
+		edgesForExtendedLayout = .all
+
+		// Configure flow layout for multi-column support
+		if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+			flowLayout.scrollDirection = .vertical
+			flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+		}
 	}
 
 	// MARK: - Setup Navigation Bar

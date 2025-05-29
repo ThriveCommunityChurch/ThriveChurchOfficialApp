@@ -212,6 +212,19 @@ class RecentlyPlayedViewController: UIViewController, UITableViewDelegate, UITab
 		alert.addAction(readPassageAction)
 		alert.addAction(removeAction)
 		alert.addAction(cancelAction)
+
+		// Configure popover for iPad
+		if let popover = alert.popoverPresentationController {
+			if let cell = recentlyPlayedTable.cellForRow(at: indexPath) {
+				popover.sourceView = cell
+				popover.sourceRect = cell.bounds
+			} else {
+				popover.sourceView = recentlyPlayedTable
+				popover.sourceRect = CGRect(x: recentlyPlayedTable.bounds.midX, y: recentlyPlayedTable.bounds.midY, width: 0, height: 0)
+			}
+			popover.permittedArrowDirections = [.up, .down]
+		}
+
 		self.present(alert, animated: true, completion: nil)
 	}
 

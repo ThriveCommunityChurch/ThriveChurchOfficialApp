@@ -32,16 +32,12 @@ class AppCoordinator {
         tabBarController.tabBar.unselectedItemTintColor = UIColor.lightGray
         tabBarController.tabBar.isTranslucent = false
 
-        // Set appearance for iOS 13+
-        if #available(iOS 13.0, *) {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.black
-            tabBarController.tabBar.standardAppearance = appearance
-            if #available(iOS 15.0, *) {
-                tabBarController.tabBar.scrollEdgeAppearance = appearance
-            }
-        }
+        // Set modern tab bar appearance (iOS 15+ minimum deployment target)
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black
+        tabBarController.tabBar.standardAppearance = appearance
+        tabBarController.tabBar.scrollEdgeAppearance = appearance
 
         // Create all the navigation controllers
         let listenNavController = createListenNavigationController()
@@ -56,6 +52,12 @@ class AppCoordinator {
             connectNavController,
             moreNavController
         ]
+
+        // iPad-specific adjustments
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // Center tab bar items on iPad for better appearance
+            tabBarController.tabBar.itemPositioning = .centered
+        }
     }
 
     private func createListenNavigationController() -> UINavigationController {
@@ -143,17 +145,20 @@ class AppCoordinator {
         navController.setNavigationBarHidden(false, animated: false)
         navController.navigationBar.prefersLargeTitles = false
 
-        // Set appearance for iOS 13+
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.black
-            appearance.titleTextAttributes = [
-                .font: UIFont(name: "Avenir-Black", size: 19) ?? UIFont.systemFont(ofSize: 19, weight: .black),
-                .foregroundColor: UIColor.white
-            ]
-            navController.navigationBar.standardAppearance = appearance
-            navController.navigationBar.scrollEdgeAppearance = appearance
-        }
+        // Set proper layout margins (iOS 15+ minimum deployment target)
+        navController.navigationBar.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+
+        // Set modern navigation bar appearance (iOS 15+ minimum deployment target)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black
+        appearance.titleTextAttributes = [
+            .font: UIFont(name: "Avenir-Black", size: 19) ?? UIFont.systemFont(ofSize: 19, weight: .black),
+            .foregroundColor: UIColor.white
+        ]
+        navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
+        navController.navigationBar.compactAppearance = appearance
+        navController.navigationBar.compactScrollEdgeAppearance = appearance
     }
 }
