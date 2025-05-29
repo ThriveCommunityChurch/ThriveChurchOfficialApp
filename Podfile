@@ -18,7 +18,7 @@ target 'Thrive Church Official App' do
   end
 
   target 'Thrive Church Official AppUITests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 

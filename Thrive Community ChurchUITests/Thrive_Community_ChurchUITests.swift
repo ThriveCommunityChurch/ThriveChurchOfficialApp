@@ -9,28 +9,77 @@
 import XCTest
 
 class Thrive_Community_ChurchUITests: XCTestCase {
-        
+
+    var app: XCUIApplication!
+
     override func setUp() {
         super.setUp()
-        
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        app = XCUIApplication()
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func testAppLaunchAndTabBarVisibility() {
+        // Test basic app launch and tab bar setup
+        let tabBar = app.tabBars.firstMatch
+        XCTAssertTrue(waitForElementToAppear(tabBar, timeout: 10), "Tab bar should be visible")
+
+        // Validate all expected tabs exist
+        let expectedTabs = ["Listen", "Notes", "Connect", "More"]
+        for tabName in expectedTabs {
+            let tab = tabBar.buttons[tabName]
+            XCTAssertTrue(tab.exists, "Tab '\(tabName)' should exist")
+        }
+
+        takeScreenshot(name: "app_launch")
     }
-    
+
+    func testAllTabsAccessible() {
+        let tabs = ["Listen", "Notes", "Connect", "More"]
+
+        for tab in tabs {
+            let tabBar = app.tabBars.firstMatch
+            let tabButton = tabBar.buttons[tab]
+            tabButton.tap()
+
+            // Wait for navigation to complete
+            Thread.sleep(forTimeInterval: 0.5)
+
+            // Verify navigation title appears
+            let navigationBar = app.navigationBars.firstMatch
+            XCTAssertTrue(waitForElementToAppear(navigationBar, timeout: 5),
+                "Navigation bar should appear for \(tab) tab")
+
+            takeScreenshot(name: "\(tab.lowercased())_tab")
+        }
+    }
+
+    // Helper methods
+    func waitForElementToAppear(_ element: XCUIElement, timeout: TimeInterval) -> Bool {
+        let predicate = NSPredicate(format: "exists == true")
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
+        let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
+        return result == .completed
+    }
+
+    func takeScreenshot(name: String) {
+        let screenshot = XCUIScreen.main.screenshot()
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
 }
