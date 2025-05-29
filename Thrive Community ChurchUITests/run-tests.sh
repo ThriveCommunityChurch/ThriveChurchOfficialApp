@@ -49,7 +49,7 @@ clean_environment() {
     print_success "Derived data cleaned"
 
     print_info "Installing CocoaPods dependencies..."
-    (cd .. && pod install)
+    cd .. && pod install && cd "Thrive Community ChurchUITests"
     print_success "Dependencies installed"
 }
 
