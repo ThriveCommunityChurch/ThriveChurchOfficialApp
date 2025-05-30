@@ -5,9 +5,9 @@ name: Swift Dev Build
 
 on:
   push:
-    branches: [ "dev", "master" ]
+    branches: [ "dev", "master", "1.7.9" ]
   pull_request:
-    branches: [ "dev", "master" ]
+    branches: [ "dev", "master", "1.7.9" ]
 
 jobs:
   build-and-test:
@@ -26,9 +26,11 @@ jobs:
       run: |
         sudo gem install cocoapods
         # Clean any existing pods to avoid path issues
-        rm -rf Pods
+        rm -rf Pods Podfile.lock
+        # Clear pod cache to avoid corrupted dependencies
+        pod cache clean --all
         # Reinstall with clean state for CI
-        pod install --repo-update
+        pod install --repo-update --verbose
 
     - name: Fix CocoaPods XCFrameworks paths for CI
       run: |
@@ -61,6 +63,24 @@ jobs:
         ls -la "Pods/Target Support Files/FirebaseAnalytics/" || echo "Directory not found"
         ls -la "Pods/Target Support Files/GoogleAppMeasurement/" || echo "Directory not found"
 
+    - name: Fix GoogleUtilities build issues for CI
+      run: |
+        echo "Setting up environment for GoogleUtilities build..."
+        # Set environment variables to help with dependency scanning
+        export ENABLE_PREVIEWS=NO
+        export ENABLE_BITCODE=NO
+        export ENABLE_TESTABILITY=YES
+        export SWIFT_COMPILATION_MODE=wholemodule
+
+        # Verify GoogleUtilities pod installation
+        if [ -d "Pods/GoogleUtilities" ]; then
+          echo "✅ GoogleUtilities pod found"
+          ls -la "Pods/GoogleUtilities/"
+        else
+          echo "❌ GoogleUtilities pod not found"
+          exit 1
+        fi
+
     - name: List available simulators
       run: xcrun simctl list devices available
 
@@ -78,63 +98,89 @@ jobs:
         export SRCROOT="$(pwd)"
         echo "SRCROOT set to: $SRCROOT"
 
+        # Get the correct simulator for the GitHub Actions runner architecture
+        echo "Available simulators:"
+        xcrun simctl list devices available | grep iPhone
+
+        # Use iPhone 15 which should be available on latest Xcode
+        SIMULATOR_NAME="iPhone 15"
+        echo "Using simulator: $SIMULATOR_NAME"
+
         # Try a simpler build approach first - just build without testing
         echo "Attempting simple build first..."
         xcodebuild build \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+          -destination "platform=iOS Simulator,name=$SIMULATOR_NAME" \
           -configuration Debug \
           CODE_SIGNING_ALLOWED=NO \
           SRCROOT="$SRCROOT" \
           SKIP_INSTALL=YES \
-          ONLY_ACTIVE_ARCH=YES \
+          ONLY_ACTIVE_ARCH=NO \
+          VALID_ARCHS="x86_64 arm64" \
+          ARCHS="x86_64" \
           GCC_OPTIMIZATION_LEVEL=0 \
           SWIFT_OPTIMIZATION_LEVEL=-Onone \
           DEBUG_INFORMATION_FORMAT=dwarf \
           ENABLE_TESTABILITY=YES \
+          ENABLE_BITCODE=NO \
+          SWIFT_COMPILATION_MODE=wholemodule \
+          CLANG_ENABLE_MODULE_DEBUGGING=NO \
           -quiet || {
             echo "Simple build failed, trying with detailed output..."
             xcodebuild build \
               -workspace "Thrive Church Official App.xcworkspace" \
               -scheme "Thrive Church Official App" \
-              -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+              -destination "platform=iOS Simulator,name=$SIMULATOR_NAME" \
               -configuration Debug \
               CODE_SIGNING_ALLOWED=NO \
               SRCROOT="$SRCROOT" \
               SKIP_INSTALL=YES \
-              ONLY_ACTIVE_ARCH=YES \
+              ONLY_ACTIVE_ARCH=NO \
+              VALID_ARCHS="x86_64 arm64" \
+              ARCHS="x86_64" \
               GCC_OPTIMIZATION_LEVEL=0 \
               SWIFT_OPTIMIZATION_LEVEL=-Onone \
               DEBUG_INFORMATION_FORMAT=dwarf \
-              ENABLE_TESTABILITY=YES
+              ENABLE_TESTABILITY=YES \
+              ENABLE_BITCODE=NO \
+              SWIFT_COMPILATION_MODE=wholemodule \
+              CLANG_ENABLE_MODULE_DEBUGGING=NO
           }
 
     - name: Build for testing (if simple build succeeded)
       run: |
         export SRCROOT="$(pwd)"
-        echo "Building for testing..."
+        SIMULATOR_NAME="iPhone 15"
+        echo "Building for testing with simulator: $SIMULATOR_NAME"
         xcodebuild build-for-testing \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+          -destination "platform=iOS Simulator,name=$SIMULATOR_NAME" \
           -configuration Debug \
           CODE_SIGNING_ALLOWED=NO \
           SRCROOT="$SRCROOT" \
           SKIP_INSTALL=YES \
-          ONLY_ACTIVE_ARCH=YES \
+          ONLY_ACTIVE_ARCH=NO \
+          VALID_ARCHS="x86_64 arm64" \
+          ARCHS="x86_64" \
           GCC_OPTIMIZATION_LEVEL=0 \
           SWIFT_OPTIMIZATION_LEVEL=-Onone \
           DEBUG_INFORMATION_FORMAT=dwarf \
-          ENABLE_TESTABILITY=YES
+          ENABLE_TESTABILITY=YES \
+          ENABLE_BITCODE=NO \
+          SWIFT_COMPILATION_MODE=wholemodule \
+          CLANG_ENABLE_MODULE_DEBUGGING=NO
 
     - name: Run unit tests
       run: |
         export SRCROOT="$(pwd)"
+        SIMULATOR_NAME="iPhone 15"
+        echo "Running unit tests on: $SIMULATOR_NAME"
         xcodebuild test-without-building \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+          -destination "platform=iOS Simulator,name=$SIMULATOR_NAME" \
           -only-testing:"Thrive Church Official AppTests" \
           CODE_SIGNING_ALLOWED=NO \
           SRCROOT="$SRCROOT"
@@ -142,10 +188,12 @@ jobs:
     - name: Run UI tests
       run: |
         export SRCROOT="$(pwd)"
+        SIMULATOR_NAME="iPhone 15"
+        echo "Running UI tests on: $SIMULATOR_NAME"
         xcodebuild test-without-building \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+          -destination "platform=iOS Simulator,name=$SIMULATOR_NAME" \
           -only-testing:"Thrive Church Official AppUITests" \
           CODE_SIGNING_ALLOWED=NO \
           SRCROOT="$SRCROOT"
@@ -154,10 +202,12 @@ jobs:
     - name: Run comprehensive tests on iPad
       run: |
         export SRCROOT="$(pwd)"
+        IPAD_SIMULATOR="iPad (10th generation)"
+        echo "Running comprehensive tests on: $IPAD_SIMULATOR"
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPad (10th generation)' \
+          -destination "platform=iOS Simulator,name=$IPAD_SIMULATOR" \
           -only-testing:"Thrive Church Official AppTests" \
           CODE_SIGNING_ALLOWED=NO \
           SRCROOT="$SRCROOT"
