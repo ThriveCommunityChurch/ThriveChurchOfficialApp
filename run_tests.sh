@@ -86,129 +86,36 @@ if [ ! -d "Pods" ]; then
     pod install
 fi
 
-# CI-specific fixes for Firebase and CocoaPods
+# CI-specific setup
 if [ "$CI" = "true" ]; then
-    echo -e "${YELLOW}🔧 Applying CI-specific fixes${NC}"
+    echo -e "${YELLOW}🔧 CI environment detected${NC}"
 
-    # Clean any existing build artifacts
-    rm -rf ~/Library/Developer/Xcode/DerivedData
-    rm -rf build/
-
-    # Set environment variables for CI
-    export ENABLE_PREVIEWS=NO
-    export ENABLE_BITCODE=NO
-    export ENABLE_TESTABILITY=YES
-    export SWIFT_COMPILATION_MODE=wholemodule
-    export SWIFT_OPTIMIZATION_LEVEL=-Onone
-    export GCC_OPTIMIZATION_LEVEL=0
-
-    # Fix potential module compilation issues
-    echo -e "${YELLOW}🔧 Cleaning and rebuilding Pods for CI${NC}"
-    pod deintegrate || true
-    pod cache clean --all
-    pod install --repo-update --clean-install
-
-    # Additional Firebase-specific fixes for CI
-    echo -e "${YELLOW}🔧 Applying Firebase CI workarounds${NC}"
-
-    # Fix Firebase Swift compilation issues in CI
-    if [ -d "Pods/FirebaseCoreInternal" ]; then
-        echo "Applying FirebaseCoreInternal CI fixes..."
-        # Create missing directories that CI sometimes doesn't create
-        mkdir -p "Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging"
-        mkdir -p "Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/Utilities"
-    fi
-
-    # Set additional CI-specific build settings
-    export SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS"
-    export SWIFT_SUPPRESS_WARNINGS=YES
-    export GCC_WARN_INHIBIT_ALL_WARNINGS=YES
-
-    # Fix Firebase Swift language feature requirements
-    export OTHER_SWIFT_FLAGS="-enable-experimental-feature AccessLevelOnImport"
+    # Ensure pods are up to date in CI
+    echo -e "${YELLOW}🔧 Installing/updating Pods${NC}"
+    pod install --repo-update
 fi
 
 echo -e "${GREEN}🧪 Running Unit Tests${NC}"
-
-# Test with CI-specific settings if in CI environment
-if [ "$CI" = "true" ]; then
-    echo -e "${YELLOW}🔧 Using CI-optimized test settings${NC}"
-    xcodebuild test \
-        -workspace "$WORKSPACE" \
-        -scheme "$SCHEME" \
-        -sdk iphonesimulator \
-        -destination "$DESTINATION" \
-        -only-testing:"${SCHEME}Tests" \
-        CODE_SIGNING_ALLOWED='NO' \
-        ENABLE_TESTABILITY=YES \
-        ENABLE_BITCODE=NO \
-        SWIFT_COMPILATION_MODE=wholemodule \
-        SWIFT_OPTIMIZATION_LEVEL=-Onone \
-        GCC_OPTIMIZATION_LEVEL=0 \
-        DEBUG_INFORMATION_FORMAT=dwarf \
-        ONLY_ACTIVE_ARCH=YES \
-        VALID_ARCHS="x86_64" \
-        ARCHS="x86_64" \
-        CLANG_ENABLE_MODULE_DEBUGGING=NO \
-        SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS" \
-        SWIFT_SUPPRESS_WARNINGS=YES \
-        GCC_WARN_INHIBIT_ALL_WARNINGS=YES \
-        SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-        GCC_TREAT_WARNINGS_AS_ERRORS=NO \
-        OTHER_SWIFT_FLAGS="-D COCOAPODS -enable-experimental-feature AccessLevelOnImport"
-else
-    echo -e "${GREEN}🔧 Using local development test settings${NC}"
-    xcodebuild test \
-        -workspace "$WORKSPACE" \
-        -scheme "$SCHEME" \
-        -sdk iphonesimulator \
-        -destination "$DESTINATION" \
-        -only-testing:"${SCHEME}Tests" \
-        CODE_SIGNING_ALLOWED='NO' \
-        ENABLE_TESTABILITY=YES
-fi
+xcodebuild test \
+    -workspace "$WORKSPACE" \
+    -scheme "$SCHEME" \
+    -sdk iphonesimulator \
+    -destination "$DESTINATION" \
+    -only-testing:"${SCHEME}Tests" \
+    CODE_SIGNING_ALLOWED='NO' \
+    ENABLE_TESTABILITY=YES
 
 UNIT_TEST_RESULT=$?
 
 echo -e "${GREEN}🖥️ Running UI Tests${NC}"
-
-# UI Test with CI-specific settings if in CI environment
-if [ "$CI" = "true" ]; then
-    echo -e "${YELLOW}🔧 Using CI-optimized UI test settings${NC}"
-    xcodebuild test \
-        -workspace "$WORKSPACE" \
-        -scheme "$SCHEME" \
-        -sdk iphonesimulator \
-        -destination "$DESTINATION" \
-        -only-testing:"${SCHEME}UITests" \
-        CODE_SIGNING_ALLOWED='NO' \
-        ENABLE_TESTABILITY=YES \
-        ENABLE_BITCODE=NO \
-        SWIFT_COMPILATION_MODE=wholemodule \
-        SWIFT_OPTIMIZATION_LEVEL=-Onone \
-        GCC_OPTIMIZATION_LEVEL=0 \
-        DEBUG_INFORMATION_FORMAT=dwarf \
-        ONLY_ACTIVE_ARCH=YES \
-        VALID_ARCHS="x86_64" \
-        ARCHS="x86_64" \
-        CLANG_ENABLE_MODULE_DEBUGGING=NO \
-        SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS" \
-        SWIFT_SUPPRESS_WARNINGS=YES \
-        GCC_WARN_INHIBIT_ALL_WARNINGS=YES \
-        SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-        GCC_TREAT_WARNINGS_AS_ERRORS=NO \
-        OTHER_SWIFT_FLAGS="-D COCOAPODS -enable-experimental-feature AccessLevelOnImport"
-else
-    echo -e "${GREEN}🔧 Using local development UI test settings${NC}"
-    xcodebuild test \
-        -workspace "$WORKSPACE" \
-        -scheme "$SCHEME" \
-        -sdk iphonesimulator \
-        -destination "$DESTINATION" \
-        -only-testing:"${SCHEME}UITests" \
-        CODE_SIGNING_ALLOWED='NO' \
-        ENABLE_TESTABILITY=YES
-fi
+xcodebuild test \
+    -workspace "$WORKSPACE" \
+    -scheme "$SCHEME" \
+    -sdk iphonesimulator \
+    -destination "$DESTINATION" \
+    -only-testing:"${SCHEME}UITests" \
+    CODE_SIGNING_ALLOWED='NO' \
+    ENABLE_TESTABILITY=YES
 
 UI_TEST_RESULT=$?
 

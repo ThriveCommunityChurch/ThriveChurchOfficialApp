@@ -66,41 +66,12 @@ if [ "$CI" = "true" ]; then
 fi
 
 echo -e "${GREEN}🔨 Building iOS App${NC}"
-
-# Build with CI-specific settings if in CI environment
-if [ "$CI" = "true" ]; then
-    echo -e "${YELLOW}🔧 Using CI-optimized build settings${NC}"
-    xcodebuild build \
-        -workspace "$WORKSPACE" \
-        -scheme "$SCHEME" \
-        -sdk iphonesimulator \
-        -configuration Debug \
-        CODE_SIGNING_ALLOWED='NO' \
-        ENABLE_TESTABILITY=YES \
-        ENABLE_BITCODE=NO \
-        SWIFT_COMPILATION_MODE=wholemodule \
-        SWIFT_OPTIMIZATION_LEVEL=-Onone \
-        GCC_OPTIMIZATION_LEVEL=0 \
-        DEBUG_INFORMATION_FORMAT=dwarf \
-        ONLY_ACTIVE_ARCH=YES \
-        VALID_ARCHS="x86_64" \
-        ARCHS="x86_64" \
-        CLANG_ENABLE_MODULE_DEBUGGING=NO \
-        SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS" \
-        SWIFT_SUPPRESS_WARNINGS=YES \
-        GCC_WARN_INHIBIT_ALL_WARNINGS=YES \
-        SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-        GCC_TREAT_WARNINGS_AS_ERRORS=NO \
-        OTHER_SWIFT_FLAGS="-D COCOAPODS -enable-experimental-feature AccessLevelOnImport -D DISABLE_SWIFTUI_FEATURES"
-else
-    echo -e "${GREEN}🔧 Using local development build settings${NC}"
-    xcodebuild build \
-        -workspace "$WORKSPACE" \
-        -scheme "$SCHEME" \
-        -sdk iphonesimulator \
-        -configuration Debug \
-        CODE_SIGNING_ALLOWED='NO'
-fi
+xcodebuild build \
+    -workspace "$WORKSPACE" \
+    -scheme "$SCHEME" \
+    -sdk iphonesimulator \
+    -configuration Debug \
+    CODE_SIGNING_ALLOWED='NO'
 
 BUILD_RESULT=$?
 
