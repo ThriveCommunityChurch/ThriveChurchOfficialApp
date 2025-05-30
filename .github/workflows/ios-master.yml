@@ -55,11 +55,15 @@ jobs:
           echo "Using scheme: $scheme"
           echo "Using workspace: $file_to_build"
 
+          export SRCROOT="$(pwd)"
+          echo "SRCROOT set to: $SRCROOT"
+
           xcodebuild build-for-testing \
             -scheme "$scheme" \
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$device" \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            SRCROOT="$SRCROOT"
 
       - name: Run Unit Tests
         env:
@@ -74,12 +78,15 @@ jobs:
 
           echo "Running unit tests on device: $device"
 
+          export SRCROOT="$(pwd)"
+
           xcodebuild test-without-building \
             -scheme "$scheme" \
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$device" \
             -only-testing:"Thrive Church Official AppTests" \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            SRCROOT="$SRCROOT"
 
       - name: Run UI Tests
         env:
@@ -94,12 +101,15 @@ jobs:
 
           echo "Running UI tests on device: $device"
 
+          export SRCROOT="$(pwd)"
+
           xcodebuild test-without-building \
             -scheme "$scheme" \
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$device" \
             -only-testing:"Thrive Church Official AppUITests" \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            SRCROOT="$SRCROOT"
         continue-on-error: true  # UI tests may have known issues
 
       - name: Test on iPad
@@ -116,12 +126,15 @@ jobs:
 
           echo "Running tests on iPad: $ipad_device"
 
+          export SRCROOT="$(pwd)"
+
           # Build for iPad testing
           xcodebuild build-for-testing \
             -scheme "$scheme" \
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$ipad_device" \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            SRCROOT="$SRCROOT"
 
           # Run unit tests on iPad
           xcodebuild test-without-building \
@@ -129,7 +142,8 @@ jobs:
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$ipad_device" \
             -only-testing:"Thrive Church Official AppTests" \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            SRCROOT="$SRCROOT"
         continue-on-error: true  # Allow iPad tests to fail without breaking the build
 
       - name: Upload test results

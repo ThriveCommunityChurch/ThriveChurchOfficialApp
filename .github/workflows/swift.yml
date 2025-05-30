@@ -38,42 +38,72 @@ jobs:
     - name: List available simulators
       run: xcrun simctl list devices available
 
+    - name: Fix plist file paths
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Files in current directory:"
+        ls -la
+        echo "Checking if plist files exist:"
+        if [ -f "Config.plist" ]; then
+          echo "✅ Config.plist found"
+        else
+          echo "❌ Config.plist not found"
+        fi
+        if [ -f "GoogleService-Info.plist" ]; then
+          echo "✅ GoogleService-Info.plist found"
+        else
+          echo "❌ GoogleService-Info.plist not found"
+        fi
+        echo "Files are in the correct location for GitHub Actions"
+
     - name: Build project
       run: |
+        # Set SRCROOT to current directory to help Xcode find the plist files
+        export SRCROOT="$(pwd)"
+        echo "SRCROOT set to: $SRCROOT"
+
         xcodebuild build \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -configuration Debug \
-          CODE_SIGNING_ALLOWED=NO
+          CODE_SIGNING_ALLOWED=NO \
+          SRCROOT="$SRCROOT"
 
     - name: Run unit tests
       run: |
+        export SRCROOT="$(pwd)"
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -only-testing:"Thrive Church Official AppTests" \
-          CODE_SIGNING_ALLOWED=NO
+          CODE_SIGNING_ALLOWED=NO \
+          SRCROOT="$SRCROOT"
 
     - name: Run UI tests
       run: |
+        export SRCROOT="$(pwd)"
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -only-testing:"Thrive Church Official AppUITests" \
-          CODE_SIGNING_ALLOWED=NO
+          CODE_SIGNING_ALLOWED=NO \
+          SRCROOT="$SRCROOT"
       continue-on-error: true  # UI tests may have known issues as mentioned in the codebase
 
     - name: Run comprehensive tests on iPad
       run: |
+        export SRCROOT="$(pwd)"
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPad (10th generation)' \
           -only-testing:"Thrive Church Official AppTests" \
-          CODE_SIGNING_ALLOWED=NO
+          CODE_SIGNING_ALLOWED=NO \
+          SRCROOT="$SRCROOT"
       continue-on-error: true  # Allow iPad tests to fail without breaking the build
 
     - name: Upload test results
