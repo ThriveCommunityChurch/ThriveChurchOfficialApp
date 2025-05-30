@@ -26,6 +26,16 @@ jobs:
           # Reinstall with clean state for CI
           pod install --repo-update
 
+      - name: Create dummy plist files for CI
+        run: |
+          echo "Creating minimal dummy plist files for CI..."
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n<key>API_URL</key>\n<string>https://api.example.com</string>\n</dict>\n</plist>\n' > Config.plist
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n<key>BUNDLE_ID</key>\n<string>com.thrive-fl.ThriveCommunityChurch</string>\n<key>PROJECT_ID</key>\n<string>dummy-project</string>\n<key>GOOGLE_APP_ID</key>\n<string>1:123456789:ios:dummy</string>\n</dict>\n</plist>\n' > GoogleService-Info.plist
+          echo "✅ Dummy plist files created"
+          ls -la Config.plist GoogleService-Info.plist
+
+
+
       - name: Set Default Scheme
         run: |
           # For workspace projects, we need to specify the scheme explicitly

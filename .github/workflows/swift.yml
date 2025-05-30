@@ -33,43 +33,35 @@ jobs:
     - name: List available simulators
       run: xcrun simctl list devices available
 
-    - name: Fix plist file paths
+    - name: Create dummy plist files for CI
       run: |
-        echo "Current directory:"
-        pwd
-        echo "Files in current directory:"
-        ls -la
-        echo "Checking if plist files exist:"
-        if [ -f "Config.plist" ]; then
-          echo "✅ Config.plist found"
-        else
-          echo "❌ Config.plist not found"
-        fi
-        if [ -f "GoogleService-Info.plist" ]; then
-          echo "✅ GoogleService-Info.plist found"
-        else
-          echo "❌ GoogleService-Info.plist not found"
-        fi
-        echo "Files are in the correct location for GitHub Actions"
+        echo "Creating minimal dummy plist files for CI..."
+        printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n<key>API_URL</key>\n<string>https://api.example.com</string>\n</dict>\n</plist>\n' > Config.plist
+        printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n<key>BUNDLE_ID</key>\n<string>com.thrive-fl.ThriveCommunityChurch</string>\n<key>PROJECT_ID</key>\n<string>dummy-project</string>\n<key>GOOGLE_APP_ID</key>\n<string>1:123456789:ios:dummy</string>\n</dict>\n</plist>\n' > GoogleService-Info.plist
+        echo "✅ Dummy plist files created"
+        ls -la Config.plist GoogleService-Info.plist
 
-    - name: Build project
+    - name: Build for testing
       run: |
         # Set SRCROOT to current directory to help Xcode find the plist files
         export SRCROOT="$(pwd)"
         echo "SRCROOT set to: $SRCROOT"
 
-        xcodebuild build \
+        # Use build-for-testing which often handles dependencies better
+        xcodebuild build-for-testing \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -configuration Debug \
           CODE_SIGNING_ALLOWED=NO \
-          SRCROOT="$SRCROOT"
+          SRCROOT="$SRCROOT" \
+          SKIP_INSTALL=YES \
+          ONLY_ACTIVE_ARCH=YES
 
     - name: Run unit tests
       run: |
         export SRCROOT="$(pwd)"
-        xcodebuild test \
+        xcodebuild test-without-building \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
@@ -80,7 +72,7 @@ jobs:
     - name: Run UI tests
       run: |
         export SRCROOT="$(pwd)"
-        xcodebuild test \
+        xcodebuild test-without-building \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
