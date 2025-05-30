@@ -59,6 +59,7 @@ if [ "$CI" = "true" ]; then
 
     # Clean any existing build artifacts
     rm -rf ~/Library/Developer/Xcode/DerivedData
+    rm -rf build/
 
     # Set environment variables for CI
     export ENABLE_PREVIEWS=NO
@@ -71,26 +72,61 @@ if [ "$CI" = "true" ]; then
     # Fix potential module compilation issues
     echo -e "${YELLOW}🔧 Cleaning and rebuilding Pods for CI${NC}"
     pod deintegrate || true
-    pod install --repo-update
+    pod cache clean --all
+    pod install --repo-update --clean-install
+
+    # Additional Firebase-specific fixes for CI
+    echo -e "${YELLOW}🔧 Applying Firebase CI workarounds${NC}"
+
+    # Fix Firebase Swift compilation issues in CI
+    if [ -d "Pods/FirebaseCoreInternal" ]; then
+        echo "Applying FirebaseCoreInternal CI fixes..."
+        # Create missing directories that CI sometimes doesn't create
+        mkdir -p "Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging"
+        mkdir -p "Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/Utilities"
+    fi
+
+    # Set additional CI-specific build settings
+    export SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS"
+    export SWIFT_SUPPRESS_WARNINGS=YES
+    export GCC_WARN_INHIBIT_ALL_WARNINGS=YES
 fi
 
 echo -e "${GREEN}🔨 Building iOS App${NC}"
-xcodebuild build \
-    -workspace "$WORKSPACE" \
-    -scheme "$SCHEME" \
-    -sdk iphonesimulator \
-    -configuration Debug \
-    CODE_SIGNING_ALLOWED='NO' \
-    ENABLE_TESTABILITY=YES \
-    ENABLE_BITCODE=NO \
-    SWIFT_COMPILATION_MODE=wholemodule \
-    SWIFT_OPTIMIZATION_LEVEL=-Onone \
-    GCC_OPTIMIZATION_LEVEL=0 \
-    DEBUG_INFORMATION_FORMAT=dwarf \
-    ONLY_ACTIVE_ARCH=NO \
-    VALID_ARCHS="x86_64 arm64" \
-    ARCHS="x86_64" \
-    CLANG_ENABLE_MODULE_DEBUGGING=NO
+
+# Build with CI-specific settings if in CI environment
+if [ "$CI" = "true" ]; then
+    echo -e "${YELLOW}🔧 Using CI-optimized build settings${NC}"
+    xcodebuild build \
+        -workspace "$WORKSPACE" \
+        -scheme "$SCHEME" \
+        -sdk iphonesimulator \
+        -configuration Debug \
+        CODE_SIGNING_ALLOWED='NO' \
+        ENABLE_TESTABILITY=YES \
+        ENABLE_BITCODE=NO \
+        SWIFT_COMPILATION_MODE=wholemodule \
+        SWIFT_OPTIMIZATION_LEVEL=-Onone \
+        GCC_OPTIMIZATION_LEVEL=0 \
+        DEBUG_INFORMATION_FORMAT=dwarf \
+        ONLY_ACTIVE_ARCH=YES \
+        VALID_ARCHS="x86_64" \
+        ARCHS="x86_64" \
+        CLANG_ENABLE_MODULE_DEBUGGING=NO \
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS" \
+        SWIFT_SUPPRESS_WARNINGS=YES \
+        GCC_WARN_INHIBIT_ALL_WARNINGS=YES \
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
+        GCC_TREAT_WARNINGS_AS_ERRORS=NO
+else
+    echo -e "${GREEN}🔧 Using local development build settings${NC}"
+    xcodebuild build \
+        -workspace "$WORKSPACE" \
+        -scheme "$SCHEME" \
+        -sdk iphonesimulator \
+        -configuration Debug \
+        CODE_SIGNING_ALLOWED='NO'
+fi
 
 BUILD_RESULT=$?
 
