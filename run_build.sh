@@ -53,13 +53,44 @@ if [ ! -d "Pods" ]; then
     pod install
 fi
 
+# CI-specific fixes for Firebase and CocoaPods
+if [ "$CI" = "true" ]; then
+    echo -e "${YELLOW}🔧 Applying CI-specific fixes${NC}"
+
+    # Clean any existing build artifacts
+    rm -rf ~/Library/Developer/Xcode/DerivedData
+
+    # Set environment variables for CI
+    export ENABLE_PREVIEWS=NO
+    export ENABLE_BITCODE=NO
+    export ENABLE_TESTABILITY=YES
+    export SWIFT_COMPILATION_MODE=wholemodule
+    export SWIFT_OPTIMIZATION_LEVEL=-Onone
+    export GCC_OPTIMIZATION_LEVEL=0
+
+    # Fix potential module compilation issues
+    echo -e "${YELLOW}🔧 Cleaning and rebuilding Pods for CI${NC}"
+    pod deintegrate || true
+    pod install --repo-update
+fi
+
 echo -e "${GREEN}🔨 Building iOS App${NC}"
 xcodebuild build \
     -workspace "$WORKSPACE" \
     -scheme "$SCHEME" \
     -sdk iphonesimulator \
     -configuration Debug \
-    CODE_SIGNING_ALLOWED='NO'
+    CODE_SIGNING_ALLOWED='NO' \
+    ENABLE_TESTABILITY=YES \
+    ENABLE_BITCODE=NO \
+    SWIFT_COMPILATION_MODE=wholemodule \
+    SWIFT_OPTIMIZATION_LEVEL=-Onone \
+    GCC_OPTIMIZATION_LEVEL=0 \
+    DEBUG_INFORMATION_FORMAT=dwarf \
+    ONLY_ACTIVE_ARCH=NO \
+    VALID_ARCHS="x86_64 arm64" \
+    ARCHS="x86_64" \
+    CLANG_ENABLE_MODULE_DEBUGGING=NO
 
 BUILD_RESULT=$?
 
