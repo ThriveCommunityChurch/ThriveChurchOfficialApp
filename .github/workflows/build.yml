@@ -1,52 +1,29 @@
-name: iOS Build
+name: Build
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [ "master", "dev" ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    name: Build iOS App
+    name: Build and compile check
     runs-on: macos-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Show current version of Xcode
+        run: xcodebuild -version
+
       - name: Install CocoaPods
         run: |
           sudo gem install cocoapods
-          pod install
 
-      - name: Create dummy config files
-        run: |
-          echo '<?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>API_URL</key>
-            <string>https://api.example.com</string>
-          </dict>
-          </plist>' > Config.plist
-
-          echo '<?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>BUNDLE_ID</key>
-            <string>com.thrive-fl.ThriveCommunityChurch</string>
-            <key>PROJECT_ID</key>
-            <string>dummy-project</string>
-            <key>GOOGLE_APP_ID</key>
-            <string>1:123456789:ios:dummy</string>
-          </dict>
-          </plist>' > GoogleService-Info.plist
-
-      - name: Build App
-        run: |
-          xcodebuild build \
-            -workspace "Thrive Church Official App.xcworkspace" \
-            -scheme "Thrive Church Official App" \
-            -sdk iphonesimulator \
-            -configuration Debug \
-            CODE_SIGNING_ALLOWED=NO
+      - name: Run build script
+        run: ./run_build.sh
