@@ -34,20 +34,32 @@ jobs:
       run: |
         echo "Creating missing xcfilelist files for CI..."
 
-        # Create the Target Support Files directories if they don't exist
+        # The build system is looking for files in the project root, not in Pods/
+        # Create the Target Support Files directories in the expected location
+        mkdir -p "Target Support Files/FirebaseAnalytics"
+        mkdir -p "Target Support Files/GoogleAppMeasurement"
+
+        # Create empty xcfilelist files where the build system expects them
+        touch "Target Support Files/FirebaseAnalytics/FirebaseAnalytics-xcframeworks-input-files.xcfilelist"
+        touch "Target Support Files/FirebaseAnalytics/FirebaseAnalytics-xcframeworks-output-files.xcfilelist"
+        touch "Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement-xcframeworks-input-files.xcfilelist"
+        touch "Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement-xcframeworks-output-files.xcfilelist"
+
+        # Also create them in the Pods directory as backup
         mkdir -p "Pods/Target Support Files/FirebaseAnalytics"
         mkdir -p "Pods/Target Support Files/GoogleAppMeasurement"
-
-        # Create empty xcfilelist files to satisfy the build system
         touch "Pods/Target Support Files/FirebaseAnalytics/FirebaseAnalytics-xcframeworks-input-files.xcfilelist"
         touch "Pods/Target Support Files/FirebaseAnalytics/FirebaseAnalytics-xcframeworks-output-files.xcfilelist"
         touch "Pods/Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement-xcframeworks-input-files.xcfilelist"
         touch "Pods/Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement-xcframeworks-output-files.xcfilelist"
 
-        echo "✅ Created missing xcfilelist files"
-        echo "Verifying files exist:"
-        ls -la "Pods/Target Support Files/FirebaseAnalytics/"
-        ls -la "Pods/Target Support Files/GoogleAppMeasurement/"
+        echo "✅ Created missing xcfilelist files in both locations"
+        echo "Verifying files exist in project root:"
+        ls -la "Target Support Files/FirebaseAnalytics/" || echo "Directory not found"
+        ls -la "Target Support Files/GoogleAppMeasurement/" || echo "Directory not found"
+        echo "Verifying files exist in Pods:"
+        ls -la "Pods/Target Support Files/FirebaseAnalytics/" || echo "Directory not found"
+        ls -la "Pods/Target Support Files/GoogleAppMeasurement/" || echo "Directory not found"
 
     - name: List available simulators
       run: xcrun simctl list devices available
