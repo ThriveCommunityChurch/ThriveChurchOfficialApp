@@ -34,7 +34,8 @@ class Thrive_Community_ChurchUITests: XCTestCase {
     func testAppLaunchAndTabBarVisibility() {
         // Test basic app launch and tab bar setup
         let tabBar = app.tabBars.firstMatch
-        XCTAssertTrue(waitForElementToAppear(tabBar, timeout: 10), "Tab bar should be visible")
+        let timeout = ProcessInfo.processInfo.environment["CI"] != nil ? 30.0 : 10.0
+        XCTAssertTrue(waitForElementToAppear(tabBar, timeout: timeout), "Tab bar should be visible")
 
         // Validate all expected tabs exist
         let expectedTabs = ["Listen", "Notes", "Connect", "More"]
@@ -48,18 +49,20 @@ class Thrive_Community_ChurchUITests: XCTestCase {
 
     func testAllTabsAccessible() {
         let tabs = ["Listen", "Notes", "Connect", "More"]
+        let timeout = ProcessInfo.processInfo.environment["CI"] != nil ? 15.0 : 5.0
+        let sleepInterval = ProcessInfo.processInfo.environment["CI"] != nil ? 2.0 : 0.5
 
         for tab in tabs {
             let tabBar = app.tabBars.firstMatch
             let tabButton = tabBar.buttons[tab]
             tabButton.tap()
 
-            // Wait for navigation to complete
-            Thread.sleep(forTimeInterval: 0.5)
+            // Wait for navigation to complete (longer in CI)
+            Thread.sleep(forTimeInterval: sleepInterval)
 
             // Verify navigation title appears
             let navigationBar = app.navigationBars.firstMatch
-            XCTAssertTrue(waitForElementToAppear(navigationBar, timeout: 5),
+            XCTAssertTrue(waitForElementToAppear(navigationBar, timeout: timeout),
                 "Navigation bar should appear for \(tab) tab")
 
             takeScreenshot(name: "\(tab.lowercased())_tab")
