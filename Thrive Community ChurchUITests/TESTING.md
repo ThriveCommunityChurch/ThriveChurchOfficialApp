@@ -247,14 +247,9 @@ For interactive development and debugging:
 
 ### Method 3: Convenience Script (Recommended for Development)
 
-A convenient shell script `run-tests.sh` is provided in the UI tests directory for easy test execution with colored output and helpful information.
+A convenient shell script `run-tests.sh` is provided for easy test execution with colored output and helpful information. The script can be run from either the project root or the UI tests directory.
 
 #### Using the Script
-
-**Navigate to the UI tests directory**:
-```bash
-cd "Thrive Community ChurchUITests"
-```
 
 **Make executable** (first time only):
 ```bash
@@ -297,7 +292,6 @@ chmod +x run-tests.sh
 
 #### Example Output
 ```bash
-$ cd "Thrive Community ChurchUITests"
 $ ./run-tests.sh unit
 ========================================
   Thrive Church Official App - Tests
@@ -671,11 +665,6 @@ If you encounter issues not covered in this guide:
 ## Quick Reference
 
 ### Convenience Script Commands (Recommended)
-
-**Navigate to UI tests directory first**:
-```bash
-cd "Thrive Community ChurchUITests"
-```
 
 **⚡ Run Unit Tests** (Fastest, ~3s):
 ```bash

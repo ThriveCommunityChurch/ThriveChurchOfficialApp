@@ -1,12 +1,26 @@
 #!/bin/bash
 
 # Thrive Church Official App - Test Runner Script
-# Usage: ./run-tests.sh [unit|ui|all|clean]
+# Usage: ./run-tests.sh [unit|ui|all|clean|help]
+# Can be run from project root or UI tests directory
 
 set -e
 
+# Detect script location and set paths accordingly
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT=""
+
+if [[ "$SCRIPT_DIR" == *"Thrive Community ChurchUITests"* ]]; then
+    # Script is in UI tests directory
+    PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+    WORKSPACE="$PROJECT_ROOT/Thrive Church Official App.xcworkspace"
+else
+    # Script is in project root
+    PROJECT_ROOT="$SCRIPT_DIR"
+    WORKSPACE="$PROJECT_ROOT/Thrive Church Official App.xcworkspace"
+fi
+
 # Configuration
-WORKSPACE="../Thrive Church Official App.xcworkspace"
 SCHEME="Thrive Church Official App"
 DESTINATION="platform=iOS Simulator,name=iPhone SE (3rd generation)"
 UNIT_TESTS="Thrive Church Official AppTests"
@@ -49,7 +63,7 @@ clean_environment() {
     print_success "Derived data cleaned"
 
     print_info "Installing CocoaPods dependencies..."
-    (cd .. && pod install)
+    (cd "$PROJECT_ROOT" && pod install)
     print_success "Dependencies installed"
 }
 
@@ -123,10 +137,14 @@ show_usage() {
     echo "  help    - Show this help message"
     echo ""
     echo "Examples:"
-    echo "  $0 unit          # Quick unit test run"
-    echo "  $0 clean && $0 all  # Full clean and test"
+    echo "  $0 unit              # Quick unit test run"
+    echo "  $0 clean && $0 all   # Full clean and test"
     echo ""
-    echo "For more options, see TESTING.md"
+    echo "Note: This script can be run from either:"
+    echo "  - Project root directory"
+    echo "  - Thrive Community ChurchUITests directory"
+    echo ""
+    echo "For more options, see Thrive Community ChurchUITests/TESTING.md"
 }
 
 # Main script logic
@@ -158,10 +176,12 @@ main() {
     esac
 }
 
-# Check if we're in the right directory
+# Check if workspace exists
 if [ ! -d "$WORKSPACE" ]; then
     print_error "Workspace not found: $WORKSPACE"
-    print_info "Make sure you're running this script from the 'Thrive Community ChurchUITests' directory"
+    print_info "Make sure you're running this script from the project root or UI tests directory"
+    print_info "Current script location: $SCRIPT_DIR"
+    print_info "Looking for workspace at: $WORKSPACE"
     exit 1
 fi
 
