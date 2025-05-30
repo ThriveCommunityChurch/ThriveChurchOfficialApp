@@ -1,0 +1,86 @@
+# This workflow will build and test the Thrive Church Official App iOS project for dev branch
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: Swift Dev Build
+
+on:
+  push:
+    branches: [ "dev", "master" ]
+  pull_request:
+    branches: [ "dev", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Cache CocoaPods
+      uses: actions/cache@v3
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+
+    - name: Install CocoaPods dependencies
+      run: |
+        sudo gem install cocoapods
+        pod install
+
+    - name: List available simulators
+      run: xcrun simctl list devices available
+
+    - name: Build project
+      run: |
+        xcodebuild build \
+          -workspace "Thrive Church Official App.xcworkspace" \
+          -scheme "Thrive Church Official App" \
+          -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
+          -configuration Debug \
+          CODE_SIGNING_ALLOWED=NO
+
+    - name: Run unit tests
+      run: |
+        xcodebuild test \
+          -workspace "Thrive Church Official App.xcworkspace" \
+          -scheme "Thrive Church Official App" \
+          -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
+          -only-testing:"Thrive Church Official AppTests" \
+          CODE_SIGNING_ALLOWED=NO
+
+    - name: Run UI tests
+      run: |
+        xcodebuild test \
+          -workspace "Thrive Church Official App.xcworkspace" \
+          -scheme "Thrive Church Official App" \
+          -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
+          -only-testing:"Thrive Church Official AppUITests" \
+          CODE_SIGNING_ALLOWED=NO
+      continue-on-error: true  # UI tests may have known issues as mentioned in the codebase
+
+    - name: Run comprehensive tests on iPad
+      run: |
+        xcodebuild test \
+          -workspace "Thrive Church Official App.xcworkspace" \
+          -scheme "Thrive Church Official App" \
+          -destination 'platform=iOS Simulator,name=iPad Pro (12.9-inch) (6th generation)' \
+          -only-testing:"Thrive Church Official AppTests" \
+          CODE_SIGNING_ALLOWED=NO
+      continue-on-error: true  # Allow iPad tests to fail without breaking the build
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: |
+          *.xcresult
+          DerivedData/Logs/Test/*.xcresult
