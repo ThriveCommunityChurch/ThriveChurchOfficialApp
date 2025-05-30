@@ -26,6 +26,25 @@ jobs:
           # Reinstall with clean state for CI
           pod install --repo-update
 
+      - name: Fix CocoaPods XCFrameworks paths for CI
+        run: |
+          echo "Creating missing xcfilelist files for CI..."
+
+          # Create the Target Support Files directories if they don't exist
+          mkdir -p "Pods/Target Support Files/FirebaseAnalytics"
+          mkdir -p "Pods/Target Support Files/GoogleAppMeasurement"
+
+          # Create empty xcfilelist files to satisfy the build system
+          touch "Pods/Target Support Files/FirebaseAnalytics/FirebaseAnalytics-xcframeworks-input-files.xcfilelist"
+          touch "Pods/Target Support Files/FirebaseAnalytics/FirebaseAnalytics-xcframeworks-output-files.xcfilelist"
+          touch "Pods/Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement-xcframeworks-input-files.xcfilelist"
+          touch "Pods/Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement-xcframeworks-output-files.xcfilelist"
+
+          echo "✅ Created missing xcfilelist files"
+          echo "Verifying files exist:"
+          ls -la "Pods/Target Support Files/FirebaseAnalytics/"
+          ls -la "Pods/Target Support Files/GoogleAppMeasurement/"
+
       - name: Create dummy plist files for CI
         run: |
           echo "Creating minimal dummy plist files for CI..."
