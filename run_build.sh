@@ -53,46 +53,16 @@ if [ ! -d "Pods" ]; then
     pod install
 fi
 
-# CI-specific fixes for Firebase and CocoaPods
+# CI-specific fixes for build consistency
 if [ "$CI" = "true" ]; then
     echo -e "${YELLOW}🔧 Applying CI-specific fixes${NC}"
 
-    # Clean any existing build artifacts
+    # Clean any existing build artifacts for consistent builds
     rm -rf ~/Library/Developer/Xcode/DerivedData
-    rm -rf build/
 
-    # Set environment variables for CI
-    export ENABLE_PREVIEWS=NO
-    export ENABLE_BITCODE=NO
-    export ENABLE_TESTABILITY=YES
-    export SWIFT_COMPILATION_MODE=wholemodule
-    export SWIFT_OPTIMIZATION_LEVEL=-Onone
-    export GCC_OPTIMIZATION_LEVEL=0
-
-    # Fix potential module compilation issues
-    echo -e "${YELLOW}🔧 Cleaning and rebuilding Pods for CI${NC}"
-    pod deintegrate || true
-    pod cache clean --all
-    pod install --repo-update --clean-install
-
-    # Additional Firebase-specific fixes for CI
-    echo -e "${YELLOW}🔧 Applying Firebase CI workarounds${NC}"
-
-    # Fix Firebase Swift compilation issues in CI
-    if [ -d "Pods/FirebaseCoreInternal" ]; then
-        echo "Applying FirebaseCoreInternal CI fixes..."
-        # Create missing directories that CI sometimes doesn't create
-        mkdir -p "Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging"
-        mkdir -p "Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/Utilities"
-    fi
-
-    # Set additional CI-specific build settings
-    export SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS"
-    export SWIFT_SUPPRESS_WARNINGS=YES
-    export GCC_WARN_INHIBIT_ALL_WARNINGS=YES
-
-    # Fix Firebase Swift language feature requirements
-    export OTHER_SWIFT_FLAGS="-enable-experimental-feature AccessLevelOnImport"
+    # Ensure pods are up to date
+    echo -e "${YELLOW}🔧 Updating Pods for CI${NC}"
+    pod install --repo-update
 fi
 
 echo -e "${GREEN}🔨 Building iOS App${NC}"
@@ -121,7 +91,7 @@ if [ "$CI" = "true" ]; then
         GCC_WARN_INHIBIT_ALL_WARNINGS=YES \
         SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
         GCC_TREAT_WARNINGS_AS_ERRORS=NO \
-        OTHER_SWIFT_FLAGS="-D COCOAPODS -enable-experimental-feature AccessLevelOnImport"
+        OTHER_SWIFT_FLAGS="-D COCOAPODS -enable-experimental-feature AccessLevelOnImport -D DISABLE_SWIFTUI_FEATURES"
 else
     echo -e "${GREEN}🔧 Using local development build settings${NC}"
     xcodebuild build \
