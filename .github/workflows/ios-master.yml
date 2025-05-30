@@ -25,8 +25,20 @@ jobs:
           rm -rf Pods Podfile.lock
           # Clear pod cache to avoid corrupted dependencies
           pod cache clean --all
+          # Update CocoaPods repo to get latest pod specs
+          pod repo update
           # Reinstall with clean state for CI
-          pod install --repo-update --verbose
+          pod install --verbose
+
+          # Verify critical pods are installed correctly
+          echo "Verifying GoogleUtilities installation..."
+          if [ -d "Pods/GoogleUtilities" ]; then
+            echo "✅ GoogleUtilities pod found"
+            find Pods/GoogleUtilities -name "*.h" | head -5
+          else
+            echo "❌ GoogleUtilities pod not found"
+            exit 1
+          fi
 
       - name: Fix CocoaPods XCFrameworks paths for CI
         run: |
@@ -68,10 +80,29 @@ jobs:
           export ENABLE_TESTABILITY=YES
           export SWIFT_COMPILATION_MODE=wholemodule
 
-          # Verify GoogleUtilities pod installation
+          # Verify GoogleUtilities pod installation and fix header paths
           if [ -d "Pods/GoogleUtilities" ]; then
             echo "✅ GoogleUtilities pod found"
-            ls -la "Pods/GoogleUtilities/"
+
+            # Check for header files structure
+            echo "Checking GoogleUtilities header structure..."
+            find Pods/GoogleUtilities -name "GULUserDefaults.h" -type f
+
+            # Verify the Public headers directory exists
+            if [ ! -d "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public" ]; then
+              echo "⚠️ Creating missing Public headers directory structure..."
+              mkdir -p "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities"
+
+              # Copy headers to expected location if they exist elsewhere
+              if [ -f "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/GULUserDefaults.h" ]; then
+                cp "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/GULUserDefaults.h" "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities/"
+                echo "✅ Copied GULUserDefaults.h to Public directory"
+              fi
+            fi
+
+            # List final structure
+            echo "Final GoogleUtilities structure:"
+            find Pods/GoogleUtilities -name "*.h" | grep -E "(GULUserDefaults|Public)" | head -10
           else
             echo "❌ GoogleUtilities pod not found"
             exit 1
