@@ -78,8 +78,42 @@ jobs:
         export SRCROOT="$(pwd)"
         echo "SRCROOT set to: $SRCROOT"
 
-        # Use build-for-testing which often handles dependencies better
-        # Try with additional flags to work around compilation issues
+        # Try a simpler build approach first - just build without testing
+        echo "Attempting simple build first..."
+        xcodebuild build \
+          -workspace "Thrive Church Official App.xcworkspace" \
+          -scheme "Thrive Church Official App" \
+          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+          -configuration Debug \
+          CODE_SIGNING_ALLOWED=NO \
+          SRCROOT="$SRCROOT" \
+          SKIP_INSTALL=YES \
+          ONLY_ACTIVE_ARCH=YES \
+          GCC_OPTIMIZATION_LEVEL=0 \
+          SWIFT_OPTIMIZATION_LEVEL=-Onone \
+          DEBUG_INFORMATION_FORMAT=dwarf \
+          ENABLE_TESTABILITY=YES \
+          -quiet || {
+            echo "Simple build failed, trying with detailed output..."
+            xcodebuild build \
+              -workspace "Thrive Church Official App.xcworkspace" \
+              -scheme "Thrive Church Official App" \
+              -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+              -configuration Debug \
+              CODE_SIGNING_ALLOWED=NO \
+              SRCROOT="$SRCROOT" \
+              SKIP_INSTALL=YES \
+              ONLY_ACTIVE_ARCH=YES \
+              GCC_OPTIMIZATION_LEVEL=0 \
+              SWIFT_OPTIMIZATION_LEVEL=-Onone \
+              DEBUG_INFORMATION_FORMAT=dwarf \
+              ENABLE_TESTABILITY=YES
+          }
+
+    - name: Build for testing (if simple build succeeded)
+      run: |
+        export SRCROOT="$(pwd)"
+        echo "Building for testing..."
         xcodebuild build-for-testing \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
