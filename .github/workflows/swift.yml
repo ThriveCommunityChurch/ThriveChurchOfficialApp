@@ -102,8 +102,14 @@ jobs:
         echo "Available simulators:"
         xcrun simctl list devices available | grep iPhone
 
-        # Use iPhone 15 which should be available on latest Xcode
-        SIMULATOR_NAME="iPhone 15"
+        # Try to find iPhone 15 with any available OS version, fallback to iPhone SE
+        SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone 15" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone SE" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
         echo "Using simulator: $SIMULATOR_NAME"
 
         # Try a simpler build approach first - just build without testing
@@ -151,7 +157,14 @@ jobs:
     - name: Build for testing (if simple build succeeded)
       run: |
         export SRCROOT="$(pwd)"
-        SIMULATOR_NAME="iPhone 15"
+        # Use the same simulator selection logic
+        SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone 15" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone SE" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
         echo "Building for testing with simulator: $SIMULATOR_NAME"
         xcodebuild build-for-testing \
           -workspace "Thrive Church Official App.xcworkspace" \
@@ -175,7 +188,14 @@ jobs:
     - name: Run unit tests
       run: |
         export SRCROOT="$(pwd)"
-        SIMULATOR_NAME="iPhone 15"
+        # Use the same simulator selection logic
+        SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone 15" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone SE" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
         echo "Running unit tests on: $SIMULATOR_NAME"
         xcodebuild test-without-building \
           -workspace "Thrive Church Official App.xcworkspace" \
@@ -188,7 +208,14 @@ jobs:
     - name: Run UI tests
       run: |
         export SRCROOT="$(pwd)"
-        SIMULATOR_NAME="iPhone 15"
+        # Use the same simulator selection logic
+        SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone 15" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone SE" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
+        if [ -z "$SIMULATOR_NAME" ]; then
+          SIMULATOR_NAME=$(xcrun simctl list devices available | grep "iPhone" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//')
+        fi
         echo "Running UI tests on: $SIMULATOR_NAME"
         xcodebuild test-without-building \
           -workspace "Thrive Church Official App.xcworkspace" \

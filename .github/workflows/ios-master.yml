@@ -105,6 +105,9 @@ jobs:
 
           device=`xcrun simctl list devices available | grep "iPhone 15" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//'`
           if [ -z "$device" ]; then
+            device=`xcrun simctl list devices available | grep "iPhone SE" | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//'`
+          fi
+          if [ -z "$device" ]; then
             device=`xcrun simctl list devices available | grep iPhone | head -1 | sed 's/^[[:space:]]*//' | sed 's/ ([A-F0-9-]*) .*$//'`
           fi
 
