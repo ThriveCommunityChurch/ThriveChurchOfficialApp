@@ -99,7 +99,13 @@ jobs:
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$device" \
             CODE_SIGNING_ALLOWED=NO \
-            SRCROOT="$SRCROOT"
+            SRCROOT="$SRCROOT" \
+            SKIP_INSTALL=YES \
+            ONLY_ACTIVE_ARCH=YES \
+            GCC_OPTIMIZATION_LEVEL=0 \
+            SWIFT_OPTIMIZATION_LEVEL=-Onone \
+            DEBUG_INFORMATION_FORMAT=dwarf \
+            ENABLE_TESTABILITY=YES
 
       - name: Run Unit Tests
         env:
@@ -170,7 +176,13 @@ jobs:
             -"$filetype_parameter" "$file_to_build" \
             -destination "platform=$platform,name=$ipad_device" \
             CODE_SIGNING_ALLOWED=NO \
-            SRCROOT="$SRCROOT"
+            SRCROOT="$SRCROOT" \
+            SKIP_INSTALL=YES \
+            ONLY_ACTIVE_ARCH=YES \
+            GCC_OPTIMIZATION_LEVEL=0 \
+            SWIFT_OPTIMIZATION_LEVEL=-Onone \
+            DEBUG_INFORMATION_FORMAT=dwarf \
+            ENABLE_TESTABILITY=YES
 
           # Run unit tests on iPad
           xcodebuild test-without-building \

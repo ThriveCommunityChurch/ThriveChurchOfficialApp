@@ -79,6 +79,7 @@ jobs:
         echo "SRCROOT set to: $SRCROOT"
 
         # Use build-for-testing which often handles dependencies better
+        # Try with additional flags to work around compilation issues
         xcodebuild build-for-testing \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
@@ -87,7 +88,11 @@ jobs:
           CODE_SIGNING_ALLOWED=NO \
           SRCROOT="$SRCROOT" \
           SKIP_INSTALL=YES \
-          ONLY_ACTIVE_ARCH=YES
+          ONLY_ACTIVE_ARCH=YES \
+          GCC_OPTIMIZATION_LEVEL=0 \
+          SWIFT_OPTIMIZATION_LEVEL=-Onone \
+          DEBUG_INFORMATION_FORMAT=dwarf \
+          ENABLE_TESTABILITY=YES
 
     - name: Run unit tests
       run: |
