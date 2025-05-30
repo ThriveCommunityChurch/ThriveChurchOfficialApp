@@ -58,25 +58,28 @@ echo "Workspace: ${WORKSPACE}"
 echo "Destination: ${DESTINATION}"
 echo ""
 
-# Create dummy config files if they don't exist
-if [ ! -f "Config.plist" ]; then
-    echo -e "${YELLOW}📝 Creating dummy Config.plist${NC}"
+# Create dummy config files if they don't exist (BEFORE any builds)
+# Only create dummy files in CI environment to avoid overwriting local files
+if [ "$CI" = "true" ]; then
+    echo -e "${YELLOW}📝 Creating dummy Config.plist for CI${NC}"
     cat > Config.plist << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>APIUrl</key>
-    <string>api.example.com</string>
+    <string>httpbin.org</string>
     <key>ESVApiKey</key>
     <string>dummy-esv-key</string>
 </dict>
 </plist>
 EOF
+else
+    echo -e "${GREEN}✅ Using existing Config.plist (local development)${NC}"
 fi
 
-if [ ! -f "GoogleService-Info.plist" ]; then
-    echo -e "${YELLOW}📝 Creating dummy GoogleService-Info.plist${NC}"
+if [ "$CI" = "true" ]; then
+    echo -e "${YELLOW}📝 Creating dummy GoogleService-Info.plist for CI${NC}"
     cat > GoogleService-Info.plist << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -88,9 +91,15 @@ if [ ! -f "GoogleService-Info.plist" ]; then
     <string>dummy-project</string>
     <key>GOOGLE_APP_ID</key>
     <string>1:123456789:ios:dummy</string>
+    <key>API_KEY</key>
+    <string>dummy-api-key</string>
+    <key>GCM_SENDER_ID</key>
+    <string>123456789</string>
 </dict>
 </plist>
 EOF
+else
+    echo -e "${GREEN}✅ Using existing GoogleService-Info.plist (local development)${NC}"
 fi
 
 # Install dependencies if needed
