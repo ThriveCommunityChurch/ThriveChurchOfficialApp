@@ -80,29 +80,42 @@ jobs:
           export ENABLE_TESTABILITY=YES
           export SWIFT_COMPILATION_MODE=wholemodule
 
-          # Verify GoogleUtilities pod installation and fix header paths
+          # Comprehensive GoogleUtilities header structure fix
           if [ -d "Pods/GoogleUtilities" ]; then
             echo "✅ GoogleUtilities pod found"
 
-            # Check for header files structure
-            echo "Checking GoogleUtilities header structure..."
-            find Pods/GoogleUtilities -name "GULUserDefaults.h" -type f
+            echo "Current GoogleUtilities structure:"
+            find Pods/GoogleUtilities -name "*.h" | head -10
 
-            # Verify the Public headers directory exists
-            if [ ! -d "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public" ]; then
-              echo "⚠️ Creating missing Public headers directory structure..."
-              mkdir -p "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities"
+            # Create all missing Public header directories
+            echo "⚠️ Creating complete Public headers directory structure..."
+            mkdir -p "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities"
+            mkdir -p "Pods/GoogleUtilities/GoogleUtilities/Reachability/Public/GoogleUtilities"
+            mkdir -p "Pods/GoogleUtilities/GoogleUtilities/MethodSwizzler/Public/GoogleUtilities"
+            mkdir -p "Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities"
+            mkdir -p "Pods/GoogleUtilities/third_party/IsAppEncrypted/Public"
 
-              # Copy headers to expected location if they exist elsewhere
-              if [ -f "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/GULUserDefaults.h" ]; then
-                cp "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/GULUserDefaults.h" "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities/"
-                echo "✅ Copied GULUserDefaults.h to Public directory"
-              fi
-            fi
+            # Copy all headers to their expected Public locations
+            echo "Copying headers to Public directories..."
 
-            # List final structure
-            echo "Final GoogleUtilities structure:"
-            find Pods/GoogleUtilities -name "*.h" | grep -E "(GULUserDefaults|Public)" | head -10
+            # UserDefaults headers
+            find Pods/GoogleUtilities -name "GUL*UserDefaults*.h" -exec cp {} "Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities/" \;
+
+            # Reachability headers
+            find Pods/GoogleUtilities -name "GUL*Reachability*.h" -exec cp {} "Pods/GoogleUtilities/GoogleUtilities/Reachability/Public/GoogleUtilities/" \;
+
+            # MethodSwizzler headers
+            find Pods/GoogleUtilities -name "GUL*Swizzler*.h" -exec cp {} "Pods/GoogleUtilities/GoogleUtilities/MethodSwizzler/Public/GoogleUtilities/" \;
+
+            # AppDelegate headers
+            find Pods/GoogleUtilities -name "GUL*Delegate*.h" -exec cp {} "Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/" \;
+
+            # IsAppEncrypted headers
+            find Pods/GoogleUtilities -name "IsAppEncrypted.h" -exec cp {} "Pods/GoogleUtilities/third_party/IsAppEncrypted/Public/" \;
+
+            echo "✅ Fixed GoogleUtilities header structure for CI"
+            echo "Final Public headers:"
+            find Pods/GoogleUtilities -path "*/Public/*" -name "*.h" | head -15
           else
             echo "❌ GoogleUtilities pod not found"
             exit 1
