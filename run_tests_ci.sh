@@ -117,7 +117,8 @@ if [ "$CI" = "true" ]; then
     pod install --repo-update
 fi
 
-echo -e "${GREEN}🧪 Running Unit Tests${NC}"
+# CRITICAL TESTS (Must pass - will fail CI)
+echo -e "${GREEN}🧪 Running Critical Tests (Unit Tests)${NC}"
 xcodebuild test \
     -workspace "$WORKSPACE" \
     -scheme "$SCHEME" \
@@ -127,9 +128,10 @@ xcodebuild test \
     CODE_SIGNING_ALLOWED='NO' \
     ENABLE_TESTABILITY=YES
 
-UNIT_TEST_RESULT=$?
+CRITICAL_TEST_RESULT=$?
 
-echo -e "${GREEN}🖥️ Running UI Tests${NC}"
+# INFORMATIONAL TESTS (Warnings only - won't fail CI)
+echo -e "${YELLOW}🖥️ Running Informational Tests (UI Tests)${NC}"
 xcodebuild test \
     -workspace "$WORKSPACE" \
     -scheme "$SCHEME" \
@@ -139,23 +141,47 @@ xcodebuild test \
     CODE_SIGNING_ALLOWED='NO' \
     ENABLE_TESTABILITY=YES
 
-UI_TEST_RESULT=$?
+INFORMATIONAL_TEST_RESULT=$?
 
 # Report results
 echo ""
 echo "========================================="
-if [ $UNIT_TEST_RESULT -eq 0 ]; then
-    echo -e "${GREEN}✅ Unit Tests: PASSED${NC}"
-else
-    echo -e "${RED}❌ Unit Tests: FAILED${NC}"
-fi
-
-if [ $UI_TEST_RESULT -eq 0 ]; then
-    echo -e "${GREEN}✅ UI Tests: PASSED${NC}"
-else
-    echo -e "${YELLOW}⚠️ UI Tests: FAILED (continuing)${NC}"
-fi
+echo -e "${YELLOW}📊 TEST RESULTS SUMMARY${NC}"
 echo "========================================="
 
-# Exit with unit test result (UI tests are allowed to fail)
-exit $UNIT_TEST_RESULT
+# Critical Tests (affect CI outcome)
+if [ $CRITICAL_TEST_RESULT -eq 0 ]; then
+    echo -e "${GREEN}✅ CRITICAL Tests (Unit): PASSED${NC}"
+else
+    echo -e "${RED}❌ CRITICAL Tests (Unit): FAILED${NC}"
+fi
+
+# Informational Tests (warnings only)
+if [ $INFORMATIONAL_TEST_RESULT -eq 0 ]; then
+    echo -e "${GREEN}✅ INFORMATIONAL Tests (UI): PASSED${NC}"
+else
+    echo -e "${YELLOW}⚠️ INFORMATIONAL Tests (UI): FAILED (warning only)${NC}"
+fi
+
+echo "========================================="
+
+# Exit logic: Only CRITICAL tests can fail CI
+echo ""
+if [ $CRITICAL_TEST_RESULT -eq 0 ]; then
+    if [ "$CI" = "true" ]; then
+        echo -e "${GREEN}✅ CI Build: SUCCESS${NC}"
+        echo -e "${YELLOW}ℹ️  Note: UI test failures are informational only${NC}"
+    else
+        echo -e "${GREEN}✅ Local Build: SUCCESS${NC}"
+    fi
+    exit 0
+else
+    if [ "$CI" = "true" ]; then
+        echo -e "${RED}❌ CI Build: FAILED (critical tests failed)${NC}"
+        echo -e "${YELLOW}ℹ️  UI test results are informational only${NC}"
+    else
+        echo -e "${RED}❌ Local Build: FAILED (critical tests failed)${NC}"
+        echo -e "${YELLOW}ℹ️  Fix critical tests before pushing${NC}"
+    fi
+    exit $CRITICAL_TEST_RESULT
+fi
