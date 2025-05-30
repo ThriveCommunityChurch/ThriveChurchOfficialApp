@@ -66,8 +66,10 @@ if [ ! -f "Config.plist" ]; then
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>API_URL</key>
-    <string>https://api.example.com</string>
+    <key>APIUrl</key>
+    <string>api.example.com</string>
+    <key>ESVApiKey</key>
+    <string>dummy-esv-key</string>
 </dict>
 </plist>
 EOF
