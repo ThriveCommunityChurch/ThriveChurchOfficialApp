@@ -16,9 +16,10 @@ echo -e "${YELLOW}🔍 Finding best iPhone simulator...${NC}"
 # CI-specific simulator detection
 if [ "$CI" = "true" ]; then
     echo -e "${YELLOW}🔧 CI environment - using simple simulator detection${NC}"
-    # In CI, use a simple approach that works reliably
-    DESTINATION="platform=iOS Simulator,name=iPhone 15,OS=latest"
-    echo -e "${GREEN}✅ Using: iPhone 15 (CI default)${NC}"
+    # In CI, use a specific OS version that's available
+    # From the CI logs, iPhone 15 is available with OS:17.5
+    DESTINATION="platform=iOS Simulator,name=iPhone 15,OS=17.5"
+    echo -e "${GREEN}✅ Using: iPhone 15 iOS 17.5 (CI default)${NC}"
 else
     # Local development - use smart detection
     # Get the first available iPhone simulator (preferring newer models)
@@ -47,8 +48,8 @@ else
         echo -e "${GREEN}✅ Using: $SIMULATOR_NAME (ID: $SIMULATOR_ID)${NC}"
     else
         echo -e "${RED}❌ No iPhone simulators found! Falling back to default${NC}"
-        DESTINATION="platform=iOS Simulator,name=iPhone 15,OS=latest"
-        echo -e "${YELLOW}⚠️ Using fallback: iPhone 15${NC}"
+        DESTINATION="platform=iOS Simulator,name=iPhone 15,OS=17.5"
+        echo -e "${YELLOW}⚠️ Using fallback: iPhone 15 iOS 17.5${NC}"
     fi
 fi
 
