@@ -43,7 +43,7 @@ jobs:
         xcodebuild build \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
+          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -configuration Debug \
           CODE_SIGNING_ALLOWED=NO
 
@@ -52,7 +52,7 @@ jobs:
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
+          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -only-testing:"Thrive Church Official AppTests" \
           CODE_SIGNING_ALLOWED=NO
 
@@ -61,7 +61,7 @@ jobs:
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
+          -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
           -only-testing:"Thrive Church Official AppUITests" \
           CODE_SIGNING_ALLOWED=NO
       continue-on-error: true  # UI tests may have known issues as mentioned in the codebase
@@ -71,7 +71,7 @@ jobs:
         xcodebuild test \
           -workspace "Thrive Church Official App.xcworkspace" \
           -scheme "Thrive Church Official App" \
-          -destination 'platform=iOS Simulator,name=iPad Pro (12.9-inch) (6th generation)' \
+          -destination 'platform=iOS Simulator,name=iPad (10th generation)' \
           -only-testing:"Thrive Church Official AppTests" \
           CODE_SIGNING_ALLOWED=NO
       continue-on-error: true  # Allow iPad tests to fail without breaking the build
