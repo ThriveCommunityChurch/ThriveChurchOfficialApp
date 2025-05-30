@@ -90,6 +90,9 @@ if [ "$CI" = "true" ]; then
     export SWIFT_ACTIVE_COMPILATION_CONDITIONS="COCOAPODS"
     export SWIFT_SUPPRESS_WARNINGS=YES
     export GCC_WARN_INHIBIT_ALL_WARNINGS=YES
+
+    # Fix Firebase Swift language feature requirements
+    export OTHER_SWIFT_FLAGS="-enable-experimental-feature AccessLevelOnImport"
 fi
 
 echo -e "${GREEN}🔨 Building iOS App${NC}"
@@ -117,7 +120,8 @@ if [ "$CI" = "true" ]; then
         SWIFT_SUPPRESS_WARNINGS=YES \
         GCC_WARN_INHIBIT_ALL_WARNINGS=YES \
         SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-        GCC_TREAT_WARNINGS_AS_ERRORS=NO
+        GCC_TREAT_WARNINGS_AS_ERRORS=NO \
+        OTHER_SWIFT_FLAGS="-D COCOAPODS -enable-experimental-feature AccessLevelOnImport"
 else
     echo -e "${GREEN}🔧 Using local development build settings${NC}"
     xcodebuild build \
