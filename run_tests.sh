@@ -13,33 +13,43 @@ WORKSPACE='Thrive Church Official App.xcworkspace'
 # Auto-detect best available iPhone simulator
 echo -e "${YELLOW}🔍 Finding best iPhone simulator...${NC}"
 
-# Get the first available iPhone simulator (preferring newer models)
-SIMULATOR_ID=$(xcodebuild -showdestinations -scheme "$SCHEME" -workspace "$WORKSPACE" 2>/dev/null | \
-    grep "platform:iOS Simulator" | \
-    grep "iPhone" | \
-    grep -E "(iPhone 16|iPhone 15|iPhone 14|iPhone 13)" | \
-    head -1 | \
-    sed -n 's/.*id:\([^,]*\).*/\1/p')
-
-if [ -z "$SIMULATOR_ID" ]; then
-    # Fallback to any iPhone simulator
+# CI-specific simulator detection
+if [ "$CI" = "true" ]; then
+    echo -e "${YELLOW}🔧 CI environment - using simple simulator detection${NC}"
+    # In CI, use a simple approach that works reliably
+    DESTINATION="platform=iOS Simulator,name=iPhone 15,OS=latest"
+    echo -e "${GREEN}✅ Using: iPhone 15 (CI default)${NC}"
+else
+    # Local development - use smart detection
+    # Get the first available iPhone simulator (preferring newer models)
     SIMULATOR_ID=$(xcodebuild -showdestinations -scheme "$SCHEME" -workspace "$WORKSPACE" 2>/dev/null | \
         grep "platform:iOS Simulator" | \
         grep "iPhone" | \
+        grep -E "(iPhone 16|iPhone 15|iPhone 14|iPhone 13)" | \
         head -1 | \
         sed -n 's/.*id:\([^,]*\).*/\1/p')
-fi
 
-if [ -n "$SIMULATOR_ID" ]; then
-    DESTINATION="platform=iOS Simulator,id=$SIMULATOR_ID"
-    SIMULATOR_NAME=$(xcodebuild -showdestinations -scheme "$SCHEME" -workspace "$WORKSPACE" 2>/dev/null | \
-        grep "$SIMULATOR_ID" | \
-        head -1 | \
-        sed -n 's/.*name:\([^,}]*\).*/\1/p')
-    echo -e "${GREEN}✅ Using: $SIMULATOR_NAME (ID: $SIMULATOR_ID)${NC}"
-else
-    echo -e "${RED}❌ No iPhone simulators found!${NC}"
-    exit 1
+    if [ -z "$SIMULATOR_ID" ]; then
+        # Fallback to any iPhone simulator
+        SIMULATOR_ID=$(xcodebuild -showdestinations -scheme "$SCHEME" -workspace "$WORKSPACE" 2>/dev/null | \
+            grep "platform:iOS Simulator" | \
+            grep "iPhone" | \
+            head -1 | \
+            sed -n 's/.*id:\([^,]*\).*/\1/p')
+    fi
+
+    if [ -n "$SIMULATOR_ID" ]; then
+        DESTINATION="platform=iOS Simulator,id=$SIMULATOR_ID"
+        SIMULATOR_NAME=$(xcodebuild -showdestinations -scheme "$SCHEME" -workspace "$WORKSPACE" 2>/dev/null | \
+            grep "$SIMULATOR_ID" | \
+            head -1 | \
+            sed -n 's/.*name:\([^,}]*\).*/\1/p')
+        echo -e "${GREEN}✅ Using: $SIMULATOR_NAME (ID: $SIMULATOR_ID)${NC}"
+    else
+        echo -e "${RED}❌ No iPhone simulators found! Falling back to default${NC}"
+        DESTINATION="platform=iOS Simulator,name=iPhone 15,OS=latest"
+        echo -e "${YELLOW}⚠️ Using fallback: iPhone 15${NC}"
+    fi
 fi
 
 echo -e "${YELLOW}🚀 Starting iOS Tests for ${SCHEME}${NC}"
