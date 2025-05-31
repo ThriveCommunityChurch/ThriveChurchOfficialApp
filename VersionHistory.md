@@ -1,5 +1,21 @@
 # 1.7 
 
+### Rev. 9 (current)
+<details>
+    <summary>June 2025</summary>
+    <ul>
+        <li>Complete redesign with modern card-based layouts and improved visual experience</li>
+        <li>Full iPad support with adaptive layouts for all screen sizes</li>
+        <li>Enhanced audio playback that works better with other apps</li>
+        <li>Redesigned Now Playing view with improved controls</li>
+        <li>Better Notes experience with bug fixes and improved archiving</li>
+        <li>Faster loading times and improved performance throughout the app</li>
+        <li>Fixed issues with audio playback and media controls</li>
+        <li>Support for latest iOS features and devices</li>
+        <li>Various bug fixes and stability improvements</li>
+    </ul>
+</details>
+
 ### Rev. 7 (current)
 <details>
     <summary>Dec 27, 2020</summary>
