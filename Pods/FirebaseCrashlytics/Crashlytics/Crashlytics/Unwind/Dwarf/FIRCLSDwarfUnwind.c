@@ -178,7 +178,7 @@ bool FIRCLSDwarfParseFDERecord(DWARFFDERecord* fdeRecord,
   if (parseCIE) {
     // The CIE offset is really weird. It appears to be an offset from the
     // beginning of its field. This isn't what the documentation says, but it is
-    // a little ambigious. This is what DwarfParser.hpp does.
+    // a little ambiguous. This is what DwarfParser.hpp does.
     // Note that we have to back up one sizeof(uint32_t), because we've advanced
     // by parsing the offset
     const void* ciePointer = ptr - fdeRecord->cieOffset - sizeof(uint32_t);
@@ -915,7 +915,7 @@ void FIRCLSDwarfPointerEncodingShow(const char* leadString, uint8_t encoding) {
   if (encoding == DW_EH_PE_omit) {
     FIRCLSSDKLog("%s: 0x%02x (omit)\n", leadString, encoding);
   } else {
-    const char* peValue = "";
+    const char* peValue = "unknown";
     const char* peOffset = "";
 
     switch (encoding & DW_EH_PE_VALUE_MASK) {
@@ -950,7 +950,6 @@ void FIRCLSDwarfPointerEncodingShow(const char* leadString, uint8_t encoding) {
         peValue = "DW_EH_PE_sdata8";
         break;
       default:
-        peValue = "unknown";
         break;
     }
 

@@ -56,7 +56,7 @@
 - (FIRMessagingPersistentSyncMessage *)querySyncMessageWithRmqID:(NSString *)rmqID;
 
 /**
- *  Delete the expired sync messages from persisten store. Also deletes messages that have been
+ *  Delete the expired sync messages from persistent store. Also deletes messages that have been
  *  delivered both via APNS and MCS.
  */
 - (void)deleteExpiredOrFinishedSyncMessages;
@@ -81,7 +81,7 @@
 /**
  * Returns path for database with specified name.
  * @param databaseName The database name without extension: "<databaseName>.sqlite".
- * @returns Path to the database with the specified name.
+ * @return Path to the database with the specified name.
  */
 + (NSString *)pathForDatabaseWithName:(NSString *)databaseName;
 
