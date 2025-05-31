@@ -16,7 +16,7 @@
     </ul>
 </details>
 
-### Rev. 7 (current)
+### Rev. 7
 <details>
     <summary>Dec 27, 2020</summary>
     <ul>
