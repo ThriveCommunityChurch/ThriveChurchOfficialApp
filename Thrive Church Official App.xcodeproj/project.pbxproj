@@ -43,6 +43,16 @@
 		DC3CAD3221E2497A00C17EAF /* DownloadedMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */; };
 		DC3CAD3C21E2B94400C17EAF /* ListenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */; };
 		DC3CAD3E21E2BDAC00C17EAF /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */; };
+		DC4AC1252DEA8C9A00A65183 /* ComprehensiveUITestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC11C2DEA8C9A00A65183 /* ComprehensiveUITestSuite.swift */; };
+		DC4AC1262DEA8C9A00A65183 /* TestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC1232DEA8C9A00A65183 /* TestConfiguration.swift */; };
+		DC4AC1272DEA8C9A00A65183 /* LayoutValidationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC11F2DEA8C9A00A65183 /* LayoutValidationUITests.swift */; };
+		DC4AC1282DEA8C9A00A65183 /* NotesTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC1222DEA8C9A00A65183 /* NotesTabUITests.swift */; };
+		DC4AC1292DEA8C9A00A65183 /* ListenTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC1202DEA8C9A00A65183 /* ListenTabUITests.swift */; };
+		DC4AC12A2DEA8C9A00A65183 /* MoreTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC1212DEA8C9A00A65183 /* MoreTabUITests.swift */; };
+		DC4AC12B2DEA8C9A00A65183 /* ConnectTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC11D2DEA8C9A00A65183 /* ConnectTabUITests.swift */; };
+		DC4AC12C2DEA8C9A00A65183 /* DeviceSpecificUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC11E2DEA8C9A00A65183 /* DeviceSpecificUITests.swift */; };
+		DC4AC12D2DEA8C9A00A65183 /* TestValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC1242DEA8C9A00A65183 /* TestValidation.swift */; };
+		DC4AC12F2DEA8DBC00A65183 /* ThriveUITestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC12E2DEA8DBC00A65183 /* ThriveUITestBase.swift */; };
 		DC64031F205783DE00176BFB /* TimestampExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64031E205783DE00176BFB /* TimestampExtension.swift */; };
 		DC7348B721D539FB0057227D /* SermonSeriesSummaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */; };
 		DC7348B921D5D2500057227D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7348B821D5D2500057227D /* UIImageViewExtension.swift */; };
@@ -191,6 +201,16 @@
 		DC3CAD3121E2497A00C17EAF /* DownloadedMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedMessageTableViewCell.swift; sourceTree = "<group>"; };
 		DC3CAD3B21E2B94400C17EAF /* ListenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenCollectionViewController.swift; sourceTree = "<group>"; };
 		DC3CAD3D21E2BDAC00C17EAF /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		DC4AC11C2DEA8C9A00A65183 /* ComprehensiveUITestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprehensiveUITestSuite.swift; sourceTree = "<group>"; };
+		DC4AC11D2DEA8C9A00A65183 /* ConnectTabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectTabUITests.swift; sourceTree = "<group>"; };
+		DC4AC11E2DEA8C9A00A65183 /* DeviceSpecificUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSpecificUITests.swift; sourceTree = "<group>"; };
+		DC4AC11F2DEA8C9A00A65183 /* LayoutValidationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutValidationUITests.swift; sourceTree = "<group>"; };
+		DC4AC1202DEA8C9A00A65183 /* ListenTabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenTabUITests.swift; sourceTree = "<group>"; };
+		DC4AC1212DEA8C9A00A65183 /* MoreTabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTabUITests.swift; sourceTree = "<group>"; };
+		DC4AC1222DEA8C9A00A65183 /* NotesTabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTabUITests.swift; sourceTree = "<group>"; };
+		DC4AC1232DEA8C9A00A65183 /* TestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfiguration.swift; sourceTree = "<group>"; };
+		DC4AC1242DEA8C9A00A65183 /* TestValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValidation.swift; sourceTree = "<group>"; };
+		DC4AC12E2DEA8DBC00A65183 /* ThriveUITestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThriveUITestBase.swift; sourceTree = "<group>"; };
 		DC5325061D3AA70D00BDB2B6 /* Thrive Community Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Thrive Community Church.entitlements"; sourceTree = "<group>"; };
 		DC64031E205783DE00176BFB /* TimestampExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampExtension.swift; sourceTree = "<group>"; };
 		DC7348B621D539FB0057227D /* SermonSeriesSummaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonSeriesSummaryResponse.swift; sourceTree = "<group>"; };
@@ -335,8 +355,18 @@
 		41FCF8111CF21719006C366E /* Thrive Community ChurchUITests */ = {
 			isa = PBXGroup;
 			children = (
-				41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */,
 				41FCF8141CF21719006C366E /* Info.plist */,
+				41FCF8121CF21719006C366E /* Thrive_Community_ChurchUITests.swift */,
+				DC4AC11C2DEA8C9A00A65183 /* ComprehensiveUITestSuite.swift */,
+				DC4AC12E2DEA8DBC00A65183 /* ThriveUITestBase.swift */,
+				DC4AC11D2DEA8C9A00A65183 /* ConnectTabUITests.swift */,
+				DC4AC11E2DEA8C9A00A65183 /* DeviceSpecificUITests.swift */,
+				DC4AC11F2DEA8C9A00A65183 /* LayoutValidationUITests.swift */,
+				DC4AC1202DEA8C9A00A65183 /* ListenTabUITests.swift */,
+				DC4AC1212DEA8C9A00A65183 /* MoreTabUITests.swift */,
+				DC4AC1222DEA8C9A00A65183 /* NotesTabUITests.swift */,
+				DC4AC1232DEA8C9A00A65183 /* TestConfiguration.swift */,
+				DC4AC1242DEA8C9A00A65183 /* TestValidation.swift */,
 			);
 			path = "Thrive Community ChurchUITests";
 			sourceTree = "<group>";
@@ -951,6 +981,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC98E1CD1D354F5500C9395B /* Thrive_Community_ChurchUITests.swift in Sources */,
+				DC4AC1252DEA8C9A00A65183 /* ComprehensiveUITestSuite.swift in Sources */,
+				DC4AC1262DEA8C9A00A65183 /* TestConfiguration.swift in Sources */,
+				DC4AC12F2DEA8DBC00A65183 /* ThriveUITestBase.swift in Sources */,
+				DC4AC1272DEA8C9A00A65183 /* LayoutValidationUITests.swift in Sources */,
+				DC4AC1282DEA8C9A00A65183 /* NotesTabUITests.swift in Sources */,
+				DC4AC1292DEA8C9A00A65183 /* ListenTabUITests.swift in Sources */,
+				DC4AC12A2DEA8C9A00A65183 /* MoreTabUITests.swift in Sources */,
+				DC4AC12B2DEA8C9A00A65183 /* ConnectTabUITests.swift in Sources */,
+				DC4AC12C2DEA8C9A00A65183 /* DeviceSpecificUITests.swift in Sources */,
+				DC4AC12D2DEA8C9A00A65183 /* TestValidation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
