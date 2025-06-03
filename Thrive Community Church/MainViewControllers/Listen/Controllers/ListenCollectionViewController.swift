@@ -552,10 +552,6 @@ MFMailComposeViewControllerDelegate {
 		// Ensure collection view extends to bottom edge without white bar (iOS 15+ minimum deployment target)
 		collectionView.contentInsetAdjustmentBehavior = .automatic
 
-		// Ensure collection view fills entire view
-		extendedLayoutIncludesOpaqueBars = true
-		edgesForExtendedLayout = .all
-
 		// Configure flow layout for multi-column support
 		if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
 			flowLayout.scrollDirection = .vertical

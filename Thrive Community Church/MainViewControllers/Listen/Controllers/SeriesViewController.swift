@@ -157,10 +157,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 		// Ensure table view extends to bottom edge without white bar (iOS 15+ minimum deployment target)
 		seriesTable.contentInsetAdjustmentBehavior = .automatic
-
-		// Ensure view fills entire screen
-		extendedLayoutIncludesOpaqueBars = true
-		edgesForExtendedLayout = .all
 	}
 
 	override func viewDidLayoutSubviews() {
