@@ -57,6 +57,9 @@ class SermonAVPlayer: NSObject {
 		DispatchQueue.main.async {
 			selectedMessage.registerDataForRecentlyPlayed(seriesImage: seriesImage)
 
+			// Mark message as played via API
+			MessagePlayedService.shared.markMessageAsPlayed(messageId: selectedMessage.MessageId)
+
 			// Post notification that audio playback has started
 			NotificationCenter.default.post(name: NSNotification.Name("AudioPlaybackStarted"), object: nil)
 		}
@@ -108,6 +111,9 @@ class SermonAVPlayer: NSObject {
 
 		DispatchQueue.main.async {
 			selectedMessage.registerDataForRecentlyPlayed()
+
+			// Mark message as played via API
+			MessagePlayedService.shared.markMessageAsPlayed(messageId: selectedMessage.MessageId)
 
 			// Post notification that audio playback has started
 			NotificationCenter.default.post(name: NSNotification.Name("AudioPlaybackStarted"), object: nil)

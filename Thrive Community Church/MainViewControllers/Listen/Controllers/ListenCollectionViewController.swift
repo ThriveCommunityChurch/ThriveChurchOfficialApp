@@ -273,6 +273,10 @@ MFMailComposeViewControllerDelegate {
 		// iPad: Adaptive based on orientation and screen size
 		if UIDevice.current.userInterfaceIdiom == .pad {
 			let screenWidth = view.frame.width
+            
+            // Ensure collection view fills entire view
+            extendedLayoutIncludesOpaqueBars = true
+            edgesForExtendedLayout = .all
 
 			// Portrait: Always 2 columns for all iPad models
 			if view.frame.height > view.frame.width {

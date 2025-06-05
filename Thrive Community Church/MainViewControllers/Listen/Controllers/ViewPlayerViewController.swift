@@ -252,9 +252,22 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 	// MARK: - Lifecycle
 	override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+
+            // Ensure collection view fills entire view
+            extendedLayoutIncludesOpaqueBars = true
+            edgesForExtendedLayout = .all
+        }
+        
 		setupViews()
 		setupActions()
 		loadSermonData()
+
+		// Mark message as played when video player loads
+		if let message = message {
+			MessagePlayedService.shared.markMessageAsPlayed(messageId: message.MessageId)
+		}
     }
 
 	override public func didReceiveMemoryWarning() {
@@ -360,7 +373,7 @@ public class ViewPlayerViewController: UIViewController, WKNavigationDelegate {
 
 	private func setupConstraints() {
 		let margins = contentView.layoutMarginsGuide
-
+        
 		NSLayoutConstraint.activate([
 			// Video Player Container - 16:9 aspect ratio
 			videoPlayerContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),

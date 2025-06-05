@@ -74,6 +74,7 @@
 		DCACA58E24FAF296004871D6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */; };
 		DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAPPCOORD1234567890123456 /* AppCoordinator.swift */; };
 		DCB15BEE252E319F002D28D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */; };
+		DCB44EF92DEE9A7900960EA0 /* MessagePlayedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB44EF82DEE9A7900960EA0 /* MessagePlayedService.swift */; };
 		DCB61AFA21CB009B0049FCA2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB61AF921CB009B0049FCA2 /* Config.plist */; };
 		DCB61AFE21CB07B60049FCA2 /* ApplicationVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */; };
 		DCBA77AF20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */; };
@@ -233,6 +234,7 @@
 		DCACA58D24FAF296004871D6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		DCAPPCOORD1234567890123456 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DCB15BED252E319F002D28D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DCB44EF82DEE9A7900960EA0 /* MessagePlayedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePlayedService.swift; sourceTree = "<group>"; };
 		DCB61AF921CB009B0049FCA2 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DCB61AFD21CB07B60049FCA2 /* ApplicationVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationVariables.swift; sourceTree = "<group>"; };
 		DCBA77AE20E1F49D002F6C17 /* AlphabeticalSortBibleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalSortBibleTableViewController.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				DC0DE7FC21F01A1400820CE2 /* DataExtension.swift */,
 				DCFFCFDE2454087B007915E6 /* SermonMessageExtensions.swift */,
 				DCUNARCHIVEREXT123456789 /* NSKeyedUnarchiverExtension.swift */,
+				DCB44EF82DEE9A7900960EA0 /* MessagePlayedService.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				DCACA58A24F30DFC004871D6 /* DynamicConfigResponse.swift in Sources */,
 				DCFFCFDF2454087B007915E6 /* SermonMessageExtensions.swift in Sources */,
 				DCE3631B1F05610600725F11 /* DetailViewController.swift in Sources */,
+				DCB44EF92DEE9A7900960EA0 /* MessagePlayedService.swift in Sources */,
 				DCE3631C1F05610600725F11 /* MasterViewController.swift in Sources */,
 				41FCF7F11CF21719006C366E /* AppDelegate.swift in Sources */,
 				DCAPPCOORD1234567890123457 /* AppCoordinator.swift in Sources */,
@@ -1137,6 +1141,7 @@
 				CURRENT_PROJECT_VERSION = 1.7.9.313;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1168,6 +1173,7 @@
 				CURRENT_PROJECT_VERSION = 1.7.9.313;
 				DEVELOPMENT_TEAM = 87ME42WJYA;
 				INFOPLIST_FILE = "$(SRCROOT)/Thrive Community Church/Properties/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

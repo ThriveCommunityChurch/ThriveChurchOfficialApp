@@ -135,6 +135,13 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+
+            // Ensure collection view fills entire view
+            extendedLayoutIncludesOpaqueBars = true
+            edgesForExtendedLayout = .all
+        }
 
 		seriesTable.delegate = self
 		seriesTable.dataSource = self
@@ -165,6 +172,11 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		// Ensure the blur effect view maintains proper bounds
 		// This helps with any layout issues during rotation or initial load
 		if UIDevice.current.userInterfaceIdiom == .pad {
+
+            // Ensure collection view fills entire view
+            extendedLayoutIncludesOpaqueBars = true
+            edgesForExtendedLayout = .all
+
 			if let blurView = backgroundImageView.subviews.first(where: { $0 is UIVisualEffectView }) {
 				blurView.frame = backgroundImageView.bounds
 			}
@@ -374,7 +386,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			// Play from downloaded file
 			print("Playing downloaded sermon: \(downloadedMessage.Title)")
 			DispatchQueue.main.async {
-				self.markMessagePlayed(messageId: message.MessageId)
 				SermonAVPlayer.sharedInstance.initLocally(selectedMessage: downloadedMessage)
 			}
 		} else {
@@ -386,8 +397,6 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 // we created a globally shared instance of this variable, so that if we
                 // close this VC it should keep playing
                 DispatchQueue.main.async {
-
-                self.markMessagePlayed(messageId: message.MessageId)
 
                 // fire and forget this
                 SermonAVPlayer.sharedInstance.initUsingRssString(rssUrl: rssUrl,
@@ -423,29 +432,7 @@ class SeriesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func markMessagePlayed(messageId: String) {
-
-        // contact the API on the address we have cached
-        if let loadedData = UserDefaults.standard.string(forKey: ApplicationVariables.ApiCacheKey) {
-
-            apiDomain = loadedData
-            apiUrl = "http://\(apiDomain)/"
-        }
-
-        // Note to self: This is being cached and updates to this will require an
-        // app restart in order to view changes on a series that is NOT the current one
-
-        let thing = "\(apiUrl)api/sermons/series/message\(messageId)/played"
-        let url = NSURL(string: thing)
-        URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
-
-            // something went wrong here
-            if error != nil {
-
-                // in this case we don't need to tell the user that this reuquest failed
-
-                return
-            }
-        }.resume()
+        MessagePlayedService.shared.markMessageAsPlayed(messageId: messageId)
     }
 
 	// MARK: - Table View

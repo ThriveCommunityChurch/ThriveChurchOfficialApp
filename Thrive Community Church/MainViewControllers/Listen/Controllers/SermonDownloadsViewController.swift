@@ -49,6 +49,10 @@ class SermonDownloadsViewController: UIViewController, UITableViewDelegate, UITa
 		sortingbutton?.tintColor = UIColor.white
 
 		self.navigationItem.rightBarButtonItem = sortingbutton
+        
+        // Ensure collection view fills entire view
+        extendedLayoutIncludesOpaqueBars = true
+        edgesForExtendedLayout = .all
 
        	setupViews()
 		retrieveDownloadsFromStorage()
