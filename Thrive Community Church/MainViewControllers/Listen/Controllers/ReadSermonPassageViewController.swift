@@ -107,6 +107,13 @@ class ReadSermonPassageViewController: UIViewController {
 			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		])
+
+		if UIDevice.current.userInterfaceIdiom == .pad {
+
+            // Ensure collection view fills entire view
+            extendedLayoutIncludesOpaqueBars = true
+            edgesForExtendedLayout = .all
+        }
 		
 		self.spinner.startAnimating()
 	}
