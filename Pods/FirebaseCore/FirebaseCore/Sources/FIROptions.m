@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#import "FirebaseCore/Extension/FIRAppInternal.h"
+#import "FirebaseCore/Extension/FIRLogger.h"
 #import "FirebaseCore/Sources/FIRBundleUtil.h"
-#import "FirebaseCore/Sources/Private/FIRAppInternal.h"
-#import "FirebaseCore/Sources/Private/FIRLogger.h"
-#import "FirebaseCore/Sources/Private/FIROptionsInternal.h"
+#import "FirebaseCore/Sources/FIROptionsInternal.h"
 #import "FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h"
 
 // Keys for the strings in the plist file.
@@ -35,9 +35,6 @@ NSString *const kFIRProjectID = @"PROJECT_ID";
 NSString *const kFIRIsMeasurementEnabled = @"IS_MEASUREMENT_ENABLED";
 NSString *const kFIRIsAnalyticsCollectionEnabled = @"FIREBASE_ANALYTICS_COLLECTION_ENABLED";
 NSString *const kFIRIsAnalyticsCollectionDeactivated = @"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED";
-
-NSString *const kFIRIsAnalyticsEnabled = @"IS_ANALYTICS_ENABLED";
-NSString *const kFIRIsSignInEnabled = @"IS_SIGNIN_ENABLED";
 
 // Library version ID formatted like:
 // @"5"     // Major version (one or more digits)
@@ -287,7 +284,7 @@ static dispatch_once_t sDefaultOptionsDictionaryOnceToken;
     // The unit tests are set up to catch anything that does not properly convert.
     NSString *version = FIRFirebaseVersion();
     NSArray *components = [version componentsSeparatedByString:@"."];
-    NSString *major = [components objectAtIndex:0];
+    NSString *major = [NSString stringWithFormat:@"%02d", [[components objectAtIndex:0] intValue]];
     NSString *minor = [NSString stringWithFormat:@"%02d", [[components objectAtIndex:1] intValue]];
     NSString *patch = [NSString stringWithFormat:@"%02d", [[components objectAtIndex:2] intValue]];
     kFIRLibraryVersionID = [NSString stringWithFormat:@"%@%@%@000", major, minor, patch];
@@ -444,8 +441,8 @@ static dispatch_once_t sDefaultOptionsDictionaryOnceToken;
 }
 
 - (BOOL)isAnalyticsCollectionExplicitlySet {
-  // If it's de-activated, it classifies as explicity set. If not, it's not a good enough indication
-  // that the developer wants FirebaseAnalytics enabled so continue checking.
+  // If it's de-activated, it classifies as explicitly set. If not, it's not a good enough
+  // indication that the developer wants FirebaseAnalytics enabled so continue checking.
   if (self.isAnalyticsCollectionDeactivated) {
     return YES;
   }
@@ -485,14 +482,6 @@ static dispatch_once_t sDefaultOptionsDictionaryOnceToken;
     return NO;  // Analytics Collection is not deactivated when the key is not in the dictionary.
   }
   return [value boolValue];
-}
-
-- (BOOL)isAnalyticsEnabled {
-  return [self.optionsDictionary[kFIRIsAnalyticsEnabled] boolValue];
-}
-
-- (BOOL)isSignInEnabled {
-  return [self.optionsDictionary[kFIRIsSignInEnabled] boolValue];
 }
 
 @end

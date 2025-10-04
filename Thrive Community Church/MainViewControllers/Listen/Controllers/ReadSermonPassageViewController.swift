@@ -47,8 +47,14 @@ class ReadSermonPassageViewController: UIViewController {
 		view.isUserInteractionEnabled = true
 		view.indicatorStyle = .white
 		view.isEditable = false
-		view.isSelectable = false
+		view.isSelectable = true
 		view.translatesAutoresizingMaskIntoConstraints = false
+
+		// Enhanced text view configuration for better readability
+		view.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+		view.showsVerticalScrollIndicator = true
+		view.alwaysBounceVertical = true
+
 		return view
 	}()
 	
@@ -101,6 +107,13 @@ class ReadSermonPassageViewController: UIViewController {
 			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		])
+
+		if UIDevice.current.userInterfaceIdiom == .pad {
+
+            // Ensure collection view fills entire view
+            extendedLayoutIncludesOpaqueBars = true
+            edgesForExtendedLayout = .all
+        }
 		
 		self.spinner.startAnimating()
 	}
@@ -117,10 +130,12 @@ class ReadSermonPassageViewController: UIViewController {
 		let url = URL(string: queryString)
 		URLSession.shared.dataTask(with: url!) { (data, response, error) in
 			
-			// something went wrong here
-			if error != nil {
-				print(error!)
-				
+			// Enhanced error handling
+			if let error = error {
+				print("Error loading passage: \(error.localizedDescription)")
+				DispatchQueue.main.async {
+					self.handleLoadingError(error)
+				}
 				return
 			}
 			
@@ -130,48 +145,17 @@ class ReadSermonPassageViewController: UIViewController {
 															 from: data!)
 				
 				DispatchQueue.main.async {
-					
-					let str = String(utf8String: passageResponse.Passage.cString(using: String.Encoding.utf8)!) ?? ""
-					
-					// make a reusable dict
-					var attrs: [NSAttributedString.Key: Any] =
-						[
-							NSAttributedString.Key.foregroundColor: UIColor.white,
-							NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16) as Any
-						]
-					
-					let attStr = NSMutableAttributedString(string: passageResponse.Passage, attributes: attrs)
-					
-					var index: Int = 0
-					for i in str {
-						
-						// this is all a bit magic string-y but it works about as well as you'd expect
-						if  i == "\u{00b3}" ||
-							i == "\u{00b2}"
-						{
-							// add the new attribute to the dict
-							attrs[NSAttributedString.Key.baselineOffset] = 2
-							attrs[NSAttributedString.Key.font] = UIFont(name: "Avenir-Medium", size: 13.6)
-							
-							attStr.setAttributes(attrs, range: NSRange(location: index, length: 1))
-						}
-						else if i == "\u{00b9}" {
-							
-							// add the new attribute to the dict
-							attrs[NSAttributedString.Key.baselineOffset] = 2.25
-							attrs[NSAttributedString.Key.font] = UIFont(name: "Avenir-Medium", size: 13)
-							
-							attStr.setAttributes(attrs, range: NSRange(location: index, length: 1))
-						}
-						
-						index = index + 1
-					}
-					self.passageTextArea.attributedText = attStr
+					// Use new BibleTextFormatter for proper text rendering
+					let formattedText = BibleTextFormatter.formatBibleText(passageResponse.Passage)
+					self.passageTextArea.attributedText = formattedText
 					self.spinner.stopAnimating()
 				}
 			}
 			catch let jsonError {
-				print(jsonError)
+				print("JSON parsing error: \(jsonError.localizedDescription)")
+				DispatchQueue.main.async {
+					self.handleLoadingError(jsonError)
+				}
 			}
 		}.resume()
 	}
@@ -214,5 +198,17 @@ class ReadSermonPassageViewController: UIViewController {
 			print(error)
 		}
 	}
-	
+
+	// MARK: - Error Handling
+
+	private func handleLoadingError(_ error: Error) {
+		spinner.stopAnimating()
+
+		let errorMessage = "Unable to load Bible passage. Please check your connection and try again."
+		passageTextArea.text = errorMessage
+		passageTextArea.textColor = UIColor.lightGray
+
+		print("Passage loading failed: \(error.localizedDescription)")
+	}
+
 }
